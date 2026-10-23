@@ -58,7 +58,7 @@ Every significant product, technical and working decision gets its own record in
 | IN-04 | CI/CD and environments | 4 | Not started | |
 | IN-05 | Budget cap and cost alerts | 4 | Not started | |
 | FE-05 | Demo analytics and feedback | 5 | Not started | |
-| BE-01 | Backend language and framework | 2 (brought forward) | Accepted (C# on .NET) | [0020](0020-application-languages.md) |
+| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020; ASP.NET Core to confirm at stage 6) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |

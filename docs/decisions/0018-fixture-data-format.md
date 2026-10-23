@@ -20,7 +20,7 @@ JSON files with a JSON Schema.
 The founder chose JSON with a schema.
 
 ## Consequences
-- Sample data lives in `packages/fixtures/`: hand-maintained **inputs** in `data/`, the **schemas** in `schema/`, and **generated outputs** (calculated by the cost engine, decision 0019) in `generated/`, never edited by hand.
+- Sample data lives in `packages/fixtures/`: hand-maintained **inputs** in `data/`, the **schemas** in `schema/`, independently worked **test cases** in `test-cases/` (decision 0019), and **generated outputs** (calculated by the cost engine) in `generated/`, never edited by hand.
 - Every input figure carries its source (document, listing, user entry or dataset) and date, following the inputs-versus-outputs rule in `AGENTS.md`.
 - Schema validation runs in CI once CI exists (stage 4), and locally before then.
 - Money is stored as whole pence (integers) to avoid rounding errors.
