@@ -2,6 +2,8 @@
 
 Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0011-ways-of-working.md`). The process is in `docs/product/04-project-goals-and-delivery.md` §10. Each decision is made at the stage listed, the latest point that still lets the work go ahead.
 
+Hard-to-reverse decisions get a full record; easily reversible choices get one line in this register with their default (decision 0035).
+
 **Statuses** (use exactly these; a short note in brackets may follow):
 - **Not started:** no record yet.
 - **Proposed:** options drafted, or a starting position agreed, but not yet fully decided.
@@ -36,17 +38,18 @@ Every significant product, technical and working decision gets its own record in
 | PD-08 | Name shown on the public demo | 1 | Parked (resume before the public demo) | [0008](0008-demo-name.md) |
 | PD-09 | Public brand | 1 | Open (needs clearance) | [0009](0009-public-brand.md) |
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
-| WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015) | [0011](0011-ways-of-working.md) |
-| WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015) | [0012](0012-ai-coding-tools.md) |
+| WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
+| WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
-| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016, 0024 and 0033) | [0015](0015-agent-merges-after-review.md) |
-| WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
+| WW-04 | Merge policy and single agent instructions file | 1 | Superseded by 0035 | [0015](0015-agent-merges-after-review.md) |
+| WW-05 | Holistic reviews and debt limits | 1 | Superseded by 0035 | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
-| WW-07 | Dependency updates and documentation upkeep | 2 | Accepted (partly superseded by 0027) | [0024](0024-dependency-updates.md) |
-| WW-08 | Learning-first engineering | 2 | Accepted | [0026](0026-learning-first-engineering.md) |
-| WW-09 | Stage 2 engineering and security hardening | 2 | Accepted | [0027](0027-stage-2-engineering-hardening.md) |
-| WW-10 | Agent roster, design skills and working rules | 2 | Accepted | [0031](0031-agent-roster.md) |
-| WW-11 | Review fallback when Codex is unavailable | 2 | Accepted | [0033](0033-review-fallback.md) |
+| WW-07 | Dependency updates and documentation upkeep | 2 | Accepted (partly superseded by 0027, 0035) | [0024](0024-dependency-updates.md) |
+| WW-08 | Learning-first engineering | 2 | Accepted (partly superseded by 0035) | [0026](0026-learning-first-engineering.md) |
+| WW-09 | Stage 2 engineering and security hardening | 2 | Accepted (partly superseded by 0035) | [0027](0027-stage-2-engineering-hardening.md) |
+| WW-10 | Agent roster, design skills and working rules | 2 | Accepted (partly superseded by 0035) | [0031](0031-agent-roster.md) |
+| WW-11 | Review fallback when Codex is unavailable | 2 | Superseded by 0035 | [0033](0033-review-fallback.md) |
+| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted | [0035](0035-ways-of-working-v2.md) |
 | DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
@@ -81,7 +84,7 @@ Every significant product, technical and working decision gets its own record in
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework) | [0023](0023-microsoft-agent-framework.md) |
-| AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements) | [0025](0025-ai-platform-capabilities.md) |
+| AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements; partly superseded by 0035) | [0025](0025-ai-platform-capabilities.md) |
 | AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Proposed (OpenTelemetry and local Aspire accepted in 0025; production telemetry at stage 6) | [0025](0025-ai-platform-capabilities.md) |

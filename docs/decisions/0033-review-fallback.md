@@ -1,7 +1,7 @@
 # 0033: Review fallback when Codex is unavailable
 
 **ID:** WW-11  
-**Status:** Accepted  
+**Status:** Superseded by [0035](0035-ways-of-working-v2.md)  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:** in [0015](0015-agent-merges-after-review.md), the requirement that Codex reviews every pull request's latest commit, **only while Codex is unavailable** and only for documentation-only pull requests.

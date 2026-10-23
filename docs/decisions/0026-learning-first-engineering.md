@@ -1,7 +1,7 @@
 # 0026: Learning-first engineering
 
 **ID:** WW-08  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: where learning sections are required and when explain-back happens by [0035](0035-ways-of-working-v2.md))  
 **Date:** 2026-10-23  
 **Stage:** 2
 

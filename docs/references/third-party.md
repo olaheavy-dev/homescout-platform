@@ -4,8 +4,8 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 
 **Rules**
 - Link only to official documentation. Don't copy documentation into the repository.
-- Add an entry in the same pull request that adds a dependency, with the pinned version.
-- Update the version column in the same pull request whenever a version changes, including Dependabot updates (decision 0024). A CI check enforces this once code exists.
+- Add an entry in the same pull request that adds a dependency, with its major version.
+- The version column records **major versions**; exact versions live in the lock files. Update it in the same pull request when a major version changes (decision 0035). Patch and minor updates don't touch this file.
 - Official data sources (energy certificates, sold prices, planning, flood, transport) are listed with their limits in doc 02 §7, not here.
 
 ## In use or chosen
@@ -25,6 +25,7 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 | NetArchTest | Architecture rules | Pinned in the first implementation PR | 0021 | [NetArchTest](https://github.com/BenMorris/NetArchTest) |
 | JSON Schema | Validating sample data | Draft version chosen in the first implementation PR | 0018 | [JSON Schema docs](https://json-schema.org/docs) |
 | Microsoft.Testing.Platform | Test runner for NUnit tests and coverage | Pinned in the first implementation PR | 0027 | [dotnet test](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test), [NUnit and MTP](https://docs.nunit.org/articles/vs-test-adapter/NUnit-And-Microsoft-Test-Platform.html), [code coverage](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage) |
+| JetBrains ReSharper Command Line Tools (InspectCode) | Static analysis in `make check` and CI | Pinned in the .NET tool manifest | 0035 | [Command line tools](https://www.jetbrains.com/help/resharper/ReSharper_Command_Line_Tools.html), [InspectCode](https://www.jetbrains.com/help/resharper/InspectCode.html), [licence](https://www.jetbrains.com/resharper/buy/command_line_license.html) |
 | FsCheck | Property-based tests for the cost engine | Pinned in the first implementation PR | 0027 | [FsCheck](https://fscheck.github.io/FsCheck/) |
 | `MidpointRounding` | Explicit rounding in money calculations | Built into .NET | 0027 | [MidpointRounding](https://learn.microsoft.com/en-us/dotnet/api/system.midpointrounding) |
 | EditorConfig and `dotnet format` | Code style checked in CI | — | 0027 | [Code style options](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/code-style-rule-options), [EditorConfig](https://editorconfig.org/) |
@@ -41,7 +42,7 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 | TypeScript | Frontend language | Pinned at stage 4 | 0020 | [TypeScript docs](https://www.typescriptlang.org/docs/) |
 | GitHub Actions | Automated checks and deployment | — | 0013, IN-04 | [GitHub Actions](https://docs.github.com/en/actions), [security hardening](https://docs.github.com/en/actions/reference/security/secure-use) |
 | Claude Code | Building agent | — | 0012 | [Claude Code docs](https://code.claude.com/docs/en/overview) |
-| OpenAI Codex code review | Reviewing agent | — | 0012, 0015 | [Codex GitHub integration](https://learn.chatgpt.com/docs/third-party/github) |
+| OpenAI Codex code review | Reviewing agent | — | 0012, 0035 | [Codex GitHub integration](https://learn.chatgpt.com/docs/third-party/github) |
 | Dependabot | Weekly version-update pull requests | — | 0024 | [About version updates](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-version-updates), [options reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference) |
 | lychee | Monthly documentation link check | Pinned when the workflow is added | 0024 | [lychee](https://lychee.cli.rs/) |
 | Microsoft Agent Framework | AI agents and workflows (stage 6) | Pinned at stage 6 | 0023 | [Overview](https://learn.microsoft.com/en-us/agent-framework/overview/), [version 1.0 announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/) |

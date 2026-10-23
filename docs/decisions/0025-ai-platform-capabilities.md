@@ -1,7 +1,7 @@
 # 0025: AI platform capabilities
 
 **ID:** AI-05 (accepted), AI-03 and OP-01 (in part)  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: founder merge for its stage 6 packages by [0035](0035-ways-of-working-v2.md))  
 **Date:** 2026-10-23  
 **Stage:** 6 (requirements decided early)
 

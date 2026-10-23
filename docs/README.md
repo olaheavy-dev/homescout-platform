@@ -23,7 +23,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [01 Product brief v1.1](product/01-product-brief-v1.1.md) | The original concept | **Historical.** Superseded where 02–04 differ |
 | [02 Research and direction](product/02-research-and-direction.md) | Product decisions, scope, free/paid split, data feasibility | Current |
 | [03 Prototype and image direction](product/03-prototype-and-image-direction.md) | Prototype behaviour, screens, visual direction, image review | Current |
-| [04 Project goals and delivery](product/04-project-goals-and-delivery.md) | Goals, roadmap (§9), ways of working (§10), budget, commercial safeguards | Current |
+| [04 Project goals and delivery](product/04-project-goals-and-delivery.md) | Goals, roadmap (§9), ways-of-working summary (§10; rules in `AGENTS.md`), budget, commercial safeguards | Current |
 | [Decision register](decisions/README.md) | Every decision's status and record | Current |
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
@@ -32,7 +32,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 
-Accepted decision records override anything in the documents that contradicts them. Where 02, 03 and 04 overlap, each owns the area listed above.
+Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decision 0035). Where 02, 03 and 04 overlap, each owns the area listed above.
 
 **Reading order for someone new:** 02 → 03 → 04 → the decision register. Read 01 only for background.
 

@@ -19,7 +19,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
-- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012), with a separate Claude fallback review for documentation-only pull requests while Codex is unavailable (decision 0033). You set direction and own decisions. You review founder-only pull requests, including any where Claude disputes a finding; routine changes are reviewed by Codex and merged by Claude Code, and you review them by exception (decision 0015).
+- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Opus 5.5 plans and reviews (including a fresh-context review before every push); Sonnet 5.5 builds and verifies; OpenAI Codex reviews every pull request (except small dependency updates) as an independent second opinion (decision 0035, rules in `AGENTS.md`). You set direction and own decisions, merge founder-only pull requests, and review routine changes by exception.
 - **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools, **plus an optional, closable chat panel about the current home** (decision 0004). The chat cites evidence or says it doesn't know, uses the cost engine for any number, and needs its own scripted sample replies in the prototype and its own evaluation set later. All numbers come from deterministic code. Microsoft Agent Framework is the AI framework (decision 0023): single agents for tasks and chat, and a workflow with a human approval step for document investigation. Calculations stay in plain code.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
@@ -32,12 +32,12 @@ These keep agent output reviewable and keep you learning rather than rubber-stam
 2. **Small vertical slices.** One user-visible capability per pull request, kept small enough to review properly.
 3. **Tests first for anything numeric or legal.** Cost, tax and lease-date logic gets table-driven tests with worked examples before implementation. The image 5 mortgage error in doc 03 is exactly what this prevents.
 4. **Rules come from cited sources, not model memory.** SDLT bands, tenancy rules and inspection frameworks live in versioned rule tables with a source URL and effective date. You review every rule table change.
-5. **Decision records.** Every significant choice gets a short architecture decision record in `docs/decisions/`, written in your words. If you can't write the record, you don't understand the choice yet.
+5. **Decision records.** Every hard-to-reverse choice gets a short decision record in `docs/decisions/`, written in your words; easily reversible ones get a line in the register (decision 0035). If you can't write the record, you don't understand the choice yet.
 6. **Evaluations for every AI task.** Each model-backed task has a fixed evaluation set (synthetic documents, expected citations, known traps such as the £2,400 vs £3,720 period mismatch) that runs in CI. A prompt or model change that lowers the score doesn't merge.
 7. **Agent guardrails in the repo.** A `CLAUDE.md` (or equivalent) records conventions, commands, the "no invented facts" rule and the commercial constraints below, so every agent session starts with them.
 8. **No real personal data.** Development and demos use the synthetic fixture catalogue from doc 03. Real documents are only for consented research sessions, kept outside the repository.
 9. **Licence check before ingestion.** No dataset, map tile or image enters the repository or pipeline until its licence and attribution terms are recorded.
-10. **Explain-back.** For each merged slice, you write a few lines on how it works. This is the learning record and the raw material for the case study.
+10. **Explain-back.** Once a week, for each significant slice merged that week, you write a few lines on how it works (decision 0035). This is the learning record and the raw material for the case study.
 
 ## 4. What makes it portfolio-worthy
 
@@ -105,9 +105,9 @@ Do these now, because they are cheap now and expensive later:
 
 ## 9. Roadmap from design decisions to implementation
 
-Each stage ends with a gate. Don't start the next stage until its gate is met. Agents can draft most of the artefacts; you approve each gate. Every gate also requires a whole-repository audit for contradictions and debt, and no open `review-followup` issues (decision 0016).
+Each stage ends with a gate. Don't start the next stage until its gate is met, except that stages 3 and 4 may overlap (decision 0035). Agents can draft most of the artefacts; you approve each gate. Every gate also requires a whole-repository audit for contradictions and debt, and no open `review-followup` issues (decision 0035).
 
-Every stage begins with its **decision step**: the individual decisions that must be made before the stage's work starts. Each is a separate decision record in `docs/decisions/` with options, a recommendation and your choice. The full register, with IDs and status, is in `docs/decisions/README.md`. A decision is made at the latest stage that still lets the work go ahead. Choices that only matter later stay open until then.
+Every stage begins with its **decision step**: the individual decisions that must be made before the stage's work starts. Hard-to-reverse decisions each get a separate decision record in `docs/decisions/` with options, a recommendation and your choice. The full register, with IDs and status, is in `docs/decisions/README.md`. A decision is made at the latest stage that still lets the work go ahead. Choices that only matter later stay open until then. Easily reversible ones get one line in the register with their default (decision 0035).
 
 ### Stage 1: Close the design decisions and set how we work
 
@@ -212,35 +212,11 @@ Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then r
 
 ## 10. Ways of working
 
-These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
+The current rules live in **`AGENTS.md`**, the single rulebook (decision 0035). In short:
 
-**Roles**
-- **You:** product owner, architect and reviewer. You make every decision and approve every gate. Claude Code merges routine pull requests after Codex review (or the fallback review, decision 0033); you merge sensitive ones (decision 0015, `AGENTS.md`).
-- **Coding agents:** draft decision options, specs, code, tests, infrastructure and documentation, working from the specs and `CLAUDE.md`.
-- **Outside reviewers** (later): legal, tax and tenancy content gets professional review before anything is charged for.
-
-**How a decision gets made**
-1. An agent drafts a decision record: context, two or three options with trade-offs, cost and learning value, and a recommendation.
-2. You choose, and write the "why" in your own words.
-3. The record is merged with status **Accepted**. Changing a decision later means a new record that marks the old one **Superseded**, not an edit.
-
-**How a change gets made**
-1. **Issue:** one user-visible capability, linked to its spec section and acceptance criteria.
-2. **Agent session on a branch:** the agent implements with tests and updates docs. One issue per session keeps context small.
-3. **Pull request:** a description of what changed and why, how it was tested, any assumptions the agent made, a "Noticed, not changed" list (decision 0031), and the pre-flight consistency check done across the repository (`AGENTS.md`, "When building").
-4. **Checks:** CI runs build, lint, tests, accessibility checks and (later) AI evaluations. Nothing merges on red.
-5. **AI review:** OpenAI Codex reviews the latest commit (while Codex is unavailable, documentation-only pull requests get the fallback review, decision 0033), reporting everything in one complete first pass; re-reviews check only the fixes (decision 0016). Claude Code fixes serious findings (P0/P1) in any round, and minor ones (P2/P3) in the first two rounds; later minor findings go to a `review-followup` issue for a batched tidy-up. Fixes are pushed in one batch per round, with one re-review request (decision 0015).
-6. **Merge:** on a routine pull request, Claude Code merges once the conditions in decisions 0015 and 0016 are met, with no wait for you. On a founder-only pull request (see `AGENTS.md`, "When merging"), including any where Claude disputes a finding as wrong, you review and merge and decide whether disputed findings stand. Minor findings validly deferred to a follow-up issue don't need you. Serious findings (P0/P1) are always fixed first.
-7. **Summary and explain-back:** after merging, Claude Code posts a one-line summary. You can review any merged change at any time. You then write a few lines in your own words on how it works, added to the learning log.
-
-**Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
-
-**Definition of done:** acceptance criteria met; tests and checks pass; works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the demo where relevant; explain-back written.
-
-**Cadence:** a short weekly plan (which gate is next and which issues serve it) and a short weekly review (what shipped, what you learned, actual cloud and AI spend against the cap).
-
-**Agent hygiene**
-- Start each session from a clean branch and a specific issue.
-- Keep `CLAUDE.md` current with conventions, commands, the "no invented facts" rule and the public-repo rules (no secrets, no personal data, no licensed datasets).
-- Give agents the narrowest permissions that work; any dependency or infrastructure change needs your approval.
-- When an agent is wrong in a way that could recur, record the rule in `CLAUDE.md` so the fix outlives the session.
+- **Roles:** you make every decision, approve every gate, and merge founder-only pull requests; you learn through walkthroughs and a weekly explain-back. Agents plan, build, check and review. **Opus 5.5 plans and reviews; Sonnet 5.5 builds and verifies.** Codex reviews every pull request (except small dependency updates) as an independent second opinion.
+- **How a decision gets made:** an agent drafts options with a recommendation, you choose and give your reason. Hard-to-reverse decisions get a full record; easily reversible ones get a line in the register. Changing a decision means a new record that supersedes the old one.
+- **How a change gets made:** plan (data contract first, then backend and frontend tasks) → build → `make check` → pre-push Opus review → pull request → Codex review → fix → merge → summary.
+- **Definition of ready:** a plan with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
+- **Definition of done:** acceptance criteria met; `make check` and CI pass; the change introduces no GitHub security alert (for alerts already open on `main`, see `AGENTS.md`, "When merging", condition 4); works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the demo where relevant.
+- **Cadence:** a short weekly plan (which gate is next, which issues serve it) and a weekly review (what shipped, your explain-back, cloud spend against the cap, and coding-agent spend and review rounds).

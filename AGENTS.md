@@ -2,8 +2,7 @@
 
 Shared instructions for every AI agent on this project. `CLAUDE.md` is a symbolic link to this file, so Claude Code and OpenAI Codex read the same text. Edit **this** file only.
 
-- **Claude Code** builds and merges: follow "When building" and "When merging".
-- **OpenAI Codex** reviews pull requests: follow "When reviewing".
+Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonnet 5.5 builds and verifies, Codex reviews every pull request except small dependency updates, and Claude Code merges. Builders follow "When building"; every reviewer (Opus pre-push, Codex, fallback) follows "When reviewing"; merging follows "When merging".
 
 ## What this project is
 
@@ -37,84 +36,112 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 7. **Missing data is never shown as zero**, a favourable value or a clean result.
 8. **Plain language for the founder.** When explaining options or decisions, say what each option means in practice and give a clear recommendation.
 
+## How work flows (decision 0035)
+
+This file is the **single current rulebook for how work is done** (planning, building, reviewing, merging, dependencies). Where an older decision record differs on those process matters, this file and decision 0035 apply. Product, data and technical decisions stay with their records, and this file must not contradict them.
+
+| Step | Who | Model |
+|---|---|---|
+| 1. Plan the feature | Planner agent | Opus 5.5 |
+| 2. Build each task | Implementer agent | Sonnet 5.5 |
+| 3. Run `make check` and map criteria to tests | Verifier agent | Sonnet 5.5 |
+| 4. Pre-push review (fresh context, "When reviewing") | Reviewer agent | Opus 5.5 |
+| 5. Open the pull request; Codex reviews the latest commit | Codex | — |
+| 6. Handle review comments | Review handler | Opus 5.5 |
+| 7. Merge when the conditions below are met; post a one-line summary | Claude Code | — |
+
+## Planning (decision 0035)
+
+- **Every feature gets a plan** before building. Small changes get a short plan in the issue.
+- The plan fixes the **data contract first** (JSON Schema and generated files now, OpenAPI later), then splits the work into **backend tasks** (C# cost engine, generator, later the API) and **frontend tasks** (Next.js screens; the design skills produce the brief and tasks, decision 0031), each with acceptance criteria, edge cases and the test that proves each.
+- Until a running backend exists, "backend tasks" means fixtures and the cost engine.
+- Hard-to-reverse choices get a decision record; easily reversible ones get one line in the register with their default.
+
 ## When building (Claude Code)
 
 - One issue per session, on a branch named `type/short-description` (e.g. `feat/buyer-story-costs`).
-- Start from the issue's spec and acceptance criteria. If the spec is unclear or conflicts with a decision, stop and ask rather than guess.
+- Start from the issue's plan and acceptance criteria. If the plan is unclear or conflicts with a decision, stop and ask rather than guess.
 - Small vertical slices. Tests first for anything numeric or legal, using the test-first skill once it's added (decision 0031) and the boundary cases in decision 0034.
-- **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open a `review-followup` issue for each. Don't fix unrelated things in the same change.
-- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a new dependency, or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
+- **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open an issue labelled `noticed` for each. Don't fix unrelated things in the same change.
+- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list, or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
 - **Stop what you start:** servers, watchers and temporary worktrees.
 - **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
 - **Result type:** use HomeScout's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
-- Before using a framework or package API, check its official documentation for the pinned version via `docs/references/third-party.md`, not memory. When adding a dependency or changing a version, update that file in the same pull request (decision 0024).
+- Before using a framework or package API, check its official documentation for the pinned major version via `docs/references/third-party.md`, not memory. When adding a dependency or changing a major version, update that file in the same pull request.
 - For a major version update, read the official migration notes, fix breaking changes in the same pull request, and summarise them in the description.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
-- Pull request description: what changed and why, how it was tested, and **any assumptions you made**.
-- Update the docs and decision records affected by the change.
-- **Pre-flight check before opening a pull request:** search the repository for every term, decision ID, rule and figure the change touches, and fix any contradiction or stale statement in the same pull request. Check new facts against their sources. Say in the pull request description what was checked. Most review rounds come from cross-document contradictions, so this is the main way to keep reviews to one round.
-- Ask the founder before installing dependencies, changing infrastructure, cloud resources or repository settings. Never push to `main`.
+- Pull request description: what changed and why, how it was tested, **any assumptions you made**, "Noticed, not changed", and the pre-flight check done.
+- **Pre-flight check:** search the repository for every term, decision ID, rule and figure the change touches, and fix any contradiction or stale statement in the same pull request. Check new facts against their sources.
+- **Run `make check` before pushing.** It runs every automated check the same way as CI, including JetBrains InspectCode.
+- **Pre-push review:** before pushing, run a fresh-context Opus review using "When reviewing" below, and fix its findings first.
+- Ask the founder before installing packages not on the pre-approved list, changing infrastructure, cloud resources or repository settings. Never push to `main`.
+- **Agent permissions:** the first code pull request adds Claude Code project settings with an allow-list for safe read, build and test commands; installing packages, infrastructure and repository-setting changes need approval; pushing to `main` is denied.
 
-## Teach as you build (decision 0026)
+## Teach as you build (decisions 0026, 0035)
 
 The founder is learning the languages, frameworks and tools through this project.
-- Every pull request description includes **"How it works"** (plain language) and **"Concepts to learn"** (links to the official documentation pages for what it uses).
+- **Feature** pull requests include **"How it works"** (plain language) and **"Concepts to learn"** (links to the official documentation pages for what it uses). Documentation, chore and dependency pull requests don't need them.
 - When the founder asks why, answer in plain language with a small example and a link to the official source.
-- For each significant slice, offer a short walkthrough: which files matter, how data flows, why it was built this way, and the alternatives. The founder learns by understanding, not by writing the code.
+- For each significant slice, offer a short walkthrough: which files matter, how data flows, why it was built this way, and the alternatives. The founder learns by understanding, not by writing the code. Explain-back happens in a weekly batch.
 - AI-layer work follows decision 0025: each implementation links the official documentation it follows.
 
-## When reviewing (Codex)
+## When reviewing (Opus pre-push review, Codex, and fallback reviews)
 
 Check in priority order:
 1. **Correctness:** bugs, wrong logic, unhandled states. For money, tax, dates and lease terms, recalculate the figures and check them against the cited source.
 2. **Breaches of the rules above.**
-3. **Spec match:** does the change meet the linked acceptance criteria, including mobile, keyboard access and edge states?
+3. **Spec match:** does the change meet the plan's acceptance criteria, including mobile, keyboard access and edge states?
 4. **Tests:** are the important cases covered, especially numbers and edge states?
 5. **Clarity:** could the founder understand and maintain this? Flag unnecessary complexity.
 
 How to report:
 - Most serious findings first. For each: file and line, what's wrong, a concrete example of the failure, and a suggested fix.
 - Give each finding a severity: **P0/P1** (wrong behaviour, wrong figures, legal or security risk, broken rules above) or **P2/P3** (wording, consistency, minor gaps). Use plain language. Say "no issues found" if there are none.
-- **First review: one complete pass.** Review the whole pull request at once, including its knock-on effects: other files in the repository that the change contradicts or makes stale (search for the same terms, decision IDs and rules). Report every finding in that first review rather than spreading them over rounds.
+- **First review: one complete pass.** Review the whole change at once, including its knock-on effects: other files in the repository that the change contradicts or makes stale (search for the same terms, decision IDs and rules). Report every finding in that first review.
 - **Re-reviews: fixes only.** Check that the fixes are correct and look at newly changed lines. Raise new P2/P3 points only on lines changed since the last review; raise P0/P1 issues anywhere. Don't re-raise issues already deferred to a follow-up issue.
-- Don't push commits or approve merges.
+- Reviewers don't push commits or approve merges.
 
-## When merging (Claude Code, decisions 0015 and 0016)
+## When merging (Claude Code, decision 0035)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
-1. Codex has reviewed the **latest commit** of the pull request, or, while Codex is unavailable, a documentation-only pull request has had the fallback review (decision 0033). Also only while Codex is unavailable, a pull request rebased with no content change may rely on its earlier review under the conditions in decision 0033.
-2. Every review finding (Codex, or the fallback review under decision 0033) is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
+1. **Codex has reviewed the latest commit.** Exceptions:
+   - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "When reviewing" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
+   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route.
+   Code otherwise waits for Codex, and a rebased pull request gets a fresh review.
+2. Every review finding is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
-4. The pull request doesn't fall under the founder-only list below.
+4. **Zero GitHub security issues:** the pull request adds no code-scanning, Dependabot or secret-scanning alert. While an alert is open on `main`, only pull requests that fix it, or documentation-only pull requests, may merge; feature work waits. If no fix exists yet, the founder dismisses the alert in GitHub with a recorded reason.
+5. The pull request doesn't fall under the founder-only list below.
 
 **Founder merges these:**
-- Changes to `LICENSE`, repository settings, CI permissions or this file's merge rules (including the review fallback, decision 0033).
+- Changes to `LICENSE`, repository settings, CI permissions, agent permission settings (`.claude/settings.json`) or these merge rules.
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
-- Adding a new dependency. (Version updates to existing dependencies are merged by Claude Code after checks and Codex review, decision 0024.)
-- Any pull request where Claude Code disagrees with a finding and proposes to dismiss it as wrong (not merely defer it). The founder decides whether the finding stands.
+- Adding a package that isn't on the pre-approved list in decision 0035.
+- Any pull request where Claude Code disputes a finding as wrong (not merely defers it). The founder decides whether the finding stands.
 
-P0/P1 findings always block, with no override: they must be fixed before anyone merges.
+P0/P1 findings always block, with no override.
 
 After merging, post a one-line summary for the founder: what merged, and any follow-up issues created.
 
-## Review rounds (decisions 0015 and 0016)
+## Review rounds and debt (decision 0035)
 
-Optimised for quality, speed and agent cost:
 - **P0/P1 findings always block.** Fix them in the pull request, in any round.
-- **P2/P3 findings are fixed in the pull request only in the first two review rounds.** From round 3 onward, open a follow-up issue labelled `review-followup` instead (link it in the thread reply, then resolve the thread). If unsure of a finding's severity, treat it as P1.
-- **Batch follow-ups:** clear open `review-followup` issues together in one tidy-up pull request, at least once per roadmap stage. **No stage gate passes with open follow-ups**, and if more than 5 are open, clear them before starting new feature work.
-- **Holistic audit at each stage gate:** before signing off a stage, run one whole-repository review for contradictions, stale statements and debt (ask Codex with a comment describing the scope, or use Claude Code's review), and clear what it finds in the tidy-up.
-- **One re-review per batch of fixes:** fix every open finding, push once, then request one Codex re-review. Don't request reviews commit by commit.
+- **P2/P3 findings are fixed in rounds 1–2.** From round 3, open a `review-followup` issue instead (link it in the reply, then resolve the thread). If unsure of a severity, treat it as P1.
+- **One re-review per batch of fixes:** fix every open finding, push once, then request one re-review.
+- **Debt limits:** no stage gate passes with open `review-followup` issues; more than 5 open pauses feature work. `noticed` issues are triaged at each stage gate and don't count towards the limit.
+- **Holistic audit at each stage gate:** one whole-repository review for contradictions, stale statements and debt, with findings cleared in a tidy-up pull request.
 
 ## Keeping agent cost down
 
-- Keep pull requests focused on one topic, but group small related documentation changes into one pull request rather than several.
+- **Opus 5.5 plans and reviews; Sonnet 5.5 does everything else** (decision 0035).
+- Keep pull requests focused on one topic, but group small related documentation changes into one pull request.
 - Read only the files a task needs; don't reload whole documents to change one line.
+- Run `make check` and the pre-push review before pushing, so Codex rounds are rare.
 - Wait for reviews and checks in the background with long intervals; don't poll repeatedly.
-- Use the most capable model for planning, decisions, review triage and full-lane implementation; a faster, cheaper model is acceptable for routine, well-specified, light-lane implementation (decisions 0012, 0031).
-- Before a long or expensive task (large refactor, many files, repeated review rounds), say so and suggest a cheaper route if there is one.
+- Before a long or expensive task, say so and suggest a cheaper route if there is one.
+- Coding-agent spend and review rounds per pull request are reported in the weekly review (no fixed cap).
 
 ## Commands
 
-None yet. Add build, test and lint commands here when `packages/fixtures`, `packages/cost-engine` and `apps/web` exist.
+None yet. When code exists: `make check` (every automated check, same as CI, including InspectCode), `make test` and `make generate`.
