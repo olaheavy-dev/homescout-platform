@@ -84,6 +84,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-14 | Monthly differences | 2 | Accepted (register line: a monthly difference is the difference of the two rounded monthly lines, not a rounded difference of yearly figures; founder, 23 Oct 2026) | — |
 | BE-15 | Rates in whole basis points | 2 | Accepted (register line: the engine takes rates as whole basis points (550 is 5.5%); a rate that is not a whole number of basis points is not accepted until a decision says otherwise; founder, 23 Oct 2026) | — |
 | BE-16 | Missing inputs in a calculation | 2 | Accepted (register line: an anchor input (asking price, mortgage deposit, rate and term when buying; rent when renting) that is missing stops the calculation with a `Result` failure; any other missing bill becomes a `missing` line and makes the total partial; founder, 23 Oct 2026) | — |
+| BE-17 | Mortgage term limit | 2 | Accepted (register line: the engine fails a mortgage term over 100 years with `mortgage.term-too-long`, and the evidence and output schemas allow at most 100; this is a technical computation limit because the exact arithmetic gets very slow for huge terms, not a lending rule; founder, 23 Oct 2026) | — |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |

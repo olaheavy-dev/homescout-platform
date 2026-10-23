@@ -38,7 +38,9 @@ internal sealed class CalculationProperties
     public bool MonthlyCost_anyLines_totalEqualsTheSumOfTheCalculatedLines(MonthlyScenario scenario)
     {
         MonthlyBreakdown result = MonthlyCost.Calculate(scenario.Mode, scenario.Lines, scenario.Budget).Value;
-        Pence sum = result.Lines.Where(l => l.Status == LineStatus.Calculated).Aggregate(Pence.Zero, (total, line) => total + line.Amount!.Value);
+        // The expected sum is worked out from the input lines: monthly amounts as given, yearly amounts divided by 12 and rounded once.
+        Pence sum = scenario.Lines.OfType<AmountLine>()
+            .Aggregate(Pence.Zero, (total, line) => total + (line.Period == Period.Year ? Pence.RoundRatio(line.Amount.Value, 12) : line.Amount));
 
         return result.Total == sum;
     }

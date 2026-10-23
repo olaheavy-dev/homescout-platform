@@ -29,8 +29,8 @@ internal static class CaseLines
 
         if (line["mortgageCase"] is { } mortgageCase)
         {
-            (Pence loan, int rateBasisPoints, int termYears) = StoryCases.MortgageInputs(mortgageCase.GetValue<string>());
-            Pence repayment = Mortgage.MonthlyRepayment(loan, rateBasisPoints, termYears).Value.MonthlyRepayment;
+            // The line's amount is the referenced case's independently worked result, not the engine's own output.
+            var repayment = new Pence(StoryCases.Case(mortgageCase.GetValue<string>())["expected"]!["monthlyRepaymentPence"]!.GetValue<long>());
             return new AmountLine(category, repayment, Period.Month, []);
         }
 

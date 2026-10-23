@@ -49,7 +49,43 @@ internal sealed class MortgageTests
         Assert.That(result.Error.Category, Is.EqualTo(ErrorCategory.Validation));
     }
 
+    [TestCase(101)]
+    [TestCase(50_000)]
+    [TestCase(int.MaxValue)]
+    public void MonthlyRepayment_termOver100Years_failsAsTooLong(int termYears)
+    {
+        // 100 years is a computation limit (a huge term makes the exact arithmetic very slow), not a lending rule.
+        Result<MortgageRepayment> result = Mortgage.MonthlyRepayment(new Pence(1_000_000), 550, termYears);
+
+        Assert.That(result.Error.Code, Is.EqualTo("mortgage.term-too-long"));
+        Assert.That(result.Error.Category, Is.EqualTo(ErrorCategory.Validation));
+    }
+
     [Test]
-    public void MonthlyRepayment_termTooLongToCount_throwsOverflow() =>
-        Assert.Throws<OverflowException>(() => Mortgage.MonthlyRepayment(new Pence(1_000_000), 550, int.MaxValue));
+    public void MonthlyRepayment_termOf100Years_isCalculated() =>
+        Assert.That(Mortgage.MonthlyRepayment(new Pence(1_000_000), 550, 100).IsSuccess, Is.True);
+
+    [TestCase(5_000_000_000_000_000L)]
+    [TestCase(long.MaxValue / 1000)]
+    [TestCase(long.MaxValue / 100)]
+    public void MonthlyRepayment_veryLargeLoan_neverGivesAWrongSuccess(long loan)
+    {
+        // Independent bounds, not an engine figure. At 2,000 basis points the monthly rate is i = 2000 / 120,000 = 1/60.
+        // Interest alone each month is loan / 60, and the repayment is more than that and less than the whole loan
+        // (the first payment of a 25-year loan is a fraction of the loan). A wrapped-around multiplication fails these bounds.
+        Result<MortgageRepayment> result;
+        try
+        {
+            result = Mortgage.MonthlyRepayment(new Pence(loan), 2000, 25);
+        }
+        catch (OverflowException)
+        {
+            Assert.Pass("Throwing is allowed; a wrong success is not.");
+            return;
+        }
+
+        Assert.That(result.IsSuccess, Is.True);
+        Assert.That(result.Value.MonthlyRepayment.Value, Is.GreaterThan(loan / 60));
+        Assert.That(result.Value.MonthlyRepayment.Value, Is.LessThan(loan));
+    }
 }

@@ -13,6 +13,12 @@ public sealed record MortgageRepayment(Pence Loan, int RateBasisPoints, int Term
 /// <summary>Repayment-mortgage arithmetic (decision 0021).</summary>
 public static class Mortgage
 {
+    /// <summary>
+    /// The longest term the engine will work out. This is a technical computation limit (the exact arithmetic gets very slow
+    /// for huge terms), not a lending rule (register line BE-17).
+    /// </summary>
+    public const int MaxTermYears = 100;
+
     private const int _monthsPerYear = 12;
 
     /// <summary>The denominator of the monthly rate: a rate in basis points is 1/10,000 of a year, and a month is 1/12 of that.</summary>
@@ -29,7 +35,7 @@ public static class Mortgage
     /// worked out with whole numbers. It is rounded once, nearest penny with halves away from zero (decision 0021),
     /// which is HomeScout's rule; the source's formula says nothing about rounding.
     /// </remarks>
-    /// <exception cref="OverflowException">The number of payments, or the rounded repayment, is too large to represent.</exception>
+    /// <exception cref="OverflowException">The rounded repayment does not fit in a <see cref="long"/>.</exception>
     public static Result<MortgageRepayment> MonthlyRepayment(Pence loan, int rateBasisPoints, int termYears)
     {
         if (loan.Value <= 0)
@@ -47,12 +53,18 @@ public static class Mortgage
             return Fail("mortgage.term-not-positive", "The mortgage term must be more than zero years.");
         }
 
+        if (termYears > MaxTermYears)
+        {
+            return Fail("mortgage.term-too-long", $"The mortgage term can be at most {MaxTermYears} years.");
+        }
+
         int payments = checked(termYears * _monthsPerYear);
         BigInteger common = _basisPointsPerMonthDenominator;
         BigInteger grown = common + rateBasisPoints;
         BigInteger growth = BigInteger.Pow(grown, payments);
 
-        BigInteger numerator = loan.Value * rateBasisPoints * growth;
+        // Widen to BigInteger first: a long times an int would wrap around silently (overflow checking is off).
+        BigInteger numerator = new BigInteger(loan.Value) * rateBasisPoints * growth;
         BigInteger denominator = common * (growth - BigInteger.Pow(common, payments));
 
         Pence repayment = Pence.RoundRatio(numerator, denominator);

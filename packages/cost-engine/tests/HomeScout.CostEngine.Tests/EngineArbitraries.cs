@@ -75,7 +75,7 @@ internal static class EngineArbitraries
 
     public static Arbitrary<UpfrontScenario> UpfrontScenarios() =>
         Gen.Elements(Mode.Buy, Mode.Rent)
-            .SelectMany(mode => Lines(mode == Mode.Buy ? _buyUpfront : _rentUpfront, anchorFirst: false, upfront: true)
+            .SelectMany(mode => Lines(mode == Mode.Buy ? _buyUpfront : _rentUpfront, anchorFirst: mode == Mode.Buy, upfront: true)
                 .Select(lines => new UpfrontScenario(mode, lines)))
             .ToArbitrary();
 

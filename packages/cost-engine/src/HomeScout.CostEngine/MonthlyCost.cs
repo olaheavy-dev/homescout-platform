@@ -13,6 +13,14 @@ public static class MonthlyCost
     /// it (founder, 23 Oct 2026). On a partial total only the calculated lines are counted, so
     /// <see cref="MonthlyBreakdown.BasedOnPartialTotal"/> tells the screen to say "at least".
     /// The anchor line (the mortgage repayment when buying, the rent when renting) must have an amount.
+    /// <para>
+    /// Error codes (tests match the code, never the message):
+    /// <c>input.not-positive.budget</c> and <c>input.not-positive.{category}</c> (the budget or an amount is zero or less);
+    /// <c>input.wrong-period.{category}</c> (for example rent given yearly);
+    /// <c>input.not-for-mode.{category}</c> (a line that does not belong in this list for this mode, for example service-charge for a renter);
+    /// <c>input.ambiguous.{category}</c> (the same category given twice);
+    /// <c>input.missing.{category}</c> (the anchor line is absent or has no amount).
+    /// </para>
     /// </remarks>
     /// <param name="mode">Whether the home is bought or rented.</param>
     /// <param name="lines">The lines. Lines that do not apply to the home are simply not given.</param>

@@ -218,6 +218,25 @@ internal sealed class SchemaRejectionTests
     }
 
     [Test]
+    public void Evidence_mortgageTermOver100Years_isRejected()
+    {
+        // 100 years is the engine's computation limit (register line BE-17), not a lending rule.
+        JsonObject item = FixtureFiles.EvidenceItem("HH-MORTGAGE-TERM");
+        item["value"]!["amount"] = 101;
+
+        Assert.That(FixtureFiles.Validate("evidence", "evidence", item).Select(p => p.ToString()), Has.Some.Contain("/value/amount"));
+    }
+
+    [Test]
+    public void Evidence_mortgageTermOf100Years_isAccepted()
+    {
+        JsonObject item = FixtureFiles.EvidenceItem("HH-MORTGAGE-TERM");
+        item["value"]!["amount"] = 100;
+
+        Assert.That(FixtureFiles.Validate("evidence", "evidence", item), Is.Empty);
+    }
+
+    [Test]
     public void Evidence_misspeltCategory_isRejected()
     {
         JsonObject item = FixtureFiles.EvidenceItem("B1-PRICE");

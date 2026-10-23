@@ -112,7 +112,7 @@ internal sealed class ArchitectureTests
         // <PrivateImplementationDetails>). Their names start with '<', which no C# type of ours can, so they are not engine code.
         IEnumerable<string> strays = EngineTypes(_engine)
             .Where(t => !t.Name.StartsWith('<') && !(t.DeclaringType?.Name.StartsWith('<') ?? false))
-            .Where(t => t.FullName?.StartsWith(_engineNamespace, StringComparison.Ordinal) != true)
+            .Where(t => !IsInNamespace(t.Namespace, _engineNamespace))
             .Select(t => t.FullName ?? t.Name);
 
         Assert.That(strays, Is.Empty);
@@ -123,6 +123,15 @@ internal sealed class ArchitectureTests
         Assert.That(PublicSignaturesUsingBinaryFloatingPoint(_engine), Is.Empty);
 
     // Self-checks: each rule above must be able to fail, so run it on a type that does break it.
+
+    [TestCase("HomeScout.CostEngine", true)]
+    [TestCase("HomeScout.CostEngine.Something", true)]
+    [TestCase("HomeScout.CostEngineEvil", false)]
+    [TestCase("HomeScout.CostEngineEvil.Something", false)]
+    [TestCase("HomeScout", false)]
+    [TestCase(null, false)]
+    public void NamespaceMatch_prefixThatIsNotAWholeNamespaceSegment_isNotInside(string? ns, bool expected) =>
+        Assert.That(IsInNamespace(ns, "HomeScout.CostEngine"), Is.EqualTo(expected));
 
     [Test]
     public void DependencyRule_appliedToCodeThatUsesFiles_failsAsExpected()
@@ -164,8 +173,12 @@ internal sealed class ArchitectureTests
         Assert.That(PublicSignaturesUsingBinaryFloatingPoint(typeof(ArchitectureTests).Assembly), Has.Some.Contain(nameof(RuleBreaker)));
     }
 
+    /// <summary>True when <paramref name="ns"/> is the namespace <paramref name="prefix"/> or inside it. "A.BEvil" is not inside "A.B".</summary>
+    private static bool IsInNamespace(string? ns, string prefix) =>
+        ns is not null && (ns == prefix || ns.StartsWith(prefix + ".", StringComparison.Ordinal));
+
     private static IEnumerable<Type> EngineTypes(Assembly assembly) =>
-        assembly.GetTypes().Where(t => t.FullName?.StartsWith(_coverageNamespace, StringComparison.Ordinal) != true);
+        assembly.GetTypes().Where(t => !IsInNamespace(t.Namespace, _coverageNamespace));
 
     /// <summary>
     /// Lists referenced assemblies that are not in the shared .NET framework folder. Checking the folder, not the name,

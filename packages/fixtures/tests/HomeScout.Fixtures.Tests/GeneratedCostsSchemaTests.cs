@@ -82,7 +82,9 @@ internal sealed class GeneratedCostsSchemaTests
                       "pence": 20,
                       "isPartial": true,
                       "partialReasons": [
-                        { "lineId": "B1.from-step-1.monthly.maintenance", "category": "maintenance", "status": "not-calculated" }
+                        { "lineId": "B1.from-step-1.monthly.maintenance", "category": "maintenance", "status": "not-calculated" },
+                        { "lineId": "B1.from-step-1.monthly.water", "category": "water", "status": "conflicting" },
+                        { "lineId": "B1.from-step-1.monthly.energy", "category": "energy", "status": "missing" }
                       ]
                     },
                     "budget": {
@@ -118,6 +120,15 @@ internal sealed class GeneratedCostsSchemaTests
                   "scenarioId": "from-step-4",
                   "fromStep": 4,
                   "toStep": 4,
+                  "mortgage": {
+                    "id": "B1.from-step-4.mortgage",
+                    "loan": { "id": "B1.from-step-4.mortgage.loan", "pence": 100 },
+                    "rateBasisPoints": 550,
+                    "termYears": 25,
+                    "payments": 300,
+                    "monthlyRepayment": { "id": "B1.from-step-4.mortgage.repayment", "pence": 10 },
+                    "evidenceIds": ["B1-PRICE", "HH-MORTGAGE-DEPOSIT"]
+                  },
                   "monthly": {
                     "lines": [
                       {
@@ -408,6 +419,42 @@ internal sealed class GeneratedCostsSchemaTests
         file["homes"]![0]!["scenarios"]![1]!["changesFromPrevious"]![0]!["kind"] = "cheaper";
 
         Assert.That(Problems(file), Has.Some.Contain("/changesFromPrevious/0/kind"));
+    }
+
+    [Test]
+    public void GeneratedCosts_buyingScenarioWithNoMortgage_isRejected()
+    {
+        JsonObject file = Sample();
+        file["homes"]![0]!["scenarios"]![0]!.AsObject().Remove("mortgage");
+
+        Assert.That(Problems(file), Has.Some.Contain("/homes/0/scenarios/0"));
+    }
+
+    [Test]
+    public void GeneratedCosts_mortgageLoanOfZero_isRejected()
+    {
+        JsonObject file = Sample();
+        FirstScenario(file)["mortgage"]!["loan"]!["pence"] = 0;
+
+        Assert.That(Problems(file), Has.Some.Contain("/mortgage/loan/pence"));
+    }
+
+    [Test]
+    public void GeneratedCosts_mortgageRepaymentOfZero_isRejected()
+    {
+        JsonObject file = Sample();
+        FirstScenario(file)["mortgage"]!["monthlyRepayment"]!["pence"] = 0;
+
+        Assert.That(Problems(file), Has.Some.Contain("/mortgage/monthlyRepayment/pence"));
+    }
+
+    [Test]
+    public void GeneratedCosts_mortgageTermOver100Years_isRejected()
+    {
+        JsonObject file = Sample();
+        FirstScenario(file)["mortgage"]!["termYears"] = 101;
+
+        Assert.That(Problems(file), Has.Some.Contain("/mortgage/termYears"));
     }
 
     [Test]

@@ -122,8 +122,26 @@ internal sealed class UpfrontCashTests
     }
 
     [Test]
-    public void UpfrontCash_noLines_hasNoLinesAndATotalOfZeroThatIsNotPartial()
+    public void UpfrontCash_buyingWithNoLines_failsAsMissingMortgageDeposit()
     {
+        Result<UpfrontBreakdown> result = UpfrontCash.Calculate(Mode.Buy, []);
+
+        Assert.That(result.Error.Code, Is.EqualTo("input.missing.mortgage-deposit"));
+        Assert.That(result.Error.Category, Is.EqualTo(ErrorCategory.Validation));
+    }
+
+    [Test]
+    public void UpfrontCash_buyingWithMortgageDepositMissing_failsAsMissingMortgageDeposit()
+    {
+        List<LineInput> lines = [new MissingLine(CostCategory.MortgageDeposit), Once(CostCategory.MovingCosts, 120_000)];
+
+        Assert.That(UpfrontCash.Calculate(Mode.Buy, lines).Error.Code, Is.EqualTo("input.missing.mortgage-deposit"));
+    }
+
+    [Test]
+    public void UpfrontCash_rentingWithNoLines_hasNoLinesAndATotalOfZeroThatIsNotPartial()
+    {
+        // Renting has no required upfront input (register line BE-16 names only rent as a renter's anchor, and that is a monthly figure).
         UpfrontBreakdown result = UpfrontCash.Calculate(Mode.Rent, []).Value;
 
         Assert.That(result.Lines, Is.Empty);

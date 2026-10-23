@@ -63,6 +63,15 @@
       },
       "additionalProperties": false
     },
+    "positiveFigure": {
+      "type": "object",
+      "required": ["id", "pence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "pence": { "$ref": "common.schema.json#/$defs/pence" }
+      },
+      "additionalProperties": false
+    },
     "line": {
       "type": "object",
       "required": ["id", "category", "status", "evidenceIds"],
@@ -132,11 +141,11 @@
       "required": ["id", "loan", "rateBasisPoints", "termYears", "payments", "monthlyRepayment", "evidenceIds"],
       "properties": {
         "id": { "$ref": "#/$defs/figureId" },
-        "loan": { "$ref": "#/$defs/figure" },
+        "loan": { "$ref": "#/$defs/positiveFigure" },
         "rateBasisPoints": { "type": "integer", "minimum": 1 },
-        "termYears": { "type": "integer", "minimum": 1 },
-        "payments": { "type": "integer", "minimum": 1 },
-        "monthlyRepayment": { "$ref": "#/$defs/figure" },
+        "termYears": { "type": "integer", "minimum": 1, "maximum": 100, "description": "100 is the engine's computation limit (register line BE-17), not a lending rule." },
+        "payments": { "type": "integer", "minimum": 1, "maximum": 1200 },
+        "monthlyRepayment": { "$ref": "#/$defs/positiveFigure" },
         "evidenceIds": { "allOf": [{ "$ref": "#/$defs/evidenceIds" }, { "minItems": 1 }] }
       },
       "additionalProperties": false
@@ -213,9 +222,13 @@
           }
         },
         {
-          "description": "Only a buying home has a mortgage in any scenario.",
+          "description": "Only a buying home has a mortgage, and every scenario of a buying home has one.",
           "if": { "properties": { "mode": { "const": "rent" } }, "required": ["mode"] },
           "then": { "properties": { "scenarios": { "items": { "not": { "required": ["mortgage"] } } } } }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "buy" } }, "required": ["mode"] },
+          "then": { "properties": { "scenarios": { "items": { "required": ["mortgage"] } } } }
         }
       ],
       "additionalProperties": false
