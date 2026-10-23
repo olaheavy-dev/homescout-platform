@@ -75,7 +75,7 @@ This file is the **single current rulebook for how work is done** (planning, bui
 - **Run `make check` before pushing.** It runs every automated check the same way as CI, including JetBrains InspectCode.
 - **Pre-push review:** before pushing, run a fresh-context Opus review using "When reviewing" below, and fix its findings first.
 - Ask the founder before installing packages not on the pre-approved list, changing infrastructure, cloud resources or repository settings. Never push to `main`.
-- **Agent permissions:** the first code pull request adds Claude Code project settings with an allow-list for safe read, build and test commands; installing packages, infrastructure and repository-setting changes need approval; pushing to `main` is denied.
+- **Agent permissions:** the first code pull request adds Claude Code project settings with an allow-list for safe read, build and test commands; installing packages, infrastructure and repository-setting changes need approval; pushing to `main` is denied, and only pushes that name a feature branch (`feat/`, `fix/`, `docs/`, `chore/`, `test/`, `refactor/`) run without asking.
 
 ## Teach as you build (decisions 0026, 0035)
 
