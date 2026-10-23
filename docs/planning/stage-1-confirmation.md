@@ -23,8 +23,9 @@
 | WW-03 Repo and tracking | Standard setup | [0013](../decisions/0013-repo-and-tracking.md) |
 | WW-04 Merge policy and instructions file | Claude Code merges routine PRs after Codex review; founder merges sensitive ones; single `AGENTS.md` with `CLAUDE.md` linked to it | [0015](../decisions/0015-agent-merges-after-review.md) |
 | WW-05 Holistic reviews and debt limits | Pre-flight check, one complete Codex pass, debt limits, serious findings always block | [0016](../decisions/0016-holistic-reviews-and-debt-limits.md) |
+| WW-06 Docs structure and naming | `docs/product/`, `docs/assets/`, index in `docs/README.md` | [0017](../decisions/0017-docs-structure.md) |
 
-**Still needed for the stage 1 gate:** `CLAUDE.md` and `AGENTS.md` in the repo; the merge to `main` with branch protection and a project board. The demo name doesn't block stage 2.
+**Stage 1 gate:** `AGENTS.md` (with `CLAUDE.md` linked to it), the merge to `main`, branch protection and the project board are done. The last requirement is the whole-repository audit (pull request #9) with no open `review-followup` issues. The demo name doesn't block stage 2.
 
 The sections below keep the original options for reference. **Where they describe reviews and merges (WW-01, WW-02), they are superseded by decisions 0015 and 0016**: follow `AGENTS.md` and doc 04 §10, not these options.
 

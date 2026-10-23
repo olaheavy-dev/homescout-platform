@@ -2,7 +2,7 @@
 
 A home decision workspace for people buying or renting in England: check a home, see the real cost, compare homes, and track questions and answers until you decide. HomeScout is a private working name; the public name isn't chosen yet.
 
-**Status:** research and concept work only. The repository doesn't yet contain an application. The next step is the clickable prototype, built on synthetic sample data.
+**Status:** research and concept work only; the repository doesn't yet contain an application. **Current stage: stage 2, the sample-data catalogue** (issues #2 and #3), which comes before the prototype specification (stage 3), design and infrastructure decisions (stage 4) and the clickable prototype (stage 5). See the [roadmap](docs/product/04-project-goals-and-delivery.md#9-roadmap-from-design-decisions-to-implementation).
 
 ## Where to start
 

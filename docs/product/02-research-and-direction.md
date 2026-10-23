@@ -4,7 +4,7 @@
 **Context:** Companion to `01-product-brief-v1.1.md`; the existing brief and all eight concept images were reviewed.  
 **Confirmed by the founder:** Buyers and renters receive equal weight. **England first**: the first release covers English addresses only, while the UK-wide ambition and the existing technology direction remain the working context.  
 **Precedence:** This document owns current product recommendations, decision status and geographic scope. `03-prototype-and-image-direction.md` owns proposed prototype behaviour and design within that scope; a design detail does not approve a product or commercial decision. Both supersede conflicting descriptions in the historical brief.  
-**Decision status:** Recommendations for discussion, not an approved roadmap, validated demand, brand clearance or a description of working integrations. No MVP/post-MVP classification is introduced.
+**Decision status:** Rows marked **Confirmed by founder** in §9, accepted records 0001–0007 in `docs/decisions/`, and the agreed starting position in proposed record 0014, are binding. Everything else here (including rows still marked Recommended or Open) remains a recommendation for discussion. Nothing here is validated demand, brand clearance or a description of working integrations. No MVP/post-MVP classification is introduced.
 
 ## 1. The recommended product
 

@@ -1,8 +1,15 @@
 # Decision register
 
-Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0001-ways-of-working.md`). The process is in `docs/product/04-project-goals-and-delivery.md` §10. Each decision is made at the stage listed, the latest point that still lets the work go ahead.
+Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0011-ways-of-working.md`). The process is in `docs/product/04-project-goals-and-delivery.md` §10. Each decision is made at the stage listed, the latest point that still lets the work go ahead.
 
-**Statuses:** Not started · Proposed (options drafted) · Accepted · Superseded by NNNN · Open (deliberately undecided, with a reason)
+**Statuses** (use exactly these; a short note in brackets may follow):
+- **Not started:** no record yet.
+- **Proposed:** options drafted, or a starting position agreed, but not yet fully decided.
+- **Accepted:** decided by the founder.
+- **Accepted (partly superseded by NNNN):** some parts replaced by a later record.
+- **Superseded by NNNN:** fully replaced.
+- **Open:** deliberately undecided, with a reason and a revisit point.
+- **Parked:** paused, with a point by which it must resume.
 
 ## Already decided
 
@@ -25,11 +32,11 @@ Every significant product, technical and working decision gets its own record in
 | PD-05 | Visual direction | 1 | Accepted | [0005](0005-visual-direction.md) |
 | PD-06 | Prototype centrepiece | 1 | Accepted | [0006](0006-prototype-centrepiece.md) |
 | PD-07 | Free/paid principle | 1 | Accepted | [0007](0007-free-paid-principle.md) |
-| PD-08 | Name shown on the public demo | 1 | Parked (decide before public demo) | [0008](0008-demo-name.md) |
+| PD-08 | Name shown on the public demo | 1 | Parked (resume before the public demo) | [0008](0008-demo-name.md) |
 | PD-09 | Public brand | 1 | Open (needs clearance) | [0009](0009-public-brand.md) |
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
-| WW-01 | Ways of working | 1 | Accepted | [0011](0011-ways-of-working.md) |
-| WW-02 | AI coding tools and setup | 1 | Accepted | [0012](0012-ai-coding-tools.md) |
+| WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015) | [0011](0011-ways-of-working.md) |
+| WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
 | WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
@@ -74,7 +81,7 @@ Every significant product, technical and working decision gets its own record in
 # NNNN: <decision title>
 
 **ID:** <register ID>  
-**Status:** Proposed | Accepted | Superseded by NNNN  
+**Status:** Not started | Proposed | Accepted | Accepted (partly superseded by NNNN) | Superseded by NNNN | Open | Parked  
 **Date:** <YYYY-MM-DD>  
 **Stage:** <roadmap stage>
 

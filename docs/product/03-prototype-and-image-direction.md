@@ -98,7 +98,7 @@ On mobile, keep a compact home header and a short bottom navigation for Overview
 
 ## 4. The prototype needs two complete stories
 
-**Figures in these stories are provisional.** They were worked out by hand. The stage 2 calculation script becomes their source of truth: it computes each value from the sample inputs, and this document is then checked against the script's output and corrected where they differ. These stories define what the prototype proves. They do not remove other features from the product brief or assign implementation phases.
+**Figures in these stories are provisional.** They were worked out by hand. In stage 2, the input figures (listing claims, document figures, rent, user-entered estimates) move into the fixture files with their source, and the calculation script becomes the source of truth for every calculated figure: it computes each one from those inputs, and this document is then checked against the script's output and corrected where they differ. These stories define what the prototype proves. They do not remove other features from the product brief or assign implementation phases.
 
 ### Shared path before the evidence question
 
