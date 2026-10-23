@@ -514,4 +514,20 @@ internal sealed class AssumptionSelectorTests
     [Test]
     public void Select_nullFacts_throws() =>
         Assert.That(() => AssumptionSelector.Select(null!, 1), Throws.ArgumentNullException);
+
+    [Test]
+    public void Select_nullEvidenceList_throws()
+    {
+        var facts = new HomeFacts("T1", Mode.Buy, Nation.England, null!, new Pence(200_000));
+
+        Assert.That(() => AssumptionSelector.Select(facts, 1), Throws.ArgumentNullException);
+    }
+
+    [Test]
+    public void Select_upfrontCostGivenAsRate_failsAsWrongKind()
+    {
+        HomeFacts facts = TestFacts.Buying([new EvidenceItem("MC", "moving-costs", EvidenceStatus.Available, new RateValue(500), false, null, null)]);
+
+        Assert.That(FailureCode(facts), Is.EqualTo("input.wrong-kind.moving-costs"));
+    }
 }

@@ -15,7 +15,7 @@ VALIDATOR     := packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.
 .PHONY: help restore build format-check generated-check validate inspect test check generate mutate clean
 
 help:
-	@echo "Targets: restore build format-check generated-check validate inspect test check generate clean"
+	@echo "Targets: restore build format-check generated-check validate inspect test check generate mutate clean"
 	@echo "  check = restore + build + format-check + generated-check + validate + inspect + test (same as CI)"
 	@echo "  mutate = Stryker.NET mutation testing of the cost engine (slow; not part of check or CI)"
 
@@ -71,7 +71,7 @@ generated-check: generate
 	@echo "Generated files: up to date."
 
 # Mutation testing (stage 2 plan, task 5): Stryker.NET changes the cost engine's code in small ways and checks that the tests fail.
-# Slow (about a minute), so it is not part of `check` or CI. Settings are in stryker-config.json; reports go to
+# Slow (under a minute), so it is not part of `check` or CI. Settings are in stryker-config.json; reports go to
 # $(ARTIFACTS)/mutation/reports/ (HTML and JSON). Fails if the score drops below the break threshold in that file.
 mutate: restore
 	dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation

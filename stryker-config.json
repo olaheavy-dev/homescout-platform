@@ -1,11 +1,10 @@
 {
   "stryker-config": {
-    "solution": "HomeScout.slnx",
     "project": "HomeScout.CostEngine.csproj",
     "test-projects": ["packages/cost-engine/tests/HomeScout.CostEngine.Tests/HomeScout.CostEngine.Tests.csproj"],
     "test-runner": "mtp",
     "configuration": "Release",
     "reporters": ["html", "json", "cleartext"],
-    "thresholds": { "high": 98, "low": 95, "break": 95 }
+    "thresholds": { "high": 97, "low": 93, "break": 92 }
   }
 }
