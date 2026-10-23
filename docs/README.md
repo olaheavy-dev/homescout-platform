@@ -14,7 +14,7 @@ docs/
 └── reviews/             dated document reviews and audits
 ```
 
-Planned folders, added when their stage starts: `docs/architecture/` for C4 diagrams in Mermaid (stage 2, decision 0027), `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
+Planned folders, added when their stage starts: `.design/<feature>/` at the repository root for design-skill outputs (brief, information architecture, tasks, reviews), a deliberate exception to this structure (decision 0031), `docs/architecture/` for C4 diagrams in Mermaid (stage 2, decision 0027), `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
 
 ## What each document is for
 
