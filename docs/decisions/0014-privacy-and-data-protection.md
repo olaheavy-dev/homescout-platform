@@ -13,8 +13,8 @@ Anyone can type a postcode or address and see free public details without an acc
 | What | Stored? | How |
 |---|---|---|
 | **Public data** (energy certificates, sold prices, planning records, flood areas) | **Yes**, as our own copy | Downloaded from official sources on a schedule and stored per home, not per person, with source and dates. Not user data. Each dataset's licence for commercial reuse is recorded first (DA-05). |
-| **An anonymous visitor's searches** | **No**, nothing linked to the person | The result is shown and the search isn't kept against the visitor. Only anonymous counts are kept (e.g. number of checks per day, how often a source has no data) to improve the product. No tracking cookies, so no cookie banner is needed for this. |
-| **"Recently viewed" for anonymous visitors** | **Only in the visitor's own browser** | Kept in the browser on their device; never sent to us. |
+| **An anonymous visitor's searches** | **No**, nothing linked to the person | The result is shown and the search isn't kept against the visitor. Only anonymous counts are kept on our servers (e.g. number of checks per day, how often a source has no data) to improve the product. Nothing is stored on or read from the visitor's device for this, so it needs no consent under PECR. |
+| **"Recently viewed" for anonymous visitors** | **Only in the visitor's own browser, and only if they switch it on** | Never sent to us. Storing it on the device is covered by PECR (the ICO includes web storage, and using browsing history to choose what to show is not exempt), so it is **off by default**. The visitor turns on "Remember homes on this device", which serves as their consent, and can clear it at any time. Assess against [ICO guidance](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/what-are-the-exceptions/) before building. |
 | **A saved home record** | **Yes**, only when the user chooses Save (account likely required) | Stores the home, the user's notes, questions, documents and costs, plus a dated snapshot of the public facts as they saw them, which powers "what changed since you last looked". |
 
 Supporting rules:
@@ -27,6 +27,7 @@ Supporting rules:
 - Retention and deletion periods for saved records, documents and snapshots, including after a paid pass expires (linked to decision 0007 and doc 02 §8).
 - Per-user isolation of uploaded documents, and how user data is excluded from AI training and shared retrieval.
 - Whether ICO registration (data protection fee) is required, and a data protection impact assessment for document processing.
+- A PECR assessment of everything stored on or read from the visitor's device (browser storage, cookies, sign-in sessions, rate-limiting techniques), confirming which are strictly necessary and which need consent.
 - How server logs (which may contain IP addresses and searched addresses) are minimised and how long they are kept.
 
 ## Consequences
