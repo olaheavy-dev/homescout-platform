@@ -49,14 +49,15 @@ Check in priority order:
 
 How to report:
 - Most serious findings first. For each: file and line, what's wrong, a concrete example of the failure, and a suggested fix.
-- Separate **must fix** from **suggestions**. Use plain language. Say "no issues found" if there are none.
+- Give each finding a severity: **P0/P1** (wrong behaviour, wrong figures, legal or security risk, broken rules above) or **P2/P3** (wording, consistency, minor gaps). Use plain language. Say "no issues found" if there are none.
+- On a re-review, focus on the fixes and on anything new in the diff. Don't re-raise issues already deferred to a follow-up issue.
 - Don't push commits or approve merges.
 
 ## When merging (Claude Code, decision 0015)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. Codex has reviewed the **latest commit** of the pull request.
-2. Every Codex finding is either fixed or answered with a reason, and every review thread is resolved.
+2. Every Codex finding is fixed, answered with a reason, or deferred under "Review rounds" below, and every review thread is resolved.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
 4. The pull request doesn't fall under the founder-only list below.
 
@@ -65,9 +66,25 @@ Claude Code may merge a pull request (squash merge) only when **all** of these a
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
 - Adding or upgrading dependencies.
-- Any pull request where a Codex finding was deliberately not fixed.
+- Any pull request where a P0/P1 finding was not fixed. (A P2/P3 finding deferred to a follow-up issue doesn't count as unfixed.)
 
-After merging, post a one-line summary for the founder: what merged and anything they should know.
+After merging, post a one-line summary for the founder: what merged, and any follow-up issues created.
+
+## Review rounds (decision 0015)
+
+Optimised for quality, speed and agent cost:
+- **P0/P1 findings always block.** Fix them in the pull request, in any round.
+- **P2/P3 findings are fixed in the pull request only in the first two review rounds.** From round 3 onward, open a follow-up issue labelled `review-followup` instead (link it in the thread reply, then resolve the thread). If unsure of a finding's severity, treat it as P1.
+- **Batch follow-ups:** clear open `review-followup` issues together in one tidy-up pull request, at least once per roadmap stage and before each stage gate.
+- **One re-review per batch of fixes:** fix every open finding, push once, then request one Codex re-review. Don't request reviews commit by commit.
+
+## Keeping agent cost down
+
+- Keep pull requests focused on one topic, but group small related documentation changes into one pull request rather than several.
+- Read only the files a task needs; don't reload whole documents to change one line.
+- Wait for reviews and checks in the background with long intervals; don't poll repeatedly.
+- Use the most capable model for planning, decisions and review triage; a faster, cheaper model is acceptable for routine, well-specified implementation (decision 0012).
+- Before a long or expensive task (large refactor, many files, repeated review rounds), say so and suggest a cheaper route if there is one.
 
 ## Commands
 

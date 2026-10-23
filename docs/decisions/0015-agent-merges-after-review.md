@@ -17,6 +17,8 @@ Under 0011, the founder merged every pull request. With Codex reviewing every pu
 ## Decision
 Claude Code merges a pull request once Codex has reviewed its latest commit, every finding is fixed or answered, all threads are resolved and every check on the pull request has passed (none failing or still running). The founder still merges changes to the licence, repository settings and merge rules; tax, legal, tenancy and privacy rule tables; infrastructure and costs; dependencies; and any pull request where a Codex finding was deliberately not fixed. The full conditions are in `AGENTS.md`, "When merging".
 
+**Review rounds** (added by the founder: "let us fix minor issues separately; our ways of working should be optimised for quality, speed and coding agent cost"): serious findings (P0/P1) always block a merge. Minor findings (P2/P3) are fixed in the pull request during the first two review rounds; from round 3 onward they go to a `review-followup` issue, cleared in batched tidy-up pull requests at least once per stage and before each stage gate. Fixes are pushed in one batch per round, with one re-review request. Cost-saving working rules are in `AGENTS.md`, "Keeping agent cost down".
+
 `AGENTS.md` becomes the single instructions file for all agents. `CLAUDE.md` is a symbolic link to it.
 
 ## Consequences
