@@ -63,7 +63,7 @@ This file is the **single current rulebook for how work is done** (planning, bui
 - Start from the issue's plan and acceptance criteria. If the plan is unclear or conflicts with a decision, stop and ask rather than guess.
 - Small vertical slices. Tests first for anything numeric or legal, using the test-first skill once it's added (decision 0031) and the boundary cases in decision 0034.
 - **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open an issue labelled `noticed` for each. Don't fix unrelated things in the same change.
-- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list, or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
+- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list (decision 0035 and later register lines), or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
 - **Stop what you start:** servers, watchers and temporary worktrees.
 - **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
 - **Result type:** use HomeScout's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
@@ -117,7 +117,7 @@ Claude Code may merge a pull request (squash merge) only when **all** of these a
 - Changes to `LICENSE`, repository settings, CI permissions, agent permission settings (`.claude/settings.json`) or these merge rules.
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
-- Adding a package that isn't on the pre-approved list in decision 0035.
+- Adding a package that isn't on the pre-approved list in decision 0035 or a later register line.
 - Any pull request where Claude Code disputes a finding as wrong (not merely defers it). The founder decides whether the finding stands.
 
 P0/P1 findings always block, with no override.

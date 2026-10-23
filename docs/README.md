@@ -27,6 +27,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Decision register](decisions/README.md) | Every decision's status and record | Current |
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
+| [Stage 2 plan](planning/stage-2-plan.md) | Approved sample data, data contract, tasks and gate | Stage 2 |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |
 | [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |
