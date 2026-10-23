@@ -1,9 +1,9 @@
 # 0014: Privacy and data protection
 
 **ID:** SE-02  
-**Status:** Proposed. The starting position below was agreed by the founder on 23 October 2026; the full decision is completed at stage 6, before the questions workflow is built.  
+**Status:** Proposed. The starting position below was agreed by the founder on 23 October 2026; the full decision is completed at stage 6, **before any real data is loaded** (step 4, real England data), because public records can contain personal data.  
 **Date:** 2026-10-23  
-**Stage:** 6 (starting position agreed early)
+**Stage:** 6, before real England data (starting position agreed early)
 
 ## Context
 Anyone can type a postcode or address and see free public details without an account. That raises three separate storage questions: the public data itself, what the visitor searched for, and what a user chooses to save. An address search can reveal something personal, namely where someone might move, so it needs care even without an account. The prototype uses sample homes only, so none of this applies until real data is introduced.
@@ -13,7 +13,7 @@ Anyone can type a postcode or address and see free public details without an acc
 | What | Stored? | How |
 |---|---|---|
 | **Public data** (energy certificates, sold prices, planning records, flood areas) | **Yes**, as our own copy | Downloaded from official sources on a schedule and stored per home, not per person, with source and dates. Not user data. Each dataset's licence for commercial reuse is recorded first (DA-05). |
-| **An anonymous visitor's searches** | **No**, nothing linked to the person | The result is shown and the search isn't kept against the visitor. Only anonymous counts are kept on our servers (e.g. number of checks per day, how often a source has no data) to improve the product. Nothing is stored on or read from the visitor's device for this, so it needs no consent under PECR. |
+| **An anonymous visitor's searches** | **No**, nothing linked to the person | The result is shown and the search isn't kept against the visitor. Only anonymous counts are kept on our servers (e.g. number of checks per day, how often a source has no data) to improve the product. **This includes logs:** searched addresses are never written to server or application logs, and IP addresses are dropped or anonymised before logs are written (any short-lived raw use, such as rate limiting, is kept in memory only). This must be in place before real searches are accepted. Nothing is stored on or read from the visitor's device for this, so it needs no consent under PECR. |
 | **"Recently viewed" for anonymous visitors** | **Only in the visitor's own browser, and only if they switch it on** | Never sent to us. Storing it on the device is covered by PECR (the ICO includes web storage, and using browsing history to choose what to show is not exempt), so it is **off by default**. The visitor turns on "Remember homes on this device", which serves as their consent, and can clear it at any time. Assess against [ICO guidance](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/what-are-the-exceptions/) before building. |
 | **A saved home record** | **Yes**, only when the user chooses Save (account likely required) | Stores the home, the user's notes, questions, documents and costs, plus a dated snapshot of the public facts as they saw them, which powers "what changed since you last looked". |
 
@@ -23,12 +23,16 @@ Supporting rules:
 - Anonymous counts must not be detailed enough to identify a person (for example, no full address plus time plus device combinations).
 
 ## Still to decide at stage 6
-- Lawful basis under UK GDPR for each kind of stored personal data, and the privacy notice.
+**Before real data is loaded (step 4):**
+- Lawful basis under UK GDPR and the privacy notice, explicitly covering **personal data that appears in public records** (for example names and addresses of planning applicants, or names in sold-price or certificate records). Publicly available data still carries data-protection obligations, and the [ICO requires the lawful basis to be set before processing begins](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/a-guide-to-lawful-basis/). Decide which personal fields to drop on ingestion.
+- How logs are configured to meet the search-retention rule above, and how long any logs are kept.
+
+**Before the questions workflow (step 5):**
+- Lawful basis for each kind of personal data users store (accounts, saved homes, documents), and the privacy notice update.
 - Retention and deletion periods for saved records, documents and snapshots, including after a paid pass expires (linked to decision 0007 and doc 02 §8).
 - Per-user isolation of uploaded documents, and how user data is excluded from AI training and shared retrieval.
 - Whether ICO registration (data protection fee) is required, and a data protection impact assessment for document processing.
 - A PECR assessment of everything stored on or read from the visitor's device (browser storage, cookies, sign-in sessions, rate-limiting techniques), confirming which are strictly necessary and which need consent.
-- How server logs (which may contain IP addresses and searched addresses) are minimised and how long they are kept.
 
 ## Consequences
 The anonymous free view stays cheap, privacy-friendly and simple to explain. "Pick up where you left off" across devices requires saving a home (and probably an account). The data design keeps public-data tables separate from user tables from the start.
