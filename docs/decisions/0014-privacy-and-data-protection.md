@@ -30,6 +30,7 @@ Supporting rules:
 
 **Before real data is loaded (stage 6, step 4):**
 - Lawful basis under UK GDPR and the privacy notice, explicitly covering **personal data that appears in public records** (for example, council planning records can include applicants' names and addresses). Check each source's actual fields at ingestion rather than assuming; HM Land Registry Price Paid Data, for instance, has no person-name fields ([schema](https://www.gov.uk/guidance/about-the-price-paid-data)). Publicly available data still carries data-protection obligations, and the [ICO requires the lawful basis to be set before processing begins](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/a-guide-to-lawful-basis/). Decide which personal fields to drop on ingestion.
+- Lawful basis and privacy-notice wording for **search inputs**: the postcode or address a visitor types is potentially personal data (it can reveal where they may move), and receiving and using it, even briefly and alongside an IP used for rate limiting, is processing. This must be covered before real searches are accepted, even though searches aren't stored.
 - How logs are configured to meet the search-retention rule above, and how long any logs are kept.
 
 **Before the questions workflow (stage 6, step 5):**
