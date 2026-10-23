@@ -153,7 +153,7 @@ Buyers and renters with equal weight · England first · Portfolio and learning 
 - **Hooks:** run the formatter and linter after edits once the codebase exists.
 - **Reviews:** an agent code review on each pull request before yours, as a second pair of eyes, never a replacement for your review.
 - **Integrations:** GitHub only at first; a design-tool integration only if DS-01 chooses a design tool.
-- **Cost:** track the AI tool subscription separately from the Azure budget cap (IN-05), and log both in the weekly review.
+- **Cost:** track the AI tool subscription separately from the hosting budget cap (IN-05), and log both in the weekly review.
 
 **Alternatives:** several agents in parallel from the start (faster, but harder to learn from and review) · an editor-integrated assistant as primary (good for small edits, weaker for multi-file slices).
 

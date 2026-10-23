@@ -52,6 +52,7 @@ Every significant product, technical and working decision gets its own record in
 | FE-02 | Styling and components | 4 | Not started | |
 | FE-03 | Maps and charts | 4 | Not started | |
 | FE-04 | Frontend practices | 4 | Not started | |
+| IN-00 | Hosting strategy | 2 (brought forward) | Accepted (cost first) | [0022](0022-cost-first-hosting.md) |
 | IN-01 | Prototype architecture | 4 | Not started | |
 | IN-02 | Demo hosting | 4 | Not started | |
 | IN-03 | Infrastructure as code | 4 | Not started | |
