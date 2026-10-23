@@ -4,7 +4,7 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 
 **Rules**
 - Link only to official documentation. Don't copy documentation into the repository.
-- Add an entry in the same pull request that adds a dependency, with the pinned version.
+- Add an entry in the same pull request that adds a dependency, with its major version.
 - The version column records **major versions**; exact versions live in the lock files. Update it in the same pull request when a major version changes (decision 0035). Patch and minor updates don't touch this file.
 - Official data sources (energy certificates, sold prices, planning, flood, transport) are listed with their limits in doc 02 §7, not here.
 

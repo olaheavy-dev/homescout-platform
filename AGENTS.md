@@ -2,8 +2,7 @@
 
 Shared instructions for every AI agent on this project. `CLAUDE.md` is a symbolic link to this file, so Claude Code and OpenAI Codex read the same text. Edit **this** file only.
 
-- **Claude Code** builds and merges: follow "When building" and "When merging".
-- **OpenAI Codex** reviews pull requests: follow "When reviewing".
+Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonnet 5.5 builds and verifies, Codex reviews every pull request, and Claude Code merges. Builders follow "When building"; every reviewer (Opus pre-push, Codex, fallback) follows "When reviewing"; merging follows "When merging".
 
 ## What this project is
 
@@ -39,7 +38,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 
 ## How work flows (decision 0035)
 
-This file is the **single current rulebook**. Decision records explain why; when they differ, this file and decision 0035 apply.
+This file is the **single current rulebook for how work is done** (planning, building, reviewing, merging, dependencies). Where an older decision record differs on those process matters, this file and decision 0035 apply. Product, data and technical decisions stay with their records, and this file must not contradict them.
 
 | Step | Who | Model |
 |---|---|---|
@@ -76,6 +75,7 @@ This file is the **single current rulebook**. Decision records explain why; when
 - **Run `make check` before pushing.** It runs every automated check the same way as CI, including JetBrains InspectCode.
 - **Pre-push review:** before pushing, run a fresh-context Opus review using "When reviewing" below, and fix its findings first.
 - Ask the founder before installing packages not on the pre-approved list, changing infrastructure, cloud resources or repository settings. Never push to `main`.
+- **Agent permissions:** the first code pull request adds Claude Code project settings with an allow-list for safe read, build and test commands; installing packages, infrastructure and repository-setting changes need approval; pushing to `main` is denied.
 
 ## Teach as you build (decisions 0026, 0035)
 
@@ -104,14 +104,17 @@ How to report:
 ## When merging (Claude Code, decision 0035)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
-1. **Codex has reviewed the latest commit.** Exceptions: (a) while Codex is unavailable (usage limit, outage, or stuck over an hour), a documentation-only pull request may merge on a fresh-context Opus review posted as **"Fallback review (Codex unavailable)"**; (b) patch and minor dependency updates merge on green checks without an AI review. Code otherwise waits for Codex; a rebased pull request gets a fresh review.
+1. **Codex has reviewed the latest commit.** Exceptions:
+   - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "When reviewing" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
+   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route.
+   Code otherwise waits for Codex, and a rebased pull request gets a fresh review.
 2. Every review finding is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
-4. **Zero GitHub security issues:** the pull request adds no code-scanning, Dependabot or secret-scanning alert, and `main` has none open. An alert on `main` is fixed before new feature work.
+4. **Zero GitHub security issues:** the pull request adds no code-scanning, Dependabot or secret-scanning alert. While an alert is open on `main`, only pull requests that fix it, or documentation-only pull requests, may merge; feature work waits. If no fix exists yet, the founder dismisses the alert in GitHub with a recorded reason.
 5. The pull request doesn't fall under the founder-only list below.
 
 **Founder merges these:**
-- Changes to `LICENSE`, repository settings, CI permissions or these merge rules.
+- Changes to `LICENSE`, repository settings, CI permissions, agent permission settings (`.claude/settings.json`) or these merge rules.
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
 - Adding a package that isn't on the pre-approved list in decision 0035.

@@ -84,7 +84,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework) | [0023](0023-microsoft-agent-framework.md) |
-| AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements) | [0025](0025-ai-platform-capabilities.md) |
+| AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements; partly superseded by 0035) | [0025](0025-ai-platform-capabilities.md) |
 | AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Proposed (OpenTelemetry and local Aspire accepted in 0025; production telemetry at stage 6) | [0025](0025-ai-platform-capabilities.md) |

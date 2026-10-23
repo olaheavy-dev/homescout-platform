@@ -1,7 +1,7 @@
 # 0024: Keeping dependencies and their documentation current
 
 **ID:** WW-07  
-**Status:** Accepted (partly superseded: 7-day version wait by [0027](0027-stage-2-engineering-hardening.md); who merges updates and what `third-party.md` tracks by [0035](0035-ways-of-working-v2.md))  
+**Status:** Accepted (partly superseded: 7-day version wait by [0027](0027-stage-2-engineering-hardening.md); who merges new packages and updates, and what `third-party.md` tracks, by [0035](0035-ways-of-working-v2.md))  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:** in [0015](0015-agent-merges-after-review.md), the founder-only merge of "upgrading dependencies". Adding a **new** dependency is still a founder merge.

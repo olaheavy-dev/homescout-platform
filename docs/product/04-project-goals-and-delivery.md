@@ -32,7 +32,7 @@ These keep agent output reviewable and keep you learning rather than rubber-stam
 2. **Small vertical slices.** One user-visible capability per pull request, kept small enough to review properly.
 3. **Tests first for anything numeric or legal.** Cost, tax and lease-date logic gets table-driven tests with worked examples before implementation. The image 5 mortgage error in doc 03 is exactly what this prevents.
 4. **Rules come from cited sources, not model memory.** SDLT bands, tenancy rules and inspection frameworks live in versioned rule tables with a source URL and effective date. You review every rule table change.
-5. **Decision records.** Every significant choice gets a short architecture decision record in `docs/decisions/`, written in your words. If you can't write the record, you don't understand the choice yet.
+5. **Decision records.** Every hard-to-reverse choice gets a short decision record in `docs/decisions/`, written in your words; easily reversible ones get a line in the register (decision 0035). If you can't write the record, you don't understand the choice yet.
 6. **Evaluations for every AI task.** Each model-backed task has a fixed evaluation set (synthetic documents, expected citations, known traps such as the £2,400 vs £3,720 period mismatch) that runs in CI. A prompt or model change that lowers the score doesn't merge.
 7. **Agent guardrails in the repo.** A `CLAUDE.md` (or equivalent) records conventions, commands, the "no invented facts" rule and the commercial constraints below, so every agent session starts with them.
 8. **No real personal data.** Development and demos use the synthetic fixture catalogue from doc 03. Real documents are only for consented research sessions, kept outside the repository.
@@ -105,9 +105,9 @@ Do these now, because they are cheap now and expensive later:
 
 ## 9. Roadmap from design decisions to implementation
 
-Each stage ends with a gate. Don't start the next stage until its gate is met. Agents can draft most of the artefacts; you approve each gate. Every gate also requires a whole-repository audit for contradictions and debt, and no open `review-followup` issues (decision 0035).
+Each stage ends with a gate. Don't start the next stage until its gate is met, except that stages 3 and 4 may overlap (decision 0035). Agents can draft most of the artefacts; you approve each gate. Every gate also requires a whole-repository audit for contradictions and debt, and no open `review-followup` issues (decision 0035).
 
-Every stage begins with its **decision step**: the individual decisions that must be made before the stage's work starts. Each is a separate decision record in `docs/decisions/` with options, a recommendation and your choice. The full register, with IDs and status, is in `docs/decisions/README.md`. A decision is made at the latest stage that still lets the work go ahead. Choices that only matter later stay open until then.
+Every stage begins with its **decision step**: the individual decisions that must be made before the stage's work starts. Hard-to-reverse decisions each get a separate decision record in `docs/decisions/` with options, a recommendation and your choice. The full register, with IDs and status, is in `docs/decisions/README.md`. A decision is made at the latest stage that still lets the work go ahead. Choices that only matter later stay open until then. Easily reversible ones get one line in the register with their default (decision 0035).
 
 ### Stage 1: Close the design decisions and set how we work
 
