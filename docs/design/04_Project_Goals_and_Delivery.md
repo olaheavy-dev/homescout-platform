@@ -179,6 +179,7 @@ Design work:
 ### Stage 5: Start implementation, which is the clickable prototype
 
 **Decisions:**
+- **Privacy, visitor data (SE-02 part 1):** lawful basis and a short privacy notice for visitor data handled by the site and hosting (IP addresses, browser details, host logs), before the demo goes public.
 - **Demo analytics and feedback (FE-05):** whether to measure demo use at all, and if so a privacy-friendly option needing no cookie banner, plus how viewers can leave feedback.
 
 Build in vertical slices, each one deployed to the demo:

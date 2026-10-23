@@ -55,7 +55,7 @@ Every significant product, technical and working decision gets its own record in
 | DA-05 | Source licence register | 6 (before real data) | Not started | |
 | DA-06 | Address and routing providers | 6 (before real data) | Not started | |
 | SE-01 | Authentication and accounts | 6 (before questions workflow) | Not started | |
-| SE-02 | Privacy and data protection | 6 (before real data; completed before questions workflow) | Proposed (starting position agreed) | [0014](0014-privacy-and-data-protection.md) |
+| SE-02 | Privacy and data protection | 5 (visitor data), 6 step 4 (public records, logs), 6 step 5 (full) | Proposed (starting position agreed) | [0014](0014-privacy-and-data-protection.md) |
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Not started | |
