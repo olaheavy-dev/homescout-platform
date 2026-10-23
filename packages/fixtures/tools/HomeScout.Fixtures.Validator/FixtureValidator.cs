@@ -58,7 +58,7 @@ internal static class FixtureValidator
             problems.AddRange(ValidateFile(path, null, schemaDirectory, requireDeclaredSchema: true));
         }
 
-        // The generator's output (task 4b). The folder may be empty or absent until the generator exists.
+        // The generator's output (task 4b). The folder may be absent; make generated-check insists the committed file is current.
         foreach (string path in JsonFiles(Path.Combine(fixturesDirectory, "generated")))
         {
             checkedFiles++;

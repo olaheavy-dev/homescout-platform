@@ -141,6 +141,88 @@ internal sealed class RunTests
     }
 
     [Test]
+    public void Run_costsJsonCannotBeReplaced_keepsTheOtherJsonFilesAndLeavesNoTemporaryFile()
+    {
+        string fixtures = NewFixtures();
+        string generated = Path.Combine(fixtures, "generated");
+        Directory.CreateDirectory(Path.Combine(generated, "costs.json"));
+        File.WriteAllText(Path.Combine(generated, "old.json"), "{}");
+
+        Assert.That(() => CostsGenerator.Run(fixtures, TextWriter.Null), Throws.InstanceOf<Exception>());
+
+        Assert.That(File.Exists(Path.Combine(generated, "old.json")), Is.True);
+        Assert.That(File.Exists(Path.Combine(generated, "costs.json.tmp")), Is.False);
+    }
+
+    [Test]
+    public void Run_success_leavesNoTemporaryFile()
+    {
+        string fixtures = NewFixtures();
+
+        CostsGenerator.Run(fixtures, TextWriter.Null);
+
+        Assert.That(File.Exists(Path.Combine(fixtures, "generated", "costs.json.tmp")), Is.False);
+    }
+
+    [Test]
+    public void Generate_textWhereANumberIsExpected_throwsInvalidDataNotAStackTrace()
+    {
+        string fixtures = NewFixtures();
+        string path = Path.Combine(fixtures, "data", "evidence.json");
+        JsonNode evidence = JsonNode.Parse(File.ReadAllText(path))!;
+        evidence["evidence"]!.AsArray()[0]!["id"] = 5;
+        File.WriteAllText(path, evidence.ToJsonString());
+
+        Assert.That(() => CostsGenerator.Generate(fixtures), Throws.InstanceOf<InvalidDataException>());
+    }
+
+    [Test]
+    public void Generate_listWhereAnObjectIsExpected_throwsInvalidData()
+    {
+        string fixtures = NewFixtures();
+        string path = Path.Combine(fixtures, "data", "homes.json");
+        File.WriteAllText(path, "{\"homes\": 3}");
+
+        Assert.That(() => CostsGenerator.Generate(fixtures), Throws.InstanceOf<InvalidDataException>());
+    }
+
+    [Test]
+    public void Generate_quantityInOtherUnits_isReadAsAnotherKindOfValueNotAnError()
+    {
+        string fixtures = NewFixtures();
+        string path = Path.Combine(fixtures, "data", "evidence.json");
+        JsonNode evidence = JsonNode.Parse(File.ReadAllText(path))!;
+        JsonObject extra = evidence["evidence"]!.AsArray()[0]!.DeepClone().AsObject();
+        extra["id"] = "B1-ROOMS";
+        extra["subjectType"] = "home";
+        extra["subjectId"] = "B1";
+        extra["category"] = "lease-term";
+        extra["value"] = new JsonObject { ["kind"] = "quantity", ["amount"] = 3, ["unit"] = "rooms" };
+        evidence["evidence"]!.AsArray().Add(extra);
+        File.WriteAllText(path, evidence.ToJsonString());
+
+        Result<string> result = CostsGenerator.Generate(fixtures);
+
+        Assert.That(result.IsSuccess, Is.True);
+        Assert.That(result.Value, Is.EqualTo(GeneratedFixture.Json));
+    }
+
+    [Test]
+    public void Generate_homeInTwoStories_failsWithItsCode()
+    {
+        string fixtures = NewFixtures();
+        string path = Path.Combine(fixtures, "data", "snapshot.json");
+        JsonNode snapshot = JsonNode.Parse(File.ReadAllText(path))!;
+        snapshot["snapshot"]!["stories"]!.AsArray()[1]!["homeIds"]!.AsArray().Add("B1");
+        File.WriteAllText(path, snapshot.ToJsonString());
+
+        Result<string> result = CostsGenerator.Generate(fixtures);
+
+        Assert.That(result.IsFailure, Is.True);
+        Assert.That(result.Error.Code, Is.EqualTo("home.in-several-stories"));
+    }
+
+    [Test]
     public void CommittedCostsFile_matchesWhatTheGeneratorProduces()
     {
         string committed = Path.Combine(GeneratedFixture.FixturesDirectory, "generated", "costs.json");

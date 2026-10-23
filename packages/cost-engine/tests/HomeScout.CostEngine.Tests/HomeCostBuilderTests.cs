@@ -146,7 +146,7 @@ internal sealed class HomeCostBuilderTests
     }
 
     [Test]
-    public void Build_statusChangeBetweenTwoLinesWithNoAmount_isReportedAsValueChangedWithoutDifferences()
+    public void Build_statusChangeBetweenTwoLinesWithNoAmount_isReportedAsEvidenceChanged()
     {
         HomeFacts facts = TestFacts.Buying(
         [
@@ -156,8 +156,95 @@ internal sealed class HomeCostBuilderTests
 
         CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
 
-        Assert.That(change.Kind, Is.EqualTo(ChangeKind.ValueChanged));
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.EvidenceChanged));
         Assert.That(change.MonthlyDifference, Is.Null);
+    }
+
+    [Test]
+    public void Build_newEvidenceWithTheSameAmount_isReportedAsEvidenceChangedNotValueChanged()
+    {
+        // 240,000p a year both times: no figure moves, only the source does.
+        HomeCosts home = Build(BuyerWithServiceChargeChange(240_000, 240_000), _fourSteps);
+
+        CostChange change = home.Scenarios[1].Changes.Single();
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.EvidenceChanged));
+        Assert.That(change.MonthlyDifference, Is.Null);
+        Assert.That(change.AnnualDifference, Is.Null);
+    }
+
+    [Test]
+    public void Build_amountThenNotApplicable_isReportedAsNoLongerApplies()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("SC-OLD", "service-charge", 240_000, Period.Year, usedFromStep: 1),
+            TestFacts.NoValue("SC-NEW", "service-charge", EvidenceStatus.NotApplicable) with { UsedFromStep = 4, Supersedes = "SC-OLD" },
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.NoLongerApplies));
+        Assert.That(change.CurrentEvidenceIds, Is.Empty);
+    }
+
+    [Test]
+    public void Build_conflictingThenNotApplicable_isReportedAsNoLongerApplies()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("GR-OLD", "ground-rent", EvidenceStatus.Conflicting),
+            TestFacts.NoValue("GR-NEW", "ground-rent", EvidenceStatus.NotApplicable) with { UsedFromStep = 4, Supersedes = "GR-OLD" },
+        ]);
+
+        Assert.That(Build(facts, _fourSteps).Scenarios[1].Changes.Single().Kind, Is.EqualTo(ChangeKind.NoLongerApplies));
+    }
+
+    [Test]
+    public void Build_amountThatChanges_isReportedAsValueChanged()
+    {
+        HomeCosts home = Build(BuyerWithServiceChargeChange(240_000, 372_000), _fourSteps);
+
+        Assert.That(home.Scenarios[1].Changes.Single().Kind, Is.EqualTo(ChangeKind.ValueChanged));
+    }
+
+    // monthlyTotalChange is only given when both totals leave out the same lines (rule 7: a line that becomes unknown must
+    // not look like a saving).
+
+    [Test]
+    public void Build_lineThatBecomesConflicting_givesNoMonthlyTotalChange()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("SC-OLD", "service-charge", 240_000, Period.Year, usedFromStep: 1),
+            TestFacts.NoValue("SC-NEW", "service-charge", EvidenceStatus.Conflicting) with { UsedFromStep = 2, Supersedes = "SC-OLD" },
+        ]);
+
+        HomeCosts home = Build(facts, _fourSteps);
+
+        Assert.That(home.Scenarios[1].MonthlyTotalChange, Is.Null);
+        Assert.That(home.Scenarios[1].Changes.Single().Kind, Is.EqualTo(ChangeKind.NoLongerCalculated));
+    }
+
+    [Test]
+    public void Build_conflictingWaterThenAnEstimate_givesNoMonthlyTotalChange()
+    {
+        HomeFacts facts = TestFacts.Renting(
+        [
+            TestFacts.Money("RENT", "rent", 100_000, Period.Month),
+            TestFacts.Other("W-LISTING", "water-responsibility", EvidenceStatus.Conflicting),
+            TestFacts.Money("W-EST", "water", 4_500, Period.Month, usedFromStep: 4),
+        ]);
+
+        Assert.That(Build(facts, _fourSteps).Scenarios[1].MonthlyTotalChange, Is.Null);
+    }
+
+    [Test]
+    public void Build_sameLinesLeftOutOfBothTotals_keepsTheMonthlyTotalChange()
+    {
+        // The same lines are missing in both scenarios; only the service charge moves: 16,667 - 8,333 = 8,334p.
+        HomeCosts home = Build(BuyerWithServiceChargeChange(100_000, 200_000), _fourSteps);
+
+        Assert.That(home.Scenarios[1].MonthlyTotalChange, Is.EqualTo(new Pence(8_334)));
     }
 
     [Test]

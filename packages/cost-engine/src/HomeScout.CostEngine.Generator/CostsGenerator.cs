@@ -44,12 +44,26 @@ internal static class CostsGenerator
 
         string folder = Path.Combine(fixturesDirectory, "generated");
         Directory.CreateDirectory(folder);
+
+        // Write the new file beside the old one and swap it in, so a failure never leaves a half-written costs.json. Only then
+        // remove the other *.json files.
+        string target = Path.Combine(folder, FileName);
+        string temporary = target + ".tmp";
+        try
+        {
+            File.WriteAllBytes(temporary, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false).GetBytes(generated.Value));
+            File.Move(temporary, target, overwrite: true);
+        }
+        finally
+        {
+            File.Delete(temporary);
+        }
+
         foreach (string other in Directory.GetFiles(folder, "*.json").Where(f => Path.GetFileName(f) != FileName))
         {
             File.Delete(other);
         }
 
-        File.WriteAllBytes(Path.Combine(folder, FileName), new UTF8Encoding(encoderShouldEmitUTF8Identifier: false).GetBytes(generated.Value));
         return 0;
     }
 
@@ -63,7 +77,13 @@ internal static class CostsGenerator
         {
             HomeData home = data.Homes.SingleOrDefault(h => h.Id == homeId)
                 ?? throw new InvalidDataException($"Home {homeId} is in the snapshot but not in homes.json.");
-            StoryData? story = data.Stories.FirstOrDefault(s => s.HomeIds.Contains(homeId));
+            List<StoryData> stories = data.Stories.Where(s => s.HomeIds.Contains(homeId)).ToList();
+            if (stories.Count > 1)
+            {
+                return Failure(homeId, new Error("home.in-several-stories", "The home is in more than one story, so its steps are ambiguous.", ErrorCategory.Conflict));
+            }
+
+            StoryData? story = stories.SingleOrDefault();
 
             if (home.Nation != Nation.England)
             {
@@ -182,6 +202,8 @@ internal static class CostsGenerator
             change.Kind switch
             {
                 ChangeKind.ValueChanged => "value-changed",
+                ChangeKind.EvidenceChanged => "evidence-changed",
+                ChangeKind.NoLongerApplies => "no-longer-applies",
                 ChangeKind.NowCalculated => "now-calculated",
                 ChangeKind.NoLongerCalculated => "no-longer-calculated",
                 _ => throw new ArgumentOutOfRangeException(nameof(change), change.Kind, "Unknown kind of change."),

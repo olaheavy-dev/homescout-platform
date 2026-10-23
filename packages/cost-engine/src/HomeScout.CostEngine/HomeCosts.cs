@@ -3,8 +3,14 @@ namespace HomeScout.CostEngine;
 /// <summary>How a line changed from one scenario to the next.</summary>
 public enum ChangeKind
 {
-    /// <summary>The line has a different amount, status or evidence.</summary>
+    /// <summary>The line is calculated in both scenarios and the amount differs.</summary>
     ValueChanged,
+
+    /// <summary>The line's evidence or status changed but no figure moved: the amount is the same, or neither scenario has one.</summary>
+    EvidenceChanged,
+
+    /// <summary>The line was in the previous scenario and is not in this one, because it became not applicable.</summary>
+    NoLongerApplies,
 
     /// <summary>The line had no amount before and has one now.</summary>
     NowCalculated,
@@ -41,7 +47,7 @@ public sealed record MortgageSummary(MortgageRepayment Repayment, IReadOnlyList<
 /// <param name="Monthly">The monthly cost and budget check.</param>
 /// <param name="Upfront">The upfront cash.</param>
 /// <param name="Changes">What changed since the previous scenario. Empty for the first scenario.</param>
-/// <param name="MonthlyTotalChange">This scenario's monthly total minus the previous one's. Null for the first scenario.</param>
+/// <param name="MonthlyTotalChange">This scenario's monthly total minus the previous one's. Null for the first scenario, and null when the two totals leave out different lines (a line that became unknown must not look like a saving); the changes list explains what moved.</param>
 public sealed record ScenarioCosts(
     string ScenarioId,
     int FromStep,

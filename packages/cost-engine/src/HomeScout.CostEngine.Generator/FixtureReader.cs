@@ -30,6 +30,19 @@ internal static class FixtureReader
 {
     public static FixtureData Read(string fixturesDirectory)
     {
+        try
+        {
+            return ReadFiles(fixturesDirectory);
+        }
+        catch (Exception exception) when (exception is InvalidOperationException or FormatException)
+        {
+            // JsonNode throws these when a value has the wrong JSON type (text where a number belongs, a list where an object belongs).
+            throw new InvalidDataException($"A data file has a value of the wrong type: {exception.Message}", exception);
+        }
+    }
+
+    private static FixtureData ReadFiles(string fixturesDirectory)
+    {
         JsonNode snapshot = Load(fixturesDirectory, "snapshot")["snapshot"] ?? throw Invalid("snapshot.json has no snapshot.");
         JsonNode household = Load(fixturesDirectory, "household")["household"] ?? throw Invalid("household.json has no household.");
         JsonNode homes = Load(fixturesDirectory, "homes")["homes"] ?? throw Invalid("homes.json has no homes.");
@@ -122,7 +135,6 @@ internal static class FixtureReader
         "money" => new MoneyValue(new Pence(value["pence"]?.GetValue<long>() ?? throw Invalid("A money value has no pence.")), ReadPeriod(Text(value, "period"))),
         "rate" => new RateValue(Number(value, "basisPoints")),
         "quantity" when Text(value, "unit") == "years" => new YearsValue(Number(value, "amount")),
-        "quantity" => throw Invalid("A quantity must be in years."),
         _ => new OtherValue(),
     };
 

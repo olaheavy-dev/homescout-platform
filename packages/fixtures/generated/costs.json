@@ -859,11 +859,7 @@
                 "R1-WATER-ESTIMATE"
               ]
             }
-          ],
-          "monthlyTotalChange": {
-            "id": "R1.from-step-4.change.monthly-total",
-            "pence": 4500
-          }
+          ]
         }
       ]
     },

@@ -1,0 +1,2 @@
+# The generator writes LF line endings; keep them on every platform so the regenerate-and-diff check stays clean.
+packages/fixtures/generated/*.json text eol=lf

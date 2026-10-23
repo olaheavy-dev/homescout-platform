@@ -165,6 +165,136 @@ internal sealed class AssumptionSelectorTests
         Assert.That(inputs.MonthlyLines.Select(l => l.Category), Does.Not.Contain(CostCategory.ServiceCharge));
     }
 
+    // Precedence between statuses (rule 3): money, then conflicting, then not-calculated, included, not-applicable, missing.
+
+    [Test]
+    public void Select_includedAlongsideConflicting_givesConflicting()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("INS-1", "buildings-insurance", EvidenceStatus.Included),
+            TestFacts.NoValue("INS-2", "buildings-insurance", EvidenceStatus.Conflicting),
+        ]);
+
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.BuildingsInsurance), Is.InstanceOf<ConflictingLine>());
+    }
+
+    [Test]
+    public void Select_includedWaterAlongsideConflictingResponsibility_givesConflicting()
+    {
+        HomeFacts facts = TestFacts.Renting(
+        [
+            TestFacts.Money("RENT", "rent", 100_000, Period.Month),
+            TestFacts.NoValue("W-INC", "water", EvidenceStatus.Included),
+            TestFacts.Other("W-RESP", "water-responsibility", EvidenceStatus.Conflicting),
+        ]);
+
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.Water), Is.InstanceOf<ConflictingLine>());
+    }
+
+    [Test]
+    public void Select_notApplicableAlongsideConflicting_givesConflicting()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("GR-1", "ground-rent", EvidenceStatus.NotApplicable),
+            TestFacts.NoValue("GR-2", "ground-rent", EvidenceStatus.Conflicting),
+        ]);
+
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.GroundRent), Is.InstanceOf<ConflictingLine>());
+    }
+
+    [Test]
+    public void Select_notCalculatedAlongsideIncluded_givesNotCalculatedAsTheMoreCautious()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("M-1", "maintenance", EvidenceStatus.Included),
+            TestFacts.NoValue("M-2", "maintenance", EvidenceStatus.NotCalculated),
+        ]);
+
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.Maintenance), Is.InstanceOf<NotCalculatedLine>());
+    }
+
+    [Test]
+    public void Select_includedAlongsideNotApplicable_givesIncluded()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("M-1", "maintenance", EvidenceStatus.NotApplicable),
+            TestFacts.NoValue("M-2", "maintenance", EvidenceStatus.Included),
+        ]);
+
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.Maintenance), Is.InstanceOf<IncludedLine>());
+    }
+
+    [Test]
+    public void Select_moneyAlongsideConflicting_stillGivesTheAmount()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("EN-1", "energy", 9_000, Period.Month),
+            TestFacts.NoValue("EN-2", "energy", EvidenceStatus.Conflicting),
+        ]);
+
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.Energy), Is.InstanceOf<AmountLine>());
+    }
+
+    // Wrong kind is reported before ambiguous, for ordinary lines and for anchors.
+
+    [Test]
+    public void Select_wrongKindAndTwoValues_failsAsWrongKindForAnOrdinaryLine()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("EN-1", "energy", 9_000, Period.Month),
+            new EvidenceItem("EN-2", "energy", EvidenceStatus.Available, new RateValue(500), false, null, null),
+        ]);
+
+        Assert.That(FailureCode(facts), Is.EqualTo("input.wrong-kind.energy"));
+    }
+
+    [Test]
+    public void Select_wrongKindAndTwoValues_failsAsWrongKindForAnAnchor()
+    {
+        HomeFacts facts = TestFacts.Buying([new EvidenceItem("PRICE-2", "asking-price", EvidenceStatus.Available, new RateValue(500), false, null, null)]);
+
+        Assert.That(FailureCode(facts), Is.EqualTo("input.wrong-kind.asking-price"));
+    }
+
+    [Test]
+    public void Select_rentWithWrongKindAndTwoValues_failsAsWrongKind()
+    {
+        HomeFacts facts = TestFacts.Renting(
+        [
+            TestFacts.Money("RENT-1", "rent", 100_000, Period.Month),
+            new EvidenceItem("RENT-2", "rent", EvidenceStatus.Available, new YearsValue(3), false, null, null),
+        ]);
+
+        Assert.That(FailureCode(facts), Is.EqualTo("input.wrong-kind.rent"));
+    }
+
+    // Rule 2 with a chain: A is replaced by B from step 2, and B by C from step 3.
+
+    private static HomeFacts Chain() =>
+        TestFacts.Buying(
+        [
+            TestFacts.Money("SC-A", "service-charge", 100_000, Period.Year),
+            TestFacts.Money("SC-B", "service-charge", 200_000, Period.Year, usedFromStep: 2, supersedes: "SC-A"),
+            TestFacts.Money("SC-C", "service-charge", 300_000, Period.Year, usedFromStep: 3, supersedes: "SC-B"),
+        ]);
+
+    [TestCase(1, "SC-A")]
+    [TestCase(2, "SC-B")]
+    [TestCase(3, "SC-C")]
+    [TestCase(4, "SC-C")]
+    public void Select_supersedeChain_usesOnlyTheLatestItemThatHasStarted(int step, string expectedId)
+    {
+        var line = (AmountLine)TestFacts.MonthlyLine(Select(Chain(), step), CostCategory.ServiceCharge)!;
+
+        Assert.That(line.EvidenceIds, Is.EqualTo(Ids(expectedId)));
+    }
+
     // Rule 4: water-responsibility items count towards the water line, for the conflicting check only.
 
     [Test]

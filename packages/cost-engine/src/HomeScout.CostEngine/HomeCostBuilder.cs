@@ -123,12 +123,19 @@ public static class HomeCostBuilder
             scenario = scenario with
             {
                 Changes = Changes(inputs.Mode, previous, previousInputs, scenario, monthlyInputs),
-                MonthlyTotalChange = scenario.Monthly.Total - previous.Monthly.Total,
+                MonthlyTotalChange = SameLinesLeftOut(previous.Monthly, scenario.Monthly) ? scenario.Monthly.Total - previous.Monthly.Total : null,
             };
         }
 
         return Result.Success((scenario, monthlyInputs));
     }
+
+    /// <summary>
+    /// True when both totals leave out exactly the same lines for the same reasons. Only then is the difference of the two
+    /// totals meaningful: otherwise a line that became unknown would look like a saving (AGENTS.md rule 7).
+    /// </summary>
+    private static bool SameLinesLeftOut(MonthlyBreakdown previous, MonthlyBreakdown current) =>
+        previous.PartialReasons.ToHashSet().SetEquals(current.PartialReasons);
 
     private static List<CostChange> Changes(
         Mode mode,
@@ -173,14 +180,27 @@ public static class HomeCostBuilder
 
         bool hadAmount = before is { Status: LineStatus.Calculated };
         bool hasAmount = now is { Status: LineStatus.Calculated };
-        ChangeKind kind = (hadAmount, hasAmount) switch
+        ChangeKind kind;
+        if (hadAmount && hasAmount)
         {
-            (false, true) => ChangeKind.NowCalculated,
-            (true, false) => ChangeKind.NoLongerCalculated,
-            _ => ChangeKind.ValueChanged,
-        };
+            // Both calculated: a value change only when the amount moves; a new source for the same amount is an evidence change.
+            kind = before!.Amount == now!.Amount ? ChangeKind.EvidenceChanged : ChangeKind.ValueChanged;
+        }
+        else if (hasAmount)
+        {
+            kind = ChangeKind.NowCalculated;
+        }
+        else if (now is null)
+        {
+            // The line is not in this scenario at all: it became not applicable.
+            kind = ChangeKind.NoLongerApplies;
+        }
+        else
+        {
+            kind = hadAmount ? ChangeKind.NoLongerCalculated : ChangeKind.EvidenceChanged;
+        }
 
-        Pence? monthlyDifference = monthly && hadAmount && hasAmount ? now!.Amount!.Value - before!.Amount!.Value : null;
+        Pence? monthlyDifference = monthly && kind == ChangeKind.ValueChanged ? now!.Amount!.Value - before!.Amount!.Value : null;
         Pence? annualDifference = null;
         if (monthlyDifference is not null
             && previousInputs.OfType<AmountLine>().SingleOrDefault(l => l.Category == category) is { Period: Period.Year } oldYearly
