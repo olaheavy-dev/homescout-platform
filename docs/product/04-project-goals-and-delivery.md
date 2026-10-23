@@ -2,7 +2,7 @@
 
 **Date:** 23 October 2026  
 **Confirmed by the founder:** The project is a portfolio and learning project first, built mostly by AI coding agents, on a small monthly running budget, and kept commercially viable for later.  
-**Authority:** This document owns how the product is built, run and presented. `02_Product_Research_and_Direction.md` still owns product and commercial decisions; `03_Prototype_and_Image_Direction.md` still owns prototype behaviour and design.  
+**Authority:** This document owns how the product is built, run and presented. `02-research-and-direction.md` still owns product and commercial decisions; `03-prototype-and-image-direction.md` still owns prototype behaviour and design.  
 **Status:** Proposed approach. The build sequence in section 5 orders engineering work for learning and demonstration. It is not an MVP classification or a validated launch roadmap.
 
 ## 1. Three goals, and how to trade them off

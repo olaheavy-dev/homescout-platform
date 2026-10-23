@@ -1,19 +1,19 @@
 # HomeScout platform
 
-UK property decision intelligence for buyers and renters, launching in England first. HomeScout is a working name.
+A home decision workspace for people buying or renting in England: check a home, see the real cost, compare homes, and track questions and answers until you decide. HomeScout is a private working name; the public name isn't chosen yet.
 
-Product research and design:
+**Status:** research and concept work only. The repository doesn't yet contain an application. The next step is the clickable prototype, built on synthetic sample data.
 
-- [Original product brief — historical reference](docs/design/01_HomeScout_Product_Brief_v1.1.md)
-- [Product research and recommended direction](docs/design/02_Product_Research_and_Direction.md)
-- [Prototype, screen review and image direction](docs/design/03_Prototype_and_Image_Direction.md)
-- [Project goals and delivery approach](docs/design/04_Project_Goals_and_Delivery.md)
+## Where to start
 
-Document 02 owns the current product recommendations, decision status and geographic scope. Document 03 owns the proposed prototype behaviour, navigation and visual direction within that scope. Recommendations remain proposals unless explicitly recorded as confirmed. Document 04 owns how the product is built and run: a portfolio and learning project, built mostly by AI coding agents on a small monthly budget, and kept commercially viable. Document 01 is the historical concept record; its old labels and paid-feature descriptions are not a second current specification. Unaddressed requirements there must be considered explicitly when writing the implementation specification.
+- [Documentation index](docs/README.md): what each document is for, which one owns what, and the reading order
+- [Decision register](docs/decisions/README.md): every decision made and still to make
+- [Roadmap](docs/product/04-project-goals-and-delivery.md#9-roadmap-from-design-decisions-to-implementation) and [ways of working](docs/product/04-project-goals-and-delivery.md#10-ways-of-working)
+- [Agent instructions](AGENTS.md): rules for the AI agents that build and review this project (`CLAUDE.md` links to the same file)
 
-**Concept images in `docs/design/` are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo.** They are design concepts, not real properties or data; section 2 of document 03 maps each file to its screen, and [ASSETS.md](docs/design/ASSETS.md) records where each image came from. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
+Document 01 is the historical concept record. Its old labels and paid-feature descriptions are not a second current specification, but requirements it raises that later documents don't address must be considered explicitly when writing the implementation specification. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
 
-Research and concept work only; the repository does not yet contain an implemented application. The next step is the clickable prototype; document 04 §9 sets out the roadmap to it, §10 the ways of working, and [the decision register](docs/decisions/README.md) every decision still to make. Current step: [stage 1 confirmation list](docs/planning/stage-1-confirmation.md).
+**Concept images in `docs/assets/concepts/` are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo.** They are design concepts, not real properties or data. Doc 03 §2 maps each image to its screen, and the [asset register](docs/assets/README.md) records where each image came from.
 
 ## Licence
 

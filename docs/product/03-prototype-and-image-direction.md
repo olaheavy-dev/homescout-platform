@@ -1,10 +1,10 @@
 # HomeScout: prototype and image direction
 
 **Date:** 23 October 2026  
-**Purpose:** A reviewable experience and art-direction brief informed by `02_Product_Research_and_Direction.md`.  
+**Purpose:** A reviewable experience and art-direction brief informed by `02-research-and-direction.md`.  
 **Audience decision:** Buyers and renters have equal weight.  
 **Geography decision:** England first. Both stories use English fixtures.  
-**Authority:** This document proposes prototype behaviour and design within the product scope and decision status recorded in `02_Product_Research_and_Direction.md`. Prototype wording does not approve payment terms, data integrations or a public brand.  
+**Authority:** This document proposes prototype behaviour and design within the product scope and decision status recorded in `02-research-and-direction.md`. Prototype wording does not approve payment terms, data integrations or a public brand.  
 **Status:** Recommended direction, not approved screens or an implementation roadmap. All example homes, documents, costs and outcomes below are synthetic.
 
 ## 1. The design decision
@@ -25,20 +25,20 @@ The prototype must demonstrate a change in understanding, not simply display a l
 
 ## 2. What to keep and change in the eight existing images
 
-**These images are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo** (provenance in `ASSETS.md`). Image numbers refer to the filename suffixes in this folder. They are visual concepts, not verified property reports. Several filenames do not describe their screen, and two other numbering schemes exist (the brief's screen families and the contact sheet), so use this mapping:
+**These images are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo** (provenance in `docs/assets/README.md`). They are stored in `docs/assets/concepts/`, and image numbers are the filename prefixes. They are visual concepts, not verified property reports. Two other numbering schemes exist (the brief's screen families and the contact sheet), and the files were renamed from their original export names on 23 October 2026, so use this mapping:
 
-| Image | File | Screen | Brief §12 family | Contact sheet |
-|---|---|---|---|---|
-| 1 | `HomeScout Copilot Property Intelligence-1.png` | Public homepage | 1 | 01 |
-| 2 | `HomeScout Property Intelligence Dashboard-2.png` | Property passport | 2 | 02 |
-| 3 | `HomeScout Property Intelligence Dashboard-3.png` | Copilot investigation | 5 | 05 |
-| 4 | `HomeScout Neighborhood Dashboard-4.png` | Neighbourhood explorer | 3 | 03 |
-| 5 | `HomeScout Property Comparison Dashboard-5.png` | Comparison and costs | 4 | 04 |
-| 6 | `HomeScout Lease Review Dashboard-6.png` | Document review | 6 | 06 |
-| 7 | `HomeScout Property Dashboard-7.png` | Workspace | 7 | not shown |
-| 8 | `HomeScout Property Insights Dashboard-8.png` | Alternative workspace | 7 (variant) | 07 |
+| Image | File | Original export name | Screen | Brief §12 family | Contact sheet |
+|---|---|---|---|---|---|
+| 1 | `01-public-homepage.png` | HomeScout Copilot Property Intelligence-1.png | Public homepage | 1 | 01 |
+| 2 | `02-property-passport.png` | HomeScout Property Intelligence Dashboard-2.png | Property passport | 2 | 02 |
+| 3 | `03-copilot-investigation.png` | HomeScout Property Intelligence Dashboard-3.png | Copilot investigation | 5 | 05 |
+| 4 | `04-neighbourhood-explorer.png` | HomeScout Neighborhood Dashboard-4.png | Neighbourhood explorer | 3 | 03 |
+| 5 | `05-comparison-and-costs.png` | HomeScout Property Comparison Dashboard-5.png | Comparison and costs | 4 | 04 |
+| 6 | `06-document-review.png` | HomeScout Lease Review Dashboard-6.png | Document review | 6 | 06 |
+| 7 | `07-workspace.png` | HomeScout Property Dashboard-7.png | Workspace | 7 | not shown |
+| 8 | `08-alternative-workspace.png` | HomeScout Property Insights Dashboard-8.png | Alternative workspace | 7 (variant) | 07 |
 
-`abode_copilot.jpeg` is a contact sheet of images **1, 2, 4, 5, 3, 6 and 8**, in that order. Its final tile is image 8; image 7 is absent. It is an overview only. Use the filename image numbers above in reviews.
+`contact-sheet.jpeg` (originally `abode_copilot.jpeg`) is a contact sheet of images **1, 2, 4, 5, 3, 6 and 8**, in that order. Its final tile is image 8; image 7 is absent. It is an overview only. Use the image numbers above in reviews.
 
 | Image | Keep | Change before prototyping |
 |---|---|---|
@@ -69,7 +69,7 @@ The prototype must demonstrate a change in understanding, not simply display a l
 - The account holder changes from image to image ("JD"/James, Sarah Mitchell, Sarah Thompson). Use one synthetic household.
 - Source dates in the images (January 2024, October 2023, January 2025) are older than the 23 October 2026 snapshot without being marked as stale. Either date the fixtures consistently or show the stale state deliberately.
 - No swapping a terrace photograph onto a flat record or showing unrelated building imagery as evidence.
-- Use **Neighbourhood** consistently in the interface; keep existing filenames unchanged.
+- Use **Neighbourhood** consistently in the interface.
 - No fabricated testimonials, official seals, success metrics or professional endorsements.
 - Make “not found,” “not covered,” “not applicable” and “not supplied” visibly different.
 - Label a complete demo as **Illustrative example**. Keep that label in shared views and exports.
@@ -90,7 +90,7 @@ The prototype must demonstrate a change in understanding, not simply display a l
 | Home overview | Property (Intelligence) Passport | The summary tab of a home record |
 | My move | Decision workspace | The signed-in space holding all home records and comparisons |
 | Neighbourhood / Nearby | Neighbourhood Explorer, Area insights | Daily-life context around a home |
-| Move pass | Candidate replacement for the earlier Copilot Plus label | Payment-model hypothesis, not a confirmed tier or an entitlement-equivalent rename (see `02_Product_Research_and_Direction.md` §8) |
+| Move pass | Candidate replacement for the earlier Copilot Plus label | Payment-model hypothesis, not a confirmed tier or an entitlement-equivalent rename (see `02-research-and-direction.md` §8) |
 
 “Property Passport” and “living evidence record” may remain internal concepts; a first-time user should not need to learn them.
 

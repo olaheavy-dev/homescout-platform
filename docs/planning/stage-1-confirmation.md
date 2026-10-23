@@ -1,6 +1,6 @@
 # Stage 1 confirmation list
 
-**Purpose:** Close the stage 1 decisions in `docs/design/04_Project_Goals_and_Delivery.md` §9 so stage 2 (the fixture catalogue) can start.  
+**Purpose:** Close the stage 1 decisions in `docs/product/04-project-goals-and-delivery.md` §9 so stage 2 (the fixture catalogue) can start.  
 **How to use:** For each item, tick one box and add a line on why. Accepted items become decision records in `docs/decisions/` and their status is updated in the register.  
 **Gate:** every product item is confirmed, changed, or kept open with a reason; WW-01 to WW-03 are accepted; `CLAUDE.md` and the decision-record template are in the repository.
 
@@ -159,7 +159,7 @@ Buyers and renters with equal weight · England first · Portfolio and learning 
 
 ### WW-03 Repository and tracking conventions
 **Recommendation:**
-- **Layout:** a monorepo, `apps/web` (prototype, then product frontend), `packages/fixtures` (catalogue, calculation script, test vectors), `docs/` (design, decisions, planning, reviews), `infra/` (later), and `apps/api` only when BE-01 is decided.
+- **Layout:** a monorepo, `apps/web` (prototype, then product frontend), `packages/fixtures` (catalogue, calculation script, test vectors), `docs/` (design, decisions, planning, reviews; now organised as set out in `docs/README.md`, decision 0017), `infra/` (later), and `apps/api` only when BE-01 is decided.
 - **Branches:** `main` protected (pull request and passing checks required, no direct pushes); short-lived branches named `type/short-description` (e.g. `feat/buyer-story-costs`, `docs/stage-1-decisions`).
 - **Commits:** Conventional Commits style (`feat:`, `fix:`, `docs:`, `chore:`), squash-merged so each PR is one commit on `main`.
 - **Tracking:** GitHub Issues for work, one GitHub Project board with columns per roadmap stage, and labels for decision IDs.

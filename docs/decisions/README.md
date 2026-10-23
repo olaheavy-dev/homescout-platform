@@ -1,6 +1,6 @@
 # Decision register
 
-Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0001-ways-of-working.md`). The process is in `docs/design/04_Project_Goals_and_Delivery.md` §10. Each decision is made at the stage listed, the latest point that still lets the work go ahead.
+Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0001-ways-of-working.md`). The process is in `docs/product/04-project-goals-and-delivery.md` §10. Each decision is made at the stage listed, the latest point that still lets the work go ahead.
 
 **Statuses:** Not started · Proposed (options drafted) · Accepted · Superseded by NNNN · Open (deliberately undecided, with a reason)
 
@@ -33,6 +33,7 @@ Every significant product, technical and working decision gets its own record in
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
 | WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
+| WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
 | DA-01 | Fixture data format | 2 | Not started | |
 | DA-02 | Calculation script and test vectors | 2 | Not started | |
 | SP-01 | Specification format | 3 | Not started | |
