@@ -17,7 +17,7 @@
 
 | Stage | Practice | What it is | Official documentation |
 |---|---|---|---|
-| End of 2, then each gate | **Mutation testing (Stryker.NET)** on the cost engine only, on a schedule | Plants small deliberate bugs to prove the tests catch them | [Stryker.NET](https://stryker-mutator.io/docs/stryker-net/introduction/) |
+| End of 2 (part of the stage 2 gate in doc 04), then each gate | **Mutation testing (Stryker.NET)** on the cost engine only, on a schedule | Plants small deliberate bugs to prove the tests catch them | [Stryker.NET](https://stryker-mutator.io/docs/stryker-net/introduction/) |
 | 4 | **One schema → TypeScript types**, validated with the same schema | No duplicate schema definitions | [json-schema-to-typescript](https://github.com/bcherny/json-schema-to-typescript), [Ajv](https://ajv.js.org/) |
 | 4 | **Frontend quality gates** (FE-04) | Accessibility linting, Playwright with axe, Lighthouse performance budgets | [Playwright accessibility testing](https://playwright.dev/docs/accessibility-testing), [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y), [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) |
 | 4/6 | **Build provenance and SBOM** | A signed record of which workflow built an image, plus its package list; the approval gate before images go live on the server (0022) | [Artifact attestations](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations), [SBOM export](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/establish-provenance-and-integrity/export-dependencies-as-sbom) |

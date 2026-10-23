@@ -224,7 +224,7 @@ The free/paid plan still holds: free gives a complete, honest first look at any 
 | Dated decision snapshot and export | — | ✓ | Retained record is part of what the pass sells |
 | After the pass expires | — | Read-only record and export for a stated period | Avoids holding user data hostage |
 
-Allowances, limits, durations and prices are deliberately unset. Each paid row is a hypothesis for the user study in §10, and the boundary can move without changing the principle. In the portfolio build, entitlements are feature flags, and payment runs only in a payment provider's test mode until there is a commercial decision.
+Allowances, limits, durations and prices are deliberately unset. Each paid row is a hypothesis for the user study in §10, and the boundary can move without changing the principle. In the portfolio build, entitlements are business rules tied to the account and plan (not feature flags, which are only for gradual rollout; decision 0027 and CO-01), and payment runs only in a payment provider's test mode until there is a commercial decision.
 
 What could justify paying: repeated document reconciliation, a household workspace, answer tracking, material-change explanations and a usable record across multiple homes. Buyers and renters may value different allowances and durations; equal product weight does not require identical purchasing behaviour.
 
