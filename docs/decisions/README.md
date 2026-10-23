@@ -73,6 +73,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034) | [0021](0021-dotnet-engineering-foundation.md) |
 | BE-05 | Our own Result type | 2 | Accepted | [0032](0032-own-result-type.md) |
 | BE-06 | Rounding boundary test cases | 2 | Accepted | [0034](0034-rounding-boundary-cases.md) |
+| WW-13 | Licence allow-list addition | 2 | Accepted (register line: `zlib-acknowledgement`, a permissive Zlib-family licence used by NUnit 5, added to the 0027 allow-list; founder, 23 Oct 2026) | — |
 | BE-07 | Fixture schema validator | 2 | Accepted (register line: JsonSchema.Net with JSON Schema 2020-12; added to the pre-approved packages; founder, 23 Oct 2026) | — |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |

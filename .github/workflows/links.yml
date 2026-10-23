@@ -1,0 +1,37 @@
+name: Documentation links
+
+on:
+  schedule:
+    - cron: "17 5 1 * *" # 05:17 UTC on the first day of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: links-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  lychee:
+    name: Check Markdown links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check links in Markdown files
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          # gnu.org blocks automated checkers. 403 and 429 mean "blocked" or "slow down", not "broken".
+          args: >-
+            --no-progress
+            --exclude 'gnu\.org'
+            --accept '100..=399,403,429'
+            --max-retries 2
+            './**/*.md'
