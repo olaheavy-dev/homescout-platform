@@ -55,7 +55,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 The founder is learning the languages, frameworks and tools through this project.
 - Every pull request description includes **"How it works"** (plain language) and **"Concepts to learn"** (links to the official documentation pages for what it uses).
 - When the founder asks why, answer in plain language with a small example and a link to the official source.
-- For the founder-built slice in each stage, act as a tutor: explain, review and hint; don't write the code.
+- For each significant slice, offer a short walkthrough: which files matter, how data flows, why it was built this way, and the alternatives. The founder learns by understanding, not by writing the code.
 - AI-layer work follows decision 0025: each implementation links the official documentation it follows.
 
 ## When reviewing (Codex)

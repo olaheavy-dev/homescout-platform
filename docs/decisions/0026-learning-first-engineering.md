@@ -11,6 +11,7 @@ Founder's words: "as much as agents write the code, I need to understand the too
 ## Options
 - **Explain-back after merge only (current, decision 0011):** light, but easy to skim.
 - **Learning-first practices built into every change (chosen):** more time per change, much deeper understanding.
+- **Founder writes some code each stage:** considered and rejected by the founder: the goal is understanding what is built, not building it.
 
 ## Recommendation
 Learning-first practices, proportionate to each change.
@@ -18,12 +19,12 @@ Learning-first practices, proportionate to each change.
 ## Decision
 1. **Every pull request teaches.** Its description has a "How it works" section in plain language and a "Concepts to learn" list linking the official documentation pages for the language features, frameworks and tools it uses.
 2. **Docs first.** Before a new tool or framework is used, its official getting-started and concept pages are listed in `docs/references/third-party.md`. The founder reads them alongside the first pull request that uses it.
-3. **Founder-built slices.** At least one small, well-specified piece per stage is written by the founder, with the agent acting as a tutor: explaining, reviewing and hinting, not writing it.
-4. **Explain-back.** After each slice, the founder writes a few lines in their own words in `docs/learning-log.md` (decision 0011). If something can't be explained, the agent explains it until it can.
+3. **Walkthroughs, not founder coding.** The founder doesn't need to write code to learn (founder's words: "there is no need for me to build to learn, it is just understanding what is being done as part of the building process"). For each significant slice, the agent gives a short guided walkthrough: which files matter, how data flows through them, why it was built this way, and what the alternatives were. The founder asks questions until it's clear.
+4. **Explain-back.** After each slice, the founder notes in their own words what was built and why in `docs/learning-log.md` (decision 0011). If something can't be explained yet, the agent explains it until it can.
 5. **Learning map.** Doc 04 §4 lists what each part of the system teaches. Each stage's plan names its learning goals across C# and .NET, TypeScript and React, testing, data, infrastructure and AI engineering.
 6. **Ask "why" freely.** Agents answer in plain language with a small example and a link to the official source.
 
 ## Consequences
 - Slower than pure agent delivery, by design; the learning is part of the deliverable.
-- The founder-built slice is chosen when each stage's work is broken into issues (SP-02).
+- Walkthroughs are offered for each significant slice, and on request for any pull request.
 - `AGENTS.md` gains a "Teach as you build" section.
