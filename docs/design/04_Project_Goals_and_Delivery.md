@@ -19,7 +19,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
-- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction, review every change, and own decisions.
+- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction and own decisions. You review founder-only pull requests and any with a finding proposed to stay unfixed; routine changes are reviewed by Codex and merged by Claude Code, and you review them by exception (decision 0015).
 - **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools. All numbers come from deterministic code. Multi-agent orchestration (Microsoft Agent Framework in the brief's stack) is deferred until a measured task needs it.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
@@ -209,7 +209,7 @@ Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then r
 These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 
 **Roles**
-- **You:** product owner, architect and reviewer. You make every decision, approve every gate and merge every pull request.
+- **You:** product owner, architect and reviewer. You make every decision and approve every gate. Claude Code merges routine pull requests after Codex review; you merge sensitive ones (decision 0015, `AGENTS.md`).
 - **Coding agents:** draft decision options, specs, code, tests, infrastructure and documentation, working from the specs and `CLAUDE.md`.
 - **Outside reviewers** (later): legal, tax and tenancy content gets professional review before anything is charged for.
 
@@ -223,9 +223,9 @@ These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 2. **Agent session on a branch:** the agent implements with tests and updates docs. One issue per session keeps context small.
 3. **Pull request:** a description of what changed and why, how it was tested, and any assumptions the agent made.
 4. **Checks:** CI runs build, lint, tests, accessibility checks and (later) AI evaluations. Nothing merges on red.
-5. **AI review:** OpenAI Codex reviews the pull request as an independent second opinion (decision 0012). Its findings are advice; you decide what to act on.
-6. **Your review:** read the diff, run it, and question anything you can't explain.
-7. **Merge and explain-back:** a few lines in your own words on how it works, added to the learning log.
+5. **AI review:** OpenAI Codex reviews the latest commit. Claude Code fixes serious findings (P0/P1) in any round, and minor ones (P2/P3) in the first two rounds; later minor findings go to a `review-followup` issue for a batched tidy-up. Fixes are pushed in one batch per round, with one re-review request (decision 0015).
+6. **Merge:** on a routine pull request, Claude Code merges once the decision 0015 conditions are met, with no wait for you. On a founder-only pull request (see `AGENTS.md`, "When merging"), or where Claude proposes not fixing a finding, you review and merge, deciding which findings to act on.
+7. **Summary and explain-back:** after merging, Claude Code posts a one-line summary. You can review any merged change at any time. You then write a few lines in your own words on how it works, added to the learning log.
 
 **Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
 
