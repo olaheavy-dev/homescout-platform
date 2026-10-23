@@ -17,6 +17,15 @@ Read before working (the [documentation index](docs/README.md) explains the fold
 
 The current stage is in the README and `docs/planning/`.
 
+## Private reference sources
+
+The founder's earlier projects and a third-party AI sample were reviewed to inform decisions (summary: `docs/reviews/2026-10-23-foundation-review.md`). Their locations are listed in **`.local/references.md`**, a file that exists only on the founder's machine and is excluded from git.
+
+- If that file exists, you may read it and the sources it lists to understand a pattern.
+- **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for HomeScout.
+- **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
+- The AI sample has no licence: ideas only.
+
 ## Rules for every agent
 
 1. **No invented facts.** Never make up property data, legal or tax rules, sources, dates or competitor claims. If something isn't known, the product says so.
@@ -33,6 +42,8 @@ The current stage is in the README and `docs/planning/`.
 - One issue per session, on a branch named `type/short-description` (e.g. `feat/buyer-story-costs`).
 - Start from the issue's spec and acceptance criteria. If the spec is unclear or conflicts with a decision, stop and ask rather than guess.
 - Small vertical slices. Tests first for anything numeric or legal.
+- Before using a framework or package API, check its official documentation for the pinned version via `docs/references/third-party.md`, not memory. When adding a dependency or changing a version, update that file in the same pull request (decision 0024).
+- For a major version update, read the official migration notes, fix breaking changes in the same pull request, and summarise them in the description.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
 - Pull request description: what changed and why, how it was tested, and **any assumptions you made**.
 - Update the docs and decision records affected by the change.
@@ -67,7 +78,7 @@ Claude Code may merge a pull request (squash merge) only when **all** of these a
 - Changes to `LICENSE`, repository settings, CI permissions or this file's merge rules.
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
-- Adding or upgrading dependencies.
+- Adding a new dependency. (Version updates to existing dependencies are merged by Claude Code after checks and Codex review, decision 0024.)
 - Any pull request where Claude Code disagrees with a finding and proposes to dismiss it as wrong (not merely defer it). The founder decides whether the finding stands.
 
 P0/P1 findings always block, with no override: they must be fixed before anyone merges.

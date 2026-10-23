@@ -39,11 +39,12 @@ Every significant product, technical and working decision gets its own record in
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
-| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016) | [0015](0015-agent-merges-after-review.md) |
+| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016 and 0024) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
+| WW-07 | Dependency updates and documentation upkeep | 2 | Accepted | [0024](0024-dependency-updates.md) |
 | DA-01 | Fixture data format | 2 | Accepted | [0018](0018-fixture-data-format.md) |
-| DA-02 | Calculation script and test vectors | 2 | Accepted (C# cost engine) | [0019](0019-cost-engine-in-csharp.md) |
+| DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
 | SP-02 | Work breakdown | 3 | Not started | |
 | DS-01 | Design tooling | 4 | Not started | |
@@ -52,6 +53,7 @@ Every significant product, technical and working decision gets its own record in
 | FE-02 | Styling and components | 4 | Not started | |
 | FE-03 | Maps and charts | 4 | Not started | |
 | FE-04 | Frontend practices | 4 | Not started | |
+| IN-00 | Hosting strategy | 2 (brought forward) | Accepted (cost first) | [0022](0022-cost-first-hosting.md) |
 | IN-01 | Prototype architecture | 4 | Not started | |
 | IN-02 | Demo hosting | 4 | Not started | |
 | IN-03 | Infrastructure as code | 4 | Not started | |
@@ -61,6 +63,7 @@ Every significant product, technical and working decision gets its own record in
 | BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020; ASP.NET Core to confirm at stage 6) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
+| BE-04 | .NET engineering foundation | 2 | Accepted | [0021](0021-dotnet-engineering-foundation.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |
@@ -70,7 +73,7 @@ Every significant product, technical and working decision gets its own record in
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Not started | |
-| AI-04 | Orchestration | 6 (before document extraction) | Not started | |
+| AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework) | [0023](0023-microsoft-agent-framework.md) |
 | AI-05 | AI safety | 6 (before document extraction) | Not started | |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Not started | |
