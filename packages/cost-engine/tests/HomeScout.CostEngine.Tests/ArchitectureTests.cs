@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using NetArchTest.Rules;
 
 namespace HomeScout.CostEngine.Tests;
@@ -37,12 +38,25 @@ internal sealed class ArchitectureTests
         "System.Random",
         "System.Threading.Timer",
         "System.Diagnostics.Stopwatch",
+        "System.Environment",
     ];
 
     // Under `make test` the coverage tool adds its own tracker types to the engine assembly; they are not engine code.
-    private const string _coverageNamespace = "Coverlet";
+    // Only this exact namespace is excluded; every other type must live under HomeScout.CostEngine.
+    private const string _coverageNamespace = "Coverlet.Core.Instrumentation.Tracker";
 
-    private static readonly string[] _clockMembers = ["get_Now", "get_UtcNow", "get_Today"];
+    private const string _engineNamespace = "HomeScout.CostEngine";
+
+    // Calls that read the clock or make something new and unpredictable: DateTime/DateTimeOffset Now, UtcNow, Today and Guid.NewGuid.
+    private static readonly string[] _forbiddenMembers =
+    [
+        "System.DateTime.get_Now",
+        "System.DateTime.get_UtcNow",
+        "System.DateTime.get_Today",
+        "System.DateTimeOffset.get_Now",
+        "System.DateTimeOffset.get_UtcNow",
+        "System.Guid.NewGuid",
+    ];
 
     [Test]
     public void CostEngine_assembly_hasNoDependencyOnIoNetworkCloudOrAi()
@@ -61,17 +75,23 @@ internal sealed class ArchitectureTests
     }
 
     [Test]
-    public void CostEngine_assembly_neverReadsTheCurrentTime() =>
-        Assert.That(CurrentTimeReaders(_engine), Is.Empty);
+    public void CostEngine_assembly_neverReadsTheClockOrMakesGuids() =>
+        Assert.That(ForbiddenMemberCallers(_engine), Is.Empty);
 
     [Test]
     public void CostEngine_assembly_referencesOnlyTheFrameworkAndSystemLibraries()
     {
-        IEnumerable<string> outsiders = _engine.GetReferencedAssemblies()
-            .Select(a => a.Name ?? string.Empty)
-            .Where(n => !n.StartsWith("System.", StringComparison.Ordinal) && n is not ("System" or "netstandard" or "mscorlib"));
+        Assert.That(ReferencesOutsideTheFramework(_engine), Is.Empty);
+    }
 
-        Assert.That(outsiders, Is.Empty);
+    [Test]
+    public void CostEngine_everyTypeOutsideTheCoverageTracker_livesUnderTheEngineNamespace()
+    {
+        IEnumerable<string> strays = EngineTypes(_engine)
+            .Where(t => t.FullName?.StartsWith(_engineNamespace, StringComparison.Ordinal) != true)
+            .Select(t => t.FullName ?? t.Name);
+
+        Assert.That(strays, Is.Empty);
     }
 
     [Test]
@@ -93,8 +113,26 @@ internal sealed class ArchitectureTests
     [Test]
     public void ClockRule_appliedToCodeThatReadsTheTime_failsAsExpected()
     {
-        Assert.That(CurrentTimeReaders(typeof(ArchitectureTests).Assembly), Has.Some.Contain(nameof(RuleBreaker)));
+        Assert.That(ForbiddenMemberCallers(typeof(ArchitectureTests).Assembly), Has.Some.Contain(nameof(RuleBreaker)));
     }
+
+    [Test]
+    public void ClockAndRandomTypeRule_appliedToCodeThatUsesRandom_failsAsExpected()
+    {
+        TestResult result = Types.InAssembly(typeof(ArchitectureTests).Assembly)
+            .That().HaveName(nameof(RuleBreaker))
+            .ShouldNot().HaveDependencyOnAny(_forbiddenClockAndRandomTypes).GetResult();
+
+        Assert.That(result.IsSuccessful, Is.False);
+    }
+
+    [Test]
+    public void ForbiddenMemberRule_appliedToCodeThatCallsGuidNewGuid_failsAsExpected() =>
+        Assert.That(ForbiddenMemberCallers(typeof(ArchitectureTests).Assembly), Has.Some.Contain(nameof(RuleBreaker.NewId)));
+
+    [Test]
+    public void FrameworkOnlyRule_appliedToTheTestAssembly_failsAsExpected() =>
+        Assert.That(ReferencesOutsideTheFramework(typeof(ArchitectureTests).Assembly), Has.Some.Contain("NUnit"));
 
     [Test]
     public void FloatingPointRule_appliedToCodeThatExposesDouble_failsAsExpected()
@@ -103,10 +141,24 @@ internal sealed class ArchitectureTests
     }
 
     private static IEnumerable<Type> EngineTypes(Assembly assembly) =>
-        assembly.GetTypes().Where(t => t.Namespace?.StartsWith(_coverageNamespace, StringComparison.Ordinal) != true);
+        assembly.GetTypes().Where(t => t.FullName?.StartsWith(_coverageNamespace, StringComparison.Ordinal) != true);
 
-    /// <summary>Lists "Type.Method" for every method that calls DateTime.Now, UtcNow, Today or the DateTimeOffset equivalents.</summary>
-    private static List<string> CurrentTimeReaders(Assembly assembly)
+    /// <summary>
+    /// Lists referenced assemblies that are not in the shared .NET framework folder. Checking the folder, not the name,
+    /// means a NuGet package called System.Something does not pass.
+    /// </summary>
+    private static List<string> ReferencesOutsideTheFramework(Assembly assembly)
+    {
+        string frameworkDirectory = RuntimeEnvironment.GetRuntimeDirectory();
+
+        return assembly.GetReferencedAssemblies()
+            .Select(a => a.Name ?? string.Empty)
+            .Where(n => !File.Exists(Path.Combine(frameworkDirectory, n + ".dll")))
+            .ToList();
+    }
+
+    /// <summary>Lists "Type.Method" for every method that calls one of the forbidden members above.</summary>
+    private static List<string> ForbiddenMemberCallers(Assembly assembly)
     {
         var readers = new List<string>();
         Dictionary<short, OpCode> opCodes = typeof(OpCodes)
@@ -119,7 +171,7 @@ internal sealed class ArchitectureTests
         {
             foreach (MethodBase method in type.GetMethods(all).Cast<MethodBase>().Concat(type.GetConstructors(all)))
             {
-                if (CallsClock(method, opCodes))
+                if (CallsForbiddenMember(method, opCodes))
                 {
                     readers.Add($"{type.FullName}.{method.Name}");
                 }
@@ -129,7 +181,7 @@ internal sealed class ArchitectureTests
         return readers;
     }
 
-    private static bool CallsClock(MethodBase method, Dictionary<short, OpCode> opCodes)
+    private static bool CallsForbiddenMember(MethodBase method, Dictionary<short, OpCode> opCodes)
     {
         byte[]? il = method.GetMethodBody()?.GetILAsByteArray();
         if (il is null)
@@ -149,7 +201,7 @@ internal sealed class ArchitectureTests
             {
                 int token = BitConverter.ToInt32(il, position);
                 MethodBase? called = method.Module.ResolveMethod(token, method.DeclaringType?.GetGenericArguments(), method.IsGenericMethod ? method.GetGenericArguments() : null);
-                if (called is { DeclaringType.FullName: "System.DateTime" or "System.DateTimeOffset" } && _clockMembers.Contains(called.Name))
+                if (called is not null && _forbiddenMembers.Contains($"{called.DeclaringType?.FullName}.{called.Name}"))
                 {
                     return true;
                 }
@@ -231,6 +283,12 @@ internal sealed class ArchitectureTests
         public static double ExposedDouble { get; } = 0.5;
 
         public static DateTime Now() => DateTime.Now;
+
+        public static Guid NewId() => Guid.NewGuid();
+
+#pragma warning disable CA5394 // Deliberately insecure randomness: this type exists to break the rules.
+        public static int Dice() => Random.Shared.Next();
+#pragma warning restore CA5394
 
         public static bool FileExists(string path) => File.Exists(path);
 

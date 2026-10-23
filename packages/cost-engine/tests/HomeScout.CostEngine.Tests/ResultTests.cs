@@ -60,7 +60,7 @@ internal sealed class ResultTests
         Assert.That(() => Result.Success<string>(null!), Throws.TypeOf<ArgumentNullException>());
 
     [Test]
-    public void FailureOfT_isAlsoUsableAsUntypedResult()
+    public void ToResult_failure_keepsError()
     {
         Result<Pence> typed = Result.Failure<Pence>(_sample);
 

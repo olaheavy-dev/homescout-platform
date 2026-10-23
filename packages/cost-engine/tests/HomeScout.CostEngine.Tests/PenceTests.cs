@@ -110,6 +110,11 @@ internal sealed class PenceTests
         Assert.That(new Pence(long.MinValue).AnnualToMonthly().Value, Is.EqualTo(-768614336404564651L));
 
     [Test]
+    public void AnnualToMonthly_maxValue_doesNotOverflow() =>
+        // 12 x 768614336404564650 + 7, and 7/12 is more than half, so it rounds up.
+        Assert.That(new Pence(long.MaxValue).AnnualToMonthly().Value, Is.EqualTo(768614336404564651L));
+
+    [Test]
     public void AnnualToMonthly_exactMultipleOfTwelve_isExact() =>
         Assert.That(new Pence(240000).AnnualToMonthly(), Is.EqualTo(new Pence(20000)));
 }

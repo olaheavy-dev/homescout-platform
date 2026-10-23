@@ -76,6 +76,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | WW-13 | Licence allow-list addition | 2 | Accepted (register line: `zlib-acknowledgement`, a permissive Zlib-family licence used by NUnit 5, added to the 0027 allow-list; founder, 23 Oct 2026) | — |
 | BE-07 | Fixture schema validator | 2 | Accepted (register line: JsonSchema.Net with JSON Schema 2020-12; added to the pre-approved packages; founder, 23 Oct 2026) | — |
 | BE-08 | Validator licence | 2 | Accepted (register line, which is the founder's recorded licence-exception decision required by 0027: JsonSchema.Net 9.x and its two dependencies accepted under their Open Source Maintenance Fee EULA; source remains MIT; fee applies only to binary-release use in revenue-generating activities with ≥ US$10,000 annual revenue, otherwise build from source; founder, 23 Oct 2026) | — |
+| BE-09 | Architecture-test package licence | 2 | Accepted (register line, the founder's recorded licence-exception decision required by 0027: NetArchTest.Rules 1.3.2 and its dependency Mono.Cecil are MIT per their GitHub repositories, but their NuGet metadata declares no SPDX licence; founder approved their use, 23 Oct 2026; no dependency-review workflow change is needed) | — |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |

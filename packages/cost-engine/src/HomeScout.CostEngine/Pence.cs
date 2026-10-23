@@ -72,7 +72,7 @@ public readonly record struct Pence(long Value) : IComparable<Pence>
     public int CompareTo(Pence other) => Value.CompareTo(other.Value);
 
     /// <summary>
-    /// Converts an annual amount to a monthly one, rounding once: nearest penny, exact halves away from zero.
+    /// Converts an annual amount to a monthly one, rounding once: nearest penny, exact halves away from zero (decision 0021).
     /// Uses whole-number arithmetic, so there is no intermediate rounding.
     /// </summary>
     public Pence AnnualToMonthly()
