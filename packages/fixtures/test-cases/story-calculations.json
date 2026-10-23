@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/test-case.schema.json",
   "formatVersion": 1,
   "planSnapshotDate": "2026-10-23",
   "money": "integer pence unless a field says otherwise",

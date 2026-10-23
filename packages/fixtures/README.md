@@ -6,7 +6,7 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 |---|---|
 | `schema/` | JSON Schema 2020-12 files. `common.schema.json` holds shared pieces (money, sources, dates, nations); the others describe one data file each. |
 | `data/` | Hand-maintained **inputs**: household, homes, evidence, documents, questions, replies, snapshot. No totals or other calculated figures (AGENTS.md rule 2). |
-| `test-cases/` | Independently worked examples (task 3). Empty until then. |
+| `test-cases/` | Independently worked examples (task 3), checked against `schema/test-case.schema.json`. |
 | `generated/` | Cost-engine outputs (task 4b). Never edited by hand. |
 | `tools/HomeScout.Fixtures.Validator/` | The checker run by `make validate` and `make check`. |
 | `tests/HomeScout.Fixtures.Tests/` | NUnit tests that prove the schemas reject bad data and accept the real files. |
@@ -14,7 +14,7 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 ## Which schema checks which file
 
 - `data/NAME.json` is checked against `schema/NAME.schema.json` (by file name). Each data file also carries a `"$schema": "../schema/NAME.schema.json"` line for editors; the validator fails if it names a different schema.
-- Every file in `test-cases/` must name its schema in a top-level `"$schema"` field (a relative path into `schema/`).
+- Every file in `test-cases/` must name its schema in a top-level `"$schema"` field (a relative path into `schema/`); both current files name `../schema/test-case.schema.json`.
 
 ## How values are modelled
 
@@ -28,3 +28,7 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 - **Question statuses** are the eight in doc 02 section 6, written as `to-ask`, `waiting-for-reply`, `reply-needs-checking`, `answer-recorded`, `partially-answered`, `needs-professional-review`, `closed-by-user-without-answer` and `reopened`. Each question lists its transitions with a reason.
 
 Run `make validate` after editing any file here.
+
+## Fictional placeholders
+
+WALES-1 ("7 Harbour Mews, Afonbryn", postcode `ZZ1 0AA`) is invented. A web search found no place called Afonbryn, and `ZZ` is not a geographic postcode area. Northbridge and the `NB` postcodes are also fictional (`NB` is not a UK postcode area).
