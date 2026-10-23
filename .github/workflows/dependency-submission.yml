@@ -19,6 +19,9 @@ concurrency:
 jobs:
   submit:
     name: Submit NuGet dependencies
+    # Skip pull requests from forks: their token is read-only, and submission needs write access.
+    # Dependency review still runs for them, using the manifests it can read.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
