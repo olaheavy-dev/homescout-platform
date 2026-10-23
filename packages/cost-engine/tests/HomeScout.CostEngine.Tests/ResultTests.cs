@@ -117,4 +117,17 @@ internal sealed class ResultTests
 
         Assert.That(first, Is.EqualTo(second));
     }
+
+    [Test]
+    public void ToResult_successWithAValue_isASuccess() =>
+        Assert.That(Result.Success(new Pence(1)).ToResult().IsSuccess, Is.True);
+
+    [Test]
+    public void ToResult_failure_keepsTheError()
+    {
+        Result result = Result.Failure<Pence>(_sample).ToResult();
+
+        Assert.That(result.IsFailure, Is.True);
+        Assert.That(result.Error, Is.EqualTo(_sample));
+    }
 }

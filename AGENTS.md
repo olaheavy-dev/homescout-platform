@@ -153,6 +153,7 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 | `make generate` | Builds, then runs the cost-engine generator: it reads `packages/fixtures/data/` and writes `packages/fixtures/generated/costs.json` (deleting any other `*.json` there). Commit the result; `make check` fails if it is stale. |
 | `make validate` | Checks every file in `packages/fixtures/data/`, `test-cases/` and `generated/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
 | `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. |
+| `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. |
 | `make clean` | Removes build output and `.artifacts/`. |
 
 The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).

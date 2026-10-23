@@ -320,4 +320,21 @@ internal sealed class MonthlyCostTests
 
         Assert.That(actual.Select(r => CostCategories.ToId(r.Category)), Is.EquivalentTo(expectedCategories));
     }
+
+    [Test]
+    public void CostCategories_undefinedValues_throw()
+    {
+        Assert.That(() => CostCategories.ToId((CostCategory)999), Throws.TypeOf<ArgumentOutOfRangeException>());
+        Assert.That(() => CostCategories.StatusId((LineStatus)999), Throws.TypeOf<ArgumentOutOfRangeException>());
+    }
+
+    [Test]
+    public void CostCategories_missingStatus_isNamedMissing() =>
+        Assert.That(CostCategories.StatusId(LineStatus.Missing), Is.EqualTo("missing"));
+
+    [Test]
+    public void MonthlyCost_unknownKindOfLine_throwsForThatLine() =>
+        Assert.That(() => MonthlyCost.Calculate(Mode.Rent, [new UnknownLine()], Budget160000), Throws.ArgumentException);
+
+    private sealed record UnknownLine() : LineInput(CostCategory.Rent, []);
 }

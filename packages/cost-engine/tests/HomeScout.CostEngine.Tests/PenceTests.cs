@@ -117,4 +117,16 @@ internal sealed class PenceTests
     [Test]
     public void AnnualToMonthly_exactMultipleOfTwelve_isExact() =>
         Assert.That(new Pence(240000).AnnualToMonthly(), Is.EqualTo(new Pence(20000)));
+
+    [Test]
+    public void Comparison_equalAmounts_areNotStrictlyLessOrGreater()
+    {
+        var a = new Pence(500);
+        var b = new Pence(500);
+
+        Assert.That(a < b, Is.False);
+        Assert.That(a > b, Is.False);
+        Assert.That(a <= b, Is.True);
+        Assert.That(a >= b, Is.True);
+    }
 }

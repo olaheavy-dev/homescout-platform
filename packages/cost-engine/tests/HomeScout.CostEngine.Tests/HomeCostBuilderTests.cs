@@ -395,4 +395,95 @@ internal sealed class HomeCostBuilderTests
         Assert.That(FigureIds.Mortgage("B1", "from-step-1"), Is.EqualTo("B1.from-step-1.mortgage"));
         Assert.That(FigureIds.MonthlyRepayment("B1", "from-step-1"), Is.EqualTo("B1.from-step-1.mortgage.monthly-repayment"));
     }
+
+    [Test]
+    public void Build_homeOutsideEnglandAndNoSteps_reportsTheHomeFirst() =>
+        Assert.That(FailureCode(TestFacts.Buying([], Nation.Wales), []), Is.EqualTo("home.not-covered"));
+
+    [Test]
+    public void Build_stepsThatStartAboveOne_areAccepted()
+    {
+        HomeCosts home = Build(TestFacts.Buying([]), [2, 3]);
+
+        Assert.That(home.Scenarios.Single().FromStep, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void Build_upfrontLineGivenMonthly_failsAsWrongPeriod()
+    {
+        // The selector checks only the anchors; the upfront calculation rejects a one-off cost given per month.
+        HomeFacts facts = TestFacts.Buying([TestFacts.Money("MC", "moving-costs", 100_000, Period.Month)]);
+
+        Assert.That(FailureCode(facts, [1]), Is.EqualTo("input.wrong-period.moving-costs"));
+    }
+
+    [Test]
+    public void Build_upfrontLineOfZero_failsAsNotPositive()
+    {
+        HomeFacts facts = TestFacts.Buying([TestFacts.Money("MC", "moving-costs", 0, Period.Once)]);
+
+        Assert.That(FailureCode(facts, [1]), Is.EqualTo("input.not-positive.moving-costs"));
+    }
+
+    [Test]
+    public void Build_upfrontAmountChanges_isAValueChangeWithNoMonthlyOrAnnualDifference()
+    {
+        // The moving costs are paid once, so they have no monthly or annual difference to report.
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("MC-OLD", "moving-costs", 100_000, Period.Once, usedFromStep: 1),
+            TestFacts.Money("MC-NEW", "moving-costs", 150_000, Period.Once, usedFromStep: 4, supersedes: "MC-OLD"),
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Category, Is.EqualTo(CostCategory.MovingCosts));
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.ValueChanged));
+        Assert.That(change.MonthlyDifference, Is.Null);
+        Assert.That(change.AnnualDifference, Is.Null);
+    }
+
+    [Test]
+    public void Build_upfrontAmountThenSameAmountFromNewEvidence_isAnEvidenceChange()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("MC-OLD", "moving-costs", 100_000, Period.Once, usedFromStep: 1),
+            TestFacts.Money("MC-NEW", "moving-costs", 100_000, Period.Once, usedFromStep: 4, supersedes: "MC-OLD"),
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.EvidenceChanged));
+    }
+
+    [Test]
+    public void Build_lineNotApplicableThenEstimated_isReportedAsNowCalculated()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            new EvidenceItem("W-OLD", "water", EvidenceStatus.NotApplicable, null, false, 1, null),
+            TestFacts.Money("W-NEW", "water", 12_000, Period.Month, usedFromStep: 4, supersedes: "W-OLD"),
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Category, Is.EqualTo(CostCategory.Water));
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.NowCalculated));
+        Assert.That(change.PreviousEvidenceIds, Is.Empty);
+    }
+
+    [Test]
+    public void Build_onlyTheMortgageRateChanges_givesTwoScenariosWithARepaymentChange()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            new EvidenceItem("RATE-NEW", "mortgage-rate", EvidenceStatus.Available, new RateValue(600), false, 4, "RATE"),
+        ]);
+
+        HomeCosts home = Build(facts, _fourSteps);
+
+        Assert.That(home.Scenarios, Has.Count.EqualTo(2));
+        Assert.That(home.Scenarios[1].Changes.Single(c => c.Category == CostCategory.MortgageRepayment).Kind, Is.EqualTo(ChangeKind.ValueChanged));
+    }
 }
