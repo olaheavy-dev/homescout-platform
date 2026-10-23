@@ -3,7 +3,8 @@
 **ID:** BE-04  
 **Status:** Accepted  
 **Date:** 2026-10-23  
-**Stage:** 2
+**Stage:** 2  
+**Supersedes:** in [0019](0019-cost-engine-in-csharp.md), the solution file's location ("a .NET solution under `packages/cost-engine/`"). The solution file moves to the repository root so it can include the API later; the cost-engine projects stay under `packages/cost-engine/`.
 
 ## Context
 The founder supplied earlier projects as foundations to build on and improve, not copy. A review of them (summarised in [the foundations review](../reviews/2026-10-23-foundation-review.md)) found that the newest .NET project already fixes many problems in its predecessor. The first C# code in HomeScout is the stage 2 cost engine (decision 0019), so its build and test setup is needed now.
@@ -20,7 +21,7 @@ Adopt the newer foundation's setup.
 The founder chose to adopt it. All files are written fresh for HomeScout; nothing is copied from the private repositories.
 
 Build and packages:
-- `global.json` pins the .NET 10 SDK; `HomeScout.slnx` solution at the repository root.
+- `global.json` pins the .NET 10 SDK; `HomeScout.slnx` at the repository root lists the projects under `packages/cost-engine/` (and later `apps/api/`).
 - `Directory.Build.props`: target net10.0, nullable reference types, `AnalysisMode=All`, warnings as errors, code style enforced in build, deterministic builds, invariant globalisation, NuGet audit.
 - `Directory.Packages.props`: central package management with transitive pinning and exact versions; lock files committed and restored in locked mode in CI.
 - `nuget.config` clears inherited sources and maps packages to nuget.org only.
@@ -42,4 +43,4 @@ Tests:
 ## Consequences
 - The first implementation pull request adds these files and NuGet test packages; adding dependencies is a founder merge.
 - `AGENTS.md` gains the commands and the test naming rule when that pull request lands.
-- The API (stage 6) follows the same foundation: ASP.NET Core minimal APIs, one OpenAPI stack, Problem Details errors, referencing the cost engine directly.
+- The API (stage 6) uses the same build and test foundation. Its framework and style are decided at stage 6 (BE-01, BE-02); candidates from the review are ASP.NET Core minimal APIs, a single OpenAPI stack and Problem Details errors, referencing the cost engine directly.

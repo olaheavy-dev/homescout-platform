@@ -47,14 +47,14 @@ The reviewed AI library and chatbot sample have no licence, so no code, configur
 - Keep provider SDK types out of HomeScout's own interfaces; use `Microsoft.Extensions.AI` (`IChatClient`, `IEmbeddingGenerator`) as the plug-in point, so Foundry, OpenAI or a cheaper provider (decision 0022) are adapters, not dependencies.
 - Make interfaces **task-shaped** (explain a finding, draft a question, check a reply, extract a document, home chat), not generic chat, each returning grounded-with-citations, not-known or refused.
 - Make capability gaps explicit: if a provider can't ground or cite, the task returns not-known rather than an answer without citations.
-- Tools are denied unless allow-listed; retrieval takes a mandatory user ID so per-user isolation is enforced by the type system, not a free-text filter.
+- Tools are denied unless allow-listed; per-user isolation is enforced at the authorisation boundary: the user scope comes from the authenticated identity on the server (never from a value the caller supplies), every retrieval adapter applies the user partition or filter inside its own implementation, and tests try to read another user's documents and must fail.
 - Keep prompts versioned (embedded resources) with structured-output schemas; no API keys in configuration records; conversation state persisted, not held in memory.
 - Turn evaluation into a **gate**: prompt or model changes don't merge if scores fall below the baseline.
 
 ### Guards and structure
 - Every claim must cite a figure ID or document page; every number in AI output must match a supplied figure; documents are passed as quoted data.
 - Dependency direction: cost engine and domain ← application ← AI ← API. Nothing points the other way (enforced by decision 0021's architecture tests).
-- Proposed projects at stage 6: `HomeScout.Ai.Abstractions` (task interfaces, no SDK types), `HomeScout.Ai` (implementations on `IChatClient`, prompts, citation and number guards), one adapter project per chosen provider (for example `HomeScout.Ai.Foundry`), one retrieval adapter (decision AI-02), and `HomeScout.Ai.Evals`.
+- Proposed projects at stage 6: `HomeScout.Ai.Abstractions` (task interfaces, no SDK types), `HomeScout.Ai` (implementations built with Microsoft Agent Framework, decision 0023, plus prompts and the citation and number guards), one adapter project per chosen provider (for example `HomeScout.Ai.Foundry`), one retrieval adapter (decision AI-02), and `HomeScout.Ai.Evals`.
 
 ### Public references
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai): the provider-neutral `IChatClient` abstraction

@@ -1,7 +1,7 @@
 # 0019: Calculations in a C# cost engine from day one
 
 **ID:** DA-02  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: solution file location by [0021](0021-dotnet-engineering-foundation.md))  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:** in [0013](0013-repo-and-tracking.md), the placement of the "calculation script" in `packages/fixtures`. The rest of 0013 stands.

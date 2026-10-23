@@ -39,11 +39,12 @@ Every significant product, technical and working decision gets its own record in
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
-| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016) | [0015](0015-agent-merges-after-review.md) |
+| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016 and 0024) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
+| WW-07 | Dependency updates and documentation upkeep | 2 | Accepted | [0024](0024-dependency-updates.md) |
 | DA-01 | Fixture data format | 2 | Accepted | [0018](0018-fixture-data-format.md) |
-| DA-02 | Calculation script and test vectors | 2 | Accepted (C# cost engine) | [0019](0019-cost-engine-in-csharp.md) |
+| DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
 | SP-02 | Work breakdown | 3 | Not started | |
 | DS-01 | Design tooling | 4 | Not started | |
@@ -72,7 +73,7 @@ Every significant product, technical and working decision gets its own record in
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Not started | |
-| AI-04 | Orchestration | 6 (before document extraction) | Not started | |
+| AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework) | [0023](0023-microsoft-agent-framework.md) |
 | AI-05 | AI safety | 6 (before document extraction) | Not started | |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Not started | |

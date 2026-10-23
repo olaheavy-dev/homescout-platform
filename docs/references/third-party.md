@@ -5,7 +5,7 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 **Rules**
 - Link only to official documentation. Don't copy documentation into the repository.
 - Add an entry in the same pull request that adds a dependency, with the pinned version.
-- Update the version column whenever a version changes.
+- Update the version column in the same pull request whenever a version changes, including Dependabot updates (decision 0024). A CI check enforces this once code exists.
 - Official data sources (energy certificates, sold prices, planning, flood, transport) are listed with their limits in doc 02 §7, not here.
 
 ## In use or chosen
@@ -31,6 +31,9 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 | GitHub Actions | Automated checks and deployment | — | 0013, IN-04 | [GitHub Actions](https://docs.github.com/en/actions), [security hardening](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions) |
 | Claude Code | Building agent | — | 0012 | [Claude Code docs](https://code.claude.com/docs/en/overview) |
 | OpenAI Codex code review | Reviewing agent | — | 0012, 0015 | [Codex GitHub integration](https://developers.openai.com/codex/integrations/github) |
+| Dependabot | Weekly version-update pull requests | — | 0024 | [About version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates), [options reference](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference) |
+| lychee | Monthly documentation link check | Pinned when the workflow is added | 0024 | [lychee](https://lychee.cli.rs/) |
+| Microsoft Agent Framework | AI agents and workflows (stage 6) | Pinned at stage 6 | 0023 | [Overview](https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview), [version 1.0 announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/) |
 
 ## Planned for later stages (not yet decided)
 
