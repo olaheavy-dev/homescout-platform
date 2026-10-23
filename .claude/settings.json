@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(make check)",
+      "Bash(make test)",
+      "Bash(make build)",
+      "Bash(make format-check)",
+      "Bash(make inspect)",
+      "Bash(make generate)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet test *)",
+      "Bash(dotnet format *)",
+      "Bash(dotnet restore *)",
+      "Bash(dotnet tool restore)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh issue view *)"
+    ],
+    "ask": [
+      "Bash(dotnet add package *)",
+      "Bash(dotnet tool install *)",
+      "Bash(npm install *)",
+      "Bash(npm i *)",
+      "Bash(gh api -X PATCH *)",
+      "Bash(gh api -X PUT *)",
+      "Bash(gh api -X POST *)",
+      "Bash(gh api -X DELETE *)",
+      "Bash(gh api --method PATCH *)",
+      "Bash(gh api --method PUT *)",
+      "Bash(gh api --method POST *)",
+      "Bash(gh api --method DELETE *)",
+      "Bash(gh repo edit *)"
+    ],
+    "deny": [
+      "Bash(git push origin main)",
+      "Bash(git push origin HEAD:main)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./.local/**)"
+    ]
+  }
+}

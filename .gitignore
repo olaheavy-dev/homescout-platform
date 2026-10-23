@@ -19,3 +19,14 @@
 
 # Design-review screenshots (decision 0031); keep chosen images via the asset register
 .design/*/screenshots/
+
+# .NET build output and local check artefacts
+bin/
+obj/
+.artifacts/
+TestResults/
+*.user
+
+# Claude Code local-only files
+.claude/settings.local.json
+.claude/worktrees/

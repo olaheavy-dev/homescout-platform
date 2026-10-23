@@ -144,4 +144,14 @@ After merging, post a one-line summary for the founder: what merged, and any fol
 
 ## Commands
 
-None yet. When code exists: `make check` (every automated check, same as CI, including InspectCode), `make test` and `make generate`.
+Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; works on macOS and Linux.
+
+| Command | What it does |
+|---|---|
+| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `inspect` (JetBrains InspectCode; any warning fails), `test`. Run it before pushing. |
+| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`). |
+| `make generate` | Runs the cost-engine generator. A placeholder until task 4b; it writes nothing yet. |
+| `make restore`, `make build`, `make format-check`, `make inspect` | The individual steps of `make check`. |
+| `make clean` | Removes build output and `.artifacts/`. |
+
+Test names follow `Method_condition_result`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).
