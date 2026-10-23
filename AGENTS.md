@@ -42,6 +42,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 - One issue per session, on a branch named `type/short-description` (e.g. `feat/buyer-story-costs`).
 - Start from the issue's spec and acceptance criteria. If the spec is unclear or conflicts with a decision, stop and ask rather than guess.
 - Small vertical slices. Tests first for anything numeric or legal.
+- Before using a framework or package API, check its official documentation for the pinned version via `docs/references/third-party.md`, not memory. When adding a dependency, add its entry there in the same pull request.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
 - Pull request description: what changed and why, how it was tested, and **any assumptions you made**.
 - Update the docs and decision records affected by the change.
