@@ -98,7 +98,7 @@ On mobile, keep a compact home header and a short bottom navigation for Overview
 
 ## 4. The prototype needs two complete stories
 
-These stories define what the prototype proves. They do not remove other features from the product brief or assign implementation phases.
+**Figures in these stories are provisional.** They were worked out by hand. The stage 2 calculation script becomes their source of truth: it computes each value from the sample inputs, and this document is then checked against the script's output and corrected where they differ. These stories define what the prototype proves. They do not remove other features from the product brief or assign implementation phases.
 
 ### Shared path before the evidence question
 
@@ -257,4 +257,4 @@ The direction is ready to discuss when we can answer these questions together:
 5. Is the extra effort of tracking replies worthwhile to real users?
 6. Which public brand and commercial model should be explored after the product direction is accepted?
 
-Only equal buyer/renter weight and an England-first launch are explicitly confirmed by the founder. The remaining recommendations should remain editable until reviewed. No application, publishing flow or new public brand has been created.
+**Confirmed by the founder:** equal buyer/renter weight, England first, and decisions 0001–0007 in `docs/decisions/`. Those cover the product category, one record per home, answers changing the decision, AI inside tasks plus an optional chat panel, the warm and calm visual direction, both stories in full, and free basics with paid extras. Implement within them; changing one needs a new decision record. **Still proposals:** the screen-level details in this document (layouts, navigation labels, state lists, image briefs), to be settled in the stage 3 specification. The public name, commercial model and prices remain open. No application, publishing flow or public brand has been created.

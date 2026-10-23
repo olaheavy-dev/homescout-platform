@@ -134,7 +134,7 @@ The prototype's credibility depends on this, and the images show what happens wi
 - Fixed snapshot date of 23 October 2026. Any older source dates are stale deliberately.
 - **Every figure computed by a small script**, not typed by hand. The script's worked examples become the first cost-engine tests.
 
-**Gate:** the catalogue is stored as data files in the repository, the script reproduces every number in doc 03 §4, and no fixture contradicts another.
+**Gate:** the catalogue is stored as data files in the repository; the script, not the documents, is the source of every figure; each value in doc 03 §4 has been checked against the script's output and corrected where it differed; and no fixture contradicts another.
 
 ### Stage 3: Write the prototype specification
 

@@ -11,7 +11,7 @@ Product research and design:
 
 Document 02 owns the current product recommendations, decision status and geographic scope. Document 03 owns the proposed prototype behaviour, navigation and visual direction within that scope. Recommendations remain proposals unless explicitly recorded as confirmed. Document 04 owns how the product is built and run: a portfolio and learning project, built mostly by AI coding agents on a small monthly budget, and kept commercially viable. Document 01 is the historical concept record; its old labels and paid-feature descriptions are not a second current specification. Unaddressed requirements there must be considered explicitly when writing the implementation specification.
 
-Concept images are in `docs/design/`; section 2 of document 03 maps each file to its screen. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
+Concept images are in `docs/design/`; section 2 of document 03 maps each file to its screen, and [ASSETS.md](docs/design/ASSETS.md) records where each image came from. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
 
 Research and concept work only; the repository does not yet contain an implemented application. The next step is the clickable prototype; document 04 §9 sets out the roadmap to it, §10 the ways of working, and [the decision register](docs/decisions/README.md) every decision still to make. Current step: [stage 1 confirmation list](docs/planning/stage-1-confirmation.md).
 
