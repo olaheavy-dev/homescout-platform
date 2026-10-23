@@ -4,7 +4,7 @@
 **Status:** Accepted  
 **Date:** 2026-10-23  
 **Stage:** 1  
-**Supersedes:** the review and merge steps of [0011](0011-ways-of-working.md) ("you … review and merge", "your review → merge") and the review-order and finding-triage parts of [0012](0012-ai-coding-tools.md) ("before your review", "you decide what to act on"). The rest of 0011 and 0012 still stands.
+**Supersedes:** the review and merge steps of [0011](0011-ways-of-working.md) ("you … review and merge", "your review → merge") and the review-order, finding-triage and two-instruction-file parts of [0012](0012-ai-coding-tools.md) ("before your review", "you decide what to act on", keeping `CLAUDE.md` and `AGENTS.md` as separate files in step). The rest of 0011 and 0012 still stands.
 
 ## Context
 Under 0011, the founder merged every pull request. With Codex reviewing every pull request automatically, the founder decided that Claude Code should merge once that review is satisfied, so routine changes don't wait. At the same time, the founder asked to keep a single instructions file for all agents.
@@ -15,7 +15,7 @@ Under 0011, the founder merged every pull request. With Codex reviewing every pu
 - **Claude merges anything that passes checks:** fastest, but loses the independent review.
 
 ## Decision
-Claude Code merges a pull request once Codex has reviewed its latest commit, every finding is fixed or answered, all threads are resolved and checks pass. The founder still merges changes to the licence, repository settings and merge rules; tax, legal, tenancy and privacy rule tables; infrastructure and costs; dependencies; and any pull request where a Codex finding was deliberately not fixed. The full conditions are in `AGENTS.md`, "When merging".
+Claude Code merges a pull request once Codex has reviewed its latest commit, every finding is fixed or answered, all threads are resolved and every check on the pull request has passed (none failing or still running). The founder still merges changes to the licence, repository settings and merge rules; tax, legal, tenancy and privacy rule tables; infrastructure and costs; dependencies; and any pull request where a Codex finding was deliberately not fixed. The full conditions are in `AGENTS.md`, "When merging".
 
 `AGENTS.md` becomes the single instructions file for all agents. `CLAUDE.md` is a symbolic link to it.
 

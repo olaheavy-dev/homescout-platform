@@ -57,7 +57,7 @@ How to report:
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. Codex has reviewed the **latest commit** of the pull request.
 2. Every Codex finding is either fixed or answered with a reason, and every review thread is resolved.
-3. All required checks pass.
+3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
 4. The pull request doesn't fall under the founder-only list below.
 
 **Founder merges these:**
