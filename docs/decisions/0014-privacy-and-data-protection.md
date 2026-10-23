@@ -6,7 +6,7 @@
 **Stage:** 5 (part 1), 6 step 4 (part 2), 6 step 5 (full decision)
 
 ## Context
-Anyone can type a postcode or address and see free public details without an account. That raises three separate storage questions: the public data itself, what the visitor searched for, and what a user chooses to save. An address search can reveal something personal, namely where someone might move, so it needs care even without an account. The prototype uses sample homes only, so none of this applies until real data is introduced.
+Anyone can type a postcode or address and see free public details without an account. That raises three separate storage questions: the public data itself, what the visitor searched for, and what a user chooses to save. An address search can reveal something personal, namely where someone might move, so it needs care even without an account. The prototype uses sample homes only, so the questions about public records and searched addresses don't arise until real data is introduced. **Visitor data still applies from the first public deployment:** hosting and security services handle visitors' IP addresses, browser details and logs even for a sample-data demo (see part 1 below).
 
 ## Starting position (agreed)
 
