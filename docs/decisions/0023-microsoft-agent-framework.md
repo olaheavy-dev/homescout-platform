@@ -6,7 +6,7 @@
 **Stage:** 6 (decided early)
 
 ## Context
-The founder asked whether HomeScout needs agent orchestration, and whether to use Microsoft Agent Framework. The framework reached version 1.0 in April 2026 ([announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/)) as the successor to Semantic Kernel and AutoGen. It supports single agents with tools and graph-based workflows, and connects to Microsoft Foundry, OpenAI, Anthropic, Ollama and other providers ([overview](https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview)). Microsoft's guidance: use an agent for open-ended tasks, a workflow for well-defined steps, and "if you can write a function to handle the task, do that instead of using an AI agent."
+The founder asked whether HomeScout needs agent orchestration, and whether to use Microsoft Agent Framework. The framework reached version 1.0 in April 2026 ([announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/)) as the successor to Semantic Kernel and AutoGen. It supports single agents with tools and graph-based workflows, and connects to Microsoft Foundry, OpenAI, Anthropic, Ollama and other providers ([overview](https://learn.microsoft.com/en-us/agent-framework/overview/)). Microsoft's guidance: use an agent for open-ended tasks, a workflow for well-defined steps, and "if you can write a function to handle the task, do that instead of using an AI agent."
 
 ## Options
 - **Plan it, confirm at stage 6 with a trial:** keeps the option open.

@@ -61,13 +61,13 @@ The public demo uses the synthetic fixtures and is labelled **Illustrative examp
 
 Each step is a vertical slice that leaves a working, demonstrable product. It sequences engineering and learning. It does not remove features from the product or decide what launches. **The stage order in §9 governs timing:** step 1's parts happen in different §9 stages, as noted.
 
-1. **Foundation:** repository conventions and agent instructions (§9 stage 1, done); the fixture catalogue and the **first slice of the C# cost engine**, covering only the calculations the two stories need (§9 stage 2, decision 0019); CI, IaC skeleton and budget alerts (§9 stage 4, after the infrastructure decisions, before the first deployment). The fixture catalogue covers (four homes, one household, fixed 23 October 2026 snapshot).
+1. **Foundation:** repository conventions and agent instructions (§9 stage 1, done); the fixture catalogue and the **first slice of the C# cost engine**, covering only the calculations the two stories need (§9 stage 2, decision 0019); a minimal CI workflow, security scanning and Dependabot (§9 stage 2, decision 0027); IaC skeleton, deployment pipeline and budget alerts (§9 stage 4, after the infrastructure decisions, before the first deployment). The fixture catalogue covers (four homes, one household, fixed 23 October 2026 snapshot).
 2. **Clickable prototype of both stories** (§9 stage 5) on fixtures and the cost engine's generated results, with a design system from doc 03 §6. This alone is a presentable portfolio piece, and it is **the first public showcase** (founder decision).
 3. **Cost engine expansion** (§9 stage 6): grows the stage 2 engine to full buy and rent costs, England SDLT, move-in cash and stress scenarios, fully tested, behind the API.
 4. **Real England evidence** for one category at a time (EPC, then Price Paid, then planning and flood), with provenance and "not covered" states.
 5. **Questions, replies and decision history** as real persisted workflow.
 6. **Document extraction and conflict detection** with its evaluation suite.
-7. **Entitlements** for the free/paid boundary in doc 02 §8, as feature flags, with a payment provider in test mode.
+7. **Entitlements** for the free/paid boundary in doc 02 §8, enforced as business rules tied to the account and plan (not a feature-flag toggle; flags are only for gradual rollout), with a payment provider in test mode. CO-01 settles the design.
 8. **Change monitoring** and "what changed" explanations.
 9. **Case study** write-up and a recorded walkthrough.
 
@@ -153,7 +153,7 @@ The prototype's credibility depends on this, and the images show what happens wi
 
 ### Stage 4: Design, frontend, infrastructure and deployment decisions
 
-Inputs from the founder's earlier projects are summarised in the [foundations review](../reviews/2026-10-23-foundation-review.md).
+Inputs from the founder's earlier projects are summarised in the [foundations review](../reviews/2026-10-23-foundation-review.md). Stage 4 and stage 6 items from the [best-practice audit](../reviews/2026-10-23-best-practice-audit.md) are inputs too.
 
 **Design decisions:**
 - **Design tooling (DS-01):** design-tool-first (for example Figma) versus code-first (wireframes and components built directly in code with a component workbench).
@@ -198,7 +198,7 @@ Build in vertical slices, each one deployed to the demo:
 
 ### Stage 6: Validate, then build the real product
 
-Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then revise the specification and fixtures. Then continue with section 5, steps 3–9. Each step has its own decision step before it starts:
+Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then revise the specification and fixtures. The [best-practice audit](../reviews/2026-10-23-best-practice-audit.md) lists the stage 6 practices to apply (API contract and generated types, testable time, resilience, log redaction, rate limiting, migrations, health checks and SLOs, build provenance, AI red-teaming). Then continue with section 5, steps 3–9. Each step has its own decision step before it starts:
 
 | Before building | Decisions |
 |---|---|
