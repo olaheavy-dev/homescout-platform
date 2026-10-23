@@ -25,7 +25,7 @@ The prototype must demonstrate a change in understanding, not simply display a l
 
 ## 2. What to keep and change in the eight existing images
 
-Image numbers refer to the filename suffixes in this folder. They are visual concepts, not verified property reports. Several filenames do not describe their screen, and two other numbering schemes exist (the brief's screen families and the contact sheet), so use this mapping:
+**These images are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo** (provenance in `ASSETS.md`). Image numbers refer to the filename suffixes in this folder. They are visual concepts, not verified property reports. Several filenames do not describe their screen, and two other numbering schemes exist (the brief's screen families and the contact sheet), so use this mapping:
 
 | Image | File | Screen | Brief §12 family | Contact sheet |
 |---|---|---|---|---|
