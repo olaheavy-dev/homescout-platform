@@ -8,14 +8,15 @@ export TESTINGPLATFORM_TELEMETRY_OPTOUT := 1
 SOLUTION      := HomeScout.slnx
 CONFIGURATION := Release
 ARTIFACTS     := .artifacts
+GENERATED     := packages/fixtures/generated
 GENERATOR     := packages/cost-engine/src/HomeScout.CostEngine.Generator/HomeScout.CostEngine.Generator.csproj
 VALIDATOR     := packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.Fixtures.Validator.csproj
 
-.PHONY: help restore build format-check validate inspect test check generate clean
+.PHONY: help restore build format-check generated-check validate inspect test check generate clean
 
 help:
-	@echo "Targets: restore build format-check validate inspect test check generate clean"
-	@echo "  check = restore + build + format-check + validate + inspect + test (same as CI)"
+	@echo "Targets: restore build format-check generated-check validate inspect test check generate clean"
+	@echo "  check = restore + build + format-check + generated-check + validate + inspect + test (same as CI)"
 
 # Locked mode: fails if packages.lock.json files are out of date.
 restore:
@@ -48,11 +49,25 @@ inspect: build
 test: build
 	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
 
-check: restore build format-check validate inspect test
+check: restore build format-check generated-check validate inspect test
 
-# Placeholder: the generator writes packages/fixtures/generated/ from task 4b onwards.
-generate:
-	dotnet run --project $(GENERATOR) --configuration $(CONFIGURATION)
+# Runs the cost-engine generator: it reads packages/fixtures/data and writes packages/fixtures/generated/costs.json.
+# Commit the result. The generator deletes any other *.json in generated/.
+generate: build
+	dotnet run --project $(GENERATOR) --configuration $(CONFIGURATION) --no-build
+
+# Regenerates, then fails if anything under packages/fixtures/generated/ differs from what is committed: a hand edit, an extra
+# file, a deleted file or a stale costs.json (stage 2 plan, task 4b). It reads git status, so run it in a git checkout, and
+# commit the generated files (a staged-only file still counts as a change).
+generated-check: generate
+	@changes="$$(git status --porcelain --untracked-files=all -- $(GENERATED))"; \
+	if [ -n "$$changes" ]; then \
+		echo "Generated files are out of date: run 'make generate' and commit them."; \
+		echo "$$changes"; \
+		git --no-pager diff --stat -- $(GENERATED); \
+		exit 1; \
+	fi
+	@echo "Generated files: up to date."
 
 clean:
 	rm -rf $(ARTIFACTS)

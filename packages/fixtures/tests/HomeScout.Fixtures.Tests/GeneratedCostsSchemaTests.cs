@@ -504,7 +504,7 @@ internal sealed class GeneratedCostsSchemaTests
     [Test]
     public void ValidateFixtures_noGeneratedFolder_isAccepted()
     {
-        // Until the generator exists (task 4b-2) the folder is absent or empty, and that is not an error.
+        // The validator does not require generated/ to exist: make generated-check is what insists the committed costs.json is current.
         using TempFixtures fixtures = TempFixtures.CopyOfRealFiles();
 
         Assert.That(FixtureValidator.ValidateFixtures(fixtures.Path), Is.Empty);

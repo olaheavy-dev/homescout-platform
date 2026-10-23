@@ -4,6 +4,9 @@
     <RootNamespace>HomeScout.CostEngine.Generator</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="HomeScout.CostEngine.Generator.Tests" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\HomeScout.CostEngine\HomeScout.CostEngine.csproj" />
   </ItemGroup>
 </Project>

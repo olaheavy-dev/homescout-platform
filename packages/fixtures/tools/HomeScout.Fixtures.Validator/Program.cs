@@ -18,7 +18,7 @@ catch (DirectoryNotFoundException exception)
 IReadOnlyList<FixtureProblem> problems = FixtureValidator.ValidateFixtures(fixtures);
 if (problems.Count == 0)
 {
-    Console.WriteLine("Fixtures: every data file and test case matches its schema.");
+    Console.WriteLine("Fixtures: every data file, test case and generated file matches its schema.");
     return 0;
 }
 

@@ -175,7 +175,10 @@
       "properties": {
         "id": { "$ref": "#/$defs/figureId" },
         "category": { "$ref": "#/$defs/category" },
-        "kind": { "enum": ["value-changed", "now-calculated", "no-longer-calculated"] },
+        "kind": {
+          "enum": ["value-changed", "evidence-changed", "now-calculated", "no-longer-calculated", "no-longer-applies"],
+          "description": "value-changed: calculated in both scenarios and the source amount or its period differs, even if both round to the same monthly amount (the monthly difference may then be 0; the annual difference is given when both are yearly). evidence-changed: the evidence or status changed but no figure moved (same source amount and period, or no amount in either). now-calculated: had no amount, has one. no-longer-calculated: had an amount, now has none (conflicting, missing, included or not calculated). no-longer-applies: the line left the scenario because it became not applicable."
+        },
         "previousEvidenceIds": { "$ref": "#/$defs/evidenceIds" },
         "currentEvidenceIds": { "$ref": "#/$defs/evidenceIds" },
         "monthlyDifferencePence": { "$ref": "#/$defs/pence" },
@@ -194,7 +197,10 @@
         "monthly": { "$ref": "#/$defs/monthly" },
         "upfront": { "$ref": "#/$defs/upfront" },
         "changesFromPrevious": { "type": "array", "items": { "$ref": "#/$defs/change" } },
-        "monthlyTotalChange": { "$ref": "#/$defs/figure" }
+        "monthlyTotalChange": {
+          "$ref": "#/$defs/figure",
+          "description": "This scenario's monthly total minus the previous one's. Present only when both totals leave out the same lines for the same reasons; otherwise a line that became unknown would look like a saving, so it is omitted and changesFromPrevious explains what moved."
+        }
       },
       "additionalProperties": false
     },
