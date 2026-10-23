@@ -23,7 +23,7 @@ Founder's words: "can codex review issues holistically and make sure that all th
 1. **Pre-flight check by Claude Code:** before opening a pull request, search the repository for every term, decision ID, rule and figure the change touches, fix contradictions in the same pull request, and say in the description what was checked.
 2. **One complete first review by Codex:** report every finding at once, including knock-on effects in other files. Re-reviews check only the fixes; new P2/P3 points only on lines changed since the last review, P0/P1 anywhere.
 3. **Debt limits:** no stage gate passes with open `review-followup` issues; more than 5 open follow-ups pause new feature work; every stage gate includes a whole-repository audit for contradictions and debt.
-4. **Serious findings always block (resolves #7):** P0/P1 findings must be fixed before anyone merges, with no override. The founder merges, and decides, only where Claude disputes a finding as wrong; P2/P3 findings validly deferred to a follow-up issue don't require the founder.
+4. **Serious findings always block (resolves #7):** P0/P1 findings must be fixed before anyone merges, with no override. For review findings specifically, the founder is needed only where Claude disputes a finding as wrong; P2/P3 findings validly deferred to a follow-up issue don't require the founder. This doesn't change the other founder-only merges in 0015 and `AGENTS.md` (licence, settings and merge rules, rule tables, infrastructure and costs, dependencies).
 
 ## Consequences
 - Rules live in `AGENTS.md` ("When building", "When reviewing", "When merging", "Review rounds") and doc 04 §9–§10.
