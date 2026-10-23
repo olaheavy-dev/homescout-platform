@@ -129,6 +129,8 @@ Agents start producing artefacts in stage 2, so how they work has to be settled 
 - **Result type (BE-05):** decided: our own small type (decision 0032). **Rounding boundary cases (BE-06):** decision 0034. **Data sourcing (DA-07):** no scraping (decision 0028), which also shapes the fixtures.
 - **.NET engineering foundation (BE-04):** decided: strict build settings, pinned packages, Makefile, NUnit and architecture tests (decision 0021).
 
+**Stage 2 note:** the inputs and story details below are superseded by [the stage 2 plan](../planning/stage-2-plan.md); this section is corrected in stage 2 task 5.
+
 The prototype's credibility depends on this, and the images show what happens without it.
 
 - One household, four homes (leasehold buyer flat, buyer comparison home, renter flat, renter comparison home), all in England, each with a fixed ID.

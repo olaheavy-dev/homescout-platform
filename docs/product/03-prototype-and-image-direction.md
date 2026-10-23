@@ -98,6 +98,8 @@ On mobile, keep a compact home header and a short bottom navigation for Overview
 
 ## 4. The prototype needs two complete stories
 
+**Stage 2 note:** the inputs and story flow below are superseded for stage 2 by [the stage 2 plan](../planning/stage-2-plan.md) (for example water £45/month, itemised costs, the written statement of terms, and the management pack arriving after the offer). This section is corrected in stage 2 task 5.
+
 **Figures in these stories are provisional.** They were worked out by hand. In stage 2, the input figures (listing claims, document figures, rent, user-entered estimates) move into the fixture files with their source, and the C# cost engine (decision 0019) becomes the source of truth for every calculated figure: it computes each one from those inputs, and this document is then checked against the cost engine's output and corrected where they differ. These stories define what the prototype proves. They do not remove other features from the product brief or assign implementation phases.
 
 ### Shared path before the evidence question
