@@ -21,10 +21,11 @@
 | WW-01 Ways of working | Standard setup | [0011](../decisions/0011-ways-of-working.md) |
 | WW-02 AI coding tools | Claude Code builds, OpenAI Codex reviews | [0012](../decisions/0012-ai-coding-tools.md) |
 | WW-03 Repo and tracking | Standard setup | [0013](../decisions/0013-repo-and-tracking.md) |
+| WW-04 Merge policy and instructions file | Claude Code merges routine PRs after Codex review; founder merges sensitive ones; single `AGENTS.md` with `CLAUDE.md` linked to it | [0015](../decisions/0015-agent-merges-after-review.md) |
 
 **Still needed for the stage 1 gate:** `CLAUDE.md` and `AGENTS.md` in the repo; the merge to `main` with branch protection and a project board. The demo name doesn't block stage 2.
 
-The sections below keep the original options for reference.
+The sections below keep the original options for reference. **Where they describe reviews and merges (WW-01, WW-02), they are superseded by decision 0015**: follow `AGENTS.md` and doc 04 §10, not these options.
 
 ## Already decided (for reference)
 
