@@ -177,7 +177,7 @@
         "category": { "$ref": "#/$defs/category" },
         "kind": {
           "enum": ["value-changed", "evidence-changed", "now-calculated", "no-longer-calculated", "no-longer-applies"],
-          "description": "value-changed: calculated in both scenarios and the amount differs. evidence-changed: the evidence or status changed but no figure moved (same amount, or no amount in either). now-calculated: had no amount, has one. no-longer-calculated: had an amount, now has none (conflicting, missing, included or not calculated). no-longer-applies: the line left the scenario because it became not applicable."
+          "description": "value-changed: calculated in both scenarios and the source amount or its period differs, even if both round to the same monthly amount (the monthly difference may then be 0; the annual difference is given when both are yearly). evidence-changed: the evidence or status changed but no figure moved (same source amount and period, or no amount in either). now-calculated: had no amount, has one. no-longer-calculated: had an amount, now has none (conflicting, missing, included or not calculated). no-longer-applies: the line left the scenario because it became not applicable."
         },
         "previousEvidenceIds": { "$ref": "#/$defs/evidenceIds" },
         "currentEvidenceIds": { "$ref": "#/$defs/evidenceIds" },

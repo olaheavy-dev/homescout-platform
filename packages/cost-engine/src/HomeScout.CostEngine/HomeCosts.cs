@@ -3,10 +3,10 @@ namespace HomeScout.CostEngine;
 /// <summary>How a line changed from one scenario to the next.</summary>
 public enum ChangeKind
 {
-    /// <summary>The line is calculated in both scenarios and the amount differs.</summary>
+    /// <summary>The line is calculated in both scenarios and its source amount or period differs (even if both round to the same monthly amount).</summary>
     ValueChanged,
 
-    /// <summary>The line's evidence or status changed but no figure moved: the amount is the same, or neither scenario has one.</summary>
+    /// <summary>The line's evidence or status changed but no figure moved: the source amount and period are the same, or neither scenario has an amount.</summary>
     EvidenceChanged,
 
     /// <summary>The line was in the previous scenario and is not in this one, because it became not applicable.</summary>
@@ -24,7 +24,7 @@ public enum ChangeKind
 /// <param name="Kind">How it changed.</param>
 /// <param name="PreviousEvidenceIds">The evidence behind the line before.</param>
 /// <param name="CurrentEvidenceIds">The evidence behind the line now.</param>
-/// <param name="MonthlyDifference">Now minus before, both rounded monthly lines. Only for a monthly line that has an amount in both scenarios.</param>
+/// <param name="MonthlyDifference">Now minus before, both rounded monthly lines. Only for a value-changed monthly line; it may be 0 when rounding hides a small change.</param>
 /// <param name="AnnualDifference">Now minus before, both yearly amounts as the sources state them. Only when both are yearly.</param>
 public sealed record CostChange(
     CostCategory Category,

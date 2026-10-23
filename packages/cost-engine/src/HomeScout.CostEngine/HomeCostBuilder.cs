@@ -183,8 +183,14 @@ public static class HomeCostBuilder
         ChangeKind kind;
         if (hadAmount && hasAmount)
         {
-            // Both calculated: a value change only when the amount moves; a new source for the same amount is an evidence change.
-            kind = before!.Amount == now!.Amount ? ChangeKind.EvidenceChanged : ChangeKind.ValueChanged;
+            // Both calculated: a value change when the source amount or its period changed, even if both round to the same
+            // monthly amount; a new source for the same amount and period is an evidence change.
+            AmountLine? oldSource = previousInputs.OfType<AmountLine>().SingleOrDefault(l => l.Category == category);
+            AmountLine? newSource = currentInputs.OfType<AmountLine>().SingleOrDefault(l => l.Category == category);
+            bool sourceChanged = monthly && oldSource is not null && newSource is not null
+                ? oldSource.Amount != newSource.Amount || oldSource.Period != newSource.Period
+                : before!.Amount != now!.Amount;
+            kind = sourceChanged ? ChangeKind.ValueChanged : ChangeKind.EvidenceChanged;
         }
         else if (hasAmount)
         {

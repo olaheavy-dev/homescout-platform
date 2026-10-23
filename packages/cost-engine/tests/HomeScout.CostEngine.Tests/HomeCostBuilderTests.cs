@@ -173,6 +173,36 @@ internal sealed class HomeCostBuilderTests
     }
 
     [Test]
+    public void Build_yearlyAmountRisesByOnePenceButMonthlyRoundingHidesIt_stillReportsTheAnnualDifference()
+    {
+        // 240,000p a year is exactly 20,000p a month; 240,001p a year is 20,000.08p, which also rounds to 20,000p.
+        // The source amount rose by 1p, so this is a value change: monthly difference 0p, annual difference 1p.
+        HomeCosts home = Build(BuyerWithServiceChargeChange(240_000, 240_001), _fourSteps);
+
+        CostChange change = home.Scenarios[1].Changes.Single();
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.ValueChanged));
+        Assert.That(change.MonthlyDifference, Is.EqualTo(Pence.Zero));
+        Assert.That(change.AnnualDifference, Is.EqualTo(new Pence(1)));
+    }
+
+    [Test]
+    public void Build_sameAmountChangingPeriod_isReportedAsValueChanged()
+    {
+        // 12,000p a month and 144,000p a year are both 12,000p a month, but the source changed from monthly to yearly.
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.Money("E-OLD", "energy", 12_000, Period.Month, usedFromStep: 1),
+            TestFacts.Money("E-NEW", "energy", 144_000, Period.Year, usedFromStep: 4, supersedes: "E-OLD"),
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.ValueChanged));
+        Assert.That(change.MonthlyDifference, Is.EqualTo(Pence.Zero));
+        Assert.That(change.AnnualDifference, Is.Null);
+    }
+
+    [Test]
     public void Build_amountThenNotApplicable_isReportedAsNoLongerApplies()
     {
         HomeFacts facts = TestFacts.Buying(
