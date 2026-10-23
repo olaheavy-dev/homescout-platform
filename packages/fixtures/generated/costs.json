@@ -1,0 +1,994 @@
+{
+  "$schema": "../schema/generated-costs.schema.json",
+  "formatVersion": 1,
+  "generatedBy": "HomeScout.CostEngine.Generator",
+  "snapshotDate": "2026-10-23",
+  "money": "integer pence",
+  "rounding": "Each yearly amount is divided by 12 and rounded once to the nearest penny, halves away from zero; a total is the sum of its rounded lines; a mortgage repayment is rounded once from the exact fraction (decision 0021).",
+  "homes": [
+    {
+      "homeId": "B1",
+      "mode": "buy",
+      "nation": "England",
+      "coverage": "covered",
+      "storyId": "BUYER",
+      "scenarios": [
+        {
+          "scenarioId": "from-step-1",
+          "fromStep": 1,
+          "toStep": 3,
+          "mortgage": {
+            "id": "B1.from-step-1.mortgage",
+            "loan": {
+              "id": "B1.from-step-1.mortgage.loan",
+              "pence": 16000000
+            },
+            "rateBasisPoints": 550,
+            "termYears": 25,
+            "payments": 300,
+            "monthlyRepayment": {
+              "id": "B1.from-step-1.mortgage.monthly-repayment",
+              "pence": 98254
+            },
+            "evidenceIds": [
+              "B1-PRICE",
+              "HH-MORTGAGE-DEPOSIT",
+              "HH-MORTGAGE-RATE",
+              "HH-MORTGAGE-TERM"
+            ]
+          },
+          "monthly": {
+            "lines": [
+              {
+                "id": "B1.from-step-1.monthly.mortgage-repayment",
+                "category": "mortgage-repayment",
+                "status": "calculated",
+                "pence": 98254,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-PRICE",
+                  "HH-MORTGAGE-DEPOSIT",
+                  "HH-MORTGAGE-RATE",
+                  "HH-MORTGAGE-TERM"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.service-charge",
+                "category": "service-charge",
+                "status": "calculated",
+                "pence": 20000,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B1-SC-LISTING"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.ground-rent",
+                "category": "ground-rent",
+                "status": "calculated",
+                "pence": 2083,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B1-GROUND-RENT"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.council-tax",
+                "category": "council-tax",
+                "status": "calculated",
+                "pence": 17500,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B1-CT-CHARGE"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.energy",
+                "category": "energy",
+                "status": "calculated",
+                "pence": 8500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-ENERGY-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.water",
+                "category": "water",
+                "status": "calculated",
+                "pence": 4500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-WATER-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.broadband",
+                "category": "broadband",
+                "status": "calculated",
+                "pence": 3000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-BROADBAND-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.buildings-insurance",
+                "category": "buildings-insurance",
+                "status": "included",
+                "evidenceIds": [
+                  "B1-INSURANCE"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.monthly.maintenance",
+                "category": "maintenance",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B1-MAINTENANCE"
+                ]
+              }
+            ],
+            "total": {
+              "id": "B1.from-step-1.monthly.total",
+              "pence": 153837,
+              "isPartial": true,
+              "partialReasons": [
+                {
+                  "lineId": "B1.from-step-1.monthly.maintenance",
+                  "category": "maintenance",
+                  "status": "not-calculated"
+                }
+              ]
+            },
+            "budget": {
+              "id": "B1.from-step-1.monthly.budget",
+              "budgetPence": 160000,
+              "budgetSource": "household:RIVERS.monthlyBudget",
+              "differencePence": 6163,
+              "withinBudget": true,
+              "basedOnPartialTotal": true
+            }
+          },
+          "upfront": {
+            "lines": [
+              {
+                "id": "B1.from-step-1.upfront.mortgage-deposit",
+                "category": "mortgage-deposit",
+                "status": "calculated",
+                "pence": 3000000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MORTGAGE-DEPOSIT"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.upfront.moving-costs",
+                "category": "moving-costs",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MOVING-COSTS"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.upfront.stamp-duty",
+                "category": "stamp-duty",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B1-STAMP-DUTY"
+                ]
+              },
+              {
+                "id": "B1.from-step-1.upfront.legal-fees",
+                "category": "legal-fees",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B1-LEGAL-FEES"
+                ]
+              }
+            ],
+            "total": {
+              "id": "B1.from-step-1.upfront.total",
+              "pence": 3120000,
+              "isPartial": true,
+              "partialReasons": [
+                {
+                  "lineId": "B1.from-step-1.upfront.stamp-duty",
+                  "category": "stamp-duty",
+                  "status": "not-calculated"
+                },
+                {
+                  "lineId": "B1.from-step-1.upfront.legal-fees",
+                  "category": "legal-fees",
+                  "status": "not-calculated"
+                }
+              ]
+            }
+          },
+          "changesFromPrevious": []
+        },
+        {
+          "scenarioId": "from-step-4",
+          "fromStep": 4,
+          "toStep": 4,
+          "mortgage": {
+            "id": "B1.from-step-4.mortgage",
+            "loan": {
+              "id": "B1.from-step-4.mortgage.loan",
+              "pence": 16000000
+            },
+            "rateBasisPoints": 550,
+            "termYears": 25,
+            "payments": 300,
+            "monthlyRepayment": {
+              "id": "B1.from-step-4.mortgage.monthly-repayment",
+              "pence": 98254
+            },
+            "evidenceIds": [
+              "B1-PRICE",
+              "HH-MORTGAGE-DEPOSIT",
+              "HH-MORTGAGE-RATE",
+              "HH-MORTGAGE-TERM"
+            ]
+          },
+          "monthly": {
+            "lines": [
+              {
+                "id": "B1.from-step-4.monthly.mortgage-repayment",
+                "category": "mortgage-repayment",
+                "status": "calculated",
+                "pence": 98254,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-PRICE",
+                  "HH-MORTGAGE-DEPOSIT",
+                  "HH-MORTGAGE-RATE",
+                  "HH-MORTGAGE-TERM"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.service-charge",
+                "category": "service-charge",
+                "status": "calculated",
+                "pence": 31000,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B1-SC-BUDGET"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.ground-rent",
+                "category": "ground-rent",
+                "status": "calculated",
+                "pence": 2083,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B1-GROUND-RENT"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.council-tax",
+                "category": "council-tax",
+                "status": "calculated",
+                "pence": 17500,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B1-CT-CHARGE"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.energy",
+                "category": "energy",
+                "status": "calculated",
+                "pence": 8500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-ENERGY-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.water",
+                "category": "water",
+                "status": "calculated",
+                "pence": 4500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-WATER-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.broadband",
+                "category": "broadband",
+                "status": "calculated",
+                "pence": 3000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B1-BROADBAND-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.buildings-insurance",
+                "category": "buildings-insurance",
+                "status": "included",
+                "evidenceIds": [
+                  "B1-INSURANCE"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.monthly.maintenance",
+                "category": "maintenance",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B1-MAINTENANCE"
+                ]
+              }
+            ],
+            "total": {
+              "id": "B1.from-step-4.monthly.total",
+              "pence": 164837,
+              "isPartial": true,
+              "partialReasons": [
+                {
+                  "lineId": "B1.from-step-4.monthly.maintenance",
+                  "category": "maintenance",
+                  "status": "not-calculated"
+                }
+              ]
+            },
+            "budget": {
+              "id": "B1.from-step-4.monthly.budget",
+              "budgetPence": 160000,
+              "budgetSource": "household:RIVERS.monthlyBudget",
+              "differencePence": -4837,
+              "withinBudget": false,
+              "basedOnPartialTotal": true
+            }
+          },
+          "upfront": {
+            "lines": [
+              {
+                "id": "B1.from-step-4.upfront.mortgage-deposit",
+                "category": "mortgage-deposit",
+                "status": "calculated",
+                "pence": 3000000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MORTGAGE-DEPOSIT"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.upfront.moving-costs",
+                "category": "moving-costs",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MOVING-COSTS"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.upfront.stamp-duty",
+                "category": "stamp-duty",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B1-STAMP-DUTY"
+                ]
+              },
+              {
+                "id": "B1.from-step-4.upfront.legal-fees",
+                "category": "legal-fees",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B1-LEGAL-FEES"
+                ]
+              }
+            ],
+            "total": {
+              "id": "B1.from-step-4.upfront.total",
+              "pence": 3120000,
+              "isPartial": true,
+              "partialReasons": [
+                {
+                  "lineId": "B1.from-step-4.upfront.stamp-duty",
+                  "category": "stamp-duty",
+                  "status": "not-calculated"
+                },
+                {
+                  "lineId": "B1.from-step-4.upfront.legal-fees",
+                  "category": "legal-fees",
+                  "status": "not-calculated"
+                }
+              ]
+            }
+          },
+          "changesFromPrevious": [
+            {
+              "id": "B1.from-step-4.change.service-charge",
+              "category": "service-charge",
+              "kind": "value-changed",
+              "previousEvidenceIds": [
+                "B1-SC-LISTING"
+              ],
+              "currentEvidenceIds": [
+                "B1-SC-BUDGET"
+              ],
+              "monthlyDifferencePence": 11000,
+              "annualDifferencePence": 132000
+            }
+          ],
+          "monthlyTotalChange": {
+            "id": "B1.from-step-4.change.monthly-total",
+            "pence": 11000
+          }
+        }
+      ]
+    },
+    {
+      "homeId": "B2",
+      "mode": "buy",
+      "nation": "England",
+      "coverage": "covered",
+      "storyId": "BUYER",
+      "scenarios": [
+        {
+          "scenarioId": "from-step-1",
+          "fromStep": 1,
+          "toStep": 4,
+          "mortgage": {
+            "id": "B2.from-step-1.mortgage",
+            "loan": {
+              "id": "B2.from-step-1.mortgage.loan",
+              "pence": 22500000
+            },
+            "rateBasisPoints": 550,
+            "termYears": 25,
+            "payments": 300,
+            "monthlyRepayment": {
+              "id": "B2.from-step-1.mortgage.monthly-repayment",
+              "pence": 138170
+            },
+            "evidenceIds": [
+              "B2-PRICE",
+              "HH-MORTGAGE-DEPOSIT",
+              "HH-MORTGAGE-RATE",
+              "HH-MORTGAGE-TERM"
+            ]
+          },
+          "monthly": {
+            "lines": [
+              {
+                "id": "B2.from-step-1.monthly.mortgage-repayment",
+                "category": "mortgage-repayment",
+                "status": "calculated",
+                "pence": 138170,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B2-PRICE",
+                  "HH-MORTGAGE-DEPOSIT",
+                  "HH-MORTGAGE-RATE",
+                  "HH-MORTGAGE-TERM"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.monthly.council-tax",
+                "category": "council-tax",
+                "status": "calculated",
+                "pence": 15417,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "B2-CT-CHARGE"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.monthly.energy",
+                "category": "energy",
+                "status": "calculated",
+                "pence": 12000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B2-ENERGY-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.monthly.water",
+                "category": "water",
+                "status": "calculated",
+                "pence": 5000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B2-WATER-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.monthly.broadband",
+                "category": "broadband",
+                "status": "calculated",
+                "pence": 3000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B2-BROADBAND-ESTIMATE"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.monthly.buildings-insurance",
+                "category": "buildings-insurance",
+                "status": "calculated",
+                "pence": 3500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B2-INSURANCE"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.monthly.maintenance",
+                "category": "maintenance",
+                "status": "calculated",
+                "pence": 6000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "B2-MAINTENANCE"
+                ]
+              }
+            ],
+            "total": {
+              "id": "B2.from-step-1.monthly.total",
+              "pence": 183087,
+              "isPartial": false,
+              "partialReasons": []
+            },
+            "budget": {
+              "id": "B2.from-step-1.monthly.budget",
+              "budgetPence": 160000,
+              "budgetSource": "household:RIVERS.monthlyBudget",
+              "differencePence": -23087,
+              "withinBudget": false,
+              "basedOnPartialTotal": false
+            }
+          },
+          "upfront": {
+            "lines": [
+              {
+                "id": "B2.from-step-1.upfront.mortgage-deposit",
+                "category": "mortgage-deposit",
+                "status": "calculated",
+                "pence": 3000000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MORTGAGE-DEPOSIT"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.upfront.moving-costs",
+                "category": "moving-costs",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MOVING-COSTS"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.upfront.stamp-duty",
+                "category": "stamp-duty",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B2-STAMP-DUTY"
+                ]
+              },
+              {
+                "id": "B2.from-step-1.upfront.legal-fees",
+                "category": "legal-fees",
+                "status": "not-calculated",
+                "evidenceIds": [
+                  "B2-LEGAL-FEES"
+                ]
+              }
+            ],
+            "total": {
+              "id": "B2.from-step-1.upfront.total",
+              "pence": 3120000,
+              "isPartial": true,
+              "partialReasons": [
+                {
+                  "lineId": "B2.from-step-1.upfront.stamp-duty",
+                  "category": "stamp-duty",
+                  "status": "not-calculated"
+                },
+                {
+                  "lineId": "B2.from-step-1.upfront.legal-fees",
+                  "category": "legal-fees",
+                  "status": "not-calculated"
+                }
+              ]
+            }
+          },
+          "changesFromPrevious": []
+        }
+      ]
+    },
+    {
+      "homeId": "R1",
+      "mode": "rent",
+      "nation": "England",
+      "coverage": "covered",
+      "storyId": "RENTER",
+      "scenarios": [
+        {
+          "scenarioId": "from-step-1",
+          "fromStep": 1,
+          "toStep": 3,
+          "monthly": {
+            "lines": [
+              {
+                "id": "R1.from-step-1.monthly.rent",
+                "category": "rent",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-RENT"
+                ]
+              },
+              {
+                "id": "R1.from-step-1.monthly.council-tax",
+                "category": "council-tax",
+                "status": "calculated",
+                "pence": 13333,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "R1-CT-CHARGE"
+                ]
+              },
+              {
+                "id": "R1.from-step-1.monthly.energy",
+                "category": "energy",
+                "status": "calculated",
+                "pence": 8000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-ENERGY-ESTIMATE"
+                ]
+              },
+              {
+                "id": "R1.from-step-1.monthly.water",
+                "category": "water",
+                "status": "conflicting",
+                "evidenceIds": [
+                  "R1-WATER-LISTING",
+                  "R1-WATER-WSOT"
+                ]
+              },
+              {
+                "id": "R1.from-step-1.monthly.broadband",
+                "category": "broadband",
+                "status": "calculated",
+                "pence": 3000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-BROADBAND-ESTIMATE"
+                ]
+              }
+            ],
+            "total": {
+              "id": "R1.from-step-1.monthly.total",
+              "pence": 144333,
+              "isPartial": true,
+              "partialReasons": [
+                {
+                  "lineId": "R1.from-step-1.monthly.water",
+                  "category": "water",
+                  "status": "conflicting"
+                }
+              ]
+            },
+            "budget": {
+              "id": "R1.from-step-1.monthly.budget",
+              "budgetPence": 160000,
+              "budgetSource": "household:RIVERS.monthlyBudget",
+              "differencePence": 15667,
+              "withinBudget": true,
+              "basedOnPartialTotal": true
+            }
+          },
+          "upfront": {
+            "lines": [
+              {
+                "id": "R1.from-step-1.upfront.deposit",
+                "category": "deposit",
+                "status": "calculated",
+                "pence": 138000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "R1-DEPOSIT"
+                ]
+              },
+              {
+                "id": "R1.from-step-1.upfront.first-month-rent",
+                "category": "first-month-rent",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "R1-FIRST-MONTH-RENT"
+                ]
+              },
+              {
+                "id": "R1.from-step-1.upfront.moving-costs",
+                "category": "moving-costs",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MOVING-COSTS"
+                ]
+              }
+            ],
+            "total": {
+              "id": "R1.from-step-1.upfront.total",
+              "pence": 378000,
+              "isPartial": false,
+              "partialReasons": []
+            }
+          },
+          "changesFromPrevious": []
+        },
+        {
+          "scenarioId": "from-step-4",
+          "fromStep": 4,
+          "toStep": 4,
+          "monthly": {
+            "lines": [
+              {
+                "id": "R1.from-step-4.monthly.rent",
+                "category": "rent",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-RENT"
+                ]
+              },
+              {
+                "id": "R1.from-step-4.monthly.council-tax",
+                "category": "council-tax",
+                "status": "calculated",
+                "pence": 13333,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "R1-CT-CHARGE"
+                ]
+              },
+              {
+                "id": "R1.from-step-4.monthly.energy",
+                "category": "energy",
+                "status": "calculated",
+                "pence": 8000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-ENERGY-ESTIMATE"
+                ]
+              },
+              {
+                "id": "R1.from-step-4.monthly.water",
+                "category": "water",
+                "status": "calculated",
+                "pence": 4500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-WATER-ESTIMATE"
+                ]
+              },
+              {
+                "id": "R1.from-step-4.monthly.broadband",
+                "category": "broadband",
+                "status": "calculated",
+                "pence": 3000,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R1-BROADBAND-ESTIMATE"
+                ]
+              }
+            ],
+            "total": {
+              "id": "R1.from-step-4.monthly.total",
+              "pence": 148833,
+              "isPartial": false,
+              "partialReasons": []
+            },
+            "budget": {
+              "id": "R1.from-step-4.monthly.budget",
+              "budgetPence": 160000,
+              "budgetSource": "household:RIVERS.monthlyBudget",
+              "differencePence": 11167,
+              "withinBudget": true,
+              "basedOnPartialTotal": false
+            }
+          },
+          "upfront": {
+            "lines": [
+              {
+                "id": "R1.from-step-4.upfront.deposit",
+                "category": "deposit",
+                "status": "calculated",
+                "pence": 138000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "R1-DEPOSIT"
+                ]
+              },
+              {
+                "id": "R1.from-step-4.upfront.first-month-rent",
+                "category": "first-month-rent",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "R1-FIRST-MONTH-RENT"
+                ]
+              },
+              {
+                "id": "R1.from-step-4.upfront.moving-costs",
+                "category": "moving-costs",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MOVING-COSTS"
+                ]
+              }
+            ],
+            "total": {
+              "id": "R1.from-step-4.upfront.total",
+              "pence": 378000,
+              "isPartial": false,
+              "partialReasons": []
+            }
+          },
+          "changesFromPrevious": [
+            {
+              "id": "R1.from-step-4.change.water",
+              "category": "water",
+              "kind": "now-calculated",
+              "previousEvidenceIds": [
+                "R1-WATER-LISTING",
+                "R1-WATER-WSOT"
+              ],
+              "currentEvidenceIds": [
+                "R1-WATER-ESTIMATE"
+              ]
+            }
+          ],
+          "monthlyTotalChange": {
+            "id": "R1.from-step-4.change.monthly-total",
+            "pence": 4500
+          }
+        }
+      ]
+    },
+    {
+      "homeId": "R2",
+      "mode": "rent",
+      "nation": "England",
+      "coverage": "covered",
+      "storyId": "RENTER",
+      "scenarios": [
+        {
+          "scenarioId": "from-step-1",
+          "fromStep": 1,
+          "toStep": 4,
+          "monthly": {
+            "lines": [
+              {
+                "id": "R2.from-step-1.monthly.rent",
+                "category": "rent",
+                "status": "calculated",
+                "pence": 127500,
+                "sourcePeriod": "month",
+                "evidenceIds": [
+                  "R2-RENT"
+                ]
+              },
+              {
+                "id": "R2.from-step-1.monthly.council-tax",
+                "category": "council-tax",
+                "status": "calculated",
+                "pence": 15417,
+                "sourcePeriod": "year",
+                "evidenceIds": [
+                  "R2-CT-CHARGE"
+                ]
+              },
+              {
+                "id": "R2.from-step-1.monthly.energy",
+                "category": "energy",
+                "status": "included",
+                "evidenceIds": [
+                  "R2-ENERGY"
+                ]
+              },
+              {
+                "id": "R2.from-step-1.monthly.water",
+                "category": "water",
+                "status": "included",
+                "evidenceIds": [
+                  "R2-WATER"
+                ]
+              },
+              {
+                "id": "R2.from-step-1.monthly.broadband",
+                "category": "broadband",
+                "status": "included",
+                "evidenceIds": [
+                  "R2-BROADBAND"
+                ]
+              }
+            ],
+            "total": {
+              "id": "R2.from-step-1.monthly.total",
+              "pence": 142917,
+              "isPartial": false,
+              "partialReasons": []
+            },
+            "budget": {
+              "id": "R2.from-step-1.monthly.budget",
+              "budgetPence": 160000,
+              "budgetSource": "household:RIVERS.monthlyBudget",
+              "differencePence": 17083,
+              "withinBudget": true,
+              "basedOnPartialTotal": false
+            }
+          },
+          "upfront": {
+            "lines": [
+              {
+                "id": "R2.from-step-1.upfront.deposit",
+                "category": "deposit",
+                "status": "calculated",
+                "pence": 147000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "R2-DEPOSIT"
+                ]
+              },
+              {
+                "id": "R2.from-step-1.upfront.first-month-rent",
+                "category": "first-month-rent",
+                "status": "calculated",
+                "pence": 127500,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "R2-FIRST-MONTH-RENT"
+                ]
+              },
+              {
+                "id": "R2.from-step-1.upfront.moving-costs",
+                "category": "moving-costs",
+                "status": "calculated",
+                "pence": 120000,
+                "sourcePeriod": "once",
+                "evidenceIds": [
+                  "HH-MOVING-COSTS"
+                ]
+              }
+            ],
+            "total": {
+              "id": "R2.from-step-1.upfront.total",
+              "pence": 394500,
+              "isPartial": false,
+              "partialReasons": []
+            }
+          },
+          "changesFromPrevious": []
+        }
+      ]
+    },
+    {
+      "homeId": "WALES-1",
+      "nation": "Wales",
+      "coverage": "not-yet-covered",
+      "scenarios": []
+    }
+  ]
+}

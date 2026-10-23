@@ -2,6 +2,7 @@
   <Folder Name="/packages/cost-engine/">
     <Project Path="packages/cost-engine/src/HomeScout.CostEngine/HomeScout.CostEngine.csproj" />
     <Project Path="packages/cost-engine/src/HomeScout.CostEngine.Generator/HomeScout.CostEngine.Generator.csproj" />
+    <Project Path="packages/cost-engine/tests/HomeScout.CostEngine.Generator.Tests/HomeScout.CostEngine.Generator.Tests.csproj" />
     <Project Path="packages/cost-engine/tests/HomeScout.CostEngine.Tests/HomeScout.CostEngine.Tests.csproj" />
   </Folder>
   <Folder Name="/packages/fixtures/">
