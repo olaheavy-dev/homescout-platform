@@ -25,6 +25,8 @@ Supporting rules:
 ## Still to decide
 **Before the first public deployment (stage 5):**
 - Lawful basis and a short privacy notice for data about anonymous visitors that the site, hosting and security services handle: IP addresses (an IP address used to tell visitors apart can be personal data, see [ICO guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-information-what-is-it/what-is-personal-data/what-are-identifiers-and-related-factors/)), browser details, and the hosting provider's own logs. This applies even when IPs are only held in memory for rate limiting.
+- Whether the project must pay the [ICO data protection fee](https://ico.org.uk/for-organisations/data-protection-fee/faqs-data-protection-fee-payment-and-online-registration) or is exempt; pay it before going public if required.
+- A PECR check of anything the demo stores on or reads from the visitor's device (for example preferences or session storage), confirming each item is strictly necessary or has consent.
 
 **Before real data is loaded (stage 6, step 4):**
 - Lawful basis under UK GDPR and the privacy notice, explicitly covering **personal data that appears in public records** (for example names and addresses of planning applicants, or names in sold-price or certificate records). Publicly available data still carries data-protection obligations, and the [ICO requires the lawful basis to be set before processing begins](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/a-guide-to-lawful-basis/). Decide which personal fields to drop on ingestion.
@@ -34,8 +36,8 @@ Supporting rules:
 - Lawful basis for each kind of personal data users store (accounts, saved homes, documents), and the privacy notice update.
 - Retention and deletion periods for saved records, documents and snapshots, including after a paid pass expires (linked to decision 0007 and doc 02 §8).
 - Per-user isolation of uploaded documents, and how user data is excluded from AI training and shared retrieval.
-- Whether ICO registration (data protection fee) is required, and a data protection impact assessment for document processing.
-- A PECR assessment of everything stored on or read from the visitor's device (browser storage, cookies, sign-in sessions, rate-limiting techniques), confirming which are strictly necessary and which need consent.
+- Recheck the ICO fee position for the new processing, and a data protection impact assessment for document processing.
+- Extend the PECR assessment to the full product (sign-in sessions, browser storage, rate-limiting techniques).
 
 ## Consequences
 The anonymous free view stays cheap, privacy-friendly and simple to explain. "Pick up where you left off" across devices requires saving a home (and probably an account). The data design keeps public-data tables separate from user tables from the start.
