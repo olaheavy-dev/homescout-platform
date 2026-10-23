@@ -31,6 +31,7 @@ Every significant product, technical and working decision gets its own record in
 | WW-01 | Ways of working | 1 | Accepted | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
+| WW-04 | Merge policy and single agent instructions file | 1 | Accepted | [0015](0015-agent-merges-after-review.md) |
 | DA-01 | Fixture data format | 2 | Not started | |
 | DA-02 | Calculation script and test vectors | 2 | Not started | |
 | SP-01 | Specification format | 3 | Not started | |

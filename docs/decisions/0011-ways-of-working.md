@@ -1,7 +1,7 @@
 # 0011: Ways of working
 
 **ID:** WW-01  
-**Status:** Accepted  
+**Status:** Accepted; merge step superseded by [0015](0015-agent-merges-after-review.md)  
 **Date:** 2026-10-23  
 **Stage:** 1
 

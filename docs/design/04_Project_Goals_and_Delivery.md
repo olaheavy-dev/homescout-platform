@@ -209,7 +209,7 @@ Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then r
 These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 
 **Roles**
-- **You:** product owner, architect and reviewer. You make every decision, approve every gate and merge every pull request.
+- **You:** product owner, architect and reviewer. You make every decision and approve every gate. Claude Code merges routine pull requests after Codex review; you merge sensitive ones (decision 0015, `AGENTS.md`).
 - **Coding agents:** draft decision options, specs, code, tests, infrastructure and documentation, working from the specs and `CLAUDE.md`.
 - **Outside reviewers** (later): legal, tax and tenancy content gets professional review before anything is charged for.
 
@@ -225,7 +225,7 @@ These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 4. **Checks:** CI runs build, lint, tests, accessibility checks and (later) AI evaluations. Nothing merges on red.
 5. **AI review:** OpenAI Codex reviews the pull request as an independent second opinion (decision 0012). Its findings are advice; you decide what to act on.
 6. **Your review:** read the diff, run it, and question anything you can't explain.
-7. **Merge and explain-back:** a few lines in your own words on how it works, added to the learning log.
+7. **Merge and explain-back:** Claude Code merges once the conditions in decision 0015 are met (otherwise you merge), then posts a one-line summary. You then write a few lines in your own words on how it works, added to the learning log.
 
 **Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
 
