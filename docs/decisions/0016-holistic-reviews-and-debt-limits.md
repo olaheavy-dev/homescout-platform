@@ -1,7 +1,7 @@
 # 0016: Holistic reviews and debt limits
 
 **ID:** WW-05  
-**Status:** Accepted  
+**Status:** Superseded by [0035](0035-ways-of-working-v2.md)  
 **Date:** 2026-10-23  
 **Stage:** 1  
 **Supersedes:** in [0015](0015-agent-merges-after-review.md), the founder-merge condition "any pull request where a Codex finding was deliberately not fixed", and the matching consequence that the founder decides on findings "proposed to be left unfixed". The rest of 0015 still stands, including the review-round rule.

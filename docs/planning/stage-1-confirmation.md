@@ -29,7 +29,7 @@
 
 **Stage 1 gate:** `AGENTS.md` (with `CLAUDE.md` linked to it), the merge to `main`, branch protection and the project board are done. The whole-repository audit (pull request #9) was completed with every finding fixed and a clean re-review, and no `review-followup` issues were open at sign-off. The demo name doesn't block stage 2.
 
-The sections below keep the original options for reference. **Where they describe reviews and merges (WW-01, WW-02), they are superseded by decisions 0015 and 0016**: follow `AGENTS.md` and doc 04 §10, not these options.
+The sections below keep the original options for reference. **Where they describe reviews and merges (WW-01, WW-02), they are superseded, now by decision 0035**: follow `AGENTS.md`, the single rulebook, not these options.
 
 ## Already decided (for reference)
 

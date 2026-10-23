@@ -1,7 +1,7 @@
 # 0031: Agent roster, design skills and working rules
 
 **ID:** WW-10  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: model column and planner lane by [0035](0035-ways-of-working-v2.md))  
 **Date:** 2026-10-23  
 **Stage:** 2
 
