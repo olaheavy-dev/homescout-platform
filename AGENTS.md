@@ -2,7 +2,7 @@
 
 Shared instructions for every AI agent on this project. `CLAUDE.md` is a symbolic link to this file, so Claude Code and OpenAI Codex read the same text. Edit **this** file only.
 
-Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonnet 5.5 builds and verifies, Codex reviews every pull request, and Claude Code merges. Builders follow "When building"; every reviewer (Opus pre-push, Codex, fallback) follows "When reviewing"; merging follows "When merging".
+Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonnet 5.5 builds and verifies, Codex reviews every pull request except small dependency updates, and Claude Code merges. Builders follow "When building"; every reviewer (Opus pre-push, Codex, fallback) follows "When reviewing"; merging follows "When merging".
 
 ## What this project is
 

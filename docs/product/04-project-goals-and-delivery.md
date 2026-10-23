@@ -19,7 +19,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
-- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Opus 5.5 plans and reviews (including a fresh-context review before every push); Sonnet 5.5 builds and verifies; OpenAI Codex reviews every pull request as an independent second opinion (decision 0035, rules in `AGENTS.md`). You set direction and own decisions, merge founder-only pull requests, and review routine changes by exception.
+- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Opus 5.5 plans and reviews (including a fresh-context review before every push); Sonnet 5.5 builds and verifies; OpenAI Codex reviews every pull request (except small dependency updates) as an independent second opinion (decision 0035, rules in `AGENTS.md`). You set direction and own decisions, merge founder-only pull requests, and review routine changes by exception.
 - **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools, **plus an optional, closable chat panel about the current home** (decision 0004). The chat cites evidence or says it doesn't know, uses the cost engine for any number, and needs its own scripted sample replies in the prototype and its own evaluation set later. All numbers come from deterministic code. Microsoft Agent Framework is the AI framework (decision 0023): single agents for tasks and chat, and a workflow with a human approval step for document investigation. Calculations stay in plain code.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
@@ -37,7 +37,7 @@ These keep agent output reviewable and keep you learning rather than rubber-stam
 7. **Agent guardrails in the repo.** A `CLAUDE.md` (or equivalent) records conventions, commands, the "no invented facts" rule and the commercial constraints below, so every agent session starts with them.
 8. **No real personal data.** Development and demos use the synthetic fixture catalogue from doc 03. Real documents are only for consented research sessions, kept outside the repository.
 9. **Licence check before ingestion.** No dataset, map tile or image enters the repository or pipeline until its licence and attribution terms are recorded.
-10. **Explain-back.** For each merged slice, you write a few lines on how it works. This is the learning record and the raw material for the case study.
+10. **Explain-back.** Once a week, for each significant slice merged that week, you write a few lines on how it works (decision 0035). This is the learning record and the raw material for the case study.
 
 ## 4. What makes it portfolio-worthy
 
@@ -214,9 +214,9 @@ Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then r
 
 The current rules live in **`AGENTS.md`**, the single rulebook (decision 0035). In short:
 
-- **Roles:** you make every decision, approve every gate, and merge founder-only pull requests; you learn through walkthroughs and a weekly explain-back. Agents plan, build, check and review. **Opus 5.5 plans and reviews; Sonnet 5.5 builds and verifies.** Codex reviews every pull request as an independent second opinion.
+- **Roles:** you make every decision, approve every gate, and merge founder-only pull requests; you learn through walkthroughs and a weekly explain-back. Agents plan, build, check and review. **Opus 5.5 plans and reviews; Sonnet 5.5 builds and verifies.** Codex reviews every pull request (except small dependency updates) as an independent second opinion.
 - **How a decision gets made:** an agent drafts options with a recommendation, you choose and give your reason. Hard-to-reverse decisions get a full record; easily reversible ones get a line in the register. Changing a decision means a new record that supersedes the old one.
 - **How a change gets made:** plan (data contract first, then backend and frontend tasks) → build → `make check` → pre-push Opus review → pull request → Codex review → fix → merge → summary.
 - **Definition of ready:** a plan with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
-- **Definition of done:** acceptance criteria met; `make check` and CI pass; zero GitHub security alerts; works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the demo where relevant.
+- **Definition of done:** acceptance criteria met; `make check` and CI pass; the change introduces no GitHub security alert (for alerts already open on `main`, see `AGENTS.md`, "When merging", condition 4); works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the demo where relevant.
 - **Cadence:** a short weekly plan (which gate is next, which issues serve it) and a weekly review (what shipped, your explain-back, cloud spend against the cap, and coding-agent spend and review rounds).
