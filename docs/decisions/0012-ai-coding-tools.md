@@ -1,7 +1,7 @@
 # 0012: AI coding tools and setup
 
 **ID:** WW-02  
-**Status:** Accepted  
+**Status:** Accepted; review order and finding triage superseded by [0015](0015-agent-merges-after-review.md)  
 **Date:** 2026-10-23  
 **Stage:** 1
 

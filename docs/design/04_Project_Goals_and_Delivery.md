@@ -223,9 +223,9 @@ These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 2. **Agent session on a branch:** the agent implements with tests and updates docs. One issue per session keeps context small.
 3. **Pull request:** a description of what changed and why, how it was tested, and any assumptions the agent made.
 4. **Checks:** CI runs build, lint, tests, accessibility checks and (later) AI evaluations. Nothing merges on red.
-5. **AI review:** OpenAI Codex reviews the pull request as an independent second opinion (decision 0012). Its findings are advice; you decide what to act on.
-6. **Your review:** read the diff, run it, and question anything you can't explain.
-7. **Merge and explain-back:** Claude Code merges once the conditions in decision 0015 are met (otherwise you merge), then posts a one-line summary. You then write a few lines in your own words on how it works, added to the learning log.
+5. **AI review:** OpenAI Codex reviews the latest commit. Claude Code fixes each finding or answers it with a reason, and asks Codex to re-review after fixes (decision 0015).
+6. **Merge:** on a routine pull request, Claude Code merges once the decision 0015 conditions are met, with no wait for you. On a founder-only pull request (see `AGENTS.md`, "When merging"), or where Claude proposes not fixing a finding, you review and merge, deciding which findings to act on.
+7. **Summary and explain-back:** after merging, Claude Code posts a one-line summary. You can review any merged change at any time. You then write a few lines in your own words on how it works, added to the learning log.
 
 **Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
 
