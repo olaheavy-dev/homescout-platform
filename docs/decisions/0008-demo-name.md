@@ -1,7 +1,7 @@
 # 0008: Name shown on the public demo
 
 **ID:** PD-08  
-**Status:** Proposed (parked)  
+**Status:** Parked (resume before the public demo)  
 **Date:** 2026-10-23  
 **Stage:** 1
 

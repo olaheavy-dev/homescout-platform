@@ -9,10 +9,10 @@ Shared instructions for every AI agent on this project. `CLAUDE.md` is a symboli
 
 HomeScout (private code name; public name not chosen) is a home decision workspace for people **buying or renting in England**: check a home, see the real cost, compare homes, and track questions and answers until they decide. It is a portfolio and learning project for its founder, kept commercially viable for later. Public repository, all rights reserved.
 
-Read before working:
-- `docs/design/02_Product_Research_and_Direction.md`: product decisions and scope
-- `docs/design/03_Prototype_and_Image_Direction.md`: prototype behaviour and design
-- `docs/design/04_Project_Goals_and_Delivery.md`: roadmap (§9) and ways of working (§10)
+Read before working (the [documentation index](docs/README.md) explains the folder structure and naming rules):
+- `docs/product/02-research-and-direction.md`: product decisions and scope
+- `docs/product/03-prototype-and-image-direction.md`: prototype behaviour and design
+- `docs/product/04-project-goals-and-delivery.md`: roadmap (§9) and ways of working (§10)
 - `docs/decisions/`: accepted decisions. Don't contradict one; propose a new record instead.
 
 The current stage is in the README and `docs/planning/`.
@@ -20,10 +20,10 @@ The current stage is in the README and `docs/planning/`.
 ## Rules for every agent
 
 1. **No invented facts.** Never make up property data, legal or tax rules, sources, dates or competitor claims. If something isn't known, the product says so.
-2. **No hand-typed figures.** Every number in fixtures, UI or docs comes from the calculation script or the cost engine.
+2. **No hand-typed calculated figures.** Figures come in two kinds. **Inputs** (a listing's claimed charge, a figure in a document, a user-entered estimate, an official dataset value) are recorded once in the fixture or data files, each with its source. **Calculated outputs** (totals, differences, repayments, comparisons, test expectations) always come from the calculation script or cost engine, never typed by hand. UI and docs quote inputs from the data files and outputs from the script.
 3. **Rules come from cited sources.** Tax, tenancy, lease and privacy rules live in versioned tables or records with a source URL and effective date.
 4. **The product never says a home is "verified", "safe" or "approved"**, and AI never calculates numbers. Follow decision 0004 for AI and chat behaviour.
-5. **Public repository.** Never commit secrets, API keys, real personal data, real customer documents or licensed datasets. Use the synthetic fixtures. Record every image or media file in `docs/design/ASSETS.md` before committing it.
+5. **Public repository.** Never commit secrets, API keys, real personal data, real customer documents or licensed datasets. Use the synthetic fixtures. Record every image or media file in `docs/assets/README.md` before committing it.
 6. **England first.** Other UK nations show "not yet covered". Keep a nation field in data; don't hard-code English rules into shared code.
 7. **Missing data is never shown as zero**, a favourable value or a clean result.
 8. **Plain language for the founder.** When explaining options or decisions, say what each option means in practice and give a clear recommendation.

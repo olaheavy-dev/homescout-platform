@@ -1,10 +1,10 @@
 # HomeScout: product research and recommended direction
 
 **Research date:** 23 October 2026, Europe/London  
-**Context:** Companion to `01_HomeScout_Product_Brief_v1.1.md`; the existing brief and all eight concept images were reviewed.  
+**Context:** Companion to `01-product-brief-v1.1.md`; the existing brief and all eight concept images were reviewed.  
 **Confirmed by the founder:** Buyers and renters receive equal weight. **England first**: the first release covers English addresses only, while the UK-wide ambition and the existing technology direction remain the working context.  
-**Precedence:** This document owns current product recommendations, decision status and geographic scope. `03_Prototype_and_Image_Direction.md` owns proposed prototype behaviour and design within that scope; a design detail does not approve a product or commercial decision. Both supersede conflicting descriptions in the historical brief.  
-**Decision status:** Recommendations for discussion, not an approved roadmap, validated demand, brand clearance or a description of working integrations. No MVP/post-MVP classification is introduced.
+**Precedence:** This document owns current product recommendations, decision status and geographic scope. `03-prototype-and-image-direction.md` owns proposed prototype behaviour and design within that scope; a design detail does not approve a product or commercial decision. Both supersede conflicting descriptions in the historical brief.  
+**Decision status:** Rows marked **Confirmed by founder** in §9, accepted records 0001–0007 in `docs/decisions/`, and the agreed starting position in proposed record 0014, are binding. Everything else here (including rows still marked Recommended or Open) remains a recommendation for discussion. Nothing here is validated demand, brand clearance or a description of working integrations. No MVP/post-MVP classification is introduced.
 
 ## 1. The recommended product
 
@@ -131,7 +131,7 @@ An AI interpretation of a reply is a proposed assessment. A user or explicitly i
 - Produce a dated snapshot containing evidence, assumptions, open questions and the household's rationale.
 - Allow a decision to be recorded with acknowledged uncertainties. “User chose to proceed” is not “property verified.”
 
-AI belongs inside these tasks: explain a finding, compare documents, draft a question, interpret a reply and explain an updated scenario. The existing stack can support this, but the customer does not need a dashboard of named agents. "Agent-driven" describes how the product is **built** (by AI coding agents, see `04_Project_Goals_and_Delivery.md`), not a requirement for a multi-agent runtime. Start with single, task-specific model calls that use tools and deterministic functions. Adopt agent orchestration only where a measured task needs it. The founder chose AI inside tasks **plus** an optional chat panel about the current home (decision 0004). The chat must cite evidence or say it doesn't know, use the cost engine for any number, and never call a home safe or verified.
+AI belongs inside these tasks: explain a finding, compare documents, draft a question, interpret a reply and explain an updated scenario. The existing stack can support this, but the customer does not need a dashboard of named agents. "Agent-driven" describes how the product is **built** (by AI coding agents, see `04-project-goals-and-delivery.md`), not a requirement for a multi-agent runtime. Start with single, task-specific model calls that use tools and deterministic functions. Adopt agent orchestration only where a measured task needs it. The founder chose AI inside tasks **plus** an optional chat panel about the current home (decision 0004). The chat must cite evidence or say it doesn't know, use the cost engine for any number, and never call a home safe or verified.
 
 ## 6. Evidence design: make trust understandable
 
@@ -245,7 +245,7 @@ Research the economics before commitments: licensed address/data calls, routing,
 | Public brand | Retain HomeScout only as an internal code name; choose a demo name before public launch (0008) | Open (0009); name shortlist in progress |
 | Commercial model | Test a Move pass against monthly and one-off alternatives | Open (0010) |
 | Free/paid principle | Free covers the complete first look and all public-interest facts; paid covers metered depth (documents, AI assistance, monitoring, sharing, snapshots). Draft boundary in §8 | **Confirmed by founder** (0007); limits and prices open |
-| Project purpose | Portfolio and learning project now, built mostly by AI coding agents on a small monthly budget, kept commercially viable for later. Public repository, all rights reserved; the clickable prototype is the first public showcase. See `04_Project_Goals_and_Delivery.md` §8–9 | **Confirmed by founder**; budget cap to be set in the infrastructure decision |
+| Project purpose | Portfolio and learning project now, built mostly by AI coding agents on a small monthly budget, kept commercially viable for later. Public repository, all rights reserved; the clickable prototype is the first public showcase. See `04-project-goals-and-delivery.md` §8–9 | **Confirmed by founder**; budget cap to be set in the infrastructure decision |
 | Coverage promise | England first; UK ambition with explicit nation/source coverage per feature; other nations shown as "not yet covered" | **England first confirmed by founder**; sequence of later nations open; supplier diligence required |
 | Prototype centrepiece | Full buyer and renter question-to-answer journeys | **Confirmed by founder** (0006) |
 

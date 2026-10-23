@@ -1,6 +1,6 @@
 # Stage 1 confirmation list
 
-**Purpose:** Close the stage 1 decisions in `docs/design/04_Project_Goals_and_Delivery.md` §9 so stage 2 (the fixture catalogue) can start.  
+**Purpose:** Close the stage 1 decisions in `docs/product/04-project-goals-and-delivery.md` §9 so stage 2 (the fixture catalogue) can start.  
 **How to use:** For each item, tick one box and add a line on why. Accepted items become decision records in `docs/decisions/` and their status is updated in the register.  
 **Gate:** every product item is confirmed, changed, or kept open with a reason; WW-01 to WW-03 are accepted; `CLAUDE.md` and the decision-record template are in the repository.
 
@@ -23,8 +23,9 @@
 | WW-03 Repo and tracking | Standard setup | [0013](../decisions/0013-repo-and-tracking.md) |
 | WW-04 Merge policy and instructions file | Claude Code merges routine PRs after Codex review; founder merges sensitive ones; single `AGENTS.md` with `CLAUDE.md` linked to it | [0015](../decisions/0015-agent-merges-after-review.md) |
 | WW-05 Holistic reviews and debt limits | Pre-flight check, one complete Codex pass, debt limits, serious findings always block | [0016](../decisions/0016-holistic-reviews-and-debt-limits.md) |
+| WW-06 Docs structure and naming | `docs/product/`, `docs/assets/`, index in `docs/README.md` | [0017](../decisions/0017-docs-structure.md) |
 
-**Still needed for the stage 1 gate:** `CLAUDE.md` and `AGENTS.md` in the repo; the merge to `main` with branch protection and a project board. The demo name doesn't block stage 2.
+**Stage 1 gate:** `AGENTS.md` (with `CLAUDE.md` linked to it), the merge to `main`, branch protection and the project board are done. The last requirement is the whole-repository audit (pull request #9) with no open `review-followup` issues. The demo name doesn't block stage 2.
 
 The sections below keep the original options for reference. **Where they describe reviews and merges (WW-01, WW-02), they are superseded by decisions 0015 and 0016**: follow `AGENTS.md` and doc 04 §10, not these options.
 
@@ -159,7 +160,7 @@ Buyers and renters with equal weight · England first · Portfolio and learning 
 
 ### WW-03 Repository and tracking conventions
 **Recommendation:**
-- **Layout:** a monorepo, `apps/web` (prototype, then product frontend), `packages/fixtures` (catalogue, calculation script, test vectors), `docs/` (design, decisions, planning, reviews), `infra/` (later), and `apps/api` only when BE-01 is decided.
+- **Layout:** a monorepo, `apps/web` (prototype, then product frontend), `packages/fixtures` (catalogue, calculation script, test vectors), `docs/` (design, decisions, planning, reviews; now organised as set out in `docs/README.md`, decision 0017), `infra/` (later), and `apps/api` only when BE-01 is decided.
 - **Branches:** `main` protected (pull request and passing checks required, no direct pushes); short-lived branches named `type/short-description` (e.g. `feat/buyer-story-costs`, `docs/stage-1-decisions`).
 - **Commits:** Conventional Commits style (`feat:`, `fix:`, `docs:`, `chore:`), squash-merged so each PR is one commit on `main`.
 - **Tracking:** GitHub Issues for work, one GitHub Project board with columns per roadmap stage, and labels for decision IDs.

@@ -2,7 +2,7 @@
 
 **Date:** 23 October 2026  
 **Confirmed by the founder:** The project is a portfolio and learning project first, built mostly by AI coding agents, on a small monthly running budget, and kept commercially viable for later.  
-**Authority:** This document owns how the product is built, run and presented. `02_Product_Research_and_Direction.md` still owns product and commercial decisions; `03_Prototype_and_Image_Direction.md` still owns prototype behaviour and design.  
+**Authority:** This document owns how the product is built, run and presented. `02-research-and-direction.md` still owns product and commercial decisions; `03-prototype-and-image-direction.md` still owns prototype behaviour and design.  
 **Status:** Proposed approach. The build sequence in section 5 orders engineering work for learning and demonstration. It is not an MVP classification or a validated launch roadmap.
 
 ## 1. Three goals, and how to trade them off
@@ -20,7 +20,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
 - **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction and own decisions. You review founder-only pull requests, including any where Claude disputes a finding; routine changes are reviewed by Codex and merged by Claude Code, and you review them by exception (decision 0015).
-- **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools. All numbers come from deterministic code. Multi-agent orchestration (Microsoft Agent Framework in the brief's stack) is deferred until a measured task needs it.
+- **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools, **plus an optional, closable chat panel about the current home** (decision 0004). The chat cites evidence or says it doesn't know, uses the cost engine for any number, and needs its own scripted sample replies in the prototype and its own evaluation set later. All numbers come from deterministic code. Multi-agent orchestration (Microsoft Agent Framework in the brief's stack) is deferred until a measured task needs it.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
 
@@ -58,9 +58,9 @@ The public demo uses the synthetic fixtures and is labelled **Illustrative examp
 
 ## 5. Proposed build sequence
 
-Each step is a vertical slice that leaves a working, demonstrable product. It sequences engineering and learning. It does not remove features from the product or decide what launches.
+Each step is a vertical slice that leaves a working, demonstrable product. It sequences engineering and learning. It does not remove features from the product or decide what launches. **The stage order in §9 governs timing:** step 1's parts happen in different §9 stages, as noted.
 
-1. **Foundation:** repository conventions, CLAUDE.md, CI, IaC skeleton, budget alerts (cap set in the infrastructure discussion, section 9 stage 4), the fixture catalogue (four homes, one household, fixed 23 October 2026 snapshot).
+1. **Foundation:** repository conventions and agent instructions (§9 stage 1, done); the fixture catalogue (§9 stage 2); CI, IaC skeleton and budget alerts (§9 stage 4, after the infrastructure decisions, before the first deployment). The fixture catalogue covers (four homes, one household, fixed 23 October 2026 snapshot).
 2. **Clickable prototype of both stories** on fixtures, with a design system from doc 03 §6. This alone is a presentable portfolio piece, and it is **the first public showcase** (founder decision).
 3. **Cost engine** behind the prototype: buy and rent, England SDLT, move-in cash, stress scenarios, fully tested.
 4. **Real England evidence** for one category at a time (EPC, then Price Paid, then planning and flood), with provenance and "not covered" states.
@@ -132,9 +132,9 @@ The prototype's credibility depends on this, and the images show what happens wi
 - For each home: address, unit, tenure, type, photo brief, evidence records with source, scope and date, and cost inputs.
 - Story documents: the listing, the managing-agent budget, the bills schedule, the partial and full replies.
 - Fixed snapshot date of 23 October 2026. Any older source dates are stale deliberately.
-- **Every figure computed by a small script**, not typed by hand. The script's worked examples become the first cost-engine tests.
+- **Inputs and calculated outputs kept apart.** Inputs (the listing's £2,400 claim, the managing-agent budget's £3,720, rent, the user-entered £28 water estimate, and so on) are stored in the fixture files with their source. **Every calculated output** (totals, differences, monthly equivalents, comparisons) is computed by a small script from those inputs, never typed by hand. The script's worked examples become the first cost-engine tests.
 
-**Gate:** the catalogue is stored as data files in the repository; the script, not the documents, is the source of every figure; each value in doc 03 §4 has been checked against the script's output and corrected where it differed; and no fixture contradicts another.
+**Gate:** the catalogue is stored as data files in the repository; every input has a recorded source; the script, not the documents, is the source of every calculated output; each value in doc 03 §4 has been checked against the script's output and corrected where it differed; and no fixture contradicts another.
 
 ### Stage 3: Write the prototype specification
 
@@ -190,7 +190,7 @@ Build in vertical slices, each one deployed to the demo:
 4. Edge states, mobile layouts and an accessibility pass (WCAG 2.2 AA target).
 5. "Illustrative example" labelling, a simulated-action audit, and the public launch of the demo.
 
-**Gate:** both stories run end to end on the public demo, every number comes from the fixture script, and the accessibility checks pass.
+**Gate:** both stories run end to end on the public demo, every input comes from the fixture files and every calculated number from the fixture script, and the accessibility checks pass.
 
 ### Stage 6: Validate, then build the real product
 
@@ -230,7 +230,7 @@ These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 
 **Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
 
-**Definition of done:** acceptance criteria met; tests and checks pass; works on mobile and with keyboard; no hand-typed figures; docs and decision records updated; deployed to the demo where relevant; explain-back written.
+**Definition of done:** acceptance criteria met; tests and checks pass; works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the demo where relevant; explain-back written.
 
 **Cadence:** a short weekly plan (which gate is next and which issues serve it) and a short weekly review (what shipped, what you learned, actual cloud and AI spend against the cap).
 
