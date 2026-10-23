@@ -17,10 +17,10 @@ C4Context
     System_Ext(models, "AI model provider (later)", "Explains findings and drafts questions; never calculates numbers (decisions 0004, 0023)")
     System_Ext(portals, "Listing portals and agent websites", "Never scraped or copied (decision 0028)")
 
-    Rel(user, homescout, "Enters or uploads their own listing details, documents and estimates")
+    Rel(user, homescout, "(later) Enters or uploads their own listing details, documents and estimates")
     Rel(homescout, official, "Reads through adapters (later)")
     Rel(homescout, models, "Sends supplied text, receives wording (later)")
-    Rel(user, portals, "Browses the listing themselves; HomeScout stores a link only as their own reference")
+    Rel(user, portals, "(later) Browses the listing themselves; HomeScout never scrapes it; a link may be stored as the user's own reference (decision 0028)")
 ```
 
 - **People.** The buyer or renter is the only user. Buyers and renters have equal weight (doc 03).
@@ -49,8 +49,8 @@ C4Container
 
     System_Boundary(later, "Planned (later)") {
         Container(web, "Web app (later)", "TypeScript, Next.js", "The prototype screens and the optional chat panel (decision 0020)")
-        Container(api, "API (later)", "C#, ASP.NET Core", "Serves costs and the question workflow from the same engine (decision 0020)")
-        ContainerDb(db, "Database (later)", "PostgreSQL", "Persisted homes, questions, replies and decisions (decision 0022)")
+        Container(api, "API (later)", "C#, ASP.NET Core (planned, to confirm: BE-01, stage 6)", "Serves costs and the question workflow from the same engine (decision 0020)")
+        ContainerDb(db, "Database (later)", "PostgreSQL (planned, to confirm: DA-03)", "Persisted homes, questions, replies and decisions (hosting per decision 0022)")
         Container(ai, "AI layer (later)", "Microsoft Agent Framework", "Explains, drafts and checks; quotes only figures the engine supplied (decision 0023)")
     }
 
@@ -84,4 +84,4 @@ C4Container
 | Validator | `packages/fixtures/tools/HomeScout.Fixtures.Validator/` | Schema checks for `make validate`. |
 | Checks | `Makefile`, `.github/workflows/` | `make check` locally and in CI; `make generated-check` fails if the committed output is out of date. |
 
-**What is planned, and not built.** The Next.js web app (decision 0020), the ASP.NET Core API (decisions 0020 and 0021), PostgreSQL (decision 0022: the founder's existing server first, Azure only where needed) and the AI layer (decision 0023). Hosting is chosen cost-first (decision 0022). Until the API exists, the prototype reads the generated file.
+**What is planned, and not built.** The Next.js web app (decision 0020), the ASP.NET Core API (planned; the framework is still to be confirmed at stage 6, BE-01), PostgreSQL (planned; to be confirmed, DA-03; hosting follows decision 0022: the founder's existing server first, Azure only where needed) and the AI layer (decision 0023). How the prototype is built is decided at stage 4 (IN-01); the recommended starting point is that it reads the generated file.
