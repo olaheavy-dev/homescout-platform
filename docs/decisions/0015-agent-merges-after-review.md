@@ -15,14 +15,16 @@ Under 0011, the founder merged every pull request. With Codex reviewing every pu
 - **Claude merges anything that passes checks:** fastest, but loses the independent review.
 
 ## Decision
-Claude Code merges a pull request once Codex has reviewed its latest commit, every finding is fixed or answered, all threads are resolved and every check on the pull request has passed (none failing or still running). The founder still merges changes to the licence, repository settings and merge rules; tax, legal, tenancy and privacy rule tables; infrastructure and costs; dependencies; and any pull request where a Codex finding was deliberately not fixed. The full conditions are in `AGENTS.md`, "When merging".
+Claude Code merges a pull request once Codex has reviewed its latest commit, every finding is fixed or answered, all threads are resolved and every check on the pull request has passed (none failing or still running). The founder still merges changes to the licence, repository settings and merge rules; tax, legal, tenancy and privacy rule tables; infrastructure and costs; dependencies; and any pull request where Claude disputes a finding as wrong. P0/P1 findings always block and are never overridden; P2/P3 findings validly deferred to a follow-up issue don't require the founder. The full conditions are in `AGENTS.md`, "When merging".
 
 **Review rounds** (added by the founder: "let us fix minor issues separately; our ways of working should be optimised for quality, speed and coding agent cost"): serious findings (P0/P1) always block a merge. Minor findings (P2/P3) are fixed in the pull request during the first two review rounds; from round 3 onward they go to a `review-followup` issue, cleared in batched tidy-up pull requests at least once per stage and before each stage gate. Fixes are pushed in one batch per round, with one re-review request. Cost-saving working rules are in `AGENTS.md`, "Keeping agent cost down".
+
+**Holistic reviews** (added by the founder to avoid debt while keeping speed): Claude Code runs a pre-flight consistency check across the repository before opening each pull request; Codex reports all findings in one complete first pass, including knock-on effects, and limits re-reviews to the fixes; no stage gate passes with open follow-ups, more than 5 open follow-ups pause new feature work, and each stage gate includes a whole-repository audit.
 
 `AGENTS.md` becomes the single instructions file for all agents. `CLAUDE.md` is a symbolic link to it.
 
 ## Consequences
-- One workflow (doc 04 §10, steps 5–7): Codex reviews, Claude Code fixes or answers each finding, then merges routine pull requests. The founder reviews founder-only pull requests and any where a finding is proposed to be left unfixed, and decides on those findings. Otherwise the founder reviews by exception and through post-merge summaries.
+- One workflow (doc 04 §10, steps 5–7): Codex reviews, Claude Code fixes or answers each finding, then merges routine pull requests. The founder reviews founder-only pull requests, including any where Claude disputes a finding, and decides whether those findings stand. Otherwise the founder reviews by exception and through post-merge summaries.
 - Branch protection on `main` (pull request required, threads resolved) stays in place and enforces the review step.
 - Claude Code's own safety checks may still ask the founder to approve a merge; that is expected.
 - On systems without symbolic-link support, `CLAUDE.md` shows as a one-line file containing `AGENTS.md`. All current work is on macOS and GitHub, which support symbolic links.

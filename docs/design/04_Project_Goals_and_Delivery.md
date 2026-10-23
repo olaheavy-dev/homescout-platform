@@ -19,7 +19,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
-- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction and own decisions. You review founder-only pull requests and any with a finding proposed to stay unfixed; routine changes are reviewed by Codex and merged by Claude Code, and you review them by exception (decision 0015).
+- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction and own decisions. You review founder-only pull requests, including any where Claude disputes a finding; routine changes are reviewed by Codex and merged by Claude Code, and you review them by exception (decision 0015).
 - **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools. All numbers come from deterministic code. Multi-agent orchestration (Microsoft Agent Framework in the brief's stack) is deferred until a measured task needs it.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
@@ -104,7 +104,7 @@ Do these now, because they are cheap now and expensive later:
 
 ## 9. Roadmap from design decisions to implementation
 
-Each stage ends with a gate. Don't start the next stage until its gate is met. Agents can draft most of the artefacts; you approve each gate.
+Each stage ends with a gate. Don't start the next stage until its gate is met. Agents can draft most of the artefacts; you approve each gate. Every gate also requires a whole-repository audit for contradictions and debt, and no open `review-followup` issues (decision 0015).
 
 Every stage begins with its **decision step**: the individual decisions that must be made before the stage's work starts. Each is a separate decision record in `docs/decisions/` with options, a recommendation and your choice. The full register, with IDs and status, is in `docs/decisions/README.md`. A decision is made at the latest stage that still lets the work go ahead. Choices that only matter later stay open until then.
 
@@ -222,10 +222,10 @@ These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
 **How a change gets made**
 1. **Issue:** one user-visible capability, linked to its spec section and acceptance criteria.
 2. **Agent session on a branch:** the agent implements with tests and updates docs. One issue per session keeps context small.
-3. **Pull request:** a description of what changed and why, how it was tested, and any assumptions the agent made.
+3. **Pull request:** a description of what changed and why, how it was tested, any assumptions the agent made, and the pre-flight consistency check done across the repository (`AGENTS.md`, "When building").
 4. **Checks:** CI runs build, lint, tests, accessibility checks and (later) AI evaluations. Nothing merges on red.
-5. **AI review:** OpenAI Codex reviews the latest commit. Claude Code fixes serious findings (P0/P1) in any round, and minor ones (P2/P3) in the first two rounds; later minor findings go to a `review-followup` issue for a batched tidy-up. Fixes are pushed in one batch per round, with one re-review request (decision 0015).
-6. **Merge:** on a routine pull request, Claude Code merges once the decision 0015 conditions are met, with no wait for you. On a founder-only pull request (see `AGENTS.md`, "When merging"), or where Claude proposes not fixing a finding, you review and merge, deciding which findings to act on.
+5. **AI review:** OpenAI Codex reviews the latest commit, reporting everything in one complete first pass; re-reviews check only the fixes. Claude Code fixes serious findings (P0/P1) in any round, and minor ones (P2/P3) in the first two rounds; later minor findings go to a `review-followup` issue for a batched tidy-up. Fixes are pushed in one batch per round, with one re-review request (decision 0015).
+6. **Merge:** on a routine pull request, Claude Code merges once the decision 0015 conditions are met, with no wait for you. On a founder-only pull request (see `AGENTS.md`, "When merging"), including any where Claude disputes a finding as wrong, you review and merge and decide whether disputed findings stand. Minor findings validly deferred to a follow-up issue don't need you. Serious findings (P0/P1) are always fixed first.
 7. **Summary and explain-back:** after merging, Claude Code posts a one-line summary. You can review any merged change at any time. You then write a few lines in your own words on how it works, added to the learning log.
 
 **Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
