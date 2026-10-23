@@ -2,4 +2,7 @@
   <PropertyGroup>
     <RootNamespace>HomeScout.CostEngine</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="itext7" />
+  </ItemGroup>
 </Project>
