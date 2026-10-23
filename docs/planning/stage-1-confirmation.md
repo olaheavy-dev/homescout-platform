@@ -4,6 +4,8 @@
 **How to use:** For each item, tick one box and add a line on why. Accepted items become decision records in `docs/decisions/` and their status is updated in the register.  
 **Gate:** every product item is confirmed, changed, or kept open with a reason; WW-01 to WW-03 are accepted; `CLAUDE.md` and the decision-record template are in the repository.
 
+**Status: signed off by the founder on 23 October 2026.** Stage 2 has started.
+
 ## Progress (23 October 2026)
 
 | Item | Answer | Record |
@@ -25,7 +27,7 @@
 | WW-05 Holistic reviews and debt limits | Pre-flight check, one complete Codex pass, debt limits, serious findings always block | [0016](../decisions/0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 Docs structure and naming | `docs/product/`, `docs/assets/`, index in `docs/README.md` | [0017](../decisions/0017-docs-structure.md) |
 
-**Stage 1 gate:** `AGENTS.md` (with `CLAUDE.md` linked to it), the merge to `main`, branch protection and the project board are done. The last requirement is the whole-repository audit (pull request #9) with no open `review-followup` issues. The demo name doesn't block stage 2.
+**Stage 1 gate:** `AGENTS.md` (with `CLAUDE.md` linked to it), the merge to `main`, branch protection and the project board are done. The whole-repository audit (pull request #9) was completed with every finding fixed and a clean re-review, and no `review-followup` issues were open at sign-off. The demo name doesn't block stage 2.
 
 The sections below keep the original options for reference. **Where they describe reviews and merges (WW-01, WW-02), they are superseded by decisions 0015 and 0016**: follow `AGENTS.md` and doc 04 §10, not these options.
 

@@ -20,6 +20,7 @@ Every significant product, technical and working decision gets its own record in
 | — | Project purpose | Portfolio and learning first, built by AI coding agents, small monthly budget, kept commercially viable | Doc 04 |
 | — | Repository | Public, all rights reserved | Doc 04 §8, `LICENSE` |
 | — | First public showcase | Clickable prototype | Doc 04 §8 |
+| — | Stage 1 sign-off | Signed off by the founder on 23 October 2026 | `docs/planning/stage-1-confirmation.md` |
 
 ## Register
 
@@ -41,13 +42,13 @@ Every significant product, technical and working decision gets its own record in
 | WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
-| DA-01 | Fixture data format | 2 | Not started | |
-| DA-02 | Calculation script and test vectors | 2 | Not started | |
+| DA-01 | Fixture data format | 2 | Accepted | [0018](0018-fixture-data-format.md) |
+| DA-02 | Calculation script and test vectors | 2 | Accepted (C# cost engine) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
 | SP-02 | Work breakdown | 3 | Not started | |
 | DS-01 | Design tooling | 4 | Not started | |
 | DS-02 | Design system foundation | 4 | Not started | |
-| FE-01 | Frontend framework and rendering | 4 | Not started | |
+| FE-01 | Frontend framework and rendering | 4 | Proposed (TypeScript and Next.js accepted in 0020; routing and rendering at stage 4) | [0020](0020-application-languages.md) |
 | FE-02 | Styling and components | 4 | Not started | |
 | FE-03 | Maps and charts | 4 | Not started | |
 | FE-04 | Frontend practices | 4 | Not started | |
@@ -57,7 +58,7 @@ Every significant product, technical and working decision gets its own record in
 | IN-04 | CI/CD and environments | 4 | Not started | |
 | IN-05 | Budget cap and cost alerts | 4 | Not started | |
 | FE-05 | Demo analytics and feedback | 5 | Not started | |
-| BE-01 | Backend language and framework | 6 (before cost engine) | Not started | |
+| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020; ASP.NET Core to confirm at stage 6) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |

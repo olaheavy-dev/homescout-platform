@@ -1,7 +1,7 @@
 # 0013: Repository and tracking conventions
 
 **ID:** WW-03  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: calculation placement by [0019](0019-cost-engine-in-csharp.md))  
 **Date:** 2026-10-23  
 **Stage:** 1
 
