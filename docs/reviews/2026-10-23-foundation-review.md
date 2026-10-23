@@ -19,7 +19,7 @@ Strict build settings, central package versions with lock files, a pinned SDK, a
 ## Frontend: inputs for stage 4 (FE-01 to FE-05)
 - **Keep:** colour tokens as CSS variables with a "never hard-code colours" rule; route-private components next to their routes; a component gallery page; a single typed fetch wrapper with an error type; tests that assert user-visible text; pinned Node and package manager; least-privilege CI.
 - **Improve:** run the tests in CI (the earlier app didn't); enforce the colour rule automatically; keep files small (for example under 400 lines); validate configuration; switch between sample data and the API by configuration, not code edits; add route-level loading, error and not-found pages; add UK (`en-GB`) currency and date formatting; add automated accessibility tests (Playwright with axe, `jsx-a11y`); add security headers; never store login tokens in browser storage.
-- **Suggested shape:** `apps/web/src/{app, components, lib/data (sample-data and API sources behind one interface), lib/schemas (zod, validating both), lib/format, styles/tokens.css}`, with unit, component and end-to-end tests.
+- **Suggested shape:** `apps/web/src/{app, components, lib/data (sample-data and API sources behind one interface), lib/schemas (TypeScript types generated from the fixture JSON Schema and validated with that same schema, so there is one source of truth; see the best-practice audit), lib/format, styles/tokens.css}`, with unit, component and end-to-end tests.
 
 ## Infrastructure: inputs for stage 4 (IN-01 to IN-05)
 - **Cost first (decision 0022):** free options, then the founder's existing server, then Azure or another paid service only where needed.
@@ -59,6 +59,6 @@ The reviewed AI library and chatbot sample have no licence, so no code, configur
 ### Public references
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai): the provider-neutral `IChatClient` abstraction
 - [Microsoft.Extensions.AI evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries): quality and groundedness evaluation
-- [Microsoft Foundry SDK overview](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview) and [Azure.AI.Projects for .NET](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.projects-readme): connecting to a Foundry project
-- [Foundry Agent Service overview](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/overview): hosted agents, tools and grounding
-- [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection): including keyed services
+- [Microsoft Foundry SDK overview](https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/sdk-overview) and [Azure.AI.Projects for .NET](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.projects-readme): connecting to a Foundry project
+- [Foundry Agent Service overview](https://learn.microsoft.com/en-us/azure/foundry/agents/overview): hosted agents, tools and grounding
+- [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/overview): including keyed services

@@ -42,9 +42,10 @@ Every significant product, technical and working decision gets its own record in
 | WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016 and 0024) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
-| WW-07 | Dependency updates and documentation upkeep | 2 | Accepted | [0024](0024-dependency-updates.md) |
+| WW-07 | Dependency updates and documentation upkeep | 2 | Accepted (partly superseded by 0027) | [0024](0024-dependency-updates.md) |
 | WW-08 | Learning-first engineering | 2 | Accepted | [0026](0026-learning-first-engineering.md) |
-| DA-01 | Fixture data format | 2 | Accepted | [0018](0018-fixture-data-format.md) |
+| WW-09 | Stage 2 engineering and security hardening | 2 | Accepted | [0027](0027-stage-2-engineering-hardening.md) |
+| DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
 | SP-02 | Work breakdown | 3 | Not started | |
