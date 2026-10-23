@@ -8,6 +8,17 @@
 ## Context
 Anyone can type a postcode or address and see free public details without an account. That raises three separate storage questions: the public data itself, what the visitor searched for, and what a user chooses to save. An address search can reveal something personal, namely where someone might move, so it needs care even without an account. The prototype uses sample homes only, so the questions about public records and searched addresses don't arise until real data is introduced. **Visitor data still applies from the first public deployment:** hosting and security services handle visitors' IP addresses, browser details and logs even for a sample-data demo (see part 1 below).
 
+## Options
+- **Keep nothing about anonymous visitors; store user data only on Save (chosen):** cheap, privacy-friendly and simple to explain. "Pick up where you left off" across devices needs a saved home.
+- **Keep a search history per visitor:** convenient, but means tracking, consent and a privacy notice before someone has even decided to use the product.
+- **Fetch public data live instead of keeping a copy:** avoids holding public-record data, but is slower, costlier per search, fragile when sources are down, and can't show stable dates or "what changed".
+
+## Recommendation
+Keep nothing about anonymous visitors, keep our own copy of public data, and store user data only when a home is saved.
+
+## Decision
+The founder agreed the recommendation as the starting position on 23 October 2026, in their words: "yes add it to SE-02", after the discussion about free postcode viewing. The reason recorded: it keeps the free view cheap and privacy-friendly while still allowing saved homes and "what changed".
+
 ## Starting position (agreed)
 
 | What | Stored? | How |
@@ -29,7 +40,7 @@ Supporting rules:
 - A PECR check of anything the demo stores on or reads from the visitor's device (for example preferences or session storage), confirming each item is strictly necessary or has consent.
 
 **Before real data is loaded (stage 6, step 4):**
-- Lawful basis under UK GDPR and the privacy notice, explicitly covering **personal data that appears in public records** (for example, council planning records can include applicants' names and addresses). Check each source's actual fields at ingestion rather than assuming; HM Land Registry Price Paid Data, for instance, has no person-name fields ([schema](https://www.gov.uk/guidance/about-the-price-paid-data)). Publicly available data still carries data-protection obligations, and the [ICO requires the lawful basis to be set before processing begins](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/a-guide-to-lawful-basis/). Decide which personal fields to drop on ingestion.
+- Lawful basis under UK GDPR and the privacy notice, explicitly covering **personal data that appears in public records** (for example, council planning records can include applicants' names and addresses). Check each source's actual fields at ingestion rather than assuming; HM Land Registry Price Paid Data, for instance, has no person-name fields ([schema](https://www.gov.uk/guidance/about-the-price-paid-data)). Publicly available data still carries data-protection obligations, and the [ICO requires the lawful basis to be set before processing begins](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/a-guide-to-lawful-basis/). Decide which personal fields to drop on ingestion. If any are kept (for example planning applicants' names), decide how individuals are given privacy information, which for data obtained from public sources must be **actively provided within one month** unless a documented exception applies ([ICO guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/the-right-to-be-informed/when-should-we-provide-privacy-information/)), plus a DPIA where required. Dropping personal fields at ingestion avoids this, and is the preferred default.
 - Lawful basis and privacy-notice wording for **search inputs**: the postcode or address a visitor types is potentially personal data (it can reveal where they may move), and receiving and using it, even briefly and alongside an IP used for rate limiting, is processing. This must be covered before real searches are accepted, even though searches aren't stored.
 - How logs are configured to meet the search-retention rule above, and how long any logs are kept.
 
@@ -38,6 +49,7 @@ Supporting rules:
 - Retention and deletion periods for saved records, documents and snapshots, including after a paid pass expires (linked to decision 0007 and doc 02 §8).
 - Per-user isolation of uploaded documents, and how user data is excluded from AI training and shared retrieval.
 - Recheck the ICO fee position for the new processing, and a data protection impact assessment for document processing.
+- **Special category data in uploads:** leases, bills, replies and free-text notes may contain health, religious or other special category information. Either identify an [Article 9 condition](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/a-guide-to-lawful-basis/special-category-data) and any Schedule 1 safeguards, or design uploads to exclude or redact such content, before document storage is built.
 - Extend the PECR assessment to the full product (sign-in sessions, browser storage, rate-limiting techniques).
 
 ## Consequences
