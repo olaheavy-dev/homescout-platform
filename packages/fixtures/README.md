@@ -7,14 +7,14 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 | `schema/` | JSON Schema 2020-12 files. `common.schema.json` holds shared pieces (money, sources, dates, nations); the others describe one data file each. |
 | `data/` | Hand-maintained **inputs**: household, homes, evidence, documents, questions, replies, snapshot. No totals or other calculated figures (AGENTS.md rule 2). |
 | `test-cases/` | Independently worked examples (task 3), checked against `schema/test-case.schema.json`. |
-| `generated/` | Cost-engine output (task 4b): one file, `costs.json`, checked against `schema/generated-costs.schema.json`. Never edited by hand; empty until the generator lands in 4b-2. |
+| `generated/` | Cost-engine output (task 4b): one file, `costs.json`, checked against `schema/generated-costs.schema.json`. Written only by the generator (`make generate`) and committed; never edited by hand. `make check` regenerates it and fails if anything under `generated/` differs from what is committed. |
 | `tools/HomeScout.Fixtures.Validator/` | The checker run by `make validate` and `make check`. |
 | `tests/HomeScout.Fixtures.Tests/` | NUnit tests that prove the schemas reject bad data and accept the real files. |
 
 ## Which schema checks which file
 
 - `data/NAME.json` is checked against `schema/NAME.schema.json` (by file name). Each data file also carries a `"$schema": "../schema/NAME.schema.json"` line for editors; the validator fails if it names a different schema.
-- Every file in `test-cases/` and `generated/` must name its schema in a top-level `"$schema"` field (a relative path into `schema/`); both test-case files name `../schema/test-case.schema.json`, and `costs.json` will name `../schema/generated-costs.schema.json`.
+- Every file in `test-cases/` and `generated/` must name its schema in a top-level `"$schema"` field (a relative path into `schema/`); both test-case files name `../schema/test-case.schema.json`, and `costs.json` names `../schema/generated-costs.schema.json`.
 
 ## How values are modelled
 
