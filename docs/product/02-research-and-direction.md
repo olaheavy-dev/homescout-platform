@@ -139,7 +139,7 @@ Use separate dimensions rather than a single confidence badge:
 
 | Dimension | Example |
 |---|---|
-| Origin | Official dataset, uploaded document, listing claim, user observation, modelled estimate |
+| Origin | Official dataset, uploaded document, listing claim (user-supplied listing content only; no scraping, decision 0028), user observation, modelled estimate |
 | Applicability | This flat, whole building, postcode, mapped area |
 | Time | Effective period, observation date, publication date, last retrieved date |
 | Status | Available, missing, conflicting, stale, not applicable |

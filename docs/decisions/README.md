@@ -39,12 +39,14 @@ Every significant product, technical and working decision gets its own record in
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
-| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016 and 0024) | [0015](0015-agent-merges-after-review.md) |
+| WW-04 | Merge policy and single agent instructions file | 1 | Accepted (partly superseded by 0016, 0024 and 0033) | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Accepted | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
 | WW-07 | Dependency updates and documentation upkeep | 2 | Accepted (partly superseded by 0027) | [0024](0024-dependency-updates.md) |
 | WW-08 | Learning-first engineering | 2 | Accepted | [0026](0026-learning-first-engineering.md) |
 | WW-09 | Stage 2 engineering and security hardening | 2 | Accepted | [0027](0027-stage-2-engineering-hardening.md) |
+| WW-10 | Agent roster, design skills and working rules | 2 | Accepted | [0031](0031-agent-roster.md) |
+| WW-11 | Review fallback when Codex is unavailable | 2 | Accepted | [0033](0033-review-fallback.md) |
 | DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
@@ -66,20 +68,24 @@ Every significant product, technical and working decision gets its own record in
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
 | BE-04 | .NET engineering foundation | 2 | Accepted | [0021](0021-dotnet-engineering-foundation.md) |
+| BE-05 | Our own Result type | 2 | Accepted | [0032](0032-own-result-type.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |
 | DA-06 | Address and routing providers | 6 (before real data) | Not started | |
+| DA-07 | Data sourcing: no scraping | 2 | Accepted | [0028](0028-no-scraping.md) |
 | SE-01 | Authentication and accounts | 6 (before questions workflow) | Not started | |
 | SE-02 | Privacy and data protection | 5 (visitor data), 6 step 4 (public records, logs), 6 step 5 (full) | Proposed (starting position agreed) | [0014](0014-privacy-and-data-protection.md) |
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework) | [0023](0023-microsoft-agent-framework.md) |
+| AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements) | [0025](0025-ai-platform-capabilities.md) |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Proposed (OpenTelemetry and local Aspire accepted in 0025; production telemetry at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | OP-02 | Scheduling and notifications | 6 (before monitoring) | Not started | |
+| OP-03 | Outside services: provenance and live tests | 6 (rule set early) | Accepted | [0029](0029-external-services.md) |
 
 ## Record template
 

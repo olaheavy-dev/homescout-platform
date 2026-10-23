@@ -1,7 +1,7 @@
 # 0015: Claude Code merges after Codex review
 
 **ID:** WW-04  
-**Status:** Accepted (partly superseded: founder-merge condition for unfixed findings by [0016](0016-holistic-reviews-and-debt-limits.md); dependency upgrades by [0024](0024-dependency-updates.md))  
+**Status:** Accepted (partly superseded: founder-merge condition for unfixed findings by [0016](0016-holistic-reviews-and-debt-limits.md); dependency upgrades by [0024](0024-dependency-updates.md); review requirement while Codex is unavailable by [0033](0033-review-fallback.md))  
 **Date:** 2026-10-23  
 **Stage:** 1  
 **Supersedes:** the review and merge steps of [0011](0011-ways-of-working.md) ("you … review and merge", "your review → merge") and the review-order, finding-triage and two-instruction-file parts of [0012](0012-ai-coding-tools.md) ("before your review", "you decide what to act on", keeping `CLAUDE.md` and `AGENTS.md` as separate files in step). The rest of 0011 and 0012 still stands.

@@ -41,7 +41,12 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 
 - One issue per session, on a branch named `type/short-description` (e.g. `feat/buyer-story-costs`).
 - Start from the issue's spec and acceptance criteria. If the spec is unclear or conflicts with a decision, stop and ask rather than guess.
-- Small vertical slices. Tests first for anything numeric or legal.
+- Small vertical slices. Tests first for anything numeric or legal, using the test-first skill (decision 0031).
+- **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open a `review-followup` issue for each. Don't fix unrelated things in the same change.
+- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a new dependency, or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
+- **Stop what you start:** servers, watchers and temporary worktrees.
+- **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
+- **Result type:** use HomeScout's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
 - Before using a framework or package API, check its official documentation for the pinned version via `docs/references/third-party.md`, not memory. When adding a dependency or changing a version, update that file in the same pull request (decision 0024).
 - For a major version update, read the official migration notes, fix breaking changes in the same pull request, and summarise them in the description.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
@@ -77,13 +82,13 @@ How to report:
 ## When merging (Claude Code, decisions 0015 and 0016)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
-1. Codex has reviewed the **latest commit** of the pull request.
+1. Codex has reviewed the **latest commit** of the pull request, or, while Codex is unavailable, a documentation-only pull request has had the fallback review (decision 0033). A pull request rebased with no content change may rely on its earlier review if `git range-diff` shows every commit unchanged.
 2. Every Codex finding is fixed, answered with a reason, or deferred under "Review rounds" below, and every review thread is resolved.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
 4. The pull request doesn't fall under the founder-only list below.
 
 **Founder merges these:**
-- Changes to `LICENSE`, repository settings, CI permissions or this file's merge rules.
+- Changes to `LICENSE`, repository settings, CI permissions or this file's merge rules (including the review fallback, decision 0033).
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
 - Adding a new dependency. (Version updates to existing dependencies are merged by Claude Code after checks and Codex review, decision 0024.)

@@ -32,7 +32,7 @@ Cost engine design:
 - Pure library: no input/output, HTTP, AI, Azure, clock or random dependencies. Dates are passed in as `DateOnly`.
 - Money is a `Pence` value type over whole pence (integer). Each cost line is rounded once; a total is the sum of its rounded lines.
 - **Rounding rule:** by default, a line is rounded to the nearest penny, with exact half-pennies rounded **away from zero** (`MidpointRounding.AwayFromZero`): 0.5p becomes 1p, 1.5p becomes 2p, and −0.5p becomes −1p, so positive and negative amounts behave symmetrically. Code always passes the rounding mode explicitly and never relies on .NET's default, which is banker's rounding (`ToEven`). Where an official rule sets its own rounding (for example a tax that rounds down to whole pounds), that calculation uses the official rule and cites its source.
-- **Boundary examples before implementation:** the independently worked test cases include half-penny, just-below-half and negative cases for every rounded calculation, written before the code.
+- **Boundary examples before implementation:** the independently worked test cases include exact half-penny, just-below-half and just-above-half cases on both sides of zero (for example 0.4999p → 0p, 0.5p → 1p, 0.5001p → 1p, and −0.5p → −1p, −0.5001p → −1p) for every rounded calculation, written before the code.
 - Every calculated output carries a stable ID (for example `CostLineId`), so later AI features can only quote figures that exist (decisions 0004, AI-01 to AI-05).
 - A `Result` type only where inputs can legitimately fail; programmer errors throw.
 - The generator writes JSON with stable key order; running it twice produces identical files, and CI fails if regenerating changes `packages/fixtures/generated/`.
