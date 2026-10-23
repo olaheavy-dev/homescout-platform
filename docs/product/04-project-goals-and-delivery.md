@@ -125,6 +125,7 @@ Agents start producing artefacts in stage 2, so how they work has to be settled 
 **Decisions:**
 - **Fixture data format (DA-01):** decided: JSON files with a JSON Schema (decision 0018).
 - **Calculation script and test vectors (DA-02):** decided: the calculations start as the real C# cost engine, whose generator writes results into the sample-data files; tests check the engine against independently worked examples (decision 0019). Application languages are confirmed as C# for the backend and TypeScript with Next.js for the frontend (decision 0020).
+- **.NET engineering foundation (BE-04):** decided: strict build settings, pinned packages, Makefile, NUnit and architecture tests (decision 0021).
 
 The prototype's credibility depends on this, and the images show what happens without it.
 
@@ -150,6 +151,8 @@ The prototype's credibility depends on this, and the images show what happens wi
 **Gate:** someone who hasn't read docs 01–03 could build the prototype from the spec and the fixtures alone.
 
 ### Stage 4: Design, frontend, infrastructure and deployment decisions
+
+Inputs from the founder's earlier projects are summarised in the [foundations review](../reviews/2026-10-23-foundation-review.md).
 
 **Design decisions:**
 - **Design tooling (DS-01):** design-tool-first (for example Figma) versus code-first (wireframes and components built directly in code with a component workbench).

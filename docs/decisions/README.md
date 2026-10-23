@@ -61,6 +61,7 @@ Every significant product, technical and working decision gets its own record in
 | BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020; ASP.NET Core to confirm at stage 6) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
+| BE-04 | .NET engineering foundation | 2 | Accepted | [0021](0021-dotnet-engineering-foundation.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |

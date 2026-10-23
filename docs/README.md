@@ -27,6 +27,7 @@ Planned folders, added when their stage starts: `docs/specs/` for the prototype 
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
+| [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 
 Accepted decision records override anything in the documents that contradicts them. Where 02, 03 and 04 overlap, each owns the area listed above.
 
