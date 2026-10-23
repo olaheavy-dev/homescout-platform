@@ -154,4 +154,4 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 | `make restore`, `make build`, `make format-check`, `make inspect` | The individual steps of `make check`. |
 | `make clean` | Removes build output and `.artifacts/`. |
 
-Test names follow `Method_condition_result`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).
+The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).

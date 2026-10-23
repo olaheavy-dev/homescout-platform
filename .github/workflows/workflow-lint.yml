@@ -2,12 +2,13 @@ name: Workflow lint
 
 on:
   pull_request:
-    paths:
-      - ".github/workflows/**"
-      - ".github/dependabot.yml"
 
 permissions:
   contents: read
+
+concurrency:
+  group: workflow-lint-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   actionlint:

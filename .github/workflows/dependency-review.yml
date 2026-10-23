@@ -24,7 +24,8 @@ jobs:
         with:
           fail-on-severity: low
           allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Zlib, Unlicense, CC0-1.0, MPL-2.0
-          # Recorded exceptions (decision 0035): build and test tools that are used but never shipped.
-          # JetBrains ReSharper command line tools: free proprietary licence.
-          # Microsoft code-coverage extension: Microsoft software licence terms, test projects only.
-          allow-dependencies-licenses: pkg:nuget/JetBrains.ReSharper.GlobalTools, pkg:nuget/Microsoft.Testing.Extensions.CodeCoverage
+          # The dependency-submission workflow supplies NuGet data; retry while its snapshot is still arriving.
+          retry-on-snapshot-warnings: true
+          # Recorded exception (decision 0035): JetBrains ReSharper command line tools, a free proprietary-licence
+          # build tool that is used but never shipped.
+          allow-dependencies-licenses: pkg:nuget/JetBrains.ReSharper.GlobalTools

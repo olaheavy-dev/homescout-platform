@@ -1,0 +1,49 @@
+name: Dependency submission
+
+# GitHub's dependency graph does not read Directory.Packages.props, NuGet lock files or the
+# .NET tool manifest, so dependency review would not see NuGet packages. This workflow scans the
+# restored projects and submits the result through the dependency submission API.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependency-submission-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    name: Submit NuGet dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      # The dependency submission API needs write access to contents; nothing else is granted.
+      # Pull requests from forks get a read-only token, so the submission is skipped for them.
+      contents: write
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up the .NET SDK from global.json
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+
+      # The scanner reads each project's obj/project.assets.json, so restore first (locked mode).
+      - name: Restore packages
+        run: dotnet restore HomeScout.slnx --locked-mode
+        env:
+          DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+
+      - name: Detect and submit dependencies
+        uses: advanced-security/component-detection-dependency-submission-action@a02aeda7a175ad4dd38a13c4d3ff2df9da8f2cf0 # v0.2.0
+        with:
+          detectorsCategories: NuGet
+          fail-on-empty: true

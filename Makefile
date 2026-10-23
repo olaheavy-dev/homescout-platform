@@ -1,5 +1,9 @@
 # HomeScout: single entry point for every automated check (decisions 0021, 0035).
-# CI runs `make check`; run it before pushing. Works on macOS and Linux with GNU Make or BSD make 3.81+.
+# CI runs `make check`; run it before pushing. Works on macOS and Linux with GNU Make 3.81 or later.
+
+# No telemetry from the .NET CLI or the test platform.
+export DOTNET_CLI_TELEMETRY_OPTOUT := 1
+export TESTINGPLATFORM_TELEMETRY_OPTOUT := 1
 
 SOLUTION      := HomeScout.slnx
 CONFIGURATION := Release
@@ -26,7 +30,9 @@ format-check: restore
 # JetBrains InspectCode (local tool). Any issue at warning severity or above fails the target.
 inspect: build
 	@mkdir -p $(ARTIFACTS)
+	@rm -f $(ARTIFACTS)/inspectcode.sarif
 	dotnet jb inspectcode $(SOLUTION) --output=$(ARTIFACTS)/inspectcode.sarif --format=Sarif --severity=WARNING --no-build --verbosity=WARN
+	@test -s $(ARTIFACTS)/inspectcode.sarif || { echo "InspectCode produced no report"; exit 1; }
 	@if grep -q '"ruleId"' $(ARTIFACTS)/inspectcode.sarif; then \
 		echo "InspectCode found issues (see $(ARTIFACTS)/inspectcode.sarif):"; \
 		grep -E '"(ruleId|text)"' $(ARTIFACTS)/inspectcode.sarif | head -40; \
@@ -35,7 +41,7 @@ inspect: build
 	@echo "InspectCode: no issues at warning severity or above."
 
 test: build
-	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --coverage --coverage-output-format cobertura --results-directory $(ARTIFACTS)/test-results
+	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
 
 check: restore build format-check inspect test
 

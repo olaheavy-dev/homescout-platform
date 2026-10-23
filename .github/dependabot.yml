@@ -40,3 +40,23 @@ updates:
       actions-major:
         update-types:
           - "major"
+
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      dotnet-sdk-minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      dotnet-sdk-major:
+        update-types:
+          - "major"

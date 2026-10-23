@@ -32,6 +32,9 @@ jobs:
 
       - name: Run every automated check
         run: make check
+        env:
+          DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+          TESTINGPLATFORM_TELEMETRY_OPTOUT: "1"
 
       - name: Upload the coverage report
         if: ${{ !cancelled() }}
