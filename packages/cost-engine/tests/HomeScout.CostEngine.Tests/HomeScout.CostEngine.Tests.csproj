@@ -8,6 +8,8 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FsCheck.NUnit" />
+    <PackageReference Include="NetArchTest.Rules" />
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit.Analyzers" PrivateAssets="all" />
     <PackageReference Include="NUnit3TestAdapter" />
