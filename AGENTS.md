@@ -36,6 +36,7 @@ The current stage is in the README and `docs/planning/`.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
 - Pull request description: what changed and why, how it was tested, and **any assumptions you made**.
 - Update the docs and decision records affected by the change.
+- **Pre-flight check before opening a pull request:** search the repository for every term, decision ID, rule and figure the change touches, and fix any contradiction or stale statement in the same pull request. Check new facts against their sources. Say in the pull request description what was checked. Most review rounds come from cross-document contradictions, so this is the main way to keep reviews to one round.
 - Ask the founder before installing dependencies, changing infrastructure, cloud resources or repository settings. Never push to `main`.
 
 ## When reviewing (Codex)
@@ -50,10 +51,11 @@ Check in priority order:
 How to report:
 - Most serious findings first. For each: file and line, what's wrong, a concrete example of the failure, and a suggested fix.
 - Give each finding a severity: **P0/P1** (wrong behaviour, wrong figures, legal or security risk, broken rules above) or **P2/P3** (wording, consistency, minor gaps). Use plain language. Say "no issues found" if there are none.
-- On a re-review, focus on the fixes and on anything new in the diff. Don't re-raise issues already deferred to a follow-up issue.
+- **First review: one complete pass.** Review the whole pull request at once, including its knock-on effects: other files in the repository that the change contradicts or makes stale (search for the same terms, decision IDs and rules). Report every finding in that first review rather than spreading them over rounds.
+- **Re-reviews: fixes only.** Check that the fixes are correct and look at newly changed lines. Raise new P2/P3 points only on lines changed since the last review; raise P0/P1 issues anywhere. Don't re-raise issues already deferred to a follow-up issue.
 - Don't push commits or approve merges.
 
-## When merging (Claude Code, decision 0015)
+## When merging (Claude Code, decisions 0015 and 0016)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. Codex has reviewed the **latest commit** of the pull request.
@@ -66,16 +68,19 @@ Claude Code may merge a pull request (squash merge) only when **all** of these a
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
 - Adding or upgrading dependencies.
-- Any pull request where a P0/P1 finding was not fixed. (A P2/P3 finding deferred to a follow-up issue doesn't count as unfixed.)
+- Any pull request where Claude Code disagrees with a finding and proposes to dismiss it as wrong (not merely defer it). The founder decides whether the finding stands.
+
+P0/P1 findings always block, with no override: they must be fixed before anyone merges.
 
 After merging, post a one-line summary for the founder: what merged, and any follow-up issues created.
 
-## Review rounds (decision 0015)
+## Review rounds (decisions 0015 and 0016)
 
 Optimised for quality, speed and agent cost:
 - **P0/P1 findings always block.** Fix them in the pull request, in any round.
 - **P2/P3 findings are fixed in the pull request only in the first two review rounds.** From round 3 onward, open a follow-up issue labelled `review-followup` instead (link it in the thread reply, then resolve the thread). If unsure of a finding's severity, treat it as P1.
-- **Batch follow-ups:** clear open `review-followup` issues together in one tidy-up pull request, at least once per roadmap stage and before each stage gate.
+- **Batch follow-ups:** clear open `review-followup` issues together in one tidy-up pull request, at least once per roadmap stage. **No stage gate passes with open follow-ups**, and if more than 5 are open, clear them before starting new feature work.
+- **Holistic audit at each stage gate:** before signing off a stage, run one whole-repository review for contradictions, stale statements and debt (ask Codex with a comment describing the scope, or use Claude Code's review), and clear what it finds in the tidy-up.
 - **One re-review per batch of fixes:** fix every open finding, push once, then request one Codex re-review. Don't request reviews commit by commit.
 
 ## Keeping agent cost down
