@@ -55,7 +55,7 @@ How to report:
 - **Re-reviews: fixes only.** Check that the fixes are correct and look at newly changed lines. Raise new P2/P3 points only on lines changed since the last review; raise P0/P1 issues anywhere. Don't re-raise issues already deferred to a follow-up issue.
 - Don't push commits or approve merges.
 
-## When merging (Claude Code, decision 0015)
+## When merging (Claude Code, decisions 0015 and 0016)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. Codex has reviewed the **latest commit** of the pull request.
@@ -74,7 +74,7 @@ P0/P1 findings always block, with no override: they must be fixed before anyone 
 
 After merging, post a one-line summary for the founder: what merged, and any follow-up issues created.
 
-## Review rounds (decision 0015)
+## Review rounds (decisions 0015 and 0016)
 
 Optimised for quality, speed and agent cost:
 - **P0/P1 findings always block.** Fix them in the pull request, in any round.
