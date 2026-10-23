@@ -72,7 +72,10 @@
       "Bash(git push --all*)",
       "Bash(git push * --all*)",
       "Bash(git push --tags*)",
-      "Bash(git push * --tags*)"
+      "Bash(git push * --tags*)",
+      "Bash(git push *:*)",
+      "Bash(git push origin * *)",
+      "Bash(git push -u origin * *)"
     ]
   }
 }
