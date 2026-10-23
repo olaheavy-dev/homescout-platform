@@ -1,0 +1,908 @@
+{
+  "format_version": 1,
+  "plan_snapshot_date": "2026-10-23",
+  "money": "integer pence unless a field says otherwise",
+  "cases": [
+    {
+      "id": "b1-service-charge-difference",
+      "description": "B1 service charge: 2026 budget minus listing claim, per year and per month.",
+      "rule": {
+        "source": "Stage 2 plan section 1 (B1 inputs); rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "listing_service_charge_annual_pence": 240000,
+        "budget_service_charge_annual_pence": 372000
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Yearly difference = 372000 - 240000",
+          "value_pence": 132000,
+          "rounding": "none (integers)"
+        },
+        {
+          "n": 2,
+          "description": "Listing monthly = 240000 / 12 = 20000 exactly",
+          "value_pence": 20000,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 3,
+          "description": "Budget monthly = 372000 / 12 = 31000 exactly",
+          "value_pence": 31000,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 4,
+          "description": "Monthly difference = 31000 - 20000 (difference of rounded monthly lines); equals 132000 / 12 = 11000 exactly",
+          "value_pence": 11000,
+          "rounding": "none"
+        }
+      ],
+      "expected": {
+        "annual_difference_pence": 132000,
+        "monthly_difference_pence": 11000
+      }
+    },
+    {
+      "id": "b1-mortgage-repayment",
+      "description": "Monthly repayment on a 160,000 pound loan (asking price minus 30,000 pound deposit) at 5.5% over 25 years, standard repayment.",
+      "rule": {
+        "source": "Standard repayment (annuity) formula M = P r / (1 - (1+r)^-n); algebraically the same as M = P r (1+r)^n / ((1+r)^n - 1) as printed by Chase 'Understanding amortized loans and how to calculate mortgage payments' (r = annual rate / 12, n = number of monthly payments). Rounding per decision 0021.",
+        "url": "https://www.chase.com/personal/mortgage/education/financing-a-home/loan-amortization"
+      },
+      "inputs": {
+        "asking_price_pence": 19000000,
+        "deposit_pence": 3000000,
+        "annual_rate": "0.055",
+        "term_years": 25,
+        "compounding": "monthly",
+        "input_sources": "asking price: listing claim; deposit, rate, term: user-entered (stage 2 plan section 1)"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Loan P = price - deposit",
+          "value_pence": 16000000,
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Monthly rate r = 0.055 / 12",
+          "value_decimal": "0.004583333333333",
+          "rounding": "none (kept at high precision, 60 digits in the check)"
+        },
+        {
+          "n": 3,
+          "description": "Number of payments n = 25 x 12",
+          "value": 300,
+          "rounding": "none"
+        },
+        {
+          "n": 4,
+          "description": "(1+r)^n",
+          "value_decimal": "3.942671556436251",
+          "rounding": "none (high precision)"
+        },
+        {
+          "n": 5,
+          "description": "(1+r)^-n = 1 / (1+r)^n",
+          "value_decimal": "0.253635126762598",
+          "rounding": "none (high precision)"
+        },
+        {
+          "n": 6,
+          "description": "Unrounded M = P r / (1 - (1+r)^-n)",
+          "value_pence_exact": "98253.998765",
+          "rounding": "none (high precision)"
+        },
+        {
+          "n": 7,
+          "description": "Round M once to the penny, half away from zero",
+          "value_pence": 98254,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_repayment_pence": 98254
+      }
+    },
+    {
+      "id": "b2-mortgage-repayment",
+      "description": "Monthly repayment on a 225,000 pound loan (asking price minus 30,000 pound deposit) at 5.5% over 25 years, standard repayment.",
+      "rule": {
+        "source": "Standard repayment (annuity) formula M = P r / (1 - (1+r)^-n); algebraically the same as M = P r (1+r)^n / ((1+r)^n - 1) as printed by Chase 'Understanding amortized loans and how to calculate mortgage payments' (r = annual rate / 12, n = number of monthly payments). Rounding per decision 0021.",
+        "url": "https://www.chase.com/personal/mortgage/education/financing-a-home/loan-amortization"
+      },
+      "inputs": {
+        "asking_price_pence": 25500000,
+        "deposit_pence": 3000000,
+        "annual_rate": "0.055",
+        "term_years": 25,
+        "compounding": "monthly",
+        "input_sources": "asking price: listing claim; deposit, rate, term: user-entered (stage 2 plan section 1)"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Loan P = price - deposit",
+          "value_pence": 22500000,
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Monthly rate r = 0.055 / 12",
+          "value_decimal": "0.004583333333333",
+          "rounding": "none (kept at high precision, 60 digits in the check)"
+        },
+        {
+          "n": 3,
+          "description": "Number of payments n = 25 x 12",
+          "value": 300,
+          "rounding": "none"
+        },
+        {
+          "n": 4,
+          "description": "(1+r)^n",
+          "value_decimal": "3.942671556436251",
+          "rounding": "none (high precision)"
+        },
+        {
+          "n": 5,
+          "description": "(1+r)^-n = 1 / (1+r)^n",
+          "value_decimal": "0.253635126762598",
+          "rounding": "none (high precision)"
+        },
+        {
+          "n": 6,
+          "description": "Unrounded M = P r / (1 - (1+r)^-n)",
+          "value_pence_exact": "138169.685763",
+          "rounding": "none (high precision)"
+        },
+        {
+          "n": 7,
+          "description": "Round M once to the penny, half away from zero",
+          "value_pence": 138170,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_repayment_pence": 138170
+      }
+    },
+    {
+      "id": "b1-monthly-housing-cost-listing-service-charge",
+      "description": "B1 monthly housing cost using the listing service charge of 2,400 pounds a year.",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)' and 'Upfront cash'; rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "B1",
+        "mortgage_case": "b1-mortgage-repayment",
+        "ground_rent_annual_pence": 25000,
+        "council_tax_annual_pence": 210000,
+        "energy_monthly_pence": 8500,
+        "water_monthly_pence": 4500,
+        "broadband_monthly_pence": 3000,
+        "buildings_insurance": "included in service charge (management pack)",
+        "internal_maintenance": "not calculated in this version",
+        "sources": "plan section 1: ground rent from lease; council tax synthetic Northbridge Council; energy/water/broadband user estimates",
+        "service_charge_annual_pence": 240000,
+        "service_charge_source": "listing claim"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "mortgage_repayment: repayment from case b1-mortgage-repayment",
+          "value_pence": 98254,
+          "rounding": "already rounded once in that case"
+        },
+        {
+          "n": 2,
+          "description": "service_charge: 240000 a year / 12 = 20000.0000 (to 4 dp), rounded once",
+          "value_pence": 20000,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 3,
+          "description": "ground_rent: 25000 a year / 12 = 2083.3333 (to 4 dp), rounded once",
+          "value_pence": 2083,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 4,
+          "description": "council_tax: 210000 a year / 12 = 17500.0000 (to 4 dp), rounded once",
+          "value_pence": 17500,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 5,
+          "description": "energy: monthly input used as given",
+          "value_pence": 8500,
+          "rounding": "none"
+        },
+        {
+          "n": 6,
+          "description": "water: monthly input used as given",
+          "value_pence": 4500,
+          "rounding": "none"
+        },
+        {
+          "n": 7,
+          "description": "broadband: monthly input used as given",
+          "value_pence": 3000,
+          "rounding": "none"
+        },
+        {
+          "n": 8,
+          "description": "buildings_insurance: included in service charge",
+          "value_pence": null,
+          "status": "included",
+          "rounding": "not added"
+        },
+        {
+          "n": 9,
+          "description": "internal_maintenance: not calculated in this version (excluded and flagged, never zero)",
+          "value_pence": null,
+          "status": "not_calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 10,
+          "description": "Total = sum of the rounded lines above",
+          "value_pence": 153837,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "mortgage_repayment": 98254,
+          "service_charge": 20000,
+          "ground_rent": 2083,
+          "council_tax": 17500,
+          "energy": 8500,
+          "water": 4500,
+          "broadband": 3000,
+          "buildings_insurance": "included",
+          "internal_maintenance": "not_calculated"
+        },
+        "total_monthly_pence": 153837,
+        "budget_pence": 160000,
+        "within_budget": true,
+        "headroom_pence": 6163
+      }
+    },
+    {
+      "id": "b1-monthly-housing-cost-2026-budget",
+      "description": "B1 monthly housing cost using the 2026 budget service charge of 3,720 pounds a year (management pack).",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)' and 'Upfront cash'; rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "B1",
+        "mortgage_case": "b1-mortgage-repayment",
+        "ground_rent_annual_pence": 25000,
+        "council_tax_annual_pence": 210000,
+        "energy_monthly_pence": 8500,
+        "water_monthly_pence": 4500,
+        "broadband_monthly_pence": 3000,
+        "buildings_insurance": "included in service charge (management pack)",
+        "internal_maintenance": "not calculated in this version",
+        "sources": "plan section 1: ground rent from lease; council tax synthetic Northbridge Council; energy/water/broadband user estimates",
+        "service_charge_annual_pence": 372000,
+        "service_charge_source": "managing agent's 2026 budget (management pack)"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "mortgage_repayment: repayment from case b1-mortgage-repayment",
+          "value_pence": 98254,
+          "rounding": "already rounded once in that case"
+        },
+        {
+          "n": 2,
+          "description": "service_charge: 372000 a year / 12 = 31000.0000 (to 4 dp), rounded once",
+          "value_pence": 31000,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 3,
+          "description": "ground_rent: 25000 a year / 12 = 2083.3333 (to 4 dp), rounded once",
+          "value_pence": 2083,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 4,
+          "description": "council_tax: 210000 a year / 12 = 17500.0000 (to 4 dp), rounded once",
+          "value_pence": 17500,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 5,
+          "description": "energy: monthly input used as given",
+          "value_pence": 8500,
+          "rounding": "none"
+        },
+        {
+          "n": 6,
+          "description": "water: monthly input used as given",
+          "value_pence": 4500,
+          "rounding": "none"
+        },
+        {
+          "n": 7,
+          "description": "broadband: monthly input used as given",
+          "value_pence": 3000,
+          "rounding": "none"
+        },
+        {
+          "n": 8,
+          "description": "buildings_insurance: included in service charge",
+          "value_pence": null,
+          "status": "included",
+          "rounding": "not added"
+        },
+        {
+          "n": 9,
+          "description": "internal_maintenance: not calculated in this version (excluded and flagged, never zero)",
+          "value_pence": null,
+          "status": "not_calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 10,
+          "description": "Total = sum of the rounded lines above",
+          "value_pence": 164837,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "mortgage_repayment": 98254,
+          "service_charge": 31000,
+          "ground_rent": 2083,
+          "council_tax": 17500,
+          "energy": 8500,
+          "water": 4500,
+          "broadband": 3000,
+          "buildings_insurance": "included",
+          "internal_maintenance": "not_calculated"
+        },
+        "total_monthly_pence": 164837,
+        "budget_pence": 160000,
+        "within_budget": false,
+        "over_budget_by_pence": 4837
+      }
+    },
+    {
+      "id": "b2-monthly-housing-cost",
+      "description": "B2 monthly housing cost (freehold, no service charge or ground rent).",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)' and 'Upfront cash'; rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "B2",
+        "mortgage_case": "b2-mortgage-repayment",
+        "council_tax_annual_pence": 185000,
+        "energy_monthly_pence": 12000,
+        "water_monthly_pence": 5000,
+        "broadband_monthly_pence": 3000,
+        "buildings_insurance_monthly_pence": 3500,
+        "maintenance_monthly_pence": 6000,
+        "sources": "plan section 1: council tax synthetic; energy/water/broadband/insurance/maintenance user estimates"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "mortgage_repayment: repayment from case b2-mortgage-repayment",
+          "value_pence": 138170,
+          "rounding": "already rounded once in that case"
+        },
+        {
+          "n": 2,
+          "description": "council_tax: 185000 a year / 12 = 15416.6667 (to 4 dp), rounded once",
+          "value_pence": 15417,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 3,
+          "description": "energy: monthly input used as given",
+          "value_pence": 12000,
+          "rounding": "none"
+        },
+        {
+          "n": 4,
+          "description": "water: monthly input used as given",
+          "value_pence": 5000,
+          "rounding": "none"
+        },
+        {
+          "n": 5,
+          "description": "broadband: monthly input used as given",
+          "value_pence": 3000,
+          "rounding": "none"
+        },
+        {
+          "n": 6,
+          "description": "buildings_insurance: monthly input used as given",
+          "value_pence": 3500,
+          "rounding": "none"
+        },
+        {
+          "n": 7,
+          "description": "maintenance: monthly input used as given",
+          "value_pence": 6000,
+          "rounding": "none"
+        },
+        {
+          "n": 8,
+          "description": "Total = sum of the rounded lines above",
+          "value_pence": 183087,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "mortgage_repayment": 138170,
+          "council_tax": 15417,
+          "energy": 12000,
+          "water": 5000,
+          "broadband": 3000,
+          "buildings_insurance": 3500,
+          "maintenance": 6000
+        },
+        "total_monthly_pence": 183087,
+        "budget_pence": 160000,
+        "within_budget": false,
+        "over_budget_by_pence": 23087
+      }
+    },
+    {
+      "id": "r1-monthly-housing-cost-before-water",
+      "description": "R1 monthly housing cost before the user confirms the water estimate: listing says water included but the written statement says the tenant pays it, so water is not yet added.",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)' and 'Upfront cash'; rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "R1",
+        "rent_monthly_pence": 120000,
+        "council_tax_annual_pence": 160000,
+        "energy_monthly_pence": 8000,
+        "broadband_monthly_pence": 3000,
+        "water_monthly_pence_estimate": 4500,
+        "sources": "plan section 1: rent listing claim; council tax synthetic; estimates user-entered"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "rent: monthly input used as given",
+          "value_pence": 120000,
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "council_tax: 160000 a year / 12 = 13333.3333 (to 4 dp), rounded once",
+          "value_pence": 13333,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 3,
+          "description": "energy: monthly input used as given",
+          "value_pence": 8000,
+          "rounding": "none"
+        },
+        {
+          "n": 4,
+          "description": "broadband: monthly input used as given",
+          "value_pence": 3000,
+          "rounding": "none"
+        },
+        {
+          "n": 5,
+          "description": "water: listing claims included; contradicted by the written statement; estimate not yet confirmed so not added (shown as unconfirmed, never zero)",
+          "value_pence": null,
+          "status": "unconfirmed",
+          "rounding": "not added"
+        },
+        {
+          "n": 6,
+          "description": "Total = sum of the rounded lines above",
+          "value_pence": 144333,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "rent": 120000,
+          "council_tax": 13333,
+          "energy": 8000,
+          "broadband": 3000,
+          "water": "unconfirmed"
+        },
+        "total_monthly_pence": 144333
+      }
+    },
+    {
+      "id": "r1-monthly-housing-cost-after-water",
+      "description": "R1 monthly housing cost after the user confirms the 45 pound water estimate.",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)' and 'Upfront cash'; rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "R1",
+        "rent_monthly_pence": 120000,
+        "council_tax_annual_pence": 160000,
+        "energy_monthly_pence": 8000,
+        "broadband_monthly_pence": 3000,
+        "water_monthly_pence_estimate": 4500,
+        "sources": "plan section 1: rent listing claim; council tax synthetic; estimates user-entered"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "rent: monthly input used as given",
+          "value_pence": 120000,
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "council_tax: 160000 a year / 12 = 13333.3333 (to 4 dp), rounded once",
+          "value_pence": 13333,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 3,
+          "description": "energy: monthly input used as given",
+          "value_pence": 8000,
+          "rounding": "none"
+        },
+        {
+          "n": 4,
+          "description": "water: monthly input used as given",
+          "value_pence": 4500,
+          "rounding": "none"
+        },
+        {
+          "n": 5,
+          "description": "broadband: monthly input used as given",
+          "value_pence": 3000,
+          "rounding": "none"
+        },
+        {
+          "n": 6,
+          "description": "Total = sum of the rounded lines above",
+          "value_pence": 148833,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "rent": 120000,
+          "council_tax": 13333,
+          "energy": 8000,
+          "water": 4500,
+          "broadband": 3000
+        },
+        "total_monthly_pence": 148833
+      }
+    },
+    {
+      "id": "r2-monthly-housing-cost",
+      "description": "R2 monthly housing cost: rent plus council tax; energy, water and broadband are included in the rent.",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)' and 'Upfront cash'; rounding per decision 0021",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "R2",
+        "rent_monthly_pence": 127500,
+        "council_tax_annual_pence": 185000,
+        "bills_included": [
+          "energy",
+          "water",
+          "broadband"
+        ],
+        "sources": "plan section 1: rent and bills-included from listing and written statement; council tax synthetic"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "rent: monthly input used as given",
+          "value_pence": 127500,
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "council_tax: 185000 a year / 12 = 15416.6667 (to 4 dp), rounded once",
+          "value_pence": 15417,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 3,
+          "description": "energy: included in rent",
+          "value_pence": null,
+          "status": "included",
+          "rounding": "not added"
+        },
+        {
+          "n": 4,
+          "description": "water: included in rent",
+          "value_pence": null,
+          "status": "included",
+          "rounding": "not added"
+        },
+        {
+          "n": 5,
+          "description": "broadband: included in rent",
+          "value_pence": null,
+          "status": "included",
+          "rounding": "not added"
+        },
+        {
+          "n": 6,
+          "description": "Total = sum of the rounded lines above",
+          "value_pence": 142917,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "rent": 127500,
+          "council_tax": 15417,
+          "energy": "included",
+          "water": "included",
+          "broadband": "included"
+        },
+        "total_monthly_pence": 142917
+      }
+    },
+    {
+      "id": "b1-upfront-cash",
+      "description": "B1 upfront cash: deposit and moving costs only.",
+      "rule": {
+        "source": "Stage 2 plan, 'Upfront cash' definition",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "B1"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "deposit",
+          "value_pence": 3000000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 2,
+          "description": "moving_costs",
+          "value_pence": 120000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 3,
+          "description": "stamp_duty: not calculated in this version",
+          "value_pence": null,
+          "status": "not_calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 4,
+          "description": "legal_fees: not calculated in this version",
+          "value_pence": null,
+          "status": "not_calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 5,
+          "description": "Total upfront cash = sum of the calculated lines",
+          "value_pence": 3120000,
+          "rounding": "none"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "deposit": 3000000,
+          "moving_costs": 120000,
+          "stamp_duty": "not_calculated",
+          "legal_fees": "not_calculated"
+        },
+        "total_upfront_pence": 3120000,
+        "total_is_partial": true
+      }
+    },
+    {
+      "id": "b2-upfront-cash",
+      "description": "B2 upfront cash: deposit and moving costs only.",
+      "rule": {
+        "source": "Stage 2 plan, 'Upfront cash' definition",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "B2"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "deposit",
+          "value_pence": 3000000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 2,
+          "description": "moving_costs",
+          "value_pence": 120000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 3,
+          "description": "stamp_duty: not calculated in this version",
+          "value_pence": null,
+          "status": "not_calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 4,
+          "description": "legal_fees: not calculated in this version",
+          "value_pence": null,
+          "status": "not_calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 5,
+          "description": "Total upfront cash = sum of the calculated lines",
+          "value_pence": 3120000,
+          "rounding": "none"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "deposit": 3000000,
+          "moving_costs": 120000,
+          "stamp_duty": "not_calculated",
+          "legal_fees": "not_calculated"
+        },
+        "total_upfront_pence": 3120000,
+        "total_is_partial": true
+      }
+    },
+    {
+      "id": "r1-upfront-cash",
+      "description": "R1 upfront cash: deposit, first month's rent, moving costs.",
+      "rule": {
+        "source": "Stage 2 plan, 'Upfront cash' definition",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "R1"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "deposit",
+          "value_pence": 138000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 2,
+          "description": "first_months_rent",
+          "value_pence": 120000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 3,
+          "description": "moving_costs",
+          "value_pence": 120000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 4,
+          "description": "Total upfront cash = sum of the calculated lines",
+          "value_pence": 378000,
+          "rounding": "none"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "deposit": 138000,
+          "first_months_rent": 120000,
+          "moving_costs": 120000
+        },
+        "total_upfront_pence": 378000,
+        "total_is_partial": false
+      }
+    },
+    {
+      "id": "r2-upfront-cash",
+      "description": "R2 upfront cash: deposit, first month's rent, moving costs.",
+      "rule": {
+        "source": "Stage 2 plan, 'Upfront cash' definition",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "R2"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "deposit",
+          "value_pence": 147000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 2,
+          "description": "first_months_rent",
+          "value_pence": 127500,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 3,
+          "description": "moving_costs",
+          "value_pence": 120000,
+          "rounding": "none (whole pence input)"
+        },
+        {
+          "n": 4,
+          "description": "Total upfront cash = sum of the calculated lines",
+          "value_pence": 394500,
+          "rounding": "none"
+        }
+      ],
+      "expected": {
+        "lines": {
+          "deposit": 147000,
+          "first_months_rent": 127500,
+          "moving_costs": 120000
+        },
+        "total_upfront_pence": 394500,
+        "total_is_partial": false
+      }
+    },
+    {
+      "id": "b1-budget-beat",
+      "description": "Deliberate story beat: B1 within the 1,600 pound monthly budget on the listing service charge and over it on the 2026 budget.",
+      "rule": {
+        "source": "Stage 2 plan, Stories (Buyer B1 deliberate beat) and 'Household' budget",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "budget_pence": 160000,
+        "listing_total_case": "b1-monthly-housing-cost-listing-service-charge",
+        "budget_total_case": "b1-monthly-housing-cost-2026-budget"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Listing total vs budget",
+          "value_pence": 153837,
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "2026-budget total vs budget",
+          "value_pence": 164837,
+          "rounding": "none"
+        },
+        {
+          "n": 3,
+          "description": "Listing total <= 160000 and 2026-budget total > 160000",
+          "value": true,
+          "rounding": "none"
+        }
+      ],
+      "expected": {
+        "within_budget_on_listing": true,
+        "over_budget_on_2026_budget": true,
+        "listing_total_pence": 153837,
+        "budget_total_pence": 164837,
+        "landed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,705 @@
+{
+  "format_version": 1,
+  "plan_snapshot_date": "2026-10-23",
+  "money": "integer pence unless a field says otherwise",
+  "cases": [
+    {
+      "id": "round-positive-just-below-half",
+      "description": "Round 0.4999p to whole pence (just below half, positive).",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "unrounded_pence": "0.4999"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Nearest penny, half away from zero: 0.4999p",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 0
+      }
+    },
+    {
+      "id": "round-positive-exactly-half",
+      "description": "Round 0.5p to whole pence (exactly half, positive).",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "unrounded_pence": "0.5"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Nearest penny, half away from zero: 0.5p",
+          "value_pence": 1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 1
+      }
+    },
+    {
+      "id": "round-positive-just-above-half",
+      "description": "Round 0.5001p to whole pence (just above half, positive).",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "unrounded_pence": "0.5001"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Nearest penny, half away from zero: 0.5001p",
+          "value_pence": 1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 1
+      }
+    },
+    {
+      "id": "round-negative-just-below-half",
+      "description": "Round -0.4999p to whole pence (just below half, negative).",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "unrounded_pence": "-0.4999"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Nearest penny, half away from zero: -0.4999p",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 0
+      }
+    },
+    {
+      "id": "round-negative-exactly-half",
+      "description": "Round -0.5p to whole pence (exactly half, negative).",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "unrounded_pence": "-0.5"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Nearest penny, half away from zero: -0.5p",
+          "value_pence": -1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": -1
+      }
+    },
+    {
+      "id": "round-negative-just-above-half",
+      "description": "Round -0.5001p to whole pence (just above half, negative).",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "unrounded_pence": "-0.5001"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "Nearest penny, half away from zero: -0.5001p",
+          "value_pence": -1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": -1
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-5",
+      "description": "Convert 5p a year to a monthly amount: 5/12 = 0.41666..p, below half",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 5
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "5 / 12",
+          "value_pence_exact": "0.41666667",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 0
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-5",
+      "description": "Convert -5p a year to a monthly amount: 5/12 = 0.41666..p, below half (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -5
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-5 / 12",
+          "value_pence_exact": "-0.41666667",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 0
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-6",
+      "description": "Convert 6p a year to a monthly amount: 6/12 = 0.5p, exactly half",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 6
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "6 / 12",
+          "value_pence_exact": "0.50000000",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 1
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-6",
+      "description": "Convert -6p a year to a monthly amount: 6/12 = 0.5p, exactly half (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -6
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-6 / 12",
+          "value_pence_exact": "-0.50000000",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": -1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": -1
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-7",
+      "description": "Convert 7p a year to a monthly amount: 7/12 = 0.58333..p, above half",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 7
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "7 / 12",
+          "value_pence_exact": "0.58333333",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 1
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-7",
+      "description": "Convert -7p a year to a monthly amount: 7/12 = 0.58333..p, above half (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -7
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-7 / 12",
+          "value_pence_exact": "-0.58333333",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": -1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": -1
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-18",
+      "description": "Convert 18p a year to a monthly amount: 18/12 = 1.5p, exactly half (banker's rounding would give 2p; a truncating one 1p)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 18
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "18 / 12",
+          "value_pence_exact": "1.50000000",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 2,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 2
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-18",
+      "description": "Convert -18p a year to a monthly amount: 18/12 = 1.5p, exactly half (banker's rounding would give 2p; a truncating one 1p) (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -18
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-18 / 12",
+          "value_pence_exact": "-1.50000000",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": -2,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": -2
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-30",
+      "description": "Convert 30p a year to a monthly amount: 30/12 = 2.5p, exactly half (banker's rounding would give 2p; half away gives 3p)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 30
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "30 / 12",
+          "value_pence_exact": "2.50000000",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 3,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 3
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-30",
+      "description": "Convert -30p a year to a monthly amount: 30/12 = 2.5p, exactly half (banker's rounding would give 2p; half away gives 3p) (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -30
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-30 / 12",
+          "value_pence_exact": "-2.50000000",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": -3,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": -3
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-25000",
+      "description": "Convert 25000p a year to a monthly amount: B1 ground rent: 25000/12 = 2083.33..p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 25000
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "25000 / 12",
+          "value_pence_exact": "2083.33333333",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 2083,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 2083
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-25000",
+      "description": "Convert -25000p a year to a monthly amount: B1 ground rent: 25000/12 = 2083.33..p (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -25000
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-25000 / 12",
+          "value_pence_exact": "-2083.33333333",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": -2083,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": -2083
+      }
+    },
+    {
+      "id": "annual-to-monthly-pos-185000",
+      "description": "Convert 185000p a year to a monthly amount: B2 council tax: 185000/12 = 15416.66..p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": 185000
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "185000 / 12",
+          "value_pence_exact": "15416.66666667",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": 15417,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": 15417
+      }
+    },
+    {
+      "id": "annual-to-monthly-neg-185000",
+      "description": "Convert -185000p a year to a monthly amount: B2 council tax: 185000/12 = 15416.66..p (negated)",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "annual_pence": -185000
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-185000 / 12",
+          "value_pence_exact": "-15416.66666667",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once to the penny, half away from zero",
+          "value_pence": -15417,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "monthly_pence": -15417
+      }
+    },
+    {
+      "id": "divide-pos-1-by-8",
+      "description": "Divide 1p by 8: 0.125p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "numerator_pence": 1,
+        "divisor": 8
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "1 / 8 = 0.125",
+          "value_pence_exact": "0.125",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once, half away from zero",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 0
+      }
+    },
+    {
+      "id": "divide-neg-1-by-8",
+      "description": "Divide -1p by 8: -0.125p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "numerator_pence": -1,
+        "divisor": 8
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-1 / 8 = -0.125",
+          "value_pence_exact": "-0.125",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once, half away from zero",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 0
+      }
+    },
+    {
+      "id": "divide-pos-3-by-8",
+      "description": "Divide 3p by 8: 0.375p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "numerator_pence": 3,
+        "divisor": 8
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "3 / 8 = 0.375",
+          "value_pence_exact": "0.375",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once, half away from zero",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 0
+      }
+    },
+    {
+      "id": "divide-neg-3-by-8",
+      "description": "Divide -3p by 8: -0.375p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "numerator_pence": -3,
+        "divisor": 8
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-3 / 8 = -0.375",
+          "value_pence_exact": "-0.375",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once, half away from zero",
+          "value_pence": 0,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 0
+      }
+    },
+    {
+      "id": "divide-pos-5-by-8",
+      "description": "Divide 5p by 8: 0.625p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "numerator_pence": 5,
+        "divisor": 8
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "5 / 8 = 0.625",
+          "value_pence_exact": "0.625",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once, half away from zero",
+          "value_pence": 1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": 1
+      }
+    },
+    {
+      "id": "divide-neg-5-by-8",
+      "description": "Divide -5p by 8: -0.625p",
+      "rule": {
+        "source": "Decision 0021 (nearest penny, half away from zero; each line rounded once; total is the sum of rounded lines) and decision 0034 (boundary table)",
+        "url": "docs/decisions/0034-rounding-boundary-cases.md"
+      },
+      "inputs": {
+        "numerator_pence": -5,
+        "divisor": 8
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "-5 / 8 = -0.625",
+          "value_pence_exact": "-0.625",
+          "rounding": "none"
+        },
+        {
+          "n": 2,
+          "description": "Round once, half away from zero",
+          "value_pence": -1,
+          "rounding": "once, half away from zero"
+        }
+      ],
+      "expected": {
+        "pence": -1
+      }
+    }
+  ]
+}
