@@ -19,7 +19,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
-- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. You set direction, review every change, and own decisions.
+- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction, review every change, and own decisions.
 - **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools. All numbers come from deterministic code. Multi-agent orchestration (Microsoft Agent Framework in the brief's stack) is deferred until a measured task needs it.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
@@ -106,14 +106,25 @@ Do these now, because they are cheap now and expensive later:
 
 Each stage ends with a gate. Don't start the next stage until its gate is met. Agents can draft most of the artefacts; you approve each gate.
 
-### Stage 1: Close the design decisions
+Every stage begins with its **decision step**: the individual decisions that must be made before the stage's work starts. Each is a separate decision record in `docs/decisions/` with options, a recommendation and your choice. The full register, with IDs and status, is in `docs/decisions/README.md`. A decision is made at the latest stage that still lets the work go ahead. Choices that only matter later stay open until then.
 
-- Go through the decisions table in doc 02 §9. Confirm or change each "Recommended" row: product category, core object, main value, AI presentation, visual direction, prototype centrepiece and free/paid principle.
-- Leave the open ones open (public brand, commercial model, prices). The prototype can work around them with configurable labels.
+### Stage 1: Close the design decisions and set how we work
 
-**Gate:** every row in doc 02 §9 is either confirmed or explicitly marked open with a reason.
+**Decisions** (checklist: `docs/planning/stage-1-confirmation.md`):
+- **Product (PD-01 to PD-07):** confirm or change each "Recommended" row in doc 02 §9.
+- **Ways of working (WW-01):** roles, flow of a change, definition of done, how decisions get made and recorded (section 10).
+- **AI coding tools and setup (WW-02):** which coding agent(s) and models, agent instructions file, permissions, hooks and integrations, how agent sessions are reviewed, and the tool subscription cost.
+- **Repository and tracking conventions (WW-03):** repo layout, branch and commit conventions, branch protection, where issues and the plan are tracked.
+
+Agents start producing artefacts in stage 2, so how they work has to be settled first.
+
+**Gate:** every product row is confirmed or explicitly open with a reason; WW-01 to WW-03 accepted; `CLAUDE.md` and the decision-record template are in the repository.
 
 ### Stage 2: Build the fixture catalogue
+
+**Decisions:**
+- **Fixture data format (DA-01):** file format and schema for homes, evidence, documents and replies, and how fixtures are versioned.
+- **Calculation script and test vectors (DA-02):** script language, and expected results stored as language-neutral test vectors (for example JSON), so they can later test the real cost engine whatever backend language is chosen.
 
 The prototype's credibility depends on this, and the images show what happens without it.
 
@@ -127,6 +138,10 @@ The prototype's credibility depends on this, and the images show what happens wi
 
 ### Stage 3: Write the prototype specification
 
+**Decisions:**
+- **Specification format (SP-01):** where specs live, their template, and how acceptance criteria are written (for example given/when/then or numbered checks) so agents and tests can use them directly.
+- **Work breakdown (SP-02):** how a spec turns into issues and slices that are small enough to review.
+
 - A screen-by-screen spec for the 13 screens in doc 03 §5: the content, actions, states and which fixture each uses.
 - Step-by-step scripts for the buyer and renter stories, with acceptance criteria for each step.
 - The required states from doc 03 §5 (ambiguous match, not covered, stale, partial answer, and so on) assigned to specific screens.
@@ -134,23 +149,37 @@ The prototype's credibility depends on this, and the images show what happens wi
 
 **Gate:** someone who hasn't read docs 01–03 could build the prototype from the spec and the fixtures alone.
 
-### Stage 4: Design, then infrastructure decisions
+### Stage 4: Design, frontend, infrastructure and deployment decisions
 
-Design:
+**Design decisions:**
+- **Design tooling (DS-01):** design-tool-first (for example Figma) versus code-first (wireframes and components built directly in code with a component workbench).
+- **Design system foundation (DS-02):** tokens, typography and fonts, icon set, component inventory, and accessibility checks.
+
+**Frontend decisions:**
+- **Framework and rendering (FE-01):** confirm Next.js, React and TypeScript, the routing model, and static versus server rendering for a fixture-only demo.
+- **Styling and components (FE-02):** styling approach and whether to build on an accessible headless component library.
+- **Maps and charts (FE-03):** map library, tile provider and its terms, and the charting approach.
+- **Frontend practices (FE-04):** unit, component and end-to-end testing, automated accessibility checks, linting and formatting, en-GB copy and number/currency formatting, performance budgets, and the folder structure.
+
+**Infrastructure and deployment decisions:**
+- **Prototype architecture (IN-01):** recommended: the prototype is the real frontend reading fixture files, with no backend yet.
+- **Hosting for the public demo (IN-02):** within the Azure direction; a static or scale-to-zero option is enough for a fixture-only frontend.
+- **Infrastructure as code (IN-03):** confirm Bicep or choose an alternative.
+- **CI/CD and environments (IN-04):** pipeline, pull-request previews, production demo, secrets handling and domain.
+- **Budget cap and cost alerts (IN-05):** the monthly cap and alert thresholds, plus a daily model-spend cap for later AI features.
+
+Design work:
 - Low-fidelity wireframes for both stories, reviewed against the spec.
 - Design tokens and a small component set from doc 03 §6.
 - High-fidelity versions of the key screens only: landing, home overview, costs, compare, question detail, reply checking and decision impact.
 - One image pass: the shared hero and the matched buyer/renter pair, from the doc 03 §7 prompts.
 
-Infrastructure and architecture, each as a decision record in `docs/decisions/`:
-- **Prototype architecture.** Recommended: build the prototype as the real Next.js frontend reading the fixture files, with no backend yet. The prototype code then becomes the product's frontend instead of being thrown away.
-- **Hosting for the public demo**, within the Azure direction (a static or scale-to-zero option is enough for a fixture-only frontend).
-- **Monthly budget cap** and alert thresholds, plus a daily model-spend cap for later AI features.
-- **Repository foundation:** layout, tooling, CI, branch protection and the `CLAUDE.md` agent instructions.
-
-**Gate:** wireframes and key screens approved; decision records merged; the budget cap is set in Azure before the first deployment.
+**Gate:** wireframes and key screens approved; DS, FE and IN decision records accepted; the budget cap is set in Azure before the first deployment.
 
 ### Stage 5: Start implementation, which is the clickable prototype
+
+**Decisions:**
+- **Demo analytics and feedback (FE-05):** whether to measure demo use at all, and if so a privacy-friendly option needing no cookie banner, plus how viewers can leave feedback.
 
 Build in vertical slices, each one deployed to the demo:
 
@@ -164,5 +193,48 @@ Build in vertical slices, each one deployed to the demo:
 
 ### Stage 6: Validate, then build the real product
 
-- Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then revise the specification and fixtures.
-- Continue with section 5, steps 3–9: cost engine, real England data, questions workflow, document extraction, entitlements, monitoring, case study. Each starts with its own short spec and decision records, following the rules in section 3.
+Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then revise the specification and fixtures. Then continue with section 5, steps 3–9. Each step has its own decision step before it starts:
+
+| Before building | Decisions |
+|---|---|
+| Cost engine (step 3) | **Backend language and framework (BE-01):** re-confirm C#/ASP.NET Core or choose otherwise, weighing learning value against running two languages. **Backend architecture (BE-02):** e.g. modular monolith, API style and contract (OpenAPI), shared types with the frontend. **Rules versioning (BE-03):** how tax and cost rule tables are stored, cited and reviewed. |
+| Real England data (step 4) | **Database and geospatial (DA-03):** PostgreSQL/PostGIS confirmation, migrations, hosting tier. **Ingestion and scheduling (DA-04):** batch jobs, storage of raw versus processed data, refresh cadence. **Source licence register (DA-05):** format and review process. **Address and routing providers (DA-06):** when, if ever, to pay for one. |
+| Questions workflow (step 5) | **Authentication and accounts (SE-01):** identity provider, account model, household sharing. **Privacy and data protection (SE-02):** UK GDPR basis, retention and deletion, document isolation, ICO and DPIA steps. |
+| Document extraction (step 6) | **Model provider and runtime (AI-01):** confirm Microsoft Foundry or choose otherwise, and the model for each task. **Retrieval (AI-02):** pgvector versus Azure AI Search. **Evaluation tooling (AI-03):** eval sets, scoring and CI gating. **Orchestration (AI-04):** single tool-using calls versus Agent Framework. **AI safety (AI-05):** prompt-injection defences and output validation. |
+| Entitlements (step 7) | **Entitlements and payments (CO-01):** feature-flag approach and payment provider in test mode. |
+| Monitoring (step 8) | **Observability (OP-01):** tracing, logging, error alerts, cost dashboards. **Scheduling and notifications (OP-02):** change-detection jobs and how users are told. |
+
+## 10. Ways of working
+
+These are the defaults that WW-01 to WW-03 confirm or change in stage 1.
+
+**Roles**
+- **You:** product owner, architect and reviewer. You make every decision, approve every gate and merge every pull request.
+- **Coding agents:** draft decision options, specs, code, tests, infrastructure and documentation, working from the specs and `CLAUDE.md`.
+- **Outside reviewers** (later): legal, tax and tenancy content gets professional review before anything is charged for.
+
+**How a decision gets made**
+1. An agent drafts a decision record: context, two or three options with trade-offs, cost and learning value, and a recommendation.
+2. You choose, and write the "why" in your own words.
+3. The record is merged with status **Accepted**. Changing a decision later means a new record that marks the old one **Superseded**, not an edit.
+
+**How a change gets made**
+1. **Issue:** one user-visible capability, linked to its spec section and acceptance criteria.
+2. **Agent session on a branch:** the agent implements with tests and updates docs. One issue per session keeps context small.
+3. **Pull request:** a description of what changed and why, how it was tested, and any assumptions the agent made.
+4. **Checks:** CI runs build, lint, tests, accessibility checks and (later) AI evaluations. Nothing merges on red.
+5. **AI review:** OpenAI Codex reviews the pull request as an independent second opinion (decision 0012). Its findings are advice; you decide what to act on.
+6. **Your review:** read the diff, run it, and question anything you can't explain.
+7. **Merge and explain-back:** a few lines in your own words on how it works, added to the learning log.
+
+**Definition of ready:** a linked spec with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
+
+**Definition of done:** acceptance criteria met; tests and checks pass; works on mobile and with keyboard; no hand-typed figures; docs and decision records updated; deployed to the demo where relevant; explain-back written.
+
+**Cadence:** a short weekly plan (which gate is next and which issues serve it) and a short weekly review (what shipped, what you learned, actual cloud and AI spend against the cap).
+
+**Agent hygiene**
+- Start each session from a clean branch and a specific issue.
+- Keep `CLAUDE.md` current with conventions, commands, the "no invented facts" rule and the public-repo rules (no secrets, no personal data, no licensed datasets).
+- Give agents the narrowest permissions that work; any dependency or infrastructure change needs your approval.
+- When an agent is wrong in a way that could recur, record the rule in `CLAUDE.md` so the fix outlives the session.

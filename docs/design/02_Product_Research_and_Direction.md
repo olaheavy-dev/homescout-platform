@@ -131,7 +131,7 @@ An AI interpretation of a reply is a proposed assessment. A user or explicitly i
 - Produce a dated snapshot containing evidence, assumptions, open questions and the household's rationale.
 - Allow a decision to be recorded with acknowledged uncertainties. “User chose to proceed” is not “property verified.”
 
-AI belongs inside these tasks: explain a finding, compare documents, draft a question, interpret a reply and explain an updated scenario. The existing stack can support this, but the customer does not need a dashboard of named agents. "Agent-driven" describes how the product is **built** (by AI coding agents, see `04_Project_Goals_and_Delivery.md`), not a requirement for a multi-agent runtime. Start with single, task-specific model calls that use tools and deterministic functions. Adopt agent orchestration only where a measured task needs it.
+AI belongs inside these tasks: explain a finding, compare documents, draft a question, interpret a reply and explain an updated scenario. The existing stack can support this, but the customer does not need a dashboard of named agents. "Agent-driven" describes how the product is **built** (by AI coding agents, see `04_Project_Goals_and_Delivery.md`), not a requirement for a multi-agent runtime. Start with single, task-specific model calls that use tools and deterministic functions. Adopt agent orchestration only where a measured task needs it. The founder chose AI inside tasks **plus** an optional chat panel about the current home (decision 0004). The chat must cite evidence or say it doesn't know, use the cost engine for any number, and never call a home safe or verified.
 
 ## 6. Evidence design: make trust understandable
 
@@ -237,17 +237,17 @@ Research the economics before commitments: licensed address/data calls, routing,
 | Decision | Recommended position | Status |
 |---|---|---|
 | Audience | Buyers and renters with equal journey quality | **Confirmed by founder** |
-| Product category | Home decision workspace, expressed in plain consumer language | Recommended |
-| Core object | One home record inside My move | Recommended |
-| Main value | Evidence, real costs, comparison and answers connected together | Recommended; validate with users |
-| AI presentation | Contextual assistance inside a home or question | Recommended |
-| Visual direction | Warm editorial photography plus a precise, restrained workspace | Recommended; details in companion document |
-| Public brand | Retain HomeScout only as an internal working name pending selection | Open; current adjacent uses verified |
-| Commercial model | Test a Move pass against monthly and one-off alternatives | Open |
-| Free/paid principle | Free covers the complete first look and all public-interest facts; paid covers metered depth (documents, AI assistance, monitoring, sharing, snapshots). Draft boundary in §8 | Recommended; limits and prices open |
+| Product category | Home decision workspace, expressed in plain consumer language | **Confirmed by founder** (decision 0001) |
+| Core object | One home record inside My move | **Confirmed by founder** (0002) |
+| Main value | Evidence, real costs, comparison and answers connected together | **Confirmed by founder** (0003); validate with users |
+| AI presentation | AI inside specific tasks **plus an optional chat panel** about the current home, with grounding rules | **Confirmed by founder** (0004), changed from tasks-only |
+| Visual direction | Warm editorial photography plus a precise, restrained workspace | **Confirmed by founder** (0005); details in doc 03 |
+| Public brand | Retain HomeScout only as an internal code name; choose a demo name before public launch (0008) | Open (0009); name shortlist in progress |
+| Commercial model | Test a Move pass against monthly and one-off alternatives | Open (0010) |
+| Free/paid principle | Free covers the complete first look and all public-interest facts; paid covers metered depth (documents, AI assistance, monitoring, sharing, snapshots). Draft boundary in §8 | **Confirmed by founder** (0007); limits and prices open |
 | Project purpose | Portfolio and learning project now, built mostly by AI coding agents on a small monthly budget, kept commercially viable for later. Public repository, all rights reserved; the clickable prototype is the first public showcase. See `04_Project_Goals_and_Delivery.md` §8–9 | **Confirmed by founder**; budget cap to be set in the infrastructure decision |
 | Coverage promise | England first; UK ambition with explicit nation/source coverage per feature; other nations shown as "not yet covered" | **England first confirmed by founder**; sequence of later nations open; supplier diligence required |
-| Prototype centrepiece | Full buyer and renter question-to-answer journeys | Recommended |
+| Prototype centrepiece | Full buyer and renter question-to-answer journeys | **Confirmed by founder** (0006) |
 
 ## 10. Validate the product, not just its appearance
 

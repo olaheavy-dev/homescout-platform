@@ -13,7 +13,7 @@ Document 02 owns the current product recommendations, decision status and geogra
 
 Concept images are in `docs/design/`; section 2 of document 03 maps each file to its screen. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
 
-Research and concept work only; the repository does not yet contain an implemented application. The next step is the clickable prototype; document 04 §9 sets out the roadmap to it.
+Research and concept work only; the repository does not yet contain an implemented application. The next step is the clickable prototype; document 04 §9 sets out the roadmap to it, §10 the ways of working, and [the decision register](docs/decisions/README.md) every decision still to make. Current step: [stage 1 confirmation list](docs/planning/stage-1-confirmation.md).
 
 ## Licence
 
