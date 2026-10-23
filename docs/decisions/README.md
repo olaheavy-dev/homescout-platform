@@ -51,7 +51,7 @@ Every significant product, technical and working decision gets its own record in
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
 | SP-02 | Work breakdown | 3 | Not started | |
-| DS-01 | Design tooling | 4 | Not started | |
+| DS-01 | Design tooling | 4 | Not started (code-first indicated by 0031) | |
 | DS-02 | Design system foundation | 4 | Not started | |
 | FE-01 | Frontend framework and rendering | 4 | Proposed (TypeScript and Next.js accepted in 0020; routing and rendering at stage 4) | [0020](0020-application-languages.md) |
 | FE-02 | Styling and components | 4 | Not started | |
@@ -67,8 +67,9 @@ Every significant product, technical and working decision gets its own record in
 | BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020; ASP.NET Core to confirm at stage 6) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
-| BE-04 | .NET engineering foundation | 2 | Accepted | [0021](0021-dotnet-engineering-foundation.md) |
+| BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034) | [0021](0021-dotnet-engineering-foundation.md) |
 | BE-05 | Our own Result type | 2 | Accepted | [0032](0032-own-result-type.md) |
+| BE-06 | Rounding boundary test cases | 2 | Accepted | [0034](0034-rounding-boundary-cases.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |
@@ -80,8 +81,8 @@ Every significant product, technical and working decision gets its own record in
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework) | [0023](0023-microsoft-agent-framework.md) |
-| AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements) | [0025](0025-ai-platform-capabilities.md) |
+| AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Proposed (OpenTelemetry and local Aspire accepted in 0025; production telemetry at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | OP-02 | Scheduling and notifications | 6 (before monitoring) | Not started | |

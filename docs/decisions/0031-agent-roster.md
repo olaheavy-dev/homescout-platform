@@ -1,4 +1,4 @@
-# 0031: Agent roster and working rules
+# 0031: Agent roster, design skills and working rules
 
 **ID:** WW-10  
 **Status:** Accepted  
@@ -21,9 +21,9 @@ The founder chose the lean set, written fresh for HomeScout in `.claude/` ([suba
 
 | Agent or skill | Model | Job |
 |---|---|---|
-| **Implementer** | Faster, cheaper model | Builds one issue in its own worktree, runs `make check test`, opens a pull request with "How it works", "Concepts to learn" and "Noticed, not changed" |
+| **Implementer** | Faster, cheaper model for the light lane; most capable model for the full lane | Builds one issue in its own worktree, runs `make check test`, opens a pull request with "How it works", "Concepts to learn" and "Noticed, not changed" |
 | **Verifier** | Faster, cheaper model | Before Codex review: runs every check at the head commit and maps each acceptance criterion and edge case to a named test; a gap goes back to the implementer |
-| **Review-comment handler** | Faster model; escalates money, legal, privacy, security and AI findings to the most capable model | Applies decisions 0015 and 0016 to Codex comments: severity, review rounds, follow-up issues |
+| **Review-comment handler** | Most capable model, because setting severity and review rounds is triage (`AGENTS.md`, "Keeping agent cost down") | Applies decisions 0015 and 0016 to Codex comments: severity, review rounds, follow-up issues |
 | **Planner** | Most capable model | High-risk lane only (money, legal, privacy, auth, AI): a plan listing edge cases and the test that proves each |
 | **Test-first skill** | — | Before each test run, state the expected failure; only valid failures count; stop if a test passes unexpectedly; never weaken an assertion; stop after 3 failed attempts; record a slice table in the pull request |
 
@@ -38,14 +38,15 @@ The founder chose the lean set, written fresh for HomeScout in `.claude/` ([suba
 | 5 | `frontend-design`, `design-review` | Building screens; screenshot reviews at phone, tablet and desktop widths in light and dark mode, **replacing a custom visual-reviewer agent**. Automated accessibility tests (Playwright with axe, FE-04) still run in CI |
 | Any | `grill-me` | Stress-testing a plan before committing to it |
 
-The plugin isn't stored in the repository; the setup notes list how to install it. Its outputs (briefs, tokens, task lists) are HomeScout's own work.
+The plugin isn't stored in the repository. It's pinned to a reviewed commit, and `docs/references/third-party.md` gives the install steps. Its outputs (briefs, tokens, task lists) are HomeScout's own work.
 
 Notes on using it:
-- **Sequence:** `/design-flow` runs grill-me → design brief → information architecture → design tokens → brief-to-tasks → frontend-design → design review; steps can be skipped or run on their own.
-- **Style:** name the aesthetic explicitly so results stay consistent: doc 03's warm, calm editorial direction maps to the plugin's **Editorial / Magazine** style, with **Scandinavian** as the alternative.
-- **Where outputs go:** the skills save to `.design/<feature>/` (brief, information architecture, tasks, review). Keep that folder, list it in the docs index, and settle the full specification format in SP-01 (stage 3).
+- **Sequence:** `/design-flow` runs grill-me → design brief → information architecture → design tokens → brief-to-tasks → frontend-design, and **ends there**. Design review is a **separate, required step** after each build: run `/designer-skills:design-review` explicitly, since it replaces the custom visual reviewer.
+- **Style:** name the aesthetic explicitly so results stay consistent: doc 03's warm, calm editorial direction maps to the plugin's **Editorial / Magazine** style, with **Scandinavian** as the alternative. **Doc 03 §6's colour tokens override the style's own palette.**
+- **Where outputs go:** the skills save to `.design/<feature>/` (brief, information architecture, tasks, review). This is a deliberate exception to the docs structure (0017), so the flow can resume where it left off; it's listed in the docs index, and SP-01 (stage 3) settles the full specification format. **Screenshots** the review writes to `.design/<feature>/screenshots/` are git-ignored; any image kept on purpose goes through the asset register (`AGENTS.md` rule 5).
 - **Dark mode:** the token skill generates light and dark palettes by default; whether the prototype ships dark mode is decided in DS-02 (stage 4).
-- **Updates:** the plugin tracks its author's latest version, and its files are instructions agents follow. Update it deliberately (`/plugin update`), after reviewing what changed, like any dependency.
+- **Updates:** the plugin otherwise tracks its author's latest version, and its files are instructions agents follow. Treat a change of the pinned commit like any dependency update: review what changed, update the recorded commit in the same pull request.
+- **DS-01 (design tooling):** this decision is the main input to DS-01 and points it towards **code-first** design. DS-01 is still confirmed at stage 4; if it chooses a design-tool-first approach, this section is revisited.
 
 **Later:** a deployer once there is somewhere to deploy (stages 4–5).
 

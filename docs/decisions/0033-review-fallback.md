@@ -19,9 +19,9 @@ Claude fallback for documentation, code waits.
 
 ## Decision
 The founder chose the fallback. While Codex is unavailable (usage limit, outage or a review stuck for over an hour):
-1. **Documentation-only pull requests** (Markdown and images only, no code, workflow or configuration files) are reviewed by a **separate Claude Code review run** (the built-in `/code-review`, in a fresh context, not the session that wrote the change), following `AGENTS.md`, "When reviewing". Its findings are posted on the pull request, labelled **"Fallback review (Codex unavailable)"**, and handled with the same severity and review-round rules (0016).
+1. **Documentation-only pull requests** (Markdown and images only, no code, workflow or configuration files) are reviewed by a **separate Claude Code run in a fresh context** (not the session that wrote the change), prompted with `AGENTS.md`, "When reviewing", including its one complete, knock-on pass (0016). The built-in `/code-review` alone isn't enough, because it looks for code bugs rather than cross-document contradictions. Its findings are posted on the pull request in one comment labelled **"Fallback review (Codex unavailable)"**, each numbered, and handled with the same severity and review-round rules (0016). Each finding gets a reply saying fixed, answered or deferred; that replaces "thread resolved" for fallback findings.
 2. **Pull requests with code, workflows, configuration or dependencies wait for Codex.**
-3. **A pull request rebased with no content change** may merge on its earlier Codex review, if `git range-diff` shows every commit unchanged; the pull request records this (as done for #12 and #15).
+3. **A pull request rebased with no content change** may merge on its earlier review only if **both** hold: `git range-diff` shows every commit unchanged, **and** none of the files the pull request changes were changed on `main` since that review, with a knock-on check of what did change on `main`. Otherwise it needs a fresh review. The pull request records the evidence (as done for #12 and #15). This exception, like the rest of this decision, applies only while Codex is unavailable.
 4. **Use fewer reviews:** batch related changes into one pull request, and request a re-review only once per batch of fixes.
 
 ## Consequences

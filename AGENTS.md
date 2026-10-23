@@ -41,7 +41,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 
 - One issue per session, on a branch named `type/short-description` (e.g. `feat/buyer-story-costs`).
 - Start from the issue's spec and acceptance criteria. If the spec is unclear or conflicts with a decision, stop and ask rather than guess.
-- Small vertical slices. Tests first for anything numeric or legal, using the test-first skill (decision 0031).
+- Small vertical slices. Tests first for anything numeric or legal, using the test-first skill once it's added (decision 0031) and the boundary cases in decision 0034.
 - **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open a `review-followup` issue for each. Don't fix unrelated things in the same change.
 - **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a new dependency, or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
 - **Stop what you start:** servers, watchers and temporary worktrees.
@@ -82,8 +82,8 @@ How to report:
 ## When merging (Claude Code, decisions 0015 and 0016)
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
-1. Codex has reviewed the **latest commit** of the pull request, or, while Codex is unavailable, a documentation-only pull request has had the fallback review (decision 0033). A pull request rebased with no content change may rely on its earlier review if `git range-diff` shows every commit unchanged.
-2. Every Codex finding is fixed, answered with a reason, or deferred under "Review rounds" below, and every review thread is resolved.
+1. Codex has reviewed the **latest commit** of the pull request, or, while Codex is unavailable, a documentation-only pull request has had the fallback review (decision 0033). Also only while Codex is unavailable, a pull request rebased with no content change may rely on its earlier review under the conditions in decision 0033.
+2. Every review finding (Codex, or the fallback review under decision 0033) is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
 4. The pull request doesn't fall under the founder-only list below.
 
@@ -112,7 +112,7 @@ Optimised for quality, speed and agent cost:
 - Keep pull requests focused on one topic, but group small related documentation changes into one pull request rather than several.
 - Read only the files a task needs; don't reload whole documents to change one line.
 - Wait for reviews and checks in the background with long intervals; don't poll repeatedly.
-- Use the most capable model for planning, decisions and review triage; a faster, cheaper model is acceptable for routine, well-specified implementation (decision 0012).
+- Use the most capable model for planning, decisions, review triage and full-lane implementation; a faster, cheaper model is acceptable for routine, well-specified, light-lane implementation (decisions 0012, 0031).
 - Before a long or expensive task (large refactor, many files, repeated review rounds), say so and suggest a cheaper route if there is one.
 
 ## Commands

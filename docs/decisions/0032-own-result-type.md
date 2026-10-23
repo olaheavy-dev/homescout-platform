@@ -6,7 +6,7 @@
 **Stage:** 2
 
 ## Context
-Decision 0021 says when to use a Result type: only for expected failures (invalid input, not found, an outside service unavailable), while programming errors throw. It didn't say where the type comes from. One earlier project wrote its own small type; another used the FluentResults package.
+Decision 0021 says a Result type is used only where inputs can legitimately fail, while programming errors throw. In practice we read "expected failures" as invalid input, not found and an outside service being unavailable. It didn't say where the type comes from. One earlier project wrote its own small type; another used the FluentResults package.
 
 ## Options
 - **Write our own (chosen):** a small `Result`, `Result<T>` and `Error` type, about 50–100 lines.

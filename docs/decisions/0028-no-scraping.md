@@ -18,13 +18,13 @@ No scraping.
 
 ## Decision
 The founder agreed. HomeScout uses only:
-1. **Material the user provides** for their own decision: documents they upload, listing text they paste, or details they enter. It is processed privately for that user, labelled by origin (for example "listing claim, supplied by you"), and never republished or shared with other users.
+1. **Material the user provides** for their own decision: documents they upload, listing text they paste, or details they enter. It is processed privately for that user, labelled by origin (for example "listing claim, supplied by you"), and never republished or exposed to anyone outside the people the user explicitly shares it with (for example their household, doc 02 §5 and §8).
 2. **Official or open sources used within their licence terms**, for example data published under the [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/), with attribution and the licence recorded first (DA-05).
 3. **Licensed data**, only after a recorded decision and licence check.
 
 HomeScout never scrapes or crawls property portals or agent websites, and never copies listing descriptions, photos or floor plans into its own data. A link to a listing may be stored as the user's own reference.
 
 ## Consequences
-- Doc 02 §7's "listing claim" origin means user-supplied listing content under this rule.
+- Doc 02 §6's "listing claim" origin means user-supplied listing content under this rule.
 - Data-loading work (DA-04, DA-05) checks every source against this decision. See also the UK guidance on [database rights](https://www.gov.uk/guidance/sui-generis-database-rights).
 - Test and demo data stay synthetic; real listings are never committed.

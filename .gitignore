@@ -16,3 +16,6 @@
 
 # Private, machine-only notes (never commit)
 .local/
+
+# Design-review screenshots (decision 0031); keep chosen images via the asset register
+.design/*/screenshots/
