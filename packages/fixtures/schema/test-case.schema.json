@@ -314,6 +314,7 @@
         },
         "else": {
           "required": [
+            "period",
             "amountPence",
             "source"
           ],

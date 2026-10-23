@@ -31,7 +31,7 @@
         "origin": "document",
         "label": "lease",
         "documentType": "lease",
-        "date": "2015-01-01",
+        "date": "2015",
         "synthetic": true
       },
       "summary": "Synthetic lease: ground rent and the lease term.",
@@ -114,12 +114,13 @@
       "summary": "Synthetic written statement of terms for an assured periodic tenancy; the bills section says who pays water.",
       "excerpt": "Bills: the tenant pays for water.",
       "evidenceIds": [
-        "R1-WATER-WSOT"
+        "R1-WATER-WSOT",
+        "R1-TENANCY-TYPE"
       ],
       "citations": [
         {
           "url": "https://www.legislation.gov.uk/uksi/2026/324/made",
-          "note": "Written statement of terms required for new private tenancies in England from 1 May 2026 (from the stage 2 plan)."
+          "note": "The contents of the written statement required for new private tenancies in England (SI 2026/324, in force 1 May 2026), from the stage 2 plan."
         },
         {
           "url": "https://www.gov.uk/guidance/renters-rights-act-overview-for-tenants",

@@ -140,7 +140,13 @@ internal static class FixtureValidator
             return [new FixtureProblem(name, "/", "Not valid JSON: " + exception.Message)];
         }
 
-        string? declared = (instance as JsonObject)?["$schema"]?.GetValue<string>();
+        JsonNode? declaredNode = (instance as JsonObject)?["$schema"];
+        string? declared = null;
+        if (declaredNode is not null && !(declaredNode is JsonValue value && value.TryGetValue(out declared)))
+        {
+            return [new FixtureProblem(name, "/$schema", "Must be a string naming the schema, for example \"../schema/NAME.schema.json\".")];
+        }
+
         string? declaredName = declared is null ? null : Path.GetFileName(declared);
         string? schemaName = expectedSchema ?? declaredName;
 

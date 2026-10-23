@@ -41,7 +41,25 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void SnapshotDate_isTheApprovedDate()
+    public void ValidateFixtures_nonStringSchemaField_isReportedReadably()
+    {
+        string folder = Path.Combine(Path.GetTempPath(), "homescout-fixtures-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(Path.Combine(folder, "test-cases"));
+        File.WriteAllText(Path.Combine(folder, "test-cases", "bad.json"), "{ \"$schema\": 5 }");
+        try
+        {
+            IReadOnlyList<FixtureProblem> problems = FixtureValidator.ValidateFixtures(folder);
+
+            Assert.That(problems.Select(p => p.ToString()), Has.Some.Contain("Must be a string"));
+        }
+        finally
+        {
+            Directory.Delete(folder, true);
+        }
+    }
+
+    [Test]
+    public void SnapshotDate_inSnapshotFile_isTheApprovedDate()
     {
         string date = FixtureFiles.Load("snapshot")["snapshot"]!["snapshotDate"]!.GetValue<string>();
 
@@ -49,7 +67,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void Wales1_nationIsWales_andIsNotYetCovered()
+    public void Wales1_address_isWalesAndNotYetCovered()
     {
         JsonObject home = FixtureFiles.Home("WALES-1");
 
@@ -61,7 +79,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void EveryHome_hasANation()
+    public void Home_inEveryRecord_hasANation()
     {
         JsonArray homes = FixtureFiles.Load("homes")["homes"]!.AsArray();
 
@@ -70,7 +88,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void NorthbridgeHomes_haveNbPostcodes()
+    public void NorthbridgeHomes_postcodes_startWithNb()
     {
         JsonArray homes = FixtureFiles.Load("homes")["homes"]!.AsArray();
         string[] postcodes = homes
@@ -144,7 +162,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void EveryEvidenceItemThatIsContextOnly_isAnEnergyCertificateCost()
+    public void EvidenceItem_markedContextOnly_isAnEnergyCertificateCost()
     {
         JsonArray items = FixtureFiles.Load("evidence")["evidence"]!.AsArray();
         string[] contextOnly = items.Where(i => i!["contextOnly"]!.GetValue<bool>()).Select(i => i!["id"]!.GetValue<string>()).ToArray();
@@ -197,7 +215,7 @@ internal sealed class RealDataTests
     [TestCase("R2-FIRST-MONTH-RENT", 127500, "once")]
     [TestCase("HH-MORTGAGE-DEPOSIT", 3000000, "once")]
     [TestCase("HH-MOVING-COSTS", 120000, "once")]
-    public void ApprovedMoneyInputs_matchThePlan(string id, long pence, string period)
+    public void MoneyInput_approvedInPlan_matchesTheFile(string id, long pence, string period)
     {
         JsonObject value = FixtureFiles.EvidenceItem(id)["value"]!.AsObject();
 
@@ -209,7 +227,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void ApprovedMortgageAndBudgetInputs_matchThePlan()
+    public void MortgageAndBudgetInputs_approvedInPlan_matchTheFile()
     {
         JsonObject rate = FixtureFiles.EvidenceItem("HH-MORTGAGE-RATE")["value"]!.AsObject();
         JsonObject term = FixtureFiles.EvidenceItem("HH-MORTGAGE-TERM")["value"]!.AsObject();
@@ -225,7 +243,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void B1_leaseAndBands_matchThePlan()
+    public void LeaseAndCouncilTaxBands_approvedInPlan_matchTheFile()
     {
         JsonObject lease = FixtureFiles.EvidenceItem("B1-LEASE-TERM")["value"]!.AsObject();
 
@@ -255,7 +273,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void EveryEvidenceMoneyAndRateNumber_isAWholeNumber_inEveryDataFile()
+    public void Numbers_inEveryFixtureFile_areWholeNumbers()
     {
         string[] files = { "household", "homes", "evidence", "documents", "questions", "replies", "snapshot" };
 
@@ -263,10 +281,15 @@ internal sealed class RealDataTests
         {
             Assert.That(FractionalNumbers(FixtureFiles.Load(file)), Is.Empty, file + " must contain no fractional numbers");
         }
+
+        foreach (string file in Directory.EnumerateFiles(Path.Combine(FixtureFiles.FixturesDirectory, "test-cases"), "*.json"))
+        {
+            Assert.That(FractionalNumbers(JsonNode.Parse(File.ReadAllText(file))), Is.Empty, file + " must contain no fractional numbers");
+        }
     }
 
     [Test]
-    public void EveryQuestion_endsInTheStatusOfItsLastTransition()
+    public void Question_finalStatus_equalsItsLastTransition()
     {
         JsonArray questions = FixtureFiles.Load("questions")["questions"]!.AsArray();
 
@@ -278,7 +301,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void QuestionStatuses_matchTheStoriesInThePlan()
+    public void Question_statuses_matchTheStoriesInThePlan()
     {
         Assert.Multiple(() =>
         {
@@ -291,7 +314,7 @@ internal sealed class RealDataTests
     }
 
     [Test]
-    public void EveryReference_pointsAtARecordThatExists()
+    public void Reference_inAnyRecord_pointsAtARecordThatExists()
     {
         HashSet<string> homeIds = Ids(FixtureFiles.Load("homes")["homes"]!);
         HashSet<string> evidenceIds = Ids(FixtureFiles.Load("evidence")["evidence"]!);

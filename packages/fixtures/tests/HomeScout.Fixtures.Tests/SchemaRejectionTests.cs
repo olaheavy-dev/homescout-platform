@@ -216,4 +216,46 @@ internal sealed class SchemaRejectionTests
 
         Assert.That(FixtureFiles.Validate("questions", "questions", question).Select(p => p.ToString()), Has.Some.Contain("reason"));
     }
+
+    [Test]
+    public void Evidence_misspeltCategory_isRejected()
+    {
+        JsonObject item = FixtureFiles.EvidenceItem("B1-PRICE");
+        item["category"] = "askin-price";
+
+        Assert.That(FixtureFiles.Validate("evidence", "evidence", item).Select(p => p.ToString()), Has.Some.Contain("/category"));
+    }
+
+    [Test]
+    public void Evidence_syntheticOriginWithSyntheticFlagFalse_isRejected()
+    {
+        JsonObject item = FixtureFiles.EvidenceItem("B1-CT-CHARGE");
+        item["source"]!["synthetic"] = false;
+
+        Assert.That(FixtureFiles.Validate("evidence", "evidence", item).Select(p => p.ToString()), Has.Some.Contain("synthetic"));
+    }
+
+    [TestCase("tenure")]
+    [TestCase("mode")]
+    [TestCase("propertyType")]
+    [TestCase("bedrooms")]
+    [TestCase("unit")]
+    public void Home_englishHomeMissingADescriptiveField_isRejected(string field)
+    {
+        JsonObject home = FixtureFiles.Home("B2");
+        home.Remove(field);
+
+        Assert.That(FixtureFiles.Validate("homes", "homes", home).Select(p => p.ToString()), Has.Some.Contain(field));
+    }
+
+    [Test]
+    public void Home_selectedUnitOutsideTheCandidates_isNotCaughtBySchemaButIsCaughtByDataTest()
+    {
+        // JSON Schema cannot say "selectedUnitId is one of candidateUnits", so the real-data test
+        // B1_postcode_matchesSixCandidateUnits_andTheSelectedOneIsAmongThem covers it. This test documents the gap.
+        JsonObject home = FixtureFiles.Home("B1");
+        home["unit"]!["selectedUnitId"] = "B1-UNIT-9";
+
+        Assert.That(FixtureFiles.Validate("homes", "homes", home), Is.Empty);
+    }
 }

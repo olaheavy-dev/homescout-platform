@@ -329,8 +329,32 @@
           "$ref": "common.schema.json#/$defs/id"
         },
         "category": {
-          "type": "string",
-          "pattern": "^[a-z]+(-[a-z]+)*$"
+          "enum": [
+            "mortgage-deposit",
+            "mortgage-rate",
+            "mortgage-term",
+            "moving-costs",
+            "asking-price",
+            "service-charge",
+            "ground-rent",
+            "lease-term",
+            "council-tax-band",
+            "council-tax",
+            "energy-certificate",
+            "energy-certificate-cost",
+            "buildings-insurance",
+            "maintenance",
+            "stamp-duty",
+            "legal-fees",
+            "energy",
+            "water",
+            "broadband",
+            "rent",
+            "water-responsibility",
+            "tenancy-type",
+            "deposit",
+            "first-month-rent"
+          ]
         },
         "label": {
           "type": "string",

@@ -179,7 +179,7 @@
         "label": "lease",
         "documentType": "lease",
         "documentId": "B1-LEASE",
-        "date": "2015-01-01",
+        "date": "2015",
         "synthetic": true
       },
       "contextOnly": false,
@@ -203,7 +203,7 @@
         "label": "lease",
         "documentType": "lease",
         "documentId": "B1-LEASE",
-        "date": "2015-01-01",
+        "date": "2015",
         "synthetic": true
       },
       "contextOnly": false
@@ -327,9 +327,9 @@
       "status": "not-calculated",
       "applicability": "unit",
       "source": {
-        "origin": "synthetic",
-        "label": "not calculated in this version",
-        "documentType": "not-applicable",
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
         "date": "2026-10-23",
         "synthetic": true
       },
@@ -345,9 +345,9 @@
       "status": "not-calculated",
       "applicability": "unit",
       "source": {
-        "origin": "synthetic",
-        "label": "not calculated in this version",
-        "documentType": "not-applicable",
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
         "date": "2026-10-23",
         "synthetic": true
       },
@@ -363,9 +363,9 @@
       "status": "not-calculated",
       "applicability": "unit",
       "source": {
-        "origin": "synthetic",
-        "label": "not calculated in this version",
-        "documentType": "not-applicable",
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
         "date": "2026-10-23",
         "synthetic": true
       },
@@ -489,10 +489,9 @@
       "status": "not-applicable",
       "applicability": "unit",
       "source": {
-        "origin": "listing-claim",
-        "label": "listing claim, supplied by you",
-        "documentType": "listing",
-        "documentId": "B2-LISTING",
+        "origin": "plan",
+        "label": "freehold house, so no ground rent applies (plan)",
+        "documentType": "plan-scope",
         "date": "2026-10-23",
         "synthetic": true
       },
@@ -642,9 +641,9 @@
       "status": "not-calculated",
       "applicability": "unit",
       "source": {
-        "origin": "synthetic",
-        "label": "not calculated in this version",
-        "documentType": "not-applicable",
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
         "date": "2026-10-23",
         "synthetic": true
       },
@@ -660,9 +659,9 @@
       "status": "not-calculated",
       "applicability": "unit",
       "source": {
-        "origin": "synthetic",
-        "label": "not calculated in this version",
-        "documentType": "not-applicable",
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
         "date": "2026-10-23",
         "synthetic": true
       },
@@ -816,9 +815,10 @@
         "text": "Assured periodic tenancy"
       },
       "source": {
-        "origin": "user-entered",
-        "label": "stated by the agent",
-        "documentType": "agent-statement",
+        "origin": "document",
+        "label": "written statement of terms",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R1-WSOT",
         "date": "2026-10-23",
         "synthetic": true
       },

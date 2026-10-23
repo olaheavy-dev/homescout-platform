@@ -20,7 +20,12 @@
       "description": "YYYY, YYYY-MM or YYYY-MM-DD, so a source that only states a year is not given an invented month or day."
     },
     "nation": {
-      "enum": ["England", "Wales", "Scotland", "Northern Ireland"]
+      "enum": [
+        "England",
+        "Wales",
+        "Scotland",
+        "Northern Ireland"
+      ]
     },
     "pence": {
       "type": "integer",
@@ -28,11 +33,23 @@
       "description": "Whole pence. Decimals are rejected; zero is rejected."
     },
     "period": {
-      "enum": ["once", "month", "year"],
+      "enum": [
+        "once",
+        "month",
+        "year"
+      ],
       "description": "How often the amount is charged, as the source states it. The cost engine does the conversions."
     },
     "origin": {
-      "enum": ["listing-claim", "document", "official-dataset", "user-entered", "synthetic"]
+      "enum": [
+        "listing-claim",
+        "document",
+        "official-dataset",
+        "user-entered",
+        "synthetic",
+        "plan"
+      ],
+      "description": "'plan' marks a value set by the stage 2 plan itself (for example 'not calculated in this version'), not taken from a data source."
     },
     "documentType": {
       "enum": [
@@ -48,27 +65,91 @@
         "user-estimate",
         "user-entry",
         "official-guidance",
-        "not-applicable"
+        "not-applicable",
+        "plan-scope"
       ]
     },
     "source": {
       "type": "object",
       "description": "Where a value came from (decisions 0028, 0030). 'label' is the plain-language wording shown to the user.",
-      "required": ["origin", "label", "date", "synthetic"],
+      "required": [
+        "origin",
+        "label",
+        "date",
+        "synthetic"
+      ],
       "properties": {
-        "origin": { "$ref": "#/$defs/origin" },
-        "label": { "type": "string", "minLength": 1 },
-        "documentType": { "$ref": "#/$defs/documentType" },
-        "documentId": { "$ref": "#/$defs/id" },
-        "date": { "$ref": "#/$defs/partialDate" },
-        "synthetic": { "type": "boolean" },
-        "citationUrl": { "type": "string", "pattern": "^https://\\S+$" },
-        "citedText": { "type": "string", "minLength": 1 }
+        "origin": {
+          "$ref": "#/$defs/origin"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "documentType": {
+          "$ref": "#/$defs/documentType"
+        },
+        "documentId": {
+          "$ref": "#/$defs/id"
+        },
+        "date": {
+          "$ref": "#/$defs/partialDate"
+        },
+        "synthetic": {
+          "type": "boolean"
+        },
+        "citationUrl": {
+          "type": "string",
+          "pattern": "^https://\\S+$"
+        },
+        "citedText": {
+          "type": "string",
+          "minLength": 1
+        }
       },
-      "dependentRequired": { "citedText": ["citationUrl"] },
-      "if": { "properties": { "origin": { "const": "document" } }, "required": ["origin"] },
-      "then": { "required": ["documentType"] },
-      "additionalProperties": false
+      "dependentRequired": {
+        "citedText": [
+          "citationUrl"
+        ]
+      },
+      "if": {
+        "properties": {
+          "origin": {
+            "const": "document"
+          }
+        },
+        "required": [
+          "origin"
+        ]
+      },
+      "then": {
+        "required": [
+          "documentType"
+        ]
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "description": "Data marked 'synthetic' as its origin must also carry synthetic: true.",
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "synthetic"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "synthetic": {
+                "const": true
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

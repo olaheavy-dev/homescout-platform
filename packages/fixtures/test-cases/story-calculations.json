@@ -1157,12 +1157,14 @@
         "home": "B1",
         "lines": [
           {
-            "category": "deposit",
+            "category": "mortgage-deposit",
+            "period": "once",
             "amountPence": 3000000,
             "source": "user-entered (plan section 1)"
           },
           {
             "category": "moving-costs",
+            "period": "once",
             "amountPence": 120000,
             "source": "user-entered (plan section 1)"
           },
@@ -1215,7 +1217,7 @@
       "expected": {
         "lines": [
           {
-            "category": "deposit",
+            "category": "mortgage-deposit",
             "amountPence": 3000000
           },
           {
@@ -1250,12 +1252,14 @@
         "home": "B2",
         "lines": [
           {
-            "category": "deposit",
+            "category": "mortgage-deposit",
+            "period": "once",
             "amountPence": 3000000,
             "source": "user-entered (plan section 1)"
           },
           {
             "category": "moving-costs",
+            "period": "once",
             "amountPence": 120000,
             "source": "user-entered (plan section 1)"
           },
@@ -1308,7 +1312,7 @@
       "expected": {
         "lines": [
           {
-            "category": "deposit",
+            "category": "mortgage-deposit",
             "amountPence": 3000000
           },
           {
@@ -1344,16 +1348,19 @@
         "lines": [
           {
             "category": "deposit",
+            "period": "once",
             "amountPence": 138000,
             "source": "stated by the agent (plan section 1)"
           },
           {
             "category": "first-month-rent",
+            "period": "once",
             "amountPence": 120000,
             "source": "stated by the agent (plan section 1)"
           },
           {
             "category": "moving-costs",
+            "period": "once",
             "amountPence": 120000,
             "source": "user-entered (plan section 1)"
           }
@@ -1417,16 +1424,19 @@
         "lines": [
           {
             "category": "deposit",
+            "period": "once",
             "amountPence": 147000,
             "source": "stated by the agent (plan section 1)"
           },
           {
             "category": "first-month-rent",
+            "period": "once",
             "amountPence": 127500,
             "source": "stated by the agent (plan section 1)"
           },
           {
             "category": "moving-costs",
+            "period": "once",
             "amountPence": 120000,
             "source": "user-entered (plan section 1)"
           }
