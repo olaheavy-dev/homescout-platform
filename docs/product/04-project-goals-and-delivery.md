@@ -93,6 +93,7 @@ Do these now, because they are cheap now and expensive later:
 - **Privacy by design.** Per-user document isolation, deletion and retention from the first document feature. Before any real user data: UK GDPR basis, a privacy notice, ICO registration if required, and a data protection impact assessment for document processing.
 - **Regulated-advice boundary.** Mortgage, legal and tenancy outputs stay information, not advice; wording follows doc 01 §10. Seek professional review before charging.
 - **Brand.** Keep "HomeScout" internal, as docs 01 and 02 require. Make names and plan labels configurable so a rename is cheap.
+- **JsonSchema.Net licence (register line BE-08).** Before HomeScout's annual revenue reaches US$10,000, either pay JsonSchema.Net's maintenance fee or build it from its MIT source.
 - **Cost per home record.** Measure it from the first AI feature; it is the number that decides whether the Move pass can work.
 
 ## 8. Founder decisions

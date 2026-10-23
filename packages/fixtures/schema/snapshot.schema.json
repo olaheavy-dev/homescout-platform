@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/snapshot.schema.json",
+  "title": "Snapshot file (data/snapshot.json)",
+  "description": "Ties the other data files together: the snapshot date, which household and homes are in it, and the order of events in each story. Steps are an ordering, not calendar time; every value is as at the snapshot date.",
+  "type": "object",
+  "required": ["snapshot"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "snapshot": {
+      "type": "object",
+      "required": ["snapshotDate", "synthetic", "householdId", "homeIds", "stories"],
+      "properties": {
+        "snapshotDate": { "$ref": "common.schema.json#/$defs/fullDate" },
+        "synthetic": { "const": true },
+        "householdId": { "$ref": "common.schema.json#/$defs/id" },
+        "homeIds": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/id" } },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "homeIds", "steps"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/id" },
+              "label": { "type": "string", "minLength": 1 },
+              "homeIds": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/id" } },
+              "steps": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["step", "label"],
+                  "properties": {
+                    "step": { "type": "integer", "minimum": 1 },
+                    "label": { "type": "string", "minLength": 1 }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

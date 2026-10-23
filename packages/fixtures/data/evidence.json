@@ -1,0 +1,1223 @@
+{
+  "$schema": "../schema/evidence.schema.json",
+  "evidence": [
+    {
+      "id": "HH-MORTGAGE-DEPOSIT",
+      "subjectType": "household",
+      "subjectId": "RIVERS",
+      "category": "mortgage-deposit",
+      "label": "Mortgage deposit",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 3000000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user-entered",
+        "documentType": "user-entry",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "HH-MORTGAGE-RATE",
+      "subjectType": "household",
+      "subjectId": "RIVERS",
+      "category": "mortgage-rate",
+      "label": "Mortgage interest rate (basis points; 550 = 5.5%)",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "rate",
+        "basisPoints": 550
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user-entered",
+        "documentType": "user-entry",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "HH-MORTGAGE-TERM",
+      "subjectType": "household",
+      "subjectId": "RIVERS",
+      "category": "mortgage-term",
+      "label": "Mortgage term",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "quantity",
+        "amount": 25,
+        "unit": "years"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user-entered",
+        "documentType": "user-entry",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "HH-MOVING-COSTS",
+      "subjectType": "household",
+      "subjectId": "RIVERS",
+      "category": "moving-costs",
+      "label": "Moving costs",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 120000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user-entered",
+        "documentType": "user-entry",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-PRICE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "asking-price",
+      "label": "Asking price",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 19000000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "documentId": "B1-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-SC-LISTING",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "service-charge",
+      "label": "Service charge, 2026 budget period, as claimed in the listing",
+      "status": "conflicting",
+      "applicability": "building",
+      "value": {
+        "kind": "money",
+        "pence": 240000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "documentId": "B1-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Differs from the management pack's 2026 budget (B1-SC-BUDGET).",
+      "usedFromStep": 1
+    },
+    {
+      "id": "B1-SC-BUDGET",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "service-charge",
+      "label": "Service charge, 2026 budget from the managing agent's management pack",
+      "status": "available",
+      "applicability": "building",
+      "value": {
+        "kind": "money",
+        "pence": 372000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "document",
+        "label": "managing agent's management pack, received by the conveyancer after the offer is accepted",
+        "documentType": "management-pack",
+        "documentId": "B1-MGMT-PACK",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "supersedes": "B1-SC-LISTING",
+      "usedFromStep": 4
+    },
+    {
+      "id": "B1-GROUND-RENT",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "ground-rent",
+      "label": "Ground rent",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 25000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "document",
+        "label": "lease",
+        "documentType": "lease",
+        "documentId": "B1-LEASE",
+        "date": "2015",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "A proposed cap on ground rent is not law."
+    },
+    {
+      "id": "B1-LEASE-TERM",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "lease-term",
+      "label": "Lease term",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "lease-term",
+        "years": 125,
+        "startDate": "2015-01-01"
+      },
+      "source": {
+        "origin": "document",
+        "label": "lease",
+        "documentType": "lease",
+        "documentId": "B1-LEASE",
+        "date": "2015",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-CT-BAND",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "council-tax-band",
+      "label": "Council tax band",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "council-tax-band",
+        "band": "C"
+      },
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing",
+        "documentType": "listing",
+        "documentId": "B1-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-CT-CHARGE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "council-tax",
+      "label": "Council tax for 2026/27",
+      "status": "available",
+      "applicability": "area",
+      "value": {
+        "kind": "money",
+        "pence": 210000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council charge",
+        "documentType": "council-tax-charges",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "effectivePeriod": "2026/27"
+    },
+    {
+      "id": "B1-EPC",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "energy-certificate",
+      "label": "Energy certificate",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "energy-certificate",
+        "rating": "C",
+        "issuedYear": 2019
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2019",
+        "documentType": "energy-certificate",
+        "date": "2019",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-EPC-COST",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "energy-certificate-cost",
+      "label": "Energy cost estimated on the certificate (context only)",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 78000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2019",
+        "documentType": "energy-certificate",
+        "date": "2019",
+        "synthetic": true
+      },
+      "contextOnly": true,
+      "priceBasis": "2019 prices",
+      "note": "Context only: 2019 prices would understate today's cost, so it never enters a total."
+    },
+    {
+      "id": "B1-INSURANCE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "buildings-insurance",
+      "label": "Buildings insurance",
+      "status": "included",
+      "applicability": "building",
+      "source": {
+        "origin": "document",
+        "label": "management pack",
+        "documentType": "management-pack",
+        "documentId": "B1-MGMT-PACK",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Included in the service charge."
+    },
+    {
+      "id": "B1-MAINTENANCE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "maintenance",
+      "label": "Internal maintenance",
+      "status": "not-calculated",
+      "applicability": "unit",
+      "source": {
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Not calculated in this version."
+    },
+    {
+      "id": "B1-STAMP-DUTY",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "stamp-duty",
+      "label": "Stamp duty",
+      "status": "not-calculated",
+      "applicability": "unit",
+      "source": {
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Not calculated in this version."
+    },
+    {
+      "id": "B1-LEGAL-FEES",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "legal-fees",
+      "label": "Legal fees",
+      "status": "not-calculated",
+      "applicability": "unit",
+      "source": {
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Not calculated in this version."
+    },
+    {
+      "id": "B1-ENERGY-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "energy",
+      "label": "Energy",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 8500,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-WATER-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "water",
+      "label": "Water",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 4500,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices, guided by the synthetic Northbridge Water's published 2026/27 charges",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B1-BROADBAND-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "B1",
+      "category": "broadband",
+      "label": "Broadband",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 3000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-PRICE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "asking-price",
+      "label": "Asking price",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 25500000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "documentId": "B2-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-SC",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "service-charge",
+      "label": "Service charge",
+      "status": "not-applicable",
+      "applicability": "building",
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "documentId": "B2-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "No service charge."
+    },
+    {
+      "id": "B2-GROUND-RENT",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "ground-rent",
+      "label": "Ground rent",
+      "status": "not-applicable",
+      "applicability": "unit",
+      "source": {
+        "origin": "plan",
+        "label": "freehold house, so no ground rent applies (plan)",
+        "documentType": "plan-scope",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Freehold house."
+    },
+    {
+      "id": "B2-CT-BAND",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "council-tax-band",
+      "label": "Council tax band",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "council-tax-band",
+        "band": "B"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council band",
+        "documentType": "council-tax-band",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-CT-CHARGE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "council-tax",
+      "label": "Council tax for 2026/27",
+      "status": "available",
+      "applicability": "area",
+      "value": {
+        "kind": "money",
+        "pence": 185000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council charge",
+        "documentType": "council-tax-charges",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "effectivePeriod": "2026/27"
+    },
+    {
+      "id": "B2-EPC",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "energy-certificate",
+      "label": "Energy certificate",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "energy-certificate",
+        "rating": "D",
+        "issuedYear": 2021
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2021",
+        "documentType": "energy-certificate",
+        "date": "2021",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-EPC-COST",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "energy-certificate-cost",
+      "label": "Energy cost estimated on the certificate (context only)",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 115000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2021",
+        "documentType": "energy-certificate",
+        "date": "2021",
+        "synthetic": true
+      },
+      "contextOnly": true,
+      "priceBasis": "2021 prices",
+      "note": "Context only: 2021 prices would understate today's cost, so it never enters a total."
+    },
+    {
+      "id": "B2-INSURANCE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "buildings-insurance",
+      "label": "Buildings insurance",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 3500,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-MAINTENANCE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "maintenance",
+      "label": "Maintenance",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 6000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-STAMP-DUTY",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "stamp-duty",
+      "label": "Stamp duty",
+      "status": "not-calculated",
+      "applicability": "unit",
+      "source": {
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Not calculated in this version."
+    },
+    {
+      "id": "B2-LEGAL-FEES",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "legal-fees",
+      "label": "Legal fees",
+      "status": "not-calculated",
+      "applicability": "unit",
+      "source": {
+        "origin": "plan",
+        "label": "outside this version's scope (plan)",
+        "documentType": "plan-scope",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Not calculated in this version."
+    },
+    {
+      "id": "B2-ENERGY-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "energy",
+      "label": "Energy",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 12000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-WATER-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "water",
+      "label": "Water",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 5000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices, guided by the synthetic Northbridge Water's published 2026/27 charges",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "B2-BROADBAND-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "B2",
+      "category": "broadband",
+      "label": "Broadband",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 3000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-RENT",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "rent",
+      "label": "Rent",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 120000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "documentId": "R1-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-WATER-LISTING",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "water-responsibility",
+      "label": "Water, as claimed in the listing",
+      "status": "conflicting",
+      "applicability": "unit",
+      "value": {
+        "kind": "text",
+        "text": "Water included"
+      },
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "documentId": "R1-LISTING",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Contradicted by the written statement of terms (R1-WATER-WSOT)."
+    },
+    {
+      "id": "R1-WATER-WSOT",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "water-responsibility",
+      "label": "Water, as stated in the written statement of terms",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "text",
+        "text": "Tenant pays water"
+      },
+      "source": {
+        "origin": "document",
+        "label": "written statement of terms, bills section",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R1-WSOT",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-TENANCY-TYPE",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "tenancy-type",
+      "label": "Tenancy type",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "text",
+        "text": "Assured periodic tenancy"
+      },
+      "source": {
+        "origin": "document",
+        "label": "written statement of terms",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R1-WSOT",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-CT-BAND",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "council-tax-band",
+      "label": "Council tax band",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "council-tax-band",
+        "band": "A"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council band",
+        "documentType": "council-tax-band",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-CT-CHARGE",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "council-tax",
+      "label": "Council tax for 2026/27",
+      "status": "available",
+      "applicability": "area",
+      "value": {
+        "kind": "money",
+        "pence": 160000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council charge",
+        "documentType": "council-tax-charges",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "effectivePeriod": "2026/27"
+    },
+    {
+      "id": "R1-EPC",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "energy-certificate",
+      "label": "Energy certificate",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "energy-certificate",
+        "rating": "C",
+        "issuedYear": 2022
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2022",
+        "documentType": "energy-certificate",
+        "date": "2022",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-EPC-COST",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "energy-certificate-cost",
+      "label": "Energy cost estimated on the certificate (context only)",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 72000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2022",
+        "documentType": "energy-certificate",
+        "date": "2022",
+        "synthetic": true
+      },
+      "contextOnly": true,
+      "priceBasis": "2022 prices",
+      "note": "Context only: 2022 prices would understate today's cost, so it never enters a total."
+    },
+    {
+      "id": "R1-DEPOSIT",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "deposit",
+      "label": "Deposit",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 138000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "stated by the agent",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-FIRST-MONTH-RENT",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "first-month-rent",
+      "label": "First month's rent, due after signing",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 120000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "stated by the agent",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-ENERGY-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "energy",
+      "label": "Energy",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 8000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R1-WATER-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "water",
+      "label": "Water",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 4500,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices, guided by the synthetic Northbridge Water's published 2026/27 charges",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "usedFromStep": 4,
+      "note": "Added once the user confirms the tenant pays water."
+    },
+    {
+      "id": "R1-BROADBAND-ESTIMATE",
+      "subjectType": "home",
+      "subjectId": "R1",
+      "category": "broadband",
+      "label": "Broadband",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 3000,
+        "period": "month"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "user estimate at today's prices",
+        "documentType": "user-estimate",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R2-RENT",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "rent",
+      "label": "Rent (bills included: energy, water, broadband)",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 127500,
+        "period": "month"
+      },
+      "source": {
+        "origin": "document",
+        "label": "listing and written statement",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R2-WSOT",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R2-ENERGY",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "energy",
+      "label": "Energy",
+      "status": "included",
+      "applicability": "unit",
+      "source": {
+        "origin": "document",
+        "label": "listing and written statement",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R2-WSOT",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Included in the rent."
+    },
+    {
+      "id": "R2-WATER",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "water",
+      "label": "Water",
+      "status": "included",
+      "applicability": "unit",
+      "source": {
+        "origin": "document",
+        "label": "listing and written statement",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R2-WSOT",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Included in the rent."
+    },
+    {
+      "id": "R2-BROADBAND",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "broadband",
+      "label": "Broadband",
+      "status": "included",
+      "applicability": "unit",
+      "source": {
+        "origin": "document",
+        "label": "listing and written statement",
+        "documentType": "written-statement-of-terms",
+        "documentId": "R2-WSOT",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "note": "Included in the rent."
+    },
+    {
+      "id": "R2-CT-BAND",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "council-tax-band",
+      "label": "Council tax band",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "council-tax-band",
+        "band": "B"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council band",
+        "documentType": "council-tax-band",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R2-CT-CHARGE",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "council-tax",
+      "label": "Council tax for 2026/27 (not included in the rent)",
+      "status": "available",
+      "applicability": "area",
+      "value": {
+        "kind": "money",
+        "pence": 185000,
+        "period": "year"
+      },
+      "source": {
+        "origin": "synthetic",
+        "label": "synthetic Northbridge Council charge",
+        "documentType": "council-tax-charges",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false,
+      "effectivePeriod": "2026/27"
+    },
+    {
+      "id": "R2-DEPOSIT",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "deposit",
+      "label": "Deposit",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 147000,
+        "period": "once"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "stated by the agent",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R2-FIRST-MONTH-RENT",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "first-month-rent",
+      "label": "First month's rent, due after signing",
+      "status": "available",
+      "applicability": "unit",
+      "value": {
+        "kind": "money",
+        "pence": 127500,
+        "period": "once"
+      },
+      "source": {
+        "origin": "user-entered",
+        "label": "stated by the agent",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "contextOnly": false
+    },
+    {
+      "id": "R2-EPC",
+      "subjectType": "home",
+      "subjectId": "R2",
+      "category": "energy-certificate",
+      "label": "Energy certificate (expired)",
+      "status": "stale",
+      "applicability": "unit",
+      "value": {
+        "kind": "energy-certificate",
+        "issuedYear": 2015,
+        "expiredYear": 2025
+      },
+      "source": {
+        "origin": "official-dataset",
+        "label": "energy certificate, issued 2015, expired in 2025",
+        "documentType": "energy-certificate",
+        "date": "2015",
+        "synthetic": true,
+        "citationUrl": "https://www.gov.uk/buy-sell-your-home/energy-performance-certificates",
+        "citedText": "You must have an EPC when you’re: … renting out a property."
+      },
+      "contextOnly": false,
+      "note": "Suggested action (HomeScout wording, not from the cited page): ask the landlord for a valid certificate."
+    }
+  ]
+}

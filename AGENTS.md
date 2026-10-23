@@ -148,9 +148,10 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 
 | Command | What it does |
 |---|---|
-| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `inspect` (JetBrains InspectCode; any warning fails), `test`. Run it before pushing. |
+| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `test`. Run it before pushing. |
 | `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`). |
 | `make generate` | Runs the cost-engine generator. A placeholder until task 4b; it writes nothing yet. |
+| `make validate` | Checks every file in `packages/fixtures/data/` and `test-cases/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
 | `make restore`, `make build`, `make format-check`, `make inspect` | The individual steps of `make check`. |
 | `make clean` | Removes build output and `.artifacts/`. |
 

@@ -1,0 +1,139 @@
+{
+  "$schema": "../schema/homes.schema.json",
+  "homes": [
+    {
+      "id": "B1",
+      "label": "Flat 2, 14 Mill Court",
+      "mode": "buy",
+      "propertyType": "flat",
+      "bedrooms": 2,
+      "tenure": "leasehold",
+      "address": {
+        "line1": "Flat 2",
+        "line2": "14 Mill Court",
+        "town": "Northbridge",
+        "postcode": "NB1 4XY",
+        "nation": "England"
+      },
+      "unit": {
+        "kind": "flat",
+        "label": "Flat 2",
+        "candidateUnits": [
+          {
+            "id": "B1-UNIT-1",
+            "label": "Flat 1, 14 Mill Court"
+          },
+          {
+            "id": "B1-UNIT-2",
+            "label": "Flat 2, 14 Mill Court"
+          },
+          {
+            "id": "B1-UNIT-3",
+            "label": "Flat 3, 14 Mill Court"
+          },
+          {
+            "id": "B1-UNIT-4",
+            "label": "Flat 4, 14 Mill Court"
+          },
+          {
+            "id": "B1-UNIT-5",
+            "label": "Flat 5, 14 Mill Court"
+          },
+          {
+            "id": "B1-UNIT-6",
+            "label": "Flat 6, 14 Mill Court"
+          }
+        ],
+        "selectedUnitId": "B1-UNIT-2"
+      },
+      "coverage": "covered",
+      "buildDescription": "Purpose-built block",
+      "photoBrief": {
+        "text": "A modest low-rise brick block with a shared entrance.",
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "B2",
+      "label": "9 Orchard Row",
+      "mode": "buy",
+      "propertyType": "terraced-house",
+      "bedrooms": 2,
+      "tenure": "freehold",
+      "address": {
+        "line1": "9 Orchard Row",
+        "town": "Northbridge",
+        "postcode": "NB2 3PL",
+        "nation": "England"
+      },
+      "unit": {
+        "kind": "house",
+        "label": "9 Orchard Row"
+      },
+      "coverage": "covered",
+      "photoBrief": {
+        "text": "An ordinary brick terrace.",
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "R1",
+      "label": "Flat 5, 3 Station Road",
+      "mode": "rent",
+      "propertyType": "flat",
+      "bedrooms": 2,
+      "tenure": "rented",
+      "address": {
+        "line1": "Flat 5",
+        "line2": "3 Station Road",
+        "town": "Northbridge",
+        "postcode": "NB1 2HD",
+        "nation": "England"
+      },
+      "unit": {
+        "kind": "flat",
+        "label": "Flat 5"
+      },
+      "coverage": "covered",
+      "buildDescription": "Converted house",
+      "photoBrief": {
+        "text": "A converted-house flat entrance.",
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "R2",
+      "label": "21 Canal Street",
+      "mode": "rent",
+      "propertyType": "flat",
+      "bedrooms": 2,
+      "tenure": "rented",
+      "address": {
+        "line1": "21 Canal Street",
+        "town": "Northbridge",
+        "postcode": "NB3 5JE",
+        "nation": "England"
+      },
+      "unit": {
+        "kind": "flat",
+        "label": "21 Canal Street"
+      },
+      "coverage": "covered",
+      "photoBrief": {
+        "text": "A modern small block.",
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "WALES-1",
+      "label": "7 Harbour Mews (Wales)",
+      "address": {
+        "line1": "7 Harbour Mews",
+        "town": "Afonbryn",
+        "postcode": "ZZ1 0AA",
+        "nation": "Wales"
+      },
+      "coverage": "not-yet-covered"
+    }
+  ]
+}

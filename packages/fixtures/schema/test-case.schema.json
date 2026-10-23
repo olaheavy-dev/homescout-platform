@@ -1,0 +1,638 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/test-case.schema.json",
+  "title": "Test-case file (test-cases/*.json)",
+  "description": "Independently worked examples, as documented in test-cases/README.md. Money fields end in Pence and are integers; values that are not whole pence are decimal strings so no float is involved.",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "planSnapshotDate",
+    "money",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "formatVersion": {
+      "const": 1
+    },
+    "planSnapshotDate": {
+      "$ref": "common.schema.json#/$defs/fullDate"
+    },
+    "money": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "caseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "pence": {
+      "type": "integer"
+    },
+    "decimalString": {
+      "type": "string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "lineStatus": {
+      "enum": [
+        "included",
+        "not-calculated",
+        "conflicting"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^[a-z]+(-[a-z]+)*$"
+    },
+    "case": {
+      "type": "object",
+      "required": [
+        "id",
+        "description",
+        "rule",
+        "inputs",
+        "steps",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/caseId"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rule": {
+          "type": "object",
+          "required": [
+            "source",
+            "url"
+          ],
+          "properties": {
+            "source": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "inputs": {
+          "$ref": "#/$defs/inputs"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/step"
+          }
+        },
+        "expected": {
+          "$ref": "#/$defs/expected"
+        }
+      },
+      "additionalProperties": false
+    },
+    "step": {
+      "type": "object",
+      "description": "One line of working: n, description, rounding, and exactly one value key.",
+      "required": [
+        "n",
+        "description",
+        "rounding"
+      ],
+      "properties": {
+        "n": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rounding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valuePence": {
+          "type": "integer"
+        },
+        "valueExact": {
+          "$ref": "#/$defs/decimalString"
+        },
+        "valuePenceExact": {
+          "$ref": "#/$defs/decimalString"
+        },
+        "valueDecimal": {
+          "$ref": "#/$defs/decimalString"
+        },
+        "value": {
+          "type": [
+            "number",
+            "boolean"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/lineStatus"
+        }
+      },
+      "additionalProperties": false,
+      "dependentSchemas": {
+        "valuePence": {
+          "properties": {
+            "valueExact": false,
+            "valuePenceExact": false,
+            "valueDecimal": false,
+            "value": false,
+            "status": false
+          }
+        },
+        "valueExact": {
+          "properties": {
+            "valuePence": false,
+            "valuePenceExact": false,
+            "valueDecimal": false,
+            "value": false,
+            "status": false
+          }
+        },
+        "valuePenceExact": {
+          "properties": {
+            "valuePence": false,
+            "valueExact": false,
+            "valueDecimal": false,
+            "value": false,
+            "status": false
+          }
+        },
+        "valueDecimal": {
+          "properties": {
+            "valuePence": false,
+            "valueExact": false,
+            "valuePenceExact": false,
+            "value": false,
+            "status": false
+          }
+        },
+        "value": {
+          "properties": {
+            "valuePence": false,
+            "valueExact": false,
+            "valuePenceExact": false,
+            "valueDecimal": false,
+            "status": false
+          }
+        },
+        "status": {
+          "properties": {
+            "valuePence": false,
+            "valueExact": false,
+            "valuePenceExact": false,
+            "valueDecimal": false,
+            "value": false
+          }
+        }
+      },
+      "if": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "valuePence"
+              ]
+            },
+            {
+              "required": [
+                "valueExact"
+              ]
+            },
+            {
+              "required": [
+                "valuePenceExact"
+              ]
+            },
+            {
+              "required": [
+                "valueDecimal"
+              ]
+            },
+            {
+              "required": [
+                "value"
+              ]
+            },
+            {
+              "required": [
+                "status"
+              ]
+            }
+          ]
+        }
+      },
+      "then": false
+    },
+    "inputLine": {
+      "description": "A cost line: an amount with a period, a status with no amount, or a link to a mortgage case.",
+      "type": "object",
+      "required": [
+        "category"
+      ],
+      "properties": {
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "period": {
+          "enum": [
+            "year",
+            "month",
+            "once"
+          ]
+        },
+        "amountPence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lineStatus"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mortgageCase": {
+          "$ref": "#/$defs/caseId"
+        }
+      },
+      "if": {
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "note",
+          "source"
+        ],
+        "properties": {
+          "period": false,
+          "amountPence": false,
+          "mortgageCase": false
+        }
+      },
+      "else": {
+        "if": {
+          "required": [
+            "mortgageCase"
+          ]
+        },
+        "then": {
+          "properties": {
+            "period": false,
+            "amountPence": false,
+            "note": false,
+            "source": false
+          }
+        },
+        "else": {
+          "required": [
+            "period",
+            "amountPence",
+            "source"
+          ],
+          "properties": {
+            "note": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "expectedLine": {
+      "type": "object",
+      "required": [
+        "category"
+      ],
+      "properties": {
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "monthlyPence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "amountPence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lineStatus"
+        }
+      },
+      "dependentSchemas": {
+        "monthlyPence": {
+          "properties": {
+            "amountPence": false,
+            "status": false
+          }
+        },
+        "amountPence": {
+          "properties": {
+            "monthlyPence": false,
+            "status": false
+          }
+        },
+        "status": {
+          "properties": {
+            "monthlyPence": false,
+            "amountPence": false
+          }
+        }
+      },
+      "if": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "monthlyPence"
+              ]
+            },
+            {
+              "required": [
+                "amountPence"
+              ]
+            },
+            {
+              "required": [
+                "status"
+              ]
+            }
+          ]
+        }
+      },
+      "then": false,
+      "additionalProperties": false
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "home": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]+(-[A-Z0-9]+)*$"
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/inputLine"
+          }
+        },
+        "annualPence": {
+          "$ref": "#/$defs/pence"
+        },
+        "unroundedPence": {
+          "$ref": "#/$defs/decimalString"
+        },
+        "askingPricePence": {
+          "$ref": "#/$defs/pence"
+        },
+        "depositPence": {
+          "$ref": "#/$defs/pence"
+        },
+        "loanPence": {
+          "$ref": "#/$defs/pence"
+        },
+        "listingServiceChargeAnnualPence": {
+          "$ref": "#/$defs/pence"
+        },
+        "budgetServiceChargeAnnualPence": {
+          "$ref": "#/$defs/pence"
+        },
+        "budgetPence": {
+          "$ref": "#/$defs/pence"
+        },
+        "annualRate": {
+          "$ref": "#/$defs/decimalString"
+        },
+        "termYears": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "compounding": {
+          "enum": [
+            "monthly"
+          ]
+        },
+        "listingTotalCase": {
+          "$ref": "#/$defs/caseId"
+        },
+        "budgetTotalCase": {
+          "$ref": "#/$defs/caseId"
+        },
+        "testOnly": {
+          "type": "boolean",
+          "description": "True for an input chosen to hit a boundary; not a plan home or plan figure."
+        },
+        "testOnlyNote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "listingServiceChargeSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "budgetServiceChargeSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "askingPriceSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depositSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "annualRateSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "termSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "budgetSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purchasePriceRule": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "expected": {
+      "type": "object",
+      "properties": {
+        "pence": {
+          "type": "integer"
+        },
+        "monthlyPence": {
+          "type": "integer"
+        },
+        "annualDifferencePence": {
+          "type": "integer"
+        },
+        "monthlyDifferencePence": {
+          "type": "integer"
+        },
+        "monthlyRepaymentPence": {
+          "type": "integer"
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/expectedLine"
+          }
+        },
+        "totalMonthlyPence": {
+          "type": "integer"
+        },
+        "totalUpfrontPence": {
+          "type": "integer"
+        },
+        "totalIsPartial": {
+          "type": "boolean"
+        },
+        "partialReasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "budgetPence": {
+          "type": "integer"
+        },
+        "budgetDifferencePence": {
+          "type": "integer",
+          "description": "Budget minus total: positive is headroom, negative is over budget."
+        },
+        "withinBudget": {
+          "type": "boolean"
+        },
+        "withinBudgetOnListing": {
+          "type": "boolean"
+        },
+        "overBudgetOn2026Budget": {
+          "type": "boolean"
+        },
+        "listingTotalPence": {
+          "type": "integer"
+        },
+        "budgetTotalPence": {
+          "type": "integer"
+        },
+        "listingBudgetDifferencePence": {
+          "type": "integer"
+        },
+        "budgetBudgetDifferencePence": {
+          "type": "integer"
+        },
+        "totalsArePartial": {
+          "type": "boolean"
+        },
+        "landed": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "description": "Monthly and upfront cases say whether the total is partial, and why.",
+          "if": {
+            "anyOf": [
+              {
+                "required": [
+                  "totalMonthlyPence"
+                ]
+              },
+              {
+                "required": [
+                  "totalUpfrontPence"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "required": [
+              "totalIsPartial",
+              "partialReasons"
+            ]
+          }
+        },
+        {
+          "description": "Monthly cases carry the three budget fields.",
+          "if": {
+            "required": [
+              "totalMonthlyPence"
+            ]
+          },
+          "then": {
+            "required": [
+              "budgetPence",
+              "budgetDifferencePence",
+              "withinBudget"
+            ]
+          }
+        },
+        {
+          "description": "A partial total gives at least one reason; a complete total gives none.",
+          "if": {
+            "properties": {
+              "totalIsPartial": {
+                "const": true
+              }
+            },
+            "required": [
+              "totalIsPartial"
+            ]
+          },
+          "then": {
+            "properties": {
+              "partialReasons": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "partialReasons": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

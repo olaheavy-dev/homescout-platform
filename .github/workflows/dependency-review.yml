@@ -28,4 +28,8 @@ jobs:
           retry-on-snapshot-warnings: true
           # Recorded exception (decision 0035): JetBrains ReSharper command line tools, a free proprietary-licence
           # build tool that is used but never shipped.
-          allow-dependencies-licenses: pkg:nuget/JetBrains.ReSharper.GlobalTools
+          # Recorded exception (founder decision, 23 Oct 2026, register line BE-08): JsonSchema.Net 9.x and its two
+          # dependencies ship under the Open Source Maintenance Fee EULA. The source stays MIT; the fee applies only to
+          # binary-release use in revenue-generating activities with US$10,000 or more annual revenue. Used by the fixture
+          # validator only, never shipped.
+          allow-dependencies-licenses: pkg:nuget/JetBrains.ReSharper.GlobalTools, pkg:nuget/JsonSchema.Net, pkg:nuget/JsonPointer.Net, pkg:nuget/Json.More.Net
