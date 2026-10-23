@@ -30,7 +30,35 @@ Strict build settings, central package versions with lock files, a pinned SDK, a
 - **Everywhere:** budget alerts at 50%, 80% and 100% on paid services, password-free sign-in (OIDC) for any Azure parts, never run deployments for pull requests from forks, never commit real identifiers or IP addresses.
 
 ## AI: inputs for stage 6 (AI-01 to AI-05)
-- Use `Microsoft.Extensions.AI` (`IChatClient`) as the provider plug-in point, with task-specific interfaces on top (explain a finding, draft a question, check a reply, extract a document, home chat), each returning grounded-with-citations, not-known or refused.
-- Guards: every claim must cite a figure ID or document page; every number in AI output must match a supplied figure; documents are passed as quoted data; tools are denied by default; retrieval always filters by user.
-- Evaluation sets with reviewed answers, baselines and tolerances gate prompt or model changes.
+
+The reviewed AI library and chatbot sample have no licence, so no code, configuration, file layout or wording is reused. Their **design ideas** are useful and are recorded here in our own words, alongside the public Microsoft documentation that describes the same techniques. Original source locations are listed only in the private local references file (see `AGENTS.md`, "Private reference sources").
+
+### How the reviewed library integrates with Microsoft Foundry (design ideas)
+- **Two hosting paths behind one facade:** the same public interface can run an agent hosted in Microsoft Foundry (through the Foundry projects SDK and its agents/Responses API) or a lightweight local agent calling a model directly. A small enum chooses the path, and each path is a separate implementation registered with keyed dependency injection.
+- **Narrow public surface:** callers see only facades, records and exceptions; provider implementations are internal, so swapping providers doesn't ripple through the code.
+- **One registration call:** a single `AddX(...)` extension wires everything up, taking the Foundry project endpoint and an Entra ID credential (no API keys in code).
+- **Agents defined as validated configuration:** each agent (instructions, model settings, grounding source, allowed tools) is described in a config file and validated against a schema at startup, with tests for invalid configurations.
+- **Tools and grounding at provisioning time:** retrieval (Azure AI Search) and tool servers (MCP) are attached when a Foundry agent is created, with an allow-list of tools.
+- **Errors as values:** expected failures return a result type rather than throwing; for streaming, a failure to start fails the result, while errors during the stream arrive as explicit error events.
+- **Typed citations** are mapped from provider responses into the library's own records.
+- **Evaluation (from the chatbot sample):** a reviewed question set with reference answers and cited pages; model-graded equivalence and groundedness scores; a stored baseline with tolerances; checks that the grading model itself is calibrated; secret scrubbing; token cost per run; and personal data redaction before text is sent to a model.
+
+### What HomeScout should do differently
+- Keep provider SDK types out of HomeScout's own interfaces; use `Microsoft.Extensions.AI` (`IChatClient`, `IEmbeddingGenerator`) as the plug-in point, so Foundry, OpenAI or a cheaper provider (decision 0022) are adapters, not dependencies.
+- Make interfaces **task-shaped** (explain a finding, draft a question, check a reply, extract a document, home chat), not generic chat, each returning grounded-with-citations, not-known or refused.
+- Make capability gaps explicit: if a provider can't ground or cite, the task returns not-known rather than an answer without citations.
+- Tools are denied unless allow-listed; retrieval takes a mandatory user ID so per-user isolation is enforced by the type system, not a free-text filter.
+- Keep prompts versioned (embedded resources) with structured-output schemas; no API keys in configuration records; conversation state persisted, not held in memory.
+- Turn evaluation into a **gate**: prompt or model changes don't merge if scores fall below the baseline.
+
+### Guards and structure
+- Every claim must cite a figure ID or document page; every number in AI output must match a supplied figure; documents are passed as quoted data.
 - Dependency direction: cost engine and domain ← application ← AI ← API. Nothing points the other way (enforced by decision 0021's architecture tests).
+- Proposed projects at stage 6: `HomeScout.Ai.Abstractions` (task interfaces, no SDK types), `HomeScout.Ai` (implementations on `IChatClient`, prompts, citation and number guards), one adapter project per chosen provider (for example `HomeScout.Ai.Foundry`), one retrieval adapter (decision AI-02), and `HomeScout.Ai.Evals`.
+
+### Public references
+- [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai): the provider-neutral `IChatClient` abstraction
+- [Microsoft.Extensions.AI evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries): quality and groundedness evaluation
+- [Microsoft Foundry SDK overview](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview) and [Azure.AI.Projects for .NET](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.projects-readme): connecting to a Foundry project
+- [Foundry Agent Service overview](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/overview): hosted agents, tools and grounding
+- [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection): including keyed services

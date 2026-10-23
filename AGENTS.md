@@ -17,6 +17,15 @@ Read before working (the [documentation index](docs/README.md) explains the fold
 
 The current stage is in the README and `docs/planning/`.
 
+## Private reference sources
+
+The founder's earlier projects and a third-party AI sample were reviewed to inform decisions (summary: `docs/reviews/2026-10-23-foundation-review.md`). Their locations are listed in **`.local/references.md`**, a file that exists only on the founder's machine and is excluded from git.
+
+- If that file exists, you may read it and the sources it lists to understand a pattern.
+- **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for HomeScout.
+- **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
+- The AI sample has no licence: ideas only.
+
 ## Rules for every agent
 
 1. **No invented facts.** Never make up property data, legal or tax rules, sources, dates or competitor claims. If something isn't known, the product says so.
