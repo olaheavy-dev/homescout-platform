@@ -19,7 +19,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
-- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction, review every change, and own decisions.
+- **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Claude Code implements; OpenAI Codex reviews each pull request (decision 0012). You set direction and own decisions. You review founder-only pull requests and any with a finding proposed to stay unfixed; routine changes are reviewed by Codex and merged by Claude Code, and you review them by exception (decision 0015).
 - **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools. All numbers come from deterministic code. Multi-agent orchestration (Microsoft Agent Framework in the brief's stack) is deferred until a measured task needs it.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."

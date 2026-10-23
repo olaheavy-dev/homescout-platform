@@ -4,7 +4,7 @@
 **Status:** Accepted  
 **Date:** 2026-10-23  
 **Stage:** 1  
-**Supersedes:** the merge step of [0011](0011-ways-of-working.md) ("you … merge") and the review-order and finding-triage parts of [0012](0012-ai-coding-tools.md) ("before your review", "you decide what to act on"). The rest of 0011 and 0012 still stands.
+**Supersedes:** the review and merge steps of [0011](0011-ways-of-working.md) ("you … review and merge", "your review → merge") and the review-order and finding-triage parts of [0012](0012-ai-coding-tools.md) ("before your review", "you decide what to act on"). The rest of 0011 and 0012 still stands.
 
 ## Context
 Under 0011, the founder merged every pull request. With Codex reviewing every pull request automatically, the founder decided that Claude Code should merge once that review is satisfied, so routine changes don't wait. At the same time, the founder asked to keep a single instructions file for all agents.
