@@ -1,0 +1,108 @@
+{
+  "$schema": "../schema/questions.schema.json",
+  "questions": [
+    {
+      "id": "B1-Q-SERVICE-CHARGE",
+      "homeId": "B1",
+      "text": "Is the listed service charge the managing agent's budget for 2026?",
+      "askedOf": "Seller's estate agent",
+      "status": "answer-recorded",
+      "statusHistory": [
+        {
+          "status": "to-ask",
+          "storyStep": 1,
+          "reason": "The listing gives a service charge; the buyer wants the managing agent's budget before making an offer."
+        },
+        {
+          "status": "waiting-for-reply",
+          "storyStep": 1,
+          "reason": "The user recorded that the question was sent."
+        },
+        {
+          "status": "partially-answered",
+          "storyStep": 2,
+          "reason": "The reply was vague: it did not give a figure.",
+          "replyId": "B1-R-SERVICE-CHARGE"
+        },
+        {
+          "status": "reply-needs-checking",
+          "storyStep": 3,
+          "reason": "The management pack arrived with a 2026 budget; it must be checked against the reply and the listing.",
+          "documentId": "B1-MGMT-PACK"
+        },
+        {
+          "status": "answer-recorded",
+          "storyStep": 4,
+          "reason": "The user confirmed the management pack's 2026 budget; the previous value is kept.",
+          "documentId": "B1-MGMT-PACK"
+        }
+      ],
+      "relatedEvidenceIds": [
+        "B1-SC-LISTING",
+        "B1-SC-BUDGET"
+      ]
+    },
+    {
+      "id": "B1-Q-MAJOR-WORKS",
+      "homeId": "B1",
+      "text": "Are any major works planned for the building, or already charged?",
+      "askedOf": "Managing agent, through the conveyancer",
+      "status": "waiting-for-reply",
+      "statusHistory": [
+        {
+          "status": "to-ask",
+          "storyStep": 1,
+          "reason": "Leasehold buildings can have major works charged to owners; the buyer wants to know before committing."
+        },
+        {
+          "status": "waiting-for-reply",
+          "storyStep": 3,
+          "reason": "Open, awaiting the management-pack answers."
+        }
+      ]
+    },
+    {
+      "id": "R1-Q-WATER",
+      "homeId": "R1",
+      "text": "Is water included in the rent, as the listing says?",
+      "askedOf": "Letting agent",
+      "status": "answer-recorded",
+      "statusHistory": [
+        {
+          "status": "to-ask",
+          "storyStep": 1,
+          "reason": "The listing says water is included but the written statement of terms says the tenant pays it."
+        },
+        {
+          "status": "waiting-for-reply",
+          "storyStep": 1,
+          "reason": "The user recorded that the question was sent."
+        },
+        {
+          "status": "partially-answered",
+          "storyStep": 2,
+          "reason": "The reply did not say whether water is included.",
+          "replyId": "R1-R-WATER-PARTIAL"
+        },
+        {
+          "status": "reply-needs-checking",
+          "storyStep": 3,
+          "reason": "A specific reply arrived with a revised written statement; it must be checked.",
+          "replyId": "R1-R-WATER-SPECIFIC",
+          "documentId": "R1-WSOT-REVISED"
+        },
+        {
+          "status": "answer-recorded",
+          "storyStep": 4,
+          "reason": "The user confirmed that the tenant pays water; the water estimate is added.",
+          "documentId": "R1-WSOT-REVISED"
+        }
+      ],
+      "relatedEvidenceIds": [
+        "R1-WATER-LISTING",
+        "R1-WATER-WSOT",
+        "R1-WATER-ESTIMATE"
+      ]
+    }
+  ]
+}

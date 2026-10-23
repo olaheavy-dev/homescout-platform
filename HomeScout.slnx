@@ -4,4 +4,8 @@
     <Project Path="packages/cost-engine/src/HomeScout.CostEngine.Generator/HomeScout.CostEngine.Generator.csproj" />
     <Project Path="packages/cost-engine/tests/HomeScout.CostEngine.Tests/HomeScout.CostEngine.Tests.csproj" />
   </Folder>
+  <Folder Name="/packages/fixtures/">
+    <Project Path="packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.Fixtures.Validator.csproj" />
+    <Project Path="packages/fixtures/tests/HomeScout.Fixtures.Tests/HomeScout.Fixtures.Tests.csproj" />
+  </Folder>
 </Solution>

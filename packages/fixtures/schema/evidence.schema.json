@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/evidence.schema.json",
+  "title": "Evidence file (data/evidence.json)",
+  "type": "object",
+  "required": [
+    "evidence"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/evidenceItem"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "value": {
+      "description": "A recorded value. Money is integer pence with the period the source states; rates are integer basis points (550 = 5.5%); no floating-point numbers anywhere.",
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "money",
+            "rate",
+            "quantity",
+            "lease-term",
+            "council-tax-band",
+            "energy-certificate",
+            "text"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "money"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/moneyValue"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "rate"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/rateValue"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "quantity"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/quantityValue"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "lease-term"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/lease-termValue"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "council-tax-band"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/council-tax-bandValue"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "energy-certificate"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/energy-certificateValue"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "text"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/textValue"
+          }
+        }
+      ]
+    },
+    "moneyValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "pence",
+        "period"
+      ],
+      "properties": {
+        "kind": {
+          "const": "money"
+        },
+        "pence": {
+          "$ref": "common.schema.json#/$defs/pence"
+        },
+        "period": {
+          "$ref": "common.schema.json#/$defs/period"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rateValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "basisPoints"
+      ],
+      "properties": {
+        "kind": {
+          "const": "rate"
+        },
+        "basisPoints": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "quantityValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "amount",
+        "unit"
+      ],
+      "properties": {
+        "kind": {
+          "const": "quantity"
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "enum": [
+            "years"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "lease-termValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "years",
+        "startDate"
+      ],
+      "properties": {
+        "kind": {
+          "const": "lease-term"
+        },
+        "years": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "startDate": {
+          "$ref": "common.schema.json#/$defs/fullDate"
+        }
+      },
+      "additionalProperties": false
+    },
+    "council-tax-bandValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "band"
+      ],
+      "properties": {
+        "kind": {
+          "const": "council-tax-band"
+        },
+        "band": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "energy-certificateValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "issuedYear"
+      ],
+      "properties": {
+        "kind": {
+          "const": "energy-certificate"
+        },
+        "rating": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ]
+        },
+        "issuedYear": {
+          "type": "integer",
+          "minimum": 1900
+        },
+        "expiredYear": {
+          "type": "integer",
+          "minimum": 1900
+        }
+      },
+      "additionalProperties": false
+    },
+    "textValue": {
+      "type": "object",
+      "required": [
+        "kind",
+        "text"
+      ],
+      "properties": {
+        "kind": {
+          "const": "text"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "subjectType",
+        "subjectId",
+        "category",
+        "label",
+        "status",
+        "applicability",
+        "source",
+        "contextOnly"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "subjectType": {
+          "enum": [
+            "household",
+            "home"
+          ]
+        },
+        "subjectId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "category": {
+          "type": "string",
+          "pattern": "^[a-z]+(-[a-z]+)*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "$ref": "#/$defs/value"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "missing",
+            "conflicting",
+            "stale",
+            "not-applicable",
+            "not-calculated",
+            "included"
+          ],
+          "description": "As at the snapshot, after the stories have finished. 'included' means the cost is covered by another charge; 'not-calculated' means this version does not work it out. Neither is ever zero."
+        },
+        "applicability": {
+          "enum": [
+            "unit",
+            "building",
+            "area"
+          ]
+        },
+        "source": {
+          "$ref": "common.schema.json#/$defs/source"
+        },
+        "contextOnly": {
+          "type": "boolean",
+          "description": "True when the value is shown for context and never enters a total."
+        },
+        "effectivePeriod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priceBasis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "usedFromStep": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "supersedes": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "available",
+                  "conflicting",
+                  "stale"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ]
+          },
+          "else": {
+            "properties": {
+              "value": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "category": {
+                "const": "energy-certificate-cost"
+              }
+            },
+            "required": [
+              "category"
+            ]
+          },
+          "then": {
+            "properties": {
+              "contextOnly": {
+                "const": true
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

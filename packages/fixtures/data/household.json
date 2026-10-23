@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema/household.schema.json",
+  "household": {
+    "id": "RIVERS",
+    "displayName": "Sam and Alex Rivers",
+    "members": [
+      {
+        "id": "SAM",
+        "name": "Sam Rivers"
+      },
+      {
+        "id": "ALEX",
+        "name": "Alex Rivers"
+      }
+    ],
+    "destination": {
+      "town": "Northbridge",
+      "nation": "England"
+    },
+    "monthlyBudget": {
+      "pence": 160000,
+      "period": "month",
+      "source": {
+        "origin": "user-entered",
+        "label": "budget set by you",
+        "documentType": "user-entry",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    "priorities": [
+      {
+        "id": "COMMUTE",
+        "text": "A commute of 40 minutes or less by public transport",
+        "maxMinutes": 40,
+        "routesDeferred": true
+      },
+      {
+        "id": "SECOND-BEDROOM",
+        "text": "A second bedroom for a home office"
+      },
+      {
+        "id": "NO-SURPRISE-COSTS",
+        "text": "No surprise costs"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/questions.schema.json",
+  "title": "Questions file (data/questions.json)",
+  "type": "object",
+  "required": ["questions"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "questions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/question" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "status": {
+      "enum": [
+        "to-ask",
+        "waiting-for-reply",
+        "reply-needs-checking",
+        "answer-recorded",
+        "partially-answered",
+        "needs-professional-review",
+        "closed-by-user-without-answer",
+        "reopened"
+      ],
+      "description": "The eight statuses in doc 02 section 6: To ask, Waiting for reply, Reply needs checking, Answer recorded, Partially answered, Needs professional review, Closed by user without answer, Reopened."
+    },
+    "question": {
+      "type": "object",
+      "required": ["id", "homeId", "text", "askedOf", "status", "statusHistory"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/id" },
+        "homeId": { "$ref": "common.schema.json#/$defs/id" },
+        "text": { "type": "string", "minLength": 1 },
+        "askedOf": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "statusHistory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "description": "One transition. The reason (and the reply or document, where there is one) is stored for each one (doc 02 section 6).",
+            "required": ["status", "storyStep", "reason"],
+            "properties": {
+              "status": { "$ref": "#/$defs/status" },
+              "storyStep": { "type": "integer", "minimum": 1 },
+              "reason": { "type": "string", "minLength": 1 },
+              "replyId": { "$ref": "common.schema.json#/$defs/id" },
+              "documentId": { "$ref": "common.schema.json#/$defs/id" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "relatedEvidenceIds": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/id" } }
+      },
+      "additionalProperties": false
+    }
+  }
+}

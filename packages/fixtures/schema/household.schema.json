@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/household.schema.json",
+  "title": "Household file (data/household.json)",
+  "type": "object",
+  "required": ["household"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "household": { "$ref": "#/$defs/household" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "household": {
+      "type": "object",
+      "required": ["id", "displayName", "members", "destination", "monthlyBudget", "priorities"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/id" },
+        "displayName": { "type": "string", "minLength": 1 },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "name"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/id" },
+              "name": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "destination": {
+          "type": "object",
+          "required": ["town", "nation"],
+          "properties": {
+            "town": { "type": "string", "minLength": 1 },
+            "nation": { "$ref": "common.schema.json#/$defs/nation" }
+          },
+          "additionalProperties": false
+        },
+        "monthlyBudget": {
+          "type": "object",
+          "description": "Budget for monthly housing cost (defined in the stage 2 plan, section 1).",
+          "required": ["pence", "period", "source"],
+          "properties": {
+            "pence": { "$ref": "common.schema.json#/$defs/pence" },
+            "period": { "const": "month" },
+            "source": { "$ref": "common.schema.json#/$defs/source" }
+          },
+          "additionalProperties": false
+        },
+        "priorities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/id" },
+              "text": { "type": "string", "minLength": 1 },
+              "maxMinutes": { "type": "integer", "minimum": 1 },
+              "routesDeferred": { "type": "boolean" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

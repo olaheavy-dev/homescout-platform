@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema/replies.schema.json",
+  "replies": [
+    {
+      "id": "B1-R-SERVICE-CHARGE",
+      "questionId": "B1-Q-SERVICE-CHARGE",
+      "from": "Seller's estate agent",
+      "text": "The service charge is usually around the listing figure.",
+      "storyStep": 2,
+      "source": {
+        "origin": "user-entered",
+        "label": "reply from the seller's estate agent, recorded by you",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R1-R-WATER-PARTIAL",
+      "questionId": "R1-Q-WATER",
+      "from": "Letting agent",
+      "text": "Most bills are included.",
+      "storyStep": 2,
+      "source": {
+        "origin": "user-entered",
+        "label": "reply from the letting agent, recorded by you",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R1-R-WATER-SPECIFIC",
+      "questionId": "R1-Q-WATER",
+      "from": "Letting agent",
+      "text": "Water is not included: the tenant pays it. A revised written statement is attached.",
+      "storyStep": 3,
+      "source": {
+        "origin": "user-entered",
+        "label": "reply from the letting agent, recorded by you",
+        "documentType": "agent-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "documentId": "R1-WSOT-REVISED"
+    }
+  ]
+}

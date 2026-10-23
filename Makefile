@@ -9,12 +9,13 @@ SOLUTION      := HomeScout.slnx
 CONFIGURATION := Release
 ARTIFACTS     := .artifacts
 GENERATOR     := packages/cost-engine/src/HomeScout.CostEngine.Generator/HomeScout.CostEngine.Generator.csproj
+VALIDATOR     := packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.Fixtures.Validator.csproj
 
-.PHONY: help restore build format-check inspect test check generate clean
+.PHONY: help restore build format-check validate inspect test check generate clean
 
 help:
-	@echo "Targets: restore build format-check inspect test check generate clean"
-	@echo "  check = restore + build + format-check + inspect + test (same as CI)"
+	@echo "Targets: restore build format-check validate inspect test check generate clean"
+	@echo "  check = restore + build + format-check + validate + inspect + test (same as CI)"
 
 # Locked mode: fails if packages.lock.json files are out of date.
 restore:
@@ -26,6 +27,10 @@ build: restore
 
 format-check: restore
 	dotnet format $(SOLUTION) --verify-no-changes --no-restore
+
+# Checks every packages/fixtures/data and test-cases file against its JSON Schema (decision 0018, BE-07).
+validate: build
+	dotnet run --project $(VALIDATOR) --configuration $(CONFIGURATION) --no-build
 
 # JetBrains InspectCode (local tool). Any issue at warning severity or above fails the target.
 inspect: build
@@ -43,7 +48,7 @@ inspect: build
 test: build
 	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
 
-check: restore build format-check inspect test
+check: restore build format-check validate inspect test
 
 # Placeholder: the generator writes packages/fixtures/generated/ from task 4b onwards.
 generate:

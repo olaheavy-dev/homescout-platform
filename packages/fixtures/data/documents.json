@@ -1,0 +1,193 @@
+{
+  "$schema": "../schema/documents.schema.json",
+  "documents": [
+    {
+      "id": "B1-LISTING",
+      "homeId": "B1",
+      "type": "listing",
+      "title": "Listing for Flat 2, 14 Mill Court",
+      "storyStep": 1,
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic listing: asking price, a service charge claim and the council tax band.",
+      "evidenceIds": [
+        "B1-PRICE",
+        "B1-SC-LISTING",
+        "B1-CT-BAND"
+      ]
+    },
+    {
+      "id": "B1-LEASE",
+      "homeId": "B1",
+      "type": "lease",
+      "title": "Lease for Flat 2, 14 Mill Court",
+      "storyStep": 1,
+      "source": {
+        "origin": "document",
+        "label": "lease",
+        "documentType": "lease",
+        "date": "2015-01-01",
+        "synthetic": true
+      },
+      "summary": "Synthetic lease: ground rent and the lease term.",
+      "evidenceIds": [
+        "B1-GROUND-RENT",
+        "B1-LEASE-TERM"
+      ]
+    },
+    {
+      "id": "B1-MGMT-PACK",
+      "homeId": "B1",
+      "type": "management-pack",
+      "title": "Management pack, 14 Mill Court",
+      "storyStep": 3,
+      "source": {
+        "origin": "document",
+        "label": "managing agent's management pack, received by the conveyancer after the offer is accepted",
+        "documentType": "management-pack",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic management pack: the 2026 service-charge budget and what the service charge covers, including buildings insurance.",
+      "evidenceIds": [
+        "B1-SC-BUDGET",
+        "B1-INSURANCE"
+      ]
+    },
+    {
+      "id": "B2-LISTING",
+      "homeId": "B2",
+      "type": "listing",
+      "title": "Listing for 9 Orchard Row",
+      "storyStep": 1,
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic listing: asking price and no service charge.",
+      "evidenceIds": [
+        "B2-PRICE",
+        "B2-SC"
+      ]
+    },
+    {
+      "id": "R1-LISTING",
+      "homeId": "R1",
+      "type": "listing",
+      "title": "Listing for Flat 5, 3 Station Road",
+      "storyStep": 1,
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic listing: the rent and a claim about water.",
+      "excerpt": "Water included.",
+      "evidenceIds": [
+        "R1-RENT",
+        "R1-WATER-LISTING"
+      ]
+    },
+    {
+      "id": "R1-WSOT",
+      "homeId": "R1",
+      "type": "written-statement-of-terms",
+      "title": "Written statement of terms, Flat 5, 3 Station Road",
+      "storyStep": 1,
+      "source": {
+        "origin": "document",
+        "label": "written statement of terms, bills section",
+        "documentType": "written-statement-of-terms",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic written statement of terms for an assured periodic tenancy; the bills section says who pays water.",
+      "excerpt": "Bills: the tenant pays for water.",
+      "evidenceIds": [
+        "R1-WATER-WSOT"
+      ],
+      "citations": [
+        {
+          "url": "https://www.legislation.gov.uk/uksi/2026/324/made",
+          "note": "Written statement of terms required for new private tenancies in England from 1 May 2026 (from the stage 2 plan)."
+        },
+        {
+          "url": "https://www.gov.uk/guidance/renters-rights-act-overview-for-tenants",
+          "note": "Government guidance for tenants on the Renters' Rights Act (from the stage 2 plan)."
+        }
+      ]
+    },
+    {
+      "id": "R1-WSOT-REVISED",
+      "homeId": "R1",
+      "type": "revised-written-statement",
+      "title": "Revised written statement of terms, Flat 5, 3 Station Road",
+      "storyStep": 3,
+      "source": {
+        "origin": "document",
+        "label": "revised written statement of terms, bills section",
+        "documentType": "revised-written-statement",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic revised written statement sent with the agent's specific reply; confirms the tenant pays water.",
+      "excerpt": "Revised bills section: the tenant pays for water.",
+      "evidenceIds": [
+        "R1-WATER-WSOT"
+      ]
+    },
+    {
+      "id": "R2-LISTING",
+      "homeId": "R2",
+      "type": "listing",
+      "title": "Listing for 21 Canal Street",
+      "storyStep": 1,
+      "source": {
+        "origin": "listing-claim",
+        "label": "listing claim, supplied by you",
+        "documentType": "listing",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic listing: the rent, with energy, water and broadband included.",
+      "evidenceIds": [
+        "R2-RENT",
+        "R2-ENERGY",
+        "R2-WATER",
+        "R2-BROADBAND"
+      ]
+    },
+    {
+      "id": "R2-WSOT",
+      "homeId": "R2",
+      "type": "written-statement-of-terms",
+      "title": "Written statement of terms, 21 Canal Street",
+      "storyStep": 1,
+      "source": {
+        "origin": "document",
+        "label": "written statement of terms, bills section",
+        "documentType": "written-statement-of-terms",
+        "date": "2026-10-23",
+        "synthetic": true
+      },
+      "summary": "Synthetic written statement of terms for a bills-included tenancy; lists exactly which bills the rent covers.",
+      "excerpt": "Bills included in the rent: energy, water and broadband. Council tax is not included.",
+      "evidenceIds": [
+        "R2-RENT",
+        "R2-ENERGY",
+        "R2-WATER",
+        "R2-BROADBAND"
+      ]
+    }
+  ]
+}

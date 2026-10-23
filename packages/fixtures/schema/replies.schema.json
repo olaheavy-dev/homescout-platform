@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/replies.schema.json",
+  "title": "Replies file (data/replies.json)",
+  "type": "object",
+  "required": ["replies"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "replies": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/reply" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "reply": {
+      "type": "object",
+      "required": ["id", "questionId", "from", "text", "storyStep", "source"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/id" },
+        "questionId": { "$ref": "common.schema.json#/$defs/id" },
+        "from": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 1 },
+        "storyStep": { "type": "integer", "minimum": 1 },
+        "source": { "$ref": "common.schema.json#/$defs/source" },
+        "documentId": { "$ref": "common.schema.json#/$defs/id" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
