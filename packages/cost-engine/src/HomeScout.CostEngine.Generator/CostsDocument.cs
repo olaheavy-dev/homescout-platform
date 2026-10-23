@@ -1,5 +1,8 @@
 using System.Text.Json.Serialization;
 
+// ReSharper disable NotAccessedPositionalProperty.Global
+// These records are only ever written out by System.Text.Json, which reads their properties by reflection, so InspectCode
+// cannot see the reads.
 namespace HomeScout.CostEngine.Generator;
 
 // The records below are the shape of packages/fixtures/generated/costs.json. The order of the parameters of each record is

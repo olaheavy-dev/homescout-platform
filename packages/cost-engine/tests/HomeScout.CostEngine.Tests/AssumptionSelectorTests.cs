@@ -51,7 +51,7 @@ internal sealed class AssumptionSelectorTests
     {
         HomeFacts facts = TestFacts.Buying([TestFacts.Money("EN", "energy", 9_000, Period.Month)]);
 
-        Assert.That(TestFacts.MonthlyLine(Select(facts, 1), CostCategory.Energy), Is.InstanceOf<AmountLine>());
+        Assert.That(TestFacts.MonthlyLine(Select(facts), CostCategory.Energy), Is.InstanceOf<AmountLine>());
     }
 
     [Test]
