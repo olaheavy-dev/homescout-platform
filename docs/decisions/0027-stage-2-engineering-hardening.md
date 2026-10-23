@@ -1,7 +1,7 @@
 # 0027: Stage 2 engineering and security hardening
 
 **ID:** WW-09  
-**Status:** Accepted (partly superseded: founder merge for its named tools by [0035](0035-ways-of-working-v2.md))  
+**Status:** Accepted (partly superseded: founder merge for its named tools by [0035](0035-ways-of-working-v2.md); licence allow-list extended by register line WW-13)  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:**

@@ -23,7 +23,7 @@ jobs:
         uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
         with:
           fail-on-severity: low
-          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Zlib, Unlicense, CC0-1.0, MPL-2.0
+          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Zlib, Unlicense, CC0-1.0, MPL-2.0, zlib-acknowledgement
           # The dependency-submission workflow supplies NuGet data; retry while its snapshot is still arriving.
           retry-on-snapshot-warnings: true
           # Recorded exception (decision 0035): JetBrains ReSharper command line tools, a free proprietary-licence
