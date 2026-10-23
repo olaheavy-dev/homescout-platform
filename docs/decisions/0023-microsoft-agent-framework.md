@@ -21,8 +21,8 @@ Founder's choice: decide it now. Microsoft Agent Framework is HomeScout's AI fra
 
 | Part of HomeScout | Approach |
 |---|---|
-| Costs, comparisons, "what changed" | Plain code in the cost engine. Never AI |
-| Explain a finding, draft a question, check a reply | A single agent call with tools |
+| Costs, comparisons, and **working out** what changed (cost differences, which evidence or assumptions changed and by how much) | Plain code: the cost engine and change-detection code. Never AI |
+| Explain a finding, draft a question, check a reply, and **put a change into words** using the differences the code worked out | A single agent call with tools; it may only quote figures and changes the code supplied |
 | Optional chat panel (decision 0004) | A single agent with a session |
 | Document investigation: read several documents, find conflicts, draft questions, then the user approves | A workflow with fixed steps and a human approval step |
 
