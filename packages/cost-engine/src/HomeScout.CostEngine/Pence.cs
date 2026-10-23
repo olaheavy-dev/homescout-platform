@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace HomeScout.CostEngine;
 
 /// <summary>
@@ -51,6 +53,34 @@ public readonly record struct Pence(long Value) : IComparable<Pence>
     /// <exception cref="OverflowException">The rounded amount does not fit in a <see cref="long"/>.</exception>
     public static Pence Round(decimal exactPence) =>
         new(decimal.ToInt64(Math.Round(exactPence, 0, MidpointRounding.AwayFromZero)));
+
+    /// <summary>
+    /// Rounds an exact fraction of pence, <paramref name="numerator"/> over <paramref name="denominator"/>, once:
+    /// nearest penny, exact halves away from zero (decisions 0021, 0034). The fraction is exact whole-number arithmetic,
+    /// so no precision is lost before the one rounding step. A negative denominator is allowed; the sign of the result
+    /// is the sign of the fraction.
+    /// </summary>
+    /// <exception cref="DivideByZeroException"><paramref name="denominator"/> is zero.</exception>
+    /// <exception cref="OverflowException">The rounded amount does not fit in a <see cref="long"/>.</exception>
+    public static Pence RoundRatio(BigInteger numerator, BigInteger denominator)
+    {
+        if (denominator.IsZero)
+        {
+            throw new DivideByZeroException("A fraction of pence needs a denominator that is not zero.");
+        }
+
+        // Work on the size of the fraction, then put the sign back, so halves round away from zero on both sides.
+        bool isNegative = numerator.Sign * denominator.Sign < 0;
+        BigInteger size = BigInteger.DivRem(BigInteger.Abs(numerator), BigInteger.Abs(denominator), out BigInteger remainder);
+
+        // A remainder of half the denominator or more is half a penny or more.
+        if (remainder * 2 >= BigInteger.Abs(denominator))
+        {
+            size += BigInteger.One;
+        }
+
+        return new Pence(checked((long)(isNegative ? -size : size)));
+    }
 
     /// <summary>Adds <paramref name="other"/>.</summary>
     /// <exception cref="OverflowException">The sum does not fit in a <see cref="long"/>.</exception>

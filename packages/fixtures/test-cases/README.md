@@ -103,7 +103,7 @@ Founder decisions (founder, 23 Oct 2026):
 - **(b)** "Within budget" means total at or below £1,600; exactly £1,600 is within.
 - **(c)** Until R1's water responsibility is settled, water is left out of R1's monthly total (status `conflicting`) and the total is flagged partial ("water: not settled yet"). It is added once the user confirms.
 
-Ours, for the founder to confirm:
+Ours, **confirmed by the founder on 23 Oct 2026**:
 1. Moving costs of £1,200 are a flat upfront line once per home.
 2. Rate is exactly 5.5% a year (i = 0.055 / 12), compounded monthly with payments in arrears; no fees or other mortgage costs.
 3. A line a home doesn't have (for example B2's service charge) is left out, not shown as zero.

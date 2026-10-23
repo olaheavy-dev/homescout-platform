@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/generated-costs.schema.json",
+  "title": "Cost-engine output (generated/costs.json)",
+  "description": "The one file the cost-engine generator writes (stage 2 plan, task 4b). Every figure is whole pence calculated by the C# engine; nothing here is typed by hand. A line has an amount only when its status is 'calculated': included, not-calculated, conflicting and missing lines never carry pence, so missing data is never shown as zero (AGENTS.md rule 7).",
+  "type": "object",
+  "required": ["$schema", "formatVersion", "generatedBy", "snapshotDate", "money", "rounding", "homes"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "formatVersion": { "const": 1 },
+    "generatedBy": { "type": "string", "minLength": 1 },
+    "snapshotDate": { "$ref": "common.schema.json#/$defs/fullDate" },
+    "money": { "const": "integer pence" },
+    "rounding": { "type": "string", "minLength": 1 },
+    "homes": { "type": "array", "items": { "$ref": "#/$defs/home" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "figureId": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]+(-[A-Z0-9]+)*(\\.[a-z0-9]+(-[a-z0-9]+)*)+$",
+      "description": "HOME.scenario.section.name, for example B1.from-step-4.monthly.service-charge. Unique across the file (the generator tests check that; JSON Schema cannot)."
+    },
+    "pence": {
+      "type": "integer",
+      "description": "Whole pence. May be negative (a difference) or zero (a calculated amount that rounds to nothing, or an empty total)."
+    },
+    "nonNegativePence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidenceId": { "$ref": "common.schema.json#/$defs/id" },
+    "evidenceIds": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidenceId" }
+    },
+    "category": {
+      "enum": [
+        "mortgage-repayment",
+        "service-charge",
+        "ground-rent",
+        "council-tax",
+        "energy",
+        "water",
+        "broadband",
+        "buildings-insurance",
+        "maintenance",
+        "rent",
+        "mortgage-deposit",
+        "deposit",
+        "first-month-rent",
+        "moving-costs",
+        "stamp-duty",
+        "legal-fees"
+      ]
+    },
+    "figure": {
+      "type": "object",
+      "required": ["id", "pence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "pence": { "$ref": "#/$defs/pence" }
+      },
+      "additionalProperties": false
+    },
+    "line": {
+      "type": "object",
+      "required": ["id", "category", "status", "evidenceIds"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "category": { "$ref": "#/$defs/category" },
+        "status": { "enum": ["calculated", "included", "not-calculated", "conflicting", "missing"] },
+        "pence": { "$ref": "#/$defs/nonNegativePence" },
+        "sourcePeriod": { "$ref": "common.schema.json#/$defs/period" },
+        "evidenceIds": { "$ref": "#/$defs/evidenceIds" }
+      },
+      "allOf": [
+        {
+          "description": "Only a calculated line has an amount and the period its source stated.",
+          "if": { "properties": { "status": { "const": "calculated" } }, "required": ["status"] },
+          "then": { "required": ["pence", "sourcePeriod"] },
+          "else": { "properties": { "pence": false, "sourcePeriod": false } }
+        },
+        {
+          "description": "A missing line has no evidence; every other line names at least one item.",
+          "if": { "properties": { "status": { "const": "missing" } }, "required": ["status"] },
+          "then": { "properties": { "evidenceIds": { "maxItems": 0 } } },
+          "else": { "properties": { "evidenceIds": { "minItems": 1 } } }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "partialReason": {
+      "type": "object",
+      "required": ["lineId", "category", "status"],
+      "properties": {
+        "lineId": { "$ref": "#/$defs/figureId" },
+        "category": { "$ref": "#/$defs/category" },
+        "status": { "enum": ["not-calculated", "conflicting", "missing"] }
+      },
+      "additionalProperties": false
+    },
+    "total": {
+      "type": "object",
+      "required": ["id", "pence", "isPartial", "partialReasons"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "pence": { "$ref": "#/$defs/nonNegativePence" },
+        "isPartial": { "type": "boolean" },
+        "partialReasons": { "type": "array", "items": { "$ref": "#/$defs/partialReason" } }
+      },
+      "if": { "properties": { "isPartial": { "const": true } }, "required": ["isPartial"] },
+      "then": { "properties": { "partialReasons": { "minItems": 1 } } },
+      "else": { "properties": { "partialReasons": { "maxItems": 0 } } },
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "required": ["id", "budgetPence", "budgetSource", "differencePence", "withinBudget", "basedOnPartialTotal"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "budgetPence": { "$ref": "common.schema.json#/$defs/pence" },
+        "budgetSource": { "const": "household:RIVERS.monthlyBudget" },
+        "differencePence": { "$ref": "#/$defs/pence" },
+        "withinBudget": { "type": "boolean" },
+        "basedOnPartialTotal": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "mortgage": {
+      "type": "object",
+      "required": ["id", "loan", "rateBasisPoints", "termYears", "payments", "monthlyRepayment", "evidenceIds"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "loan": { "$ref": "#/$defs/figure" },
+        "rateBasisPoints": { "type": "integer", "minimum": 1 },
+        "termYears": { "type": "integer", "minimum": 1 },
+        "payments": { "type": "integer", "minimum": 1 },
+        "monthlyRepayment": { "$ref": "#/$defs/figure" },
+        "evidenceIds": { "allOf": [{ "$ref": "#/$defs/evidenceIds" }, { "minItems": 1 }] }
+      },
+      "additionalProperties": false
+    },
+    "monthly": {
+      "type": "object",
+      "required": ["lines", "total", "budget"],
+      "properties": {
+        "lines": { "type": "array", "items": { "$ref": "#/$defs/line" } },
+        "total": { "$ref": "#/$defs/total" },
+        "budget": { "$ref": "#/$defs/budget" }
+      },
+      "additionalProperties": false
+    },
+    "upfront": {
+      "type": "object",
+      "required": ["lines", "total"],
+      "properties": {
+        "lines": { "type": "array", "items": { "$ref": "#/$defs/line" } },
+        "total": { "$ref": "#/$defs/total" }
+      },
+      "additionalProperties": false
+    },
+    "change": {
+      "type": "object",
+      "required": ["id", "category", "kind", "previousEvidenceIds", "currentEvidenceIds"],
+      "properties": {
+        "id": { "$ref": "#/$defs/figureId" },
+        "category": { "$ref": "#/$defs/category" },
+        "kind": { "enum": ["value-changed", "now-calculated", "no-longer-calculated"] },
+        "previousEvidenceIds": { "$ref": "#/$defs/evidenceIds" },
+        "currentEvidenceIds": { "$ref": "#/$defs/evidenceIds" },
+        "monthlyDifferencePence": { "$ref": "#/$defs/pence" },
+        "annualDifferencePence": { "$ref": "#/$defs/pence" }
+      },
+      "additionalProperties": false
+    },
+    "scenario": {
+      "type": "object",
+      "required": ["scenarioId", "fromStep", "toStep", "monthly", "upfront", "changesFromPrevious"],
+      "properties": {
+        "scenarioId": { "type": "string", "pattern": "^from-step-[1-9][0-9]*$" },
+        "fromStep": { "type": "integer", "minimum": 1 },
+        "toStep": { "type": "integer", "minimum": 1 },
+        "mortgage": { "$ref": "#/$defs/mortgage" },
+        "monthly": { "$ref": "#/$defs/monthly" },
+        "upfront": { "$ref": "#/$defs/upfront" },
+        "changesFromPrevious": { "type": "array", "items": { "$ref": "#/$defs/change" } },
+        "monthlyTotalChange": { "$ref": "#/$defs/figure" }
+      },
+      "additionalProperties": false
+    },
+    "home": {
+      "type": "object",
+      "required": ["homeId", "nation", "coverage", "scenarios"],
+      "properties": {
+        "homeId": { "$ref": "common.schema.json#/$defs/id" },
+        "mode": { "enum": ["buy", "rent"] },
+        "nation": { "$ref": "common.schema.json#/$defs/nation" },
+        "coverage": { "enum": ["covered", "not-yet-covered"] },
+        "storyId": { "$ref": "common.schema.json#/$defs/id" },
+        "scenarios": { "type": "array", "items": { "$ref": "#/$defs/scenario" } }
+      },
+      "allOf": [
+        {
+          "description": "A home outside England is 'not-yet-covered' and has no scenarios; England is covered and has at least one (AGENTS.md rule 6).",
+          "if": { "properties": { "nation": { "const": "England" } }, "required": ["nation"] },
+          "then": {
+            "required": ["mode", "storyId"],
+            "properties": { "coverage": { "const": "covered" }, "scenarios": { "minItems": 1 } }
+          },
+          "else": {
+            "properties": { "coverage": { "const": "not-yet-covered" }, "scenarios": { "maxItems": 0 } }
+          }
+        },
+        {
+          "description": "Only a buying home has a mortgage in any scenario.",
+          "if": { "properties": { "mode": { "const": "rent" } }, "required": ["mode"] },
+          "then": { "properties": { "scenarios": { "items": { "not": { "required": ["mortgage"] } } } } }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

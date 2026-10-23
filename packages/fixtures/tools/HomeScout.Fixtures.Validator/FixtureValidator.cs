@@ -14,7 +14,7 @@ internal sealed record FixtureProblem(string File, string Location, string Messa
 /// <summary>
 /// Checks fixture files against their JSON Schema 2020-12 schemas (decision 0018, register line BE-07).
 /// Convention: <c>data/NAME.json</c> is checked against <c>schema/NAME.schema.json</c>.
-/// Any file in <c>test-cases/</c> names its schema in a top-level <c>$schema</c> field
+/// Any file in <c>test-cases/</c> or <c>generated/</c> names its schema in a top-level <c>$schema</c> field
 /// (a path relative to the file, such as <c>../schema/test-case.schema.json</c>).
 /// </summary>
 internal static class FixtureValidator
@@ -58,9 +58,16 @@ internal static class FixtureValidator
             problems.AddRange(ValidateFile(path, null, schemaDirectory, requireDeclaredSchema: true));
         }
 
+        // The generator's output (task 4b). The folder may be empty or absent until the generator exists.
+        foreach (string path in JsonFiles(Path.Combine(fixturesDirectory, "generated")))
+        {
+            checkedFiles++;
+            problems.AddRange(ValidateFile(path, null, schemaDirectory, requireDeclaredSchema: true));
+        }
+
         if (checkedFiles == 0)
         {
-            problems.Add(new FixtureProblem(fixturesDirectory, "/", "No fixture files found in data/ or test-cases/."));
+            problems.Add(new FixtureProblem(fixturesDirectory, "/", "No fixture files found in data/, test-cases/ or generated/."));
         }
 
         return problems;

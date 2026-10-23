@@ -31,6 +31,8 @@ internal sealed class ArchitectureTests
         "Npgsql",
     ];
 
+    private static readonly string[] _forbiddenJsonNamespaces = ["System.Text.Json", "Newtonsoft"];
+
     // Types whose use means the clock or randomness. DateTime itself is allowed: only reading the current time is not.
     private static readonly string[] _forbiddenClockAndRandomTypes =
     [
@@ -67,6 +69,25 @@ internal sealed class ArchitectureTests
     }
 
     [Test]
+    public void CostEngine_assembly_hasNoDependencyOnSystemTextJson()
+    {
+        // The engine works on plain values; reading and writing JSON is the generator's job (plan 4b, section 2).
+        TestResult result = Types.InAssembly(_engine).That().DoNotResideInNamespaceStartingWith(_coverageNamespace).ShouldNot().HaveDependencyOnAny(_forbiddenJsonNamespaces).GetResult();
+
+        Assert.That(result.FailingTypeNames, Is.Null.Or.Empty);
+    }
+
+    [Test]
+    public void JsonRule_appliedToCodeThatUsesJson_failsAsExpected()
+    {
+        TestResult result = Types.InAssembly(typeof(ArchitectureTests).Assembly)
+            .That().HaveName(nameof(RuleBreaker))
+            .ShouldNot().HaveDependencyOnAny(_forbiddenJsonNamespaces).GetResult();
+
+        Assert.That(result.IsSuccessful, Is.False);
+    }
+
+    [Test]
     public void CostEngine_assembly_hasNoDependencyOnClockOrRandom()
     {
         TestResult result = Types.InAssembly(_engine).That().DoNotResideInNamespaceStartingWith(_coverageNamespace).ShouldNot().HaveDependencyOnAny(_forbiddenClockAndRandomTypes).GetResult();
@@ -87,7 +108,10 @@ internal sealed class ArchitectureTests
     [Test]
     public void CostEngine_everyTypeOutsideTheCoverageTracker_livesUnderTheEngineNamespace()
     {
+        // The C# compiler adds helper types for collection expressions and constant arrays (for example
+        // <PrivateImplementationDetails>). Their names start with '<', which no C# type of ours can, so they are not engine code.
         IEnumerable<string> strays = EngineTypes(_engine)
+            .Where(t => !t.Name.StartsWith('<') && !(t.DeclaringType?.Name.StartsWith('<') ?? false))
             .Where(t => t.FullName?.StartsWith(_engineNamespace, StringComparison.Ordinal) != true)
             .Select(t => t.FullName ?? t.Name);
 
@@ -291,6 +315,8 @@ internal sealed class ArchitectureTests
 #pragma warning restore CA5394
 
         public static bool FileExists(string path) => File.Exists(path);
+
+        public static string AsJson(int value) => System.Text.Json.JsonSerializer.Serialize(value);
 
         public static float Combine(IReadOnlyList<float> values) => values.Count;
     }
