@@ -4,6 +4,8 @@
 **How to use:** For each item, tick one box and add a line on why. Accepted items become decision records in `docs/decisions/` and their status is updated in the register.  
 **Gate:** every product item is confirmed, changed, or kept open with a reason; WW-01 to WW-03 are accepted; `CLAUDE.md` and the decision-record template are in the repository.
 
+**Status: signed off by the founder on 23 October 2026.** Stage 2 has started.
+
 ## Progress (23 October 2026)
 
 | Item | Answer | Record |
