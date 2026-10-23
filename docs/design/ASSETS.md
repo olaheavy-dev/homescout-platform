@@ -21,7 +21,9 @@ Every image, map tile, font or other media file in this repository is listed her
 - They are **design concepts for discussion**, not product assets. They must not be used in the prototype, the product or marketing.
 - Their depictions of official bodies' logos, maps, addresses, prices and documents are generated imitations, not real data or endorsements. Doc 03 §2 and §7 already require that none of this carries into the product.
 - The all-rights-reserved notice in `LICENSE` covers the project's own work. It doesn't claim rights in third-party names or marks depicted in the images.
-- Until the tool's terms are recorded, attribution and reuse rights stay unresolved. If the terms conflict with publishing the images, remove them from the repository.
+- **Terms status (23 October 2026):** checked. OpenAI's terms allow publishing these images in this repository with no attribution requirement. Nothing about the terms is outstanding for their current use as concept images.
+- Recheck OpenAI's terms before any commercial use of these images. If the terms change in a way that conflicts with publishing them, remove the images from the repository.
+- Copyright in AI-generated images may not be protectable, so the all-rights-reserved notice can't be relied on to stop others copying these concept images.
 
 ## Product assets
 
