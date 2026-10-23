@@ -1,7 +1,7 @@
 # 0018: Sample data format
 
 **ID:** DA-01  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: CI timing by [0027](0027-stage-2-engineering-hardening.md))  
 **Date:** 2026-10-23  
 **Stage:** 2
 

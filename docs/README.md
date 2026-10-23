@@ -11,7 +11,8 @@ docs/
 ├── decisions/           one record per decision, plus the register
 ├── planning/            stage checklists and working plans
 ├── references/          links to official third-party documentation
-└── reviews/             dated document reviews and audits
+├── reviews/             dated document reviews and audits
+└── architecture/        C4 diagrams in Mermaid (added in stage 2, decision 0027)
 ```
 
 Planned folders, added when their stage starts: `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
@@ -29,6 +30,7 @@ Planned folders, added when their stage starts: `docs/specs/` for the prototype 
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |
+| [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 
 Accepted decision records override anything in the documents that contradicts them. Where 02, 03 and 04 overlap, each owns the area listed above.
