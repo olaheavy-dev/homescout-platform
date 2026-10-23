@@ -11,11 +11,10 @@ docs/
 ├── decisions/           one record per decision, plus the register
 ├── planning/            stage checklists and working plans
 ├── references/          links to official third-party documentation
-├── reviews/             dated document reviews and audits
-└── architecture/        C4 diagrams in Mermaid (added in stage 2, decision 0027)
+└── reviews/             dated document reviews and audits
 ```
 
-Planned folders, added when their stage starts: `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
+Planned folders, added when their stage starts: `docs/architecture/` for C4 diagrams in Mermaid (stage 2, decision 0027), `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
 
 ## What each document is for
 

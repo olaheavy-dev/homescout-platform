@@ -24,7 +24,9 @@ The founder approved all of the following.
 
 **Repository settings (applied 23 October 2026):** secret scanning with push protection; Dependabot alerts and security updates; private vulnerability reporting with `SECURITY.md`; squash merges only; merged branches deleted automatically; GitHub Actions must be pinned to full commit SHAs. Required status checks are added to `main` as soon as the CI workflow exists.
 
-**CI from stage 2:** one free GitHub Actions workflow running the Makefile: locked restore, build, tests, schema validation, regenerate the generated files and fail if they changed. Also CodeQL default setup for C#, JavaScript/TypeScript and Actions; the dependency review action (blocks vulnerable or disallowed-licence packages); actionlint and zizmor for workflow files.
+**CI from stage 2:** one free GitHub Actions workflow running the Makefile: locked restore, build, tests, schema validation, regenerate the generated files and fail if they changed. Also CodeQL default setup for C#, JavaScript/TypeScript and Actions; the dependency review action (blocks vulnerable packages, and packages whose licence isn't on the allow-list below); actionlint and zizmor for workflow files.
+
+**Dependency licence policy:** the dependency review action is configured with an explicit `allow-licenses` list ([configuration](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/configure-dependency-review-action)), chosen to keep the all-rights-reserved, commercially viable code base free of copyleft obligations: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Zlib, Unlicense, CC0-1.0 and MPL-2.0 (file-level copyleft, acceptable for unmodified use). Anything else, including GPL, AGPL, LGPL, source-available or non-commercial licences, and packages with no licence, is blocked unless the founder approves an exception in a decision record.
 
 **Dependabot:** a 7-day `cooldown` before proposing new versions; security updates are exempt and arrive immediately.
 
@@ -34,7 +36,7 @@ The founder approved all of the following.
 - **Test platform:** NUnit on Microsoft.Testing.Platform, with code coverage, settled in the first implementation pull request.
 - **Code style:** an `.editorconfig`, checked in CI with `dotnet format --verify-no-changes`.
 
-**Architecture diagrams:** a C4 context diagram and a container diagram in Mermaid, in `docs/architecture/`, updated as the system grows.
+**Architecture diagrams:** a C4 context diagram and a container diagram in Mermaid, to be added in `docs/architecture/` during stage 2 (the folder doesn't exist yet) and updated as the system grows.
 
 ## Consequences
 - The first implementation pull request adds the CI workflow, `dependabot.yml` and these tools; new tools are new dependencies, so that pull request is a founder merge.
