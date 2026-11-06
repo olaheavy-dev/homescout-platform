@@ -51,7 +51,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | WW-11 | Review fallback when Codex is unavailable | 2 | Superseded by 0035 | [0033](0033-review-fallback.md) |
 | WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted | [0035](0035-ways-of-working-v2.md) |
 | DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
-| DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location) | [0019](0019-cost-engine-in-csharp.md) |
+| DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location; by 0036: language) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
 | SP-02 | Work breakdown | 3 | Not started | |
 | DS-01 | Design tooling | 4 | Not started (code-first indicated by 0031) | |
@@ -67,11 +67,11 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | IN-04 | CI/CD and environments | 4 | Not started | |
 | IN-05 | Budget cap and cost alerts | 4 | Not started | |
 | FE-05 | Demo analytics and feedback | 5 | Not started | |
-| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020; ASP.NET Core to confirm at stage 6) | [0020](0020-application-languages.md) |
+| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (Python accepted in 0036, replacing C# on .NET from 0020; FastAPI to confirm at stage 6) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
-| BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034) | [0021](0021-dotnet-engineering-foundation.md) |
-| BE-05 | Our own Result type | 2 | Accepted | [0032](0032-own-result-type.md) |
+| BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034; by 0036: .NET setup) | [0021](0021-dotnet-engineering-foundation.md) |
+| BE-05 | Our own Result type | 2 | Accepted (partly superseded by 0036: rewritten in Python, principle stands) | [0032](0032-own-result-type.md) |
 | BE-06 | Rounding boundary test cases | 2 | Accepted | [0034](0034-rounding-boundary-cases.md) |
 | WW-13 | Licence allow-list addition | 2 | Accepted (register line: `zlib-acknowledgement`, a permissive Zlib-family licence used by NUnit 5, added to the 0027 allow-list; founder, 23 Oct 2026) | — |
 | BE-07 | Fixture schema validator | 2 | Accepted (register line: JsonSchema.Net with JSON Schema 2020-12; added to the pre-approved packages; founder, 23 Oct 2026) | — |
@@ -85,6 +85,9 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-15 | Rates in whole basis points | 2 | Accepted (register line: the engine takes rates as whole basis points (550 is 5.5%); a rate that is not a whole number of basis points is not accepted until a decision says otherwise; founder, 23 Oct 2026) | — |
 | BE-16 | Missing inputs in a calculation | 2 | Accepted (register line: an anchor input (asking price, mortgage deposit, rate and term when buying; rent when renting) that is missing stops the calculation with a `Result` failure; any other missing bill becomes a `missing` line and makes the total partial; founder, 23 Oct 2026) | — |
 | BE-17 | Mortgage term limit | 2 | Accepted (register line: the engine fails a mortgage term over 100 years with `mortgage.term-too-long`, and the evidence and output schemas allow at most 100; this is a technical computation limit because the exact arithmetic gets very slow for huge terms, not a lending rule; founder, 23 Oct 2026) | — |
+| BE-18 | Python for the backend, cost engine and AI layer | 2 (reopens stage 2) | Accepted (founder, 6 Nov 2026; supersedes the C# parts of 0019, 0020, 0021, 0032; the C# code and docs stay until the port pull request merges) | [0036](0036-python-backend.md) |
+| AI-07 | MCP server and coding-agent integrations | 6 (local fixture-backed server may come earlier) | Proposed | [0037](0037-mcp-server-and-agent-integrations.md) |
+| SE-03 | Accounts and API keys for MCP and API access | 6 (before any public remote MCP server) | Proposed | [0038](0038-accounts-and-api-keys-for-mcp.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |
