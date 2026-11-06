@@ -88,6 +88,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-18 | Python for the backend, cost engine and AI layer | 2 (reopens stage 2) | Accepted (founder, 6 Nov 2026; supersedes the C# parts of 0019, 0020, 0021, 0032; the C# code and docs stay until the port pull request merges) | [0036](0036-python-backend.md) |
 | AI-07 | MCP server and coding-agent integrations | 6 (local fixture-backed server may come earlier) | Proposed | [0037](0037-mcp-server-and-agent-integrations.md) |
 | SE-03 | Accounts and API keys for MCP and API access | 6 (before any public remote MCP server) | Proposed | [0038](0038-accounts-and-api-keys-for-mcp.md) |
+| BE-19 | The founder's FastAPI template as the API starting point | 6 (template changes may run earlier) | Accepted (one-time import, trimmed; amends the private-reference rule for that template only; founder, 6 Nov 2026) | [0040](0040-fastapi-template-as-api-starting-point.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |
