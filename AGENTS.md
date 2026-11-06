@@ -24,6 +24,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 - **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for HomeScout.
 - **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
 - The AI sample has no licence: ideas only.
+- **Exception (decision 0040):** the founder's public FastAPI template and its base template may be named in tracked files and used as the starting point for the API, with provenance recorded in that decision. The rules above still apply to every other source.
 
 ## Rules for every agent
 
