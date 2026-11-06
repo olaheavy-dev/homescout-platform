@@ -36,6 +36,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 6. **England first.** Other UK nations show "not yet covered". Keep a nation field in data; don't hard-code English rules into shared code.
 7. **Missing data is never shown as zero**, a favourable value or a clean result.
 8. **Plain language for the founder.** When explaining options or decisions, say what each option means in practice and give a clear recommendation.
+9. **No agent attribution.** Commit messages and pull request descriptions carry no `Co-Authored-By` or "generated with" lines for any coding agent (set in `.claude/settings.json`). Founder decision, 6 Nov 2026; it matches the base template's rule 5.
 
 ## How work flows (decision 0035)
 
