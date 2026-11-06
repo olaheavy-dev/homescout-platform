@@ -1,7 +1,7 @@
 # 0032: Our own Result type
 
 **ID:** BE-05  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: rewritten in Python by [0036](0036-python-backend.md), taking effect when the port merges; the principle stands)  
 **Date:** 2026-10-23  
 **Stage:** 2
 
