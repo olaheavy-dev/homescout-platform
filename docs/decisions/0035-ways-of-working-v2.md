@@ -1,7 +1,7 @@
 # 0035: Ways of working v2 (consolidated rulebook)
 
 **ID:** WW-12  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded: point 9's pre-approved list gains the Python packages in [0039](0039-python-engineering-foundation.md))  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:**
