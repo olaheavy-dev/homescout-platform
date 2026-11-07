@@ -1,7 +1,7 @@
 # 0040: The founder's FastAPI template as the API starting point
 
 **ID:** BE-19  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded by 0041: the MAF gateway is built in the template first, and P7 imports a release at or after 0.8.0)  
 **Date:** 2026-11-06  
 **Stage:** 6 (the API slice, P7 of the port plan); the template changes can run earlier, in parallel with the port  
 **Amends:** the "Private reference sources" rule in `AGENTS.md`, for this one public repository only.

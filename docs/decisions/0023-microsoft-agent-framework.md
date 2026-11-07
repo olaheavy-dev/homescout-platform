@@ -1,7 +1,7 @@
 # 0023: Microsoft Agent Framework for the AI layer
 
 **ID:** AI-04  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded by 0041: the template builds the framework-neutral core and the MAF gateway first, so the "Template follow-up" order is reversed)  
 **Date:** 2026-10-23  
 **Stage:** 6 (decided early)
 
