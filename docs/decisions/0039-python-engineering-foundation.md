@@ -1,7 +1,7 @@
 # 0039: Python engineering foundation
 
 **ID:** BE-20  
-**Status:** Accepted (founder's answers of 7 Nov 2026 on issue #42, plus the defaults listed under "Decision", which the founder confirms by merging; still open: Q1 must be settled before P1 merges, and Q2 (CodeQL setting or workflow) and Q3 (`0.x` minor bumps) await the founder)  
+**Status:** Accepted (the founder's answers of 7 Nov 2026 to the port plan's nine questions on issue #42; the rest of the port plan and the details listed under "Decision" are confirmed by the founder's merge; still open: Q1 must be settled before P1 merges, and Q2 (CodeQL setting or workflow) and Q3 (`0.x` minor bumps) await the founder)  
 **Date:** 2026-11-07  
 **Stage:** 2 (the Python port, step P0 of the port plan in issue #42)  
 **Supersedes in part (no older text is rewritten):**
@@ -36,16 +36,27 @@ Fewer tools and default settings. Faster to start, but mistakes in money code ar
 Option A. What it means in practice: an agent's mistake in money code, typing or style fails `make check` on their own machine, before review.
 
 ## Decision
-The founder chose Option A on 7 November 2026, with the answers recorded on issue #42.
+Option A. On 7 November 2026 the founder answered the port plan's nine questions on issue #42 and asked for this record. The rest of Option A follows the port plan (the body of issue #42); that part, together with the details below, is confirmed by the founder's merge of this record.
 
-**Defaults set by this record** (not among the founder's answers; the founder confirms them by merging this record; each can change later with a register line):
+**Details beyond the port plan and the founder's answers** (set by this record; confirmed by the founder's merge; each can change later with a register line):
 - the folder layout (section 1);
-- the extra mypy settings: `warn_unreachable` and the optional error codes (section 2);
+- the extra mypy settings beyond `--strict` and `warn_unreachable`: the optional error codes and a reason on every `# type: ignore` (section 2);
 - the exact ruff rule list, including `S101` ignored for tests (section 2);
 - `Pence` as a range-checked frozen value type that accepts only an exact `int` (section 3);
-- the banned rounding routes outside `round_ratio` (section 3);
+- the banned rounding routes outside `round_ratio`, beyond the plan's "never `//` or `%`" (section 3);
+- pytest's `strict = true`, which adds strict parametrisation IDs and strict xfail to the plan's strict markers and configuration, and `--import-mode=importlib` (section 4);
 - the use of Hypothesis's built-in `ci` profile (section 4);
-- the list of checks in the architecture test (section 4).
+- the list of checks in the architecture test (section 4);
+- branch coverage through pytest-cov (section 4);
+- import-linter left unapproved for now and possibly added with P7 (the plan placed it at stage 6) (section 4);
+- the package-URL form of the licence exception, `pkg:pypi/typing-extensions` (section 7).
+
+The stable-JSON rules (section 5) are the plan's, spelled out; they add nothing beyond it.
+
+**Plan items the founder's merge confirms that change an accepted record:**
+- **`Fraction` for exact decimal inputs, and no `Decimal` at all** (section 3). This changes part of accepted decision 0036, which allowed `decimal` with `ROUND_HALF_UP` to quantise a decimal input. 0036 itself is not rewritten; its status points here.
+
+No other plan item overrides an accepted record: the rest either settles a choice 0036 left open (its "tooling to propose" list) or carries out a change 0036 already made (for example, BE-07 to BE-09 superseded at P6).
 
 ### 1. Toolchain and layout
 - **Python 3.14** is the baseline (`requires-python = ">=3.14"`, and a `.python-version` file). 3.14 was released on 7 October 2025 and gets security fixes until about October 2030. The founder's FastAPI template defaults to 3.14 too. Python 3.15 was released on 9 October 2026; moving to it later is a minor change with a register line.
@@ -70,7 +81,7 @@ The founder chose Option A on 7 November 2026, with the answers recorded on issu
 - **`Pence`** is a small frozen value type that holds money as one `int` number of pence, as 0036 requires. Wrapping the `int` means `Pence + 3` is a type error and every result is range-checked. It accepts only an exact `int` (`type(value) is int`): it rejects `bool` (which Python treats as an integer), `Fraction` and `float`.
 - **Range:** signed 64-bit, −9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 pence, the same as the C# engine. Python integers never overflow, so `Pence` checks the range on creation and after every operation and **raises** outside it (a programming error, as in C#). The port plan's 64-bit minimum and overflow cases test this. Note for stage 4: JavaScript numbers are exact only up to 2^53 − 1 (9,007,199,254,740,991), so the frontend must not do arithmetic on figures above that; no realistic home cost comes near it.
 - **One rounding helper, `round_ratio(n, d)`:** nearest penny, exact halves away from zero (0021, 0034). It takes `divmod(abs(n), abs(d))`, rounds up when twice the remainder is at least `abs(d)`, then restores the sign. It is the only place a division of money is rounded.
-- **Outside `round_ratio`, never** `//`, `%` or `divmod` (Python rounds those towards minus infinity, C# towards zero), `math.floor`, `math.ceil` or `math.trunc` (each rounds in one fixed direction), or `int(...)` on anything that is not already an `int` (on a `Fraction` it truncates towards zero). **Never** `round()` (it rounds halves to even), **never** `float`, and **no `decimal`**. Inside `round_ratio`, `divmod` is used only on the non-negative `abs(n)` and `abs(d)`, where every rounding direction agrees.
+- **Outside `round_ratio`, never** `//`, `%` or `divmod` (Python rounds those towards minus infinity, C# towards zero), any `int(...)` call (on a `Fraction` it truncates towards zero, and in source code `int(rate * amount)` looks the same as a harmless `int(count)`), the `math` module (its `floor`, `ceil` and `trunc` each round in one fixed direction) or the `operator` module (its `floordiv`, `mod` and `ifloordiv` are `//` and `%` under another name). **Never** `round()` (it rounds halves to even), **never** `float`, and **no `decimal`**. Inside `round_ratio`, `divmod` is used only on the non-negative `abs(n)` and `abs(d)`, where every rounding direction agrees. A `Fraction` that reaches money by another route is stopped by `Pence`, which accepts only `type(value) is int`.
 - **Exact decimal inputs** become `fractions.Fraction`, which converts a decimal string exactly (`Fraction("1.1")` is 11/10). Fixture JSON is read with `json.loads(..., parse_float=Fraction)`, so no JSON number ever becomes a `float`. Rates stay whole basis points (BE-15).
 - **Results:** HomeScout's own `Result` and `Error` (stable code, plain-language message, category) for expected failures; programming errors raise (0032's principle).
 
@@ -79,7 +90,7 @@ The founder chose Option A on 7 November 2026, with the answers recorded on issu
 - **Test names:** `test_<method>_<condition>_<result>` (0036).
 - **Test expectations** are the independently worked examples in `packages/fixtures/test-cases/` and the boundary tables of 0034, worked out by hand with their working and source (rule 2). They are never produced by running the engine, and never edited to make a test pass.
 - **Hypothesis** for properties (total equals the sum of its lines, and so on), using Hypothesis's **built-in `ci` profile**, which is active whenever the `CI` environment variable is set and already sets `derandomize=True` (so CI runs the same cases every time), `deadline=None`, `database=None`, `print_blob=True` and suppresses the `too_slow` health check. HomeScout does **not** register its own profile named `ci`: that would overwrite the built-in one and bring back the default deadline (200 ms). If the profile needs a change, register it with the built-in one as its parent (`settings.register_profile("ci", parent=settings.get_profile("ci"), ...)`).
-- **Architecture test** (pytest reading the engine's source with Python's `ast` module): the engine imports only allow-listed standard-library modules and no other HomeScout package; no `float`, `round`, `decimal`, `random`, clock (`datetime.now`, `time`), file, network or environment access; outside `round_ratio`, no `//`, `%`, `divmod`, `math.floor`, `math.ceil` or `math.trunc`, and `int(...)` only on values already typed `int`. This replaces NetArchTest. **import-linter** is not approved yet; it can come with P7 (the template uses it).
+- **Architecture test** (pytest reading the engine's source with Python's `ast` module): the engine imports only allow-listed standard-library modules and no other HomeScout package; no `float`, `round`, `decimal`, `random`, clock (`datetime.now`, `time`), file, network or environment access; `math` and `operator` are not on the allow-list, so `floor`, `ceil`, `trunc`, `floordiv`, `mod` and `ifloordiv` cannot be imported under any name; outside `round_ratio`, no `//`, `%`, `//=`, `%=`, `divmod` or `int(...)` call at all. These are checks on the source text, which `ast` can make; it cannot see types, so it cannot tell whether a value is already an `int` (mypy does not flag `int(Fraction(...))` either). That remaining gap, a `Fraction` reaching a money value, is closed at run time by `Pence` accepting only `type(value) is int`, and tested there. This replaces NetArchTest. **import-linter** is not approved yet; it can come with P7 (the template uses it).
 - **Coverage** (coverage.py with pytest-cov, branch coverage on) is **report only**: no `fail_under`.
 - **Mutation testing** with **mutmut**, run by hand (`make mutate`), **not** in `make check` or CI. mutmut has no built-in pass mark, so a small script reads its statistics and fails below a break score. The score is set **just below the first measured run** and recorded in the port pull request. mutmut needs `fork`, so it runs on macOS and Linux only (Windows through WSL), which matches the Makefile.
 
@@ -144,4 +155,4 @@ Packages not in this table, including import-linter, Pydantic, FastAPI and FastM
 - GitHub: [dependency graph supported ecosystems](https://docs.github.com/en/code-security/reference/supply-chain-security/dependency-graph-supported-package-ecosystems), [dependency review](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review) ("The action also considers dependencies submitted via the dependency submission API"), [two CodeQL workflows](https://docs.github.com/en/code-security/code-scanning/troubleshooting-code-scanning/two-codeql-workflows).
 - Licences and versions: each package's PyPI JSON metadata (`https://pypi.org/pypi/<name>/json`) and the [setup-uv repository](https://github.com/astral-sh/setup-uv); package URL naming for PyPI: the [purl `pypi` type definition](https://github.com/package-url/purl-spec/blob/main/types/pypi-definition.json) (lower case, `_` replaced by `-`).
 
-**Not verified:** whether ruff's TID251 can ban a built-in such as `round` (its page speaks only of modules and their members; the architecture test covers it instead); the fields of `mutmut export-cicd-stats`; whether dependency review maps non-SPDX licence strings (Q1); the exact CodeQL steps for adding Python to default setup; whether GitHub's dependency graph parses the editable lines of a uv export (Q1); whether the component-detection action in `dependency-submission.yml` reads `uv.lock` (Q1); whether dependency review matches `allow-dependencies-licenses` entries by the normalised name `pkg:pypi/typing-extensions` (P1 checks); the ty beta status quoted in the plan.
+**Not verified:** whether ruff's TID251 can ban a built-in such as `round` (its page speaks only of modules and their members; the architecture test covers it instead); the fields of `mutmut export-cicd-stats`; whether dependency review maps non-SPDX licence strings (Q1); the exact CodeQL steps for adding Python to default setup; whether GitHub's dependency graph parses the editable lines of a uv export (Q1); whether the component-detection action in `dependency-submission.yml` reads `uv.lock` (Q1); whether dependency review matches `allow-dependencies-licenses` entries by the normalised name `pkg:pypi/typing-extensions` (P1 checks); the ty beta status quoted in the plan; that mypy accepts `int(Fraction(...))` without an error (not run here; P2's architecture test does not rely on it).
