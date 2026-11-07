@@ -48,7 +48,7 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 | Dependabot | Weekly version-update pull requests (`.github/dependabot.yml`: nuget and github-actions, 7-day cooldown, minor and patch grouped apart from major) | Config version 2; also covers the `dotnet-sdk` ecosystem for `global.json` | 0024 | [About version updates](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-version-updates), [options reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference) |
 | Dependency submission action | Sends NuGet dependencies to GitHub's dependency graph so dependency review can see them | 0.2, pinned by SHA in the workflow | 0035 | [Action](https://github.com/advanced-security/component-detection-dependency-submission-action), [component-detection](https://github.com/microsoft/component-detection) |
 | lychee | Monthly documentation link check | Action 2, pinned by SHA in the workflow | 0024 | [lychee](https://lychee.cli.rs/) |
-| Microsoft Agent Framework | AI agents and workflows (stage 6) | Pinned at stage 6 | 0023 | [Overview](https://learn.microsoft.com/en-us/agent-framework/overview/), [version 1.0 announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/) |
+| Microsoft Agent Framework | AI agents and workflows (stage 6) | Pinned when added (P7 if ready, otherwise stage 6) | 0023, 0041 | [Overview](https://learn.microsoft.com/en-us/agent-framework/overview/), [version 1.0 announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/) |
 
 ## Planned for later stages (not yet decided)
 
@@ -57,7 +57,7 @@ Listed so agents read the right documentation when these stages start. Versions 
 | Tool / package | Likely use | Decision | Documentation |
 |---|---|---|---|
 | ASP.NET Core minimal APIs | The API (stage 6) | BE-01, BE-02 | [Minimal APIs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis) |
-| PostgreSQL | Database (stage 6) | DA-03 | [PostgreSQL docs](https://www.postgresql.org/docs/) |
+| PostgreSQL | Database (stage 6; P7 if the gateway is ready) | DA-03, 0041 | [PostgreSQL docs](https://www.postgresql.org/docs/) |
 | PostGIS | Geospatial queries (stage 6) | DA-03 | [PostGIS documentation](https://postgis.net/documentation/) |
 | Microsoft.Extensions.AI | Provider-neutral AI interface (stage 6) | AI-01, AI-04 | [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai) |
 | Microsoft.Extensions.AI evaluation | AI quality tests (stage 6) | AI-03 | [Evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries) |
