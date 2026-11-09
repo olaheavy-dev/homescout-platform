@@ -1,7 +1,7 @@
 # 0039: Python engineering foundation
 
 **ID:** BE-20  
-**Status:** Accepted (the founder's answers of 7 Nov 2026 to the port plan's nine questions on issue #42; the rest of the port plan and the details listed under "Decision" are confirmed by the founder's merge; the founder's answers of 8 Nov 2026 settle Q1 (commit an exported requirements file), Q2 (CodeQL default setup, no workflow) and Q3 (a `0.x` minor bump counts as a major bump); what is still to do is listed under "Open questions" and in section 8)  
+**Status:** Accepted (the founder's answers of 7 Nov 2026 to the port plan's nine questions on issue #42; the rest of the port plan and the details listed under "Decision" are confirmed by the founder's merge; the founder's answers of 8 Nov 2026 settle Q1 (commit an exported requirements file), Q2 (CodeQL default setup, no workflow) and Q3 (a `0.x` minor bump counts as a major bump); what is still to do is listed under "Open questions" and in section 8; P1 amends Q1 and adds licence exemptions: see register lines BE-23 and BE-22)  
 **Date:** 2026-11-07  
 **Stage:** 2 (the Python port, step P0 of the port plan in issue #42)  
 **Supersedes in part (no older text is rewritten):**
@@ -112,7 +112,7 @@ These may be added without a founder merge. Each still passes the 0027 licence a
 | mypy | MIT | 2.4.1 | mypy_extensions (MIT), **typing_extensions (PSF-2.0)**, pathspec (MPL-2.0, classifier only), librt (MIT), ast-serialize (MIT) |
 | jsonschema | MIT | 4.26.0 | attrs (MIT), jsonschema-specifications (MIT), referencing, rpds-py (MIT) |
 | referencing | MIT | 0.37.0 | attrs, rpds-py |
-| mutmut | BSD-3-Clause | 3.8.1 | click (BSD-3-Clause), LibCST (MIT, classifier only) with PyYAML (MIT), setproctitle (BSD-3-Clause), Textual (MIT) with Rich, markdown-it-py, mdit-py-plugins, mdurl, linkify-it-py, uc-micro-py and platformdirs (all MIT), plus coverage, pytest and typing_extensions |
+| mutmut | BSD-3-Clause | 3.8.1 | click (BSD-3-Clause), LibCST (PyPI classifier only says MIT; GitHub reports Apache-2.0 AND MIT AND Python-2.0, and its LICENSE is MIT plus files derived from the Python standard library and from dataclasses, so P1 exempts `pkg:pypi/libcst` as a tool-only exception, register line BE-22) with PyYAML (MIT), setproctitle (BSD-3-Clause), Textual (MIT) with Rich, markdown-it-py, mdit-py-plugins, mdurl, linkify-it-py, uc-micro-py and platformdirs (all MIT), plus coverage, pytest and typing_extensions |
 | `astral-sh/setup-uv` GitHub Action | MIT (GitHub repository licence) | v10.3.3 (28 Oct 2026) | — (pinned by full commit SHA, 0027) |
 
 Packages not in this table, including import-linter, Pydantic, FastAPI and FastMCP, still need founder approval.
