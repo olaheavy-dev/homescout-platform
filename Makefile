@@ -1,5 +1,6 @@
 # HomeScout: single entry point for every automated check (decisions 0021, 0035).
 # CI runs `make check`; run it before pushing. Works on macOS and Linux with GNU Make 3.81 or later.
+# Two stacks run side by side until the C# is removed (decision 0036, port step P6): .NET and Python (uv, decision 0039).
 
 # No telemetry from the .NET CLI or the test platform.
 export DOTNET_CLI_TELEMETRY_OPTOUT := 1
@@ -12,23 +13,45 @@ GENERATED     := packages/fixtures/generated
 GENERATOR     := packages/cost-engine/src/HomeScout.CostEngine.Generator/HomeScout.CostEngine.Generator.csproj
 VALIDATOR     := packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.Fixtures.Validator.csproj
 
-.PHONY: help restore build format-check generated-check validate inspect test check generate mutate clean
+PYTEST_XML    := $(ARTIFACTS)/test-results/python/coverage.xml
+
+.PHONY: help restore requirements requirements-check build format-check generated-check validate inspect lint test check generate mutate clean
 
 help:
-	@echo "Targets: restore build format-check generated-check validate inspect test check generate mutate clean"
-	@echo "  check = restore + build + format-check + generated-check + validate + inspect + test (same as CI)"
+	@echo "Targets: restore build format-check generated-check validate inspect lint test check generate mutate clean"
+	@echo "  check = restore + build + format-check + generated-check + validate + inspect + lint + test (same as CI)"
+	@echo "  restore, build, format-check, lint and test also run the Python side (uv); build = .NET build + mypy"
 	@echo "  mutate = Stryker.NET mutation testing of the cost engine (slow; not part of check or CI)"
 
-# Locked mode: fails if packages.lock.json files are out of date.
+# Locked mode: fails if packages.lock.json (.NET) or uv.lock (Python) is out of date.
 restore:
 	dotnet tool restore
 	dotnet restore $(SOLUTION) --locked-mode
+	uv sync --locked --all-packages
+
+# OPTIONAL, not part of `check`: a committed pip-format export of uv.lock, only needed if dependency review cannot read
+# uv.lock on its own (decision 0039 Q1; the P1 proof decides). To adopt it: add `requirements-check` after `restore` in the
+# `check` target, commit requirements.txt, and add `requirements` and `requirements-check` to the allowed commands.
+requirements:
+	uv export --locked --all-packages --all-groups --no-emit-workspace --format requirements.txt --output-file requirements.txt
+
+# Regenerates the export, then fails if it differs from what is committed (a staged-only change counts as stale).
+requirements-check: requirements
+	@changes="$$(git status --porcelain --untracked-files=all -- requirements.txt)"; \
+	if [ -n "$$changes" ]; then \
+		echo "requirements.txt is out of date: run 'make requirements' and commit it."; \
+		echo "$$changes"; \
+		exit 1; \
+	fi
+	@echo "requirements.txt: up to date."
 
 build: restore
 	dotnet build $(SOLUTION) --configuration $(CONFIGURATION) --no-restore
+	uv run --locked mypy
 
 format-check: restore
 	dotnet format $(SOLUTION) --verify-no-changes --no-restore
+	uv run --locked ruff format --check
 
 # Checks every packages/fixtures/data and test-cases file against its JSON Schema (decision 0018, BE-07).
 validate: build
@@ -47,10 +70,15 @@ inspect: build
 	fi
 	@echo "InspectCode: no issues at warning severity or above."
 
+# Python lint (ruff, explicit rule list in pyproject.toml; decision 0039 section 2).
+lint: restore
+	uv run --locked ruff check
+
 test: build
 	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
+	uv run --locked pytest --cov --cov-branch --cov-report=xml:$(PYTEST_XML) --cov-report=term
 
-check: restore build format-check generated-check validate inspect test
+check: restore build format-check generated-check validate inspect lint test
 
 # Runs the cost-engine generator: it reads packages/fixtures/data and writes packages/fixtures/generated/costs.json.
 # Commit the result. The generator deletes any other *.json in generated/.
@@ -77,5 +105,6 @@ mutate: restore
 	dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
 
 clean:
-	rm -rf $(ARTIFACTS)
+	rm -rf $(ARTIFACTS) .coverage .mypy_cache .ruff_cache .pytest_cache .hypothesis mutants
+	find packages -type d -name __pycache__ -prune -exec rm -rf {} +
 	dotnet clean $(SOLUTION) --configuration $(CONFIGURATION) --verbosity quiet
