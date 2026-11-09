@@ -25,6 +25,7 @@ help:
 
 # Locked mode: fails if packages.lock.json (.NET) or uv.lock (Python) is out of date.
 restore:
+	@command -v uv >/dev/null || { echo "uv is missing: install uv 0.13.x (https://docs.astral.sh/uv/)"; exit 1; }
 	dotnet tool restore
 	dotnet restore $(SOLUTION) --locked-mode
 	uv sync --locked --all-packages

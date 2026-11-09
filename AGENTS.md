@@ -146,7 +146,7 @@ After merging, post a one-line summary for the founder: what merged, and any fol
 
 ## Commands
 
-Run from the repository root. Needs the .NET SDK in `global.json`, [uv](https://docs.astral.sh/uv/) 0.13.7 or later (below 0.14; `pyproject.toml` enforces it; uv installs Python 3.14 itself) and GNU Make; works on macOS and Linux. Until the C# is removed (decision 0036, port step P6) each target runs the .NET side and then the Python side.
+Run from the repository root. Needs the .NET SDK in `global.json`, [uv](https://docs.astral.sh/uv/) 0.13.7 or later (below 0.14; `pyproject.toml` enforces it; uv installs Python 3.14 itself) and GNU Make; works on macOS and Linux. Until the C# is removed (decision 0036, port step P6) `restore`, `build`, `format-check` and `test` run the .NET side and then the Python side; `lint` is Python only; `generate`, `generated-check`, `validate`, `inspect` and `mutate` are .NET only.
 
 | Command | What it does |
 |---|---|

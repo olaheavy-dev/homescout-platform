@@ -20,7 +20,9 @@ dev = [
 
 [tool.ruff]
 target-version = "py314"
-line-length = 120
+# Markdown files hold code samples that are not part of the packages; `ruff format` would check them too (ruff 0.17).
+extend-exclude = ["*.md"]
+line-length = 100
 
 [tool.ruff.lint]
 # Explicit list, never "ALL", so a ruff update cannot switch new rules on silently (decision 0039 section 2).
@@ -31,6 +33,7 @@ select = ["E", "W", "F", "I", "B", "UP", "S", "C4", "SIM", "RUF", "PT", "TID", "
 "**/tests/**" = ["S101"]
 
 [tool.mypy]
+# Test files have a unique name per package (test_<package>_*.py): mypy reports "Duplicate module" for identical names.
 strict = true
 warn_unreachable = true
 enable_error_code = [
