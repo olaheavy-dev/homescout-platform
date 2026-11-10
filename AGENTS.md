@@ -24,7 +24,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 - **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for HomeScout.
 - **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
 - The AI sample has no licence: ideas only.
-- **Exception (decision 0040):** the founder's public FastAPI template and its base template may be named in tracked files and used as the starting point for the API, with provenance recorded in that decision. The rules above still apply to every other source.
+- **Former exception (decision 0040, superseded by 0042):** the founder's public FastAPI template and its base template may still be named where older records mention them, but they are no longer HomeScout's starting point and nothing was imported from them. The rules above apply to every source.
 
 ## Rules for every agent
 
@@ -65,7 +65,7 @@ This file is the **single current rulebook for how work is done** (planning, bui
 - Start from the issue's plan and acceptance criteria. If the plan is unclear or conflicts with a decision, stop and ask rather than guess.
 - Small vertical slices. Tests first for anything numeric or legal, using the test-first skill once it's added (decision 0031) and the boundary cases in decision 0034.
 - **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open an issue labelled `noticed` for each. Don't fix unrelated things in the same change.
-- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list (decisions 0035 and 0039, and later register lines), or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
+- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list (decision 0035 point 9 with the additions in decision 0042, and later register lines), or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
 - **Stop what you start:** servers, watchers and temporary worktrees.
 - **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
 - **Result type:** use HomeScout's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).

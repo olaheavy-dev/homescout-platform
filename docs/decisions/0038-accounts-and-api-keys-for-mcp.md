@@ -1,7 +1,7 @@
 # 0038: Accounts and API keys for MCP and API access
 
 **ID:** SE-03  
-**Status:** Proposed  
+**Status:** Proposed (partly superseded by [0042](0042-back-to-dotnet-11.md): token checks use ASP.NET Core authentication, not FastMCP's verifier)  
 **Date:** 2026-11-06  
 **Stage:** 6 (before any public remote MCP server or API); partly brings forward SE-01
 

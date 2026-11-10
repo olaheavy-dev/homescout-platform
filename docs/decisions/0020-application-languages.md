@@ -1,7 +1,7 @@
 # 0020: Application languages
 
 **ID:** BE-01 (in part: language), FE-01 (in part: framework)  
-**Status:** Accepted (partly superseded: the backend language by [0036](0036-python-backend.md), taking effect when the port merges; the frontend half stands)  
+**Status:** Accepted (both halves stand: [0036](0036-python-backend.md)'s change of backend language never took effect and is superseded by [0042](0042-back-to-dotnet-11.md), which moves the backend to .NET 11 and keeps the Next.js frontend)  
 **Date:** 2026-10-23  
 **Stage:** 2 (brought forward from stage 6 for BE-01 and stage 4 for FE-01)
 

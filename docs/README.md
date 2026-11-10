@@ -28,6 +28,8 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
 | [Stage 2 plan](planning/stage-2-plan.md) | Approved sample data, data contract, tasks and gate | Stage 2 |
+| [.NET 11 and C# 15 plan](planning/dotnet-11-and-csharp-15-plan.md) | Which .NET 11 and C# 15 features HomeScout uses, where, and when (decision 0042) | Stage 2 onwards |
+| [Ordered backlog](planning/backlog.md) | Every issue from the stage 2 close-out to stage 6, in order, by milestone | All stages |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |
 | [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |

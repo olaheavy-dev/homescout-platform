@@ -1,7 +1,7 @@
 # 0023: Microsoft Agent Framework for the AI layer
 
 **ID:** AI-04  
-**Status:** Accepted (partly superseded by 0041: the template builds the framework-neutral core and the MAF gateway first, so the "Template follow-up" order is reversed; the gateway comes from a template release at or after 0.8.0, at P7 if ready, otherwise at stage 6; "no framework packages before stage 6" now has that exception)  
+**Status:** Accepted (used through its .NET packages by [0042](0042-back-to-dotnet-11.md), which also supersedes [0041](0041-maf-gateway-built-in-the-template.md)'s template-first order, so the gateway is built in HomeScout's API at stage 6 and "no framework packages before stage 6" applies again)  
 **Date:** 2026-10-23  
 **Stage:** 6 (decided early)
 
