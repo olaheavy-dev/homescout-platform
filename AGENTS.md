@@ -151,7 +151,7 @@ Run from the repository root. Needs the .NET SDK in `global.json`, [uv](https://
 | Command | What it does |
 |---|---|
 | `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `generated-check` (regenerates `packages/fixtures/generated/` and fails if that changes anything compared with what is committed), `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `lint`, `test`. Run it before pushing. |
-| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`), then the Python tests with pytest and branch coverage (`.artifacts/test-results/python/coverage.xml`; report only, no pass mark). |
+| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`; the run stops after 10 minutes or 5 failed tests), then the Python tests with pytest and branch coverage (`.artifacts/test-results/python/coverage.xml`; report only, no pass mark). |
 | `make generate` | Builds, then runs the cost-engine generator: it reads `packages/fixtures/data/` and writes `packages/fixtures/generated/costs.json` (deleting any other `*.json` there). Commit the result; `make check` fails if it is stale. |
 | `make validate` | Checks every file in `packages/fixtures/data/`, `test-cases/` and `generated/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
 | `make lint` | Python lint: `ruff check` with the explicit rule list in `pyproject.toml` (decision 0039 section 2). |
