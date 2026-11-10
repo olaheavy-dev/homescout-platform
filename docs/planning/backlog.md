@@ -9,10 +9,10 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 |---|---|---|---|
 | 01 | #56 | Decision 0042, the .NET 11 plan and this backlog | Documentation |
 | 02 | #57 | Remove the Python tooling | Founder merge |
-| 03 | #24 | Stage 2 close-out: doc corrections, C4 diagrams, Stryker.NET report, audit, gate | Can pass on .NET 10 |
-| 04 | #58 | Upgrade to .NET 11 and C# 15 | **Blocked** until CodeQL supports them |
-| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change |
-| 06 | #60 | Spike: `Result` as a C# 15 union | Outcome is a register line |
+| 03 | #24 | Stage 2 close-out: doc corrections, C4 diagrams, Stryker.NET report, audit, gate | Can pass on .NET 11 (C# 14) |
+| 04 | #58 | Upgrade to .NET 11 (SDK and runtime; language stays C# 14) | SDK and runtime now, C# 14 |
+| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change. **Blocked** until CodeQL supports C# 15 |
+| 06 | #60 | Spike: `Result` as a C# 15 union | Outcome is a register line. **Blocked** until CodeQL supports C# 15 |
 | 07 | #61 | Evaluate .NET Skills for the coding agents | Low priority |
 
 ## Design research (stage 4 milestone; starts after the stage 2 gate, alongside stage 3)

@@ -12,14 +12,14 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 
 | Tool / package | Used for | Version | Decision | Documentation |
 |---|---|---|---|---|
-| .NET SDK and runtime | Cost engine, later the API | 10.0 (SDK pinned in `global.json`) | 0020, 0021 | [What's new in .NET 10](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-10/overview) |
-| C# | Backend language | Version shipped with .NET 10 | 0020 | [C# documentation](https://learn.microsoft.com/en-us/dotnet/csharp/) |
+| .NET SDK and runtime | Cost engine, later the API | 11.0 (SDK 11.0.100 pinned in `global.json`) | 0020, 0021, 0042 | [What's new in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/overview), [breaking changes](https://learn.microsoft.com/en-us/dotnet/core/compatibility/11) |
+| C# | Backend language | 14 (`LangVersion` pinned; C# 15 waits for CodeQL, BE-25) | 0020, 0042 | [C# documentation](https://learn.microsoft.com/en-us/dotnet/csharp/), [What's new in C# 14](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14) |
 | `global.json` | Pinning the SDK | — | 0021 | [global.json overview](https://learn.microsoft.com/en-us/dotnet/core/tools/global-json) |
 | Solution files (`.slnx`) | Solution structure | — | 0021 | [dotnet sln](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln) |
 | Central package management | One place for package versions | — | 0021 | [Central package management](https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management) |
 | NuGet lock files | Reproducible restores | — | 0021 | [Locking dependencies](https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files) |
 | .NET code analysis | Strict build settings | — | 0021 | [Code analysis overview](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview) |
-| System.Text.Json | Reading and writing fixture JSON | Built into .NET 10 | 0018, 0021 | [System.Text.Json overview](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview) |
+| System.Text.Json | Reading and writing fixture JSON | Built into .NET 11 | 0018, 0021 | [System.Text.Json overview](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview) |
 | NUnit | Tests | 5 | 0021 | [NUnit documentation](https://docs.nunit.org/) |
 | NUnit analysers | Test code checks | 4 | 0021 | [NUnit Analyzers](https://docs.nunit.org/articles/nunit-analyzers/NUnit-Analyzers.html) |
 | NetArchTest (`NetArchTest.Rules`) | Architecture rules (cost engine stays pure) | 1 (1.3; the package metadata names no licence, the repository is MIT; its dependency Mono.Cecil is MIT) | 0021, 0027 | [NetArchTest](https://github.com/BenMorris/NetArchTest) |
@@ -67,7 +67,7 @@ Listed so agents read the right documentation when these stages start. Versions 
 
 | Tool / package | Likely use | Decision | Documentation |
 |---|---|---|---|
-| .NET 11 and C# 15 | Upgrade from .NET 10 when decision 0042's conditions hold (issue #58) | 0042 | [What's new in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/overview), [What's new in C# 15](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-15), [breaking changes](https://learn.microsoft.com/en-us/dotnet/core/compatibility/11), [adoption plan](../planning/dotnet-11-and-csharp-15-plan.md) |
+| C# 15 | Language upgrade from C# 14 once CodeQL lists C# 15 and Stryker.NET handles it (issues #59, #60; BE-25) | 0042 | [What's new in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/overview), [What's new in C# 15](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-15), [breaking changes](https://learn.microsoft.com/en-us/dotnet/core/compatibility/11), [adoption plan](../planning/dotnet-11-and-csharp-15-plan.md) |
 | ASP.NET Core 11 minimal APIs | The API (stage 6) | BE-01, BE-02, 0042 | [Minimal APIs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis), [What's new in ASP.NET Core 11](https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-11) |
 | MCP C# SDK (`ModelContextProtocol`, `ModelContextProtocol.AspNetCore`) | MCP server (stage 6) | 0037, 0042 | [C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) |
 | AG-UI with CopilotKit (`@copilotkit/react-core`, `@copilotkit/runtime`, `@ag-ui/client`) | Agent chat in Next.js over AG-UI (stage 6) | 0042 | [Agent Framework AG-UI](https://learn.microsoft.com/en-us/agent-framework/integrations/ag-ui/getting-started), [CopilotKit with Agent Framework .NET](https://docs.copilotkit.ai/ms-agent-dotnet), [AG-UI](https://docs.ag-ui.com/) |

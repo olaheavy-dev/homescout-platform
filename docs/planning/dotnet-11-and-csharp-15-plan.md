@@ -5,7 +5,7 @@
 Every feature below was checked against Microsoft's official pages on 10 Nov 2026 (sources at the end). Package versions are the latest on nuget.org or npm that day, for orientation only: each pull request that adds a package checks its documentation and pins the version then. Anything not confirmed is marked **unverified**.
 
 ## 1. In one paragraph
-HomeScout keeps its C# cost engine and moves to .NET 11 and C# 15 in one upgrade pull request, once CodeQL supports them (it lists C# 14 and .NET 10 as its highest versions today) and InspectCode and Stryker.NET run cleanly. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
+HomeScout keeps its C# cost engine and moves to .NET 11 in two steps (register line BE-25, founder, 10 Nov 2026). The SDK and runtime move now, in issue #58, with the language pinned at C# 14 (`LangVersion` 14), so CodeQL, which lists C# 14 but not yet C# 15, still reads every file. C# 15 syntax follows in issue #59 once CodeQL lists C# 15 and Stryker.NET handles it. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
 
 ## 2. Feature by feature
 
@@ -51,7 +51,7 @@ Removes unneeded joins, better `GroupBy`, translates `FullJoin`, JSON columns wi
 | Feature | Use |
 |---|---|
 | `dotnet test` on Microsoft.Testing.Platform: run-level `--timeout` and `--maximum-failed-tests` | **Yes**, in `make test` with the upgrade: a hung test run fails instead of waiting for the CI job limit |
-| NuGet **minimum package publish age** (`minPublishAgeHours` on a package source in `nuget.config`) | **Yes**, 168 hours to match Dependabot's 7-day cooldown (0027). It only applies when a version is picked by `dotnet package add` or `update`; normal restore does not enforce it, so Dependabot's cooldown stays the main guard |
+| NuGet **minimum package publish age** (`minPublishAgeHours` on a package source in `nuget.config`) | **Yes**, 168 hours to match Dependabot's 7-day cooldown (0027). It only applies when a version is picked by `dotnet package add` or `update`; normal restore does not enforce it for exact versions, so Dependabot's cooldown stays the main guard. A floating version (`*`) now fails restore with NU1020; HomeScout pins exact versions, so this does not affect it |
 | MSBuild server and Native AOT CLI host on by default | Nothing to do; if CI shows stale-build problems, turn the server off with `DOTNET_CLI_USE_MSBUILD_SERVER=false` |
 | `dotnet new mcpserver` (in the SDK, per the announcement; **unverified** locally) | Starting point for the MCP server project, then trimmed |
 | `dotnetup` (toolchain manager) | **Preview**; not used |
@@ -86,17 +86,17 @@ Next.js page (React, CopilotKit chat)
 The agent never calculates a figure: every number in a reply comes from a tool that calls the cost engine (rule 4, decision 0004). The prototype (stage 5) needs none of this: it reads the generated fixture files.
 
 ## 4. Order and conditions
-1. **Now, on .NET 10:** decision 0042 and this plan; remove the Python tooling; close out stage 2 (#24).
-2. **Upgrade to .NET 11** when CodeQL, InspectCode and Stryker.NET are ready (0042's upgrade conditions). Check CodeQL's supported-languages page at each weekly review; until then all other work continues on .NET 10.
-3. **C# 15 in the engine:** closed hierarchies first, then the `Result` union spike.
+1. **Done:** decision 0042 and this plan. **Open, not blocked by .NET 11:** remove the Python tooling (#57); close out stage 2 (#24).
+2. **SDK and runtime to .NET 11 now (#58, BE-25)**, with `LangVersion` 14. That pull request's own CodeQL run is the proof that CodeQL still analyses the code.
+3. **C# 15 in the engine (#59, then #60)** when CodeQL lists C# 15 and Stryker.NET handles it: closed hierarchies first, then the `Result` union spike. Check CodeQL's supported-languages page at each weekly review.
 4. **Stages 3 to 5** (specification, design, clickable prototype) do not depend on .NET 11.
 5. **Stage 6:** API skeleton and Aspire, generated TypeScript types, comparison with `FullJoin`, MCP server, evaluation harness, agent gateway, AG-UI chat, document workflow.
 
 ## 5. Not verified
 - When CodeQL will support C# 15 and .NET 11 (a .NET 11 RC1 extractor change was merged in `github/codeql` pull request 22565; no release announcement found).
 - Whether Stryker.NET 5.1 parses C# 15 (its release notes do not mention it).
-- Whether InspectCode 2026.3 raises new warnings on the existing code.
-- The exact .NET 11 SDK patch to pin (Microsoft's pages name 11.0.100).
+- Whether InspectCode 2026.3 raises new warnings on the existing code (a question for #59; the pinned 2026.2.3.1 analyses the net11.0, C# 14 code cleanly, checked in #58).
+- Whether CodeQL's default setup analyses the .NET 11 build cleanly (to be filled in from the pull request for #58, which is the proof).
 - Whether the runtime's `UnionAttribute` is stable or preview (two Learn pages disagree).
 - Whether the TypeScript generator chosen in stage 6 reads OpenAPI 3.2.
 
@@ -106,7 +106,7 @@ The agent never calculates a figure: every number in a reply comes from a tool t
 - What's new in .NET 11: [runtime](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/runtime), [libraries](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/libraries), [SDK](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/sdk)
 - [Breaking changes in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/compatibility/11), including [Math.Round with digits](https://learn.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/11/math-round-digits) and [decimal and floating-point conversions](https://learn.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/11/decimal-biginteger-floating-point-conversions)
 - [What's new in ASP.NET Core 11](https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-11) and [ASP.NET Core 11 breaking changes](https://learn.microsoft.com/en-us/aspnet/core/breaking-changes/11/overview)
-- [NuGet minimum package publish age](https://learn.microsoft.com/en-us/nuget/consume-packages/minimum-package-publish-age)
+- [Minimum package publication age (.NET 11 SDK)](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/sdk#configure-minimum-package-publication-age-from-the-cli)
 - [CodeQL supported languages and frameworks](https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/)
 - [What's New in ReSharper 2026.3](https://www.jetbrains.com/resharper/whatsnew/), [ReSharper command line tools on NuGet](https://www.nuget.org/packages/JetBrains.ReSharper.GlobalTools), [Stryker.NET releases](https://github.com/stryker-mutator/stryker-net/releases)
 - [Agent Framework: AG-UI getting started](https://learn.microsoft.com/en-us/agent-framework/integrations/ag-ui/getting-started), [Anthropic provider](https://learn.microsoft.com/en-us/agent-framework/integrations/by-component/model-providers/anthropic)

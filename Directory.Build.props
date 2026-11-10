@@ -1,9 +1,10 @@
 <Project>
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
+    <!-- C# 14 on purpose: CodeQL does not list C# 15 yet. C# 15 waits for issue #59 (register line BE-25). -->
+    <LangVersion>14</LangVersion>
 
     <!-- Strict analysis: every finding fails the build (decision 0021). -->
     <AnalysisMode>All</AnalysisMode>
