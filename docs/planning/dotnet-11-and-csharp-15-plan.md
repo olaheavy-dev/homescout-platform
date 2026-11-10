@@ -5,7 +5,7 @@
 Every feature below was checked against Microsoft's official pages on 10 Nov 2026 (sources at the end). Package versions are the latest on nuget.org or npm that day, for orientation only: each pull request that adds a package checks its documentation and pins the version then. Anything not confirmed is marked **unverified**.
 
 ## 1. In one paragraph
-HomeScout keeps its C# cost engine and moves to .NET 11 and C# 15 in one upgrade pull request, once CodeQL supports them (it lists C# 14 and .NET 10 as its highest versions today) and InspectCode and Stryker.NET run cleanly. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
+HomeScout keeps its C# cost engine and moves to .NET 11 in two steps (register line BE-25, founder, 10 Nov 2026). The SDK and runtime move now, in issue #58, with the language pinned at C# 14 (`LangVersion` 14), so CodeQL, which lists C# 14 but not yet C# 15, still reads every file. C# 15 syntax follows in issue #59 once CodeQL lists C# 15 and Stryker.NET handles it. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
 
 ## 2. Feature by feature
 
@@ -86,9 +86,9 @@ Next.js page (React, CopilotKit chat)
 The agent never calculates a figure: every number in a reply comes from a tool that calls the cost engine (rule 4, decision 0004). The prototype (stage 5) needs none of this: it reads the generated fixture files.
 
 ## 4. Order and conditions
-1. **Now, on .NET 10:** decision 0042 and this plan; remove the Python tooling; close out stage 2 (#24).
-2. **Upgrade to .NET 11** when CodeQL, InspectCode and Stryker.NET are ready (0042's upgrade conditions). Check CodeQL's supported-languages page at each weekly review; until then all other work continues on .NET 10.
-3. **C# 15 in the engine:** closed hierarchies first, then the `Result` union spike.
+1. **Done:** decision 0042 and this plan; remove the Python tooling; close out stage 2 (#24).
+2. **SDK and runtime to .NET 11 now (#58, BE-25)**, with `LangVersion` 14. That pull request's own CodeQL run is the proof that CodeQL still analyses the code.
+3. **C# 15 in the engine (#59, then #60)** when CodeQL lists C# 15 and Stryker.NET handles it: closed hierarchies first, then the `Result` union spike. Check CodeQL's supported-languages page at each weekly review.
 4. **Stages 3 to 5** (specification, design, clickable prototype) do not depend on .NET 11.
 5. **Stage 6:** API skeleton and Aspire, generated TypeScript types, comparison with `FullJoin`, MCP server, evaluation harness, agent gateway, AG-UI chat, document workflow.
 
@@ -96,7 +96,7 @@ The agent never calculates a figure: every number in a reply comes from a tool t
 - When CodeQL will support C# 15 and .NET 11 (a .NET 11 RC1 extractor change was merged in `github/codeql` pull request 22565; no release announcement found).
 - Whether Stryker.NET 5.1 parses C# 15 (its release notes do not mention it).
 - Whether InspectCode 2026.3 raises new warnings on the existing code.
-- The exact .NET 11 SDK patch to pin (Microsoft's pages name 11.0.100).
+- Whether CodeQL's default setup analyses the .NET 11 build cleanly (to be filled in from the pull request for #58, which is the proof).
 - Whether the runtime's `UnionAttribute` is stable or preview (two Learn pages disagree).
 - Whether the TypeScript generator chosen in stage 6 reads OpenAPI 3.2.
 

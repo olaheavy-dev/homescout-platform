@@ -1,7 +1,7 @@
 # 0042: Back to .NET: C# 15 on .NET 11 for the backend, React stays for the frontend
 
 **ID:** BE-24  
-**Status:** Accepted (founder, 10 Nov 2026)  
+**Status:** Accepted (founder, 10 Nov 2026; upgrade conditions amended by register line BE-25: SDK and runtime now, C# 15 later)  
 **Date:** 2026-11-10  
 **Stage:** 2 (reopens the backend language choice before the port went past step P1)  
 **Supersedes (no older text is rewritten):**
