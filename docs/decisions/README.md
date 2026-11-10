@@ -49,7 +49,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | WW-09 | Stage 2 engineering and security hardening | 2 | Accepted (partly superseded by 0035; the Python tool-only licence exceptions from 0039 and BE-22 are withdrawn by 0042) | [0027](0027-stage-2-engineering-hardening.md) |
 | WW-10 | Agent roster, design skills and working rules | 2 | Accepted (partly superseded by 0035) | [0031](0031-agent-roster.md) |
 | WW-11 | Review fallback when Codex is unavailable | 2 | Superseded by 0035 | [0033](0033-review-fallback.md) |
-| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted (partly superseded: point 9's pre-approved list gains the packages in 0042 (0039's Python additions are withdrawn); point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, kept by 0042) | [0035](0035-ways-of-working-v2.md) |
+| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted (partly superseded by 0042: point 9's pre-approved list gains the packages in 0042 (0039's Python additions are withdrawn); point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, kept by 0042) | [0035](0035-ways-of-working-v2.md) |
 | DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location; 0036's language change superseded by 0042 before it took effect) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Not started | |
@@ -67,7 +67,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | IN-04 | CI/CD and environments | 4 | Not started | |
 | IN-05 | Budget cap and cost alerts | 4 | Not started | |
 | FE-05 | Demo analytics and feedback | 5 | Not started | |
-| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Accepted (C# on .NET, from 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 6, issue #92) | [0020](0020-application-languages.md) |
+| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 6, issue #92) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
 | BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034; SDK and target framework move to .NET 11 by 0042 when its upgrade conditions hold; 0036 and 0039 never took effect and are superseded by 0042) | [0021](0021-dotnet-engineering-foundation.md) |
@@ -93,7 +93,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-21 | Python build backend | 2 (port step P1) | Superseded by 0042 (the Python packages are removed in issue #57) | — |
 | BE-22 | Licence gate fails on unlicensed packages | 2 (port step P1) | Accepted (register line: issue #30 is fixed in P1: dependency review gets a step that fails on packages with no detectable licence, as 0027 requires; actions are not exempted; named exemptions `pkg:nuget/NetArchTest.Rules` and `pkg:nuget/Mono.Cecil` (BE-09); founder, 9 Nov 2026; the PyPI exemptions (`typing-extensions`, `libcst`, HomeScout's own Python packages) are withdrawn by 0042 and removed in issue #57) | — |
 | BE-23 | Committed export of `uv.lock` | 2 (port step P1) | Superseded by 0042 (no Python lock file) | — |
-| WW-14 | Dependabot groups for `0.x` tools | 2 (port step P1) | Accepted (register line, follows 0039 Q3, kept by 0042: the zizmor and dependency-submission actions each sit in a `*-zero-x` group listed before the minor-and-patch group, so their minor bumps go to full review; founder, 9 Nov 2026; the uv-ecosystem group for `ruff` and `referencing` is removed in issue #57) | — |
+| WW-14 | Dependabot groups for `0.x` tools | 2 (port step P1) | Accepted (register line, follows 0039 Q3, kept by 0042: the zizmor and dependency-submission actions share the `actions-zero-x` group, listed before the minor-and-patch group, so their minor bumps go to full review; founder, 9 Nov 2026; the uv-ecosystem group for `ruff` and `referencing` is removed in issue #57) | — |
 | BE-24 | Back to .NET: C# 15 on .NET 11 for the backend, React stays for the frontend | 2 (reopens the backend language) | Accepted (founder, 10 Nov 2026; supersedes 0036, 0039, 0040, 0041 and register lines BE-21, BE-23; partly 0021, 0023, 0035 point 9, 0037, 0038; upgrade to .NET 11 waits for CodeQL, InspectCode and Stryker.NET support; adds the founder's pre-approved packages) | [0042](0042-back-to-dotnet-11.md) |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
@@ -105,7 +105,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
-| AI-04 | Orchestration | 6 (decided early) | Accepted (Microsoft Agent Framework; reaffirmed 6 Nov 2026 as definite for HomeScout, not LangChain; used through its .NET packages by 0042, which also supersedes 0041's template-first order; stage 6) | [0023](0023-microsoft-agent-framework.md) |
+| AI-04 | Orchestration | 6 (decided early) | Accepted (partly superseded by 0042: used through its .NET packages; Microsoft Agent Framework reaffirmed 6 Nov 2026 as definite for HomeScout, not LangChain; 0042 also supersedes 0041's template-first order; stage 6) | [0023](0023-microsoft-agent-framework.md) |
 | AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements; partly superseded by 0035) | [0025](0025-ai-platform-capabilities.md) |
 | AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | AI-08 | MAF gateway built in the template first | 6 (template work runs earlier) | Superseded by 0042 (the gateway is built in HomeScout's .NET API at stage 6, issue #101) | [0041](0041-maf-gateway-built-in-the-template.md) |

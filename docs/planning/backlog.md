@@ -1,6 +1,6 @@
 # Ordered backlog
 
-**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone. Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start straight after stage 2.
+**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone. Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
 
 Each stage starts with its decisions and ends with its gate (doc 04 §9). Items marked **epic** are split into issues when their stage starts. When an issue's plan changes, update the issue, not this list; this list only changes when the order does.
 
@@ -15,7 +15,7 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 06 | #60 | Spike: `Result` as a C# 15 union | Outcome is a register line |
 | 07 | #61 | Evaluate .NET Skills for the coding agents | Low priority |
 
-## Design research (stage 4 milestone, can start now)
+## Design research (stage 4 milestone; starts after the stage 2 gate, alongside stage 3)
 | # | Issue | Item |
 |---|---|---|
 | 08 | #62 | Design study of related home buying and renting products |
@@ -80,4 +80,4 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 51 | #105 | **Epic:** monitoring, scheduling and notifications (OP-01, OP-02) |
 
 ## Not in the order
-`noticed` issues (#30, #33, #34, #36, #37) are triaged at each stage gate (decision 0035).
+`noticed` issues (#33, #34, #36, #37) are triaged at each stage gate (decision 0035). #30 was fixed by #49 (register line BE-22) and is waiting to be closed.

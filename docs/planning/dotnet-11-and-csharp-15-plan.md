@@ -14,7 +14,7 @@ Status as shipped in .NET 11 GA. "Use" says whether HomeScout uses it and where.
 ### C# 15
 | Feature | Status | Use | Where |
 |---|---|---|---|
-| **Closed hierarchies** (`closed` on a base type: only types in the same assembly may derive from it, so a `switch` over its subtypes can be exhaustive) | Stable | **Yes, first.** `LineInput` (amount, included, not calculated, conflicting, missing) and `EvidenceValue` (money, rate, years, other) become closed; the `_ => throw` arms in `CostLines.Resolve` and similar switches are removed, so adding a new kind of line without handling it is a compile error rather than a runtime exception | Engine, after the upgrade |
+| **Closed hierarchies** (`closed` on a base type: only types in the same assembly may derive from it, so a `switch` over its subtypes can be exhaustive) | Stable | **Yes, first.** `LineInput` (amount, included, not calculated, conflicting, missing) and `EvidenceValue` (money, rate, years, other) become closed (`closed` replaces `abstract`: the two modifiers can't be combined); the `_ => throw` arm in `CostLines.Resolve` is removed, so adding a new kind of line without handling it is a compile error rather than a runtime exception. The test that derives an unknown line kind in the test assembly (`MonthlyCost_unknownKindOfLine_throwsForThatLine`) no longer compiles and is deleted, because the compiler now does its job. No engine switch covers every `EvidenceValue` kind, so closing it is a safeguard only | Engine, after the upgrade |
 | **Union types** (`union Name(CaseA, CaseB)`: a value that is exactly one of a fixed list of types, with exhaustive pattern matching; lowered to a struct holding `object? Value`, so value-type cases are boxed; a `default` union holds `null`, so switches keep a `null` arm) | Stable (the runtime's `UnionAttribute` is labelled "preview" on one Learn page and stable on another: **unverified** which is right) | **Trial.** A spike compares the current `Result`/`Result<T>` classes (0032) with a union-based version and keeps the current classes unless the union version is clearly simpler and has no boxing cost on the hot path. Later, API request and response bodies that are "one of" several shapes (for example a cost line that is known, missing or included) may be unions, which ASP.NET Core 11 describes as `anyOf` in OpenAPI | Engine spike; API at stage 6 |
 | Collection expression arguments (`[with(comparer), ..items]`) | Stable | Where a collection needs a comparer or capacity; style only | As code is touched |
 | Extension indexers | Stable | Not needed now | — |
@@ -26,12 +26,12 @@ Status as shipped in .NET 11 GA. "Use" says whether HomeScout uses it and where.
 |---|---|---|---|
 | JIT and Native AOT improvements | Stable | Free with the upgrade; nothing to change | Upgrade |
 | **Runtime Async** (`<Features>runtime-async=on</Features>`) | **Preview** | **No** | — |
-| **LINQ `FullJoin`, `LeftJoin`, `RightJoin`** | Stable | **Yes.** The compare view aligns two homes' cost lines by category; a line that exists for one home and not the other must appear as "missing" for that home, never as zero (rule 7). `FullJoin` expresses that directly | Engine comparison, stage 6 (or stage 5 if the prototype's comparison needs a new generated figure) |
+| **LINQ `FullJoin`** (new in .NET 11; `LeftJoin` and `RightJoin` already exist in .NET 10) | Stable | **Yes.** The compare view aligns two homes' cost lines by category; a line that exists for one home and not the other must appear as "missing" for that home, never as zero (rule 7). `FullJoin` expresses that directly | Engine comparison, stage 6 (or stage 5 if the prototype's comparison needs a new generated figure) |
 | **System.Text.Json union and closed-type support** (unions written without a wrapper; `[JsonPolymorphic(InferClosedTypePolymorphism = true)]` for closed types) | Stable | **Careful.** The generated `costs.json` must stay byte-identical; the generator keeps its explicit writer. Used in the API's request and response bodies | API, stage 6 |
 | JSON Lines from async sequences | Stable | Possibly for streaming large exports later | Not planned |
 | `Decimal32`, `Decimal64`, `Decimal128` | Stable | **No.** Money stays `long` pence; `decimal` only for exact inputs (0021, 0034) | — |
 | Zstandard, new `Process` APIs, in-memory stream adapters | Stable | Not needed | — |
-| **Breaking: `Math.Round(double, digits)` and `decimal`↔`double` conversions are now correctly rounded** | Stable (no switch back) | **Check.** The engine uses only `Math.Round(decimal, 0, AwayFromZero)` in `Pence.cs` and no `double` (an architecture test forbids it in public members), so no figure should move. The upgrade proves it: `costs.json` byte-identical, every worked test unchanged | Upgrade |
+| **Breaking: `Math.Round(double, digits)` and `decimal`/`BigInteger` to and from `double`/`float` conversions are now correctly rounded** | Stable (no switch back) | **Check.** The engine uses only `Math.Round(decimal, 0, AwayFromZero)` in `Pence.cs` and no `double` (an architecture test forbids it in public members); `BigInteger` (mortgage and ratio rounding) is never converted to a floating-point type; so no figure should move. The upgrade proves it: `costs.json` byte-identical, every worked test unchanged | Upgrade |
 | Breaking: `DateOnly`/`TimeOnly` `TryParse` throws on an invalid style; floating-point to small integer conversions saturate; CPU baseline x86-64-v2 | Stable | Search the code in the upgrade; GitHub's runners meet the CPU baseline | Upgrade |
 
 ### ASP.NET Core 11 (stage 6 API)
@@ -61,7 +61,7 @@ Removes unneeded joins, better `GroupBy`, translates `FullJoin`, JSON columns wi
 | Package (nuget.org, 10 Nov 2026) | Status | Use |
 |---|---|---|
 | `Microsoft.Agents.AI` and `.OpenAI`, `.Anthropic`, `.Workflows` (1.28.0) | Stable | Agents, tools with approval, and the document-investigation workflow with human approval (0023) |
-| `Microsoft.Agents.AI.Hosting.AGUI.AspNetCore` (1.28.0-preview) | **Prerelease** | AG-UI endpoint (`AddAGUIServer`, `MapAGUIServer`); behind HomeScout's adapter, pinned exactly (0042) |
+| `Microsoft.Agents.AI.Hosting`, `.Hosting.AspNetCore` and `.Hosting.AGUI.AspNetCore` (all 1.28.0-preview.261106.1; the AG-UI package depends on the other two) | **Prerelease** | AG-UI endpoint (`AddAGUIServer`, `MapAGUIServer`); behind HomeScout's adapter, pinned exactly (0042) |
 | `Microsoft.Agents.AI.Mcp` | **Alpha** | **No**; use `ModelContextProtocol` directly |
 | `Microsoft.Agents.AI.AGUI` | **Deprecated** | **No** |
 | `Microsoft.Extensions.AI` (10.11.0; MAF 1.28 needs at least this) | Stable | Model-access abstractions and evaluation libraries (0025) |
@@ -108,6 +108,6 @@ The agent never calculates a figure: every number in a reply comes from a tool t
 - [What's new in ASP.NET Core 11](https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-11) and [ASP.NET Core 11 breaking changes](https://learn.microsoft.com/en-us/aspnet/core/breaking-changes/11/overview)
 - [NuGet minimum package publish age](https://learn.microsoft.com/en-us/nuget/consume-packages/minimum-package-publish-age)
 - [CodeQL supported languages and frameworks](https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/)
-- [ReSharper command line tools on NuGet](https://www.nuget.org/packages/JetBrains.ReSharper.GlobalTools), [Stryker.NET releases](https://github.com/stryker-mutator/stryker-net/releases)
+- [What's New in ReSharper 2026.3](https://www.jetbrains.com/resharper/whatsnew/), [ReSharper command line tools on NuGet](https://www.nuget.org/packages/JetBrains.ReSharper.GlobalTools), [Stryker.NET releases](https://github.com/stryker-mutator/stryker-net/releases)
 - [Agent Framework: AG-UI getting started](https://learn.microsoft.com/en-us/agent-framework/integrations/ag-ui/getting-started), [Anthropic provider](https://learn.microsoft.com/en-us/agent-framework/integrations/by-component/model-providers/anthropic)
 - [CopilotKit with a Microsoft Agent Framework .NET backend](https://docs.copilotkit.ai/ms-agent-dotnet)
