@@ -108,7 +108,7 @@ How to report:
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. **Codex has reviewed the latest commit.** Exceptions:
    - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "When reviewing" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
-   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example uv, ruff, the zizmor action, `referencing`), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0039, Q3).
+   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example the zizmor action), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0039, Q3).
    Code otherwise waits for Codex, and a rebased pull request gets a fresh review.
 2. Every review finding is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
@@ -119,7 +119,7 @@ Claude Code may merge a pull request (squash merge) only when **all** of these a
 - Changes to `LICENSE`, repository settings, CI permissions, agent permission settings (`.claude/settings.json`) or these merge rules.
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
-- Adding a package that isn't on the pre-approved list in decisions 0035 and 0039 or a later register line.
+- Adding a package that isn't on the pre-approved list in decision 0035 with the additions in 0042, or a later register line.
 - Any pull request where Claude Code disputes a finding as wrong (not merely defers it). The founder decides whether the finding stands.
 
 P0/P1 findings always block, with no override.
@@ -146,17 +146,16 @@ After merging, post a one-line summary for the founder: what merged, and any fol
 
 ## Commands
 
-Run from the repository root. Needs the .NET SDK in `global.json`, [uv](https://docs.astral.sh/uv/) 0.13.7 or later (below 0.14; `pyproject.toml` enforces it; uv installs Python 3.14 itself) and GNU Make; works on macOS and Linux. Until the Python tooling is removed (decision 0042, issue #57) `restore`, `build`, `format-check` and `test` run the .NET side and then the Python side; `lint` is Python only; `generate`, `generated-check`, `validate`, `inspect` and `mutate` are .NET only.
+Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; works on macOS and Linux.
 
 | Command | What it does |
 |---|---|
-| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `generated-check` (regenerates `packages/fixtures/generated/` and fails if that changes anything compared with what is committed), `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `lint`, `test`. Run it before pushing. |
-| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`; the run stops after 10 minutes or 5 failed tests), then the Python tests with pytest and branch coverage (`.artifacts/test-results/python/coverage.xml`; report only, no pass mark). |
+| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `generated-check` (regenerates `packages/fixtures/generated/` and fails if that changes anything compared with what is committed), `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `test`. Run it before pushing. |
+| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`; the run stops after 10 minutes or 5 failed tests). |
 | `make generate` | Builds, then runs the cost-engine generator: it reads `packages/fixtures/data/` and writes `packages/fixtures/generated/costs.json` (deleting any other `*.json` there). Commit the result; `make check` fails if it is stale. |
 | `make validate` | Checks every file in `packages/fixtures/data/`, `test-cases/` and `generated/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
-| `make lint` | Python lint: `ruff check` with the explicit rule list in `pyproject.toml` (decision 0039 section 2). |
-| `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. `restore` also runs `uv sync --locked --all-packages` (fails if `uv.lock` is stale); `build` also runs `mypy` (strict) on every Python package and its tests; `format-check` also runs `ruff format --check`. |
+| `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. |
 | `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. |
-| `make clean` | Removes build output, `.artifacts/` and the Python caches (not `.venv`). |
+| `make clean` | Removes build output and `.artifacts/`. |
 
-The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result` in C# and `test_<method>_<condition>_<result>` in Python (decision 0039). The Python workspace (one `uv.lock`, packages under `packages/homescout-*`) and every tool setting live in the root `pyproject.toml`; add dependencies with `uv add` (it asks for approval) and commit the updated `uv.lock`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).
+The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result` in C# (decision 0021). Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).

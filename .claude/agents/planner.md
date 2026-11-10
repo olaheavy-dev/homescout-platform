@@ -11,7 +11,7 @@ Produce a plan that:
 - Fixes the **data contract first** (JSON Schema and generated files now; OpenAPI later).
 - Splits the work into **backend tasks** and **frontend tasks**, one pull request each.
 - Gives every task acceptance criteria, edge cases and the named test that proves each. For numeric or legal work, list the rounding boundary cases from decision 0034.
-- Marks anything that needs a founder decision or a package outside the pre-approved list (decisions 0035, 0039) as a question, not an assumption.
+- Marks anything that needs a founder decision or a package outside the pre-approved list (decision 0035 with the additions in 0042) as a question, not an assumption.
 - Never invents facts, figures, rules or sources.
 
 You do not edit files or write code. Return the plan as text for the caller to save.
