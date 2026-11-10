@@ -1,0 +1,72 @@
+# HomeScout Python workspace root (decisions 0036, 0039). A virtual root: no package of its own.
+# One uv.lock for every member under packages/. Tool settings for all members live here.
+
+[tool.uv]
+required-version = ">=0.13.7,<0.14"
+
+[tool.uv.workspace]
+members = ["packages/homescout-*"]
+
+[dependency-groups]
+dev = [
+  "coverage>=7.17,<8",
+  "hypothesis>=6.170,<7",
+  "mutmut>=3.8,<4",
+  "mypy>=2.4,<3",
+  "pytest>=9.2,<10",
+  "pytest-cov>=7.1,<8",
+  "ruff>=0.17.4,<0.18",
+]
+
+[tool.ruff]
+target-version = "py314"
+# Markdown files hold code samples that are not part of the packages; `ruff format` would check them too (ruff 0.17).
+extend-exclude = ["*.md"]
+line-length = 100
+
+[tool.ruff.lint]
+# Explicit list, never "ALL", so a ruff update cannot switch new rules on silently (decision 0039 section 2).
+select = ["E", "W", "F", "I", "B", "UP", "S", "C4", "SIM", "RUF", "PT", "TID", "N", "DTZ", "T20", "PERF"]
+
+[tool.ruff.lint.per-file-ignores]
+# Every pytest check is an assert.
+"**/tests/**" = ["S101"]
+
+[tool.mypy]
+# Test files have a unique name per package (test_<package>_*.py): mypy reports "Duplicate module" for identical names.
+strict = true
+warn_unreachable = true
+enable_error_code = [
+  "redundant-expr",
+  "possibly-undefined",
+  "truthy-bool",
+  "ignore-without-code",
+  "exhaustive-match",
+]
+python_version = "3.14"
+explicit_package_bases = true
+mypy_path = [
+  "packages/homescout-engine/src",
+  "packages/homescout-generator/src",
+  "packages/homescout-fixture-validator/src",
+]
+files = [
+  "packages/homescout-engine/src",
+  "packages/homescout-engine/tests",
+  "packages/homescout-generator/src",
+  "packages/homescout-generator/tests",
+  "packages/homescout-fixture-validator/src",
+  "packages/homescout-fixture-validator/tests",
+]
+
+[tool.pytest]
+minversion = "9.0"
+strict = true
+testpaths = ["packages/*/tests"]
+addopts = ["--import-mode=importlib"]
+filterwarnings = ["error"]
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["homescout_engine", "homescout_generator", "homescout_fixture_validator"]
+# Report only: no fail_under (decision 0039 section 4).

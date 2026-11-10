@@ -146,16 +146,17 @@ After merging, post a one-line summary for the founder: what merged, and any fol
 
 ## Commands
 
-Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; works on macOS and Linux.
+Run from the repository root. Needs the .NET SDK in `global.json`, [uv](https://docs.astral.sh/uv/) 0.13.7 or later (below 0.14; `pyproject.toml` enforces it; uv installs Python 3.14 itself) and GNU Make; works on macOS and Linux. Until the C# is removed (decision 0036, port step P6) `restore`, `build`, `format-check` and `test` run the .NET side and then the Python side; `lint` is Python only; `generate`, `generated-check`, `validate`, `inspect` and `mutate` are .NET only.
 
 | Command | What it does |
 |---|---|
-| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `generated-check` (regenerates `packages/fixtures/generated/` and fails if that changes anything compared with what is committed), `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `test`. Run it before pushing. |
-| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`). |
+| `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `generated-check` (regenerates `packages/fixtures/generated/` and fails if that changes anything compared with what is committed), `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `lint`, `test`. Run it before pushing. |
+| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`), then the Python tests with pytest and branch coverage (`.artifacts/test-results/python/coverage.xml`; report only, no pass mark). |
 | `make generate` | Builds, then runs the cost-engine generator: it reads `packages/fixtures/data/` and writes `packages/fixtures/generated/costs.json` (deleting any other `*.json` there). Commit the result; `make check` fails if it is stale. |
 | `make validate` | Checks every file in `packages/fixtures/data/`, `test-cases/` and `generated/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
-| `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. |
+| `make lint` | Python lint: `ruff check` with the explicit rule list in `pyproject.toml` (decision 0039 section 2). |
+| `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. `restore` also runs `uv sync --locked --all-packages` (fails if `uv.lock` is stale); `build` also runs `mypy` (strict) on every Python package and its tests; `format-check` also runs `ruff format --check`. |
 | `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. |
-| `make clean` | Removes build output and `.artifacts/`. |
+| `make clean` | Removes build output, `.artifacts/` and the Python caches (not `.venv`). |
 
-The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).
+The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result` in C# and `test_<method>_<condition>_<result>` in Python (decision 0039). The Python workspace (one `uv.lock`, packages under `packages/homescout-*`) and every tool setting live in the root `pyproject.toml`; add dependencies with `uv add` (it asks for approval) and commit the updated `uv.lock`. Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).

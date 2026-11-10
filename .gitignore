@@ -30,3 +30,13 @@ TestResults/
 # Claude Code local-only files
 .claude/settings.local.json
 .claude/worktrees/
+
+# Python (uv, decision 0039)
+.venv/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.hypothesis/
+mutants/
