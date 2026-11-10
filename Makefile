@@ -76,7 +76,7 @@ lint: restore
 	uv run --locked ruff check
 
 test: build
-	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
+	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --timeout 10m --maximum-failed-tests 5 --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
 	uv run --locked pytest --cov --cov-branch --cov-report=xml:$(PYTEST_XML) --cov-report=term
 
 check: restore build format-check generated-check validate inspect lint test
