@@ -86,8 +86,8 @@ Next.js page (React, CopilotKit chat)
 The agent never calculates a figure: every number in a reply comes from a tool that calls the cost engine (rule 4, decision 0004). The prototype (stage 5) needs none of this: it reads the generated fixture files.
 
 ## 4. Order and conditions
-1. **Done:** decision 0042 and this plan. **Open, not blocked by .NET 11:** remove the Python tooling (#57); close out stage 2 (#24).
-2. **SDK and runtime to .NET 11 now (#58, BE-25)**, with `LangVersion` 14. That pull request's own CodeQL run is the proof that CodeQL still analyses the code.
+1. **Done:** decision 0042 and this plan; the Python tooling removed (#57). **Open:** close out stage 2 (#24).
+2. **Done:** SDK and runtime on .NET 11 (#58, pull request #108, BE-25), with `LangVersion` 14. That pull request's own CodeQL run showed CodeQL still analyses every file.
 3. **C# 15 in the engine (#59, then #60)** when CodeQL lists C# 15 and Stryker.NET handles it: closed hierarchies first, then the `Result` union spike. Check CodeQL's supported-languages page at each weekly review.
 4. **Stages 3 to 5** (specification, design, clickable prototype) do not depend on .NET 11.
 5. **Stage 6:** API skeleton and Aspire, generated TypeScript types, comparison with `FullJoin`, MCP server, evaluation harness, agent gateway, AG-UI chat, document workflow.

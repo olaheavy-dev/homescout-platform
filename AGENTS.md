@@ -146,7 +146,7 @@ After merging, post a one-line summary for the founder: what merged, and any fol
 
 ## Commands
 
-Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; works on macOS and Linux. Every target runs the .NET side.
+Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; works on macOS and Linux.
 
 | Command | What it does |
 |---|---|
@@ -158,4 +158,4 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 | `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. |
 | `make clean` | Removes build output and `.artifacts/`. |
 
-The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result` in C# (decision 0039). Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).
+The Makefile and CI turn off .NET CLI and test-platform telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`). Test names follow `Method_condition_result` in C# (decision 0021). Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).

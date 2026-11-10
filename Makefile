@@ -15,7 +15,7 @@ VALIDATOR     := packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.
 .PHONY: help restore build format-check generated-check validate inspect test check generate mutate clean
 
 help:
-	@echo "Targets: restore build format-check generated-check validate inspect lint test check generate mutate clean"
+	@echo "Targets: restore build format-check generated-check validate inspect test check generate mutate clean"
 	@echo "  check = restore + build + format-check + generated-check + validate + inspect + test (same as CI)"
 	@echo "  mutate = Stryker.NET mutation testing of the cost engine (slow; not part of check or CI)"
 
