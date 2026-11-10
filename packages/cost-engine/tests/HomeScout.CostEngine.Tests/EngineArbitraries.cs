@@ -115,9 +115,26 @@ internal static class EngineArbitraries
     }
 }
 
-/// <summary>A property run with the generators above.</summary>
+/// <summary>
+/// A property run with the generators above. Seeds are random, so a normal run (<c>make test</c>, CI) tries new inputs
+/// every time. When the environment variable named by <see cref="ReplayVariable"/> is set (<c>make mutate</c> sets it),
+/// every property starts from that FsCheck seed (format <c>seed,gamma</c>, for example <c>12344,12312</c>), so mutation
+/// testing sees the same inputs on every run and a mutant cannot be killed by luck (issue #107).
+/// </summary>
 [AttributeUsage(AttributeTargets.Method)]
 internal sealed class EngineProperty : FsCheck.NUnit.PropertyAttribute
 {
-    public EngineProperty() => Arbitrary = [typeof(EngineArbitraries)];
+    /// <summary>The environment variable that fixes the FsCheck seed.</summary>
+    public const string ReplayVariable = "HOMESCOUT_FSCHECK_REPLAY";
+
+    public EngineProperty()
+    {
+        Arbitrary = [typeof(EngineArbitraries)];
+
+        string? replay = Environment.GetEnvironmentVariable(ReplayVariable);
+        if (!string.IsNullOrWhiteSpace(replay))
+        {
+            Replay = replay;
+        }
+    }
 }
