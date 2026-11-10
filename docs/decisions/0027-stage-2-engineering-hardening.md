@@ -1,7 +1,7 @@
 # 0027: Stage 2 engineering and security hardening
 
 **ID:** WW-09  
-**Status:** Accepted (partly superseded: founder merge for its named tools by [0035](0035-ways-of-working-v2.md); licence allow-list extended by register line WW-13; package licence exception by register line BE-08; tool-only licence exception for `typing_extensions` by [0039](0039-python-engineering-foundation.md); tool-only licence exception for `libcst` and package-URL exemptions for HomeScout's own Python packages by register line BE-22, in the dependency review workflow)  
+**Status:** Accepted (partly superseded: founder merge for its named tools by [0035](0035-ways-of-working-v2.md); licence allow-list extended by register line WW-13; package licence exception by register line BE-08; the unlicensed-package check and its NuGet exemptions by register line BE-22; the Python tool-only licence exceptions from [0039](0039-python-engineering-foundation.md) and BE-22 are withdrawn by [0042](0042-back-to-dotnet-11.md))  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:**

@@ -1,7 +1,7 @@
 # 0039: Python engineering foundation
 
 **ID:** BE-20  
-**Status:** Accepted (the founder's answers of 7 Nov 2026 to the port plan's nine questions on issue #42; the rest of the port plan and the details listed under "Decision" are confirmed by the founder's merge; the founder's answers of 8 Nov 2026 settle Q1 (commit an exported requirements file), Q2 (CodeQL default setup, no workflow) and Q3 (a `0.x` minor bump counts as a major bump); what is still to do is listed under "Open questions" and in section 8; P1 amends Q1 and adds licence exemptions: see register lines BE-23 and BE-22)  
+**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026; the Q3 rule, a minor bump of a direct `0.x` dependency or action pin counts as major, is carried over)  
 **Date:** 2026-11-07  
 **Stage:** 2 (the Python port, step P0 of the port plan in issue #42)  
 **Supersedes in part (no older text is rewritten):**

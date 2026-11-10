@@ -1,7 +1,7 @@
 # 0032: Our own Result type
 
 **ID:** BE-05  
-**Status:** Accepted (partly superseded: rewritten in Python by [0036](0036-python-backend.md), taking effect when the port merges; the principle stands)  
+**Status:** Accepted (the principle and the C# type stand: [0036](0036-python-backend.md)'s Python rewrite never took effect and is superseded by [0042](0042-back-to-dotnet-11.md); a C# 15 union version is trialled in issue #60)  
 **Date:** 2026-10-23  
 **Stage:** 2
 

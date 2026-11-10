@@ -1,7 +1,7 @@
 # 0041: The Microsoft Agent Framework gateway is built in the template first
 
 **ID:** AI-08  
-**Status:** Accepted (founder, 7 Nov 2026: the answer "Yes, a short superseding record" to the planning question on [template issue 33](https://github.com/olaheavy-dev/house-template-fastapi/issues/33), which says: the MAF gateway is built in the template at 0.8.0 and HomeScout consumes it later, because 0040 and 0023 say the opposite order; and "yes, take the \"if ready\" version" for the timing: the gateway comes with the API at P7 if it is ready, otherwise at stage 6)  
+**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026; the gateway is built in HomeScout's .NET API at stage 6)  
 **Date:** 2026-11-07  
 **Stage:** 6 (the AI layer), or P7 if the gateway is ready; the template work runs earlier, beside the port  
 **Supersedes in part (no older text is rewritten):**
