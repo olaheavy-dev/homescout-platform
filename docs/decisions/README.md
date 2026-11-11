@@ -42,6 +42,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | PD-11 | Purpose of the clickable prototype | 3 | Accepted (founder, 11 Nov 2026: private reference, with an exception for design frames shared by link; partly superseded by 0046) | [0045](0045-prototype-is-a-private-reference.md) |
 | PD-12 | Public area check first; saved homes need an account | 3 | Accepted (founder, 11 Nov 2026) | [0046](0046-public-area-check-first.md) |
 | PD-13 | Places of worship in area information | 3 | Accepted (founder, 11 Nov 2026): one category covering every faith alike, shown only as the nearest places by distance; never counts, densities or an area's religious makeup; a user's own faith is special category data (0014) and is never stored | `docs/references/data-sources.md` (OpenStreetMap), `packages/fixtures/README.md` |
+| PD-14 | Move-in checklist (free, made in the browser) | after 5b | Proposed (11 Nov 2026; research #177) | [0047](0047-move-in-checklist.md) |
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted (partly superseded by 0019: calculation placement) | [0013](0013-repo-and-tracking.md) |
