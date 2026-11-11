@@ -14,7 +14,7 @@ A home decision workspace for people buying or renting in England: check a home,
 
 Document 01 is the historical concept record. Its old labels and paid-feature descriptions are not a second current specification, but requirements it raises that later documents don't address must be considered explicitly when writing the implementation specification. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
 
-**Concept images in `docs/assets/concepts/` are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo.** They are design concepts, not real properties or data. Doc 03 §2 maps each image to its screen, and the [asset register](docs/assets/README.md) records where each image came from.
+**Concept images in `docs/assets/concepts/` and the atmosphere photos in `docs/assets/imagery/` are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo.** They are design concepts and illustrative photos, not real properties, places or data. Doc 03 §2 maps each image to its screen, and the [asset register](docs/assets/README.md) records where each image came from.
 
 ## Licence
 

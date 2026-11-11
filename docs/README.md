@@ -8,7 +8,8 @@ docs/
 ├── product/             the main product and delivery documents (numbered, read in order)
 ├── architecture/        C4 context and container diagrams (Mermaid)
 ├── assets/              the asset register and media files
-│   └── concepts/        AI-generated concept images (discussion only)
+│   ├── concepts/        AI-generated concept images (discussion only)
+│   └── imagery/         AI-generated atmosphere photos (illustrative)
 ├── decisions/           one record per decision, plus the register
 ├── planning/            stage checklists and working plans
 ├── references/          links to official third-party documentation

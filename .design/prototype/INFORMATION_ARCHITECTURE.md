@@ -169,7 +169,7 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 ### Landing (search first, decision 0046)
 1. The promise in a Bricolage Grotesque headline, with the **postcode box** (persistent label, hint text, "Check postcode", "Try an example") as the main action. "England only for now" sits under it.
 2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring and a topic summary card.
-3. **Data from:** a source wall: nine cards with each source, what it covers and what it can’t tell you; names only, no logos; links to About the data.
+3. **Data from:** a source wall: one card per source shown in About the data (planned: Environment Agency, police.uk, HM Land Registry, Department for Education, Ofsted, NaPTAN, OpenStreetMap, Ofcom, Planning Data; the final list follows DA-05), with each source, what it covers and what it can’t tell you; names only, no logos; links to About the data.
 4. **How it works:** three illustrated steps (type a postcode, see what's around, print or save), followed by a full-width photo band (an AI-generated terraced street; honest alt text, footer note).
 5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, what it can't tell you).
 6. **Honest by design:** four illustrated rules, each with a sample snippet: sources and dates; missing shown as missing; we measure, never "safe"; crime as counts, never on the map.
@@ -253,7 +253,7 @@ In the private prototype the landing can also link the two example homes; the pu
 
 | Component | Used on | Behaviour differences |
 |---|---|---|
-| Public layout (header and footer) | Landing, Check an area, How it works, About the data, Privacy, Accessibility; in the prototype also Example, Costs and comparison, Sign in | Editorial: more space, serif display |
+| Public layout (header and footer) | Landing, Check an area, How it works, About the data, Privacy, Accessibility; in the prototype also Example, Costs and comparison, Sign in | Editorial: more space, Bricolage Grotesque display |
 | App layout (top bar on desktop, bottom tabs on mobile) | My move, Homes, Compare, Settings | — |
 | Home layout (home header, tabs or bottom bar, demo timeline) | Every home page | Collapses on scroll on a phone |
 | Demo story timeline | My move, home pages, Compare (example homes only) | Hidden on non-example homes |
