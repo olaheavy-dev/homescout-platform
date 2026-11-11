@@ -13,6 +13,7 @@ internal sealed class WorkedCaseTests
     private static readonly Dictionary<string, (string Home, string Scenario)> _monthlyCases = new(StringComparer.Ordinal)
     {
         ["b1-monthly-housing-cost-listing-service-charge"] = ("B1", "from-step-1"),
+        ["b1-monthly-housing-cost-management-pack-arrived"] = ("B1", "from-step-3"),
         ["b1-monthly-housing-cost-2026-budget"] = ("B1", "from-step-4"),
         ["b2-monthly-housing-cost"] = ("B2", "from-step-1"),
         ["r1-monthly-housing-cost-before-water"] = ("R1", "from-step-1"),

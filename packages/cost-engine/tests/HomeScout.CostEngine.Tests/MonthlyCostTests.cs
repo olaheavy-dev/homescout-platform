@@ -32,8 +32,8 @@ internal sealed class MonthlyCostTests
     private static Pence Budget160000 => new(160_000);
 
     [Test]
-    public void MonthlyCases_file_hasTheSixWorkedMonthlyCases() =>
-        Assert.That(CaseIds.Count(), Is.EqualTo(6));
+    public void MonthlyCases_file_hasTheSevenWorkedMonthlyCases() =>
+        Assert.That(CaseIds.Count(), Is.EqualTo(7));
 
     [TestCaseSource(nameof(MonthlyCases))]
     public void MonthlyCost_storyCase_matchesWorkedResult(string caseId)

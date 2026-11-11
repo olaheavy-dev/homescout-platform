@@ -132,6 +132,16 @@ internal sealed class RealDataTests
         Assert.That(item.ContainsKey("value"), Is.False);
     }
 
+    [Test]
+    public void B1_buildingsInsurance_isUsedFromStepThree_whenItsOnlySourceArrives()
+    {
+        // Its only source is the management pack, which arrives at story step 3 (issue #37). Before that the line is missing, not included.
+        JsonObject item = FixtureFiles.EvidenceItem("B1-INSURANCE");
+
+        Assert.That(item["usedFromStep"]!.GetValue<int>(), Is.EqualTo(3));
+        Assert.That(item["source"]!["documentId"]!.GetValue<string>(), Is.EqualTo("B1-MGMT-PACK"));
+    }
+
     [TestCase("B1-MAINTENANCE")]
     [TestCase("B1-STAMP-DUTY")]
     [TestCase("B1-LEGAL-FEES")]
