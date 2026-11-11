@@ -20,14 +20,14 @@ flowchart TB
     homescout["HomeScout<br/>Home decision workspace.<br/>Today: synthetic sample data, a cost engine<br/>and its checks. No running app yet"]
 
     data["Official and open England data<br/>PLANNED, stage 6. Sources not chosen<br/>(DA-04 to DA-06). Every value labelled<br/>Live, Cached, Fallback or Unavailable<br/>(decision 0029)"]
-    models["AI model providers<br/>PLANNED, stage 6. Chosen per task (AI-01).<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
+    models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 plans OpenAI and Anthropic<br/>behind HomeScout's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
     portals["Listing portals and agent websites<br/>Never scraped or copied (decision 0028).<br/>The user supplies what they have"]
 
-    user -->|"PLANNED: enters their own listing details,<br/>documents and estimates; reads results"| homescout
+    user -.->|"PLANNED: enters their own listing details,<br/>documents and estimates; reads results"| homescout
     builders -->|"Change the repository; CI checks every change"| homescout
     homescout -.->|"PLANNED: reads through adapters"| data
     homescout -.->|"PLANNED: sends supplied text,<br/>receives wording"| models
-    user -.->|"Browses a listing themselves.<br/>HomeScout never fetches it"| portals
+    user -->|"Browses a listing themselves.<br/>HomeScout never fetches it"| portals
 
     classDef planned stroke-dasharray: 6 4,fill:#f6f6f6,color:#333
     class data,models planned
@@ -63,12 +63,12 @@ flowchart TB
 
     subgraph later["PLANNED: not built"]
         direction TB
-        web["Web app, stage 5<br/>TypeScript, Next.js, React<br/>First: reads the fixture and generated files"]
+        web["Web app, stage 5 (decision 0020)<br/>TypeScript, Next.js, React<br/>First: reads the fixture and generated files"]
         api["API, stage 6<br/>ASP.NET Core 11 minimal APIs<br/>OpenAPI document; framework to confirm (BE-01)"]
         mcp["MCP server, stage 6<br/>MCP C# SDK, inside the API host<br/>Read-only cost tools (decision 0037)"]
-        agents["Agents, stage 6<br/>Microsoft Agent Framework for .NET<br/>AG-UI endpoint on the API (decision 0023)"]
-        copilot["Chat route in the web app<br/>CopilotKit runtime route (open-source path)<br/>Streams AG-UI to and from the API"]
-        aspire["Aspire app host and OpenTelemetry<br/>Runs the pieces locally and shows traces<br/>(decision 0025)"]
+        agents["Agents, stage 6 (decision 0023)<br/>Microsoft Agent Framework for .NET<br/>AG-UI endpoint on the API (decision 0023)"]
+        copilot["Chat route in the web app, stage 6<br/>(decision 0042)<br/>CopilotKit runtime route (open-source path)<br/>Streams AG-UI to and from the API"]
+        aspire["Aspire app host and OpenTelemetry, stage 6<br/>Runs the pieces locally and shows traces<br/>(decision 0025)"]
         db[("Database<br/>UNDECIDED (DA-03)<br/>Homes, questions, replies, decisions")]
     end
 
