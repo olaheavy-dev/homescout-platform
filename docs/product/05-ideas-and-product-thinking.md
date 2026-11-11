@@ -24,7 +24,7 @@ Use these eleven questions on every new idea, in this order. Question 10 is a ga
    - never: calculating money or deadlines (the cost engine and cited rule tables do that), marking a step done, judging a home or area, filling a gap with a guess;
    - **think AI at every step** (founder, 11 Nov 2026): for each step of the journey, ask where AI could explain, read, draft or connect (see "AI at every step" in part 2);
    - AI channels (an MCP server, a chat panel) are common elsewhere, so they count as a step beyond only when they carry what's distinctive: sourced answers with limits and a "not known" state, and the user's own question record;
-   - build each feature on rules and sources first, so the product works fully without AI; AI is a layer, and each use is checked for running cost and privacy (the provider sees what the user typed).
+   - build each feature on rules and sources first, so the core of every step works without AI; AI is a layer, and each use is checked for running cost and privacy (the provider sees what the user typed).
 9. **Smallest useful slice.** Find the version that is achievable now and still useful; say plainly what is left out and why.
 10. **Go clearly beyond what's offered** (founder, 11 Nov 2026: "make sure all our ideas go reasonable beyond what is being offered at the moment by others"). For each idea, name who already offers something similar, from a checked public page with its date (rule 1; doc 02 §3 and `.design/prototype/research/related-products.md` first), and say what ours does that theirs doesn't. The step beyond should strengthen at least one of doc 02 §3's four possible differentiators:
     1. a record of unresolved questions per home (evidence, who should answer, the reply, what's still uncertain);
@@ -57,8 +57,8 @@ Every idea was checked against what UK products publicly offer on 11 Nov 2026: [
 | **Walk mode during a viewing** (j) | Portal "near me" listing search; area apps that show demographics | Sourced facts linked to that home's viewing notes, with location kept on the phone (or treated like a postcode under 0046) | Battery and accuracy |
 | **A day in your life** (m) | Travel-time search on portals; routine tools reported but unverified | A timeline from the user's own times for one home, never invented journeys | Weak evidence either way; check before building |
 | **Comments on evidence for the household** (p) | Shared shortlists on a portal; shared lists with reactions in a couples app | Comments attached to specific evidence and open questions, ending in a recorded household decision (builds on doc 02 §5 F's sharing with explicit permissions) | Accounts, privacy of shared notes |
-| **Vestagraph inside AI assistants (MCP)** (q) | A portal's ChatGPT app for property discovery; several UK property MCP servers (unverified) | Answers carrying source, date, limits and a "not known" state, and the user's own record: the home's cost from the engine, its open questions, and with the user's confirmation a new question added to the home (0037, 0038, #117). None found that works a tracked question record. Crowding quickly | Already in the MCP spec work; account-linked tools need 0038 |
-| **Chat panel about a home** (0004) | AI assistants on listings and paid AI verdicts | Answers only from that home's evidence with every claim linked; says "not known"; never calculates or gives a verdict; a gap in the conversation becomes an "Ask about this" question | Evaluation set (AI-03); already decided in 0004 |
+| **Vestagraph inside AI assistants (MCP)** (q) | A portal's ChatGPT app for property discovery; several UK property MCP servers (unverified) | Answers carrying source, date, limits and a "not known" state, and, later, the user's own record: the home's cost from the engine and its open questions, and with the user's confirmation a new question added to the home. None seen in search results works a tracked question record (not verified on their pages). Crowding quickly | In the MCP spec work (#117). 0037 is read-only first: writing a question needs a later decision; saved-home data sent to an AI host needs SE-02 part 3 (0014); account-linked tools need 0038 |
+| **Chat panel about a home** (0004) | AI assistants on listings and paid AI verdicts (see s) | Answers only from that home's evidence with every claim linked; says "not known"; never calculates or gives a verdict; a gap in the conversation can become an "Ask about this" question, which the user confirms before it is added (0004) | Evaluation set (AI-03); already decided in 0004 |
 | **Plain-language explainers** (s) | AI listing assistants and AI verdicts | Only rewrites a cited source and links it; adds no facts and no verdict (0004) | Evaluation set (AI-03) |
 | **Type instead of a form** | Not checked | The user confirms before anything runs (0004) | Not checked against competitors |
 
@@ -78,7 +78,7 @@ AI explains, reads, drafts and connects at every step; the rules and the cost en
 | Compare | Explaining a trade-off between homes | Picking a winner or weighting priorities silently (doc 02 §5 D) |
 | What changed | A one-sentence reason with its source | Inventing a cause |
 | Moving in | Explaining checklist items in plain language | Setting deadlines (cited rule tables do) |
-| Anywhere, through MCP | The same tools inside ChatGPT or Claude (0037) | Acting without the user confirming |
+| Anywhere, through MCP | The read-only tools inside ChatGPT or Claude (0037); any write needs its own decision | Acting without the user confirming |
 
 ### Common elsewhere: not built on their own
 
