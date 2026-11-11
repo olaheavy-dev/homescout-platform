@@ -23,12 +23,14 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - Nearby list-first: commute, getting around, everyday places with a childcare gap card, schools with framework and date, the flood panel, the crime counts table, sold nearby, and a sage-tinted daily-life section.
 
   _New: category cards, gap card, status tag and source line, Nearby rows, crime table, flood panel._
+  - **Round 2 (founder, 11 Nov 2026):** Nearby is summary first, one row per topic, with a topic detail (Schools) holding List and Map. The long list stays in the detail screens.
 - [ ] **H4 Desktop split and dark theme:**
   - Nearby with the list column next to the Northbridge map and the selection in sync.
   - Compare with B1 and B2 aligned and no winner.
   - H1 repeated in the warm charcoal dark theme.
 
   _Depends on: H1–H3._
+- [ ] **H5 Check an area, public, phone** (decision 0046, proposed): postcode in, the Nearby topic summary out, Summary and Map, download with sources, "Save a home here" needing an account. No commute row (it needs the household's own destination).
 
 ## Foundation (stage 5 build)
 - [ ] **B1 App shell, tokens and the first screen** (#86):
@@ -52,6 +54,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **B4 Home overview** (all four example homes, step 1): the home header, the real cost so far, up to three findings with source labels, the daily-life summary, open questions and evidence gaps. _Reuses: hero figure, status tag._
 - [ ] **B5 Costs:** hero figure, category cards with every status, upfront section, the "How this was worked out" disclosure, and editable assumptions recorded as the user's own. _Reuses: category card, gap card._
 - [ ] **B6 Nearby, list first:** every section from the IA with source lines and gap cards; crime and flood in the list only. _Depends on: area fixtures (merged in #145)._
+- [ ] **B6a Check an area** (`/area?postcode=`, decision 0046): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. _Depends on: B6._
 - [ ] **B7 Nearby map** (MapLibre, approved):
   - the drawn Northbridge sample map (#146);
   - neutral markers with the forest home pin;

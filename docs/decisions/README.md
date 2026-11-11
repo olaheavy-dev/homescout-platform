@@ -22,7 +22,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | — | Launch geography | England first | Doc 02 §7, §9 |
 | — | Project purpose | Portfolio and learning first, built by AI coding agents, small monthly budget, kept commercially viable | Doc 04 |
 | — | Repository | Public, all rights reserved | Doc 04 §8, `LICENSE` |
-| — | First public showcase | Clickable prototype | Doc 04 §8 |
+| — | First public showcase | Not the clickable prototype, which stays a private reference ([0045](0045-prototype-is-a-private-reference.md)); a free public area check is proposed as the first public thing ([0046](0046-public-area-check-first.md)) | [0045](0045-prototype-is-a-private-reference.md), superseding doc 04 §8 |
 | — | Stage 1 sign-off | Signed off by the founder on 23 October 2026 | `docs/planning/stage-1-confirmation.md` |
 
 ## Register
@@ -39,6 +39,8 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | PD-08 | Name shown on the public demo | 3 | Accepted (founder, 11 Nov 2026: Vestagraph; supersedes parked 0008) | [0044](0044-public-name-vestagraph.md) (supersedes [0008](0008-demo-name.md)) |
 | PD-09 | Public brand | 1 | Open (working public brand Vestagraph per [0044](0044-public-name-vestagraph.md); trade-mark clearance still to do) | [0009](0009-public-brand.md) |
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
+| PD-11 | Purpose of the clickable prototype | 3 | Accepted (founder, 11 Nov 2026: private reference, with an exception for design frames shared by link) | [0045](0045-prototype-is-a-private-reference.md) |
+| PD-12 | Public area check first; saved homes need an account | 3 | Proposed | [0046](0046-public-area-check-first.md) |
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted (partly superseded by 0019: calculation placement) | [0013](0013-repo-and-tracking.md) |

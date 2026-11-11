@@ -51,18 +51,18 @@ Reviewers have seen many AI-wrapper apps. These are the parts that make this one
 | Document extraction with page-level citations and conflict detection | Grounded AI with a measured evaluation suite | Retrieval, structured extraction, evals, prompt-injection defence |
 | AI platform: tracing, token and cost monitoring, safety, workflows with human approval, routing, caching, streaming (decision 0025) | Production-grade AI engineering, debuggable locally with Aspire | Microsoft Agent Framework, OpenTelemetry, Aspire, evaluation-first development |
 | Question → reply → decision history | Workflow and state-machine design with audit trail | Event history, versioning, UX for uncertainty |
-| Two complete stories (buyer and renter) in a public demo | Product thinking and finished UX | Next.js, accessibility, responsive design |
+| Two complete stories (buyer and renter) in the private prototype (decision 0045) | Product thinking and finished UX | Next.js, accessibility, responsive design |
 | Infrastructure as code, tracing, cost controls | Production habits on a small budget | Cost-first hosting (decision 0022), infrastructure as code, OpenTelemetry, cost management |
 | Case study and decision records | Communication and judgement | Writing about trade-offs |
 
-The public demo uses the synthetic fixtures and is labelled **Illustrative example** throughout, as doc 03 requires.
+The prototype uses the synthetic fixtures and is labelled **Illustrative example** throughout, as doc 03 requires.
 
 ## 5. Proposed build sequence
 
 Each step is a vertical slice that leaves a working, demonstrable product. It sequences engineering and learning. It does not remove features from the product or decide what launches. **The stage order in §9 governs timing:** step 1's parts happen in different §9 stages, as noted.
 
 1. **Foundation:** repository conventions and agent instructions (§9 stage 1, done); the fixture catalogue and the **first slice of the C# cost engine**, covering only the calculations the two stories need (§9 stage 2, decision 0019); a minimal CI workflow, security scanning and Dependabot (§9 stage 2, decision 0027); IaC skeleton, deployment pipeline and budget alerts (§9 stage 4, after the infrastructure decisions, before the first deployment). The fixture catalogue covers four English homes, one Welsh home (WALES-1, 7 Harbour Mews, postcode ZZ1 0AA, shown as "not yet covered"), one household and a fixed 23 October 2026 snapshot.
-2. **Clickable prototype of both stories** (§9 stage 5) on fixtures and the cost engine's generated results, with a design system from doc 03 §6. This alone is a presentable portfolio piece, and it is **the first public showcase** (founder decision).
+2. **Clickable prototype of both stories** (§9 stage 5) on fixtures and the cost engine's generated results, with a design system from doc 03 §6. It is the **private vision and reference build** for the founder and the coding agents, not a public demo (decision 0045, which replaced the earlier "first public showcase" decision). Proposed decision 0046 would make a free public area check the first public thing.
 3. **Cost engine expansion** (§9 stage 6): grows the stage 2 engine to full buy and rent costs, England SDLT, move-in cash and stress scenarios, fully tested, behind the API.
 4. **Real England evidence** for one category at a time (EPC, then Price Paid, then planning and flood), with provenance and "not covered" states.
 5. **Questions, replies and decision history** as real persisted workflow.
@@ -101,7 +101,7 @@ Do these now, because they are cheap now and expensive later:
 | Question | Decision |
 |---|---|
 | Repository visibility and licence | **Public, all rights reserved.** No open-source licence; a copyright notice in `LICENSE` and the README. Viewing the code doesn't grant permission to use it. Because it is public, never commit secrets, real personal data or licensed datasets, and accept that competitors can read the strategy documents. |
-| First public showcase | **The clickable prototype** (section 5, step 2) |
+| First public showcase | Superseded by decision 0045: the clickable prototype stays private. Proposed decision 0046: a free public area check first |
 | Monthly budget cap | **Decided in the infrastructure discussion** (stage 4 below), recorded as an architecture decision record before anything is deployed |
 
 ## 9. Roadmap from design decisions to implementation
@@ -169,7 +169,7 @@ Inputs from the founder's earlier projects are summarised in the [foundations re
 
 **Infrastructure and deployment decisions:**
 - **Prototype architecture (IN-01):** recommended: the prototype is the real frontend reading fixture files, with no backend yet.
-- **Hosting for the public demo (IN-02):** cost first (decision 0022): a free static option or the existing server; a fixture-only frontend needs nothing more.
+- **Hosting for the prototype (IN-02):** cost first (decision 0022), and private: local or an access-restricted preview (decision 0045); a fixture-only frontend needs nothing more.
 - **Infrastructure as code (IN-03):** match the chosen hosting (decision 0022); Bicep only for any Azure parts.
 - **CI/CD and environments (IN-04):** pipeline, pull-request previews, production demo, secrets handling and domain.
 - **Budget cap and cost alerts (IN-05):** the monthly cap and alert thresholds, plus a daily model-spend cap for later AI features.
@@ -185,19 +185,18 @@ Design work:
 ### Stage 5: Start implementation, which is the clickable prototype
 
 **Decisions:**
-- **Privacy, part 1, visitor data (SE-02):** lawful basis and a short privacy notice for visitor data handled by the site and hosting (IP addresses, browser details, host logs), whether the ICO data protection fee is due (and paying it if so), and a check of anything stored on visitors' devices, all before the demo goes public.
-- **Demo analytics and feedback (FE-05):** whether to measure demo use at all, and if so a privacy-friendly option needing no cookie banner, plus how viewers can leave feedback.
+- **Privacy, part 1 (SE-02), and demo analytics and feedback (FE-05)** move to before the first public release, because the prototype stays private (decision 0045).
 
-Build in vertical slices, each one deployed to the demo:
+Build in vertical slices, each one deployed to the private preview:
 
 1. App shell, navigation and design system, loading the fixture catalogue.
 2. Home-to-home cost differences in the engine and its generated files (BE-27, #96), before the compare and decision-impact screens.
 3. Buyer story end to end.
 4. Renter story end to end, to the same standard.
 5. Edge states, mobile layouts and an accessibility pass (WCAG 2.2 AA target).
-6. "Illustrative example" labelling, a simulated-action audit, and the public launch of the demo.
+6. "Illustrative example" labelling and a simulated-action audit. There is no public launch (decision 0045).
 
-**Gate:** both stories run end to end on the public demo, every input comes from the fixture files and every calculated number from the cost engine's generated files, and the accessibility checks pass.
+**Gate:** both stories run end to end on the private prototype, every input comes from the fixture files and every calculated number from the cost engine's generated files, and the accessibility checks pass.
 
 ### Stage 6: Validate, then build the real product
 

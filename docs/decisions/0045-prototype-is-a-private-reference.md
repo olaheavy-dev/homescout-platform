@@ -1,15 +1,15 @@
 # 0045: The clickable prototype is a private reference, not a public demo
 
-**ID:** PD-10  
+**ID:** PD-11  
 **Status:** Accepted (founder, 11 Nov 2026)  
 **Date:** 2026-11-11  
 **Stage:** 3  
-**Supersedes in part (no older text is rewritten):** doc 04 §8, the founder decision "first public showcase: clickable prototype" (also in the register's "Already decided" table), and the parts of doc 04 §9 stage 5 that make the prototype public (slice 5's public launch; the gate's "public demo").
+**Supersedes in part (no older text is rewritten):** doc 04 §8, the founder decision "first public showcase: clickable prototype" (also in the register's "Already decided" table), and the parts of doc 04 §9 stage 5 that make the prototype public (slice 6's public launch; the gate's "public demo").
 
 ## Context
 During the design flow (11 Nov 2026) the founder clarified the prototype's purpose: "the prototype is more for AI coding agents and myself to have a vision of what we are building."
 
-Asked whether it should become a public demo later, the founder chose **"Private only"**: never a public demo. The real product (stage 6) is the first public thing.
+Asked whether it should become a public demo later, the founder chose **"Private only"**: never a public demo. The real product (stage 6) is the first public thing. (Proposed decision [0046](0046-public-area-check-first.md) would make a free public area check the first public thing instead; the prototype stays private either way.)
 
 ## Decision
 - **Purpose:** the stage 5 clickable prototype is the **vision and reference build** for the founder and the AI coding agents. It's built to full design quality, because a reference is only useful if it is the real target. It's also used, privately, in the stage 6 validation sessions with buyers and renters (doc 02 §10).
@@ -33,7 +33,7 @@ The exception covers **design frames only**. The stage 5 clickable prototype sta
 
 ## Consequences
 - Doc 04 §9 stage 5:
-  - slice 5 becomes labelling, a simulated-action audit and the stage 5 gate, with no public launch;
+  - slice 6 becomes labelling, a simulated-action audit and the stage 5 gate, with no public launch;
   - the gate reads "on the private prototype".
 - The register's "Already decided" row "First public showcase" is updated to point to this record.
 - Backlog changes:

@@ -15,6 +15,7 @@
 - **Public**
   - Landing `/`: the shared promise, with buying and renting given equal weight, "Check a home", and the two example homes (buy and rent).
   - How it works `/how-it-works`
+  - Check an area `/area?postcode=…`: postcode in, the Nearby topic summary out, with Summary and Map views, a download with sources, and "Save a home here" (needs an account). No account to use it. Proposed as the first public page (decision 0046); in the prototype it runs on sample data.
   - Example home `/example`: choose the buyer or renter example, then go to My move in that story.
   - Costs and comparison `/costs-and-comparison`: explains what Vestagraph works out and what it doesn't.
   - Sign in `/sign-in`: simulated, labelled as such.
@@ -102,7 +103,8 @@
 6. **What changed:** shown when a step changed something.
 7. Below: evidence gaps, documents received and the activity preview.
 
-### Nearby (list first; the map is equal)
+### Nearby (summary first; the map is equal)
+The page opens as **one row per topic with its headline fact** (founder review, 11 Nov 2026: the full list was about four phone screens long). Tapping a topic opens its detail `/homes/[slug]/nearby/[topic]` with the full list, List and Map views, the source line and "What this doesn't tell you". The same summary is the public Check an area page. Topic order:
 1. **Your commute:** your estimate next to your limit, with no verdict until the engine produces one (#147).
 2. **Getting around:** stops, with straight-line distances.
 3. **Everyday places:** supermarket or shop, park, healthcare, police station and childcare, with gaps shown.
@@ -112,7 +114,7 @@
 7. **Sold nearby:** history, not a valuation.
 8. **Planning nearby** and **broadband.**
 
-Each section ends with its source line. The map preview sits at the top on a phone and as a sticky column on desktop.
+Each topic detail ends with its source line. On a phone the map is a view inside each topic; on desktop it is a sticky column beside the list, with the selection kept in sync.
 
 ### Costs
 1. **The monthly hero figure,** with the partial label and what's missing named.
