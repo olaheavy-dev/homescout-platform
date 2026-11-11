@@ -148,13 +148,13 @@ The ranking is a planning judgement, not a measured fact, and the founder can re
 | # | Wave | What the customer gets | Source | Importance | Ease | Notes |
 |---|---|---|---|---|---|---|
 | 1 | 0 Foundation | Correct area for every lookup | postcodes.io (postcode to coordinates, council, area codes) | Prerequisite | Easy (fair-use limit unverified) | Needed by crime, schools, stops, flood and amenities |
-| 2 | 0 Foundation | The exact home ("Flat 5, not the building") | Licensed address provider (DA-06) | Prerequisite | Hard (paid or self-hosted) | Needed for energy certificates and per-home sale history; doc 03 identity confirmation |
+| 2 | 2 (needed for per-home data only) | The exact home ("Flat 5, not the building") | Licensed address provider (DA-06) | High | Hard (paid) | Not needed for area data: the first real release uses the postcode the user types (#1), and the user confirms their own unit. Needed for energy certificates, per-home sale history and autocomplete. England has free identifiers (OS Open UPRN) but no free address list |
 | 3 | 1 | Transport stops nearby | NaPTAN | High (both) | Easy | Stops only; journey times are #13 |
 | 4 | 1 | Schools nearby (type, phase) | DfE Get Information about Schools | High (families) | Easy (downloads) | Inspection results are #10 |
 | 5 | 1 | Crime counts and the neighbourhood police team | data.police.uk | High (both) | Easy | Counts by category and month; never "safe" or "unsafe" (rule 4) |
 | 6 | 1 | Flood: live warnings and river levels, plus a link to long-term risk | EA flood monitoring, EA checker (link only) | High (buyers: mortgage and insurance) | Easy (live); long-term has no API found | Never a prediction for one property |
 | 7 | 1 | Nearby sold prices | HM Land Registry Price Paid | High (buyers) | Easy | Address use limited to price display |
-| 8 | 2 | Shops, supermarkets, parks, pharmacies, police stations | OSM extract we download and query ourselves | High (both) | Moderate | Own attributed table (ODbL); map picture from FE-03 |
+| 8 | 2 | Shops, supermarkets, parks, pharmacies, police stations, hospitals, GP surgeries, clinics, dentists (locations) | OSM extract we download and query ourselves | High (both) | Moderate | Own attributed table (ODbL); map picture from FE-03 |
 | 9 | 2 | Energy rating and likely energy cost range | Energy certificate register | High (both: bills) | Moderate (key; address restriction) | Needs #2 for UPRN matching; never actual bills |
 | 10 | 2 | School inspection results | Ofsted data | High (families) | Moderate (licence unverified) | Framework and date, no single grade (doc 02 §7) |
 | 11 | 2 | Broadband and mobile coverage | Ofcom API | Medium-high (home working) | Moderate (terms unread; mobile v1 API ends 30 Nov 2026) | Predicted availability, not a tested line |

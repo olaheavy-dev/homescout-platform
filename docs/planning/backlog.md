@@ -79,13 +79,13 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 | 43 | #97 | MCP server with the official C# SDK (read-only, local first) |
 | 44 | #98 | **Epic:** real England data (DA-03 to DA-06, SE-02 part 2) |
 | 44.1 | #126 | Foundation: data import pattern, source adapter, postcode-to-area lookup |
-| 44.2 | #127 | Foundation: exact-home address search and matching (DA-06) |
+| 44.2 | #127 | Exact-home address search and matching (DA-06), needed for per-home data only |
 | 44.3 | #128 | Transport stops nearby (NaPTAN) |
 | 44.4 | #129 | Schools nearby (DfE register) |
 | 44.5 | #130 | Crime counts and neighbourhood police team (data.police.uk) |
 | 44.6 | #131 | Flood: live warnings and river levels, plus a link to long-term risk (EA) |
 | 44.7 | #132 | Nearby sold prices (HM Land Registry) |
-| 44.8 | #133 | Shops, supermarkets, parks, pharmacies, police stations (OSM extract) |
+| 44.8 | #133 | Shops, supermarkets, parks, pharmacies, police stations, hospitals, GPs, dentists (OSM extract) |
 | 44.9 | #134 | Energy rating and energy cost range (energy certificate register) |
 | 44.10 | #135 | School inspection results (Ofsted) |
 | 44.11 | #136 | Broadband and mobile coverage (Ofcom) |
