@@ -5,7 +5,8 @@
  * workspace, and editorial typography for headlines and key moments.
  * Founder choices:
  *   - Fraunces (headlines) + Geist (UI and figures). Not Inter.
- *   - "Warmer and richer" colour: sage and clay surfaces and tinted sections are allowed.
+ *   - "Warmer and richer" colour: sage and clay surfaces and tinted sections are allowed (light theme only;
+ *     in dark, tinted panels turn neutral and only drawings sit on the slate illustration tint).
  *     Amber and red stay reserved for specific findings.
  *   - Light and dark themes both ship.
  *   - Figures never animate.
@@ -14,10 +15,10 @@
  * red #A33636).
  *
  * Contrast was checked (WCAG 2.2) on every background in each theme:
- *   - Text tokens are at least 4.5:1 on paper, surface, well, sage and clay.
+ *   - Text tokens are at least 4.5:1 on paper, surface, well, sage, clay, the illustration tint and the status backgrounds.
  *   - Meaningful non-text tokens (gap border, strong border, focus) are at least 3:1.
  *   - Hairline border tokens are decorative and exempt.
- *   - The lowest text pair is tertiary on sage: 5.08 in light, 5.12 in dark.
+ *   - The lowest text pair: light, tertiary on sage 5.08; dark, tertiary on bg-tertiary 5.40 (5.16 on the info status background).
  *
  * Fonts: Fraunces and Geist are Google Fonts under the SIL Open Font License. Record both in
  * docs/references/third-party.md when the app first loads them (stage 5).
@@ -61,7 +62,7 @@
   --color-accent-primary-hover: #0F3029;
   --color-accent-primary-active: #0A241E;
   --color-on-accent-primary: #FFFFFF;     /* 11.70 on forest */
-  --color-accent-secondary: #DCE7DD;      /* sage: secondary buttons, selected chips */
+  --color-accent-secondary: #DCE7DD;      /* sage: secondary buttons, selected chips (always with a forest border: never fill alone) */
   --color-on-accent-secondary: #153F35;
 
   /* ── Colour: status (always paired with words and an icon) ─────── */
@@ -188,6 +189,7 @@
 
   --nav-height-mobile: 4.5rem;
   --demo-timeline-bg: var(--color-bg-tint-clay);  /* visibly not product chrome */
+  --demo-timeline-border: transparent;
 }
 
 /* Hero figures grow on larger screens */
@@ -195,11 +197,13 @@
   :root { --hero-figure-size: var(--font-size-3xl); }
 }
 
-/* ── Dark theme: warm charcoal, not inverted ─────────────────────── */
+/* ── Dark theme: near-neutral charcoal, not inverted ────────────── */
 [data-theme="dark"] {
   color-scheme: dark;
-  /* Founder, 11 Nov 2026: neutral layers, one accent (mint), one complement (slate, Option B), amber only for warnings.
-     Contrast (WCAG 2.2): text-tertiary 5.40 at worst (on bg-tertiary); complement 7.59 at worst (on its illustration tint); accent text 8.67 at worst. */
+  /* Founder, 11 Nov 2026: near-neutral charcoal layers, one accent (mint), one complement (slate blue, chosen over clay and
+     brass on the design canvas), amber only for warnings.
+     Contrast (WCAG 2.2), on the plain surfaces (bg-primary, secondary, tertiary) and tints: text-tertiary 5.40 at worst,
+     complement 6.92 at worst (on bg-tertiary), accent text 8.67 at worst. Including the status backgrounds: 5.16, 6.63 and 8.29. */
 
   --color-bg-primary: #181816;
   --color-bg-secondary: #21201D;
@@ -214,7 +218,7 @@
   --color-text-tertiary: #A39D90;  /* 5.40 at worst */
   --color-text-inverse: #181816;
   --color-text-link: #9FD3BA;
-  --color-text-clay: #93B8CE;      /* the complement in dark is slate (Option B) */
+  --color-text-clay: #93B8CE;      /* kept as an alias of --color-accent-complement for now (slate in dark); rename later */
   --color-accent-complement: #93B8CE;  /* slate: 8.46 on the page, 7.59 on its tint */
 
   --color-border-primary: #33322E;
@@ -223,12 +227,12 @@
   --color-border-gap: #7C786E;     /* 3.70 on cards */
   --color-border-focus: #9FD3BA;
 
-  --color-accent-primary: #9FD3BA;       /* mint: actions, links, selection */
+  --color-accent-primary: #9FD3BA;       /* mint: actions, links, and the border that marks a selection (9.7 on cards) */
   --color-accent-primary-hover: #B5E0CB;
   --color-accent-primary-active: #8CCBAE;
   --color-on-accent-primary: #10201A;    /* 10.05 on accent */
-  --color-accent-secondary: #2A2925;
-  --color-on-accent-secondary: #ECE8DF;
+  --color-accent-secondary: #20342C;     /* faint mint fill for selected chips (1.23 on cards, so the mint border carries the state) */
+  --color-on-accent-secondary: #CDE6D8;  /* 10.01 on the fill */
 
   --color-status-success: #9FD3BA;
   --color-status-success-bg: #24231F;
@@ -253,6 +257,10 @@
   --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
 
   --texture-paper-opacity: 0.04;  /* light grain on dark, behind drawings only */
+
+  /* The demo strip keeps a distinct look in dark: slate tint plus a slate outline (7.59) */
+  --demo-timeline-bg: var(--color-bg-tint-illustration);
+  --demo-timeline-border: var(--color-accent-complement);
 }
 
 /* The system preference applies unless the user chose light explicitly */
@@ -266,7 +274,7 @@
     --color-border-primary: #33322E; --color-border-secondary: #2A2925; --color-border-strong: #7C786E;
     --color-border-gap: #7C786E; --color-border-focus: #9FD3BA;
     --color-accent-primary: #9FD3BA; --color-accent-primary-hover: #B5E0CB; --color-accent-primary-active: #8CCBAE;
-    --color-on-accent-primary: #10201A; --color-accent-secondary: #2A2925; --color-on-accent-secondary: #ECE8DF;
+    --color-on-accent-primary: #10201A; --color-accent-secondary: #20342C; --color-on-accent-secondary: #CDE6D8;
     --color-status-success: #9FD3BA; --color-status-success-bg: #24231F;
     --color-status-warning: #E6B66C; --color-status-warning-bg: #332A1A;
     --color-status-error: #F0948B; --color-status-error-bg: #3A2220;
@@ -277,6 +285,7 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30); --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
     --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
     --texture-paper-opacity: 0.04;
+    --demo-timeline-bg: var(--color-bg-tint-illustration); --demo-timeline-border: var(--color-accent-complement);
   }
 }
 

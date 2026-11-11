@@ -27,7 +27,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **H4 Desktop split and dark theme:**
   - (Nearby desktop moved to H6, the immersive map with a floating list; the earlier 2D split frame was removed.)
   - Compare with B1 and B2 aligned and no winner.
-  - H1 repeated in the warm charcoal dark theme.
+  - H1 repeated in the near-neutral charcoal dark theme.
 
   _Depends on: H1–H3._
 - [ ] **H6 Immersive map** (founder, 11 Nov 2026): a 3D switch (tilt and approximate building heights), category filters with icons, a legend, a hover card on desktop and a tap card on phones, all on the sample map. Crime and flood stay off the map.
@@ -35,11 +35,11 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - a labelled postcode box with hint text and "Not ready to type? Try an example";
   - a "Data from" strip with source names only (no logos, which could read as endorsement);
   - "How it works" as three illustrated steps;
-  - "How to read a result": a real Schools card with four numbered callouts, replacing generic feature columns;
-  - "Honest by design" as four illustrated cards, each with a real snippet;
+  - "How to read a result": a Schools card from the sample data (labelled Sample) with four numbered callouts, replacing generic feature columns;
+  - "Honest by design" as four illustrated cards, each with a sample snippet;
   - an illustrated "Coming next" panel and a short FAQ beside the brand mark;
   - no testimonials, counters, recent searches or pricing teaser (rule 1, decision 0014, PD-10).
-- [ ] **Brand mark** (founder chose concept C, Contour home): primary and compact marks, lockups in both themes and one colour, the app icon, the browser icon, and clear space. Trade-mark clearance (0009) and the asset register first.
+- [ ] **Brand mark** (Contour home, the founder's choice of four drawn concepts): primary and compact marks, lockups in both themes and one colour, the app icon, the browser icon, and clear space. Trade-mark clearance (0009) and the asset register first.
 - [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, and saving shown only as "Coming next". No commute row (it needs the household's own destination). States: loading, invalid format, postcode not found, outside England, one source unavailable (the frame shows three; loading and not found are added in the build).
 - [ ] **H8 Area summary export** (designed for A4; the sample runs to three pages): made in the browser and saved from the print dialog ("Print or save as PDF"), a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line.
 
