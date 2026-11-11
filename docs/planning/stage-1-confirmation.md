@@ -104,7 +104,8 @@ Buyers and renters with equal weight · England first · Portfolio and learning 
 
 ### PD-08 Name shown on the public demo
 *(Written when the code name was HomeScout; resolved by [0044](../decisions/0044-public-name-vestagraph.md).)*
-**Context:** The repo and demo are public, so the demo is a public use of a name. "HomeScout" overlapped with existing services (HomeScout UK, a London rental service with an adjacent audience; HomeScout Ireland), and the brand isn't cleared.  
+
+**Context:** The repo and demo are public, so the demo is a public use of a name. "HomeScout" overlaps with existing services (HomeScout UK, a London rental service with an adjacent audience; HomeScout Ireland), and the brand isn't cleared.  
 **Recommendation:** Keep "HomeScout" as the repository and code name, but label the demo clearly as a portfolio concept ("HomeScout — portfolio concept, not a live service") and keep the name configurable in one place.  
 **Alternatives:** Use a neutral placeholder name on the demo now (safest, less memorable) · pick and clear a real brand before the demo (slows stage 5).
 

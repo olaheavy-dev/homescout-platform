@@ -1,4 +1,4 @@
-# Vestagraph Copilot (written as "HomeScout Copilot"; renamed by decision 0044)
+# HomeScout Copilot (former working title; public name Vestagraph, decision 0044)
 ## Product Brief and Experience Direction
 **Version:** 1.1 — Revised positioning and competitor landscape  
 **Date:** 23 October 2026  
@@ -12,7 +12,7 @@
 The UK-wide line above describes the original ambition. Proposed launch-facing copy must state **England**, with other UK nations shown as not yet covered.
 
 ## 1. Executive summary
-Vestagraph Copilot (**working project name when this brief was written, then "HomeScout Copilot"; public name Vestagraph since decision 0044**) is a UK-only evidence-led property decision workspace for people evaluating a home to rent or buy. It consolidates publicly available information, correctly licensed data, user-supplied property materials, transparent financial modelling and AI-assisted investigation into one coherent experience.
+HomeScout Copilot (**working project name when this brief was written; public name Vestagraph since decision 0044**) is a UK-only evidence-led property decision workspace for people evaluating a home to rent or buy. It consolidates publicly available information, correctly licensed data, user-supplied property materials, transparent financial modelling and AI-assisted investigation into one coherent experience.
 
 The platform is **not** another listing marketplace, a substitute for conveyancing or surveying, a mortgage adviser, or a general-purpose chat application. Its principal object is a **living property decision record** (consumer term: **home record**; see the glossary in `03-prototype-and-image-direction.md` §3): a persistent, versioned account of what is known, estimated, missing or conflicting; how it affects a particular household; which questions remain open; who can answer them; and what changed between decision checkpoints.
 

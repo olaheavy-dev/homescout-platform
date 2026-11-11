@@ -27,16 +27,18 @@ The prototype must demonstrate a change in understanding, not simply display a l
 
 **These images are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo** (provenance in `docs/assets/README.md`). They are stored in `docs/assets/concepts/`, and image numbers are the filename prefixes. They are visual concepts, not verified property reports. Two other numbering schemes exist (the brief's screen families and the contact sheet), and the files were renamed from their original export names on 23 October 2026, so use this mapping:
 
+**Former name in the images.** The concept images show the former name HomeScout (image 8 shows the HomeScout logo and "HomeScout Plus"). Do not reuse them as branding; the public name is Vestagraph (decision 0044).
+
 | Image | File | Original export name | Screen | Brief §12 family | Contact sheet |
 |---|---|---|---|---|---|
-| 1 | `01-public-homepage.png` | Vestagraph Copilot Property Intelligence-1.png | Public homepage | 1 | 01 |
-| 2 | `02-property-passport.png` | Vestagraph Property Intelligence Dashboard-2.png | Property passport | 2 | 02 |
-| 3 | `03-copilot-investigation.png` | Vestagraph Property Intelligence Dashboard-3.png | Copilot investigation | 5 | 05 |
-| 4 | `04-neighbourhood-explorer.png` | Vestagraph Neighborhood Dashboard-4.png | Neighbourhood explorer | 3 | 03 |
-| 5 | `05-comparison-and-costs.png` | Vestagraph Property Comparison Dashboard-5.png | Comparison and costs | 4 | 04 |
-| 6 | `06-document-review.png` | Vestagraph Lease Review Dashboard-6.png | Document review | 6 | 06 |
-| 7 | `07-workspace.png` | Vestagraph Property Dashboard-7.png | Workspace | 7 | not shown |
-| 8 | `08-alternative-workspace.png` | Vestagraph Property Insights Dashboard-8.png | Alternative workspace | 7 (variant) | 07 |
+| 1 | `01-public-homepage.png` | HomeScout Copilot Property Intelligence-1.png | Public homepage | 1 | 01 |
+| 2 | `02-property-passport.png` | HomeScout Property Intelligence Dashboard-2.png | Property passport | 2 | 02 |
+| 3 | `03-copilot-investigation.png` | HomeScout Property Intelligence Dashboard-3.png | Copilot investigation | 5 | 05 |
+| 4 | `04-neighbourhood-explorer.png` | HomeScout Neighborhood Dashboard-4.png | Neighbourhood explorer | 3 | 03 |
+| 5 | `05-comparison-and-costs.png` | HomeScout Property Comparison Dashboard-5.png | Comparison and costs | 4 | 04 |
+| 6 | `06-document-review.png` | HomeScout Lease Review Dashboard-6.png | Document review | 6 | 06 |
+| 7 | `07-workspace.png` | HomeScout Property Dashboard-7.png | Workspace | 7 | not shown |
+| 8 | `08-alternative-workspace.png` | HomeScout Property Insights Dashboard-8.png | Alternative workspace | 7 (variant) | 07 |
 
 `contact-sheet.jpeg` (originally `abode_copilot.jpeg`) is a contact sheet of images **1, 2, 4, 5, 3, 6 and 8**, in that order. Its final tile is image 8; image 7 is absent. It is an overview only. Use the image numbers above in reviews.
 
@@ -49,7 +51,7 @@ The prototype must demonstrate a change in understanding, not simply display a l
 | **5 — Comparison and costs** | Aligned homes; shared assumptions; understandable stacked monthly costs | Remove automatic winner numbering and unexplained confidence dots. Add renter-native comparisons, upfront cash, uncertainty ranges and source links. Historical school grades need framework/date context. Distinguish monthly cash outgoings from longer-term economic cost. “Within entered budget” must state exclusions and is not lending approval. **The mortgage bars do not match the screen's own inputs** (deposit, rate, term), so the "all three within budget" message cannot be trusted. This review does not repeat recalculated figures: calculated figures come only from the cost engine (`AGENTS.md` rule 2), and the concept image is not a fixture. Generate every figure from the deterministic cost engine, never by hand or image generation. |
 | **6 — Document review** | Original document alongside findings; page-specific references; multiple document types | Show both sides of a conflict and align reporting periods. A historic estimate and later actual charges do not alone prove contradictory current charges unless they cover the same period and scope. The visible ground-rent clauses describe a 25-year cadence and the greater of an RPI increase or 1% per annum compounded, so the mechanism is not wholly absent. The excerpt does not establish every definition or the first review date: any date worked out from the 25-year cadence is only conditional on the full lease anchoring reviews to a stated start date. Do not present that assumption as a confirmed date; seek the relevant definitions, review schedule and any variations. Recompute time-dependent lease wording from the snapshot date: the "years remaining" shown does not match the lease dates and the 23 October 2026 snapshot. The cost engine does not calculate remaining lease term in this version, so any such figure is **not calculated** until a rule for it is added. Missing evidence should not automatically mean low severity. Clarify plan state: the screenshot simultaneously presents Plus and a free-plan account. |
 | **7 — Workspace** | Saved homes; viewing questions; recent activity | Replace arbitrary investigation percentages with specific open matters. Bring the next relevant action above generic totals and city photography. “Report updated” should explain the actual change and its effect. Give renter homes equal visual space: all four saved homes show purchase prices and none shows rent. Replace the "10 Downing Street" search placeholder with a synthetic address. |
-| **8 — Alternative workspace** | Calmer light navigation; clearer property-card action; readable hierarchy | Use this as the starting shell, with fewer dashboard tiles. Remove gold crowns, oversized decorative icons and repeated Copilot promotions. “100% complete” must not imply complete due diligence. Separate investigation status from the household's decision status. The paid tier is called "Vestagraph Plus" here and "Copilot Plus" elsewhere; neither is settled (see glossary). "28 Victoria Park Road" is labelled a flat but pictured as a terrace. "17 Willow Lane" appears in activity but not among saved homes. An area-wide asking-price change is presented as a property alert. |
+| **8 — Alternative workspace** | Calmer light navigation; clearer property-card action; readable hierarchy | Use this as the starting shell, with fewer dashboard tiles. Remove gold crowns, oversized decorative icons and repeated Copilot promotions. “100% complete” must not imply complete due diligence. Separate investigation status from the household's decision status. The paid tier is called "HomeScout Plus" here and "Copilot Plus" elsewhere; neither is settled (see glossary). "28 Victoria Park Road" is labelled a flat but pictured as a terrace. "17 Willow Lane" appears in activity but not among saved homes. An area-wide asking-price change is presented as a property alert. |
 
 ### Cross-image consistency fixes
 
