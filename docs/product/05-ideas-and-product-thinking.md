@@ -22,7 +22,9 @@ Use these eleven questions on every new idea, in this order. Question 10 is a ga
 8. **AI explains, drafts and fills in; it never decides.** Following 0004 (and 0030 for extraction):
    - good uses: plain-language explanations of a cited source, drafts the user sends themselves, turning typed sentences into form inputs the user confirms;
    - never: calculating money or deadlines (the cost engine and cited rule tables do that), marking a step done, judging a home or area, filling a gap with a guess;
-   - build each feature on rules and sources first; AI is an optional layer, and each use is checked for running cost and privacy (the provider sees what the user typed).
+   - **think AI at every step** (founder, 11 Nov 2026): for each step of the journey, ask where AI could explain, read, draft or connect (see "AI at every step" in part 2);
+   - AI channels (an MCP server, a chat panel) are common elsewhere, so they count as a step beyond only when they carry what's distinctive: sourced answers with limits and a "not known" state, and the user's own question record;
+   - build each feature on rules and sources first, so the product works fully without AI; AI is a layer, and each use is checked for running cost and privacy (the provider sees what the user typed).
 9. **Smallest useful slice.** Find the version that is achievable now and still useful; say plainly what is left out and why.
 10. **Go clearly beyond what's offered** (founder, 11 Nov 2026: "make sure all our ideas go reasonable beyond what is being offered at the moment by others"). For each idea, name who already offers something similar, from a checked public page with its date (rule 1; doc 02 §3 and `.design/prototype/research/related-products.md` first), and say what ours does that theirs doesn't. The step beyond should strengthen at least one of doc 02 §3's four possible differentiators:
     1. a record of unresolved questions per home (evidence, who should answer, the reply, what's still uncertain);
@@ -30,7 +32,7 @@ Use these eleven questions on every new idea, in this order. Question 10 is a ga
     3. renting and buying served equally well;
     4. a calm experience where the next useful step is obvious.
 
-    If the only difference is looks, or nothing is different, rework the idea or drop it. These are advantages in execution, not exclusivity (doc 02 §3).
+    If the only difference is looks, or nothing is different, rework the idea or drop it. These are advantages in execution, not exclusivity (doc 02 §3). This applies to new ideas; it doesn't reopen accepted or proposed records (such as 0046 and 0047), which change only through a new record.
 11. **Weigh it.** Usefulness, effort, and risk (privacy, licence, running cost). Usefulness is our judgement until the validation study (doc 02 §10) tests it with real people. Anything on the founder-only list in `AGENTS.md` ("When merging") is the founder's decision.
 
 ## Part 2: Ideas to explore
@@ -41,11 +43,11 @@ Every idea was checked against what UK products publicly offer on 11 Nov 2026: [
 
 | Idea | What it is | Closest offerings | Beyond others | Differentiator | Reuses | To check or needs |
 |---|---|---|---|---|---|---|
-| **Questions from gaps, tracked per home** (c) | Every gap on a home or area ("this listing doesn't give the lease length", "no current flood warning isn't the same as no risk") offers "Ask about this": a question built by rules from a cited source, tracked on that home until answered | HomeBuyerCheck's paid AI-written seller questions; CheckNext's buyer viewing checklist | Built by rules, not AI guesses; renter and buyer versions; each question tracked to an answer on the home; free | 1, 2 and 3 | Gap logic, Questions (#169), the area check | The cited source for which information a listing should give (for example the National Trading Standards material information guidance, to be confirmed) |
-| **"Go and check in person"** (h) | Each source's "doesn't establish" note becomes a visit task for that home: traffic at the school run, phone signal indoors, the walk after dark; the result can be saved as evidence or a question | Generic viewing checklists everywhere | Generated from the limits of the data for this home, not a generic list | 1 and 4 | `doesNotEstablish` text, Questions | Wording that never implies a judgement |
-| **Move-in checklist, dated and tailored** (b, with e and f) | Real dates from the user's move date; different steps for renters (deposit protection across the three schemes, with "not found" becoming a question for the landlord) and buyers; the user's actual council links; a flood warning sign-up nudge | Fixed relative checklists; a paid service that notifies organisations for you | Dated from the real move, tailored by tenure and council, free with no account | 3 and 4 | Postcode lookup (#126), Ofcom (#136), export | Proposed in [0047](../decisions/0047-move-in-checklist.md); research #177. Deposit rules from a cited table the founder merges; England only (rule 6) |
+| **Questions from gaps, tracked per home** (c) | Every gap on a home or area ("this listing doesn't give the lease length", "no current flood warning isn't the same as no risk") offers "Ask about this": a question built by rules from a cited source, tracked on that home until answered | HomeBuyerCheck's paid AI-written seller questions; CheckNext's per-listing viewing checklist (buyer-focused wording) | Built by rules, not AI guesses; renter and buyer versions; each question tracked to an answer on the home; free | 1, 2 and 3 | Gap logic, Questions (#169), the area check | The cited source for which information a listing should give (for example the National Trading Standards material information guidance, to be confirmed) |
+| **"Go and check in person"** (h) | Each source's "doesn't establish" note becomes a visit task for that home: traffic at the school run, phone signal indoors, the walk after dark; the result can be saved as evidence or a question | Generic viewing checklists; CheckNext generates one per listing | Built from the limits of each data source for this home (its "doesn't establish" notes), not from the listing text | 1 and 4 | `doesNotEstablish` text, Questions | Wording that never implies a judgement |
+| **Move-in checklist, dated and tailored** (b, with e and f) | Real dates from the user's move date; different steps for renters (links to each deposit protection scheme's own checker, where the user searches themselves) and buyers; the user's actual council links; a flood warning sign-up nudge | Fixed relative checklists; a paid service that notifies organisations for you | Dated from the real move, tailored by tenure and council, free with no account | 3 and 4 | Postcode lookup (#126), Ofcom (#136), export | Proposed in [0047](../decisions/0047-move-in-checklist.md); research #177. Deposit rules from a cited table the founder merges; England only (rule 6). Any automated scheme lookup would need 0014, 0028 and 0029 review; tracking a result as a question needs a saved home (SE-01) |
 | **One watch feed per saved home** (n) | Planning applications, flood warnings and recent sales near a saved home in one feed, each change turned into evidence or a question on that home | Planning, sales and flood alerts each exist separately | Combined per home, and each change lands as evidence or a question | 1 and 2 | Sources #139, #131, #132; change monitoring (doc 04 roadmap step 8, epic #105) | Accounts (SE-01), notification consent, running cost |
-| **Travel cost in the monthly cost** (k) | The user's season ticket or fuel estimate becomes a line in the home's monthly real cost, used by Compare | A couples app shows a combined monthly commute cost beside its affordability calculator | Inside one deterministic, sourced monthly total per home that comparisons use; renters and buyers alike. Narrower than first thought | 2 and 3 | Cost engine (a user input) | Engine support for the new line |
+| **Travel cost in the monthly cost** (k) | The user's season ticket or fuel estimate becomes a line in the home's monthly real cost, used by Compare | A couples app shows a combined monthly commute cost and has an affordability calculator | Inside one deterministic, sourced monthly total per home that comparisons use; renters and buyers alike. Narrower than first thought | 2 and 3 | Cost engine (a user input) | Engine support for the new line |
 
 ### Ideas kept only with their step beyond
 
@@ -55,9 +57,28 @@ Every idea was checked against what UK products publicly offer on 11 Nov 2026: [
 | **Walk mode during a viewing** (j) | Portal "near me" listing search; area apps that show demographics | Sourced facts linked to that home's viewing notes, with location kept on the phone (or treated like a postcode under 0046) | Battery and accuracy |
 | **A day in your life** (m) | Travel-time search on portals; routine tools reported but unverified | A timeline from the user's own times for one home, never invented journeys | Weak evidence either way; check before building |
 | **Comments on evidence for the household** (p) | Shared shortlists with reactions on portals and couples apps | Comments attached to specific evidence and open questions, ending in a recorded household decision (builds on doc 02 §5 F's sharing with explicit permissions) | Accounts, privacy of shared notes |
-| **Area facts inside AI assistants** (q) | A portal's ChatGPT app (listings only); several UK property MCP servers | Answers carrying source, date, limits and a "not known" state (0037, #117). Crowding quickly | Already in the MCP spec work |
+| **Vestagraph inside AI assistants (MCP)** (q) | A portal's ChatGPT app for property discovery; several UK property MCP servers (unverified) | Answers carrying source, date, limits and a "not known" state, and the user's own record: the home's cost from the engine, its open questions, and with the user's confirmation a new question added to the home (0037, 0038, #117). None found that works a tracked question record. Crowding quickly | Already in the MCP spec work; account-linked tools need 0038 |
+| **Chat panel about a home** (0004) | AI assistants on listings and paid AI verdicts | Answers only from that home's evidence with every claim linked; says "not known"; never calculates or gives a verdict; a gap in the conversation becomes an "Ask about this" question | Evaluation set (AI-03); already decided in 0004 |
 | **Plain-language explainers** (s) | AI listing assistants and AI verdicts | Only rewrites a cited source and links it; adds no facts and no verdict (0004) | Evaluation set (AI-03) |
 | **Type instead of a form** | Not checked | The user confirms before anything runs (0004) | Not checked against competitors |
+
+### AI at every step (decision 0004)
+
+AI explains, reads, drafts and connects at every step; the rules and the cost engine decide. Every use is optional, confirmed by the user where it changes anything, and checked for running cost and privacy. In the prototype, AI replies are scripted and labelled simulated (0004).
+
+| Step | Where AI helps | Never |
+|---|---|---|
+| Choosing where to look | Typed sentences turned into search inputs the user confirms | Recommending an area |
+| Checking an area | Plain-language explanation of any sourced fact; a gap turned into a suggested question | Calling an area safe or good |
+| Checking a home | Reading the listing details the user pasted and flagging what's missing against a cited list | Fetching listings (0028) |
+| Costs | Explaining a figure from the engine's working | Calculating any figure |
+| Documents | Dates and figures from a lease or pack, with page citations, for the user to confirm (0030) | Accepting a value without confirmation |
+| Questions | Drafting the question; checking whether a reply answers it and what's still uncertain | Marking it answered without the user |
+| Viewing | A quick note or photo turned into a question on the home | Diagnosing defects from photos |
+| Compare | Explaining a trade-off between homes | Picking a winner or weighting priorities silently (doc 02 §5 D) |
+| What changed | A one-sentence reason with its source | Inventing a cause |
+| Moving in | Explaining checklist items in plain language | Setting deadlines (cited rule tables do) |
+| Anywhere, through MCP | The same tools inside ChatGPT or Claude (0037) | Acting without the user confirming |
 
 ### Common elsewhere: not built on their own
 
@@ -65,7 +86,6 @@ These are well covered by free or established products. Where we still show them
 
 | Idea | Where it stands |
 |---|---|
-| **The area check itself** (a) | Decided as the public front door ([0046](../decisions/0046-public-area-check-first.md)). Competitively it's common, so its gaps must lead into "Ask about this" and "Go and check in person" |
 | **Compare two postcodes** (d) | Only inside Compare for homes, not as a separate tool |
 | **Environment pack** (i) | Facts with limits where sources allow (air quality assessed; radon as a link; noise to check), feeding "Go and check in person"; never a score |
 | **Area history** (o) | Not planned on its own; dated series could support the watch feed later |
@@ -77,6 +97,7 @@ These are well covered by free or established products. Where we still show them
 
 | Feature | Where it is planned |
 |---|---|
+| The public area check (a) | Decided in [0046](../decisions/0046-public-area-check-first.md) (stage 5b, no accounts). Competitively common; once questions and saved homes exist, its gaps could lead into "Ask about this" and "Go and check in person" |
 | Upfront cash estimate | Core scope (doc 02 §5 B); the cost engine's `upfront` figures, with stamp duty not yet calculated |
 | Energy rating lookup | #134 (stage 6); the energy certificate register is assessed in `data-sources.md` and needs exact-home matching |
 | Viewing checklist | The viewing companion, doc 02 §5 A |
@@ -86,7 +107,7 @@ These are well covered by free or established products. Where we still show them
 ### Current leaning (to revisit at each stage gate)
 
 1. **Questions from gaps, tracked per home:** the clearest step beyond, and it builds the record that doc 02 §3 names as the main differentiator.
-2. **"Go and check in person":** cheap, and none was found in the competitor check (every checklist seen was generic).
+2. **"Go and check in person":** cheap; the closest offering builds a checklist from the listing, while ours comes from the limits of each data source for this home.
 3. **Move-in checklist, dated and tailored:** proposed in 0047.
 4. **One watch feed per saved home,** once accounts exist.
 5. **Travel cost in the monthly cost.**
