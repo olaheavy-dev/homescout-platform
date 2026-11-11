@@ -6,6 +6,7 @@
 docs/
 ├── README.md            this index
 ├── product/             the main product and delivery documents (numbered, read in order)
+├── architecture/        C4 context and container diagrams (Mermaid)
 ├── assets/              the asset register and media files
 │   └── concepts/        AI-generated concept images (discussion only)
 ├── decisions/           one record per decision, plus the register
@@ -14,7 +15,7 @@ docs/
 └── reviews/             dated document reviews and audits
 ```
 
-Planned folders, added when their stage starts: `.design/<feature>/` at the repository root for design-skill outputs (brief, information architecture, tasks, reviews), a deliberate exception to this structure (decision 0031), `docs/architecture/` for C4 diagrams in Mermaid (stage 2, decision 0027), `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
+Planned folders, added when their stage starts: `.design/<feature>/` at the repository root for design-skill outputs (brief, information architecture, tasks, reviews), a deliberate exception to this structure (decision 0031), `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
 
 ## What each document is for
 
@@ -24,6 +25,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [02 Research and direction](product/02-research-and-direction.md) | Product decisions, scope, free/paid split, data feasibility | Current |
 | [03 Prototype and image direction](product/03-prototype-and-image-direction.md) | Prototype behaviour, screens, visual direction, image review | Current |
 | [04 Project goals and delivery](product/04-project-goals-and-delivery.md) | Goals, roadmap (§9), ways-of-working summary (§10; rules in `AGENTS.md`), budget, commercial safeguards | Current |
+| [Architecture (C4 diagrams)](architecture/README.md) | The system context and container diagrams: what exists today and what is planned (decision 0027) | Current |
 | [Decision register](decisions/README.md) | Every decision's status and record | Current |
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
