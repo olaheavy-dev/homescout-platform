@@ -7,7 +7,7 @@ Nothing in part 2's idea tables is in scope or scheduled. An idea becomes work o
 
 ## Part 1: How we think about new features
 
-Use these questions on every new idea, in this order. They come from the work on the public area check (0046) and the move-in checklist proposal (0047). They are current product thinking, not new rules: anything that would change a rule goes through a decision record.
+Use these eleven questions on every new idea, in this order. Question 10 is a gate: an idea that can't pass it is reworked or dropped. They come from the work on the public area check (0046) and the move-in checklist proposal (0047). They are current product thinking, not new rules: anything that would change a rule goes through a decision record.
 
 1. **Whose moment is it?** Name the person (buyer, renter, household) and the moment in their move: choosing where to look, checking a home or area, deciding, moving in. The person brings the address or listing details themselves (doc 02 §1); we never fetch listings (0028).
 2. **Free official sources first.** What open or official source answers it, under what licence, at what detail (postcode or address), and at what cost and limits? Check `docs/references/data-sources.md` first; unknowns go into a research issue, never into the product (rules 1 and 3).
@@ -24,61 +24,54 @@ Use these questions on every new idea, in this order. They come from the work on
    - never: calculating money or deadlines (the cost engine and cited rule tables do that), marking a step done, judging a home or area, filling a gap with a guess;
    - build each feature on rules and sources first; AI is an optional layer, and each use is checked for running cost and privacy (the provider sees what the user typed).
 9. **Smallest useful slice.** Find the version that is achievable now and still useful; say plainly what is left out and why.
-10. **Weigh it.** Usefulness, uniqueness (checked against competitors, doc 02 §3, never assumed), effort, and risk (privacy, licence, running cost). Anything on the founder-only list in `AGENTS.md` ("When merging") is the founder's decision.
+10. **Go clearly beyond what's offered** (founder, 11 Nov 2026: "make sure all our ideas go reasonable beyond what is being offered at the moment by others"). For each idea, name who already offers something similar, from a checked public page with its date (rule 1; doc 02 §3 and `.design/prototype/research/related-products.md` first), and say what ours does that theirs doesn't. The step beyond should strengthen at least one of doc 02 §3's four possible differentiators:
+    1. a record of unresolved questions per home (evidence, who should answer, the reply, what's still uncertain);
+    2. evidence that changes the household's decision (a corrected cost updates the comparison; a missing document stays visible);
+    3. renting and buying served equally well;
+    4. a calm experience where the next useful step is obvious.
+
+    If the only difference is looks, or nothing is different, rework the idea or drop it. These are advantages in execution, not exclusivity (doc 02 §3).
+11. **Weigh it.** Usefulness, effort, and risk (privacy, licence, running cost). Usefulness is our judgement until the validation study (doc 02 §10) tests it with real people. Anything on the founder-only list in `AGENTS.md` ("When merging") is the founder's decision.
 
 ## Part 2: Ideas to explore
 
-Grouped by theme. "Reuses" names existing or planned parts; "To check or needs" names what must be confirmed first.
+Every idea was checked against what UK products publicly offer on 11 Nov 2026: [competitor check of the doc 05 ideas](../reviews/2026-11-11-competitor-check-of-ideas.md) (with which claims were seen on a product's own page and which only in search results). "Beyond others" says what ours would do that the similar offerings didn't appear to; "Differentiator" names the doc 02 §3 point it strengthens (question 10). Letters in brackets match the review.
 
-### Small free tools (browser first, no account)
+### Ideas that go beyond what's offered (lead)
 
-| Idea | What it is | Reuses | To check or needs |
+| Idea | What it is | Closest offerings | Beyond others | Differentiator | Reuses | To check or needs |
+|---|---|---|---|---|---|---|
+| **Questions from gaps, tracked per home** (c) | Every gap on a home or area ("this listing doesn't give the lease length", "no current flood warning isn't the same as no risk") offers "Ask about this": a question built by rules from a cited source, tracked on that home until answered | HomeBuyerCheck's paid AI-written seller questions; CheckNext's buyer viewing checklist | Built by rules, not AI guesses; renter and buyer versions; each question tracked to an answer on the home; free | 1, 2 and 3 | Gap logic, Questions (#169), the area check | The cited source for which information a listing should give (for example the National Trading Standards material information guidance, to be confirmed) |
+| **"Go and check in person"** (h) | Each source's "doesn't establish" note becomes a visit task for that home: traffic at the school run, phone signal indoors, the walk after dark; the result can be saved as evidence or a question | Generic viewing checklists everywhere | Generated from the limits of the data for this home, not a generic list | 1 and 4 | `doesNotEstablish` text, Questions | Wording that never implies a judgement |
+| **Move-in checklist, dated and tailored** (b, with e and f) | Real dates from the user's move date; different steps for renters (deposit protection across the three schemes, with "not found" becoming a question for the landlord) and buyers; the user's actual council links; a flood warning sign-up nudge | Fixed relative checklists; a paid service that notifies organisations for you | Dated from the real move, tailored by tenure and council, free with no account | 3 and 4 | Postcode lookup (#126), Ofcom (#136), export | Proposed in [0047](../decisions/0047-move-in-checklist.md); research #177. Deposit rules from a cited table the founder merges; England only (rule 6) |
+| **One watch feed per saved home** (n) | Planning applications, flood warnings and recent sales near a saved home in one feed, each change turned into evidence or a question on that home | Planning, sales and flood alerts each exist separately | Combined per home, and each change lands as evidence or a question | 1 and 2 | Sources #139, #131, #132; change monitoring (doc 04 roadmap step 8, epic #105) | Accounts (SE-01), notification consent, running cost |
+| **Travel cost in the monthly cost** (k) | The user's season ticket or fuel estimate becomes a line in the home's monthly real cost, used by Compare | A couples app shows a combined monthly commute cost beside its affordability calculator | Inside one deterministic, sourced monthly total per home that comparisons use; renters and buyers alike. Narrower than first thought | 2 and 3 | Cost engine (a user input) | Engine support for the new line |
+
+### Ideas kept only with their step beyond
+
+| Idea | Closest offerings | The step beyond it must have | To check or needs |
 |---|---|---|---|
-| **Move-in checklist** | A checklist timed to the move date, tailored by postcode, tenure and a tick-list | Postcode lookup (#126), Ofcom source (#136), export | Proposed in [0047](../decisions/0047-move-in-checklist.md); research #177 |
-| **Questions to ask the agent** | From what the user enters about a listing, a ready-to-send list of questions for what it leaves out (council tax band, service charge, lease length, energy rating) | Gap logic, Questions (#169) | Which gaps apply to which tenure (cited); a free, no-account version of doc 02 §5 E |
-| **Compare two postcodes** | Two area checks side by side (near work, near family) | The area check (B6a) | None beyond the area check |
-| **Renter's deposit check** | Links to the government-approved deposit protection schemes, plus deposit rules from a cited table | Rule tables (rule 3) | England only; other nations "not yet covered" (rule 6). Legal source and effective dates; the founder merges the rule table |
-| **Flood alerts for your new home** | A link to the Environment Agency's free flood warning sign-up near a warning area | Flood source (#131) | The current sign-up page and its terms |
+| **Sunlight on the 3D map** (g) | General sun-position apps; a US portal integration | Built into a UK home's 3D map: roughly where shadows fall on the building and garden, and when, labelled approximate (no data on rooms or windows). Mostly delight; strengthens 4 only | Building heights (B7) |
+| **Walk mode during a viewing** (j) | Portal "near me" listing search; area apps that show demographics | Sourced facts linked to that home's viewing notes, with location kept on the phone (or treated like a postcode under 0046) | Battery and accuracy |
+| **A day in your life** (m) | Travel-time search on portals; routine tools reported but unverified | A timeline from the user's own times for one home, never invented journeys | Weak evidence either way; check before building |
+| **Comments on evidence for the household** (p) | Shared shortlists with reactions on portals and couples apps | Comments attached to specific evidence and open questions, ending in a recorded household decision (builds on doc 02 §5 F's sharing with explicit permissions) | Accounts, privacy of shared notes |
+| **Area facts inside AI assistants** (q) | A portal's ChatGPT app (listings only); several UK property MCP servers | Answers carrying source, date, limits and a "not known" state (0037, #117). Crowding quickly | Already in the MCP spec work |
+| **Plain-language explainers** (s) | AI listing assistants and AI verdicts | Only rewrites a cited source and links it; adds no facts and no verdict (0004) | Evaluation set (AI-03) |
+| **Type instead of a form** | Not checked | The user confirms before anything runs (0004) | Not checked against competitors |
 
-### After the first Nearby features: seeing the place more truly
+### Common elsewhere: not built on their own
 
-| Idea | What it is | Reuses | To check or needs |
-|---|---|---|---|
-| **Sunlight on the 3D map** | A time-of-day and season slider showing roughly where shadows fall on the building and garden, and when | 3D map (B7), approximate building heights | Labelled approximate; no data on rooms or windows |
-| **"Go and check in person" list** | Built from what we can't tell: rush-hour traffic, phone signal indoors, the walk after dark | Gap and `doesNotEstablish` text | Wording that never implies a judgement |
-| **Environment pack** | Air quality, mobile signal, road and rail noise as facts with limits; radon as a link | Source adapters | Air quality: Defra UK-AIR, assessed in `data-sources.md` (OGL). Mobile: Ofcom, terms unread and its v1 API ends 30 Nov 2026 (`data-sources.md`). Radon: link to the official map, don't ingest (`data-sources.md`). Noise: not yet assessed (to check) |
-| **Walk mode during a viewing** | On a phone, what's near as you walk the area | Nearby data, map | Location stays on the device with the area's nearby data downloaded, or is treated like a postcode under 0046; battery and accuracy |
+These are well covered by free or established products. Where we still show them, the only step beyond is the honesty (source, date and limits on every fact, gaps shown) and, more importantly, a route into the lead ideas above.
 
-### After the first Nearby features: joining the area to the decision
-
-| Idea | What it is | Reuses | To check or needs |
-|---|---|---|---|
-| **The cost of getting around** | The user's season ticket or fuel estimate goes into the monthly real cost | Cost engine (as a user input) | Engine support for the new line |
-| **What matters to you** | The user picks priorities (a park for the dog, a step-free station, a place of worship nearby, a nursery); matches and gaps are highlighted | Nearby data, household criteria (#147) | No total or ranking without a decision record (part 1, question 5). A worship priority is faith-neutral, stays in the browser and is never stored (PD-13, 0014); storing it would need an Article 9 condition first |
-| **A day in your life** | A weekday timeline from the user's own estimates: school run, commute, shop | Household estimates | Times are the user's own; we never invent journey times |
-
-### Watching an area over time (needs accounts)
-
-| Idea | What it is | Reuses | To check or needs |
-|---|---|---|---|
-| **Watch this area** | Alerts for new planning applications, flood warnings and recent sales near a saved home | Sources #139, #131, #132; builds on change monitoring (doc 04 roadmap step 8, epic #105), which watches a home's evidence | Accounts (SE-01), notification consent, running cost |
-| **How this area has changed** | Several years of sold prices and crime counts with their dates, never a rating | Sources #132, #130 | History depth and licence of each source |
-| **Share with your household** | A shared area report the household can comment on | Export; builds on doc 02 §5 F's sharing with explicit permissions; commenting is the new part | Accounts, privacy of shared notes |
-
-### Reaching people elsewhere
-
-| Idea | What it is | Reuses | To check or needs |
-|---|---|---|---|
-| **Ask the area in AI assistants** | The area check and checklist as tools with our widget inside ChatGPT or Claude | MCP server (0037, #117) | Already in the MCP spec work |
-| **Area panel for property sites** | Sourced area facts embedded on estate agent and letting listings | The area check | Business use (#151): its own decision on licences, pricing and brand control |
-
-### AI layers on these tools (decision 0004)
-
-| Idea | Where it helps | Guardrail |
-|---|---|---|
-| **Plain-language explainers** | "What does this mean?" beside any sourced item (for example "no current flood warning") | Rewrites the cited source and links it; adds no facts |
-| **Change-of-address drafts** | Emails or letters to a bank, employer or other organisation from the move-in checklist's tick-list | The user reviews and sends; we never send (an extension of 0047, not planned) |
-| **Type instead of a form** | "Moving from Leeds to a flat in Bristol on 3 March, I have a car" fills the inputs | The user confirms before anything runs |
+| Idea | Where it stands |
+|---|---|
+| **The area check itself** (a) | Decided as the public front door ([0046](../decisions/0046-public-area-check-first.md)). Competitively it's common, so its gaps must lead into "Ask about this" and "Go and check in person" |
+| **Compare two postcodes** (d) | Only inside Compare for homes, not as a separate tool |
+| **Environment pack** (i) | Facts with limits where sources allow (air quality assessed; radon as a link; noise to check), feeding "Go and check in person"; never a score |
+| **Area history** (o) | Not planned on its own; dated series could support the watch feed later |
+| **Area panel on property sites** (r) | Not pursued; any business use goes through #151 |
+| **Priorities as a score** (l) | Not pursued. Doc 02 §5 D's user-selected priorities stay inside Compare, highlighting matches and gaps without a total; a worship priority is faith-neutral, stays in the browser and is never stored (PD-13, 0014) |
+| **AI-drafted change-of-address messages** (t) | Dropped: low value next to paid services that send for you |
 
 ### Already planned elsewhere (not ideas; linked so they aren't researched again)
 
@@ -92,7 +85,8 @@ Grouped by theme. "Reuses" names existing or planned parts; "To check or needs" 
 
 ### Current leaning (to revisit at each stage gate)
 
-1. **"Go and check in person" list:** cheap, and a clear expression of the honesty principle (uniqueness not yet checked).
-2. **The cost of getting around:** the bridge between area and cost.
-3. **Sunlight on the 3D map:** the strongest visual moment, building on the immersive map.
-4. **Watch this area,** once accounts exist, because it brings people back.
+1. **Questions from gaps, tracked per home:** the clearest step beyond, and it builds the record that doc 02 §3 names as the main differentiator.
+2. **"Go and check in person":** cheap, and none was found in the competitor check (every checklist seen was generic).
+3. **Move-in checklist, dated and tailored:** proposed in 0047.
+4. **One watch feed per saved home,** once accounts exist.
+5. **Travel cost in the monthly cost.**
