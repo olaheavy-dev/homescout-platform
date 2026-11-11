@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 namespace HomeScout.CostEngine.Generator.Tests;
 
 /// <summary>
-/// Finds the repository's real fixtures and the independently worked cases, and runs the generator on them once.
+/// Finds the repository's real fixtures and the independently worked cases, and runs the generator on them each time `Json` is read.
 /// Tests take their inputs and expected values from the files and never from a copy (AGENTS.md rule 2).
 /// </summary>
 internal static class GeneratedFixture

@@ -116,23 +116,35 @@ internal static class EngineArbitraries
 }
 
 /// <summary>
-/// A property run with the generators above. Seeds are random, so a normal run (<c>make test</c>, CI) tries new inputs
-/// every time. When the environment variable named by <see cref="ReplayVariable"/> is set (<c>make mutate</c> sets it),
-/// every property starts from that FsCheck seed (format <c>seed,gamma</c>, for example <c>12344,12312</c>), so mutation
-/// testing sees the same inputs on every run and a mutant cannot be killed by luck (issue #107).
+/// The FsCheck seed for a property run. Seeds are random, so a normal run (<c>make test</c>, CI) tries new inputs every
+/// time. When the environment variable <see cref="Variable"/> is set (<c>make mutate</c> sets it), every property
+/// attribute (<see cref="EngineProperty"/> and <see cref="PenceProperty"/>) starts from that seed (format
+/// <c>seed,gamma</c>, for example <c>12344,12312</c>), so mutation testing sees the same inputs on every run and a mutant
+/// cannot be killed by luck (issue #107).
 /// </summary>
+internal static class FsCheckReplay
+{
+    /// <summary>The environment variable that fixes the FsCheck seed.</summary>
+    public const string Variable = "HOMESCOUT_FSCHECK_REPLAY";
+
+    /// <summary>The seed to replay, or null when the variable is not set.</summary>
+    public static string? FromEnvironment()
+    {
+        string? replay = Environment.GetEnvironmentVariable(Variable);
+        return string.IsNullOrWhiteSpace(replay) ? null : replay;
+    }
+}
+
+/// <summary>A property run with the generators above, seeded by <see cref="FsCheckReplay"/>.</summary>
 [AttributeUsage(AttributeTargets.Method)]
 internal sealed class EngineProperty : FsCheck.NUnit.PropertyAttribute
 {
-    /// <summary>The environment variable that fixes the FsCheck seed.</summary>
-    public const string ReplayVariable = "HOMESCOUT_FSCHECK_REPLAY";
-
     public EngineProperty()
     {
         Arbitrary = [typeof(EngineArbitraries)];
 
-        string? replay = Environment.GetEnvironmentVariable(ReplayVariable);
-        if (!string.IsNullOrWhiteSpace(replay))
+        string? replay = FsCheckReplay.FromEnvironment();
+        if (replay is not null)
         {
             Replay = replay;
         }
