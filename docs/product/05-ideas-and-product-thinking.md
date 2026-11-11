@@ -63,7 +63,7 @@ Grouped by theme. "Reuses" names existing or planned parts; "To check or needs" 
 |---|---|---|---|
 | **Watch this area** | Alerts for new planning applications, flood warnings and recent sales near a saved home | Sources #139, #131, #132; builds on change monitoring (doc 04 roadmap step 8, epic #105), which watches a home's evidence | Accounts (SE-01), notification consent, running cost |
 | **How this area has changed** | Several years of sold prices and crime counts with their dates, never a rating | Sources #132, #130 | History depth and licence of each source |
-| **Share with your household** | A shared area report the household can comment on | Export; builds on the recorded household choice and snapshot (doc 02 §4 and §5 F) | Accounts, privacy of shared notes |
+| **Share with your household** | A shared area report the household can comment on | Export; builds on doc 02 §5 F's sharing with explicit permissions; commenting is the new part | Accounts, privacy of shared notes |
 
 ### Reaching people elsewhere
 
@@ -77,6 +77,7 @@ Grouped by theme. "Reuses" names existing or planned parts; "To check or needs" 
 | Idea | Where it helps | Guardrail |
 |---|---|---|
 | **Plain-language explainers** | "What does this mean?" beside any sourced item (for example "no current flood warning") | Rewrites the cited source and links it; adds no facts |
+| **Change-of-address drafts** | Emails or letters to a bank, employer or other organisation from the move-in checklist's tick-list | The user reviews and sends; we never send (an extension of 0047, not planned) |
 | **Type instead of a form** | "Moving from Leeds to a flat in Bristol on 3 March, I have a car" fills the inputs | The user confirms before anything runs |
 
 ### Already planned elsewhere (not ideas; linked so they aren't researched again)
