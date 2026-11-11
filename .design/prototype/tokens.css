@@ -93,7 +93,9 @@
   --color-map-marker: #4A5A53;    /* neutral: sold-price markers and anything without a category */
   /* One muted colour per category, each with its crafted icon (FE-08, founder, 11 Nov 2026; replaces "one neutral
    * colour"). No red, amber or orange, so findings keep those. Every colour is at least 3:1 (non-text, WCAG 1.4.11)
-   * against map land, park and road in its theme; colour is never the only signal (icon, legend, list name). */
+   * against map land, park and road in its theme; colour is never the only signal (icon, legend, list name).
+   * Fixture subtypes: transport = stops; shops = supermarket, shop; health = pharmacy, hospital, gp-surgery, clinic,
+   * dentist; schools = schools and childcare (own icon); parks = park; police = police-station; worship = place-of-worship. */
   --color-map-marker-transport: #3A6079;
   --color-map-marker-shops: #7A4E7A;
   --color-map-marker-health: #2F7A7A;
