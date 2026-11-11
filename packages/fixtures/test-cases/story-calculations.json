@@ -310,9 +310,187 @@
     },
     {
       "id": "b1-monthly-housing-cost-listing-service-charge",
-      "description": "B1 monthly housing cost using the listing service charge of 2,400 pounds a year. Partial: maintenance not calculated.",
+      "description": "B1 monthly housing cost at story steps 1 and 2, using the listing service charge of 2,400 pounds a year. Buildings insurance is missing: its only source, the management pack, arrives at step 3. Partial: buildings insurance missing and maintenance not calculated.",
       "rule": {
-        "source": "Stage 2 plan, 'Monthly housing cost (definition)'; rounding per decision 0021",
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)'; rounding per decision 0021; BE-16 (a missing non-anchor input is a missing line and makes the total partial); AGENTS.md rule 7 (missing data is never shown as zero or as included); evidence B1-INSURANCE is used from step 3 (founder decision, 11 Nov 2026, issue #37)",
+        "url": "docs/planning/stage-2-plan.md"
+      },
+      "inputs": {
+        "home": "B1",
+        "lines": [
+          {
+            "category": "mortgage-repayment",
+            "mortgageCase": "b1-mortgage-repayment"
+          },
+          {
+            "category": "service-charge",
+            "period": "year",
+            "amountPence": 240000,
+            "source": "listing claim (plan section 1)"
+          },
+          {
+            "category": "ground-rent",
+            "period": "year",
+            "amountPence": 25000,
+            "source": "lease (plan section 1)"
+          },
+          {
+            "category": "council-tax",
+            "period": "year",
+            "amountPence": 210000,
+            "source": "synthetic Northbridge Council charge (plan section 1)"
+          },
+          {
+            "category": "energy",
+            "period": "month",
+            "amountPence": 8500,
+            "source": "user estimate (plan section 1)"
+          },
+          {
+            "category": "water",
+            "period": "month",
+            "amountPence": 4500,
+            "source": "user estimate (plan section 1)"
+          },
+          {
+            "category": "broadband",
+            "period": "month",
+            "amountPence": 3000,
+            "source": "user estimate (plan section 1)"
+          },
+          {
+            "category": "buildings-insurance",
+            "status": "missing",
+            "note": "no evidence before the management pack arrives at step 3",
+            "source": "management pack arrives at story step 3 (plan section 1)"
+          },
+          {
+            "category": "maintenance",
+            "status": "not-calculated",
+            "note": "not calculated in this version (excluded and flagged, never zero)",
+            "source": "plan section 1"
+          }
+        ],
+        "budgetPence": 160000,
+        "budgetSource": "household budget, plan section 1; within budget means total <= budget (founder, 23 Oct 2026)"
+      },
+      "steps": [
+        {
+          "n": 1,
+          "description": "mortgage-repayment: repayment from case b1-mortgage-repayment",
+          "valuePence": 98254,
+          "rounding": "already rounded once in that case"
+        },
+        {
+          "n": 2,
+          "description": "service-charge: 240000 a year / 12 = 20000",
+          "valuePence": 20000,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 3,
+          "description": "ground-rent: 25000 a year / 12 = 2083.33333333",
+          "valuePence": 2083,
+          "rounding": "once, half away from zero"
+        },
+        {
+          "n": 4,
+          "description": "council-tax: 210000 a year / 12 = 17500",
+          "valuePence": 17500,
+          "rounding": "none needed (exact)"
+        },
+        {
+          "n": 5,
+          "description": "energy: monthly amount used as given",
+          "valuePence": 8500,
+          "rounding": "none"
+        },
+        {
+          "n": 6,
+          "description": "water: monthly amount used as given",
+          "valuePence": 4500,
+          "rounding": "none"
+        },
+        {
+          "n": 7,
+          "description": "broadband: monthly amount used as given",
+          "valuePence": 3000,
+          "rounding": "none"
+        },
+        {
+          "n": 8,
+          "description": "buildings-insurance: missing before step 3 (its only source, the management pack, has not arrived; excluded and flagged, never zero, never 'included')",
+          "status": "missing",
+          "rounding": "not added"
+        },
+        {
+          "n": 9,
+          "description": "maintenance: not calculated in this version (excluded and flagged, never zero)",
+          "status": "not-calculated",
+          "rounding": "not added"
+        },
+        {
+          "n": 10,
+          "description": "Total = sum of the rounded lines above",
+          "valuePence": 153837,
+          "rounding": "none (sum of integers)"
+        }
+      ],
+      "expected": {
+        "lines": [
+          {
+            "category": "mortgage-repayment",
+            "monthlyPence": 98254
+          },
+          {
+            "category": "service-charge",
+            "monthlyPence": 20000
+          },
+          {
+            "category": "ground-rent",
+            "monthlyPence": 2083
+          },
+          {
+            "category": "council-tax",
+            "monthlyPence": 17500
+          },
+          {
+            "category": "energy",
+            "monthlyPence": 8500
+          },
+          {
+            "category": "water",
+            "monthlyPence": 4500
+          },
+          {
+            "category": "broadband",
+            "monthlyPence": 3000
+          },
+          {
+            "category": "buildings-insurance",
+            "status": "missing"
+          },
+          {
+            "category": "maintenance",
+            "status": "not-calculated"
+          }
+        ],
+        "totalMonthlyPence": 153837,
+        "totalIsPartial": true,
+        "partialReasons": [
+          "buildings-insurance: missing before the management pack arrives",
+          "maintenance: not calculated in this version"
+        ],
+        "budgetPence": 160000,
+        "budgetDifferencePence": 6163,
+        "withinBudget": true
+      }
+    },
+    {
+      "id": "b1-monthly-housing-cost-management-pack-arrived",
+      "description": "B1 monthly housing cost at story step 3, when the management pack arrives: buildings insurance is now known to be included in the service charge, and the service charge is still the listing claim of 2,400 pounds a year (the 2026 budget is only used from step 4). Partial: maintenance not calculated.",
+      "rule": {
+        "source": "Stage 2 plan, 'Monthly housing cost (definition)'; rounding per decision 0021; BE-12 (scenarios per story step); evidence B1-INSURANCE is used from step 3, the step of its only source B1-MGMT-PACK (founder decision, 11 Nov 2026, issue #37)",
         "url": "docs/planning/stage-2-plan.md"
       },
       "inputs": {
@@ -1490,7 +1668,7 @@
     },
     {
       "id": "b1-budget-beat",
-      "description": "Deliberate story beat: B1 within the 1,600 pound monthly budget on the listing service charge and over it on the 2026 budget. Both totals are partial (maintenance not calculated).",
+      "description": "Deliberate story beat: B1 within the 1,600 pound monthly budget on the listing service charge and over it on the 2026 budget. Both totals are partial: maintenance not calculated in both; buildings insurance also missing on the listing total (steps 1-2).",
       "rule": {
         "source": "Stage 2 plan, Stories (Buyer B1 deliberate beat); within budget means total <= budget (founder, 23 Oct 2026)",
         "url": "docs/planning/stage-2-plan.md"

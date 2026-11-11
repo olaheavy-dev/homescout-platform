@@ -316,7 +316,8 @@
         "synthetic": true
       },
       "contextOnly": false,
-      "note": "Included in the service charge."
+      "note": "Included in the service charge.",
+      "usedFromStep": 3
     },
     {
       "id": "B1-MAINTENANCE",

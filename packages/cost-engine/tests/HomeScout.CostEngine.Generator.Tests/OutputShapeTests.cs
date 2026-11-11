@@ -23,7 +23,7 @@ internal sealed partial class OutputShapeTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    [TestCase("B1", new[] { "from-step-1", "from-step-4" })]
+    [TestCase("B1", new[] { "from-step-1", "from-step-3", "from-step-4" })]
     [TestCase("B2", new[] { "from-step-1" })]
     [TestCase("R1", new[] { "from-step-1", "from-step-4" })]
     [TestCase("R2", new[] { "from-step-1" })]
@@ -36,13 +36,18 @@ internal sealed partial class OutputShapeTests
     }
 
     [Test]
-    public void Generate_buyerStory_mergesStepsOneToThreeAndStartsAgainAtStepFour()
+    public void Generate_buyerStory_mergesStepsOneToTwoThenSplitsAtStepsThreeAndFour()
     {
-        JsonNode first = GeneratedFixture.Scenario("B1", "from-step-1");
-        JsonNode second = GeneratedFixture.Scenario("B1", "from-step-4");
+        // B1-INSURANCE is used from step 3 (issue #37), so step 3 is its own scenario: steps 1 and 2 merge, 3 stands alone, 4 stands alone.
+        (int From, int To)[] expected = [(1, 2), (3, 3), (4, 4)];
+        string[] ids = ["from-step-1", "from-step-3", "from-step-4"];
 
-        Assert.That((first["fromStep"]!.GetValue<int>(), first["toStep"]!.GetValue<int>()), Is.EqualTo((1, 3)));
-        Assert.That((second["fromStep"]!.GetValue<int>(), second["toStep"]!.GetValue<int>()), Is.EqualTo((4, 4)));
+        for (int i = 0; i < ids.Length; i++)
+        {
+            JsonNode scenario = GeneratedFixture.Scenario("B1", ids[i]);
+
+            Assert.That((scenario["fromStep"]!.GetValue<int>(), scenario["toStep"]!.GetValue<int>()), Is.EqualTo(expected[i]), ids[i]);
+        }
     }
 
     [Test]

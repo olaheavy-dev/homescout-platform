@@ -66,6 +66,28 @@ internal sealed class TestCaseFileTests
     }
 
     [Test]
+    public void TestCaseFile_lineStatusMissing_isAccepted()
+    {
+        // The step 3 case has insurance as "included"; changing it to "missing" must still validate.
+        // "missing" matches the generated-costs schema: a line with no evidence yet (BE-16), never shown as zero.
+        JsonNode file = Load("story-calculations");
+        JsonNode line = file["cases"]!.AsArray().First(c => c!["id"]!.GetValue<string>() == "b1-monthly-housing-cost-management-pack-arrived")!["expected"]!["lines"]!.AsArray().Single(l => l!["category"]!.GetValue<string>() == "buildings-insurance")!;
+        line["status"] = "missing";
+
+        Assert.That(Validate(file), Is.Empty);
+    }
+
+    [Test]
+    public void TestCaseFile_unknownLineStatus_isRejected()
+    {
+        JsonNode file = Load("story-calculations");
+        JsonNode line = file["cases"]!.AsArray().First(c => c!["id"]!.GetValue<string>() == "b1-monthly-housing-cost-management-pack-arrived")!["expected"]!["lines"]!.AsArray().Single(l => l!["category"]!.GetValue<string>() == "buildings-insurance")!;
+        line["status"] = "unknown";
+
+        Assert.That(Validate(file), Is.Not.Empty);
+    }
+
+    [Test]
     public void TestCases_idsAreUnique()
     {
         string[] ids = AllCases().Select(c => c["id"]!.GetValue<string>()).ToArray();

@@ -13,6 +13,7 @@ internal sealed class WorkedCaseTests
     private static readonly Dictionary<string, (string Home, string Scenario)> _monthlyCases = new(StringComparer.Ordinal)
     {
         ["b1-monthly-housing-cost-listing-service-charge"] = ("B1", "from-step-1"),
+        ["b1-monthly-housing-cost-management-pack-arrived"] = ("B1", "from-step-3"),
         ["b1-monthly-housing-cost-2026-budget"] = ("B1", "from-step-4"),
         ["b2-monthly-housing-cost"] = ("B2", "from-step-1"),
         ["r1-monthly-housing-cost-before-water"] = ("R1", "from-step-1"),
@@ -121,6 +122,31 @@ internal sealed class WorkedCaseTests
         Assert.That(water["status"]!.GetValue<string>(), Is.EqualTo("conflicting"));
         Assert.That(water["pence"], Is.Null);
         Assert.That(water["evidenceIds"]!.AsArray().Select(i => i!.GetValue<string>()), Is.EqualTo(new List<string> { "R1-WATER-LISTING", "R1-WATER-WSOT" }));
+    }
+
+    [Test]
+    public void Generate_insuranceAtStepThree_isEvidenceChangedWithNoTotalChange()
+    {
+        // Worked reasoning: insurance has no amount before step 3 (missing) or from it (included in the service charge), so no
+        // figure moves and there is no difference to report; the totals differ in which lines are left out, so no monthly-total
+        // change is given (rule 7). At step 4 only the service charge changes, by 31,000 - 20,000 = 11,000p a month (worked case b1-service-charge-difference).
+        JsonNode stepThree = GeneratedFixture.Scenario("B1", "from-step-3");
+        JsonNode change = stepThree["changesFromPrevious"]!.AsArray().Single()!;
+
+        Assert.That(change["id"]!.GetValue<string>(), Is.EqualTo("B1.from-step-3.change.buildings-insurance"));
+        Assert.That(change["kind"]!.GetValue<string>(), Is.EqualTo("evidence-changed"));
+        Assert.That(change["previousEvidenceIds"]!.AsArray(), Is.Empty);
+        Assert.That(change["currentEvidenceIds"]!.AsArray().Select(i => i!.GetValue<string>()), Is.EqualTo(new List<string> { "B1-INSURANCE" }));
+        Assert.That(change["annualDifferencePence"], Is.Null);
+        Assert.That(change["monthlyDifferencePence"], Is.Null);
+        Assert.That(stepThree["monthlyTotalChange"], Is.Null);
+
+        JsonNode stepFour = GeneratedFixture.Scenario("B1", "from-step-4");
+        JsonNode only = stepFour["changesFromPrevious"]!.AsArray().Single()!;
+        long worked = GeneratedFixture.Case("b1-service-charge-difference")["expected"]!["monthlyDifferencePence"]!.GetValue<long>();
+
+        Assert.That(only["category"]!.GetValue<string>(), Is.EqualTo("service-charge"));
+        Assert.That(stepFour["monthlyTotalChange"]!["pence"]!.GetValue<long>(), Is.EqualTo(worked));
     }
 
     [Test]
