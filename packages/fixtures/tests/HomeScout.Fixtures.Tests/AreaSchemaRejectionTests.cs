@@ -397,8 +397,10 @@ internal sealed class AreaSchemaRejectionTests
     }
 
     [Test]
-    public void Area_crimeCategoryRepeatedInOneMonth_isRejected()
+    public void Area_crimeCountsThatAreExactDuplicates_areRejected()
     {
+        // uniqueItems catches exact duplicates only; a repeated category with a different count is caught by
+        // AreaDataTests.Area_crimeCategories_areUniqueWithinEachItem.
         JsonObject item = FixtureFiles.AreaItem(_crime);
         JsonNode first = item["value"]!["counts"]![0]!.DeepClone();
         item["value"]!["counts"]!.AsArray().Add(first);

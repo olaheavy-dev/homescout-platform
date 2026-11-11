@@ -434,6 +434,30 @@ internal sealed class AreaDataTests
     }
 
     [Test]
+    public void Area_everyEnglandHomeWithCrime_coversBothLaggedMonthsRecordedOrNamedAsFailed()
+    {
+        foreach (string homeId in _englandHomes)
+        {
+            List<JsonObject> crime = ForHome(homeId).Where(i => Text(i, "topic") == "crime").ToList();
+            foreach (string month in _recordedCrimeMonths)
+            {
+                bool recorded = crime.Any(i => i["value"] is not null && Text(i["value"], "month") == month);
+                bool failed = crime.Any(i => Text(i, "status") == "source-failed" && Text(i, "label").Contains(month, StringComparison.Ordinal));
+                Assert.That(recorded || failed, Is.True, homeId + " " + month);
+            }
+        }
+    }
+
+    [Test]
+    public void Area_energyItemsThatAreStale_doNotCopyTheCertificateYear()
+    {
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "energy-certificate" && Text(i, "status") == "stale"))
+        {
+            Assert.That(Text(item, "label"), Does.Not.Match(@"\d{4}"), Text(item, "id"));
+        }
+    }
+
+    [Test]
     public void Area_valueDates_areNotAfterTheSnapshotDate()
     {
         string snapshot = Text(FixtureFiles.Load("snapshot")["snapshot"], "snapshotDate");

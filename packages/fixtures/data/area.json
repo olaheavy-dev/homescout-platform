@@ -1121,9 +1121,9 @@
       "homeId": "R1",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-08",
+      "label": "Recorded crime counts, 2026-07",
       "value": {
-        "month": "2026-08",
+        "month": "2026-07",
         "counts": [
           {
             "category": "anti-social-behaviour",
@@ -1157,7 +1157,7 @@
       "homeId": "R1",
       "topic": "crime",
       "status": "source-failed",
-      "label": "Latest month's police counts could not be fetched",
+      "label": "Police counts for 2026-08 could not be fetched",
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
@@ -1714,7 +1714,7 @@
       "homeId": "R2",
       "topic": "energy-certificate",
       "status": "stale",
-      "label": "Energy certificate expired in 2025; see the evidence file",
+      "label": "Energy certificate expired; see the evidence file",
       "value": {
         "evidenceItemIds": [
           "R2-EPC"

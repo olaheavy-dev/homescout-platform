@@ -629,6 +629,7 @@
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
+          "description": "Counts by category. uniqueItems rejects exact duplicates only; that each category appears once is enforced by AreaDataTests.Area_crimeCategories_areUniqueWithinEachItem.",
           "items": {
             "type": "object",
             "required": [
