@@ -80,4 +80,4 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 51 | #105 | **Epic:** monitoring, scheduling and notifications (OP-01, OP-02) |
 
 ## Not in the order
-`noticed` issues (#33, #34, #36, #37) are triaged at each stage gate (decision 0035). #30 was fixed by #49 (register line BE-22) and is waiting to be closed.
+`noticed` issues (#33, #34, #37, #111; #36 is closed by the stage 2 close-out pull request) are triaged at each stage gate (decision 0035). #107 (repeatable mutation runs) is done (pull request #112); #111 (Stryker's `mtp` runner ignores `test-projects`) came out of it.
