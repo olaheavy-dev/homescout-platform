@@ -30,6 +30,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - H1 repeated in the warm charcoal dark theme.
 
   _Depends on: H1–H3._
+- [ ] **H6 Immersive map** (founder, 11 Nov 2026): a 3D switch (tilt and approximate building heights), category filters with icons, a legend, a hover card on desktop and a tap card on phones, all on the sample map. Crime and flood stay off the map.
 - [ ] **H5 Check an area, public, phone** (decision 0046, proposed): postcode in, the Nearby topic summary out, Summary and Map, download with sources, "Save a home here" needing an account. No commute row (it needs the household's own destination).
 
 ## Foundation (stage 5 build)
@@ -60,6 +61,8 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - neutral markers with the forest home pin;
   - the bottom sheet (peek, half, full) on a phone and the split view on desktop;
   - selection kept in sync between list and map;
+  - category filters, a legend, a hover card on desktop and a tap card on phones (name, type, straight-line distance, source, "Show in the list");
+  - an optional 3D switch (pitch and building extrusion), off by default on phones and with reduced motion, plus a reset-to-north button;
   - map markers aren't tab stops.
 
   _Risk: canvas accessibility and performance budgets (research §4–5)._ _Depends on: #146._

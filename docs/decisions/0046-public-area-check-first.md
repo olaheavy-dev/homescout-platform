@@ -35,7 +35,7 @@ Fastest to something public, but it loses the design reference that 0045 exists 
 - **Licences:** each dataset's terms for public and commercial reuse are recorded before use (DA-05), including attribution in downloads.
 - **The study (doc 02 §10)** can use the public page as well as the private prototype.
 
-**Not decided here:** the identity provider and account model (SE-01), the hosting provider (IN-02), the order of sources (taken from the priority list in `docs/references/data-sources.md`), and the download format (a PDF or CSV with sources is the default to plan; 3D views are out of scope because they add cost, weight and accessibility problems without decision value).
+**Not decided here:** the identity provider and account model (SE-01), the hosting provider (IN-02), the order of sources (taken from the priority list in `docs/references/data-sources.md`), and the download format (a PDF or CSV with sources is the default to plan). The map gets an optional **3D view** (founder, 11 Nov 2026): a switch that tilts the map and raises buildings to their approximate heights, with 2D the default on phones and whenever reduced motion is on. It must not suggest flood or crime risk, and the list stays the accessible alternative.
 
 ## Decision
 Pending the founder's acceptance.

@@ -200,6 +200,7 @@ Reference device and network are Lighthouse's default mobile throttling: 150 ms 
   - MapLibre gives the canvas `role="region"` and a label. Override the label to "Map of sample area around {home label}. The list above has the same information."
   - Show the keyboard shortcuts as visible text next to the map. Leaflet's guide makes the same point: nothing on the map tells users the keys exist.
   - Disable keyboard rotation (`map.keyboard.disableRotation()` keeps zoom) and drag-rotate/pitch: they add disorientation and no information.
+  - **Update (founder, 11 Nov 2026, H6 frames):** the map gains an optional **3D switch**. Pitch and building heights come on only through that switch, with a reset-to-north button; 2D stays the default on phones and when `prefers-reduced-motion` is set; keyboard rotation stays disabled. Building heights depend on the tile data (whether the chosen basemap carries them is **unverified**: check in the stage 6 tile spike).
 - **Markers:**
   - Each marker is a `<button>` with an `aria-label` such as "Mill Road supermarket (synthetic), 400 m straight-line, sample data".
   - **Roving tabindex:** one Tab stop into the marker group; arrow keys move in *list order*, not geographic order, so the two views agree.

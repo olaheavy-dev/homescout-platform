@@ -114,7 +114,7 @@ The page opens as **one row per topic with its headline fact** (founder review, 
 7. **Sold nearby:** history, not a valuation.
 8. **Planning nearby** and **broadband.**
 
-Each topic detail ends with its source line. On a phone the map is a view inside each topic; on desktop it is a sticky column beside the list, with the selection kept in sync.
+Each topic detail ends with its source line. On a phone the map is a view inside each topic; on desktop it is a sticky column beside the list, with the selection kept in sync. The map has category filters, a legend, a hover card (desktop) or tap card (phone), and an optional 3D switch.
 
 ### Costs
 1. **The monthly hero figure,** with the partial label and what's missing named.
