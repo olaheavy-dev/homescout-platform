@@ -5,7 +5,7 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 | Folder | What it holds |
 |---|---|
 | `schema/` | JSON Schema 2020-12 files. `common.schema.json` holds shared pieces (money, sources, dates, nations); the others describe one data file each. |
-| `data/` | Hand-maintained **inputs**: household, homes, evidence, documents, questions, replies, snapshot. No totals or other calculated figures (AGENTS.md rule 2). |
+| `data/` | Hand-maintained **inputs**: household, homes, evidence, documents, questions, replies, snapshot, area. No totals or other calculated figures (AGENTS.md rule 2). |
 | `test-cases/` | Independently worked examples (task 3), checked against `schema/test-case.schema.json`. |
 | `generated/` | Cost-engine output (task 4b): one file, `costs.json`, checked against `schema/generated-costs.schema.json`. Written only by the generator (`make generate`) and committed; never edited by hand. `make check` regenerates it and fails if anything under `generated/` differs from what is committed. |
 | `tools/HomeScout.Fixtures.Validator/` | The checker run by `make validate` and `make check`. |
@@ -46,6 +46,20 @@ Run `make validate` after editing any file here.
 | `mortgage-repayment` | none: a calculated output from `mortgage-deposit`, `mortgage-rate`, `mortgage-term` and `asking-price` |
 
 Items that only describe a home (`council-tax-band`, `energy-certificate`, `energy-certificate-cost`, `lease-term`, `tenancy-type`, `water-responsibility`) have no test-case line.
+
+## Area data (stage 3, #120)
+
+`data/area.json` holds synthetic area context for the Nearby screen, checked by `schema/area.schema.json`. Founder decision, 11 Nov 2026: area information comes first, "alongside costs": "these ones should come first as they are everyday needs for renting and mortgage". Nothing in it is calculated, and nothing enters a cost total; council tax stays a user-entered cost input.
+
+- **Topics** (the schema's `topic` enum, in priority order): `transport-stop`, `school`, `crime`, `flood`, `sold-price`, `amenity` (subtypes: supermarket, shop, park, pharmacy, police-station, hospital, gp-surgery, clinic, dentist, childcare), `energy-certificate`, `school-inspection`, `broadband`, `bank-rate`, `commute`, `planning`, `leasehold-company`. Shapes, limits and "does not establish" wording mirror the sources assessed in `docs/references/data-sources.md`.
+- **IDs:** `HOME-AREA-TOPIC-N`, for example `B1-AREA-SCHOOL-1`. The one shared Bank Rate item is `UK-AREA-BANK-RATE-1` and has no `homeId`.
+- **Statuses:** `recorded`, `no-record-in-source` (never "none": it does not mean none exists), `stale`, `not-covered`, `source-failed`. Only `recorded` and `stale` carry a `value`; a gap is never zero or clean (rule 7). WALES-1 has `not-covered` items only (rule 6).
+- **Every item** has a `source` (the same shape as evidence sources, all synthetic), a `coverage` text and a `doesNotEstablish` text, plus an optional `link` (for example the long-term flood risk checker) and `note`.
+- **Distances and journey times** are synthetic inputs and each names its method (`distanceMethod`, for example "straight-line distance, synthetic"); the code calculates nothing, and a distance is never a walking time.
+- **Flood** subtypes are `rivers-and-sea` and `groundwater` (the Environment Agency issues no surface-water warnings; long-term surface-water risk is a link to the checker). **Amenities:** every England home has each category (supermarket or shop, park, healthcare, police station, childcare) as an item or an explicit `no-record-in-source` item. **Commute** times are the household's own estimates (origin `user-entered`), not routed journeys; routing stays deferred (DA-06). Item origins use the real kind (`official-dataset`, `user-entered`, `plan`) with `synthetic: true`.
+- **Crime** is recorded counts by category and month (at least 1; a category with none recorded is absent, never 0). The crime value allows no rating, score or level field, and no wording in this file calls a home safe, unsafe, verified or approved (rule 4).
+- **Energy** items only point at the home's certificate and cost items in `evidence.json` (`evidenceItemIds`); the rating, year and cost are recorded once there (rule 2), are never actual bills, and never enter a total. **School inspections** carry a framework, a date and outcomes per area; there is no single overall grade field.
+- Tests: `AreaSchemaRejectionTests` (the schema refuses bad records) and `AreaDataTests` (every England home has each topic or an explicit gap, WALES-1 is not covered, links resolve, wording rules hold).
 
 ## Known limits
 

@@ -106,7 +106,7 @@ flowchart TB
 
 | Container | Where | What it does |
 |---|---|---|
-| Fixture data | `packages/fixtures/data/` | Hand-maintained inputs only: household, homes, evidence, documents, questions, replies and the snapshot. No totals (`AGENTS.md` rule 2). |
+| Fixture data | `packages/fixtures/data/` | Hand-maintained inputs only: household, homes, evidence, documents, questions, replies, the snapshot and synthetic area context. No totals (`AGENTS.md` rule 2). |
 | Schemas | `packages/fixtures/schema/` | The contract: JSON Schema files for the data, the test cases and the generated output. |
 | Test cases | `packages/fixtures/test-cases/` | Calculations worked out independently of the engine, with their working, so a wrong calculation cannot confirm itself. |
 | Cost engine | `packages/cost-engine/src/HomeScout.CostEngine/` | The only place calculated figures come from (decision 0019). Architecture tests keep it free of I/O. |

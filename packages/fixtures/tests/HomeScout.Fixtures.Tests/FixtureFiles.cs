@@ -25,6 +25,16 @@ internal static class FixtureFiles
         return item.DeepClone().AsObject();
     }
 
+    public static JsonObject AreaItem(string id)
+    {
+        JsonArray items = Load("area")["area"]!.AsArray();
+        JsonNode item = items.Single(i => i!["id"]!.GetValue<string>() == id)!;
+        return item.DeepClone().AsObject();
+    }
+
+    public static IReadOnlyList<JsonObject> AreaItems() =>
+        Load("area")["area"]!.AsArray().Select(i => i!.AsObject()).ToList();
+
     public static JsonObject Home(string id)
     {
         JsonArray homes = Load("homes")["homes"]!.AsArray();

@@ -9,7 +9,7 @@
 All data is **synthetic**. Every figure is an **input** with its source label; every total or difference is a **calculated output** from the cost engine (AGENTS.md rule 2). Figures not taken from a real-world document type are labelled honestly, for example "synthetic, modelled on typical 2026/27 English figures". Realism was checked against official and industry sources on 23 October 2026.
 
 ### Household
-**Sam and Alex Rivers**, a couple moving to Northbridge for work from elsewhere in England, deciding between buying a flat and renting. Budget up to **£1,600 a month** in monthly housing cost (defined below). Priorities: a commute of 40 minutes or less by public transport (routes and destinations are deferred to stage 3), a second bedroom for a home office, no surprise costs.
+**Sam and Alex Rivers**, a couple moving to Northbridge for work from elsewhere in England, deciding between buying a flat and renting. Budget up to **£1,600 a month** in monthly housing cost (defined below). Priorities: a commute of 40 minutes or less by public transport (routes and destinations are deferred to stage 3; the commute times in the area sample data from #120 are household-entered estimates, and routing is still deferred, DA-06), a second bedroom for a home office, no surprise costs.
 
 ### Place
 **Northbridge**, a fictional English town; postcodes start **NB** (not a UK postcode area). Every address carries a nation field (rule 6). A fifth address, **WALES-1**, in Wales, shows the "not yet covered" state.
@@ -55,7 +55,7 @@ Deposit-cap checks, stamp duty, legal fees and any other legal or tax rule table
 
 ## 2. Data contract (fixed first)
 
-- **Inputs:** `packages/fixtures/data/*.json` — household, homes, evidence items, documents, questions and replies, with the snapshot date. Every value has `source` (origin, document type, date, and "synthetic" where applicable) and `applicability` (unit, building, area). Money in whole pence. Every home and address has a `nation`.
+- **Inputs:** `packages/fixtures/data/*.json` — household, homes, evidence items, documents, questions and replies, with the snapshot date, and from stage 3 synthetic area context (`area.json`, #120). Every value has `source` (origin, document type, date, and "synthetic" where applicable) and `applicability` (unit, building, area); area items (`area.json`) carry `coverage` instead. Money in whole pence. Every home and address has a `nation`.
 - **Schemas:** `packages/fixtures/schema/*.schema.json`, **JSON Schema 2020-12**, validated by **JsonSchema.Net** (register lines BE-07, licence exception BE-08).
 - **Test cases:** `packages/fixtures/test-cases/*.json` — independently worked examples with their working and sources (decisions 0019, 0034).
 - **Outputs:** `packages/fixtures/generated/costs.json` — written only by the generator; stable key order; every figure has a stable ID.
