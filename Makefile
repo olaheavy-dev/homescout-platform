@@ -4,6 +4,7 @@
 # No telemetry from the .NET CLI or the test platform.
 export DOTNET_CLI_TELEMETRY_OPTOUT := 1
 export TESTINGPLATFORM_TELEMETRY_OPTOUT := 1
+export REQNROLL_TELEMETRY_ENABLED := 0
 
 SOLUTION      := HomeScout.slnx
 CONFIGURATION := Release
@@ -47,8 +48,12 @@ inspect: build
 	fi
 	@echo "InspectCode: no issues at warning severity or above."
 
+# The Gherkin specs (docs/specs, run by packages/specs) tag scenarios that need a browser (@ui), an MCP server (@mcp) or that
+# are withdrawn; those do not run here. NUnit exposes each tag as a test category.
+SPEC_FILTER := TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn
+
 test: build
-	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --timeout 10m --maximum-failed-tests 5 --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
+	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --timeout 10m --maximum-failed-tests 5 --filter "$(SPEC_FILTER)" --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
 
 check: restore build format-check generated-check validate inspect test
 

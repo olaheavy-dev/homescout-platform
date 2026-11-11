@@ -28,7 +28,29 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
    - `@mcp`: MCP server steps, run from #97.
    - No tag: data steps (fixtures and `costs.json`), run by `make check` from stage 3.
 
+   Tags are lower case; the filter is case-sensitive. Data scenarios (no tag) may go straight from `Given` to `Then`: they check data, not an action. `@ui` and `@mcp` scenarios always have a `When`.
+
    Until their stage, `@ui` and `@mcp` scenarios are excluded by tag, never deleted.
+
+## Running the specifications
+- `make test` (and so `make check` and CI) runs every scenario that is **not** tagged `@ui`, `@mcp` or `@withdrawn`. A scenario that cites an ID missing from `packages/fixtures/generated/costs.json` or `packages/fixtures/data/` fails with a message naming the ID.
+- To run only the specifications: `dotnet test --project packages/specs/HomeScout.Specs.Tests --filter "TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn"`. Reqnroll turns each tag into an NUnit category, so `--filter "TestCategory=screen"` runs one tag and a scenario name can be filtered with `--filter "Name~COSTS_02"`.
+- The `.feature` files are linked into `packages/specs/HomeScout.Specs.Tests/` from this folder; nothing is copied, and the generated test code goes in `obj/`.
+- **Data steps** (`packages/specs/HomeScout.Specs.Tests/DataSteps.cs`; the wording must match exactly):
+  - `Given home "B1" is at story step 1`
+  - `Then figure "<figure ID>" exists`
+  - `Then figure "<figure ID>" has status "<calculated | missing | not-calculated | ...>"`
+  - `Then figure "<figure ID>" shows no amount`
+  - `Then the total "<figure ID>" is partial with reason "<category>"`
+  - `Then figure "<figure ID>" cites evidence "<evidence ID>"` (the figure's evidence list contains it and the evidence exists)
+  - `Then evidence "<evidence ID>" exists`
+
+  `Given home ... is at story step N` accepts any step from a scenario's `fromStep` to its `toStep` (for B1, step 2 is `from-step-1`) and then requires every figure ID cited in that scenario to start with `<home>.<scenario>.`. `has status` and `shows no amount` apply to cost lines only, not totals. The wording in decision 0043's example is illustrative; this list is the contract.
+  A step with no matching wording makes the scenario fail as undefined: add the step to `DataSteps.cs` (with a test) rather than rewording the scenario around it.
+
+**Set-up notes** (proved in #121): the project targets `net11.0` with the repository's strict build settings; Reqnroll.NUnit 3.3.4 runs on NUnit 5 and Microsoft.Testing.Platform (`make test` passes `--timeout` and `--maximum-failed-tests`); the project sets `PredefinedCulturesOnly=false` because Reqnroll asks for the `en-US` culture by name and the repository uses invariant globalization.
+
+**Telemetry:** Reqnroll sends usage telemetry unless `REQNROLL_TELEMETRY_ENABLED=0`. The Makefile and CI set it. In an IDE or a bare `dotnet build`/`dotnet test`, set that variable in your shell profile or the run configuration. (GitHub's CodeQL default setup builds without it and cannot be configured to set it.)
 
 ## Screen template
 ```gherkin

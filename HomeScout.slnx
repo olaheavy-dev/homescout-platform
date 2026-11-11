@@ -9,4 +9,7 @@
     <Project Path="packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.Fixtures.Validator.csproj" />
     <Project Path="packages/fixtures/tests/HomeScout.Fixtures.Tests/HomeScout.Fixtures.Tests.csproj" />
   </Folder>
+  <Folder Name="/packages/specs/">
+    <Project Path="packages/specs/HomeScout.Specs.Tests/HomeScout.Specs.Tests.csproj" />
+  </Folder>
 </Solution>
