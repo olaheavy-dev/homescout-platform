@@ -2,7 +2,7 @@
 
 A home decision workspace for people buying or renting in England: check a home, see the real cost, compare homes, and track questions and answers until you decide. HomeScout is a private working name; the public name isn't chosen yet.
 
-**Status:** research and concept work only; the repository doesn't yet contain an application. **Current stage: stage 2, the sample-data catalogue** (issues #2 and #3), which comes before the prototype specification (stage 3), design and infrastructure decisions (stage 4) and the clickable prototype (stage 5). See the [roadmap](docs/product/04-project-goals-and-delivery.md#9-roadmap-from-design-decisions-to-implementation). The work is listed in order in the [backlog](docs/planning/backlog.md). The backend is C# on .NET (moving to .NET 11 and C# 15, decision [0042](docs/decisions/0042-back-to-dotnet-11.md)); the frontend will be Next.js and React.
+**Status:** research and concept work only; the repository doesn't yet contain an application. **Current stage: stage 2, close-out** (issue #24 and the "Stage 2: close-out and back to .NET 11" milestone; see the [backlog](docs/planning/backlog.md)), which comes before the prototype specification (stage 3), design and infrastructure decisions (stage 4) and the clickable prototype (stage 5). See the [roadmap](docs/product/04-project-goals-and-delivery.md#9-roadmap-from-design-decisions-to-implementation). The work is listed in order in the [backlog](docs/planning/backlog.md). The backend is C# on .NET (on .NET 11, with C# 14 until CodeQL supports C# 15 (#59), decision [0042](docs/decisions/0042-back-to-dotnet-11.md)); the frontend will be Next.js and React.
 
 ## Where to start
 

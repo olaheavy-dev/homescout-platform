@@ -30,7 +30,7 @@ build: restore
 format-check: restore
 	dotnet format $(SOLUTION) --verify-no-changes --no-restore
 
-# Checks every packages/fixtures/data and test-cases file against its JSON Schema (decision 0018, BE-07).
+# Checks every packages/fixtures/data, test-cases and generated file against its JSON Schema (decision 0018, BE-07).
 validate: build
 	dotnet run --project $(VALIDATOR) --configuration $(CONFIGURATION) --no-build
 
