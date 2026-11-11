@@ -12,8 +12,8 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
 ## High-fidelity design (phase 6 now, on the canvas)
 - [ ] **H1 My move on a phone, buyer story step 1 (light):** the main view, which establishes the **Scandinavian + Editorial** direction for everything after it.
-  - It shows Fraunces titles, Geist tabular figures, one next-step row naming its home, then B1 and B2 summary cards (photo, address, monthly cost so far with its partial label, the budget line, the commute line, open questions).
-  - Below them come "Needs your attention" and the bottom tabs; the clay-tinted demo strip sits after the headline summary.
+  - It shows Bricolage Grotesque titles, Geist tabular figures, one next-step row naming its home, then B1 and B2 summary cards (photo, address, monthly cost so far with its partial label, the budget line, the commute line, open questions).
+  - Below them come "Needs your attention" and the bottom tabs; the slate-tinted demo strip sits after the headline summary.
   - **Done:** the founder agrees it no longer "looks made by AI". _New: home summary card, hero figure (compact), demo timeline, bottom tabs._
 - [ ] **H2 What changed, buyer step 4 (phone and desktop):** the hero moment.
   - One sentence of why, with its source; old and new figures side by side ("Before you confirmed" and "Now") with the changed service-charge line highlighted; the budget line before and after; the earlier change (insurance) with a history link; the attributed confirmation; what's still open.
@@ -45,7 +45,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
 ## Foundation (stage 5 build)
 - [ ] **B1 App shell, tokens and the first screen** (#86):
-  - the Next.js app (FE-01) loads `tokens.css`, Fraunces and Geist, and the light and dark theme switch;
+  - the Next.js app (FE-01) loads `tokens.css`, Bricolage Grotesque and Geist, and the light and dark theme switch;
   - the public layout, app layout and home layout from the IA;
   - fixture types generated from the JSON Schemas;
   - My move rendered at `?story=buyer&step=1` exactly as H1.
@@ -95,6 +95,15 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 ## Story slices (stage 5; epics #87 and #88, one ticket per story step, SP-02)
 - [ ] **S-B1 to S-B4 Buyer steps 1–4,** each working end to end across My move, Overview, Costs, Questions, Documents and What changed. Step 4 delivers the hero moment exactly as H2.
 - [ ] **S-R1 to S-R4 Renter steps 1–4,** to the same standard: water conflicting, then partial, then specific, then the estimate added; "now complete" rather than "+£X" (#115).
+
+## Craft and brand pass (design canvas, 11 Nov 2026)
+- [ ] **Craft sheet** on the canvas is the reference: seven type sizes plus Title 3 (22) in `tokens.css`, the 8-point spacing, four radii (6, 10, 16, 24) with nested corners, three elevation levels, one 30-icon set at a 1.75 stroke (no tick, shield or star), every component state (rest, hover, pressed, focus, loading, disabled, error; selection is border plus fill), and one motion physics. The component gallery (#150) shows it live.
+- [ ] **Cost bar** on Costs and each home card: a proportional bar drawn from the engine's line figures (one ordered ramp, 2 px gaps, labels on the largest segments, names also listed), with fixed-width dashed "?" slots for missing and not-calculated lines, never a guessed length.
+- [ ] **Partial totals carry their gap on the figure** ("£1,538.37 + ? + ?", "+ 2 costs not included"), so a partial total can't read as cheaper than a complete one (Compare, My move).
+- [ ] **Source wall** on the landing: nine source cards with what each covers and what it can't tell you; names only, no logos.
+- [ ] **Photos:** the street band and the FAQ photo on the landing, no visible caption, honest alt text and the footer line; the other four kept for the pages named in `docs/assets/README.md`. **Before stage 5b goes public:** re-check OpenAI's publication policy and restore a visible label if it requires one (#157 gate).
+- [ ] **Explorations to decide** (canvas "Explorations" board): contour rings as the distance display (recommended first), costs as a receipt, honesty notes in the margin.
+- Review fixes from the independent design review: no tick icon anywhere; "All tracked costs included" is neutral, not a pass mark; nothing that holds figures animates; every entrance ends within 600 ms; only real buttons glow; "Sign in" appears only once accounts exist; household estimates are labelled "your estimate".
 
 ## Public site (stage 5b, decision 0046)
 - [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live, never as active controls; the hero map's pin is "Postcode centre". **The hero map is a static image** (SVG or an optimised raster), not the live map library, so the largest element loads within the 2.5 s budget (B18); the live map loads only on the results page.

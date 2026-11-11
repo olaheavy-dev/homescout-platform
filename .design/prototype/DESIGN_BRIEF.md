@@ -79,22 +79,29 @@ Three principles that resolve the main tensions. The seven agreed principles in 
   - **property portals:** ad-heavy listing grids, urgency, "premium listing" badges;
   - **generic AI SaaS:** purple gradients, Inter everywhere, identical card grids, sparkle icons, chatbot-first;
   - **government forms:** we borrow GOV.UK's clarity, not its bureaucratic coldness.
-- **Typography:** serif headlines and a precise sans (founder).
-  - A refined editorial serif for screen titles, the hero figure's heading and public pages.
-  - A precise neutral sans with tabular figures for UI, numbers and data. **Not Inter**: too associated with generated UI.
-  - The tokens phase picks the pair (Google Fonts, licence recorded) and a real type scale (display, title, heading, body, caption) with tight optical sizing for figures.
+- **Typography: Bricolage Grotesque + Geist** (founder, 11 Nov 2026, chosen from five pairings drawn side by side; it replaces the earlier serif direction with Fraunces).
+  - **Bricolage Grotesque** (weight 600, optical size set per size, tight tracking) for titles, the display headline, step numbers and the wordmark (700): contemporary and confident, with warmth.
+  - **Geist** with tabular figures for UI, numbers and data. **Not Inter**: too associated with generated UI.
+  - The type scale, character rules (curly quotes, non-breaking "400 m", balanced headlines) and money style (pence a step smaller and lighter) are on the craft sheet and in `tokens.css`.
 - **Colour:** start from doc 03 §6:
   - deep forest `#153F35` for primary actions and brand moments;
   - ink `#182923` for text;
-  - warm paper `#F7F5EF`, with white working surfaces;
+  - a **radiant light page**: clean near-white `#FBFAF7` under a soft wash of mint, sky and sunrise light, with crisp white working surfaces (founder, 11 Nov 2026; replaces warm paper `#F7F5EF`);
   - muted sage `#DCE7DD` as a supporting tone;
   - amber `#8F560E` for attention;
   - restrained red `#A33636` only on specific supported findings.
 
+  **Colour roles in both themes** (founder, 11 Nov 2026): forest (light) or mint (dark) = act; **slate** (`#3A6079` light, `#93B8CE` dark) = guide the eye (eyebrow labels, step numbers, rings, the changed-line highlight, "coming next" outlines); amber = warning, nothing else; **clay only for the hearth** in the mark and drawings. Clay labels were dropped in light because clay and amber were almost the same colour (1.04:1).
+
+  **Shine** (founder, 11 Nov 2026): light and material, never new hues. Glossy white cards with a lit top edge and forest-tinted shadows, a gem-like primary button, a frosted header; in dark, lit edges, a soft sheen, one mint glow on the one thing to press, a slate spotlight and a faint dot grid. Glass turns solid under reduced transparency; headlines turn solid under increased contrast and in print.
+
   Colour roles, not raw hex, come from the tokens phase. **Both themes ship** (founder): dark mode is a near-neutral charcoal with off-white text, not an inverted light theme, and every contrast is checked in both. **Dark colour roles** (founder, 11 Nov 2026, after two passes): near-neutral charcoal layers; mint for actions, links and the border that marks a selection (selection never relies on fill alone); **slate blue** (`#93B8CE`) as the one complement, only for eyebrow labels, step numbers, the hearth and ring in drawings and "coming next" outlines, with its tint behind drawings only; amber only for warnings. Tinted panels stay in the light theme, where paper carries them; in dark they compete, so they turn neutral. The demo strip is the exception: in dark it sits on the slate tint with a slate outline, so it still reads as a demo control.
 - **Texture and imagery:**
-  - **Photography:** editorial photos of each home on public pages, and small recognisable thumbnails in the workspace (doc 03 §7). Every image goes through the asset register first (rule 5).
-  - **Custom illustration, textured editorial style** (founder): paper texture, a print feel, limited palette (forest, sage, ink on paper, plus the complement for the hearth and ring: clay in light, slate on the slate tint in dark), like magazine spot illustrations. It's used for empty states, onboarding, the "not yet covered" state, the drawn Northbridge sample map, **every landing section below the hero** (How it works, Honest by design, Coming next, the FAQ) and one spot drawing per main app screen (What changed: the listing figure replaced by the management pack; Costs: a house, a slip and dashed gaps; Nearby: a distance ring; Compare: two homes on one level line). Drawings are decorative, with a text alternative, and never carry information the text doesn't. One consistent style guide is needed before any illustration is made.
+  - **Photography** (founder, 11 Nov 2026):
+    - **atmosphere photos** generated with ChatGPT and recorded in `docs/assets/README.md`: on the landing, a terraced-street band and a kitchen-table photo beside the FAQ; later, a high street (About the data), a park (Nearby empty state), moving boxes (404 or onboarding) and a home viewing (Viewings empty state). No visible caption (founder decision, 11 Nov 2026): honest alt text and a footer line, “Some photos on this site are AI-generated illustrations”; OpenAI's publication policy is re-checked before the public launch and a visible label restored if it requires one. None sits next to a specific home, postcode or result;
+    - **a home's own photos** come only from the user (doc 03 §7); never photos copied from listings (decision 0028);
+    - no photos on area results, where a street photo would imply it shows that place.
+  - **Custom illustration, layered editorial style** (founder; richer pass 11 Nov 2026: layered scenes with soft light from the top left, gradient paper, cast shadows and a fine grain): paper texture, a print feel, limited palette (forest, sage, ink on paper, plus the complement for the hearth and ring: clay in light, slate on the slate tint in dark), like magazine spot illustrations. It's used for empty states, onboarding, the "not yet covered" state, the drawn Northbridge sample map, **every landing section below the hero** (How it works, Honest by design, Coming next, the FAQ) and one spot drawing per main app screen (What changed: the listing figure replaced by the management pack; Costs: a house, a slip and dashed gaps; Nearby: a distance ring; Compare: two homes on one level line). Drawings are decorative, with a text alternative, and never carry information the text doesn't. One consistent style guide is needed before any illustration is made.
   - A subtle paper grain may appear on editorial surfaces, never behind data.
 - **Money visualisation:** **cards per category** (founder), held to strict rules so it doesn't become a dashboard:
   1. The total comes first: one large figure, its period, and a "so far" or "partial" label that names what's missing.
@@ -120,7 +127,7 @@ Three principles that resolve the main tensions. The seven agreed principles in 
 ## Existing Patterns
 
 - **Code:** no frontend exists yet; the Next.js app starts in stage 5. There are no components, Tailwind config or Storybook.
-- **Typography:** none in code. Doc 03 §6 asks for an editorial serif plus a clear sans with tabular numbers.
+- **Typography:** none in code. Doc 03 §6 asked for an editorial serif plus a clear sans; the founder chose Bricolage Grotesque + Geist instead (11 Nov 2026, see above).
 - **Colours:** doc 03 §6, the palette above, contrast-checked for text on white, paper and sage.
 - **Spacing:** none defined. The tokens phase sets an 8 px base scale.
 - **Data:** every figure comes from `packages/fixtures/generated/costs.json` by figure ID, and every input and area item from `packages/fixtures/data/` (rule 2). The UI never calculates.
@@ -133,7 +140,7 @@ All components are new.
 | Component | Status | Notes |
 |---|---|---|
 | App shell: desktop top bar, mobile bottom navigation | New | Doc 03 §3: My move · Homes · Compare. Home tabs: Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Mobile bottom nav: Overview, Nearby, Costs, Questions |
-| Brand mark and wordmark | New | **Contour home** (founder's choice of four concepts drawn on the design canvas, 11 Nov 2026): three nested roof lines like map contours with a hearth at the centre; a primary mark (48 px and up) and a compact two-contour mark (32 px and below), beside the Fraunces 600 wordmark. Trade-mark clearance (0009) and the asset register (rule 5) come before use |
+| Brand mark and wordmark | New | **Contour home** (founder's choice of four concepts drawn on the design canvas, 11 Nov 2026): three nested roof lines like map contours with a hearth at the centre; a primary mark (48 px and up) and a compact two-contour mark (32 px and below), beside the Bricolage Grotesque 700 wordmark. Trade-mark clearance (0009) and the asset register (rule 5) come before use |
 | Landing hero, search first (0046) | New | The postcode box with the sample 3D map and a summary card. The private prototype's example page shows the two example homes (buy and rent) with equal weight |
 | Address search and identity confirmation | New | Combobox with manual selection, never a silent postcode-to-flat match. Includes the map pin flow (founder) and a "can't find it" route |
 | Home header | New | Photo thumbnail, address, mode, sample-data label |

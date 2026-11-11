@@ -4,8 +4,12 @@
  * Philosophy: Scandinavian + Editorial (DESIGN_BRIEF.md). Warmth and restraint in the
  * workspace, and editorial typography for headlines and key moments.
  * Founder choices:
- *   - Fraunces (headlines) + Geist (UI and figures). Not Inter.
- *   - "Warmer and richer" colour: sage and clay surfaces and tinted sections are allowed (light theme only;
+ *   - Bricolage Grotesque (headlines, wordmark) + Geist (UI and figures), chosen 11 Nov 2026 over four other pairings
+ *     (replacing Fraunces). Not Inter.
+ *   - Slate is the complement in both themes; clay is kept for the hearth only; amber means warning only.
+ *   - A radiant light page (clean near-white with a mint, sky and sunrise wash) and a premium dark layer
+ *     (lit edges, sheen, glass header, one accent glow, a faint dot grid). Light and material, never new hues.
+ *   - "Warmer and richer" colour: sage surfaces and tinted sections are allowed (light theme only;
  *     in dark, tinted panels turn neutral and only drawings sit on the slate illustration tint).
  *     Amber and red stay reserved for specific findings.
  *   - Light and dark themes both ship.
@@ -18,10 +22,11 @@
  *   - Text tokens are at least 4.5:1 on paper, surface, well, sage, clay, the illustration tint and the status backgrounds.
  *   - Meaningful non-text tokens (gap border, strong border, focus) are at least 3:1.
  *   - Hairline border tokens are decorative and exempt.
- *   - The lowest text pairs: light, warning amber on sage 4.95 (neutral text: tertiary on sage 5.08); dark, tertiary on
+ *   - The lowest text pairs: light, warning amber on the strongest point of the mint page wash 4.84 (neutral text: tertiary
+ *     there 4.97; slate complement on sage 5.55); dark, tertiary on
  *     bg-tertiary 5.40 (5.16 on the info status background; the lowest status colour is error on info-bg, 6.18).
  *
- * Fonts: Fraunces and Geist are Google Fonts under the SIL Open Font License. Record both in
+ * Fonts: Bricolage Grotesque and Geist are Google Fonts under the SIL Open Font License. Record both in
  * docs/references/third-party.md when the app first loads them (stage 5).
  * Tabular figures: use font-variant-numeric: tabular-nums for every figure, and check that Geist
  * supports it in the first build.
@@ -34,25 +39,27 @@
   color-scheme: light;
 
   /* ── Colour: surfaces ─────────────────────────────────────────── */
-  --color-bg-primary: #F7F5EF;     /* warm paper: the page */
+  --color-bg-primary: #FBFAF7;     /* clean near-white: the page, under --page-radiance */
   --color-bg-secondary: #FFFFFF;   /* surface: cards, sheets, working areas */
   --color-bg-tertiary: #EFECE3;    /* wells: inputs, table header rows, insets */
   --color-bg-tint-sage: #E3ECE2;   /* "richer": daily-life sections, supporting surfaces */
-  --color-bg-tint-clay: #F5E8DC;   /* "richer": editorial highlights, illustration panels */
+  --color-bg-tint-clay: #F5E8DC;   /* legacy; panels now use sage or the illustration tint (clay is the hearth only) */
   --color-bg-inverse: #182923;     /* ink: inverse panels, tooltips */
 
   /* ── Colour: text ─────────────────────────────────────────────── */
   --color-text-primary: #182923;   /* ink */
   --color-text-secondary: #4A5A53; /* captions, metadata */
   --color-text-tertiary: #56655E;  /* placeholders, source lines (5.08 at worst) */
-  --color-text-inverse: #F7F5EF;
+  --color-text-inverse: #FBFAF7;
   --color-text-link: #153F35;
-  --color-text-clay: #9A4A28;      /* editorial accent text, used sparingly */
-  --color-accent-complement: #9A4A28;     /* the second colour: eyebrow labels, step numbers, the hearth and ring in drawings, "coming next" outlines (clay in light) */
-  --color-bg-tint-illustration: #F5E8DC;  /* behind drawings only */
+  --color-text-clay: #3A6079;      /* alias of --color-accent-complement for now; rename later */
+  --color-accent-complement: #3A6079;     /* slate, both themes: eyebrow labels, step numbers, rings in drawings, the changed-line highlight, "coming next" outlines (5.55 at worst) */
+  --color-border-complement: #6F8EA3;     /* slate outlines: demo strip, "coming next" panels */
+  --color-bg-tint-illustration: #E6EEF2;  /* pale slate, behind drawings and the demo strip */
+  --color-hearth: #9A4A28;                /* clay: the hearth dot in the mark and drawings only */
 
   /* ── Colour: borders ──────────────────────────────────────────── */
-  --color-border-primary: #D9D4C8;   /* decorative hairline (exempt from 3:1) */
+  --color-border-primary: #ECEAE4;   /* decorative hairline on white cards (exempt from 3:1) */
   --color-border-secondary: #E8E4DA; /* decorative divider */
   --color-border-strong: #857F72;    /* inputs and meaningful boundaries (3.29) */
   --color-border-gap: #737D78;       /* dashed "no record" and "missing" cards (3.52) */
@@ -86,7 +93,7 @@
   --color-map-home: #153F35;      /* only the home pin is forest */
 
   /* ── Typography ───────────────────────────────────────────────── */
-  --font-family-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-family-display: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;  /* optical size set per size (opsz 12–96) */
   --font-family-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-family-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
 
@@ -95,23 +102,27 @@
   --font-size-sm: 0.875rem;   /* 14: secondary text, table cells */
   --font-size-base: 1rem;     /* 16: body */
   --font-size-md: 1.125rem;   /* 18: lead text, card titles */
-  --font-size-lg: 1.375rem;   /* 22: section headings */
-  --font-size-xl: 1.75rem;    /* 28: screen titles (Fraunces) */
-  --font-size-2xl: 2.25rem;   /* 36: hero figures on mobile (Geist, tabular) */
-  --font-size-3xl: 3rem;      /* 48: hero figures on desktop and editorial headings */
-  --font-size-4xl: clamp(2.75rem, 6vw + 1rem, 5.5rem); /* 44–88: landing display (Fraunces) */
+  --font-size-lg: 1.375rem;   /* 22: Title 3, card and section headings */
+  --font-size-xl: 1.75rem;    /* 28: Title 2, screen sections */
+  --font-size-2xl: 2.5rem;    /* 40: Title 1 and hero figures (pence a step smaller and lighter) */
+  --font-size-3xl: 4rem;      /* 64: display */
+  --font-size-4xl: clamp(2.75rem, 5vw + 1rem, 4rem); /* 44–64: landing display */
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-body: 400;      /* 380 in dark: light text on dark reads heavier */
+  --font-weight-heading: 600;   /* 570 in dark */
+  --font-weight-wordmark: 700;
 
   --line-height-tight: 1.15;    /* display and hero figures */
   --line-height-snug: 1.3;      /* headings */
   --line-height-normal: 1.5;    /* body */
   --line-height-relaxed: 1.65;  /* long reading, explainers */
 
-  --letter-spacing-tight: -0.02em;  /* display and figures */
+  --letter-spacing-tight: -0.02em;  /* figures and titles */
+  --letter-spacing-display: -0.035em; /* Bricolage Grotesque at 40 and above */
   --letter-spacing-normal: 0;
   --letter-spacing-wide: 0.06em;    /* small caps labels such as "EACH MONTH" */
 
@@ -141,15 +152,28 @@
 
   --border-width-hairline: 1px;
   --border-width-gap: 1.5px;    /* dashed gap cards */
-  --border-radius-sm: 0.5rem;   /* 8: chips, inputs, tags */
-  --border-radius-md: 0.75rem;  /* 12: cards */
-  --border-radius-lg: 1.25rem;  /* 20: sheets, large panels */
+  /* Four radii only. Nested corners: inner = outer − padding (24 → 16 → 10). */
+  --border-radius-sm: 0.375rem; /* 6: chips, tags */
+  --border-radius-md: 0.625rem; /* 10: buttons, inputs */
+  --border-radius-lg: 1rem;     /* 16: cards */
+  --border-radius-xl: 1.5rem;   /* 24: panels, sheets, the hero */
   --border-radius-full: 9999px;
 
-  /* Soft, warm shadows (Scandinavian: large blur, low opacity). Never stacked. */
-  --shadow-sm: 0 1px 2px rgba(24, 41, 35, 0.06);
-  --shadow-md: 0 4px 16px rgba(24, 41, 35, 0.08);
-  --shadow-lg: 0 12px 40px rgba(24, 41, 35, 0.12);
+  /* Three elevation levels, shadows tinted by forest. Never stacked beyond these. */
+  --shadow-sm: 0 1px 2px rgba(21, 63, 53, 0.08);
+  --shadow-md: 0 1px 2px rgba(21, 63, 53, 0.06), 0 10px 28px rgba(21, 63, 53, 0.10);
+  --shadow-lg: 0 2px 4px rgba(21, 63, 53, 0.06), 0 24px 60px rgba(21, 63, 53, 0.16);
+
+  /* ── Shine: light and material, never new hues (founder, 11 Nov 2026) ── */
+  --page-radiance: radial-gradient(1200px 620px at 82% -12%, rgba(211, 235, 223, 0.9), transparent 60%),
+                   radial-gradient(900px 520px at 6% -4%, rgba(220, 232, 243, 0.85), transparent 62%),
+                   radial-gradient(1000px 500px at 50% 112%, rgba(255, 241, 220, 0.6), transparent 70%);
+  --surface-sheen: linear-gradient(180deg, #FFFFFF 0%, #FDFCF9 55%, #F9F7F2 100%);
+  --surface-edge: inset 0 1px 0 #FFFFFF;
+  --accent-gradient: linear-gradient(180deg, #25604F 0%, #1A4A3E 50%, #0E2F27 100%);  /* white text 7.33 at the lightest point */
+  --accent-glow: 0 8px 22px rgba(21, 63, 53, 0.28);  /* the one thing to press per screen; never on charts */
+  --glass-bg: rgba(255, 255, 255, 0.72);              /* header and the hero summary card only */
+  --glass-blur: 18px;                                  /* off under prefers-reduced-transparency */
   --shadow-focus: 0 0 0 3px var(--color-bg-primary), 0 0 0 5px var(--color-border-focus);
 
   /* ── Texture (editorial surfaces only, never behind data) ─────── */
@@ -160,7 +184,8 @@
   --duration-fast: 150ms;     /* hover, press */
   --duration-normal: 250ms;   /* sheet, list and map changeover */
   --duration-slow: 400ms;     /* the What changed highlight fade, map moving to a selection */
-  --duration-slower: 600ms;   /* editorial reveals on the landing only */
+  --duration-slower: 600ms;   /* ceiling: public-page entrances only, delays included */
+  --delay-step: 50ms;         /* stagger between entrances; never on anything that holds figures */
 
   --easing-default: cubic-bezier(0.2, 0, 0, 1);    /* settle into place */
   --easing-in: cubic-bezier(0.4, 0, 1, 1);
@@ -178,25 +203,21 @@
   /* ── Component tokens ─────────────────────────────────────────── */
   --card-bg: var(--color-bg-secondary);
   --card-border: var(--border-width-hairline) solid var(--color-border-primary);
-  --card-radius: var(--border-radius-md);
+  --card-radius: var(--border-radius-lg);
   --card-padding: var(--space-7);
   --card-gap-border: var(--border-width-gap) dashed var(--color-border-gap);
 
   --hero-figure-size: var(--font-size-2xl);
   --hero-figure-weight: var(--font-weight-semibold);
 
-  --sheet-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  --sheet-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
   --sheet-shadow: var(--shadow-lg);
 
   --nav-height-mobile: 4.5rem;
-  --demo-timeline-bg: var(--color-bg-tint-clay);  /* visibly not product chrome */
-  --demo-timeline-border: transparent;
+  --demo-timeline-bg: var(--color-bg-tint-illustration);  /* visibly not product chrome */
+  --demo-timeline-border: var(--color-border-complement);
 }
 
-/* Hero figures grow on larger screens */
-@media (min-width: 1024px) {
-  :root { --hero-figure-size: var(--font-size-3xl); }
-}
 
 /* ── Dark theme: near-neutral charcoal, not inverted ────────────── */
 [data-theme="dark"] {
@@ -259,6 +280,18 @@
 
   --texture-paper-opacity: 0.04;  /* light grain on dark, behind drawings only */
 
+  --color-hearth: #93B8CE;  /* slate in dark */
+  --color-border-complement: #93B8CE;
+  --font-weight-body: 380;
+  --font-weight-heading: 570;
+  --page-radiance: radial-gradient(1100px 560px at 72% -14%, rgba(147, 184, 206, 0.17), transparent 62%),
+                   radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.2px);  /* slate spotlight and a faint dot grid */
+  --surface-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 60%);
+  --surface-edge: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --accent-gradient: linear-gradient(180deg, #D2F0E1 0%, #A8DAC2 45%, #86C3A7 100%);  /* text on it 8.35 at the darkest point */
+  --accent-glow: 0 10px 32px rgba(159, 211, 186, 0.34);
+  --glass-bg: rgba(24, 24, 22, 0.66);
+
   /* The demo strip keeps a distinct look in dark: slate tint plus a slate outline (7.59) */
   --demo-timeline-bg: var(--color-bg-tint-illustration);
   --demo-timeline-border: var(--color-accent-complement);
@@ -287,6 +320,10 @@
     --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
     --texture-paper-opacity: 0.04;
     --demo-timeline-bg: var(--color-bg-tint-illustration); --demo-timeline-border: var(--color-accent-complement);
+    --color-hearth: #93B8CE; --color-border-complement: #93B8CE; --font-weight-body: 380; --font-weight-heading: 570;
+    --page-radiance: radial-gradient(1100px 560px at 72% -14%, rgba(147, 184, 206, 0.17), transparent 62%), radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.2px);
+    --surface-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 60%); --surface-edge: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    --accent-gradient: linear-gradient(180deg, #D2F0E1 0%, #A8DAC2 45%, #86C3A7 100%); --accent-glow: 0 10px 32px rgba(159, 211, 186, 0.34); --glass-bg: rgba(24, 24, 22, 0.66);
   }
 }
 
@@ -298,4 +335,9 @@
     --duration-slow: 120ms;   /* the What changed highlight becomes a short fade */
     --duration-slower: 0ms;
   }
+}
+
+/* Reduced transparency: glass becomes solid */
+@media (prefers-reduced-transparency: reduce) {
+  :root { --glass-bg: var(--color-bg-primary); --glass-blur: 0px; }
 }

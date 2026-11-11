@@ -220,11 +220,11 @@ The following are proposed design tokens for exploration, not a claim of complet
 |---|---|
 | Main green | Deep forest `#153F35` for primary actions and restrained brand moments |
 | Main text | Ink `#182923`; keep body text high contrast |
-| Background | Warm paper `#F7F5EF`, with clean white working surfaces |
+| Background | Warm paper `#F7F5EF`, with clean white working surfaces (since 11 Nov 2026: a clean near-white `#FBFAF7` with a radiant wash; see `.design/prototype/tokens.css`) |
 | Supporting tone | Muted sage `#DCE7DD`; avoid making large green areas mean “safe” |
 | Attention | Amber `#8F560E`; pair with words and icons |
 | Confirmed material concern | Restrained red `#A33636`; use on specific supported findings rather than the whole home |
-| Typography | Editorial serif for a few public-page headings; clear sans serif for navigation, facts, costs and documents; tabular numbers where values align |
+| Typography | Editorial serif for a few public-page headings; clear sans serif for navigation, facts, costs and documents; tabular numbers where values align (since 11 Nov 2026: Bricolage Grotesque headlines with Geist; see the design brief) |
 | Component treatment | Modest corners, thin dividers, subtle shadows only where useful; generous spacing without large decorative gaps |
 | Data visuals | Direct labels, clear units, comparable scales, uncertainty ranges and visible assumptions |
 | Motion | Quiet transitions that explain state changes; no theatrical agent activity |
