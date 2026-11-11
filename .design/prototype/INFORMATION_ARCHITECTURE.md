@@ -204,7 +204,7 @@ In the private prototype the landing can also link the two example homes; the pu
 3. The home Overview opens with its evidence gaps visible, and the home card is added to My move.
 
 ### Ask a question, then check the reply
-1. A finding or a missing cost card shows **Ask about this**.
+1. A finding or a missing cost (a receipt line on Costs, a card elsewhere) shows **Ask about this**.
 2. The question draft is pre-filled from the evidence, with the recipient role.
 3. The user copies or exports it, then **records it as sent**. This is labelled as a simulated action.
 4. When a reply arrives (a demo step), it shows on My move under "Needs your attention".
@@ -262,7 +262,7 @@ In the private prototype the landing can also link the two example homes; the pu
 | Home layout (home header, tabs or bottom bar, demo timeline) | Every home page | Collapses on scroll on a phone |
 | Demo story timeline | My move, home pages, Compare (example homes only) | Hidden on non-example homes |
 | Hero figure | My move cards (compact), Overview, Costs, What changed (before and after), Compare headers | Sizes: compact, standard, hero |
-| Cost category card and receipt line | Costs (as receipt lines), What changed (the highlighted line) | Status variants |
+| Cost category card and receipt line | Costs (as receipt lines), What changed (the highlighted line), home cards on My move and Homes | Status variants |
 | Status tag and source line | Everywhere data appears | One pattern |
 | Gap card | Nearby, Costs, Compare, Overview | — |
 | Sheet (bottom sheet on mobile, side panel on desktop) | Evidence, cost working, map selection, Ask about this home | Full-screen on a phone for evidence |
