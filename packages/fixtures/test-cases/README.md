@@ -8,7 +8,7 @@ Files:
 
 ## Case format
 
-Each file is `{ "$schema": "../schema/test-case.schema.json", "formatVersion": 1, "planSnapshotDate": "2026-10-23", "money": "...", "cases": [ ... ] }`. Keys are camelCase; statuses and category names are hyphenated, matching `packages/fixtures/schema/` (statuses `included`, `not-calculated`, `conflicting`; categories such as `service-charge`, `council-tax`, `maintenance`, `first-month-rent`). Each case:
+Each file is `{ "$schema": "../schema/test-case.schema.json", "formatVersion": 1, "planSnapshotDate": "2026-10-23", "money": "...", "cases": [ ... ] }`. Keys are camelCase; statuses and category names are hyphenated, matching `packages/fixtures/schema/` (statuses `included`, `not-calculated`, `conflicting`, `missing`; categories such as `service-charge`, `council-tax`, `maintenance`, `first-month-rent`). Each case:
 
 ```json
 {
@@ -27,7 +27,7 @@ Each file is `{ "$schema": "../schema/test-case.schema.json", "formatVersion": 1
 - **Text inputs** (`...Source`, `source`, `note`, `testOnlyNote`) say where a value came from. Sources use the plan's labels (listing claim, user-entered, synthetic, and so on). They are for people, not for the calculation.
 - **Cost lines** in monthly and upfront cases are objects in `inputs.lines`: `{category, period: "year"|"month"|"once", amountPence, source}` (`once` for upfront lines), or `{category, status, note, source}` for lines with no amount, or `{category, mortgageCase}` for the mortgage line. **Cross-case links**: `mortgageCase` names another case's `id` whose rounded result is the line's amount; `listingTotalCase` and `budgetTotalCase` in the budget beat do the same.
 - **`testOnly: true`** marks an input chosen to hit a boundary. It is not a plan home or a plan figure (the 5, 6, 7, 18 and 30 pence a year cases, the sub-penny rounding inputs, and the two mortgage boundary loans).
-- **Statuses** in `expected.lines`: `included` (covered by another charge or by the rent), `not-calculated` (this version doesn't work it out), `conflicting` (sources disagree and it is not settled). Such a line adds nothing to the total and is never shown as zero.
+- **Statuses** in `expected.lines`: `included` (covered by another charge or by the rent), `not-calculated` (this version doesn't work it out), `conflicting` (sources disagree and it is not settled), `missing` (no evidence yet, BE-16). Such a line adds nothing to the total and is never shown as zero.
 - **Partial totals**: any `not-calculated` or unsettled line makes the total partial. Monthly and upfront cases carry `totalIsPartial` and `partialReasons`. A partial total is a floor, not the full cost.
 - **Budget fields**, the same on every monthly case: `budgetPence` (160,000), `budgetDifferencePence` = budget minus total (positive = headroom, negative = over budget), and `withinBudget` (total at or below the budget).
 - Rounding everywhere: nearest penny, half away from zero; each line rounded once; a total is the sum of the rounded lines.
@@ -74,14 +74,15 @@ Each yearly item is divided by 12 and rounded once; monthly estimates are used a
 
 | Case | Working (pence) | Total | Partial? | Budget difference |
 |---|---|---|---|---|
-| B1, listing service charge (£2,400 = 20,000) | 98,254 + 20,000 + 2,083 + 17,500 + 8,500 + 4,500 + 3,000 | **153,837p (£1,538.37)** | yes: maintenance not calculated | +6,163p (£61.63 under) |
+| B1, steps 1-2, listing service charge (£2,400 = 20,000) | 98,254 + 20,000 + 2,083 + 17,500 + 8,500 + 4,500 + 3,000; insurance `missing` (management pack not yet arrived) | **153,837p (£1,538.37)** | yes: insurance missing, maintenance not calculated | +6,163p (£61.63 under) |
+| B1, step 3 (management pack arrives), listing service charge | same sum; insurance now `included`; service charge still the listing claim | **153,837p (£1,538.37)** | yes: maintenance not calculated | +6,163p (£61.63 under) |
 | B1, 2026 budget (£3,720 = 31,000) | same with 31,000 | **164,837p (£1,648.37)** | yes: maintenance not calculated | -4,837p (£48.37 over) |
 | B2 | 138,170 + 15,417 + 12,000 + 5,000 + 3,000 + 3,500 (insurance) + 6,000 (maintenance) | **183,087p (£1,830.87)** | no | -23,087p (£230.87 over) |
 | R1, before water settled | 120,000 + 13,333 + 8,000 + 3,000; water `conflicting`, left out | **144,333p (£1,443.33)** | yes: water not settled yet | +15,667p |
 | R1, after water confirmed | 144,333 + 4,500 | **148,833p (£1,488.33)** | no | +11,167p |
 | R2 | 127,500 + 15,417; energy, water, broadband `included` | **142,917p (£1,429.17)** | no | +17,083p |
 
-B1 buildings insurance is `included` (in the service charge); B1 maintenance is `not-calculated`, and uses the same `maintenance` category as B2.
+B1 buildings insurance is `missing` before story step 3 and `included` (in the service charge) from step 3, when its only source, the management pack, arrives (issue #37; neither adds an amount); B1 maintenance is `not-calculated`, and uses the same `maintenance` category as B2.
 
 ### Upfront cash
 | Home | Working | Total |
