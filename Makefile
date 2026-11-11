@@ -4,6 +4,7 @@
 # No telemetry from the .NET CLI or the test platform.
 export DOTNET_CLI_TELEMETRY_OPTOUT := 1
 export TESTINGPLATFORM_TELEMETRY_OPTOUT := 1
+export REQNROLL_TELEMETRY_ENABLED := 0
 
 SOLUTION      := HomeScout.slnx
 CONFIGURATION := Release

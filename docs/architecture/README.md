@@ -58,6 +58,7 @@ flowchart TB
         generated[("Generated costs<br/>packages/fixtures/generated/costs.json<br/>Every calculated output, each with a figure ID")]
         validator["Validator<br/>C# console app<br/>HomeScout.Fixtures.Validator"]
         tests["Test projects<br/>NUnit, FsCheck, architecture tests<br/>engine, generator and fixture tests"]
+        specs["Specification tests<br/>packages/specs, Reqnroll<br/>Gherkin specs from docs/specs/"]
         ci["Checks<br/>make check and GitHub Actions CI<br/>CodeQL, dependency review, mutation testing (manual)"]
     end
 
@@ -81,9 +82,11 @@ flowchart TB
     validator -->|checks| generated
     tests -->|exercise| engine
     tests -->|exercise| generator
+    specs -->|check IDs in| generated
     ci -->|runs| validator
     ci -->|"runs, then fails if the generated file<br/>differs from the committed one"| generator
     ci -->|runs| tests
+    ci -->|runs| specs
 
     user -.->|"PLANNED: uses"| web
     web -.->|"PLANNED, stage 5: reads"| generated
@@ -114,6 +117,7 @@ flowchart TB
 | Generated costs | `packages/fixtures/generated/costs.json` | The committed output. Never edited by hand. |
 | Validator | `packages/fixtures/tools/HomeScout.Fixtures.Validator/` | `make validate`: checks every data, test-case and generated file against its schema. |
 | Test projects | `packages/cost-engine/tests/`, `packages/fixtures/tests/` | NUnit tests, FsCheck property tests, architecture tests and the generator's end-to-end tests. |
+| Specification tests | `packages/specs/HomeScout.Specs.Tests/` | Reqnroll runs the Gherkin specifications in `docs/specs/` (decision 0043); data steps check every cited figure and evidence ID against the fixtures and `costs.json`. |
 | Checks | `Makefile`, `.github/workflows/`, repository settings | `make check` locally and in CI; `make generated-check` fails if the committed output is out of date. CodeQL (`actions` and `csharp`), dependency review and workflow linting also run. `make mutate` (Stryker.NET) is manual and not part of CI. |
 
 **In plain language: how data flows today.** A person edits the inputs in the fixture data. The generator reads them, asks the cost engine to calculate every total (differences between homes are deferred to stage 5: BE-27, #96), and writes one file, `costs.json`. The validator checks that the inputs, the worked test cases and that output all match their schemas, and CI regenerates `costs.json` and fails if the committed copy is different. That is how the project keeps one rule: **inputs are typed once with a source; calculated figures only ever come from the engine.**

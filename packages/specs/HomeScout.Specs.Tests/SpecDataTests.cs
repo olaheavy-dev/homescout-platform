@@ -41,4 +41,18 @@ internal sealed class SpecDataTests
     {
         Assert.That(SpecData.FigureIds, Is.Not.Empty);
     }
+
+    [Test]
+    public void HasScenarioFromStep_stepInsideAScenarioRange_isTrue()
+    {
+        Assert.That(SpecData.HasScenarioFromStep("B1", 1), Is.True);
+        Assert.That(SpecData.HasScenarioFromStep("B1", 2), Is.True);
+    }
+
+    [Test]
+    public void HomeIds_knownHome_containsItAndNotAnUnknownOne()
+    {
+        Assert.That(SpecData.HomeIds, Does.Contain("B1"));
+        Assert.That(SpecData.HomeIds, Does.Not.Contain("NOPE"));
+    }
 }

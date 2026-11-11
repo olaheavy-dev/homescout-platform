@@ -20,8 +20,24 @@ internal static class SpecData
     /// <summary>Looks a figure up by its ID (an object with an <c>id</c> property anywhere in costs.json).</summary>
     public static bool TryGetFigure(string id, out JsonElement figure) => _loaded.Value.Figures.TryGetValue(id, out figure);
 
-    /// <summary>The story steps a home has calculated scenarios for (the <c>fromStep</c> of each scenario).</summary>
-    public static bool HasScenarioFromStep(string homeId, int step) => _loaded.Value.ScenarioSteps.Contains((homeId, step));
+    /// <summary>True if the home has a calculated scenario for the story step (<c>fromStep</c> up to <c>toStep</c>).</summary>
+    public static bool HasScenarioFromStep(string homeId, int step) => TryFindScenario(homeId, step, out _);
+
+    /// <summary>Finds the calculated scenario that covers a story step, for example B1 step 2 is "from-step-1".</summary>
+    public static bool TryFindScenario(string homeId, int step, out string scenarioId)
+    {
+        foreach (var range in _loaded.Value.Scenarios)
+        {
+            if (range.HomeId == homeId && range.FromStep <= step && step <= range.ToStep)
+            {
+                scenarioId = range.ScenarioId;
+                return true;
+            }
+        }
+
+        scenarioId = string.Empty;
+        return false;
+    }
 
     private static Loaded Load()
     {
@@ -29,14 +45,18 @@ internal static class SpecData
 
         using var costs = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "packages", "fixtures", "generated", "costs.json")));
         var figures = new Dictionary<string, JsonElement>(StringComparer.Ordinal);
-        var scenarioSteps = new HashSet<(string, int)>();
+        var scenarios = new List<ScenarioRange>();
         CollectFigures(costs.RootElement.Clone(), figures);
         foreach (var home in costs.RootElement.GetProperty("homes").EnumerateArray())
         {
             var homeId = home.GetProperty("homeId").GetString()!;
             foreach (var scenario in home.GetProperty("scenarios").EnumerateArray())
             {
-                scenarioSteps.Add((homeId, scenario.GetProperty("fromStep").GetInt32()));
+                scenarios.Add(new ScenarioRange(
+                    homeId,
+                    scenario.GetProperty("scenarioId").GetString()!,
+                    scenario.GetProperty("fromStep").GetInt32(),
+                    scenario.GetProperty("toStep").GetInt32()));
             }
         }
 
@@ -50,7 +70,7 @@ internal static class SpecData
             .Select(item => item.GetProperty("id").GetString()!)
             .ToHashSet(StringComparer.Ordinal);
 
-        return new Loaded(figures, scenarioSteps, evidenceIds, homeIds);
+        return new Loaded(figures, scenarios, evidenceIds, homeIds);
     }
 
     private static void CollectFigures(JsonElement element, Dictionary<string, JsonElement> figures)
@@ -89,9 +109,11 @@ internal static class SpecData
         throw new InvalidOperationException("HomeScout.slnx was not found above " + AppContext.BaseDirectory + ".");
     }
 
+    private sealed record ScenarioRange(string HomeId, string ScenarioId, int FromStep, int ToStep);
+
     private sealed record Loaded(
         Dictionary<string, JsonElement> Figures,
-        HashSet<(string, int)> ScenarioSteps,
+        List<ScenarioRange> Scenarios,
         HashSet<string> Evidence,
         HashSet<string> Homes);
 }
