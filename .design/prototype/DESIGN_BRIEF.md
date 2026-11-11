@@ -138,7 +138,7 @@ All components are new.
 | Home header | New | Photo thumbnail, address, mode, sample-data label |
 | Hero figure | New | Large tabular figure, period, "so far" or partial label, budget line from the engine |
 | Cost category card | New | Status variants: calculated, included, missing, not calculated, conflicting |
-| Status tag and source line | New | One pattern everywhere: recorded, no record in this source, old, couldn't fetch, not yet covered, missing not £0 |
+| Status tag and source line | New | One pattern everywhere: recorded, no record in this source, old, unavailable ("couldn't fetch this time"), not yet covered, missing not £0 |
 | Gap card | New | Dashed outline plus "this doesn't mean there are none" |
 | Nearby sections and rows | New | List first. Getting around, everyday places (including healthcare, police stations and childcare), schools (framework and date), flood, recorded crime, sold nearby |
 | Map view and bottom sheet | New | MapLibre, the drawn Northbridge sample map, markers in one neutral colour with the home pin in forest. Selection stays in sync with the list. Crime is never on the map, and sold-price pins have no price labels |

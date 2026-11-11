@@ -70,6 +70,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | IN-04 | CI/CD and environments | 4 (domain and secrets before the public area check, 0046) | Not started | |
 | IN-05 | Budget cap and cost alerts | 4 (before any running cost; 0046) | Not started | |
 | FE-05 | Demo analytics and feedback | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
+| FE-06 | Area summary export format | 3 | Default (11 Nov 2026): a PDF printed from the browser (no package; the postcode never reaches the server). CSV is not planned for now; a later option | `.design/prototype/INFORMATION_ARCHITECTURE.md` (Check an area) |
 | BE-01 | Backend language and framework | 2 (language), 5b (framework, [0046](0046-public-area-check-first.md)) | Proposed (C# on .NET accepted in 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 5b, issue #92) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 5b (before the first API, [0046](0046-public-area-check-first.md)) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
