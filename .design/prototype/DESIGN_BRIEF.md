@@ -141,15 +141,15 @@ All components are new.
 |---|---|---|
 | App shell: desktop top bar, mobile bottom navigation | New | Doc 03 §3: My move · Homes · Compare. Home tabs: Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Mobile bottom nav: Overview, Nearby, Costs, Questions |
 | Brand mark and wordmark | New | **Contour home** (founder's choice of four concepts drawn on the design canvas, 11 Nov 2026): three nested roof lines like map contours with a hearth at the centre; a primary mark (48 px and up) and a compact two-contour mark (32 px and below), beside the Bricolage Grotesque 700 wordmark. Trade-mark clearance (0009) and the asset register (rule 5) come before use |
-| Landing hero, search first (0046) | New | The postcode box with the sample 3D map and a summary card. The private prototype's example page shows the two example homes (buy and rent) with equal weight |
+| Landing hero, search first (0046) | New | The postcode box with the sample 3D map (crafted category pins, the 400 m ring and the "Postcode centre" pin) and a compact summary card on the map: the four nearest places by straight-line distance and "+3 more nearby". The card sits where no pin is under it (bottom left on desktop; across the bottom of a taller map on phones), so it never hides a place. Its places, distances and count come from the postcode-level sample fixture, never typed by hand (rule 2). The private prototype's example page shows the two example homes (buy and rent) with equal weight |
 | Address search and identity confirmation | New | Combobox with manual selection, never a silent postcode-to-flat match. Includes the map pin flow (founder) and a "can't find it" route |
 | Home header | New | Photo thumbnail, address, mode, sample-data label |
 | Hero figure | New | Large tabular figure, period, "so far" or partial label, budget line from the engine |
-| Cost category card | New | Status variants: calculated, included, missing, not calculated, conflicting |
+| Cost category card and receipt line | New | Status variants: calculated, included, missing, not calculated, conflicting. Costs shows the lines as a receipt; the card form stays for What changed and home cards |
 | Status tag and source line | New | One pattern everywhere: recorded, no record in this source, old, unavailable ("couldn't fetch this time"), not yet covered, missing not £0 |
 | Gap card | New | Dashed outline plus "this doesn't mean there are none" |
-| Nearby sections and rows | New | List first. Getting around, everyday places (including healthcare, police stations and childcare), schools (framework and date), flood, recorded crime, sold nearby |
-| Map view and bottom sheet | New | MapLibre, the drawn Northbridge sample map, markers in one neutral colour with the home pin in forest. Selection stays in sync with the list. Crime is never on the map, and sold-price pins have no price labels |
+| Nearby sections and rows | New | List first. Getting around, everyday places (including healthcare, police stations and childcare), places of worship as their own topic (PD-13), schools (framework and date), flood, recorded crime, sold nearby |
+| Map view and bottom sheet | New | MapLibre, the drawn Northbridge sample map, one muted colour and one crafted icon per category (FE-08), with the postcode centre or home pin the only deep-forest pin. Selection stays in sync with the list. Crime is never on the map, and sold-price pins have no price labels |
 | Crime counts table | New | Counts by month and category, "not a safety rating", neighbourhood team |
 | Flood panel | New | The Environment Agency's warning wording, the surface-water note and the long-term checker link |
 | Compare (table on desktop, cards on mobile) | New | Up to three homes. Costs and daily life aligned. Unknowns visible. No winner |
@@ -166,7 +166,7 @@ All components are new.
 
 - **Confirming the exact home:** the address search shows matching units. The user picks one, or drops a pin, or chooses "can't find it". The home overview opens with its gaps visible. WALES-1 shows "not yet covered" with an illustration.
 - **Nearby on a phone:** a list of sections with a small map preview. Tapping it opens a full-screen map with a bottom sheet (peek, half, full). Selecting a row highlights the marker and the reverse. Focus and selection survive switching between list and map.
-- **Costs:** the hero figure, then category cards. Tapping a card shows its working, source and period. A missing card offers "Ask about this", which creates a question. Upfront cash is separate.
+- **Costs:** the hero figure and the cost bar, then the monthly lines as a **receipt** (founder, 11 Nov 2026): one line per cost with its figure from the engine and a numbered source key underneath, missing and not-calculated lines named in place (never £0), and the engine's "Total so far" with its Partial tag and a "?" for each line not included. The receipt replaces the category cards. Tapping a line shows its working, source and period. A missing line offers "Ask about this", which creates a question. Upfront cash is separate.
 - **Questions:** draft a question from evidence, copy or export it, and record it as sent (labelled as a simulated action). Attach a reply. The reply-check screen shows the reply, its source and what's still uncertain. The user confirms explicitly.
 - **Decision impact:** when a confirmed reply changes an assumption, the user sees the before and after with the reason, the changed comparison and the questions still open. A quiet highlight shows the change; nothing animates the figures.
 - **Compare:** add up to three homes. Rows are aligned, unknowns stay visible and no winner is chosen. On a phone, it's a swipeable card per topic.

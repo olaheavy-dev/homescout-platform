@@ -129,21 +129,25 @@ The page opens as **one row per topic with its headline fact** (founder review, 
 1. **Your commute:** your estimate next to your limit, with no verdict until the engine produces one (#147).
 2. **Getting around:** stops, with straight-line distances.
 3. **Everyday places:** supermarket or shop, park, healthcare, police station and childcare, with gaps shown.
-4. **Schools,** with framework and date.
-5. **Flood:** live warnings, plus the long-term link.
-6. **Recorded crime:** counts by month and category; never on the map.
-7. **Sold nearby:** history, not a valuation.
-8. **Planning nearby** and **broadband.**
+4. **Places of worship** (PD-13), its own topic: the nearest places of every faith recorded in the source, by distance; never counts or an area's religious makeup. In the fixtures it is the `place-of-worship` amenity subtype.
+5. **Schools,** with framework and date.
+6. **Flood:** live warnings, plus the long-term link.
+7. **Recorded crime:** counts by month and category; never on the map.
+8. **Sold nearby:** history, not a valuation.
+9. **Planning nearby** and **broadband.**
+
+On desktop each topic carries its "What this doesn't tell you" as a margin note beside the list (founder, 11 Nov 2026). On a phone it is a visible muted note under the source line, never collapsed (research `area-display-ux.md`: caveats that change meaning stay visible).
 
 Each topic detail ends with its source line. On a phone the map is a view inside each topic; on desktop it is a sticky column beside the list, with the selection kept in sync. The map has category filters, a legend, a hover card (desktop) or tap card (phone), and an optional 3D switch.
 
 ### Costs
 1. **The monthly hero figure,** with the partial label and what's missing named.
 2. **The budget line** from the engine.
-3. **Category cards** (founder choice): calculated, then included, then missing or not calculated. Missing cards are never pushed out of sight.
-4. **Upfront cash,** a separate section with its own total.
-5. **"How this was worked out"** in a disclosure.
-6. **Assumptions you can edit,** with any change recorded as the user's own.
+3. **The cost bar:** one segment per line from the engine's figures, with a fixed-width dashed "?" slot for each missing or not-calculated line.
+4. **The receipt** (founder, 11 Nov 2026; replaces the category cards): one line per cost with its figure from the engine, a numbered source key underneath, and missing or not-calculated lines named in place, never pushed out of sight and never £0. It ends with the engine's "Total so far" with its Partial tag and a "?" for each line not included.
+5. **Upfront cash,** a separate section with its own total.
+6. **"How this was worked out"** in a disclosure.
+7. **Assumptions you can edit,** with any change recorded as the user's own.
 
 ### What changed (the hero moment)
 1. **One sentence of what changed and why,** with its source, for example "The management pack shows £3,720 a year, not £2,400".
@@ -168,7 +172,7 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 
 ### Landing (search first, decision 0046)
 1. The promise in a Bricolage Grotesque headline, with the **postcode box** (persistent label, hint text, "Check postcode", "Try an example") as the main action. "England only for now" sits under it.
-2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring and a topic summary card.
+2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring, crafted category pins (FE-08) and a compact summary card on the map (the four nearest places and "+3 more nearby"), placed where no pin is under it. Its places, distances and count come from the postcode-level sample fixture (B6a), never typed by hand.
 3. **Data from:** a source wall: one card per source shown in About the data (planned: Environment Agency, police.uk, HM Land Registry, Department for Education, Ofsted, NaPTAN, OpenStreetMap, Ofcom, Planning Data; the final list follows DA-05), with each source, what it covers and what it can’t tell you; names only, no logos; links to About the data.
 4. **How it works:** three illustrated steps (type a postcode, see what's around, print or save), followed by a full-width photo band (an AI-generated terraced street; honest alt text, footer note).
 5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, what it can't tell you).
@@ -200,7 +204,7 @@ In the private prototype the landing can also link the two example homes; the pu
 3. The home Overview opens with its evidence gaps visible, and the home card is added to My move.
 
 ### Ask a question, then check the reply
-1. A finding or a missing cost card shows **Ask about this**.
+1. A finding or a missing cost (a receipt line on Costs, a card elsewhere) shows **Ask about this**.
 2. The question draft is pre-filled from the evidence, with the recipient role.
 3. The user copies or exports it, then **records it as sent**. This is labelled as a simulated action.
 4. When a reply arrives (a demo step), it shows on My move under "Needs your attention".
@@ -258,7 +262,7 @@ In the private prototype the landing can also link the two example homes; the pu
 | Home layout (home header, tabs or bottom bar, demo timeline) | Every home page | Collapses on scroll on a phone |
 | Demo story timeline | My move, home pages, Compare (example homes only) | Hidden on non-example homes |
 | Hero figure | My move cards (compact), Overview, Costs, What changed (before and after), Compare headers | Sizes: compact, standard, hero |
-| Cost category card | Costs, What changed (the highlighted line) | Status variants |
+| Cost category card and receipt line | Costs (as receipt lines), What changed (the highlighted line), home cards on My move and Homes | Status variants |
 | Status tag and source line | Everywhere data appears | One pattern |
 | Gap card | Nearby, Costs, Compare, Overview | — |
 | Sheet (bottom sheet on mobile, side panel on desktop) | Evidence, cost working, map selection, Ask about this home | Full-screen on a phone for evidence |
