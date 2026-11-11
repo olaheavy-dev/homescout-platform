@@ -12,7 +12,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
 ## High-fidelity design (phase 6 now, on the canvas)
 - [ ] **H1 My move on a phone, buyer story step 1 (light):** the main view, which establishes the **Scandinavian + Editorial** direction for everything after it.
-  - It shows Fraunces titles, one next-step row naming its home, then B1 and B2 summary cards (photo, address, monthly cost so far with its partial label, the budget line, the commute line, open questions).
+  - It shows Fraunces titles, Geist tabular figures, one next-step row naming its home, then B1 and B2 summary cards (photo, address, monthly cost so far with its partial label, the budget line, the commute line, open questions).
   - Below them come "Needs your attention" and the bottom tabs; the clay-tinted demo strip sits after the headline summary.
   - **Done:** the founder agrees it no longer "looks made by AI". _New: home summary card, hero figure (compact), demo timeline, bottom tabs._
 - [ ] **H2 What changed, buyer step 4 (phone and desktop):** the hero moment.

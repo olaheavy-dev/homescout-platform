@@ -110,7 +110,7 @@
      - **open questions** (count and the most important one);
      - **what changed** since the last step.
    - This comes first because it answers "where are we with each home?" at a glance.
-2. **Needs your attention:** replies to check, documents to review and questions not yet sent. These are the next useful actions across all homes (doc 03 §5, "My move / activity"); no score or urgency styling.
+2. **Needs your attention:** replies to check, missing cost lines, questions not yet sent and documents to review (the order the next step uses). These are the next useful actions across all homes (doc 03 §5, "My move / activity"); no score or urgency styling.
 3. **Compare:** a prominent "Compare these homes" link once there are two or more.
 4. **Recent activity:** a short timeline with dates (step captions in the demo).
 5. Below the fold: the dated decision snapshot (share) and the household members (simulated).
