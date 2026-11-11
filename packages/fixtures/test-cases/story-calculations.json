@@ -1668,7 +1668,7 @@
     },
     {
       "id": "b1-budget-beat",
-      "description": "Deliberate story beat: B1 within the 1,600 pound monthly budget on the listing service charge and over it on the 2026 budget. Both totals are partial (maintenance not calculated).",
+      "description": "Deliberate story beat: B1 within the 1,600 pound monthly budget on the listing service charge and over it on the 2026 budget. Both totals are partial: maintenance not calculated in both; buildings insurance also missing on the listing total (steps 1-2).",
       "rule": {
         "source": "Stage 2 plan, Stories (Buyer B1 deliberate beat); within budget means total <= budget (founder, 23 Oct 2026)",
         "url": "docs/planning/stage-2-plan.md"
