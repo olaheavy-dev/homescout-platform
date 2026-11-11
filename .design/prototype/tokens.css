@@ -18,7 +18,8 @@
  *   - Text tokens are at least 4.5:1 on paper, surface, well, sage, clay, the illustration tint and the status backgrounds.
  *   - Meaningful non-text tokens (gap border, strong border, focus) are at least 3:1.
  *   - Hairline border tokens are decorative and exempt.
- *   - The lowest text pair: light, tertiary on sage 5.08; dark, tertiary on bg-tertiary 5.40 (5.16 on the info status background).
+ *   - The lowest text pairs: light, warning amber on sage 4.95 (neutral text: tertiary on sage 5.08); dark, tertiary on
+ *     bg-tertiary 5.40 (5.16 on the info status background; the lowest status colour is error on info-bg, 6.18).
  *
  * Fonts: Fraunces and Geist are Google Fonts under the SIL Open Font License. Record both in
  * docs/references/third-party.md when the app first loads them (stage 5).
