@@ -175,7 +175,7 @@ Use ordinary current English private-renting terminology for the English fixture
 
 Both must include: entry, identity confirmation, useful overview, daily-life context, editable costs, viewing notes, document evidence, a question, an inadequate reply, a supported answer, updated comparison and a recorded decision. A renter tab that merely replaces a mortgage slider with rent fails this requirement.
 
-Prototype controls must distinguish simulated source checks, document attachments, replies, sending and paid access from live services. Use bundled synthetic examples for this demonstration. It must be possible to explore each complete journey without an actual payment; production entitlements remain open. Research sessions using consented, redacted real materials are a separate activity from the public demonstration.
+Prototype controls must distinguish simulated source checks, document attachments, replies, sending and paid access from live services. Use bundled synthetic examples for this demonstration. It must be possible to explore each complete journey without an actual payment; production entitlements remain open. Research sessions using consented, redacted real materials are a separate activity from the prototype (decision 0045).
 
 ## 5. Screen and state specification
 

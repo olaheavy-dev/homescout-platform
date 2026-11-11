@@ -1,0 +1,285 @@
+/*
+ * Vestagraph design tokens: phase 4 of the design flow (decision 0031), 11 Nov 2026.
+ *
+ * Philosophy: Scandinavian + Editorial (DESIGN_BRIEF.md). Warmth and restraint in the
+ * workspace, and editorial typography for headlines and key moments.
+ * Founder choices:
+ *   - Fraunces (headlines) + Geist (UI and figures). Not Inter.
+ *   - "Warmer and richer" colour: sage and clay surfaces and tinted sections are allowed.
+ *     Amber and red stay reserved for specific findings.
+ *   - Light and dark themes both ship.
+ *   - Figures never animate.
+ *
+ * Starting palette: doc 03 §6 (forest #153F35, ink #182923, paper #F7F5EF, sage, amber #8F560E,
+ * red #A33636).
+ *
+ * Contrast was checked (WCAG 2.2) on every background in each theme:
+ *   - Text tokens are at least 4.5:1 on paper, surface, well, sage and clay.
+ *   - Meaningful non-text tokens (gap border, strong border, focus) are at least 3:1.
+ *   - Hairline border tokens are decorative and exempt.
+ *   - The lowest text pair is tertiary on sage: 5.08 in light, 5.12 in dark.
+ *
+ * Fonts: Fraunces and Geist are Google Fonts under the SIL Open Font License. Record both in
+ * docs/references/third-party.md when the app first loads them (stage 5).
+ * Tabular figures: use font-variant-numeric: tabular-nums for every figure, and check that Geist
+ * supports it in the first build.
+ *
+ * Format: CSS custom properties, the most portable option. FE-02 (#74) decides the styling
+ * approach, and whatever it picks reads these values. Do not hard-code values in components.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ── Colour: surfaces ─────────────────────────────────────────── */
+  --color-bg-primary: #F7F5EF;     /* warm paper: the page */
+  --color-bg-secondary: #FFFFFF;   /* surface: cards, sheets, working areas */
+  --color-bg-tertiary: #EFECE3;    /* wells: inputs, table header rows, insets */
+  --color-bg-tint-sage: #E3ECE2;   /* "richer": daily-life sections, supporting surfaces */
+  --color-bg-tint-clay: #F5E8DC;   /* "richer": editorial highlights, illustration panels */
+  --color-bg-inverse: #182923;     /* ink: inverse panels, tooltips */
+
+  /* ── Colour: text ─────────────────────────────────────────────── */
+  --color-text-primary: #182923;   /* ink */
+  --color-text-secondary: #4A5A53; /* captions, metadata */
+  --color-text-tertiary: #56655E;  /* placeholders, source lines (5.08 at worst) */
+  --color-text-inverse: #F7F5EF;
+  --color-text-link: #153F35;
+  --color-text-clay: #9A4A28;      /* editorial accent text, used sparingly */
+
+  /* ── Colour: borders ──────────────────────────────────────────── */
+  --color-border-primary: #D9D4C8;   /* decorative hairline (exempt from 3:1) */
+  --color-border-secondary: #E8E4DA; /* decorative divider */
+  --color-border-strong: #857F72;    /* inputs and meaningful boundaries (3.29) */
+  --color-border-gap: #737D78;       /* dashed "no record" and "missing" cards (3.52) */
+  --color-border-focus: #2F7A5F;     /* focus ring (4.27) */
+
+  /* ── Colour: actions ──────────────────────────────────────────── */
+  --color-accent-primary: #153F35;        /* forest: primary actions, brand */
+  --color-accent-primary-hover: #0F3029;
+  --color-accent-primary-active: #0A241E;
+  --color-on-accent-primary: #FFFFFF;     /* 11.70 on forest */
+  --color-accent-secondary: #DCE7DD;      /* sage: secondary buttons, selected chips */
+  --color-on-accent-secondary: #153F35;
+
+  /* ── Colour: status (always paired with words and an icon) ─────── */
+  --color-status-success: #2D6A4E;
+  --color-status-success-bg: #E3EFE6;
+  --color-status-warning: #8F560E;        /* attention: partial, old, missing */
+  --color-status-warning-bg: #FBF1E2;
+  --color-status-error: #A33636;          /* a specific supported finding only, never a whole home */
+  --color-status-error-bg: #F8E6E4;
+  --color-status-info: #2F5D7C;
+  --color-status-info-bg: #E4EDF3;
+
+  /* ── Colour: overlays and the map ─────────────────────────────── */
+  --color-surface-overlay: rgba(24, 41, 35, 0.40);
+  --color-map-land: #EEF0E6;
+  --color-map-water: #D5E3E6;
+  --color-map-park: #D7E6D5;
+  --color-map-road: #FFFFFF;
+  --color-map-marker: #4A5A53;    /* every place marker is one neutral colour */
+  --color-map-home: #153F35;      /* only the home pin is forest */
+
+  /* ── Typography ───────────────────────────────────────────────── */
+  --font-family-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-family-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Type ramp: mobile-first, with a 1.25 ratio in UI sizes and an editorial jump at display */
+  --font-size-xs: 0.75rem;    /* 12: captions, source lines */
+  --font-size-sm: 0.875rem;   /* 14: secondary text, table cells */
+  --font-size-base: 1rem;     /* 16: body */
+  --font-size-md: 1.125rem;   /* 18: lead text, card titles */
+  --font-size-lg: 1.375rem;   /* 22: section headings */
+  --font-size-xl: 1.75rem;    /* 28: screen titles (Fraunces) */
+  --font-size-2xl: 2.25rem;   /* 36: hero figures on mobile (Geist, tabular) */
+  --font-size-3xl: 3rem;      /* 48: hero figures on desktop and editorial headings */
+  --font-size-4xl: clamp(2.75rem, 6vw + 1rem, 5.5rem); /* 44–88: landing display (Fraunces) */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.15;    /* display and hero figures */
+  --line-height-snug: 1.3;      /* headings */
+  --line-height-normal: 1.5;    /* body */
+  --line-height-relaxed: 1.65;  /* long reading, explainers */
+
+  --letter-spacing-tight: -0.02em;  /* display and figures */
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.06em;    /* small caps labels such as "EACH MONTH" */
+
+  --font-variant-figures: tabular-nums;  /* every figure, so columns align */
+
+  /* ── Spacing: 8 px base (Scandinavian, generous) ───────────────── */
+  --space-0: 0;
+  --space-1: 0.125rem;  /* 2 */
+  --space-2: 0.25rem;   /* 4 */
+  --space-3: 0.375rem;  /* 6 */
+  --space-4: 0.5rem;    /* 8: base */
+  --space-5: 0.75rem;   /* 12 */
+  --space-6: 1rem;      /* 16: phone page gutter */
+  --space-7: 1.5rem;    /* 24: card padding */
+  --space-8: 2rem;      /* 32: section gap */
+  --space-9: 3rem;      /* 48 */
+  --space-10: 4rem;     /* 64: editorial section break */
+  --space-11: 6rem;     /* 96 */
+  --space-12: 8rem;     /* 128: landing rhythm */
+
+  /* ── Layout ───────────────────────────────────────────────────── */
+  --max-width-content: 42rem;   /* ~70ch reading width */
+  --max-width-wide: 72rem;      /* app content */
+  --max-width-page: 90rem;      /* landing and full-bleed sections */
+  --width-nearby-list: 27.5rem; /* 440 px list column next to the map (desktop) */
+  --touch-target-min: 2.75rem;  /* 44 px */
+
+  --border-width-hairline: 1px;
+  --border-width-gap: 1.5px;    /* dashed gap cards */
+  --border-radius-sm: 0.5rem;   /* 8: chips, inputs, tags */
+  --border-radius-md: 0.75rem;  /* 12: cards */
+  --border-radius-lg: 1.25rem;  /* 20: sheets, large panels */
+  --border-radius-full: 9999px;
+
+  /* Soft, warm shadows (Scandinavian: large blur, low opacity). Never stacked. */
+  --shadow-sm: 0 1px 2px rgba(24, 41, 35, 0.06);
+  --shadow-md: 0 4px 16px rgba(24, 41, 35, 0.08);
+  --shadow-lg: 0 12px 40px rgba(24, 41, 35, 0.12);
+  --shadow-focus: 0 0 0 3px var(--color-bg-primary), 0 0 0 5px var(--color-border-focus);
+
+  /* ── Texture (editorial surfaces only, never behind data) ─────── */
+  --texture-paper-opacity: 0.035;
+
+  /* ── Motion: gentle and settling. No bounce: money never bounces ── */
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;     /* hover, press */
+  --duration-normal: 250ms;   /* sheet, list and map changeover */
+  --duration-slow: 400ms;     /* the What changed highlight fade, map moving to a selection */
+  --duration-slower: 600ms;   /* editorial reveals on the landing only */
+
+  --easing-default: cubic-bezier(0.2, 0, 0, 1);    /* settle into place */
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-emphasised: cubic-bezier(0.3, 0, 0, 1); /* sheets and the highlight */
+  /* --easing-bounce is deliberately not defined (the brief says figures never bounce). */
+
+  /* ── Breakpoints (for reference in JS and media queries) ──────── */
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ── Component tokens ─────────────────────────────────────────── */
+  --card-bg: var(--color-bg-secondary);
+  --card-border: var(--border-width-hairline) solid var(--color-border-primary);
+  --card-radius: var(--border-radius-md);
+  --card-padding: var(--space-7);
+  --card-gap-border: var(--border-width-gap) dashed var(--color-border-gap);
+
+  --hero-figure-size: var(--font-size-2xl);
+  --hero-figure-weight: var(--font-weight-semibold);
+
+  --sheet-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  --sheet-shadow: var(--shadow-lg);
+
+  --nav-height-mobile: 4.5rem;
+  --demo-timeline-bg: var(--color-bg-tint-clay);  /* visibly not product chrome */
+}
+
+/* Hero figures grow on larger screens */
+@media (min-width: 1024px) {
+  :root { --hero-figure-size: var(--font-size-3xl); }
+}
+
+/* ── Dark theme: warm charcoal, not inverted ─────────────────────── */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg-primary: #1C1B18;
+  --color-bg-secondary: #25241F;
+  --color-bg-tertiary: #2E2C27;
+  --color-bg-tint-sage: #21302A;
+  --color-bg-tint-clay: #33271F;
+  --color-bg-inverse: #ECE8DF;
+
+  --color-text-primary: #ECE8DF;   /* off-white, never pure white */
+  --color-text-secondary: #BDB7AA;
+  --color-text-tertiary: #A39D90;  /* 5.12 at worst */
+  --color-text-inverse: #1C1B18;
+  --color-text-link: #9FD3BA;
+  --color-text-clay: #E8A07A;
+
+  --color-border-primary: #3A3832;
+  --color-border-secondary: #2F2E29;
+  --color-border-strong: #7C786E;  /* 3.14 */
+  --color-border-gap: #7C786E;     /* 3.14 */
+  --color-border-focus: #9FD3BA;
+
+  --color-accent-primary: #8CCBAE;       /* forest lifted for dark */
+  --color-accent-primary-hover: #A2D7BE;
+  --color-accent-primary-active: #76B898;
+  --color-on-accent-primary: #10201A;    /* 9.06 on accent */
+  --color-accent-secondary: #2C3D35;
+  --color-on-accent-secondary: #CDE6D8;
+
+  --color-status-success: #8CCBAE;
+  --color-status-success-bg: #1F3329;
+  --color-status-warning: #E6B66C;
+  --color-status-warning-bg: #3A2C17;
+  --color-status-error: #F0948B;
+  --color-status-error-bg: #3D211F;
+  --color-status-info: #93BEDC;
+  --color-status-info-bg: #1E2E3A;
+
+  --color-surface-overlay: rgba(0, 0, 0, 0.55);
+  --color-map-land: #23251F;
+  --color-map-water: #1F2D33;
+  --color-map-park: #22301F;
+  --color-map-road: #34332D;
+  --color-map-marker: #BDB7AA;
+  --color-map-home: #8CCBAE;
+
+  /* Dark shadows: darker and more transparent */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
+
+  --texture-paper-opacity: 0.025;
+}
+
+/* The system preference applies unless the user chose light explicitly */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg-primary: #1C1B18; --color-bg-secondary: #25241F; --color-bg-tertiary: #2E2C27;
+    --color-bg-tint-sage: #21302A; --color-bg-tint-clay: #33271F; --color-bg-inverse: #ECE8DF;
+    --color-text-primary: #ECE8DF; --color-text-secondary: #BDB7AA; --color-text-tertiary: #A39D90;
+    --color-text-inverse: #1C1B18; --color-text-link: #9FD3BA; --color-text-clay: #E8A07A;
+    --color-border-primary: #3A3832; --color-border-secondary: #2F2E29; --color-border-strong: #7C786E;
+    --color-border-gap: #7C786E; --color-border-focus: #9FD3BA;
+    --color-accent-primary: #8CCBAE; --color-accent-primary-hover: #A2D7BE; --color-accent-primary-active: #76B898;
+    --color-on-accent-primary: #10201A; --color-accent-secondary: #2C3D35; --color-on-accent-secondary: #CDE6D8;
+    --color-status-success: #8CCBAE; --color-status-success-bg: #1F3329;
+    --color-status-warning: #E6B66C; --color-status-warning-bg: #3A2C17;
+    --color-status-error: #F0948B; --color-status-error-bg: #3D211F;
+    --color-status-info: #93BEDC; --color-status-info-bg: #1E2E3A;
+    --color-surface-overlay: rgba(0, 0, 0, 0.55);
+    --color-map-land: #23251F; --color-map-water: #1F2D33; --color-map-park: #22301F;
+    --color-map-road: #34332D; --color-map-marker: #BDB7AA; --color-map-home: #8CCBAE;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30); --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
+    --texture-paper-opacity: 0.025;
+  }
+}
+
+/* Reduced motion: transitions become cuts or quick fades */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 120ms;   /* the What changed highlight becomes a short fade */
+    --duration-slower: 0ms;
+  }
+}

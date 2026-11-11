@@ -5,7 +5,7 @@
 Every feature below was checked against Microsoft's official pages on 10 Nov 2026 (sources at the end). Package versions are the latest on nuget.org or npm that day, for orientation only: each pull request that adds a package checks its documentation and pins the version then. Anything not confirmed is marked **unverified**.
 
 ## 1. In one paragraph
-Vestagraph keeps its C# cost engine and moves to .NET 11 in two steps (register line BE-25, founder, 10 Nov 2026). The SDK and runtime move now, in issue #58, with the language pinned at C# 14 (`LangVersion` 14), so CodeQL, which lists C# 14 but not yet C# 15, still reads every file. C# 15 syntax follows in issue #59 once CodeQL lists C# 15 and Stryker.NET handles it. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
+Vestagraph keeps its C# cost engine and moves to .NET 11 in two steps (register line BE-25, founder, 10 Nov 2026). The SDK and runtime move now, in issue #58, with the language pinned at C# 14 (`LangVersion` 14), so CodeQL, which lists C# 14 but not yet C# 15, still reads every file. C# 15 syntax follows in issue #59 once CodeQL lists C# 15 and Stryker.NET handles it. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 5b, decision 0046), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
 
 ## 2. Feature by feature
 
@@ -34,7 +34,7 @@ Status as shipped in .NET 11 GA. "Use" says whether Vestagraph uses it and where
 | **Breaking: `Math.Round(double, digits)` and `decimal`/`BigInteger` to and from `double`/`float` conversions are now correctly rounded** | Stable (no switch back) | **Check.** The engine uses only `Math.Round(decimal, 0, AwayFromZero)` in `Pence.cs` and no `double` (an architecture test forbids it in public members); `BigInteger` (mortgage and ratio rounding) is never converted to a floating-point type; so no figure should move. The upgrade proves it: `costs.json` byte-identical, every worked test unchanged | Upgrade |
 | Breaking: `DateOnly`/`TimeOnly` `TryParse` throws on an invalid style; floating-point to small integer conversions saturate; CPU baseline x86-64-v2 | Stable | Search the code in the upgrade; GitHub's runners meet the CPU baseline | Upgrade |
 
-### ASP.NET Core 11 (stage 6 API)
+### ASP.NET Core 11 (stage 5b API, decision 0046)
 | Feature | Status | Use |
 |---|---|---|
 | **OpenAPI 3.2** as the default document version (Microsoft.OpenApi 3.x underneath) | Stable | **Yes.** The API's OpenAPI document is generated at build time, committed, and checked in `make check` like `costs.json`; TypeScript types for the frontend are generated from it. Whether the chosen TypeScript generator reads OpenAPI 3.2 is **unverified**: if not, the document is pinned to 3.1 until it does |
@@ -90,7 +90,7 @@ The agent never calculates a figure: every number in a reply comes from a tool t
 2. **Done:** SDK and runtime on .NET 11 (#58, pull request #108, BE-25), with `LangVersion` 14. That pull request's own CodeQL run showed CodeQL still analyses every file.
 3. **C# 15 in the engine (#59, then #60)** when CodeQL lists C# 15 and Stryker.NET handles it: closed hierarchies first, then the `Result` union spike. Check CodeQL's supported-languages page at each weekly review.
 4. **Stages 3 and 4** do not depend on .NET 11; stage 5's #96 uses `FullJoin` (available since #58).
-5. **Stage 6:** API skeleton and Aspire, generated TypeScript types, MCP server, evaluation harness, agent gateway, AG-UI chat, document workflow.
+5. **Stage 5b (decision 0046):** API skeleton and Aspire, generated TypeScript types, the area adapters. **Stage 6:** MCP server, evaluation harness, agent gateway, AG-UI chat, document workflow.
 
 ## 5. Not verified
 - When CodeQL will support C# 15 and .NET 11 (a .NET 11 RC1 extractor change was merged in `github/codeql` pull request 22565; no release announcement found).
