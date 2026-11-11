@@ -26,7 +26,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 | OSM public tiles, Nominatim, Overpass | Map, geocode, amenity queries | Usage policies | Discouraged for production | None | See OSM section | Global | Not suitable for production |
 | NHS Directory of Healthcare Services | GP, pharmacy, hospital search | Terms unverified | Unverified | Onboarding (method unverified) | Unverified | England (unverified) | Defer |
 | EPC register API | Certificate rating, energy estimate | OGL, but address fields restricted | Not for address data | GOV.UK One Login bearer token | Limits unverified; free | England and Wales | Conditions |
-| HMLR Price Paid Data | Past sale prices | OGL | Yes | None | Free; monthly files | England and Wales | Use |
+| HMLR Price Paid Data | Past sale prices | OGL, except third-party address rights | Prices: yes. Addresses: only to display residential property price information; any other use needs Royal Mail's permission | None | Free; monthly files | England and Wales | Use with conditions (sold-price display only; not an address supply) |
 | Planning Data Platform | Planning constraints and applications | Mostly OGL, per dataset | Per dataset | API key unverified | Page unavailable on 11 Nov | England, partial | Conditions |
 | Ofcom API | Broadband and mobile availability | Ofcom API terms (PDF, not read) | Unverified | Signup and key | Limits unverified; mobile v1 API ends 30 Nov 2026 | UK | Conditions |
 | Bank of England Database | Bank Rate | OGL (some series excluded) | Yes | None | Excessive use may be restricted | UK | Use |
@@ -99,7 +99,12 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 - Recommendation: conditions. Match on UPRN, store no address text from this source, and obtain legal advice or an OS/Royal Mail licence before launch.
 
 ### HM Land Registry Price Paid Data
-- [Guidance](https://www.gov.uk/guidance/about-the-price-paid-data) (checked 11 Nov 2026). OGL; commercial reuse allowed; must comply with data protection law and PECR. Downloads are monthly; registration lags the sale by two weeks to two months, so the latest two months are incomplete. Excludes right-to-buy, gifts, leases of 7 years or less and other transfers. England and Wales (Scotland and NI separate). The attribution wording is on the downloads page (not read; unverified).
+- [Guidance](https://www.gov.uk/guidance/about-the-price-paid-data) (checked 11 Nov 2026). OGL; commercial reuse allowed; must comply with data protection law and PECR. Downloads are monthly; registration lags the sale by two weeks to two months, so the latest two months are incomplete. Excludes right-to-buy, gifts, leases of 7 years or less and other transfers. England and Wales (Scotland and NI separate). Attribution required: "Contains HM Land Registry data © Crown copyright and database right" with the year ([downloads page](https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads#using-or-publishing-our-price-paid-data), checked 11 Nov 2026).
+- **Address restriction:**
+  - **What the OGL doesn't cover:** the downloads page says the OGL "does not cover the use of third party rights". The address fields are processed against Ordnance Survey AddressBase Premium, which includes Royal Mail PAF.
+  - **What Royal Mail and Ordnance Survey allow:** use of these addresses for personal or non-commercial purposes, and commercial display "for the purpose of providing residential property price information services".
+  - **Any other use** needs Royal Mail's permission.
+  - **For HomeScout:** showing nearby sold prices with their addresses fits the permitted use. Using these addresses as a general address list (search, autocomplete, identity matching) is not covered; that needs a licensed address provider (DA-06).
 - Does not establish: a current value, or that no sale occurred; recent absence is inconclusive.
 - Personal data: addresses are property descriptions, but treat joins to individuals with care (SE-02).
 
