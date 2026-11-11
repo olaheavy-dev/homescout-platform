@@ -43,7 +43,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 | [Stage 2 mutation-testing report, 23 Oct 2026](reviews/2026-10-23-stage-2-mutation-report.md) | Stryker.NET scores before and after, and how each surviving mutant was handled | Record |
 
-Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decision 0035). Where 02, 03 and 04 overlap, each owns the area listed above.
+Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decision 0035). Where 02, 03, 04 and 05 overlap, each owns the area listed above; 05 gives way to 02 on scope.
 
 **Reading order for someone new:** 02 → 03 → 04 → 05 → the decision register. Read 01 only for background.
 
