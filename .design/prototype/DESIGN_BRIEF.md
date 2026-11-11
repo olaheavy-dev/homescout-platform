@@ -91,10 +91,10 @@ Three principles that resolve the main tensions. The seven agreed principles in 
   - amber `#8F560E` for attention;
   - restrained red `#A33636` only on specific supported findings.
 
-  Colour roles, not raw hex, come from the tokens phase. **Both themes ship** (founder): dark mode is a warm charcoal with off-white text, not an inverted light theme, and every contrast is checked in both.
+  Colour roles, not raw hex, come from the tokens phase. **Both themes ship** (founder): dark mode is a near-neutral charcoal with off-white text, not an inverted light theme, and every contrast is checked in both. **Dark colour roles** (founder, 11 Nov 2026, after two passes): near-neutral charcoal layers; mint for actions, links and the border that marks a selection (selection never relies on fill alone); **slate blue** (`#93B8CE`) as the one complement, only for eyebrow labels, step numbers, the hearth and ring in drawings and "coming next" outlines, with its tint behind drawings only; amber only for warnings. Tinted panels stay in the light theme, where paper carries them; in dark they compete, so they turn neutral. The demo strip is the exception: in dark it sits on the slate tint with a slate outline, so it still reads as a demo control.
 - **Texture and imagery:**
   - **Photography:** editorial photos of each home on public pages, and small recognisable thumbnails in the workspace (doc 03 §7). Every image goes through the asset register first (rule 5).
-  - **Custom illustration, textured editorial style** (founder): paper texture, a print feel, limited palette (forest, sage, ink on paper), like magazine spot illustrations. It's used for empty states, onboarding, the "not yet covered" state and the drawn Northbridge sample map. One consistent style guide is needed before any illustration is made.
+  - **Custom illustration, textured editorial style** (founder): paper texture, a print feel, limited palette (forest, sage, ink on paper, plus the complement for the hearth and ring: clay in light, slate on the slate tint in dark), like magazine spot illustrations. It's used for empty states, onboarding, the "not yet covered" state, the drawn Northbridge sample map, **every landing section below the hero** (How it works, Honest by design, Coming next, the FAQ) and one spot drawing per main app screen (What changed: the listing figure replaced by the management pack; Costs: a house, a slip and dashed gaps; Nearby: a distance ring; Compare: two homes on one level line). Drawings are decorative, with a text alternative, and never carry information the text doesn't. One consistent style guide is needed before any illustration is made.
   - A subtle paper grain may appear on editorial surfaces, never behind data.
 - **Money visualisation:** **cards per category** (founder), held to strict rules so it doesn't become a dashboard:
   1. The total comes first: one large figure, its period, and a "so far" or "partial" label that names what's missing.
@@ -110,6 +110,7 @@ Three principles that resolve the main tensions. The seven agreed principles in 
   - the decision-impact highlight.
 
   Each takes 150–400 ms, with a cut or fade under reduced motion. **Figures never count up, bounce or animate**, and risk colours never pulse.
+  - **Public pages only, a deliberate extension of research §8's five transitions** (founder, 11 Nov 2026): the hero's distance ring draws once on load, places fade and settle in on the How it works drawing (no overshoot), and sections rise gently as they enter. Each plays once; the 600 ms ceiling (`--duration-slower`) applies only to these. Entrances use transform and opacity only, so they cause no layout shift (CLS budget, B18), and the static hero image is never hidden at first (LCP budget). All of it is off under reduced motion. The app screens keep the five transitions; their spot drawings rise in with the section, within the same rules.
 - **The hero moment, decision impact:** before and after, explained.
   - The old and new figures sit side by side, and the changed line is highlighted with a short fade.
   - One sentence says why, with the source: "The management pack shows £3,720 a year, not £2,400."
@@ -132,7 +133,7 @@ All components are new.
 | Component | Status | Notes |
 |---|---|---|
 | App shell: desktop top bar, mobile bottom navigation | New | Doc 03 §3: My move · Homes · Compare. Home tabs: Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Mobile bottom nav: Overview, Nearby, Costs, Questions |
-| Wordmark "Vestagraph" | New | Typographic only, no logo work yet |
+| Brand mark and wordmark | New | **Contour home** (founder's choice of four concepts drawn on the design canvas, 11 Nov 2026): three nested roof lines like map contours with a hearth at the centre; a primary mark (48 px and up) and a compact two-contour mark (32 px and below), beside the Fraunces 600 wordmark. Trade-mark clearance (0009) and the asset register (rule 5) come before use |
 | Landing hero, search first (0046) | New | The postcode box with the sample 3D map and a summary card. The private prototype's example page shows the two example homes (buy and rent) with equal weight |
 | Address search and identity confirmation | New | Combobox with manual selection, never a silent postcode-to-flat match. Includes the map pin flow (founder) and a "can't find it" route |
 | Home header | New | Photo thumbnail, address, mode, sample-data label |
@@ -191,7 +192,7 @@ All components are new.
 - Payments. The free/paid boundaries are shown as labelled, simulated limits (doc 02 §8).
 - Building the in-app assistant chat or the MCP server. The assistant's look is designed in #78, and the build is stage 6.
 - Journeys for Wales, Scotland and Northern Ireland beyond the "not yet covered" state.
-- Logo design. Only a typographic wordmark for the working public name, Vestagraph (decision 0044; trade-mark clearance still open, 0009).
+- The final logo files and trade-mark clearance (0009). The working mark, Contour home, is in scope as a design asset; production SVGs go through the asset register first (rule 5).
 - Stamp duty, legal fees and home-to-home differences until the engine produces them (BE-27, #96 and #147). Until then the screens say "not calculated".
 - Native apps.
 - Public release: no public hosting, visitor privacy notice (SE-02 part 1) or analytics (FE-05). The prototype is private (decision 0045).

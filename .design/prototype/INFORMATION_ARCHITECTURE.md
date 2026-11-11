@@ -167,12 +167,15 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 5. The confirm action, explicit and attributed.
 
 ### Landing (search first, decision 0046)
-1. The promise in a serif headline, with the **postcode box** as the main action. "England only for now" sits under it.
-2. A hero visual: the sample 3D map with a topic summary card.
-3. **What you'll see:** getting around and everyday places; schools with framework and date; flood and recorded crime, honestly labelled.
-4. **Honest by design:** sources and dates on every fact; missing shown as missing; never "safe" or "verified"; crime as counts, never on the map.
-5. **Coming next, with a free account** (clay tint, labelled "not available yet" until live): cost estimate, compare, questions.
-6. Footer: How it works, About the data, Privacy, Accessibility.
+1. The promise in a serif headline, with the **postcode box** (persistent label, hint text, "Check postcode", "Try an example") as the main action. "England only for now" sits under it.
+2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring and a topic summary card.
+3. **Data from:** source names only, no logos, linking to About the data.
+4. **How it works:** three illustrated steps (type a postcode, see what's around, print or save).
+5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, what it can't tell you).
+6. **Honest by design:** four illustrated rules, each with a sample snippet: sources and dates; missing shown as missing; we measure, never "safe"; crime as counts, never on the map.
+7. **Coming next, with a free account** (labelled "not available yet" until live): cost estimate, compare, questions. Clay tint in light; neutral panel with a complement outline in dark.
+8. **Questions:** a short FAQ beside the brand mark.
+9. Footer: How it works, About the data, Privacy, Accessibility.
 In the private prototype the landing can also link the two example homes; the public landing doesn't until 0045 is revisited.
 
 ## User Flows
