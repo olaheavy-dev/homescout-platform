@@ -17,7 +17,7 @@
 | PD-05 Visual direction | Warm and calm | [0005](../decisions/0005-visual-direction.md) |
 | PD-06 Prototype | Both stories in full | [0006](../decisions/0006-prototype-centrepiece.md) |
 | PD-07 Free/paid | Free basics, paid extras | [0007](../decisions/0007-free-paid-principle.md) |
-| PD-08 Demo name | **Parked** until before the public demo; strongest so far Plumbline, Lookbefore, Homeknown | [0008](../decisions/0008-demo-name.md) |
+| PD-08 Demo name | **Parked** until before the public demo (later resolved: Vestagraph, decision 0044); strongest so far Plumbline, Lookbefore, Homeknown | [0008](../decisions/0008-demo-name.md) |
 | PD-09 Public brand | Kept open | [0009](../decisions/0009-public-brand.md) |
 | PD-10 Commercial model | Kept open | [0010](../decisions/0010-commercial-model.md) |
 | WW-01 Ways of working | Standard setup | [0011](../decisions/0011-ways-of-working.md) |
@@ -103,6 +103,8 @@ Buyers and renters with equal weight · England first · Portfolio and learning 
 - [ ] Keep open because: ______
 
 ### PD-08 Name shown on the public demo
+*(Written when the code name was HomeScout; resolved by [0044](../decisions/0044-public-name-vestagraph.md).)*
+
 **Context:** The repo and demo are public, so the demo is a public use of a name. "HomeScout" overlaps with existing services (HomeScout UK, a London rental service with an adjacent audience; HomeScout Ireland), and the brand isn't cleared.  
 **Recommendation:** Keep "HomeScout" as the repository and code name, but label the demo clearly as a portfolio concept ("HomeScout — portfolio concept, not a live service") and keep the name configurable in one place.  
 **Alternatives:** Use a neutral placeholder name on the demo now (safest, less memorable) · pick and clear a real brand before the demo (slows stage 5).

@@ -6,7 +6,7 @@ Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonn
 
 ## What this project is
 
-HomeScout (private code name; public name not chosen) is a home decision workspace for people **buying or renting in England**: check a home, see the real cost, compare homes, and track questions and answers until they decide. It is a portfolio and learning project for its founder, kept commercially viable for later. Public repository, all rights reserved.
+Vestagraph (public name, decision 0044; formerly the code name HomeScout) is a home decision workspace for people **buying or renting in England**: check a home, see the real cost, compare homes, and track questions and answers until they decide. It is a portfolio and learning project for its founder, kept commercially viable for later. Public repository, all rights reserved.
 
 Read before working (the [documentation index](docs/README.md) explains the folder structure and naming rules):
 - `docs/product/02-research-and-direction.md`: product decisions and scope
@@ -21,10 +21,10 @@ The current stage is in the README and `docs/planning/`.
 The founder's earlier projects and a third-party AI sample were reviewed to inform decisions (summary: `docs/reviews/2026-10-23-foundation-review.md`). Their locations are listed in **`.local/references.md`**, a file that exists only on the founder's machine and is excluded from git.
 
 - If that file exists, you may read it and the sources it lists to understand a pattern.
-- **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for HomeScout.
+- **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for Vestagraph.
 - **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
 - The AI sample has no licence: ideas only.
-- **Former exception (decision 0040, superseded by 0042):** the founder's public FastAPI template and its base template may still be named where older records mention them, but they are no longer HomeScout's starting point and nothing was imported from them. The rules above apply to every source.
+- **Former exception (decision 0040, superseded by 0042):** the founder's public FastAPI template and its base template may still be named where older records mention them, but they are no longer Vestagraph's starting point and nothing was imported from them. The rules above apply to every source.
 
 ## Rules for every agent
 
@@ -68,7 +68,7 @@ This file is the **single current rulebook for how work is done** (planning, bui
 - **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list (decision 0035 point 9 with the additions in decisions 0042 and 0043, and later register lines), or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
 - **Stop what you start:** servers, watchers and temporary worktrees.
 - **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
-- **Result type:** use HomeScout's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
+- **Result type:** use Vestagraph's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
 - Before using a framework or package API, check its official documentation for the pinned major version via `docs/references/third-party.md`, not memory. When adding a dependency or changing a major version, update that file in the same pull request.
 - For a major version update, read the official migration notes, fix breaking changes in the same pull request, and summarise them in the description.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
@@ -155,7 +155,7 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 | `make generate` | Builds, then runs the cost-engine generator: it reads `packages/fixtures/data/` and writes `packages/fixtures/generated/costs.json` (deleting any other `*.json` there). Commit the result; `make check` fails if it is stale. |
 | `make validate` | Checks every file in `packages/fixtures/data/`, `test-cases/` and `generated/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
 | `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. |
-| `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. It sets `HOMESCOUT_FSCHECK_REPLAY` so the FsCheck property tests start from a fixed seed, which makes the score the same on every run of the same code; `make test` and CI keep random seeds. |
+| `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. It sets `VESTAGRAPH_FSCHECK_REPLAY` so the FsCheck property tests start from a fixed seed, which makes the score the same on every run of the same code; `make test` and CI keep random seeds. |
 | `make clean` | Removes build output and `.artifacts/`. |
 
 The Makefile and CI turn off .NET CLI, test-platform and Reqnroll telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`, `REQNROLL_TELEMETRY_ENABLED=0`). Test names follow `Method_condition_result` in C# (decision 0021). Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, and `.claude/settings.json` holds the permission rules (decision 0035, point 13).

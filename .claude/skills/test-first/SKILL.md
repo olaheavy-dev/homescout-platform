@@ -1,6 +1,6 @@
 ---
 name: test-first
-description: Test-first workflow for HomeScout code, required for anything numeric or legal (cost engine, rounding, rules). Use before writing implementation code for such a change.
+description: Test-first workflow for Vestagraph code, required for anything numeric or legal (cost engine, rounding, rules). Use before writing implementation code for such a change.
 ---
 
 # Test-first workflow (decision 0031)

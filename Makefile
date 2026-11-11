@@ -1,4 +1,4 @@
-# HomeScout: single entry point for every automated check (decisions 0021, 0035).
+# Vestagraph: single entry point for every automated check (decisions 0021, 0035).
 # CI runs `make check`; run it before pushing. Works on macOS and Linux with GNU Make 3.81 or later.
 
 # No telemetry from the .NET CLI or the test platform.
@@ -6,12 +6,12 @@ export DOTNET_CLI_TELEMETRY_OPTOUT := 1
 export TESTINGPLATFORM_TELEMETRY_OPTOUT := 1
 export REQNROLL_TELEMETRY_ENABLED := 0
 
-SOLUTION      := HomeScout.slnx
+SOLUTION      := Vestagraph.slnx
 CONFIGURATION := Release
 ARTIFACTS     := .artifacts
 GENERATED     := packages/fixtures/generated
-GENERATOR     := packages/cost-engine/src/HomeScout.CostEngine.Generator/HomeScout.CostEngine.Generator.csproj
-VALIDATOR     := packages/fixtures/tools/HomeScout.Fixtures.Validator/HomeScout.Fixtures.Validator.csproj
+GENERATOR     := packages/cost-engine/src/Vestagraph.CostEngine.Generator/Vestagraph.CostEngine.Generator.csproj
+VALIDATOR     := packages/fixtures/tools/Vestagraph.Fixtures.Validator/Vestagraph.Fixtures.Validator.csproj
 
 .PHONY: help restore build format-check generated-check validate inspect test check generate mutate clean
 
@@ -83,7 +83,7 @@ generated-check: generate
 MUTATION_REPLAY := 123456789,987654321
 
 mutate: restore
-	HOMESCOUT_FSCHECK_REPLAY=$(MUTATION_REPLAY) dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
+	VESTAGRAPH_FSCHECK_REPLAY=$(MUTATION_REPLAY) dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
 
 clean:
 	rm -rf $(ARTIFACTS)

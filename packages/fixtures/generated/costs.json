@@ -1,7 +1,7 @@
 {
   "$schema": "../schema/generated-costs.schema.json",
   "formatVersion": 1,
-  "generatedBy": "HomeScout.CostEngine.Generator",
+  "generatedBy": "Vestagraph.CostEngine.Generator",
   "snapshotDate": "2026-10-23",
   "money": "integer pence",
   "rounding": "Each yearly amount is divided by 12 and rounded once to the nearest penny, halves away from zero; a total is the sum of its rounded lines; a mortgage repayment is rounded once from the exact fraction (decision 0021).",

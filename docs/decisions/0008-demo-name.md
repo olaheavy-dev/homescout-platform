@@ -1,7 +1,7 @@
 # 0008: Name shown on the public demo
 
 **ID:** PD-08  
-**Status:** Parked (resume before the public demo)  
+**Status:** Superseded by [0044](0044-public-name-vestagraph.md)  
 **Date:** 2026-10-23  
 **Stage:** 1
 

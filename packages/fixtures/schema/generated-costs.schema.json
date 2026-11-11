@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/generated-costs.schema.json",
+  "$id": "https://vestagraph.invalid/schema/generated-costs.schema.json",
   "title": "Cost-engine output (generated/costs.json)",
   "description": "The one file the cost-engine generator writes (stage 2 plan, task 4b). Every figure is whole pence calculated by the C# engine; nothing here is typed by hand. A line has an amount only when its status is 'calculated': included, not-calculated, conflicting and missing lines never carry pence, so missing data is never shown as zero (AGENTS.md rule 7).",
   "type": "object",

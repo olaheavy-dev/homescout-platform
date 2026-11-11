@@ -1,9 +1,9 @@
 {
   "stryker-config": {
-    "project": "HomeScout.CostEngine.csproj",
+    "project": "Vestagraph.CostEngine.csproj",
     "test-projects": [
-      "packages/cost-engine/tests/HomeScout.CostEngine.Tests/HomeScout.CostEngine.Tests.csproj",
-      "packages/cost-engine/tests/HomeScout.CostEngine.Generator.Tests/HomeScout.CostEngine.Generator.Tests.csproj"
+      "packages/cost-engine/tests/Vestagraph.CostEngine.Tests/Vestagraph.CostEngine.Tests.csproj",
+      "packages/cost-engine/tests/Vestagraph.CostEngine.Generator.Tests/Vestagraph.CostEngine.Generator.Tests.csproj"
     ],
     "test-runner": "mtp",
     "configuration": "Release",

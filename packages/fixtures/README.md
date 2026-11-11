@@ -1,4 +1,4 @@
-# HomeScout fixtures
+# Vestagraph fixtures
 
 Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1). Everything here is invented; nothing is a real person, address, postcode or document.
 
@@ -8,8 +8,8 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 | `data/` | Hand-maintained **inputs**: household, homes, evidence, documents, questions, replies, snapshot, area. No totals or other calculated figures (AGENTS.md rule 2). |
 | `test-cases/` | Independently worked examples (task 3), checked against `schema/test-case.schema.json`. |
 | `generated/` | Cost-engine output (task 4b): one file, `costs.json`, checked against `schema/generated-costs.schema.json`. Written only by the generator (`make generate`) and committed; never edited by hand. `make check` regenerates it and fails if anything under `generated/` differs from what is committed. |
-| `tools/HomeScout.Fixtures.Validator/` | The checker run by `make validate` and `make check`. |
-| `tests/HomeScout.Fixtures.Tests/` | NUnit tests that prove the schemas reject bad data and accept the real files. |
+| `tools/Vestagraph.Fixtures.Validator/` | The checker run by `make validate` and `make check`. |
+| `tests/Vestagraph.Fixtures.Tests/` | NUnit tests that prove the schemas reject bad data and accept the real files. |
 
 ## Which schema checks which file
 
@@ -64,7 +64,7 @@ Items that only describe a home (`council-tax-band`, `energy-certificate`, `ener
 ## Known limits
 
 - `partialDate` checks the shape (`YYYY`, `YYYY-MM`, `YYYY-MM-DD`) but not that the date exists (2026-02-31 passes). Harmless for now.
-- JSON Schema cannot say that `selectedUnitId` is one of `candidateUnits`, or that a question's `status` equals its last transition, or that references point at real records. Tests in `HomeScout.Fixtures.Tests` check these.
+- JSON Schema cannot say that `selectedUnitId` is one of `candidateUnits`, or that a question's `status` equals its last transition, or that references point at real records. Tests in `Vestagraph.Fixtures.Tests` check these.
 
 ## Fictional placeholders
 

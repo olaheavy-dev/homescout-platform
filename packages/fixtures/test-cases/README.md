@@ -56,7 +56,7 @@ All inputs are quoted from the plan; "listing" figures are listing claims, "esti
 ### Mortgage repayment
 Formula (standard repayment, monthly compounding), from Kirk, D., *Contemporary Mathematics*, section 6.8 "The Basics of Loans", OpenStax (Rice University), 2023, <https://openstax.org/books/contemporary-mathematics/pages/6-8-the-basics-of-loans>: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1). With n = 12 payments a year, monthly rate i = r/12 and N = 12 t payments, this is the same as **M = P i / (1 - (1+i)^-N)** (dividing top and bottom by (1+i)^N; that algebra is ours). A secondary source gives the same formula: Chase, [Understanding amortized loans and how to calculate mortgage payments](https://www.chase.com/personal/mortgage/education/financing-a-home/loan-amortization).
 
-**The formula comes from the source; the rounding does not.** HomeScout rounds M once to the nearest penny, half away from zero (decision 0021), not the lender convention of always rounding up. i, (1+i)^N and M are kept at full precision (60 digits in the check), with no intermediate rounding.
+**The formula comes from the source; the rounding does not.** Vestagraph rounds M once to the nearest penny, half away from zero (decision 0021), not the lender convention of always rounding up. i, (1+i)^N and M are kept at full precision (60 digits in the check), with no intermediate rounding.
 
 Common values: i = 0.055 / 12 = 0.00458333...; N = 25 x 12 = 300; (1+i)^300 = 3.942671556436...; (1+i)^-300 = 0.253635126763...
 

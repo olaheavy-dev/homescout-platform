@@ -1,4 +1,4 @@
-# HomeScout: prototype and image direction
+# Vestagraph: prototype and image direction
 
 **Date:** 23 October 2026  
 **Purpose:** A reviewable experience and art-direction brief informed by `02-research-and-direction.md`.  
@@ -26,6 +26,8 @@ The prototype must demonstrate a change in understanding, not simply display a l
 ## 2. What to keep and change in the eight existing images
 
 **These images are AI-generated with ChatGPT (OpenAI) by Sunkanmi Olawuwo** (provenance in `docs/assets/README.md`). They are stored in `docs/assets/concepts/`, and image numbers are the filename prefixes. They are visual concepts, not verified property reports. Two other numbering schemes exist (the brief's screen families and the contact sheet), and the files were renamed from their original export names on 23 October 2026, so use this mapping:
+
+**Former name in the images.** The concept images show the former name HomeScout (image 8 shows the HomeScout logo and "HomeScout Plus"). Do not reuse them as branding; the public name is Vestagraph (decision 0044).
 
 | Image | File | Original export name | Screen | Brief §12 family | Contact sheet |
 |---|---|---|---|---|---|
@@ -137,7 +139,7 @@ Household and budget as above. Homes: R1, Flat 5, 3 Station Road (assured period
 4. **Story step 2.** Attach a partial reply: "Most bills are included." (fixture reply `R1-R-WATER-PARTIAL`). Keep the question **Partially answered**; it does not resolve who pays water.
 5. **Story step 3.** Attach a specific reply, "Water is not included: the tenant pays it. A revised written statement is attached." (fixture reply `R1-R-WATER-SPECIFIC`), with the revised written statement (document `R1-WSOT-REVISED`). The question moves to "reply needs checking". The totals are unchanged until the user confirms.
 6. **Story step 4.** A user/reviewer explicitly records the answer and its supporting document; this is not a general legal approval of the tenancy. The **user-entered water estimate of £45 a month** (input: `R1-WATER-ESTIMATE`, "user estimate at today's prices, guided by the synthetic Northbridge Water's published 2026/27 charges") is added. R1's monthly housing cost is now **£1,488.33** and **complete** (figure: `R1.from-step-4.monthly.total`), which is **£111.67 under** the budget (figure: `R1.from-step-4.monthly.budget`). The previous partial scenario is kept. Responsibility is supported by the documents; the amount stays an estimate. The engine records water as "now calculated" for this step (figure: `R1.from-step-4.change.water`) but gives no monthly difference, because the earlier total was partial.
-7. Compare R1 with R2 under the same assumptions: R1 **£1,488.33** and R2 **£1,429.17** a month (figures above). As for the buyer, the engine does not yet produce a home-to-home difference (BE-27), and R2's bills are included in the rent while R1's are estimates, so the screen says what each total contains. Show move-in cash separately: R1 **£3,780.00** (deposit £1,380 and first month's rent £1,200, both stated by the agent, plus £1,200 moving costs) and R2 **£3,945.00** (deposit £1,470 and first month's rent £1,275 plus the same moving costs), figures `R1.from-step-4.upfront.total` and `R2.from-step-1.upfront.total`. A refundable deposit is cash required, not a monthly bill. R2's energy certificate expired in 2025; the suggested action ("ask the landlord for a valid certificate") is HomeScout's wording, not gov.uk's. Keep any unanswered repair or paperwork question visible before recording a decision.
+7. Compare R1 with R2 under the same assumptions: R1 **£1,488.33** and R2 **£1,429.17** a month (figures above). As for the buyer, the engine does not yet produce a home-to-home difference (BE-27), and R2's bills are included in the rent while R1's are estimates, so the screen says what each total contains. Show move-in cash separately: R1 **£3,780.00** (deposit £1,380 and first month's rent £1,200, both stated by the agent, plus £1,200 moving costs) and R2 **£3,945.00** (deposit £1,470 and first month's rent £1,275 plus the same moving costs), figures `R1.from-step-4.upfront.total` and `R2.from-step-1.upfront.total`. A refundable deposit is cash required, not a monthly bill. R2's energy certificate expired in 2025; the suggested action ("ask the landlord for a valid certificate") is Vestagraph's wording, not gov.uk's. Keep any unanswered repair or paperwork question visible before recording a decision.
 
 ### Figures used in the stories
 

@@ -17,7 +17,7 @@ Written 11 Nov 2026. Track B (map library, tiles, performance, data flow, test m
 7. **Some topics never go on the map:** recorded crime (police.uk moves locations to anonymous points), long-term flood risk (link out only), and sold-price labels. These are lists and small tables with dates.
 8. **Compare uses aligned rows, not a scoreboard.** Up to three homes, the same topic order, a gap cell as visible as a value cell, no highlighted "best" cell, no totals the engine didn't produce.
 9. **Motion is limited to five transitions** (sheet resting height, select and fly-to, list↔map, marker selection, content replacing placeholders), each 150–400 ms on Material's standard or emphasised curves. Under `prefers-reduced-motion` each becomes a cut or a fade of 150 ms or less. Numbers, risk colours and warnings never animate.
-10. **Assistants get text-first answers.** Topic, value, source, date and what it doesn't establish come back as plain sentences, with a link back to the HomeScout map. Assistants never get a map image or a verdict.
+10. **Assistants get text-first answers.** Topic, value, source, date and what it doesn't establish come back as plain sentences, with a link back to the Vestagraph map. Assistants never get a map image or a verdict.
 
 ---
 
@@ -55,7 +55,7 @@ Caveats that change meaning (the `doesNotEstablish` text) stay visible at L2 as 
 
 **Gap visibility rule:** a `no-record-in-source` or `source-failed` row sits **where the item would have been**, inside its section and in the normal order. It is not moved to the end of the list.
 
-**Outside England** (WALES-1): Nearby shows one full-width "Not yet covered in Wales" panel per section, each with its section title, so the structure is still recognisable. There is no map layer and no empty list. The panel offers the coverage note and "What HomeScout covers".
+**Outside England** (WALES-1): Nearby shows one full-width "Not yet covered in Wales" panel per section, each with its section title, so the structure is still recognisable. There is no map layer and no empty list. The panel offers the coverage note and "What Vestagraph covers".
 
 ---
 
@@ -291,13 +291,13 @@ The MDN guidance names "scaling or panning large objects" as vestibular triggers
 This follows the eight agent-channel principles in synthesis.md and decision 0004, with #117 read-only first.
 
 **Shape of a returned topic (design view; the schema is #117's):**
-- `topic`, `status`, `label`, `value`, `source` {label, date, synthetic}, `coverage`, `doesNotEstablish`, and `link` back to the HomeScout Nearby section with the item selected.
+- `topic`, `status`, `label`, `value`, `source` {label, date, synthetic}, `coverage`, `doesNotEstablish`, and `link` back to the Vestagraph Nearby section with the item selected.
 - Gaps are returned as items with a status, never as an empty array.
 
 **How the host should render it**, steered by tool descriptions and tested by the evaluation set:
 - **Text first.** One short paragraph per topic group, value then limit, with a source and date per paragraph. Example for B1 crime: "Recorded crime counts for July 2026 (sample data shaped like police.uk): anti-social behaviour 6, shoplifting 4, burglary 2. These are recorded incidents, not a crime rate or a measure of safety, and locations are approximate."
 - **Gaps are said out loud:** "No childcare was found in this source; that doesn't mean there is none."
-- **No images or maps in the reply.** Instead: "See these places on the map in HomeScout ›" (hand-off for depth, principle 8).
+- **No images or maps in the reply.** Instead: "See these places on the map in Vestagraph ›" (hand-off for depth, principle 8).
   - MCP Apps or ChatGPT UI resources could embed a card later. That is unverified (patterns §7) and not in the prototype.
 - **Forbidden in answers** (tool descriptions forbid them and the evaluation set checks for them): "safe", "unsafe", "low or high crime", "no flood risk", "good area", "value", "catchment", any total or difference not returned by the engine, and any travel time not marked as the household's own estimate.
 - **Outside England:** "Area information isn't covered in Wales yet." There is no partial answer.

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/snapshot.schema.json",
+  "$id": "https://vestagraph.invalid/schema/snapshot.schema.json",
   "title": "Snapshot file (data/snapshot.json)",
   "description": "Ties the other data files together: the snapshot date, which household and homes are in it, and the order of events in each story. Steps are an ordering, not calendar time; every value is as at the snapshot date.",
   "type": "object",

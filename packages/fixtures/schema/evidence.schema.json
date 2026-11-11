@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/evidence.schema.json",
+  "$id": "https://vestagraph.invalid/schema/evidence.schema.json",
   "title": "Evidence file (data/evidence.json)",
   "type": "object",
   "required": [

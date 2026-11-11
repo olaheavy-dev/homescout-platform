@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/area.schema.json",
+  "$id": "https://vestagraph.invalid/schema/area.schema.json",
   "title": "Area context file (data/area.json)",
   "description": "Synthetic area context for the Nearby screen (issue 120). Shapes follow the real free sources assessed in docs/references/data-sources.md. Distances and travel times are synthetic inputs with their method, never calculated.",
   "type": "object",

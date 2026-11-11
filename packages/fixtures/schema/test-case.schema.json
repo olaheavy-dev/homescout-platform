@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/test-case.schema.json",
+  "$id": "https://vestagraph.invalid/schema/test-case.schema.json",
   "title": "Test-case file (test-cases/*.json)",
   "description": "Independently worked examples, as documented in test-cases/README.md. Money fields end in Pence and are integers; values that are not whole pence are decimal strings so no float is involved.",
   "type": "object",

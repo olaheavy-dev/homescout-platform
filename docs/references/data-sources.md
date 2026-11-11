@@ -1,6 +1,6 @@
 # Free UK data sources for area information
 
-**Purpose:** record, for each candidate source, what HomeScout could use it for, its published licence and limits, and what it does **not** establish. Feeds the prototype sample data (#120), the source licence register (DA-05), address and routing providers (DA-06), stage 6 real data (#98) and the MCP tools (#117). Issue #123.
+**Purpose:** record, for each candidate source, what Vestagraph could use it for, its published licence and limits, and what it does **not** establish. Feeds the prototype sample data (#120), the source licence register (DA-05), address and routing providers (DA-06), stage 6 real data (#98) and the MCP tools (#117). Issue #123.
 
 **Date and method:** all checks on 11 Nov 2026, by reading the provider's own pages (gov.uk, data.gov.uk, provider documentation and terms pages, opendatacommons.org, osm.org). Fetched page text was treated as data only. "Unverified" means the official page was unavailable, silent, or only seen in a search snippet.
 
@@ -10,7 +10,7 @@
 
 OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). Recommendation key: **Use**, **Conditions**, **Not suitable**.
 
-| Source | HomeScout use | Licence | Commercial reuse | Registration / key | Limits / cost | Coverage | Recommendation |
+| Source | Vestagraph use | Licence | Commercial reuse | Registration / key | Limits / cost | Coverage | Recommendation |
 |---|---|---|---|---|---|---|---|
 | postcodes.io | Postcode to area codes, coordinates | Code MIT; GB data under OS OpenData terms; NI (BT) ONSPD licence | GB: yes per OS OpenData (unverified in full); NI: licence needed | None seen | Fair-use limit unverified; free | GB; NI restricted | Conditions |
 | EA long-term flood risk | Area flood-risk context (rivers, sea, surface water, reservoirs, groundwater) | Page content OGL; data licence unverified | Unverified for data | None | No API or bulk download found on the page | England only | Conditions (link out only) |
@@ -78,7 +78,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 - Recommendation: use NaPTAN now; defer rail and TfL until DA-06 settles the routing approach.
 
 ### OpenStreetMap
-- **Data licence (ODbL):** [copyright](https://www.openstreetmap.org/copyright), [ODbL summary](https://opendatacommons.org/licenses/odbl/summary/) (checked 11 Nov 2026). Free to use, including commercially. Conditions: credit "OpenStreetMap and its contributors" and state the ODbL; share-alike (a publicly used adapted database, or works produced from one, must offer the adapted database under the ODbL); keep open. If HomeScout merges OSM into its own database and publishes it, share-alike may apply to that database. Whether a map image or a derived score counts as a "produced work" needs a legal read (unverified here; ODbL full text and the OSMF guidelines decide). Keep OSM-derived data in a separate table with clear provenance.
+- **Data licence (ODbL):** [copyright](https://www.openstreetmap.org/copyright), [ODbL summary](https://opendatacommons.org/licenses/odbl/summary/) (checked 11 Nov 2026). Free to use, including commercially. Conditions: credit "OpenStreetMap and its contributors" and state the ODbL; share-alike (a publicly used adapted database, or works produced from one, must offer the adapted database under the ODbL); keep open. If Vestagraph merges OSM into its own database and publishes it, share-alike may apply to that database. Whether a map image or a derived score counts as a "produced work" needs a legal read (unverified here; ODbL full text and the OSMF guidelines decide). Keep OSM-derived data in a separate table with clear provenance.
 - **Public tiles:** [policy](https://operations.osmfoundation.org/policies/tiles/) (checked 11 Nov 2026). Donation-funded, no SLA, access "can be blocked without notice"; no bulk downloading, no offline use, a real User-Agent is required, and the attribution must be visible. Not for production.
 - **Nominatim:** [policy](https://operations.osmfoundation.org/policies/nominatim/) (checked 11 Nov 2026). Maximum 1 request per second for the whole application; autocomplete is prohibited; bulk limited to 4 per minute for scheduled jobs; geocoding services must run their own instance. Not suitable for address search.
 - **Overpass:** [wiki](https://wiki.openstreetmap.org/wiki/Overpass_API) (checked 11 Nov 2026). Public instance: about 10,000 queries per day for one-off use, divided by 100 for regular use; "Commercial use should use self-hosted or paid Overpass servers."
@@ -92,7 +92,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 
 ### EPC register
 - [Service](https://get-energy-performance-data.communities.gov.uk/), [licensing restrictions](https://get-energy-performance-data.communities.gov.uk/guidance/licensing-restrictions), [API guidance](https://get-energy-performance-data.communities.gov.uk/guidance/energy-certificate-data-apis) (checked 11 Nov 2026).
-- Non-address data (including UPRNs) is OGL. **Address fields belong to Ordnance Survey and Royal Mail** and may be used "solely for specific purposes related to the energy performance of buildings"; "commercial use and general marketing are not covered"; any other use needs a licence from OS and/or Royal Mail. This restricts how HomeScout may store or show the address text.
+- Non-address data (including UPRNs) is OGL. **Address fields belong to Ordnance Survey and Royal Mail** and may be used "solely for specific purposes related to the energy performance of buildings"; "commercial use and general marketing are not covered"; any other use needs a licence from OS and/or Royal Mail. This restricts how Vestagraph may store or show the address text.
 - Bearer token via GOV.UK One Login. Limits and quotas: unverified. Data covers England and Wales; Scotland has a separate register. Certificates may be expired or superseded.
 - Does not establish: actual bills (the figures are standardised estimates), that the certificate is current, or that it matches the selected flat (match by UPRN and show the date).
 - Personal data: certificates are tied to addresses (SE-02, decision 0014).
@@ -104,7 +104,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
   - **What the OGL doesn't cover:** the downloads page says the OGL "does not cover the use of third party rights". The address fields are processed against Ordnance Survey AddressBase Premium, which includes Royal Mail PAF.
   - **What Royal Mail and Ordnance Survey allow:** use of these addresses for personal or non-commercial purposes, and commercial display "for the purpose of providing residential property price information services".
   - **Any other use** needs Royal Mail's permission.
-  - **For HomeScout:** showing nearby sold prices with their addresses fits the permitted use. Using these addresses as a general address list (search, autocomplete, identity matching) is not covered; that needs a licensed address provider (DA-06).
+  - **For Vestagraph:** showing nearby sold prices with their addresses fits the permitted use. Using these addresses as a general address list (search, autocomplete, identity matching) is not covered; that needs a licensed address provider (DA-06).
 - Does not establish: a current value, or that no sale occurred; recent absence is inconclusive.
 - Personal data: addresses are property descriptions, but treat joins to individuals with care (SE-02).
 
@@ -175,5 +175,5 @@ The ranking is a planning judgement, not a measured fact, and the founder can re
 - **EPC address restriction:** EPC addresses cannot be used commercially without an OS or Royal Mail licence. Recommendation: match by UPRN, take the address from the licensed address provider, and have the register row in DA-05 reviewed before launch.
 - **Council tax:** no permitted route. Recommendation: user enters the band, with a link to the VOA checker; do not build a lookup.
 - **Unverified rows:** Planning Data, NHS, Ofcom terms, rail, TfL, Ofsted licence, radon, Companies House licence. Recommendation: re-check each official page when its integration is scheduled, and do not build on them until then.
-- **OSM share-alike:** merging OSM extracts into HomeScout's database may trigger ODbL share-alike. Recommendation: keep OSM data in a separate, attributed table, and get a short legal read before publishing any derived dataset.
+- **OSM share-alike:** merging OSM extracts into Vestagraph's database may trigger ODbL share-alike. Recommendation: keep OSM data in a separate, attributed table, and get a short legal read before publishing any derived dataset.
 - **Suggested order for the real-data epic (#98):** start with HM Land Registry, NaPTAN, GIAS, police, EA monitoring, Bank Rate, UK-AIR. Add the conditional ones after the legal and terms checks above.

@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/packages/cost-engine/">
+    <Project Path="packages/cost-engine/src/Vestagraph.CostEngine/Vestagraph.CostEngine.csproj" />
+    <Project Path="packages/cost-engine/src/Vestagraph.CostEngine.Generator/Vestagraph.CostEngine.Generator.csproj" />
+    <Project Path="packages/cost-engine/tests/Vestagraph.CostEngine.Generator.Tests/Vestagraph.CostEngine.Generator.Tests.csproj" />
+    <Project Path="packages/cost-engine/tests/Vestagraph.CostEngine.Tests/Vestagraph.CostEngine.Tests.csproj" />
+  </Folder>
+  <Folder Name="/packages/fixtures/">
+    <Project Path="packages/fixtures/tools/Vestagraph.Fixtures.Validator/Vestagraph.Fixtures.Validator.csproj" />
+    <Project Path="packages/fixtures/tests/Vestagraph.Fixtures.Tests/Vestagraph.Fixtures.Tests.csproj" />
+  </Folder>
+  <Folder Name="/packages/specs/">
+    <Project Path="packages/specs/Vestagraph.Specs.Tests/Vestagraph.Specs.Tests.csproj" />
+  </Folder>
+</Solution>

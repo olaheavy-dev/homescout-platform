@@ -1,7 +1,7 @@
 # 0009: Public brand
 
 **ID:** PD-09  
-**Status:** Open  
+**Status:** Open; working public brand Vestagraph per [0044](0044-public-name-vestagraph.md), clearance still open  
 **Date:** 2026-10-23  
 **Stage:** 1
 

@@ -36,8 +36,8 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | PD-05 | Visual direction | 1 | Accepted | [0005](0005-visual-direction.md) |
 | PD-06 | Prototype centrepiece | 1 | Accepted | [0006](0006-prototype-centrepiece.md) |
 | PD-07 | Free/paid principle | 1 | Accepted | [0007](0007-free-paid-principle.md) |
-| PD-08 | Name shown on the public demo | 1 | Parked (resume before the public demo) | [0008](0008-demo-name.md) |
-| PD-09 | Public brand | 1 | Open (needs clearance) | [0009](0009-public-brand.md) |
+| PD-08 | Name shown on the public demo | 3 | Accepted (founder, 11 Nov 2026: Vestagraph; supersedes parked 0008) | [0044](0044-public-name-vestagraph.md) (supersedes [0008](0008-demo-name.md)) |
+| PD-09 | Public brand | 1 | Open (working public brand Vestagraph per [0044](0044-public-name-vestagraph.md); trade-mark clearance still to do) | [0009](0009-public-brand.md) |
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
@@ -109,10 +109,10 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
-| AI-04 | Orchestration | 6 (decided early) | Accepted (partly superseded by 0042: used through its .NET packages; Microsoft Agent Framework reaffirmed 6 Nov 2026 as definite for HomeScout, not LangChain; 0042 also supersedes 0041's template-first order; stage 6) | [0023](0023-microsoft-agent-framework.md) |
+| AI-04 | Orchestration | 6 (decided early) | Accepted (partly superseded by 0042: used through its .NET packages; Microsoft Agent Framework reaffirmed 6 Nov 2026 as definite for HomeScout (now Vestagraph), not LangChain; 0042 also supersedes 0041's template-first order; stage 6) | [0023](0023-microsoft-agent-framework.md) |
 | AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements; partly superseded by 0035) | [0025](0025-ai-platform-capabilities.md) |
 | AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
-| AI-08 | MAF gateway built in the template first | 6 (template work runs earlier) | Superseded by 0042 (the gateway is built in HomeScout's .NET API at stage 6, issue #101) | [0041](0041-maf-gateway-built-in-the-template.md) |
+| AI-08 | MAF gateway built in the template first | 6 (template work runs earlier) | Superseded by 0042 (the gateway is built in Vestagraph's .NET API at stage 6, issue #101) | [0041](0041-maf-gateway-built-in-the-template.md) |
 | CO-01 | Entitlements and payments | 6 (before entitlements) | Not started | |
 | OP-01 | Observability | 6 (before monitoring) | Proposed (OpenTelemetry and local Aspire accepted in 0025; production telemetry at stage 6) | [0025](0025-ai-platform-capabilities.md) |
 | OP-02 | Scheduling and notifications | 6 (before monitoring) | Not started | |

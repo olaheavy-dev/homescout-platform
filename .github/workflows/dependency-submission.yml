@@ -41,7 +41,7 @@ jobs:
 
       # The scanner reads each project's obj/project.assets.json, so restore first (locked mode).
       - name: Restore packages
-        run: dotnet restore HomeScout.slnx --locked-mode
+        run: dotnet restore Vestagraph.slnx --locked-mode
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: "1"
           REQNROLL_TELEMETRY_ENABLED: "0"

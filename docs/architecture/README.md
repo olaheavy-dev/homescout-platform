@@ -1,6 +1,6 @@
 # Architecture (C4 diagrams)
 
-Two diagrams that show how HomeScout fits together, following the [C4 model](https://c4model.com/): first the **system context** (who and what HomeScout talks to), then the **containers** (the separate parts that run or hold data). Decision 0027 asks for them, and they are updated as the system grows.
+Two diagrams that show how Vestagraph fits together, following the [C4 model](https://c4model.com/): first the **system context** (who and what Vestagraph talks to), then the **containers** (the separate parts that run or hold data). Decision 0027 asks for them, and they are updated as the system grows.
 
 **How to read them.**
 - A **solid box with a solid outline** exists in the repository today (stage 2).
@@ -10,24 +10,24 @@ Two diagrams that show how HomeScout fits together, following the [C4 model](htt
 
 ## 1. System context
 
-"System context" is the widest view. It shows HomeScout as one box, the people who use or build it, and the outside services it will talk to.
+"System context" is the widest view. It shows Vestagraph as one box, the people who use or build it, and the outside services it will talk to.
 
 ```mermaid
 flowchart TB
     user["Buyer or renter<br/>Checks a home, sees the real cost,<br/>tracks questions and answers (England first)"]
     builders["Founder and coding agents<br/>Plan, build, review and merge the work<br/>(AGENTS.md, decision 0035)"]
 
-    homescout["HomeScout<br/>Home decision workspace.<br/>Today: synthetic sample data, a cost engine<br/>and its checks. No running app yet"]
+    vestagraph["Vestagraph<br/>Home decision workspace.<br/>Today: synthetic sample data, a cost engine<br/>and its checks. No running app yet"]
 
     data["Official and open England data<br/>PLANNED, stage 6. Sources not chosen<br/>(DA-04 to DA-06). Every value labelled<br/>Live, Cached, Fallback or Unavailable<br/>(decision 0029)"]
-    models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 plans OpenAI and Anthropic<br/>behind HomeScout's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
+    models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 plans OpenAI and Anthropic<br/>behind Vestagraph's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
     portals["Listing portals and agent websites<br/>Never scraped or copied (decision 0028).<br/>The user supplies what they have"]
 
-    user -.->|"PLANNED: enters their own listing details,<br/>documents and estimates; reads results"| homescout
-    builders -->|"Change the repository; CI checks every change"| homescout
-    homescout -.->|"PLANNED: reads through adapters"| data
-    homescout -.->|"PLANNED: sends supplied text,<br/>receives wording"| models
-    user -->|"Browses a listing themselves.<br/>HomeScout never fetches it"| portals
+    user -.->|"PLANNED: enters their own listing details,<br/>documents and estimates; reads results"| vestagraph
+    builders -->|"Change the repository; CI checks every change"| vestagraph
+    vestagraph -.->|"PLANNED: reads through adapters"| data
+    vestagraph -.->|"PLANNED: sends supplied text,<br/>receives wording"| models
+    user -->|"Browses a listing themselves.<br/>Vestagraph never fetches it"| portals
 
     classDef planned stroke-dasharray: 6 4,fill:#f6f6f6,color:#333
     class data,models planned
@@ -36,7 +36,7 @@ flowchart TB
 **In plain language**
 - **The user** is the only end user. Buyers and renters have equal weight (doc 03).
 - **The founder and the coding agents** are the other "people" in the picture, because today the repository and its automatic checks are the whole product. The rules they follow are in `AGENTS.md`.
-- **The user supplies the listing.** HomeScout never scrapes or crawls property portals or agent sites, and never copies listing text, photos or floor plans (decision 0028). People paste text, upload documents and enter figures themselves, and each value keeps a label saying where it came from.
+- **The user supplies the listing.** Vestagraph never scrapes or crawls property portals or agent sites, and never copies listing text, photos or floor plans (decision 0028). People paste text, upload documents and enter figures themselves, and each value keeps a label saying where it came from.
 - **Outside data services are planned.** None is called today. When one is added, it sits behind a single adapter, and every value it supplies is labelled **Live**, **Cached**, **Fallback** or **Unavailable**; "Unavailable" never looks like a clean result (decision 0029). The roadmap's first candidates are energy certificate data, then sold-price data, then planning and flood data (doc 04 §5), but no source or vendor is chosen.
 - **AI model providers are planned.** AI explains findings and drafts questions. It never calculates a number: every figure comes from the cost engine (decisions 0004, 0019, 0023).
 
@@ -53,10 +53,10 @@ flowchart TB
         data[("Fixture data<br/>JSON, packages/fixtures/data<br/>Inputs only, each with its source")]
         schema[("Schemas<br/>JSON Schema 2020-12<br/>packages/fixtures/schema")]
         cases[("Test cases<br/>JSON, packages/fixtures/test-cases<br/>Independently worked examples")]
-        engine["Cost engine<br/>C# class library, HomeScout.CostEngine<br/>(.NET 11, C# 14)<br/>No I/O, HTTP, AI, clock or random"]
-        generator["Generator<br/>C# console app<br/>HomeScout.CostEngine.Generator"]
+        engine["Cost engine<br/>C# class library, Vestagraph.CostEngine<br/>(.NET 11, C# 14)<br/>No I/O, HTTP, AI, clock or random"]
+        generator["Generator<br/>C# console app<br/>Vestagraph.CostEngine.Generator"]
         generated[("Generated costs<br/>packages/fixtures/generated/costs.json<br/>Every calculated output, each with a figure ID")]
-        validator["Validator<br/>C# console app<br/>HomeScout.Fixtures.Validator"]
+        validator["Validator<br/>C# console app<br/>Vestagraph.Fixtures.Validator"]
         tests["Test projects<br/>NUnit, FsCheck, architecture tests<br/>engine, generator and fixture tests"]
         specs["Specification tests<br/>packages/specs, Reqnroll<br/>Gherkin specs from docs/specs/"]
         ci["Checks<br/>make check and GitHub Actions CI<br/>CodeQL, dependency review, mutation testing (manual)"]
@@ -112,12 +112,12 @@ flowchart TB
 | Fixture data | `packages/fixtures/data/` | Hand-maintained inputs only: household, homes, evidence, documents, questions, replies, the snapshot and synthetic area context. No totals (`AGENTS.md` rule 2). |
 | Schemas | `packages/fixtures/schema/` | The contract: JSON Schema files for the data, the test cases and the generated output. |
 | Test cases | `packages/fixtures/test-cases/` | Calculations worked out independently of the engine, with their working, so a wrong calculation cannot confirm itself. |
-| Cost engine | `packages/cost-engine/src/HomeScout.CostEngine/` | The only place calculated figures come from (decision 0019). Architecture tests keep it free of I/O. |
-| Generator | `packages/cost-engine/src/HomeScout.CostEngine.Generator/` | `make generate`: reads the data, calls the engine, writes `costs.json`. |
+| Cost engine | `packages/cost-engine/src/Vestagraph.CostEngine/` | The only place calculated figures come from (decision 0019). Architecture tests keep it free of I/O. |
+| Generator | `packages/cost-engine/src/Vestagraph.CostEngine.Generator/` | `make generate`: reads the data, calls the engine, writes `costs.json`. |
 | Generated costs | `packages/fixtures/generated/costs.json` | The committed output. Never edited by hand. |
-| Validator | `packages/fixtures/tools/HomeScout.Fixtures.Validator/` | `make validate`: checks every data, test-case and generated file against its schema. |
+| Validator | `packages/fixtures/tools/Vestagraph.Fixtures.Validator/` | `make validate`: checks every data, test-case and generated file against its schema. |
 | Test projects | `packages/cost-engine/tests/`, `packages/fixtures/tests/` | NUnit tests, FsCheck property tests, architecture tests and the generator's end-to-end tests. |
-| Specification tests | `packages/specs/HomeScout.Specs.Tests/` | Reqnroll runs the Gherkin specifications in `docs/specs/` (decision 0043); data steps check every cited figure and evidence ID against the fixtures and `costs.json`. |
+| Specification tests | `packages/specs/Vestagraph.Specs.Tests/` | Reqnroll runs the Gherkin specifications in `docs/specs/` (decision 0043); data steps check every cited figure and evidence ID against the fixtures and `costs.json`. |
 | Checks | `Makefile`, `.github/workflows/`, repository settings | `make check` locally and in CI; `make generated-check` fails if the committed output is out of date. CodeQL (`actions` and `csharp`), dependency review and workflow linting also run. `make mutate` (Stryker.NET) is manual and not part of CI. |
 
 **In plain language: how data flows today.** A person edits the inputs in the fixture data. The generator reads them, asks the cost engine to calculate every total (differences between homes are deferred to stage 5: BE-27, #96), and writes one file, `costs.json`. The validator checks that the inputs, the worked test cases and that output all match their schemas, and CI regenerates `costs.json` and fails if the committed copy is different. That is how the project keeps one rule: **inputs are typed once with a source; calculated figures only ever come from the engine.**

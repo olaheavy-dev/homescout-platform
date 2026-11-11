@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/homes.schema.json",
+  "$id": "https://vestagraph.invalid/schema/homes.schema.json",
   "title": "Homes file (data/homes.json)",
   "type": "object",
   "required": [
