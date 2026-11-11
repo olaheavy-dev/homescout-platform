@@ -25,7 +25,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   _New: category cards, gap card, status tag and source line, Nearby rows, crime table, flood panel._
   - **Round 2 (founder, 11 Nov 2026):** Nearby is summary first, one row per topic, with a topic detail (Schools) holding List and Map. The long list stays in the detail screens.
 - [ ] **H4 Desktop split and dark theme:**
-  - Nearby with the list column next to the Northbridge map and the selection in sync.
+  - (Nearby desktop moved to H6, the immersive map with a floating list; the earlier 2D split frame was removed.)
   - Compare with B1 and B2 aligned and no winner.
   - H1 repeated in the warm charcoal dark theme.
 
@@ -45,6 +45,13 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **B3 Demo story timeline and step routing:** `?step=1..4` drives every example screen. The step captions come from `snapshot.json`, and "What changed" links appear when a step changes a figure. Reqnroll `@ui` scenarios open any screen at any step. _Depends on: B1._
   - **One place for the demo strip:** on a phone, directly after the page's headline summary; on desktop, in the header. Step buttons are 44 px tall. Screens never mention step numbers outside the strip ("Before" and "Now", not "Step 3" and "Step 4").
   - **Shorter captions** (founder review of H1, 11 Nov 2026): update the step labels in `snapshot.json` to the shorter wording, e.g. step 1 "Listing costs added. Service charge question sent."
+  - **Wording rules from the third design review (11 Nov 2026):**
+    - a partial total names what it excludes, with each gap's own status ("Excludes buildings insurance (missing) and maintenance (not calculated)"); "missing" and "not calculated" are never merged;
+    - a budget margin on a partial total says "before those costs", never "left";
+    - "Before" on What changed is labelled by its event ("when the management pack arrived"), and earlier changes (insurance: Missing → Included in service charge) are listed with a link to the full history;
+    - Costs links to What changed whenever a figure has changed since the last step;
+    - on a phone, the home tabs are Overview, Nearby, Costs, Questions and More (Viewings, Documents, Activity, What changed);
+    - the public area check shows only area facts; building facts appear after a home is chosen.
   - **Link targets drawn in H1 and H2** (dead in the design frames; must work here):
     - "See what's missing" on a home card → that home's Costs, scrolled to its missing and not-calculated monthly lines (`/homes/[slug]/costs?step=n#missing`).
     - "See the 2026 budget" on What changed → the evidence sheet for that item (`?evidence=B1-SC-BUDGET`). The fixtures record no page number, so none is shown.
