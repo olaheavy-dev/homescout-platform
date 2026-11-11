@@ -35,6 +35,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Specifications](specs/README.md) | The prototype specification: rules, templates, and the executable screen, story and MCP features | Stage 3 onwards |
 | [Ordered backlog](planning/backlog.md) | Every issue from the stage 2 close-out to stage 6, in order, by milestone | All stages |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
+| [Free data sources assessment](references/data-sources.md) | Licence, terms, limits and coverage of free UK data sources for area information, checked 11 Nov 2026 (#123) | Stage 3 onwards |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |
 | [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |

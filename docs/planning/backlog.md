@@ -80,6 +80,23 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 | 41 | #95 | Generated TypeScript types from the OpenAPI document |
 | 43 | #97 | MCP server with the official C# SDK (read-only, local first) |
 | 44 | #98 | **Epic:** real England data (DA-03 to DA-06, SE-02 part 2) |
+| 44.1 | #126 | Foundation: data import pattern, source adapter, postcode-to-area lookup |
+| 44.2 | #127 | Exact-home address search and matching (DA-06), needed for per-home data only |
+| 44.3 | #128 | Transport stops nearby (NaPTAN) |
+| 44.4 | #129 | Schools nearby (DfE register) |
+| 44.5 | #130 | Crime counts and neighbourhood police team (data.police.uk) |
+| 44.6 | #131 | Flood: live warnings and river levels, plus a link to long-term risk (EA) |
+| 44.7 | #132 | Nearby sold prices (HM Land Registry) |
+| 44.8 | #133 | Shops, supermarkets, parks, pharmacies, police stations, hospitals, GPs, dentists (OSM extract) |
+| 44.9 | #134 | Energy rating and energy cost range (energy certificate register) |
+| 44.10 | #135 | School inspection results (Ofsted) |
+| 44.11 | #136 | Broadband and mobile coverage (Ofcom) |
+| 44.12 | #137 | Mortgage context: Bank Rate |
+| 44.13 | #138 | Commute time to your own destinations (routing, DA-06) |
+| 44.14 | #139 | Planning applications nearby |
+| 44.15 | #140 | Leasehold: managing agent or freeholder status (Companies House) |
+| 44.16 | #141 | Bus timetables (Bus Open Data Service) |
+| 44.17 | #142 | Deferred: NHS services, air quality, rail and TfL, radon |
 | 45 | #99 | **Epic:** accounts, households and the questions workflow |
 | 46 | #100 | AI evaluation harness and model provider choice (AI-03, AI-01) |
 | 47 | #101 | Agent Framework gateway in .NET |
