@@ -32,7 +32,8 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   _Depends on: H1–H3._
 - [ ] **H6 Immersive map** (founder, 11 Nov 2026): a 3D switch (tilt and approximate building heights), category filters with icons, a legend, a hover card on desktop and a tap card on phones, all on the sample map. Crime and flood stay off the map.
 - [ ] **H7 Public landing, desktop and phone** (decision 0046): search first, the sample 3D map with a summary card, "What you'll see", "Honest by design", and account features in a "Coming next · not available yet" panel.
-- [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, "Save a home here" needing an account. No commute row (it needs the household's own destination).
+- [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, and saving shown only as "Coming next". No commute row (it needs the household's own destination). States frame: invalid postcode, outside England, one source unavailable.
+- [ ] **H8 Area summary export** (A4, three pages): made in the browser, a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line.
 
 ## Foundation (stage 5 build)
 - [ ] **B1 App shell, tokens and the first screen** (#86):
@@ -46,6 +47,11 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **B3 Demo story timeline and step routing:** `?step=1..4` drives every example screen. The step captions come from `snapshot.json`, and "What changed" links appear when a step changes a figure. Reqnroll `@ui` scenarios open any screen at any step. _Depends on: B1._
   - **One place for the demo strip:** on a phone, directly after the page's headline summary; on desktop, in the header. Step buttons are 44 px tall. Screens never mention step numbers outside the strip ("Before" and "Now", not "Step 3" and "Step 4").
   - **Shorter captions** (founder review of H1, 11 Nov 2026): update the step labels in `snapshot.json` to the shorter wording, e.g. step 1 "Listing costs added. Service charge question sent."
+  - **Rules from the fourth design review (11 Nov 2026):**
+    - "Before" on What changed reads **"Before you confirmed"**, named by the user's action;
+    - My move shows **one next step** above the home cards (e.g. "Add a buildings insurance figure or ask the agent"); the full "Needs your attention" list stays below;
+    - public pages never offer an account feature as an active control before it exists;
+    - the public map's centre pin is "Postcode centre".
   - **Wording rules from the third design review (11 Nov 2026):**
     - a partial total names what it excludes, with each gap's own status ("Excludes buildings insurance (missing) and maintenance (not calculated)"); "missing" and "not calculated" are never merged;
     - a budget margin on a partial total says "before those costs", never "left";
@@ -65,7 +71,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **B4 Home overview** (all four example homes, step 1): the home header, the real cost so far, up to three findings with source labels, the daily-life summary, open questions and evidence gaps. _Reuses: hero figure, status tag._
 - [ ] **B5 Costs:** hero figure, category cards with every status, upfront section, the "How this was worked out" disclosure, and editable assumptions recorded as the user's own. _Reuses: category card, gap card._
 - [ ] **B6 Nearby, list first:** every section from the IA with source lines and gap cards; crime and flood in the list only. _Depends on: area fixtures (merged in #145)._
-- [ ] **B6a Check an area** (`/area#postcode=`, decision 0046; the postcode stays in the URL fragment so it never reaches a log): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. _Depends on: B6._
+- [ ] **B6a Check an area** (`/area#postcode=`, decision 0046; the postcode stays in the URL fragment so it never reaches a log): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. Includes the three states (invalid, outside England, one source unavailable) and the browser-made export (H8). _Depends on: B6._
 - [ ] **B7 Nearby map** (MapLibre, approved):
   - the drawn Northbridge sample map (#146);
   - neutral markers with the forest home pin;
