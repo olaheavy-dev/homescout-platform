@@ -18,6 +18,9 @@
   - Check an area `/area?postcode=…`: postcode in, the Nearby topic summary out, with Summary and Map views, a download with sources, and "Save a home here" (needs an account). No account to use it. Proposed as the first public page (decision 0046); in the prototype it runs on sample data.
   - Example home `/example`: choose the buyer or renter example, then go to My move in that story.
   - Costs and comparison `/costs-and-comparison`: explains what Vestagraph works out and what it doesn't.
+  - About the data `/about-the-data`: every source, its date, coverage, limits and attribution (needed for the public area check, 0046).
+  - Privacy notice `/privacy` and accessibility statement `/accessibility`: required before the public area check goes live (0014, 0046).
+  - **Public site at launch (0046):** the landing page leads with the area check; account features appear only as "coming next" until they are live.
   - Sign in `/sign-in`: simulated, labelled as such.
 - **Check a home**
   - Choose buying or renting, then search the address `/check`
@@ -145,12 +148,14 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 4. **What's still uncertain.**
 5. The confirm action, explicit and attributed.
 
-### Landing
-1. The promise, in a serif headline.
-2. **Check a home**, with buying and renting as equal choices.
-3. The two example homes (buy and rent) as editorial cards.
-4. How it works in three steps, with illustration.
-5. Trust notes: how figures are worked out, sample data, and "we never say a home is safe or verified".
+### Landing (search first, decision 0046)
+1. The promise in a serif headline, with the **postcode box** as the main action. "England only for now" sits under it.
+2. A hero visual: the sample 3D map with a topic summary card.
+3. **What you'll see:** getting around and everyday places; schools with framework and date; flood and recorded crime, honestly labelled.
+4. **Honest by design:** sources and dates on every fact; missing shown as missing; never "safe" or "verified"; crime as counts, never on the map.
+5. **Coming next, with a free account** (clay tint, labelled "not available yet" until live): cost estimate, compare, questions.
+6. Footer: How it works, About the data, Privacy, Accessibility.
+In the private prototype the landing can also link the two example homes; the public landing doesn't until 0045 is revisited.
 
 ## User Flows
 

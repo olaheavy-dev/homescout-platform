@@ -40,7 +40,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | PD-09 | Public brand | 1 | Open (working public brand Vestagraph per [0044](0044-public-name-vestagraph.md); trade-mark clearance still to do) | [0009](0009-public-brand.md) |
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
 | PD-11 | Purpose of the clickable prototype | 3 | Accepted (founder, 11 Nov 2026: private reference, with an exception for design frames shared by link) | [0045](0045-prototype-is-a-private-reference.md) |
-| PD-12 | Public area check first; saved homes need an account | 3 | Proposed | [0046](0046-public-area-check-first.md) |
+| PD-12 | Public area check first; saved homes need an account | 3 | Accepted (founder, 11 Nov 2026) | [0046](0046-public-area-check-first.md) |
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
 | WW-03 | Repository and tracking conventions | 1 | Accepted (partly superseded by 0019: calculation placement) | [0013](0013-repo-and-tracking.md) |
@@ -65,10 +65,10 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | FE-04 | Frontend practices | 4 | Not started | |
 | IN-00 | Hosting strategy | 2 (brought forward) | Accepted (cost first) | [0022](0022-cost-first-hosting.md) |
 | IN-01 | Prototype architecture | 4 | Not started | |
-| IN-02 | Demo hosting | 4 | Not started | |
+| IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 4 | Not started | |
 | IN-03 | Infrastructure as code | 4 | Not started | |
 | IN-04 | CI/CD and environments | 4 | Not started | |
-| IN-05 | Budget cap and cost alerts | 4 | Not started | |
+| IN-05 | Budget cap and cost alerts | 4 (before any running cost; 0046) | Not started | |
 | FE-05 | Demo analytics and feedback | 5 | Not started | |
 | BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 6, issue #92) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
@@ -101,12 +101,12 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-25 | .NET 11 upgrade split: SDK and runtime now, C# 15 later | 2 | Accepted (register line, amends 0042's upgrade conditions; founder, 10 Nov 2026: "let us move now, changing the decision": the SDK and runtime move to .NET 11 (issue #58) with `LangVersion` 14, proven by that pull request's own CodeQL run; C# 15 syntax waits until CodeQL lists C# 15 and Stryker.NET handles it (issue #59); day-one SDK adopted as a conscious exception to the 7-day wait in 0027; the exception covers the SDK only, so 0042's condition 2 tool bumps (ReSharper command line tools 2026.3, Stryker.NET 5.1, both inside the 7-day wait) move to #59, since the pinned 2026.2.3.1 and 5.0.0 run cleanly on net11.0 with C# 14) | — |
 | BE-26 | Mutation survivors kept and explained | 2 | Accepted (register line: the surviving Stryker.NET mutants on the cost engine are equivalent (no behaviour change), unreachable defensive code, or wording of error messages that tests deliberately do not pin; each is explained in the [mutation report](../reviews/2026-10-23-stage-2-mutation-report.md) (its 11 Nov 2026 update, from #112) instead of changing engine code; `break` stays 92; baseline 92.70 %, stable within one mutant (`Result.cs:74` is occasionally reported as killed by the preview `mtp` runner); easily reversible: a later tidy-up may remove equivalent mutants; founder, 11 Nov 2026: keep the surviving mutants and explain each in the mutation report rather than change engine code) | — |
 | BE-27 | Differences between homes | 2 (deferred) | Accepted (register line: calculated differences between homes, B1 against B2 and R1 against R2, were deferred by the founder on 23 Oct 2026 until independently worked test cases exist; they are needed before the stage 5 compare and decision-impact screens; stage 2 shows each home's own figures; recorded 11 Nov 2026 from the #24 hand-off; pulled into stage 5 by the founder on 11 Nov 2026: built in #96 ([32a]) before the compare screens) | — |
-| DA-03 | Database and geospatial | 6 (before real data) | Not started | |
-| DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
-| DA-05 | Source licence register | 6 (before real data) | Not started | |
-| DA-06 | Address and routing providers | 6 (before real data) | Not started | |
+| DA-03 | Database and geospatial | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
+| DA-04 | Ingestion and scheduling | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
+| DA-05 | Source licence register | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
+| DA-06 | Address and routing providers | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
 | DA-07 | Data sourcing: no scraping | 2 | Accepted | [0028](0028-no-scraping.md) |
-| SE-01 | Authentication and accounts | 6 (before questions workflow) | Not started | |
+| SE-01 | Authentication and accounts | 6 (before saved homes, [0046](0046-public-area-check-first.md)) | Not started | |
 | SE-02 | Privacy and data protection | 5 (visitor data), 6 step 4 (public records, logs), 6 step 5 (full) | Proposed (starting position agreed) | [0014](0014-privacy-and-data-protection.md) |
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |

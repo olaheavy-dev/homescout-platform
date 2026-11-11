@@ -31,7 +31,8 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
   _Depends on: H1–H3._
 - [ ] **H6 Immersive map** (founder, 11 Nov 2026): a 3D switch (tilt and approximate building heights), category filters with icons, a legend, a hover card on desktop and a tap card on phones, all on the sample map. Crime and flood stay off the map.
-- [ ] **H5 Check an area, public, phone** (decision 0046, proposed): postcode in, the Nearby topic summary out, Summary and Map, download with sources, "Save a home here" needing an account. No commute row (it needs the household's own destination).
+- [ ] **H7 Public landing, desktop and phone** (decision 0046): search first, the sample 3D map with a summary card, "What you'll see", "Honest by design", and account features in a "Coming next · not available yet" panel.
+- [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, "Save a home here" needing an account. No commute row (it needs the household's own destination).
 
 ## Foundation (stage 5 build)
 - [ ] **B1 App shell, tokens and the first screen** (#86):
@@ -80,6 +81,13 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 ## Story slices (stage 5; epics #87 and #88, one ticket per story step, SP-02)
 - [ ] **S-B1 to S-B4 Buyer steps 1–4,** each working end to end across My move, Overview, Costs, Questions, Documents and What changed. Step 4 delivers the hero moment exactly as H2.
 - [ ] **S-R1 to S-R4 Renter steps 1–4,** to the same standard: water conflicting, then partial, then specific, then the estimate added; "now complete" rather than "+£X" (#115).
+
+## Public site (stage 5b, decision 0046)
+- [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live.
+- [ ] **P2 How it works** and **About the data:** every source with its date, coverage, limits and the attribution its licence requires (DA-05).
+- [ ] **P3 Privacy notice and accessibility statement** (SE-02 part 1, decision 0014), live before launch.
+- [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels.
+- Not now: pricing (PD-10 open), blog, business page (#151), one search page per postcode.
 
 ## Interactions & States
 - [ ] **B11 Edge and required states** (#89): every doc 03 §5 state is reachable by URL and shown in the gallery. Covers:

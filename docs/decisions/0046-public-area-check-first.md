@@ -1,10 +1,10 @@
 # 0046: A free public area check comes first; saved homes need an account
 
 **ID:** PD-12  
-**Status:** Proposed (founder direction, 11 Nov 2026; the founder accepts or changes it in the pull request)  
+**Status:** Accepted (founder, 11 Nov 2026: Option B)  
 **Date:** 2026-11-11  
 **Stage:** 3  
-**Supersedes in part, once accepted (no older text is rewritten):** [0045](0045-prototype-is-a-private-reference.md) ("the real product (stage 6) is the first public thing"); the order of doc 04 §9 stage 6, which builds data, accounts and privacy after the validation study; the register timing of SE-01 ("before questions workflow") and DA-03 to DA-06 ("before real data").
+**Supersedes in part (no older text is rewritten):** [0045](0045-prototype-is-a-private-reference.md) ("the real product (stage 6) is the first public thing"); the order of doc 04 §9 stage 6, which builds data, accounts and privacy after the validation study; the register timing of SE-01 ("before questions workflow") and DA-03 to DA-06 ("before real data").
 
 ## Context
 During phase 6 of the design flow (11 Nov 2026) the founder proposed a page where anyone types a postcode and sees what is around it (schools, transport, shops, health, flood, crime counts, sold prices), with a map and a download, usable by buyers, renters and businesses (#151). The founder then asked to "bring public pages forward", with accounts needed only for the home workspace.
@@ -38,9 +38,13 @@ Fastest to something public, but it loses the design reference that 0045 exists 
 **Not decided here:** the identity provider and account model (SE-01), the hosting provider (IN-02), the order of sources (taken from the priority list in `docs/references/data-sources.md`), and the download format (a PDF or CSV with sources is the default to plan). The map gets an optional **3D view** (founder, 11 Nov 2026): a switch that tilts the map and raises buildings to their approximate heights, with 2D the default on phones and whenever reduced motion is on. It must not suggest flood or crime risk, and the list stays the accessible alternative.
 
 ## Decision
-Pending the founder's acceptance.
+**Option B**, accepted by the founder on 11 Nov 2026, who added: "that means we need marketing pages". The public site at launch is small and honest:
+- the **landing page is the area check** (postcode box first), with short sections explaining it;
+- **How it works**, **About the data** (sources, dates, limits and the attribution the licences require), the **privacy notice** (0014) and an **accessibility statement**;
+- features that need an account (costs, compare, questions) are described only as "coming next" until they are live;
+- no pricing page (PD-10 is open), blog, business page (#151) or one search page per postcode for now.
 
-## Consequences (if accepted)
+## Consequences
 - 0045's line "the real product (stage 6) is the first public thing" no longer applies: the **public area check** is the first public thing. The clickable prototype itself stays private.
 - Doc 04 §9 gains stage 5b between stages 5 and 6, and the backlog gains an epic for it, with issues for each decision above.
 - The register moves SE-01 to "before saved homes" and DA-03 to DA-06 to "before the public area check".

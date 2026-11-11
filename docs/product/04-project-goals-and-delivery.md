@@ -198,6 +198,16 @@ Build in vertical slices, each one deployed to the private preview:
 
 **Gate:** both stories run end to end on the private prototype, every input comes from the fixture files and every calculated number from the cost engine's generated files, and the accessibility checks pass.
 
+### Stage 5b: Public area check (decision 0046)
+
+The first public release: a free postcode check of what is around a home, with no accounts.
+
+**Decisions first:** database and geospatial (DA-03), ingestion and caching (DA-04), source licences (DA-05), postcode lookup (DA-06), hosting, infrastructure and a budget cap (IN-01 to IN-03, IN-05), rate limiting, privacy part 1 and demo analytics and feedback (SE-02 part 1, FE-05).
+
+**Build:** a minimal ASP.NET Core API; one adapter per free source with Live, Cached, Fallback or Unavailable labels (0029) and our own cached copies; the area check screens from stage 5 on live data; the small public site (landing as the area check, How it works, About the data, privacy notice, accessibility statement).
+
+**Gate:** every fact shows its source, date and limits; the privacy notice and budget cap are live; accessibility checks pass; no feature that needs an account is presented as available.
+
 ### Stage 6: Validate, then build the real product
 
 Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then revise the specification and fixtures. The [best-practice audit](../reviews/2026-10-23-best-practice-audit.md) lists the stage 6 practices to apply (API contract and generated types, testable time, resilience, log redaction, rate limiting, migrations, health checks and SLOs, build provenance, AI red-teaming). Then continue with section 5, steps 3–9. Each step has its own decision step before it starts:
