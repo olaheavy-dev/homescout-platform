@@ -220,11 +220,11 @@ The following are proposed design tokens for exploration, not a claim of complet
 |---|---|
 | Main green | Deep forest `#153F35` for primary actions and restrained brand moments |
 | Main text | Ink `#182923`; keep body text high contrast |
-| Background | Warm paper `#F7F5EF`, with clean white working surfaces |
+| Background | Warm paper `#F7F5EF`, with clean white working surfaces (since 11 Nov 2026: a clean near-white `#FBFAF7` with a radiant wash; see `.design/prototype/tokens.css`) |
 | Supporting tone | Muted sage `#DCE7DD`; avoid making large green areas mean “safe” |
 | Attention | Amber `#8F560E`; pair with words and icons |
 | Confirmed material concern | Restrained red `#A33636`; use on specific supported findings rather than the whole home |
-| Typography | Editorial serif for a few public-page headings; clear sans serif for navigation, facts, costs and documents; tabular numbers where values align |
+| Typography | Editorial serif for a few public-page headings; clear sans serif for navigation, facts, costs and documents; tabular numbers where values align (since 11 Nov 2026: Bricolage Grotesque headlines with Geist; see the design brief) |
 | Component treatment | Modest corners, thin dividers, subtle shadows only where useful; generous spacing without large decorative gaps |
 | Data visuals | Direct labels, clear units, comparable scales, uncertainty ranges and visible assumptions |
 | Motion | Quiet transitions that explain state changes; no theatrical agent activity |
@@ -259,6 +259,8 @@ Do not purchase or generate a large image library before choosing the visual dir
 ### Generation-ready editorial prompts
 
 These are proposals for a future image pass; no new raster assets were generated during this research.
+
+**Update, 11 November 2026:** a first set of eight atmosphere photos was generated with ChatGPT and recorded in `docs/assets/README.md` (a terraced street, a kitchen table, a high street and a wide high-street banner, a park and a park bench, moving boxes, a home viewing). They are for public pages only and never sit inside a home. The shared hero with houses **and flats** and the matched buyer and renter images above are still to come; until then the atmosphere set leans towards period terraces, so add a photo with flats before the public launch.
 
 **Shared hero:** “Natural editorial architectural photograph of a believable British residential street, ordinary brick terraces and a modest apartment building, soft bright overcast daylight, green planting, eye-level perspective, accurate UK architectural details, calm everyday atmosphere, restrained forest-green and warm stone colour accents, no luxury staging, no legible address numbers, no logos, no text, horizontal 16:9 composition with a quiet left area for separate interface copy. Representative invented location, not a real property listing.”
 
