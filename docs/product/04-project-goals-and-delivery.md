@@ -148,6 +148,7 @@ The prototype's credibility depends on this, and the images show what happens wi
 - A screen-by-screen spec for the 13 screens in doc 03 §5: the content, actions, states and which fixture each uses.
 - Step-by-step scripts for the buyer and renter stories, with acceptance criteria for each step.
 - The required states from doc 03 §5 (ambiguous match, not covered, stale, partial answer, and so on) assigned to specific screens.
+- MCP tool surface for AI assistants (#117, decision 0037).
 - The free/paid draft from doc 02 §8 shown as labelled, simulated boundaries.
 
 **Gate:** someone who hasn't read docs 01–03 could build the prototype from the spec and the fixtures alone.
@@ -190,10 +191,11 @@ Design work:
 Build in vertical slices, each one deployed to the demo:
 
 1. App shell, navigation and design system, loading the fixture catalogue.
-2. Buyer story end to end.
-3. Renter story end to end, to the same standard.
-4. Edge states, mobile layouts and an accessibility pass (WCAG 2.2 AA target).
-5. "Illustrative example" labelling, a simulated-action audit, and the public launch of the demo.
+2. Home-to-home cost differences in the engine and its generated files (BE-27, #96), before the compare and decision-impact screens.
+3. Buyer story end to end.
+4. Renter story end to end, to the same standard.
+5. Edge states, mobile layouts and an accessibility pass (WCAG 2.2 AA target).
+6. "Illustrative example" labelling, a simulated-action audit, and the public launch of the demo.
 
 **Gate:** both stories run end to end on the public demo, every input comes from the fixture files and every calculated number from the cost engine's generated files, and the accessibility checks pass.
 

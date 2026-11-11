@@ -71,9 +71,9 @@ Every remaining survivor is wording only, unreachable defensive code, an equival
 
 ## Update, 11 Nov 2026 (#107)
 
-The "run-to-run variation" above had a cause, found in issue #107. This section corrects the record; the text above is left as it was written.
+The "run-to-run variation" above had a cause, found in issue #107. This section corrects the record; the text above is left as it was written, except that the Settings and "Tests that take part" rows were updated on 11 Nov 2026 for #111; they previously said only `HomeScout.CostEngine.Tests`.
 
-**Cause.** `GeneratedFixture.cs` (generator tests) kept the generator output in a static `Lazy<string>`. Stryker's `mtp` runner reuses one test process for many mutants, so the first generator test to run built the output under whichever mutant was active, and every later generator test reused that copy. That killed mutants that cannot change behaviour (false kills) and let some real ones survive, depending on test order. The generator tests (48 of them) do take part in a run: the `mtp` runner did not honour `test-projects` in `stryker-config.json` (noticed issue #111), so the "only `HomeScout.CostEngine.Tests`" statement in the table above was not true. The scores above therefore included false kills.
+**Cause.** `GeneratedFixture.cs` (generator tests) kept the generator output in a static `Lazy<string>`. Stryker's `mtp` runner reuses one test process for many mutants, so the first generator test to run built the output under whichever mutant was active, and every later generator test reused that copy. That killed mutants that cannot change behaviour (false kills) and let some real ones survive, depending on test order. The generator tests (48 of them) do take part in a run: the `mtp` runner did not honour `test-projects` in `stryker-config.json` (noticed issue #111), so the earlier "only `HomeScout.CostEngine.Tests`" statement (since corrected in the table above) was not true. The scores above therefore included false kills.
 
 **Fix.** `GeneratedFixture.Json` keeps no copy, and `make mutate` fixes the FsCheck seed (`HOMESCOUT_FSCHECK_REPLAY`; `make test` and CI stay random).
 

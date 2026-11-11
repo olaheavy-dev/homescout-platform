@@ -1,6 +1,6 @@
 # Ordered backlog
 
-**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone. Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
+**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone (or the C# 15 milestone). Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
 
 Each stage starts with its decisions and ends with its gate (doc 04 §9). Items marked **epic** are split into issues when their stage starts. When an issue's plan changes, update the issue, not this list; this list only changes when the order does.
 
@@ -14,9 +14,10 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 
 ## C# 15 (waits for CodeQL support)
 Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C# 15 (#59); #61 is low priority and not tied to CodeQL.
+
 | # | Issue | Item | Notes |
 |---|---|---|---|
-| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change. **Blocked** until CodeQL supports C# 15 |
+| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change. **Blocked** until CodeQL and Stryker.NET support C# 15 (#59, #60; BE-25) |
 | 06 | #60 | Spike: `Result` as a C# 15 union | Outcome is a register line. **Blocked** until CodeQL supports C# 15 |
 | 07 | #61 | Evaluate .NET Skills for the coding agents | Low priority |
 
@@ -89,7 +90,7 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 `noticed` issues are triaged at each stage gate (decision 0035). Status on 11 Nov 2026:
 - #33: scheduled in stage 6.
 - #115: folded into #70 (renter story script).
-- #37: fixed by its own pull request.
+- #37: being fixed in its own pull request.
 - #111 (Stryker's `mtp` runner ignores `test-projects`): closed by the stage 2 audit tidy-up pull request.
 - #107 (repeatable mutation runs): done (pull request #112).
 - #34 and #114: recommended to close; the founder to confirm.

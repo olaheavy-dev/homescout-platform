@@ -89,13 +89,13 @@ The agent never calculates a figure: every number in a reply comes from a tool t
 1. **Done:** decision 0042 and this plan; the Python tooling removed (#57). **Open:** close out stage 2 (#24).
 2. **Done:** SDK and runtime on .NET 11 (#58, pull request #108, BE-25), with `LangVersion` 14. That pull request's own CodeQL run showed CodeQL still analyses every file.
 3. **C# 15 in the engine (#59, then #60)** when CodeQL lists C# 15 and Stryker.NET handles it: closed hierarchies first, then the `Result` union spike. Check CodeQL's supported-languages page at each weekly review.
-4. **Stages 3 to 5** (specification, design, clickable prototype) do not depend on .NET 11.
+4. **Stages 3 and 4** do not depend on .NET 11; stage 5's #96 uses `FullJoin` (available since #58).
 5. **Stage 6:** API skeleton and Aspire, generated TypeScript types, MCP server, evaluation harness, agent gateway, AG-UI chat, document workflow.
 
 ## 5. Not verified
 - When CodeQL will support C# 15 and .NET 11 (a .NET 11 RC1 extractor change was merged in `github/codeql` pull request 22565; no release announcement found).
 - Whether Stryker.NET 5.1 parses C# 15 (its release notes do not mention it).
-- Whether InspectCode 2026.3 raises new warnings on the existing code (a question for #59; the pinned 2026.2.4.1, #113 analyses the net11.0, C# 14 code cleanly, checked in #58).
+- Whether InspectCode 2026.3 raises new warnings on the existing code (a question for #59; the pinned 2026.2.4.1, #113 analyses the net11.0, C# 14 code cleanly (checked in #58 with 2026.2.3.1 and again in #113)).
 - Whether the runtime's `UnionAttribute` is stable or preview (two Learn pages disagree).
 - Whether the TypeScript generator chosen in stage 6 reads OpenAPI 3.2.
 
