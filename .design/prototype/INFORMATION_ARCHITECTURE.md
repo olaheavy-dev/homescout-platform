@@ -15,9 +15,21 @@
 - **Public site at launch** (stage 5b, decision 0046)
   - Landing `/`: search first, with the area check as the main action (see Landing below).
   - Check an area `/area#postcode=…`: postcode in, the Nearby topic summary out (without the commute row, which needs the household's own destination), with Summary and Map views and a download with sources. Saving a home appears only in a "Coming next · not available yet" panel until accounts exist (no active button). No account to use it. The map pin is labelled **Postcode centre**; address pins are only for homes the user has chosen. **The postcode goes in the URL fragment, never the query string**, so it never reaches server, application or hosting logs (0014); on live data the API call sends it in the request body (POST), never in a query string or URL path. The first public page (decision 0046, accepted); in the prototype it runs on sample data.
-    - **Form:** a persistent "Postcode" label, the short example "e.g. NB1 4XY" as placeholder, and a "Check postcode" button.
-    - **States:** invalid postcode (inline message, nothing searched until complete); outside England (per-topic coverage, #158; until then a "Not yet covered" card); one source unavailable (that topic shows "Unavailable" with "This is not the same as no warning" and an official link; the other topics still show).
-    - **Export** ("Download this summary"): a print-ready page made **in the browser** from the results on screen and saved as PDF, so the postcode never goes back to the server and no PDF package is needed. Pages: header with "Sample data" or the made-at time; a **flat 2D map** whose numbered pins match the table rows (3D distorts distance and hides pins on paper); every topic with facts, gaps, source, date and "doesn't tell you"; crime as a counts table only; the attribution each licence requires; and a privacy line ("made in your browser; Vestagraph didn't store your search"). A later option: an "Include 3D view" tick box adding a small 3D picture.
+    - **Form:** a persistent "Postcode" label, hint text under it ("For example, NB1 4XY"; no placeholder, following the GOV.UK text-input guidance), and a "Check postcode" button.
+    - **States:**
+      - loading: a skeleton per topic, never empty rows;
+      - invalid format: an inline message, and nothing is searched until the postcode is complete;
+      - **postcode not found** (well-formed but unknown or terminated): "We couldn't find that postcode", with nothing else shown (no empty topics, which would look like a clean result, rule 7);
+      - outside England: per-topic coverage (#158); until then a "Not yet covered" card;
+      - one source unavailable: that topic shows the decision 0029 label **"Unavailable"** with "Couldn't fetch this time · Try again", a general line ("This doesn't mean there's nothing to report"; the flood topic says "This is not the same as no warning") and an official link where one exists; the other topics still show.
+    - **Export** ("Print or save as PDF"): a print-ready page made **in the browser** from the results on screen, which the visitor saves as PDF from the print dialog, so the postcode never goes back to the server and no PDF package is needed (register FE-06). Designed for A4 (the sample runs to three pages). Contents:
+      - a header with "Sample data" (prototype) or the made-at time (live);
+      - a **flat 2D map** whose numbered pins match the table rows (3D distorts distance and hides pins on paper);
+      - every topic with its facts, gaps, source, data date, its decision 0029 label (Live, Cached with when it was fetched, Fallback or Unavailable) and "doesn't tell you". An Unavailable or Not yet covered topic prints as such and is never left out;
+      - crime as a counts table only;
+      - the attribution each licence requires;
+      - a privacy line. Its wording ("made in your browser; Vestagraph didn't store your search") is **provisional**: it is checked against the privacy notice once SE-02 parts 1 and 2 settle logs, including the map-tile host's access logs (#85).
+      - A later option: an "Include 3D view" tick box adding a small 3D picture.
   - How it works `/how-it-works`
   - About the data `/about-the-data`: every source, its date, coverage, limits and attribution.
   - Privacy notice `/privacy` and accessibility statement `/accessibility`: live before launch (0014, 0046).
@@ -86,6 +98,7 @@
 ## Content Hierarchy
 
 ### My move (the main view; perfect it first)
+0. **One next step,** above the cards: the first item from "Needs your attention" in a fixed order (replies to check, then missing cost lines, then questions not yet sent, then documents to review), naming its home, e.g. "Flat 2, 14 Mill Court: add a buildings insurance figure or ask the agent". No score or urgency styling.
 1. **Your homes, each as a calm summary card**, in the order the household added them.
    - Each card shows:
      - a photo;
@@ -134,7 +147,7 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 
 ### What changed (the hero moment)
 1. **One sentence of what changed and why,** with its source, for example "The management pack shows £3,720 a year, not £2,400".
-2. **Before and after:** the old and new monthly figures side by side, with the changed line highlighted. Both figures come from the engine.
+2. **Before and after:** the old and new monthly figures side by side, with the changed line highlighted. Both figures come from the engine. **The "Before" label names the event that caused the change:** "Before you confirmed" when the change came from the user's confirmation (step 4 in both stories); "Before the management pack arrived" for a change a document brought (buyer step 3). Earlier changes are listed with a link to the full history.
 3. **What it means for you:** the budget line before and after, and the effect on the comparison.
 4. **Who confirmed it and what was checked:** an attributed confirmation.
 5. **Still open:** questions and partial items that remain.
@@ -220,8 +233,9 @@ In the private prototype the landing can also link the two example homes; the pu
 | Line the engine doesn't calculate | "Not calculated" | |
 | No data in a source | "No record in this source" | Plus "this doesn't mean there are none" |
 | Out-of-date item | "Old" | Shows the date |
-| Failed fetch | "Couldn't fetch" | With "Try again" |
-| Wales, Scotland, Northern Ireland | "Not yet covered" | |
+| Failed fetch | "Unavailable" (decision 0029 label) | With "Couldn't fetch this time · Try again" and "This doesn't mean there's nothing to report" |
+| Wales, Scotland, Northern Ireland | "Not yet covered" | Per topic once #158 lands |
+| Postcode not found | "We couldn't find that postcode" | Nothing else shown |
 | Question states | To ask · Sent · Partially answered · Reply needs checking · Answered | Fixture statuses |
 | A change after confirmation | What changed | The hero moment |
 | Source of a fact | Source | Origin, date and coverage |

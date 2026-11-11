@@ -12,11 +12,11 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
 ## High-fidelity design (phase 6 now, on the canvas)
 - [ ] **H1 My move on a phone, buyer story step 1 (light):** the main view, which establishes the **Scandinavian + Editorial** direction for everything after it.
-  - It shows Fraunces titles, Geist tabular figures, and B1 and B2 summary cards (photo, address, monthly cost so far with its partial label, the budget line, the commute line, open questions).
-  - Below them come "Needs your attention", the clay-tinted demo timeline and the bottom tabs.
+  - It shows Fraunces titles, one next-step row naming its home, then B1 and B2 summary cards (photo, address, monthly cost so far with its partial label, the budget line, the commute line, open questions).
+  - Below them come "Needs your attention" and the bottom tabs; the clay-tinted demo strip sits after the headline summary.
   - **Done:** the founder agrees it no longer "looks made by AI". _New: home summary card, hero figure (compact), demo timeline, bottom tabs._
 - [ ] **H2 What changed, buyer step 4 (phone and desktop):** the hero moment.
-  - One sentence of why, with its source; old and new figures side by side with the changed service-charge line highlighted; the budget line before and after; the attributed confirmation; what's still open.
+  - One sentence of why, with its source; old and new figures side by side ("Before you confirmed" and "Now") with the changed service-charge line highlighted; the budget line before and after; the earlier change (insurance) with a history link; the attributed confirmation; what's still open.
   - **Done:** it reads in 5 seconds and nothing animates the figures. _New: decision-impact layout, cost category card (highlighted)._ _Risk first._
 - [ ] **H3 Costs and Nearby on a phone, B1 step 1:**
   - The hero figure with category cards (calculated, missing "not £0", not calculated) and upfront cash separate.
@@ -32,8 +32,8 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   _Depends on: H1–H3._
 - [ ] **H6 Immersive map** (founder, 11 Nov 2026): a 3D switch (tilt and approximate building heights), category filters with icons, a legend, a hover card on desktop and a tap card on phones, all on the sample map. Crime and flood stay off the map.
 - [ ] **H7 Public landing, desktop and phone** (decision 0046): search first, the sample 3D map with a summary card, "What you'll see", "Honest by design", and account features in a "Coming next · not available yet" panel.
-- [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, and saving shown only as "Coming next". No commute row (it needs the household's own destination). States frame: invalid postcode, outside England, one source unavailable.
-- [ ] **H8 Area summary export** (A4, three pages): made in the browser, a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line.
+- [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, and saving shown only as "Coming next". No commute row (it needs the household's own destination). States: loading, invalid format, postcode not found, outside England, one source unavailable (the frame shows three; loading and not found are added in the build).
+- [ ] **H8 Area summary export** (designed for A4; the sample runs to three pages): made in the browser and saved from the print dialog ("Print or save as PDF"), a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line.
 
 ## Foundation (stage 5 build)
 - [ ] **B1 App shell, tokens and the first screen** (#86):
@@ -48,14 +48,12 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - **One place for the demo strip:** on a phone, directly after the page's headline summary; on desktop, in the header. Step buttons are 44 px tall. Screens never mention step numbers outside the strip ("Before" and "Now", not "Step 3" and "Step 4").
   - **Shorter captions** (founder review of H1, 11 Nov 2026): update the step labels in `snapshot.json` to the shorter wording, e.g. step 1 "Listing costs added. Service charge question sent."
   - **Rules from the fourth design review (11 Nov 2026):**
-    - "Before" on What changed reads **"Before you confirmed"**, named by the user's action;
-    - My move shows **one next step** above the home cards (e.g. "Add a buildings insurance figure or ask the agent"); the full "Needs your attention" list stays below;
-    - public pages never offer an account feature as an active control before it exists;
-    - the public map's centre pin is "Postcode centre".
+    - the "Before" label on What changed names the event that caused the change: "Before you confirmed" for a user confirmation (step 4), "Before the management pack arrived" for buyer step 3;
+    - My move shows **one next step** above the home cards, chosen by the fixed order in the IA and naming its home; the full "Needs your attention" list stays below.
   - **Wording rules from the third design review (11 Nov 2026):**
     - a partial total names what it excludes, with each gap's own status ("Excludes buildings insurance (missing) and maintenance (not calculated)"); "missing" and "not calculated" are never merged;
     - a budget margin on a partial total says "before those costs", never "left";
-    - "Before" on What changed is labelled by its event ("when the management pack arrived"), and earlier changes (insurance: Missing → Included in service charge) are listed with a link to the full history;
+    - earlier changes on What changed (insurance: Missing → Included in service charge) are listed with a link to the full history;
     - Costs links to What changed whenever a figure has changed since the last step;
     - on a phone, the home tabs are Overview, Nearby, Costs, Questions and More (Viewings, Documents, Activity, What changed);
     - the public area check shows only area facts; building facts appear after a home is chosen.
@@ -71,7 +69,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **B4 Home overview** (all four example homes, step 1): the home header, the real cost so far, up to three findings with source labels, the daily-life summary, open questions and evidence gaps. _Reuses: hero figure, status tag._
 - [ ] **B5 Costs:** hero figure, category cards with every status, upfront section, the "How this was worked out" disclosure, and editable assumptions recorded as the user's own. _Reuses: category card, gap card._
 - [ ] **B6 Nearby, list first:** every section from the IA with source lines and gap cards; crime and flood in the list only. _Depends on: area fixtures (merged in #145)._
-- [ ] **B6a Check an area** (`/area#postcode=`, decision 0046; the postcode stays in the URL fragment so it never reaches a log): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. Includes the three states (invalid, outside England, one source unavailable) and the browser-made export (H8). _Depends on: B6._
+- [ ] **B6a Check an area** (`/area#postcode=`, decision 0046; the postcode stays in the URL fragment so it never reaches a log): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. Includes the states from the IA (loading, invalid format, postcode not found, outside England, one source unavailable) and the browser-made export (H8). Public pages never offer an account feature as an active control before it exists, and the map's centre pin is "Postcode centre". _Depends on: B6._
 - [ ] **B7 Nearby map** (MapLibre, approved):
   - the drawn Northbridge sample map (#146);
   - neutral markers with the forest home pin;
@@ -91,7 +89,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **S-R1 to S-R4 Renter steps 1–4,** to the same standard: water conflicting, then partial, then specific, then the estimate added; "now complete" rather than "+£X" (#115).
 
 ## Public site (stage 5b, decision 0046)
-- [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live.
+- [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live, never as active controls; the hero map's pin is "Postcode centre".
 - [ ] **P2 How it works** and **About the data:** every source with its date, coverage, limits and the attribution its licence requires (DA-05).
 - [ ] **P3 Privacy notice and accessibility statement** (SE-02 part 1, decision 0014), live before launch.
 - [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels. The API call sends the postcode in the request body (POST), never in a query string or URL path, so it stays out of every log (0014).
