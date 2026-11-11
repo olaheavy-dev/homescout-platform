@@ -12,6 +12,7 @@ Read before working (the [documentation index](docs/README.md) explains the fold
 - `docs/product/02-research-and-direction.md`: product decisions and scope
 - `docs/product/03-prototype-and-image-direction.md`: prototype behaviour and design
 - `docs/product/04-project-goals-and-delivery.md`: roadmap (§9) and ways of working (§10)
+- `docs/product/05-ideas-and-product-thinking.md`: how we think about new features (use it when proposing one) and the ideas to explore
 - `docs/decisions/`: accepted decisions. Don't contradict one; propose a new record instead.
 
 The current stage is in the README and `docs/planning/`.

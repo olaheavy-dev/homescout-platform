@@ -9,6 +9,7 @@ A home decision workspace for people buying or renting in England: check a home,
 - [Documentation index](docs/README.md): what each document is for, which one owns what, and the reading order
 - [Decision register](docs/decisions/README.md): every decision made and still to make
 - [Roadmap](docs/product/04-project-goals-and-delivery.md#9-roadmap-from-design-decisions-to-implementation) and [ways of working](docs/product/04-project-goals-and-delivery.md#10-ways-of-working)
+- [How we think about new features, and ideas to explore](docs/product/05-ideas-and-product-thinking.md)
 - Build and check: install the .NET 11 SDK (version in `global.json`), then run `make check`; `make help` lists the other commands
 - [Agent instructions](AGENTS.md): rules for the AI agents that build and review this project (`CLAUDE.md` links to the same file)
 

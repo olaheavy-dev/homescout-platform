@@ -27,6 +27,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [02 Research and direction](product/02-research-and-direction.md) | Product decisions, scope, free/paid split, data feasibility | Current |
 | [03 Prototype and image direction](product/03-prototype-and-image-direction.md) | Prototype behaviour, screens, visual direction, image review | Current |
 | [04 Project goals and delivery](product/04-project-goals-and-delivery.md) | Goals, roadmap (§9), ways-of-working summary (§10; rules in `AGENTS.md`), budget, commercial safeguards | Current |
+| [05 Ideas and product thinking](product/05-ideas-and-product-thinking.md) | How new features are found and shaped, and the ideas worth exploring (none scheduled) | Current |
 | [Architecture (C4 diagrams)](architecture/README.md) | The system context and container diagrams: what exists today and what is planned (decision 0027) | Current |
 | [Decision register](decisions/README.md) | Every decision's status and record | Current |
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
@@ -44,12 +45,12 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 
 Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decision 0035). Where 02, 03 and 04 overlap, each owns the area listed above.
 
-**Reading order for someone new:** 02 → 03 → 04 → the decision register. Read 01 only for background.
+**Reading order for someone new:** 02 → 03 → 04 → 05 → the decision register. Read 01 only for background.
 
 ## Naming conventions
 
 - Lowercase words separated by hyphens; no spaces. Example: `03-prototype-and-image-direction.md`.
-- Numbered prefixes where order matters: `01-` to `04-` for product documents, `0001-` upwards for decisions.
+- Numbered prefixes where order matters: `01-` to `05-` for product documents, `0001-` upwards for decisions.
 - Dates as `YYYY-MM-DD` at the start of dated files, for example reviews.
 - Every image or media file is added to the [asset register](assets/README.md) before it is committed.
 - Documents are referred to by number in text ("doc 03 §2") and linked by path.
