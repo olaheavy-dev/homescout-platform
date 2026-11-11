@@ -1,6 +1,6 @@
 # Decision register
 
-Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0011-ways-of-working.md`). The process is in `docs/product/04-project-goals-and-delivery.md` §10. Each decision is made at the stage listed, the latest point that still lets the work go ahead.
+Every significant product, technical and working decision gets its own record in this folder, named `NNNN-short-title.md` (for example `0011-ways-of-working.md`). The process is in `AGENTS.md` (decision 0035). Each decision is made at the stage listed, the latest point that still lets the work go ahead.
 
 Hard-to-reverse decisions get a full record; easily reversible choices get one line in this register with their default (decision 0035).
 
@@ -9,6 +9,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 - **Proposed:** options drafted, or a starting position agreed, but not yet fully decided.
 - **Accepted:** decided by the founder.
 - **Accepted (partly superseded by NNNN):** some parts replaced by a later record.
+- **Proposed (partly superseded by NNNN):** not yet fully decided, and some parts already replaced by a later record.
 - **Superseded by NNNN:** fully replaced.
 - **Open:** deliberately undecided, with a reason and a revisit point.
 - **Parked:** paused, with a point by which it must resume.
@@ -40,7 +41,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
-| WW-03 | Repository and tracking conventions | 1 | Accepted | [0013](0013-repo-and-tracking.md) |
+| WW-03 | Repository and tracking conventions | 1 | Accepted (partly superseded by 0019: calculation placement) | [0013](0013-repo-and-tracking.md) |
 | WW-04 | Merge policy and single agent instructions file | 1 | Superseded by 0035 | [0015](0015-agent-merges-after-review.md) |
 | WW-05 | Holistic reviews and debt limits | 1 | Superseded by 0035 | [0016](0016-holistic-reviews-and-debt-limits.md) |
 | WW-06 | Documentation folder structure and naming | 1 | Accepted | [0017](0017-docs-structure.md) |
@@ -70,7 +71,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 6, issue #92) | [0020](0020-application-languages.md) |
 | BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
-| BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034; SDK and target framework move to .NET 11 by 0042 when its upgrade conditions hold; 0036 and 0039 never took effect and are superseded by 0042) | [0021](0021-dotnet-engineering-foundation.md) |
+| BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034; SDK and target framework moved to .NET 11 in #58 under BE-25; 0036 and 0039 never took effect and are superseded by 0042) | [0021](0021-dotnet-engineering-foundation.md) |
 | BE-05 | Our own Result type | 2 | Accepted (0036's Python rewrite superseded by 0042 before it took effect; a C# 15 union version is trialled in issue #60) | [0032](0032-own-result-type.md) |
 | BE-06 | Rounding boundary test cases | 2 | Accepted | [0034](0034-rounding-boundary-cases.md) |
 | WW-13 | Licence allow-list addition | 2 | Accepted (register line: `zlib-acknowledgement`, a permissive Zlib-family licence used by NUnit 5, added to the 0027 allow-list; founder, 23 Oct 2026) | — |
@@ -86,8 +87,8 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-16 | Missing inputs in a calculation | 2 | Accepted (register line: an anchor input (asking price, mortgage deposit, rate and term when buying; rent when renting) that is missing stops the calculation with a `Result` failure; any other missing bill becomes a `missing` line and makes the total partial; founder, 23 Oct 2026) | — |
 | BE-17 | Mortgage term limit | 2 | Accepted (register line: the engine fails a mortgage term over 100 years with `mortgage.term-too-long`, and the evidence and output schemas allow at most 100; this is a technical computation limit because the exact arithmetic gets very slow for huge terms, not a lending rule; founder, 23 Oct 2026) | — |
 | BE-18 | Python for the backend, cost engine and AI layer | 2 (reopens stage 2) | Superseded by 0042 (founder, 10 Nov 2026; only port step P1 had merged) | [0036](0036-python-backend.md) |
-| AI-07 | MCP server and coding-agent integrations | 6 (local fixture-backed server may come earlier) | Proposed (0042: the server uses the official MCP C# SDK in the ASP.NET Core host, not FastMCP; issue #97) | [0037](0037-mcp-server-and-agent-integrations.md) |
-| SE-03 | Accounts and API keys for MCP and API access | 6 (before any public remote MCP server) | Proposed (0042: token checks use ASP.NET Core authentication, not FastMCP's verifier) | [0038](0038-accounts-and-api-keys-for-mcp.md) |
+| AI-07 | MCP server and coding-agent integrations | 6 (local fixture-backed server may come earlier) | Proposed (partly superseded by 0042: the server uses the official MCP C# SDK in the ASP.NET Core host, not FastMCP; issue #97. Founder direction, 11 Nov 2026: the MCP server is a product channel for Claude, ChatGPT/Codex, GitHub Copilot and other assistants; the tool surface is specified in stage 3 (#117); whether a local fixture-backed server comes forward to stage 5 is decided after #117) | [0037](0037-mcp-server-and-agent-integrations.md) |
+| SE-03 | Accounts and API keys for MCP and API access | 6 (before any public remote MCP server) | Proposed (partly superseded by 0042: token checks use ASP.NET Core authentication, not FastMCP's verifier) | [0038](0038-accounts-and-api-keys-for-mcp.md) |
 | BE-19 | The founder's FastAPI template as the API starting point | 6 (template changes may run earlier) | Superseded by 0042 (nothing was imported from the template) | [0040](0040-fastapi-template-as-api-starting-point.md) |
 | BE-20 | Python engineering foundation | 2 (port step P0) | Superseded by 0042 (its Q3 rule, a minor bump of a direct `0.x` dependency or action pin counts as major, is carried over) | [0039](0039-python-engineering-foundation.md) |
 | BE-21 | Python build backend | 2 (port step P1) | Superseded by 0042 (the Python packages are removed in issue #57) | — |
@@ -97,7 +98,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | BE-24 | Back to .NET: C# 15 on .NET 11 for the backend, React stays for the frontend | 2 (reopens the backend language) | Accepted (founder, 10 Nov 2026; supersedes 0036, 0039, 0040, 0041 and register lines BE-21, BE-23; partly 0021, 0023, 0035 point 9, 0037, 0038; upgrade to .NET 11 waits for CodeQL, InspectCode and Stryker.NET support; adds the founder's pre-approved packages; upgrade conditions amended by BE-25) | [0042](0042-back-to-dotnet-11.md) |
 | BE-25 | .NET 11 upgrade split: SDK and runtime now, C# 15 later | 2 | Accepted (register line, amends 0042's upgrade conditions; founder, 10 Nov 2026: "let us move now, changing the decision": the SDK and runtime move to .NET 11 (issue #58) with `LangVersion` 14, proven by that pull request's own CodeQL run; C# 15 syntax waits until CodeQL lists C# 15 and Stryker.NET handles it (issue #59); day-one SDK adopted as a conscious exception to the 7-day wait in 0027; the exception covers the SDK only, so 0042's condition 2 tool bumps (ReSharper command line tools 2026.3, Stryker.NET 5.1, both inside the 7-day wait) move to #59, since the pinned 2026.2.3.1 and 5.0.0 run cleanly on net11.0 with C# 14) | — |
 | BE-26 | Mutation survivors kept and explained | 2 | Accepted (register line: the surviving Stryker.NET mutants on the cost engine are equivalent (no behaviour change), unreachable defensive code, or wording of error messages that tests deliberately do not pin; each is explained in the [mutation report](../reviews/2026-10-23-stage-2-mutation-report.md) (its 11 Nov 2026 update, from #112) instead of changing engine code; `break` stays 92; baseline 92.70 %, stable within one mutant (`Result.cs:74` is occasionally reported as killed by the preview `mtp` runner); easily reversible: a later tidy-up may remove equivalent mutants; founder, 11 Nov 2026: keep the surviving mutants and explain each in the mutation report rather than change engine code) | — |
-| BE-27 | Differences between homes | 2 (deferred) | Accepted (register line: calculated differences between homes, B1 against B2 and R1 against R2, were deferred by the founder on 23 Oct 2026 until independently worked test cases exist; they are needed before the stage 5 compare and decision-impact screens; stage 2 shows each home's own figures; recorded 11 Nov 2026 from the #24 hand-off) | — |
+| BE-27 | Differences between homes | 2 (deferred) | Accepted (register line: calculated differences between homes, B1 against B2 and R1 against R2, were deferred by the founder on 23 Oct 2026 until independently worked test cases exist; they are needed before the stage 5 compare and decision-impact screens; stage 2 shows each home's own figures; recorded 11 Nov 2026 from the #24 hand-off; pulled into stage 5 by the founder on 11 Nov 2026: built in #96 ([32a]) before the compare screens) | — |
 | DA-03 | Database and geospatial | 6 (before real data) | Not started | |
 | DA-04 | Ingestion and scheduling | 6 (before real data) | Not started | |
 | DA-05 | Source licence register | 6 (before real data) | Not started | |

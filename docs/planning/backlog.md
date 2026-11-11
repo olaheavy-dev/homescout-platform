@@ -1,6 +1,6 @@
 # Ordered backlog
 
-**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone. Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
+**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone (or the C# 15 milestone). Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
 
 Each stage starts with its decisions and ends with its gate (doc 04 §9). Items marked **epic** are split into issues when their stage starts. When an issue's plan changes, update the issue, not this list; this list only changes when the order does.
 
@@ -11,7 +11,13 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 02 | #57 | Remove the Python tooling | Founder merge |
 | 03 | #24 | Stage 2 close-out: doc corrections, C4 diagrams, Stryker.NET report, audit, gate | Can pass on .NET 11 (C# 14) |
 | 04 | #58 | Upgrade to .NET 11 (SDK and runtime; language stays C# 14) | SDK and runtime now, C# 14 |
-| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change. **Blocked** until CodeQL supports C# 15 |
+
+## C# 15 (waits for CodeQL support)
+Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C# 15 (#59); #61 is low priority and not tied to CodeQL.
+
+| # | Issue | Item | Notes |
+|---|---|---|---|
+| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change. **Blocked** until CodeQL and Stryker.NET support C# 15 (#59, #60; BE-25) |
 | 06 | #60 | Spike: `Result` as a C# 15 union | Outcome is a register line. **Blocked** until CodeQL supports C# 15 |
 | 07 | #61 | Evaluate .NET Skills for the coding agents | Low priority |
 
@@ -29,6 +35,7 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 12 | #66 | Design brief (grill-me, design-brief) |
 | 13 | #67 | Information architecture |
 | 14 | #68 | Screen-by-screen specification |
+| 14a | #117 | MCP tool surface for AI assistants (decision 0037) |
 | 15 | #69 | Buyer story script |
 | 16 | #70 | Renter story script |
 | 17 | #71 | Brief to stage 5 issues; stage 3 gate |
@@ -55,6 +62,7 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 |---|---|---|
 | 31 | #85 | Decision: visitor privacy (SE-02 part 1), demo analytics and feedback (FE-05) |
 | 32 | #86 | App shell, navigation, design system, fixture loading |
+| 32a | #96 | Home-to-home cost differences in the engine and `costs.json` (BE-27) |
 | 33 | #87 | Buyer story end to end |
 | 34 | #88 | Renter story end to end |
 | 35 | #89 | Edge states, mobile, accessibility (WCAG 2.2 AA) |
@@ -68,7 +76,6 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 39 | #93 | ASP.NET Core 11 API skeleton (OpenAPI 3.2, async validation, one cost endpoint) |
 | 40 | #94 | Aspire app host and OpenTelemetry |
 | 41 | #95 | Generated TypeScript types from the OpenAPI document |
-| 42 | #96 | Compare two homes line by line (LINQ `FullJoin`) |
 | 43 | #97 | MCP server with the official C# SDK (read-only, local first) |
 | 44 | #98 | **Epic:** real England data (DA-03 to DA-06, SE-02 part 2) |
 | 45 | #99 | **Epic:** accounts, households and the questions workflow |
@@ -80,4 +87,11 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 51 | #105 | **Epic:** monitoring, scheduling and notifications (OP-01, OP-02) |
 
 ## Not in the order
-`noticed` issues (#33, #34, #37, #111; #36 is closed by the stage 2 close-out pull request) are triaged at each stage gate (decision 0035). #107 (repeatable mutation runs) is done (pull request #112); #111 (Stryker's `mtp` runner ignores `test-projects`) came out of it.
+`noticed` issues are triaged at each stage gate (decision 0035). Status on 11 Nov 2026:
+- #33: scheduled in stage 6.
+- #115: folded into #70 (renter story script).
+- #37: being fixed in its own pull request.
+- #111 (Stryker's `mtp` runner ignores `test-projects`): closed by the stage 2 audit tidy-up pull request.
+- #107 (repeatable mutation runs): done (pull request #112).
+- #34 and #114: recommended to close; the founder to confirm.
+- Item 42 (#96) moved to 32a: the founder pulled home-to-home differences into stage 5 on 11 Nov 2026 so they exist before the compare screens.

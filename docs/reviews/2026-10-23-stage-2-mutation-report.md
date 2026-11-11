@@ -8,10 +8,10 @@ Stryker.NET changes the cost engine's code in small ways (a `<` becomes `<=`, a 
 |---|---|
 | Tool | Stryker.NET (`dotnet-stryker`) 5.0.0, Apache-2.0 (on the licence allow-list), local tool in `.config/dotnet-tools.json` |
 | Command | `make mutate` (runs `dotnet dotnet-stryker --config-file stryker-config.json --output .artifacts/mutation`) |
-| Settings | `stryker-config.json`: project `HomeScout.CostEngine`, test project `HomeScout.CostEngine.Tests` only, `test-runner: mtp`, Release, thresholds high 97, low 93, **break 92** |
+| Settings | `stryker-config.json`: project `HomeScout.CostEngine`, test projects `HomeScout.CostEngine.Tests` and `HomeScout.CostEngine.Generator.Tests`, `test-runner: mtp`, Release, thresholds high 97, low 93, **break 92** |
 | Reports | `.artifacts/mutation/reports/mutation-report.html` and `.json` (not committed) |
 | Runner | The `mtp` (Microsoft.Testing.Platform) runner worked first time with NUnit 5 and coverlet.MTP; no test-framework change. Stryker's documentation calls the `mtp` runner a preview. |
-| Tests that take part | Only `HomeScout.CostEngine.Tests`. (An earlier version of the config named the whole solution, which also pulled in the generator tests.) See the update of 11 Nov 2026: in practice the generator tests also ran, because the `mtp` runner did not honour `test-projects` (#111). |
+| Tests that take part | `HomeScout.CostEngine.Tests` and `HomeScout.CostEngine.Generator.Tests`. The `mtp` runner did not honour `test-projects` and ran the generator tests anyway (#111), so the config now lists both, matching what actually runs. |
 | Time | Under a minute, so it stays out of `make check` and CI. `make mutate` is a manual step: run it when the cost engine or its tests change. |
 
 ## Scores
@@ -71,9 +71,9 @@ Every remaining survivor is wording only, unreachable defensive code, an equival
 
 ## Update, 11 Nov 2026 (#107)
 
-The "run-to-run variation" above had a cause, found in issue #107. This section corrects the record; the text above is left as it was written.
+The "run-to-run variation" above had a cause, found in issue #107. This section corrects the record; the text above is left as it was written, except that the Settings and "Tests that take part" rows were updated on 11 Nov 2026 for #111; they previously said only `HomeScout.CostEngine.Tests`.
 
-**Cause.** `GeneratedFixture.cs` (generator tests) kept the generator output in a static `Lazy<string>`. Stryker's `mtp` runner reuses one test process for many mutants, so the first generator test to run built the output under whichever mutant was active, and every later generator test reused that copy. That killed mutants that cannot change behaviour (false kills) and let some real ones survive, depending on test order. The generator tests (48 of them) do take part in a run: the `mtp` runner did not honour `test-projects` in `stryker-config.json` (noticed issue #111), so the "only `HomeScout.CostEngine.Tests`" statement in the table above was not true. The scores above therefore included false kills.
+**Cause.** `GeneratedFixture.cs` (generator tests) kept the generator output in a static `Lazy<string>`. Stryker's `mtp` runner reuses one test process for many mutants, so the first generator test to run built the output under whichever mutant was active, and every later generator test reused that copy. That killed mutants that cannot change behaviour (false kills) and let some real ones survive, depending on test order. The generator tests (48 of them) do take part in a run: the `mtp` runner did not honour `test-projects` in `stryker-config.json` (noticed issue #111), so the earlier "only `HomeScout.CostEngine.Tests`" statement (since corrected in the table above) was not true. The scores above therefore included false kills.
 
 **Fix.** `GeneratedFixture.Json` keeps no copy, and `make mutate` fixes the FsCheck seed (`HOMESCOUT_FSCHECK_REPLAY`; `make test` and CI stay random).
 
@@ -94,6 +94,6 @@ Every survivor and no-coverage mutant (30), line numbers from the 11 Nov 2026 re
 | Message or wording strings (16, 3 of them with no coverage) | `AssumptionSelector.cs:151`, `:162`, `:306`, `:307`, `:308`; `CostCategories.cs:26`, `:38`; `CostLines.cs:18`, `:26`, `:43`, `:88`; `Error.cs:37`; `Pence.cs:69`; `Result.cs:21`, `:74`, `:78` | Accepted: tests match error codes and exception types, not wording (see above). No coverage: `AssumptionSelector.cs:151`, `:162`, `:308`. |
 | Equivalent, was falsely killed (1) | `SelectedInputs.cs:30` (`"-"` to `""`) | The mode is already part of the scenario signature and `Mortgage` is null exactly when the mode is rent. |
 
-**Residual variation.** In 5 later runs one mutant, `Result.cs:74` (the message string, which no test executes), was reported Killed in 2 runs by `FailureOfT_withError_hidesValueAndExposesError`, a plain unit test that cannot fail on a message change. That moves the score from 92.70 % to 92.94 % (382/411). It is not caused by FsCheck (it is not a property test) and its cause is not known; it looks like a runner glitch. Compare scores to the nearest 0.3 points until it is understood.
+**Residual variation.** In 5 later runs one mutant, `Result.cs:74` (the message string, which no test checks), was reported Killed in 2 runs by `FailureOfT_withError_hidesValueAndExposesError`, a plain unit test that cannot fail on a message change. That moves the score from 92.70 % to 92.94 % (382/411). It is not caused by FsCheck (it is not a property test) and its cause is not known; it looks like a runner glitch. Compare scores to the nearest 0.3 points until it is understood.
 
 One real gap was found and fixed: `HomeCostBuilder.cs:175` (`&&` to `||` in the "unchanged" test) is now killed every run by two example tests (a line going from not applicable to Missing, and back).

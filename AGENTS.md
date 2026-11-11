@@ -36,7 +36,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 6. **England first.** Other UK nations show "not yet covered". Keep a nation field in data; don't hard-code English rules into shared code.
 7. **Missing data is never shown as zero**, a favourable value or a clean result.
 8. **Plain language for the founder.** When explaining options or decisions, say what each option means in practice and give a clear recommendation.
-9. **No agent attribution.** Commit messages and pull request descriptions carry no `Co-Authored-By` or "generated with" lines for any coding agent (set in `.claude/settings.json`). Founder decision, 6 Nov 2026; it matches the base template's rule 5.
+9. **No agent attribution.** Commit messages and pull request descriptions carry no `Co-Authored-By` or "generated with" lines for any coding agent (set in `.claude/settings.json`). Founder decision, 6 Nov 2026.
 
 ## How work flows (decision 0035)
 
@@ -108,7 +108,7 @@ How to report:
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. **Codex has reviewed the latest commit.** Exceptions:
    - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "When reviewing" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
-   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example the zizmor action), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0039, Q3).
+   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example the zizmor action), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0042, carried over from 0039 Q3).
    Code otherwise waits for Codex, and a rebased pull request gets a fresh review.
 2. Every review finding is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
