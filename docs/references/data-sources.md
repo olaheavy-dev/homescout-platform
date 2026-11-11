@@ -136,6 +136,39 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 - [Band checker](https://www.gov.uk/council-tax-bands) (England and Wales; Scotland uses the Scottish Assessors) and its [terms](https://www.tax.service.gov.uk/check-council-tax-band/os-terms) (checked 11 Nov 2026): a licence "solely to view the licensed data for non-commercial purposes", and "not permitted to copy, sub-license, distribute, sell". **No permitted programmatic or bulk access was found.** The VOA publishes aggregate band counts under the OGL (search result, unverified), which do not identify a given home's band.
 - Per decision 0028: do not scrape it. The product asks the user to enter the band and links to the checker. The user-entered band is labelled as such. A band is not a bill; the council's charge, year and discounts also matter (doc 02 §7).
 
+## Priority order (importance to the customer and ease)
+
+Founder request, 11 Nov 2026: put the sources in order of importance to the customer and ease of achievement, and align the tickets to it.
+
+- **Importance:** how much a buyer or renter needs this in everyday decisions (doc 02 §5).
+- **Ease:** this assessment's findings. Easy means an open licence plus a file or simple API. Moderate means a key, extra conditions or our own processing. Hard means a paid provider (DA-06). Blocked means no permitted route.
+
+The ranking is a planning judgement, not a measured fact, and the founder can reorder it. Stage 6 issues follow this order (the children of #98).
+
+| # | Wave | What the customer gets | Source | Importance | Ease | Notes |
+|---|---|---|---|---|---|---|
+| 1 | 0 Foundation | Correct area for every lookup | postcodes.io (postcode to coordinates, council, area codes) | Prerequisite | Easy (fair-use limit unverified) | Needed by crime, schools, stops, flood and amenities |
+| 2 | 0 Foundation | The exact home ("Flat 5, not the building") | Licensed address provider (DA-06) | Prerequisite | Hard (paid or self-hosted) | Needed for energy certificates and per-home sale history; doc 03 identity confirmation |
+| 3 | 1 | Transport stops nearby | NaPTAN | High (both) | Easy | Stops only; journey times are #13 |
+| 4 | 1 | Schools nearby (type, phase) | DfE Get Information about Schools | High (families) | Easy (downloads) | Inspection results are #10 |
+| 5 | 1 | Crime counts and the neighbourhood police team | data.police.uk | High (both) | Easy | Counts by category and month; never "safe" or "unsafe" (rule 4) |
+| 6 | 1 | Flood: live warnings and river levels, plus a link to long-term risk | EA flood monitoring, EA checker (link only) | High (buyers: mortgage and insurance) | Easy (live); long-term has no API found | Never a prediction for one property |
+| 7 | 1 | Nearby sold prices | HM Land Registry Price Paid | High (buyers) | Easy | Address use limited to price display |
+| 8 | 2 | Shops, supermarkets, parks, pharmacies, police stations | OSM extract we download and query ourselves | High (both) | Moderate | Own attributed table (ODbL); map picture from FE-03 |
+| 9 | 2 | Energy rating and likely energy cost range | Energy certificate register | High (both: bills) | Moderate (key; address restriction) | Needs #2 for UPRN matching; never actual bills |
+| 10 | 2 | School inspection results | Ofsted data | High (families) | Moderate (licence unverified) | Framework and date, no single grade (doc 02 §7) |
+| 11 | 2 | Broadband and mobile coverage | Ofcom API | Medium-high (home working) | Moderate (terms unread; mobile v1 API ends 30 Nov 2026) | Predicted availability, not a tested line |
+| 12 | 2 | Mortgage context: the Bank Rate | Bank of England | Medium (buyers) | Easy | Feeds rate scenarios; the engine still calculates |
+| 13 | 3 | Commute time to your own destinations | Routing provider (DA-06) | High (both) | Hard (paid or self-hosted) | Household criterion "40 minutes by public transport" |
+| 14 | 3 | Planning applications nearby | Planning Data Platform | Medium (buyers) | Moderate (site was down) | "No record in this source" never means none |
+| 15 | 3 | Leasehold: is the managing agent or freeholder active? | Companies House API | Medium (leasehold buyers) | Moderate (licence unverified) | Status facts only |
+| 16 | 3 | Bus timetables | Bus Open Data Service | Medium | Moderate (key; limits unverified) | Before #13, or replaced by the routing provider |
+| 17 | 4 | GPs, dentists and pharmacy services | NHS directory | Medium | Deferred (terms unverified) | |
+| 18 | 4 | Air quality | Defra UK-AIR | Low-medium | Easy | Context, not a health judgement |
+| 19 | 4 | Rail and London transport detail | National Rail, TfL | Medium (London, rail commuters) | Deferred (terms unverified) | |
+| 20 | 4 | Radon | UKHSA | Low | Deferred (terms unverified; address report paid) | |
+| — | — | Council tax band | User enters it, with a link to the VOA checker | High (cost) | Not available as data | Already a cost-engine input; no lookup is built (decision 0028) |
+
 ## Gaps and decisions for the founder
 
 - **Address and routing (DA-06):** open sources give postcodes, UPRNs and stop points, not an address search or journey times. OSM's public Nominatim, tile and Overpass services are not for production. Recommendation: plan a paid address and routing provider (or self-hosted OSM) before stage 6; keep the prototype on sample data.
