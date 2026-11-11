@@ -1,4 +1,4 @@
-# HomeScout: product research and recommended direction
+# Vestagraph: product research and recommended direction
 
 **Research date:** 23 October 2026, Europe/London  
 **Context:** Companion to `01-product-brief-v1.1.md`; the existing brief and all eight concept images were reviewed.  
@@ -12,7 +12,7 @@
 
 Keep the working promise: **Know the home before you commit.**
 
-The central experience is a **home record** (the consumer term for the brief's "living property decision record"). A person brings an address, relevant documents and their household priorities. HomeScout connects the facts, estimates, observations and unanswered questions, then helps them compare alternatives and record what changed. The user remains the decision maker.
+The central experience is a **home record** (the consumer term for the brief's "living property decision record"). A person brings an address, relevant documents and their household priorities. Vestagraph connects the facts, estimates, observations and unanswered questions, then helps them compare alternatives and record what changed. The user remains the decision maker.
 
 The proposed differentiation is the connection between **evidence → practical impact → question → answer → updated decision**. Maps, reports, calculations and AI explanations support that process. Each of those features separately has existing competitors.
 
@@ -41,7 +41,7 @@ The table records public marketing inspected on the research date. Features and 
 | [HomeBuyerCheck](https://www.homebuyercheck.co.uk/) | Free checks; advertised £4.99/£6.99 paid tiers with risk analysis and professional question packs | Cheap reports and generated questions establish a demanding price/value comparison. Savings and reliability claims remain vendor claims. |
 | [BackStory](https://backstory.homes/) | Flat-focused investigations and human-reviewed reports | Plain-English investigation and human review are not unoccupied territory. |
 | [CheckNext](https://checknext.co.uk/) | Listing analysis, viewing-photo analysis, survey review and maintenance estimates | Viewing and document summaries are competitive features; image-based defect claims need particular care. |
-| [Crystal Roof](https://crystalroof.co.uk/) | Map-led area research across environment, schools, transport, amenities and more | A neighbourhood map alone is unlikely to distinguish HomeScout. Do not import demographic desirability judgements. |
+| [Crystal Roof](https://crystalroof.co.uk/) | Map-led area research across environment, schools, transport, amenities and more | A neighbourhood map alone is unlikely to distinguish Vestagraph. Do not import demographic desirability judgements. |
 | [Locrating](https://www.locrating.com/) | School research, admissions-related evidence and neighbourhood information | Schools are a specialist domain. Link to evidence and preserve the difference between proximity, historical admissions and eligibility. |
 | [HomeSift](https://homesift.app/) | Buyer/renter digests, saved homes, price tracking and couples mode; advertised Pro £7.99/month | Shared shortlists and alerts already have a dedicated proposition. The extracted free-plan list is ambiguous; do not infer exact free entitlements. |
 | [HomeScout Ireland](https://homescout.io/) | Rental discovery, replies, viewings and contract review presented as one continuous record | Even a connected renter journey has precedent. Irish content is not UK tenancy guidance. Also a naming overlap. |
@@ -143,7 +143,7 @@ Use separate dimensions rather than a single confidence badge:
 | Applicability | This flat, whole building, postcode, mapped area |
 | Time | Effective period, observation date, publication date, last retrieved date |
 | Status | Available, missing, conflicting, stale, not applicable |
-| Interpretation | What HomeScout inferred, with its supporting evidence and limitations |
+| Interpretation | What Vestagraph inferred, with its supporting evidence and limitations |
 
 A source-backed fact is not automatically correct for the selected flat. Multiple agreeing sources do not establish independence. Fresh retrieval does not make an old certificate current. Missing evidence does not establish a defect, and low mapped risk does not establish absence of property risk.
 
@@ -242,7 +242,7 @@ Research the economics before commitments: licensed address/data calls, routing,
 | Main value | Evidence, real costs, comparison and answers connected together | **Confirmed by founder** (0003); validate with users |
 | AI presentation | AI inside specific tasks **plus an optional chat panel** about the current home, with grounding rules | **Confirmed by founder** (0004), changed from tasks-only |
 | Visual direction | Warm editorial photography plus a precise, restrained workspace | **Confirmed by founder** (0005); details in doc 03 |
-| Public brand | Retain HomeScout only as an internal code name; choose a demo name before public launch (0008) | Open (0009); name shortlist in progress |
+| Public brand | Public name Vestagraph, replacing the former code name HomeScout (0044, supersedes 0008) | Open (0009): trade-mark clearance still to do |
 | Commercial model | Test a Move pass against monthly and one-off alternatives | Open (0010) |
 | Free/paid principle | Free covers the complete first look and all public-interest facts; paid covers metered depth (documents, AI assistance, monitoring, sharing, snapshots). Draft boundary in §8 | **Confirmed by founder** (0007); limits and prices open |
 | Project purpose | Portfolio and learning project now, built mostly by AI coding agents on a small monthly budget, kept commercially viable for later. Public repository, all rights reserved; the clickable prototype is the first public showcase. See `04-project-goals-and-delivery.md` §8–9 | **Confirmed by founder**; budget cap to be set in the infrastructure decision |
@@ -273,7 +273,7 @@ Reconsider the direction if users mainly want a disposable report, rarely obtain
 
 - Source dates and geography are kept beside claims. No attempt is made to convert England-only evidence into UK totals.
 - Competitor marketing establishes advertised overlap, not product quality, subscriber numbers or defensibility.
-- Prices are observations from public pages on the research date and may change; they are not proposed HomeScout pricing.
+- Prices are observations from public pages on the research date and may change; they are not proposed Vestagraph pricing.
 - No API was authenticated, no customer document was uploaded, and no data or listing licence was purchased or cleared.
 - Name overlaps were observed at the websites cited above. This is not a UK trademark, domain or legal-clearance search.
 - All proposed research samples, product structures and commercial experiments are recommendations. They are not findings.

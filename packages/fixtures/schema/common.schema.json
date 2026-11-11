@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/common.schema.json",
+  "$id": "https://vestagraph.invalid/schema/common.schema.json",
   "title": "Shared definitions",
   "description": "Building blocks reused by the other schemas. Money is whole pence (integer, at least 1: zero is never a valid money value, because 'missing', 'included' and 'not calculated' have their own statuses, AGENTS.md rule 7).",
   "$defs": {

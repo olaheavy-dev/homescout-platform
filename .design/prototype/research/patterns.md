@@ -18,7 +18,7 @@ Avoid: the GOV.UK crown, colours or font.
 
 ## 2. MoneyHelper calculators
 
-Fetch of the mortgage calculator returned HTTP 403; search results showed only navigation (mortgage calculator, affordability, repayment, stamp duty, overall buying and moving costs pages exist). **Everything about their presentation is unverified; a manual visual pass is required.** Provisional reading from page titles: separate tools for monthly repayment, upfront tax and moving costs, which mirrors HomeScout's split of monthly estimate and upfront timeline (Real costs). Check on the visual pass: whether assumptions sit beside the result, whether editable inputs are labelled with units, and how results and disclaimers are worded. Do not copy figures or thresholds; HomeScout's come from the cost engine (rule 2).
+Fetch of the mortgage calculator returned HTTP 403; search results showed only navigation (mortgage calculator, affordability, repayment, stamp duty, overall buying and moving costs pages exist). **Everything about their presentation is unverified; a manual visual pass is required.** Provisional reading from page titles: separate tools for monthly repayment, upfront tax and moving costs, which mirrors Vestagraph's split of monthly estimate and upfront timeline (Real costs). Check on the visual pass: whether assumptions sit beside the result, whether editable inputs are labelled with units, and how results and disclaimers are worded. Do not copy figures or thresholds; Vestagraph's come from the cost engine (rule 2).
 
 ## 3. W3C ARIA Authoring Practices (WCAG 2.2 AA target)
 
@@ -33,7 +33,7 @@ Avoid: a map without a list alternative (doc 03 §5), and any status shown by co
 
 ## 4. FT Visual Vocabulary
 
-Groups charts by the job: deviation, correlation, ranking, distribution, change over time, magnitude, part-to-whole, spatial, flow. Inference for HomeScout (the page does not discuss costs): magnitude bars for comparing monthly costs across homes; part-to-whole stacked bar or waterfall for how a monthly total builds up; deviation for "against your budget"; change over time for rent or service charge history; avoid flow diagrams (too busy for lay users). Bars start at zero. Apply doc 03 §6: direct labels, units, same scale across compared homes, uncertainty shown as a range with the assumption beside it. **Avoid:** ranking homes into a single winner (Compare "no universal winner"), and drawing a missing value as a zero-height bar; use a labelled gap ("not known") instead. Use: Real costs, Compare, Decision impact (before/after delta from the engine).
+Groups charts by the job: deviation, correlation, ranking, distribution, change over time, magnitude, part-to-whole, spatial, flow. Inference for Vestagraph (the page does not discuss costs): magnitude bars for comparing monthly costs across homes; part-to-whole stacked bar or waterfall for how a monthly total builds up; deviation for "against your budget"; change over time for rent or service charge history; avoid flow diagrams (too busy for lay users). Bars start at zero. Apply doc 03 §6: direct labels, units, same scale across compared homes, uncertainty shown as a range with the assumption beside it. **Avoid:** ranking homes into a single winner (Compare "no universal winner"), and drawing a missing value as a zero-height bar; use a labelled gap ("not known") instead. Use: Real costs, Compare, Decision impact (before/after delta from the engine).
 
 ## 5. A UK bank's spending breakdowns (Monzo)
 
@@ -55,7 +55,7 @@ Specification read: the version served as "latest" was dated 2026-07-28 (check w
 - **Elicitation.** Servers can ask the user for input in form mode (flat primitive fields, with accept/decline/cancel outcomes) or URL mode for anything sensitive; form mode must not ask for secrets. Use: ask which unit or which tenure; send document upload and sign-in to our own web page via URL mode.
 - **Assistants.** Claude's help pages say it asks before invoking connector tools, with per-tool settings of always allow, needs approval or blocked, grouped by read-only and write tools, and warn of prompt injection and that research mode can run tools without per-call approval. VS Code Copilot shows a trust review for servers, tool-approval requests, expandable tool calls and input forms (and experimental MCP Apps UI). ChatGPT: the Apps SDK index page confirms tools, optional UI resources, and a security guide; confirmation, citation and UX-guideline detail was not retrieved (**unverified**).
 
-### Principles for HomeScout inside someone else's assistant
+### Principles for Vestagraph inside someone else's assistant
 
 1. **Figures are engine outputs with IDs.** Every number returned carries a stable figure ID, its period and its basis; tools never return a prose-only number; the assistant is told to quote, not recompute (rules 2, 4).
 2. **Sources travel with answers.** Return source name, date and scope as structured fields and resource links, so the host can show citations; no claim without a source or an explicit "not known".
@@ -68,7 +68,7 @@ Specification read: the version served as "latest" was dated 2026-07-28 (check w
 
 ## Summary table
 
-| Pattern | Source | HomeScout use |
+| Pattern | Source | Vestagraph use |
 |---|---|---|
 | Task list with word statuses | [GOV.UK task list](https://design-system.service.gov.uk/components/task-list/) | My move, questions to resolve |
 | Error summary linked to fields | [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/) | Cost inputs, forms |

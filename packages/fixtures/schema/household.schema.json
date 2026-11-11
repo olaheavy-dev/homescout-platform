@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://homescout.invalid/schema/household.schema.json",
+  "$id": "https://vestagraph.invalid/schema/household.schema.json",
   "title": "Household file (data/household.json)",
   "type": "object",
   "required": ["household"],

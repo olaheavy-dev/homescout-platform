@@ -5,11 +5,11 @@
 Every feature below was checked against Microsoft's official pages on 10 Nov 2026 (sources at the end). Package versions are the latest on nuget.org or npm that day, for orientation only: each pull request that adds a package checks its documentation and pins the version then. Anything not confirmed is marked **unverified**.
 
 ## 1. In one paragraph
-HomeScout keeps its C# cost engine and moves to .NET 11 in two steps (register line BE-25, founder, 10 Nov 2026). The SDK and runtime move now, in issue #58, with the language pinned at C# 14 (`LangVersion` 14), so CodeQL, which lists C# 14 but not yet C# 15, still reads every file. C# 15 syntax follows in issue #59 once CodeQL lists C# 15 and Stryker.NET handles it. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
+Vestagraph keeps its C# cost engine and moves to .NET 11 in two steps (register line BE-25, founder, 10 Nov 2026). The SDK and runtime move now, in issue #58, with the language pinned at C# 14 (`LangVersion` 14), so CodeQL, which lists C# 14 but not yet C# 15, still reads every file. C# 15 syntax follows in issue #59 once CodeQL lists C# 15 and Stryker.NET handles it. The first C# 15 change makes the engine's two families of record types **closed**, so the compiler proves every kind of cost line is handled, which protects the rule that missing data is never shown as zero. The rest of .NET 11 is used where the roadmap already needs it: ASP.NET Core 11 for the API (stage 6), Microsoft Agent Framework with AG-UI for the agent chat, and the official MCP C# SDK for the MCP server. Preview features are not used.
 
 ## 2. Feature by feature
 
-Status as shipped in .NET 11 GA. "Use" says whether HomeScout uses it and where.
+Status as shipped in .NET 11 GA. "Use" says whether Vestagraph uses it and where.
 
 ### C# 15
 | Feature | Status | Use | Where |
@@ -51,17 +51,17 @@ Removes unneeded joins, better `GroupBy`, translates `FullJoin`, JSON columns wi
 | Feature | Use |
 |---|---|
 | `dotnet test` on Microsoft.Testing.Platform: run-level `--timeout` and `--maximum-failed-tests` | **Yes**, in `make test` with the upgrade: a hung test run fails instead of waiting for the CI job limit |
-| NuGet **minimum package publish age** (`minPublishAgeHours` on a package source in `nuget.config`) | **Yes**, 168 hours to match Dependabot's 7-day cooldown (0027). It only applies when a version is picked by `dotnet package add` or `update`; normal restore does not enforce it for exact versions, so Dependabot's cooldown stays the main guard. A floating version (`*`) now fails restore with NU1020; HomeScout pins exact versions, so this does not affect it |
+| NuGet **minimum package publish age** (`minPublishAgeHours` on a package source in `nuget.config`) | **Yes**, 168 hours to match Dependabot's 7-day cooldown (0027). It only applies when a version is picked by `dotnet package add` or `update`; normal restore does not enforce it for exact versions, so Dependabot's cooldown stays the main guard. A floating version (`*`) now fails restore with NU1020; Vestagraph pins exact versions, so this does not affect it |
 | MSBuild server and Native AOT CLI host on by default | Nothing to do; if CI shows stale-build problems, turn the server off with `DOTNET_CLI_USE_MSBUILD_SERVER=false` |
 | `dotnet new mcpserver` (in the SDK, per the announcement; **unverified** locally) | Starting point for the MCP server project, then trimmed |
 | `dotnetup` (toolchain manager) | **Preview**; not used |
-| `.NET Skills` (dotnet/skills: guidance for coding agents) | Evaluate once: licence, overlap with HomeScout's own agents and skills; adopt only what passes review |
+| `.NET Skills` (dotnet/skills: guidance for coding agents) | Evaluate once: licence, overlap with Vestagraph's own agents and skills; adopt only what passes review |
 
 ### AI stack (stage 6)
 | Package (nuget.org, 10 Nov 2026) | Status | Use |
 |---|---|---|
 | `Microsoft.Agents.AI` and `.OpenAI`, `.Anthropic`, `.Workflows` (1.28.0) | Stable | Agents, tools with approval, and the document-investigation workflow with human approval (0023) |
-| `Microsoft.Agents.AI.Hosting`, `.Hosting.AspNetCore` and `.Hosting.AGUI.AspNetCore` (all 1.28.0-preview.261106.1; the AG-UI package depends on the other two) | **Prerelease** | AG-UI endpoint (`AddAGUIServer`, `MapAGUIServer`); behind HomeScout's adapter, pinned exactly (0042) |
+| `Microsoft.Agents.AI.Hosting`, `.Hosting.AspNetCore` and `.Hosting.AGUI.AspNetCore` (all 1.28.0-preview.261106.1; the AG-UI package depends on the other two) | **Prerelease** | AG-UI endpoint (`AddAGUIServer`, `MapAGUIServer`); behind Vestagraph's adapter, pinned exactly (0042) |
 | `Microsoft.Agents.AI.Mcp` | **Alpha** | **No**; use `ModelContextProtocol` directly |
 | `Microsoft.Agents.AI.AGUI` | **Deprecated** | **No** |
 | `Microsoft.Extensions.AI` (10.11.0; MAF 1.28 needs at least this) | Stable | Model-access abstractions and evaluation libraries (0025) |

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Vestagraph.CostEngine.Generator</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Vestagraph.CostEngine.Generator.Tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vestagraph.CostEngine\Vestagraph.CostEngine.csproj" />
+  </ItemGroup>
+</Project>

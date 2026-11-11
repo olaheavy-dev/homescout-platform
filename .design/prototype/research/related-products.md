@@ -8,7 +8,7 @@ Screen names are doc 03 §5 names; where I am unsure of the exact label I give t
 
 ### bythenumbers
 - Offers: one box takes a postcode, district or town; an area report with a single 0-100 score, expandable to show its make-up; 22 calculators; two-area side-by-side; "Watch" and "Shortlist" shown as coming soon. A "For agents" footer link exists but was not opened.
-- Address entry: postcode/district/town only, no unit confirmation. Avoid for HomeScout (homes, not areas). Informs: address and home check.
+- Address entry: postcode/district/town only, no unit confirmation. Avoid for Vestagraph (homes, not areas). Informs: address and home check.
 - Comparison: category-by-category, two items. Works as a simple frame. Informs: compare.
 - Single score: **avoid** (doc 02 §3, desirability scores), even with a "how calculated" reveal.
 - Sources: a sources page; no per-figure dates seen. Works: a central sources page. Avoid: undated figures. Informs: source details.
@@ -78,7 +78,7 @@ Screen names are doc 03 §5 names; where I am unsure of the exact label I give t
 
 ## Cross-product summary
 
-| Pattern | Seen where | Recommendation for HomeScout |
+| Pattern | Seen where | Recommendation for Vestagraph |
 |---|---|---|
 | Free sample report | HomeBuyerCheck, HomeAtlas | Offer a clearly labelled synthetic sample home; label it "example". |
 | Address autocomplete plus ID matching | HomeBuyerCheck, Chimnie | Autocomplete, then explicit flat/unit confirmation (doc 02 §5A). |
@@ -91,7 +91,7 @@ Screen names are doc 03 §5 names; where I am unsure of the exact label I give t
 | Calm digest / shared household | HomeSift | Use for household shortlist; avoid swipe ranking. |
 | Must-have vs nice-to-have | OnTheMarket | Use in priorities. |
 | AI verdicts, offer ranges, AI cost ranges | HomeBuyerCheck, Home Compass, CheckNext | Avoid (rules 2, 4). |
-| MCP server / assistant channel | Chimnie, Home Compass (prompts) | Note as a market signal; HomeScout's MCP server is a product channel (founder direction 11 Nov). |
+| MCP server / assistant channel | Chimnie, Home Compass (prompts) | Note as a market signal; Vestagraph's MCP server is a product channel (founder direction 11 Nov). |
 | Undated figures | Most pages | Always show source and date; use Live/Cached/Fallback/Unavailable labels. |
 
 ## For the visual pass (human, in a browser)

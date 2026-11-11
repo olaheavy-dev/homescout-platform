@@ -34,9 +34,9 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
 
 ## Running the specifications
 - `make test` (and so `make check` and CI) runs every scenario that is **not** tagged `@ui`, `@mcp` or `@withdrawn`. A scenario that cites an ID missing from `packages/fixtures/generated/costs.json` or `packages/fixtures/data/` fails with a message naming the ID.
-- To run only the specifications: `dotnet test --project packages/specs/HomeScout.Specs.Tests --filter "TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn"`. Reqnroll turns each tag into an NUnit category, so `--filter "TestCategory=screen"` runs one tag and a scenario name can be filtered with `--filter "Name~COSTS_02"`.
-- The `.feature` files are linked into `packages/specs/HomeScout.Specs.Tests/` from this folder; nothing is copied, and the generated test code goes in `obj/`.
-- **Data steps** (`packages/specs/HomeScout.Specs.Tests/DataSteps.cs`; the wording must match exactly):
+- To run only the specifications: `dotnet test --project packages/specs/Vestagraph.Specs.Tests --filter "TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn"`. Reqnroll turns each tag into an NUnit category, so `--filter "TestCategory=screen"` runs one tag and a scenario name can be filtered with `--filter "Name~COSTS_02"`.
+- The `.feature` files are linked into `packages/specs/Vestagraph.Specs.Tests/` from this folder; nothing is copied, and the generated test code goes in `obj/`.
+- **Data steps** (`packages/specs/Vestagraph.Specs.Tests/DataSteps.cs`; the wording must match exactly):
   - `Given home "B1" is at story step 1`
   - `Then figure "<figure ID>" exists`
   - `Then figure "<figure ID>" has status "<calculated | missing | not-calculated | ...>"`

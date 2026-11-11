@@ -52,7 +52,7 @@
       "id": "b1-mortgage-repayment",
       "description": "Monthly repayment on a 160,000 pound loan (asking price minus 30,000 pound deposit) at 5.5% over 25 years, standard repayment.",
       "rule": {
-        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is HomeScout decision 0021, not the lender convention of always rounding up.",
+        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is Vestagraph decision 0021, not the lender convention of always rounding up.",
         "url": "https://openstax.org/books/contemporary-mathematics/pages/6-8-the-basics-of-loans"
       },
       "inputs": {
@@ -119,7 +119,7 @@
       "id": "b2-mortgage-repayment",
       "description": "Monthly repayment on a 225,000 pound loan (asking price minus 30,000 pound deposit) at 5.5% over 25 years, standard repayment.",
       "rule": {
-        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is HomeScout decision 0021, not the lender convention of always rounding up.",
+        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is Vestagraph decision 0021, not the lender convention of always rounding up.",
         "url": "https://openstax.org/books/contemporary-mathematics/pages/6-8-the-basics-of-loans"
       },
       "inputs": {
@@ -186,7 +186,7 @@
       "id": "mortgage-repayment-boundary-10025200",
       "description": "Test-only repayment boundary: loan 10025200p at 5.5% over 25 years; unrounded 61,563.49928p, just below half: nearest gives 61,563p (rounding up would give 61,564p).",
       "rule": {
-        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is HomeScout decision 0021, not the lender convention of always rounding up.",
+        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is Vestagraph decision 0021, not the lender convention of always rounding up.",
         "url": "https://openstax.org/books/contemporary-mathematics/pages/6-8-the-basics-of-loans"
       },
       "inputs": {
@@ -249,7 +249,7 @@
       "id": "mortgage-repayment-boundary-10060700",
       "description": "Test-only repayment boundary: loan 10060700p at 5.5% over 25 years; unrounded 61,781.50034p, just above half: nearest gives 61,782p (truncation would give 61,781p).",
       "rule": {
-        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is HomeScout decision 0021, not the lender convention of always rounding up.",
+        "source": "Formula: Kirk, D., Contemporary Mathematics, section 6.8 'The Basics of Loans', OpenStax (Rice University), 2023: pmt = P(r/n)(1+r/n)^(nt) / ((1+r/n)^(nt) - 1), here with n = 12 payments a year; the same as P r / (1 - (1+r)^-N) with r = annual rate / 12 and N = 12 x years (our algebra). Secondary: Chase, 'Understanding amortized loans and how to calculate mortgage payments'. Rounding (nearest penny, half away from zero) is Vestagraph decision 0021, not the lender convention of always rounding up.",
         "url": "https://openstax.org/books/contemporary-mathematics/pages/6-8-the-basics-of-loans"
       },
       "inputs": {

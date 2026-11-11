@@ -1,4 +1,4 @@
-# HomeScout Copilot
+# Vestagraph Copilot (written as "HomeScout Copilot"; renamed by decision 0044)
 ## Product Brief and Experience Direction
 **Version:** 1.1 — Revised positioning and competitor landscape  
 **Date:** 23 October 2026  
@@ -12,7 +12,7 @@
 The UK-wide line above describes the original ambition. Proposed launch-facing copy must state **England**, with other UK nations shown as not yet covered.
 
 ## 1. Executive summary
-HomeScout Copilot (**working project name; public brand not selected**) is a UK-only evidence-led property decision workspace for people evaluating a home to rent or buy. It consolidates publicly available information, correctly licensed data, user-supplied property materials, transparent financial modelling and AI-assisted investigation into one coherent experience.
+Vestagraph Copilot (**working project name when this brief was written, then "HomeScout Copilot"; public name Vestagraph since decision 0044**) is a UK-only evidence-led property decision workspace for people evaluating a home to rent or buy. It consolidates publicly available information, correctly licensed data, user-supplied property materials, transparent financial modelling and AI-assisted investigation into one coherent experience.
 
 The platform is **not** another listing marketplace, a substitute for conveyancing or surveying, a mortgage adviser, or a general-purpose chat application. Its principal object is a **living property decision record** (consumer term: **home record**; see the glossary in `03-prototype-and-image-direction.md` §3): a persistent, versioned account of what is known, estimated, missing or conflicting; how it affects a particular household; which questions remain open; who can answer them; and what changed between decision checkpoints.
 
@@ -31,7 +31,7 @@ Typical failures include:
 - Taking old, missing or conflicting datasets as current verified facts.
 - Losing track of findings, documents, viewing questions and property comparisons between sessions.
 
-HomeScout combines evidence, accessible interpretation and next steps. Its product experience should reinforce that missing information is a meaningful finding, not something to fill in with AI invention.
+Vestagraph combines evidence, accessible interpretation and next steps. Its product experience should reinforce that missing information is a meaningful finding, not something to fill in with AI invention.
 
 ## 3. Users and their jobs to be done
 **First-time buyer:** 'Before I spend money or make an offer, show me the total cost, red flags, comparable evidence and questions for my solicitor/surveyor.'
@@ -51,7 +51,7 @@ Do not infer household attributes or values from demographics. Let users state t
 **Primary promise:** Understand a home before you make a financial or legal commitment.  
 **Supporting promises:** Evidence you can inspect; costs you can test; options you can compare; questions you can act on.
 
-**Brand decision:** Public name **unselected**. `HomeScout Copilot` is a working title only, and brand assets must remain easy to rename. `HomeCompass` and `HomeLedger` have notable existing uses (section 5.5).
+**Brand decision (as written; the public name is now Vestagraph, decision 0044):** Public name **unselected**. `HomeScout Copilot` was a working title only, and brand assets must remain easy to rename. `HomeCompass` and `HomeLedger` have notable existing uses (section 5.5).
 **Brand voice:** Assured, plain-spoken, specific, respectful and curious; never alarmist or falsely certain.  
 **Recommended tagline:** *Know the home before you commit.*  
 **Alternative:** *A clearer picture of every home.*
@@ -62,12 +62,12 @@ Avoid 'AI estate agent', 'guaranteed safe', 'legally approved', 'always accurate
 **Original register date:** 23 October 2026. Entries describe publicly advertised offerings, not tested subscriptions or independent claims of accuracy. The dated, inspected subset is the 12-product table in document 02, section 3; other entries below were not revalidated in that research pass. Retain them as research leads rather than treating this entire register as checked. Category placement is practical rather than exclusive. Some sources show inconsistent or changing pricing/coverage, so product design must not rely on competitor marketing claims as authoritative facts.
 
 ### 5.1 Direct UK consumer property intelligence and due diligence
-| Product | Publicly presented positioning | Design implication for HomeScout |
+| Product | Publicly presented positioning | Design implication for Vestagraph |
 |---|---|---|
 | [bythenumbers](https://www.bythenumbers.uk/) | Area measure, transparent UK open-data categories and 22 free calculators | Basic data, maps, comparisons and calculators are a free baseline, not a paywall differentiator. |
 | [HomeAtlas](https://gethomeatlas.co.uk/) | UK postcode and property-link analysis; schools, crime, commute, affordability and personalised scores | Location scoring and listing-link comparison are already market offerings. |
 | [HomeBuyerCheck](https://www.homebuyercheck.co.uk/) | Low-price UK pre-offer checks; AI buyer verdicts, negotiation material and specialist briefs | AI-generated professional question packs and cheap reports are not unique. |
-| [HouseCheckup](https://housecheckup.co.uk/) | Paid property/environmental report with covered sources, scores, professional review and gaps | Missing-data disclosure and human review already exist; HomeScout needs continuing, interactive workflows. |
+| [HouseCheckup](https://housecheckup.co.uk/) | Paid property/environmental report with covered sources, scores, professional review and gaps | Missing-data disclosure and human review already exist; Vestagraph needs continuing, interactive workflows. |
 | [CheckNext](https://checknext.co.uk/) | Listing analysis, viewing checklist, survey review and maintenance estimates | AI viewing and survey summaries already exist; improve traceability and issue closure. |
 | [HomeVerdict](https://www.homeverdict.co.uk/) | Property-link AI verdict, personalised buyer-fit scoring, offer guidance, confidence | Personalised ranking and pricing heuristics cannot be the only promise. |
 | [BackStory](https://backstory.homes/) | Human-reviewed investigation reports, especially UK flats, lease and building risks | Investigations need explainability and user-led updates beyond a one-time report. |
@@ -93,13 +93,13 @@ Avoid 'AI estate agent', 'guaranteed safe', 'legally approved', 'always accurate
 ### 5.3 Discovery, search and ongoing renter/buyer workflows
 | Product | Focus | Design implication |
 |---|---|---|
-| [Rightmove](https://www.rightmove.co.uk/) | UK listings and house-search journey | HomeScout complements discovery rather than replicating listing inventory. |
+| [Rightmove](https://www.rightmove.co.uk/) | UK listings and house-search journey | Vestagraph complements discovery rather than replicating listing inventory. |
 | [Zoopla](https://www.zoopla.co.uk/) | UK listings, prices and consumer property information | Avoid attempting a generic portal. |
 | [OnTheMarket](https://www.onthemarket.com/) | Listings and agency-led property search | Obtain content rights before relying on listing aggregation. |
 | [OpenRent](https://www.openrent.co.uk/) | Direct rental listings and landlord/tenant workflows | A useful renter discovery reference; do not substitute for due diligence. |
 | [HomeSift](https://homesift.app/) | Personalised daily UK property digests, price tracking and shared search | Shortlisting, alerts and collaborative preferences are already available. |
 | [MyHomeScout](https://myhomescout.co.uk/) | Early-access tailored UK property matching and buyer preference interpretation (*not revalidated in the 02 research: no readable page body*) | Treat as a research lead until the advertised feature set can be inspected. |
-| [HomeScout UK](https://www.homescout.org.uk/) | London rental alerts through messaging | Meaningful **naming conflict** with the existing HomeScout project name. |
+| [HomeScout UK](https://www.homescout.org.uk/) | London rental alerts through messaging | Meaningful **naming conflict** with the former HomeScout project name (renamed Vestagraph, decision 0044). |
 | [HomeScout Ireland](https://homescout.io/) | AI renter search, viewing, messages and lease review | Strong adjacent renter workflow; also a meaningful **naming conflict**. |
 
 ### 5.4 Property data and professional transaction systems
@@ -107,7 +107,7 @@ Avoid 'AI estate agent', 'guaranteed safe', 'legally approved', 'always accurate
 |---|---|---|
 | [Sprift](https://sprift.com/) | UK property data, reports, AI and monitoring for professionals | Data richness and AI search are not independent defensibility. |
 | [PropertyData](https://propertydata.co.uk/) | Investor/developer analytics, mapped plots, comparable sales and AI assistant | Prefer household outcomes over investor yield-focused dashboards. |
-| [Chimnie Data API](https://www.chimnie.com/) | Property entity resolution, data reconciliation and licensed API access | **Important:** even property record reconciliation exists at data infrastructure level. HomeScout must add consumer workflows, transparent resolution and decision change history. |
+| [Chimnie Data API](https://www.chimnie.com/) | Property entity resolution, data reconciliation and licensed API access | **Important:** even property record reconciliation exists at data infrastructure level. Vestagraph must add consumer workflows, transparent resolution and decision change history. |
 | [Reveal Title](https://revealtitle.ai/) | Solicitor/conveyancer AI document review, evidence-linked enquiries and reporting (*not revalidated in the 02 research: no readable page body*) | **Important:** enquiry-to-resolution exists professionally; consumer-first, cross-profession and cross-journey implementation is the potential gap. |
 | [Groundsure](https://www.groundsure.com/) | Professional environmental and property risk reports | Avoid presenting public map screening as equivalent to regulated/formal environmental due diligence. |
 
@@ -116,7 +116,7 @@ The following are **not** included in the core product-competition matrix solely
 - [Home Compass](https://gethomecompass.com/): actively markets property decision support and due diligence; **very high conceptual and naming overlap** with proposed `HomeCompass`.
 - [HomeLedger](https://www.homeledger.app/): existing home-management, records and service-workflow app; **related-sector naming overlap** with proposed `HomeLedger`.
 - [HomeAtlas](https://gethomeatlas.co.uk/): directly competing UK area-intelligence product, so avoid `HomeAtlas`.
-- Existing `HomeScout` services noted in 5.3 also suggest **HomeScout Copilot must remain a working title only** until a brand is chosen.
+- Existing `HomeScout` services noted in 5.3 also suggested **HomeScout Copilot must remain a working title only** until a brand was chosen (done: Vestagraph, decision 0044).
 
 **Brand status:** Neither `HomeCompass` nor `HomeLedger` has passed UK trade mark/domain clearance. Check UK IPO marks, similar marks in relevant classes, Companies House, domains and app stores before final selection. Search is not legal clearance.
 
@@ -128,7 +128,7 @@ These pieces each have precedents in the market. The proposed differentiation is
 4. **Decision impact and history**: show what changed since the last investigation, whether costs or risk assumptions changed, and which previously held conclusions need review.
 5. A **trust-first UX** separating source fact, modelled estimate, unverified claim, missing evidence and professional judgement at every stage.
 
-**Strategic test:** If HomeScout merely provides a better-looking report with a chatbot, the product is insufficiently differentiated. The experience must measurably help customers *resolve* a material question more accurately or efficiently than using competitor products separately.
+**Strategic test:** If Vestagraph merely provides a better-looking report with a chatbot, the product is insufficiently differentiated. The experience must measurably help customers *resolve* a material question more accurately or efficiently than using competitor products separately.
 
 ## 6. Product pillars
 1. **Discover and investigate:** One UK address becomes an evidence-backed Property Intelligence Passport with explicit scope and gaps.
@@ -178,7 +178,7 @@ The product is **UK-only** and must eventually acknowledge four legal/data envir
 Never describe a national feature as uniformly available when a source only covers Great Britain, England and Wales or England. Property address licensing—especially Northern Ireland—requires deliberate review.
 
 ## 10. Functional boundaries
-HomeScout can display evidence, explain general regulations, calculate mathematical scenarios and organise questions. It must **not** claim to:
+Vestagraph can display evidence, explain general regulations, calculate mathematical scenarios and organise questions. It must **not** claim to:
 - Replace a solicitor, surveyor, mortgage adviser, insurer, flood professional or school admission authority.
 - Guarantee a school place, commute time, broadband connection, insurance or mortgage offer.
 - Determine actual property flood history from general flood-risk mapping alone.
@@ -266,7 +266,7 @@ The architecture must separate property lookup, reproducible financial functions
 - How will source-change detection distinguish a data-refresh event from a real-world property change?
 - Which household routines can be calculated reliably with obtainable routing/timetable data?
 - Which customer decision tasks demonstrate measurable improvement versus existing due-diligence reports and listing tools?
-- What is the final cleared public brand? `HomeScout Copilot` remains an internal title.
+- What is the final cleared public brand? `HomeScout Copilot` remained an internal title (since replaced by Vestagraph, decision 0044).
 
 **This document does not classify features as MVP/post-MVP or assign feature delivery phases.** The England-first geographic scope is recorded separately in section 9. A delivery roadmap remains to be validated.
 

@@ -1816,7 +1816,7 @@
       "topic": "transport-stop",
       "status": "not-covered",
       "label": "Transport stops: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1831,7 +1831,7 @@
       "topic": "school",
       "status": "not-covered",
       "label": "Schools: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1846,7 +1846,7 @@
       "topic": "crime",
       "status": "not-covered",
       "label": "Recorded crime counts: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1861,7 +1861,7 @@
       "topic": "flood",
       "status": "not-covered",
       "label": "Flood information: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1876,7 +1876,7 @@
       "topic": "sold-price",
       "status": "not-covered",
       "label": "Sold prices: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1891,7 +1891,7 @@
       "topic": "amenity",
       "status": "not-covered",
       "label": "Shops, parks and healthcare locations: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1906,7 +1906,7 @@
       "topic": "energy-certificate",
       "status": "not-covered",
       "label": "Energy certificate: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1921,7 +1921,7 @@
       "topic": "school-inspection",
       "status": "not-covered",
       "label": "School inspections: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1936,7 +1936,7 @@
       "topic": "broadband",
       "status": "not-covered",
       "label": "Broadband: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1951,7 +1951,7 @@
       "topic": "commute",
       "status": "not-covered",
       "label": "Commute: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",
@@ -1966,7 +1966,7 @@
       "topic": "planning",
       "status": "not-covered",
       "label": "Planning applications: not yet covered for Wales",
-      "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
+      "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
         "origin": "plan",

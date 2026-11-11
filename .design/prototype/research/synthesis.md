@@ -39,7 +39,7 @@ Written 11 Nov 2026 from [related products](related-products.md) (#62) and [patt
 
 ## Agent channel (for #117)
 
-Founder direction, 11 Nov 2026: HomeScout is also reached from people's own AI assistants over MCP. Condensed from [patterns §7](patterns.md#principles-for-homescout-inside-someone-elses-assistant); consistent with decision 0004.
+Founder direction, 11 Nov 2026: Vestagraph is also reached from people's own AI assistants over MCP. Condensed from [patterns §7](patterns.md#principles-for-vestagraph-inside-someone-elses-assistant); consistent with decision 0004.
 
 1. **Numbers come from the engine with an ID.** Each figure has a stable ID, period and basis; the assistant quotes, never recomputes.
 2. **Sources travel with every answer.** Source, date and scope as structured fields, or "not known".

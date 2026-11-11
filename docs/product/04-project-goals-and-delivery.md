@@ -1,4 +1,4 @@
-# HomeScout: project goals and delivery approach
+# Vestagraph: project goals and delivery approach
 
 **Date:** 23 October 2026  
 **Confirmed by the founder:** The project is a portfolio and learning project first, built mostly by AI coding agents, on a small monthly running budget, and kept commercially viable for later.  
@@ -92,8 +92,8 @@ Do these now, because they are cheap now and expensive later:
 - **Data rights.** Record the licence, attribution and commercial-reuse position of every source as it is added (doc 02 §7 lists the open questions, including the EPC terms and OSM tile usage).
 - **Privacy by design.** Per-user document isolation, deletion and retention from the first document feature. Before any real user data: UK GDPR basis, a privacy notice, ICO registration if required, and a data protection impact assessment for document processing.
 - **Regulated-advice boundary.** Mortgage, legal and tenancy outputs stay information, not advice; wording follows doc 01 §10. Seek professional review before charging.
-- **Brand.** Keep "HomeScout" internal, as docs 01 and 02 require. Make names and plan labels configurable so a rename is cheap.
-- **JsonSchema.Net licence (register line BE-08).** Before HomeScout's annual revenue reaches US$10,000, either pay JsonSchema.Net's maintenance fee or build it from its MIT source.
+- **Brand.** Vestagraph is the working public brand (decision 0044; formerly the code name HomeScout); clearance stays open (0009). Make names and plan labels configurable so a rename is cheap.
+- **JsonSchema.Net licence (register line BE-08).** Before Vestagraph's annual revenue reaches US$10,000, either pay JsonSchema.Net's maintenance fee or build it from its MIT source.
 - **Cost per home record.** Measure it from the first AI feature; it is the number that decides whether the Move pass can work.
 
 ## 8. Founder decisions
@@ -180,7 +180,7 @@ Design work:
 - High-fidelity versions of the key screens only: landing, home overview, costs, compare, question detail, reply checking and decision impact.
 - One image pass: the shared hero and the matched buyer/renter pair, from the doc 03 §7 prompts.
 
-**Gate:** wireframes and key screens approved; DS, FE and IN decision records accepted; the budget cap and alerts are in place on every paid service before the first deployment, and the existing server's security issues listed in decision 0022 are fixed before anything of HomeScout's runs there.
+**Gate:** wireframes and key screens approved; DS, FE and IN decision records accepted; the budget cap and alerts are in place on every paid service before the first deployment, and the existing server's security issues listed in decision 0022 are fixed before anything of Vestagraph's runs there.
 
 ### Stage 5: Start implementation, which is the clickable prototype
 

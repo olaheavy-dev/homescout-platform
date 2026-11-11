@@ -1,6 +1,6 @@
 # Security policy
 
-HomeScout is a public portfolio project. There is no live service yet; the repository contains documentation and, from stage 2, a cost-calculation library.
+Vestagraph is a public portfolio project. There is no live service yet; the repository contains documentation and, from stage 2, a cost-calculation library.
 
 ## Reporting a vulnerability
 

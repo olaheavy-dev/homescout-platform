@@ -1,6 +1,6 @@
 # Third-party documentation
 
-Official documentation for the tools and packages HomeScout uses or has chosen. **Check here before using an API from memory:** frameworks change between versions, and agents tend to write code for older ones.
+Official documentation for the tools and packages Vestagraph uses or has chosen. **Check here before using an API from memory:** frameworks change between versions, and agents tend to write code for older ones.
 
 **Rules**
 - Link only to official documentation. Don't copy documentation into the repository.
@@ -49,7 +49,7 @@ Official documentation for the tools and packages HomeScout uses or has chosen. 
 | Dependabot | Weekly version-update pull requests (`.github/dependabot.yml`: nuget, github-actions and dotnet-sdk, 7-day cooldown, minor and patch grouped apart from major, `0.x` tools in the `actions-zero-x` group) | Config version 2; also covers the `dotnet-sdk` ecosystem for `global.json` | 0024 | [About version updates](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-version-updates), [options reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference) |
 | Dependency submission action | Sends NuGet dependencies to GitHub's dependency graph so dependency review can see them | 0.2, pinned by SHA in the workflow | 0035 | [Action](https://github.com/advanced-security/component-detection-dependency-submission-action), [component-detection](https://github.com/microsoft/component-detection) |
 | lychee | Monthly documentation link check | Action 2, pinned by SHA in the workflow | 0024 | [lychee](https://lychee.cli.rs/) |
-| Microsoft Agent Framework (.NET packages) | AI agents and workflows (stage 6) | 1.x, pinned when added at stage 6 (the hosting packages, including AG-UI hosting, are prerelease: pinned exactly, behind HomeScout's adapter) | 0023, 0042 | [Overview](https://learn.microsoft.com/en-us/agent-framework/overview/), [version 1.0 announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/), [Anthropic provider](https://learn.microsoft.com/en-us/agent-framework/integrations/by-component/model-providers/anthropic) |
+| Microsoft Agent Framework (.NET packages) | AI agents and workflows (stage 6) | 1.x, pinned when added at stage 6 (the hosting packages, including AG-UI hosting, are prerelease: pinned exactly, behind Vestagraph's adapter) | 0023, 0042 | [Overview](https://learn.microsoft.com/en-us/agent-framework/overview/), [version 1.0 announcement](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/), [Anthropic provider](https://learn.microsoft.com/en-us/agent-framework/integrations/by-component/model-providers/anthropic) |
 
 ## Planned for later stages (not yet decided)
 
@@ -62,7 +62,7 @@ Listed so agents read the right documentation when these stages start. Versions 
 | ASP.NET Core 11 minimal APIs | The API (stage 6) | BE-01, BE-02, 0042 | [Minimal APIs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis), [What's new in ASP.NET Core 11](https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-11) |
 | MCP C# SDK (`ModelContextProtocol`, `ModelContextProtocol.AspNetCore`) | MCP server (stage 6) | 0037, 0042 | [C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) |
 | AG-UI with CopilotKit (`@copilotkit/react-core`, `@copilotkit/runtime`, `@ag-ui/client`) | Agent chat in Next.js over AG-UI (stage 6) | 0042 | [Agent Framework AG-UI](https://learn.microsoft.com/en-us/agent-framework/integrations/ag-ui/getting-started), [CopilotKit with Agent Framework .NET](https://docs.copilotkit.ai/ms-agent-dotnet), [AG-UI](https://docs.ag-ui.com/) |
-| Anthropic and OpenAI .NET SDKs | Model providers behind HomeScout's adapter (stage 6) | AI-01, 0042 | [Anthropic C# SDK](https://github.com/anthropics/anthropic-sdk-csharp), [OpenAI .NET](https://github.com/openai/openai-dotnet) |
+| Anthropic and OpenAI .NET SDKs | Model providers behind Vestagraph's adapter (stage 6) | AI-01, 0042 | [Anthropic C# SDK](https://github.com/anthropics/anthropic-sdk-csharp), [OpenAI .NET](https://github.com/openai/openai-dotnet) |
 | PostgreSQL | Database (stage 6) | DA-03 | [PostgreSQL docs](https://www.postgresql.org/docs/) |
 | PostGIS | Geospatial queries (stage 6) | DA-03 | [PostGIS documentation](https://postgis.net/documentation/) |
 | Microsoft.Extensions.AI | Provider-neutral AI interface (stage 6) | AI-01, AI-04 | [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai) |
