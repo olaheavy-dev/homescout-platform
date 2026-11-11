@@ -1,0 +1,1041 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homescout.invalid/schema/area.schema.json",
+  "title": "Area context file (data/area.json)",
+  "description": "Synthetic area context for the Nearby screen (issue 120). Shapes follow the real free sources assessed in docs/references/data-sources.md. Distances and travel times are synthetic inputs with their method, never calculated.",
+  "type": "object",
+  "required": [
+    "area"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "area": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/areaItem"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "areaItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "topic",
+        "status",
+        "label",
+        "coverage",
+        "doesNotEstablish",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "allOf": [
+            {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            {
+              "pattern": "^[A-Z0-9]+(-[A-Z0-9]+)*-AREA(-[A-Z]+)+-[0-9]+$"
+            }
+          ],
+          "description": "HOME-AREA-TOPIC-N, for example B1-AREA-SCHOOL-1; the shared Bank Rate item is UK-AREA-BANK-RATE-1."
+        },
+        "homeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "topic": {
+          "enum": [
+            "transport-stop",
+            "school",
+            "crime",
+            "flood",
+            "sold-price",
+            "amenity",
+            "energy-certificate",
+            "school-inspection",
+            "broadband",
+            "bank-rate",
+            "commute",
+            "planning",
+            "leasehold-company"
+          ],
+          "description": "In priority order (issue 120). Council tax is not area data: it is a user-entered cost input."
+        },
+        "subtype": {
+          "enum": [
+            "supermarket",
+            "shop",
+            "park",
+            "pharmacy",
+            "police-station",
+            "hospital",
+            "gp-surgery",
+            "clinic",
+            "dentist",
+            "rivers-and-sea",
+            "surface-water",
+            "reservoirs",
+            "groundwater"
+          ]
+        },
+        "status": {
+          "enum": [
+            "recorded",
+            "no-record-in-source",
+            "stale",
+            "not-covered",
+            "source-failed"
+          ],
+          "description": "'no-record-in-source' never means none exists. 'stale' keeps the old value and says so. 'not-covered' means the source does not cover the location. 'source-failed' means the lookup failed. Never 'none' or zero."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": true,
+        "coverage": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the source covers (nation, kind of place), shown with every card."
+        },
+        "doesNotEstablish": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The limit of the real source, in plain words, shown next to the value."
+        },
+        "source": {
+          "$ref": "common.schema.json#/$defs/source"
+        },
+        "link": {
+          "type": "object",
+          "description": "Where the user can check further, for example the long-term flood risk checker.",
+          "required": [
+            "url",
+            "text"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "pattern": "^https://\\S+$"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "description": "Only recorded and stale items carry a value; every gap status must not (rule 7: a gap is never zero, none or clean).",
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "recorded",
+                  "stale"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ]
+          },
+          "else": {
+            "properties": {
+              "value": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "transport-stop"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/transportStopValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "school"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/schoolValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "crime"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/crimeValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "flood"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/floodValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "sold-price"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/soldPriceValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "amenity"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/amenityValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "energy-certificate"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/energyCertificateValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "school-inspection"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/schoolInspectionValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "broadband"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/broadbandValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "bank-rate"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/bankRateValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "commute"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/commuteValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "planning"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/planningValue"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "leasehold-company"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/leaseholdCompanyValue"
+              }
+            }
+          }
+        },
+        {
+          "description": "The Bank Rate is one shared item; every other topic belongs to a home.",
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "bank-rate"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "homeId": false
+            }
+          },
+          "else": {
+            "required": [
+              "homeId"
+            ]
+          }
+        },
+        {
+          "description": "Amenities carry a subtype; the subtype is required unless the whole topic is not covered or its source failed.",
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "amenity"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "subtype": {
+                "enum": [
+                  "supermarket",
+                  "shop",
+                  "park",
+                  "pharmacy",
+                  "police-station",
+                  "hospital",
+                  "gp-surgery",
+                  "clinic",
+                  "dentist"
+                ]
+              }
+            },
+            "if": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "recorded",
+                    "stale",
+                    "no-record-in-source"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "subtype"
+              ]
+            }
+          }
+        },
+        {
+          "description": "Flood types are kept separate (doc 02 section 7); the type is required unless the whole topic is not covered or its source failed.",
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "flood"
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "then": {
+            "properties": {
+              "subtype": {
+                "enum": [
+                  "rivers-and-sea",
+                  "surface-water",
+                  "reservoirs",
+                  "groundwater"
+                ]
+              }
+            },
+            "if": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "recorded",
+                    "stale",
+                    "no-record-in-source"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "subtype"
+              ]
+            }
+          }
+        },
+        {
+          "description": "Only amenity and flood items have a subtype.",
+          "if": {
+            "properties": {
+              "topic": {
+                "enum": [
+                  "amenity",
+                  "flood"
+                ]
+              }
+            },
+            "required": [
+              "topic"
+            ]
+          },
+          "else": {
+            "properties": {
+              "subtype": false
+            }
+          }
+        }
+      ]
+    },
+    "transportStopValue": {
+      "type": "object",
+      "description": "A stop location (doc 02 section 7). A stop point is not a timetable, frequency, fare or journey time.",
+      "required": [
+        "stopName",
+        "stopType",
+        "distanceMetres",
+        "distanceMethod"
+      ],
+      "properties": {
+        "stopName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stopType": {
+          "enum": [
+            "bus-stop",
+            "rail-station",
+            "tram-stop"
+          ]
+        },
+        "distanceMetres": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Metres. A synthetic INPUT, never calculated by code (AGENTS.md rule 2)."
+        },
+        "distanceMethod": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How the distance was measured, for example 'straight-line distance, synthetic'. Required with every distance; a distance is never a walking time."
+        }
+      },
+      "additionalProperties": false
+    },
+    "schoolValue": {
+      "type": "object",
+      "description": "A school from a register: type, phase and location only. Never a quality grade or an admissions promise.",
+      "required": [
+        "name",
+        "phase",
+        "schoolType",
+        "distanceMetres",
+        "distanceMethod"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "enum": [
+            "primary",
+            "secondary",
+            "all-through"
+          ]
+        },
+        "schoolType": {
+          "enum": [
+            "state-funded",
+            "independent"
+          ]
+        },
+        "distanceMetres": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Metres. A synthetic INPUT, never calculated by code (AGENTS.md rule 2)."
+        },
+        "distanceMethod": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How the distance was measured, for example 'straight-line distance, synthetic'. Required with every distance; a distance is never a walking time."
+        }
+      },
+      "additionalProperties": false
+    },
+    "crimeValue": {
+      "type": "object",
+      "description": "Recorded crime as counts by category for one month. No rating, score or level of any kind can be stored: additionalProperties is false (rule 4).",
+      "required": [
+        "month",
+        "counts"
+      ],
+      "properties": {
+        "month": {
+          "type": "string",
+          "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+          "description": "YYYY-MM"
+        },
+        "counts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "category",
+              "count"
+            ],
+            "properties": {
+              "category": {
+                "enum": [
+                  "anti-social-behaviour",
+                  "bicycle-theft",
+                  "burglary",
+                  "criminal-damage-arson",
+                  "drugs",
+                  "other-theft",
+                  "possession-of-weapons",
+                  "public-order",
+                  "robbery",
+                  "shoplifting",
+                  "theft-from-the-person",
+                  "vehicle-crime",
+                  "violent-crime",
+                  "other-crime"
+                ]
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Recorded incidents. At least 1: a category with none recorded is left out, never written as zero (rule 7)."
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "neighbourhoodTeam": {
+          "type": "object",
+          "required": [
+            "name",
+            "force"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "force": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "floodValue": {
+      "type": "object",
+      "description": "A live warning from a monitoring service for a named warning area. Not a long-term risk and not a prediction for one property.",
+      "required": [
+        "warningLevel",
+        "areaName"
+      ],
+      "properties": {
+        "warningLevel": {
+          "enum": [
+            "flood-alert",
+            "flood-warning",
+            "severe-flood-warning"
+          ]
+        },
+        "areaName": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "soldPriceValue": {
+      "type": "object",
+      "description": "A past sale. Price is whole pence, once. Not a current valuation.",
+      "required": [
+        "addressText",
+        "pricePence",
+        "saleDate",
+        "propertyType",
+        "tenure",
+        "distanceMetres",
+        "distanceMethod"
+      ],
+      "properties": {
+        "addressText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pricePence": {
+          "$ref": "common.schema.json#/$defs/pence"
+        },
+        "saleDate": {
+          "$ref": "common.schema.json#/$defs/partialDate"
+        },
+        "propertyType": {
+          "enum": [
+            "detached",
+            "semi-detached",
+            "terraced",
+            "flat"
+          ]
+        },
+        "tenure": {
+          "enum": [
+            "freehold",
+            "leasehold"
+          ]
+        },
+        "distanceMetres": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Metres. A synthetic INPUT, never calculated by code (AGENTS.md rule 2)."
+        },
+        "distanceMethod": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How the distance was measured, for example 'straight-line distance, synthetic'. Required with every distance; a distance is never a walking time."
+        }
+      },
+      "additionalProperties": false
+    },
+    "amenityValue": {
+      "type": "object",
+      "description": "A place (the subtype is on the item). A location is not opening hours, availability or whether a surgery accepts new patients.",
+      "required": [
+        "name",
+        "distanceMetres",
+        "distanceMethod"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "distanceMetres": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Metres. A synthetic INPUT, never calculated by code (AGENTS.md rule 2)."
+        },
+        "distanceMethod": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How the distance was measured, for example 'straight-line distance, synthetic'. Required with every distance; a distance is never a walking time."
+        }
+      },
+      "additionalProperties": false
+    },
+    "energyCertificateValue": {
+      "type": "object",
+      "description": "Rating plus a cost range, as the certificate states it.",
+      "required": [
+        "issuedYear"
+      ],
+      "properties": {
+        "rating": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ]
+        },
+        "issuedYear": {
+          "type": "integer",
+          "minimum": 1900
+        },
+        "expiredYear": {
+          "type": "integer",
+          "minimum": 1900
+        },
+        "estimatedAnnualCostRange": {
+          "type": "object",
+          "description": "Standardised estimate per year, in whole pence. Never actual bills; context only, never in a total.",
+          "required": [
+            "lowPence",
+            "highPence"
+          ],
+          "properties": {
+            "lowPence": {
+              "$ref": "common.schema.json#/$defs/pence"
+            },
+            "highPence": {
+              "$ref": "common.schema.json#/$defs/pence"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "schoolInspectionValue": {
+      "type": "object",
+      "description": "Inspection outcomes per area with their framework and date. There is no single overall grade field (doc 02 section 7).",
+      "required": [
+        "schoolName",
+        "framework",
+        "inspectionDate",
+        "outcomes"
+      ],
+      "properties": {
+        "schoolItemId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "schoolName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "framework": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The inspection framework the outcomes belong to. Outcomes under different frameworks are not comparable."
+        },
+        "inspectionDate": {
+          "$ref": "common.schema.json#/$defs/partialDate"
+        },
+        "outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "area",
+              "judgement"
+            ],
+            "properties": {
+              "area": {
+                "type": "string",
+                "minLength": 1
+              },
+              "judgement": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "broadbandValue": {
+      "type": "object",
+      "description": "Predicted availability, not a measured speed or a working connection.",
+      "required": [
+        "technology",
+        "predictedMaxDownloadMbps"
+      ],
+      "properties": {
+        "technology": {
+          "enum": [
+            "full-fibre",
+            "fibre-to-the-cabinet",
+            "cable",
+            "fixed-wireless"
+          ]
+        },
+        "predictedMaxDownloadMbps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "predictedMaxUploadMbps": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "bankRateValue": {
+      "type": "object",
+      "description": "The Bank Rate. Not any mortgage rate a lender would offer.",
+      "required": [
+        "basisPoints",
+        "effectiveDate"
+      ],
+      "properties": {
+        "basisPoints": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Basis points (400 = 4.00%)."
+        },
+        "effectiveDate": {
+          "$ref": "common.schema.json#/$defs/fullDate"
+        }
+      },
+      "additionalProperties": false
+    },
+    "commuteValue": {
+      "type": "object",
+      "description": "A journey time to a household destination, typed as an input with its method.",
+      "required": [
+        "criterionId",
+        "destinationLabel",
+        "minutes",
+        "mode",
+        "method"
+      ],
+      "properties": {
+        "criterionId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "destinationLabel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mode": {
+          "enum": [
+            "public-transport"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How the time was estimated, for example 'typed estimate, synthetic'. A synthetic input; routing is engine work and a separate decision."
+        }
+      },
+      "additionalProperties": false
+    },
+    "planningValue": {
+      "type": "object",
+      "description": "A planning application near the home. Absence of a record is not the absence of an application.",
+      "required": [
+        "reference",
+        "description",
+        "applicationStatus",
+        "receivedDate",
+        "distanceMetres",
+        "distanceMethod"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicationStatus": {
+          "enum": [
+            "received",
+            "granted",
+            "refused",
+            "withdrawn"
+          ]
+        },
+        "receivedDate": {
+          "$ref": "common.schema.json#/$defs/partialDate"
+        },
+        "distanceMetres": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Metres. A synthetic INPUT, never calculated by code (AGENTS.md rule 2)."
+        },
+        "distanceMethod": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How the distance was measured, for example 'straight-line distance, synthetic'. Required with every distance; a distance is never a walking time."
+        }
+      },
+      "additionalProperties": false
+    },
+    "leaseholdCompanyValue": {
+      "type": "object",
+      "description": "Status facts about a company named in the lease papers.",
+      "required": [
+        "companyName",
+        "role",
+        "companyStatus",
+        "statusDate"
+      ],
+      "properties": {
+        "companyName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "freeholder",
+            "managing-agent"
+          ]
+        },
+        "companyStatus": {
+          "enum": [
+            "active",
+            "dissolved",
+            "in-liquidation"
+          ]
+        },
+        "statusDate": {
+          "$ref": "common.schema.json#/$defs/partialDate"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
