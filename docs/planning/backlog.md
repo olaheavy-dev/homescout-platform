@@ -62,38 +62,49 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 ## Stage 5: clickable prototype
 | # | Issue | Item |
 |---|---|---|
-| 31 | #85 | Decision: visitor privacy (SE-02 part 1), demo analytics and feedback (FE-05) |
 | 32 | #86 | App shell, navigation, design system, fixture loading |
+| 32b | #150 | Component gallery (decision 0045) |
+| 32c | to open | Area screens on fixtures: summary-first Nearby, map with 3D switch, Check an area (decision 0046, TASKS B6, B6a, B7) |
 | 32a | #96 | Home-to-home cost differences in the engine and `costs.json` (BE-27) |
 | 33 | #87 | **Epic:** buyer story end to end (split into one ticket per story step at #71, SP-02) |
 | 34 | #88 | **Epic:** renter story end to end (split into one ticket per story step at #71, SP-02) |
 | 35 | #89 | Edge states, mobile, accessibility (WCAG 2.2 AA) |
-| 36 | #90 | Labelling, simulated-action audit, public launch; stage 5 gate |
+| 36 | #90 | Labelling, simulated-action audit; stage 5 gate on the private prototype (decision 0045) |
 
-## Stage 6: the real product on .NET 11
+## Stage 5b: public area check (decision 0046)
+Decisions first, then the API and the area adapters, then the public site. Items moved here from stage 5 and stage 6 keep their numbers.
 | # | Issue | Item |
 |---|---|---|
-| 37 | #91 | Validation study (six buyers, six renters) |
+| 31 | #85 | Decision: privacy parts 1 and 2 (SE-02, decision 0014), analytics and feedback (FE-05) |
 | 38 | #92 | Decision: API framework (BE-01), architecture and contract (BE-02), rules versioning (BE-03) |
+| 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only) |
+| 38b | to open | Decision: public hosting, environments, secrets, domain and budget cap (IN-02, IN-04, IN-05; builds on #81) |
 | 39 | #93 | ASP.NET Core 11 API skeleton (OpenAPI 3.2, async validation, one cost endpoint) |
 | 40 | #94 | Aspire app host and OpenTelemetry |
 | 41 | #95 | Generated TypeScript types from the OpenAPI document |
-| 43 | #97 | MCP server with the official C# SDK (read-only, local first) |
-| 44 | #98 | **Epic:** real England data (DA-03 to DA-06, SE-02 part 2) |
 | 44.1 | #126 | Foundation: data import pattern, source adapter, postcode-to-area lookup |
-| 44.2 | #127 | Exact-home address search and matching (DA-06), needed for per-home data only |
 | 44.3 | #128 | Transport stops nearby (NaPTAN) |
 | 44.4 | #129 | Schools nearby (DfE register) |
 | 44.5 | #130 | Crime counts and neighbourhood police team (data.police.uk) |
 | 44.6 | #131 | Flood: live warnings and river levels, plus a link to long-term risk (EA) |
 | 44.7 | #132 | Nearby sold prices (HM Land Registry) |
 | 44.8 | #133 | Shops, supermarkets, parks, pharmacies, police stations, hospitals, GPs, dentists (OSM extract) |
-| 44.9 | #134 | Energy rating and energy cost range (energy certificate register) |
 | 44.10 | #135 | School inspection results (Ofsted) |
 | 44.11 | #136 | Broadband and mobile coverage (Ofcom) |
+| 44.14 | #139 | Planning applications nearby |
+| 38c | to open | Public site: landing (search first), How it works, About the data, privacy notice, accessibility statement (TASKS P1 to P4) |
+| 38d | to open | Stage 5b gate: sources on every fact, no searched postcode in any log, privacy notice and budget cap live, accessibility checks pass |
+
+## Stage 6: the real product on .NET 11
+| # | Issue | Item |
+|---|---|---|
+| 37 | #91 | Validation study (six buyers, six renters) |
+| 43 | #97 | MCP server with the official C# SDK (read-only, local first) |
+| 44 | #98 | **Epic:** real England data, per-home parts (area sources moved to stage 5b by decision 0046) |
+| 44.2 | #127 | Exact-home address search and matching (DA-06), needed for per-home data only |
+| 44.9 | #134 | Energy rating and energy cost range (energy certificate register) |
 | 44.12 | #137 | Mortgage context: Bank Rate |
 | 44.13 | #138 | Commute time to your own destinations (routing, DA-06) |
-| 44.14 | #139 | Planning applications nearby |
 | 44.15 | #140 | Leasehold: managing agent or freeholder status (Companies House) |
 | 44.16 | #141 | Bus timetables (Bus Open Data Service) |
 | 44.17 | #142 | Deferred: NHS services, air quality, rail and TfL, radon |

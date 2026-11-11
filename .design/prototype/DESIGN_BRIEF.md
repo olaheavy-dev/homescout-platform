@@ -133,7 +133,7 @@ All components are new.
 |---|---|---|
 | App shell: desktop top bar, mobile bottom navigation | New | Doc 03 §3: My move · Homes · Compare. Home tabs: Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Mobile bottom nav: Overview, Nearby, Costs, Questions |
 | Wordmark "Vestagraph" | New | Typographic only, no logo work yet |
-| Landing hero with two example homes | New | One to buy and one to rent, equal weight. Editorial photography and illustration |
+| Landing hero, search first (0046) | New | The postcode box with the sample 3D map and a summary card. The private prototype's example page shows the two example homes (buy and rent) with equal weight |
 | Address search and identity confirmation | New | Combobox with manual selection, never a silent postcode-to-flat match. Includes the map pin flow (founder) and a "can't find it" route |
 | Home header | New | Photo thumbnail, address, mode, sample-data label |
 | Hero figure | New | Large tabular figure, period, "so far" or partial label, budget line from the engine |

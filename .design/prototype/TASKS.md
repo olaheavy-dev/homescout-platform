@@ -4,7 +4,7 @@ Generated from: `.design/prototype/DESIGN_BRIEF.md`, `INFORMATION_ARCHITECTURE.m
 Date: 11 Nov 2026 (phase 5 of the design flow)
 
 **How this list is used:**
-- Phase 6 of the design flow works through **H1–H4** now, as high-fidelity design frames on the design canvas, so the founder confirms the visual direction before any app code exists (stage 4 #79, high-fidelity key screens).
+- Phase 6 of the design flow works through **H1–H7** now, as high-fidelity design frames on the design canvas, so the founder confirms the visual direction before any app code exists (stage 4 #79, high-fidelity key screens).
 - The rest is the **stage 5 build order** for the coding agents. At #71 ("brief to issues") each build task becomes or refines a GitHub issue. Story slices are one ticket per story step (SP-02).
 - Every figure comes from `costs.json` by figure ID, and every input and area item from the fixtures (rule 2). Behaviour is proved by the Gherkin specs in `docs/specs/` (decision 0043).
 
@@ -60,10 +60,12 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
     - Each demo step button → the same screen at that step.
 
 ## Core UI (stage 5)
+**Order (decision 0046):** the area screens B6, B6a and B7 come first, right after B1 to B3; then B4, B5 and B8 onwards.
+
 - [ ] **B4 Home overview** (all four example homes, step 1): the home header, the real cost so far, up to three findings with source labels, the daily-life summary, open questions and evidence gaps. _Reuses: hero figure, status tag._
 - [ ] **B5 Costs:** hero figure, category cards with every status, upfront section, the "How this was worked out" disclosure, and editable assumptions recorded as the user's own. _Reuses: category card, gap card._
 - [ ] **B6 Nearby, list first:** every section from the IA with source lines and gap cards; crime and flood in the list only. _Depends on: area fixtures (merged in #145)._
-- [ ] **B6a Check an area** (`/area?postcode=`, decision 0046): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. _Depends on: B6._
+- [ ] **B6a Check an area** (`/area#postcode=`, decision 0046; the postcode stays in the URL fragment so it never reaches a log): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. _Depends on: B6._
 - [ ] **B7 Nearby map** (MapLibre, approved):
   - the drawn Northbridge sample map (#146);
   - neutral markers with the forest home pin;

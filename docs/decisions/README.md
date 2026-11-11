@@ -22,7 +22,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | — | Launch geography | England first | Doc 02 §7, §9 |
 | — | Project purpose | Portfolio and learning first, built by AI coding agents, small monthly budget, kept commercially viable | Doc 04 |
 | — | Repository | Public, all rights reserved | Doc 04 §8, `LICENSE` |
-| — | First public showcase | Not the clickable prototype, which stays a private reference ([0045](0045-prototype-is-a-private-reference.md)); a free public area check is proposed as the first public thing ([0046](0046-public-area-check-first.md)) | [0045](0045-prototype-is-a-private-reference.md), superseding doc 04 §8 |
+| — | First public showcase | Not the clickable prototype, which stays a private reference ([0045](0045-prototype-is-a-private-reference.md)); a free public area check is the first public thing ([0046](0046-public-area-check-first.md)) | [0045](0045-prototype-is-a-private-reference.md) and [0046](0046-public-area-check-first.md), superseding doc 04 §8 |
 | — | Stage 1 sign-off | Signed off by the founder on 23 October 2026 | `docs/planning/stage-1-confirmation.md` |
 
 ## Register
@@ -34,12 +34,12 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | PD-03 | Main value | 1 | Accepted | [0003](0003-main-value.md) |
 | PD-04 | AI presentation in the product | 1 | Accepted | [0004](0004-ai-in-the-product.md) |
 | PD-05 | Visual direction | 1 | Accepted | [0005](0005-visual-direction.md) |
-| PD-06 | Prototype centrepiece | 1 | Accepted | [0006](0006-prototype-centrepiece.md) |
+| PD-06 | Prototype centrepiece | 1 | Accepted (partly superseded by 0045 and 0046: the prototype is not launched publicly) | [0006](0006-prototype-centrepiece.md) |
 | PD-07 | Free/paid principle | 1 | Accepted | [0007](0007-free-paid-principle.md) |
 | PD-08 | Name shown on the public demo | 3 | Accepted (founder, 11 Nov 2026: Vestagraph; supersedes parked 0008) | [0044](0044-public-name-vestagraph.md) (supersedes [0008](0008-demo-name.md)) |
 | PD-09 | Public brand | 1 | Open (working public brand Vestagraph per [0044](0044-public-name-vestagraph.md); trade-mark clearance still to do) | [0009](0009-public-brand.md) |
 | PD-10 | Commercial model and prices | 1 | Open (needs user study) | [0010](0010-commercial-model.md) |
-| PD-11 | Purpose of the clickable prototype | 3 | Accepted (founder, 11 Nov 2026: private reference, with an exception for design frames shared by link) | [0045](0045-prototype-is-a-private-reference.md) |
+| PD-11 | Purpose of the clickable prototype | 3 | Accepted (founder, 11 Nov 2026: private reference, with an exception for design frames shared by link; partly superseded by 0046) | [0045](0045-prototype-is-a-private-reference.md) |
 | PD-12 | Public area check first; saved homes need an account | 3 | Accepted (founder, 11 Nov 2026) | [0046](0046-public-area-check-first.md) |
 | WW-01 | Ways of working | 1 | Accepted (partly superseded by 0015, 0035) | [0011](0011-ways-of-working.md) |
 | WW-02 | AI coding tools and setup | 1 | Accepted (partly superseded by 0015, 0035) | [0012](0012-ai-coding-tools.md) |
@@ -67,11 +67,11 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | IN-01 | Prototype architecture | 4 | Not started | |
 | IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 4 | Not started | |
 | IN-03 | Infrastructure as code | 4 | Not started | |
-| IN-04 | CI/CD and environments | 4 | Not started | |
+| IN-04 | CI/CD and environments | 4 (domain and secrets before the public area check, 0046) | Not started | |
 | IN-05 | Budget cap and cost alerts | 4 (before any running cost; 0046) | Not started | |
-| FE-05 | Demo analytics and feedback | 5 | Not started | |
-| BE-01 | Backend language and framework | 2 (language), 6 (framework) | Proposed (C# on .NET accepted in 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 6, issue #92) | [0020](0020-application-languages.md) |
-| BE-02 | Backend architecture and API contract | 6 (before cost engine) | Not started | |
+| FE-05 | Demo analytics and feedback | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
+| BE-01 | Backend language and framework | 2 (language), 5b (framework, [0046](0046-public-area-check-first.md)) | Proposed (C# on .NET accepted in 0020, reaffirmed by 0042 after 0036's Python choice was superseded before the port went past P1; ASP.NET Core 11 minimal APIs to confirm at stage 5b, issue #92) | [0020](0020-application-languages.md) |
+| BE-02 | Backend architecture and API contract | 5b (before the first API, [0046](0046-public-area-check-first.md)) | Not started | |
 | BE-03 | Rules versioning | 6 (before cost engine) | Not started | |
 | BE-04 | .NET engineering foundation | 2 | Accepted (partly superseded by 0034; SDK and target framework moved to .NET 11 in #58 under BE-25; 0036 and 0039 never took effect and are superseded by 0042) | [0021](0021-dotnet-engineering-foundation.md) |
 | BE-05 | Our own Result type | 2 | Accepted (0036's Python rewrite superseded by 0042 before it took effect; a C# 15 union version is trialled in issue #60) | [0032](0032-own-result-type.md) |
@@ -107,7 +107,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | DA-06 | Address and routing providers | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
 | DA-07 | Data sourcing: no scraping | 2 | Accepted | [0028](0028-no-scraping.md) |
 | SE-01 | Authentication and accounts | 6 (before saved homes, [0046](0046-public-area-check-first.md)) | Not started | |
-| SE-02 | Privacy and data protection | 5 (visitor data), 6 step 4 (public records, logs), 6 step 5 (full) | Proposed (starting position agreed) | [0014](0014-privacy-and-data-protection.md) |
+| SE-02 | Privacy and data protection | 5b (parts 1 and 2, [0046](0046-public-area-check-first.md)), 6 (full, before saved homes) | Proposed (starting position agreed) | [0014](0014-privacy-and-data-protection.md) |
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |

@@ -62,9 +62,9 @@ The prototype uses the synthetic fixtures and is labelled **Illustrative example
 Each step is a vertical slice that leaves a working, demonstrable product. It sequences engineering and learning. It does not remove features from the product or decide what launches. **The stage order in §9 governs timing:** step 1's parts happen in different §9 stages, as noted.
 
 1. **Foundation:** repository conventions and agent instructions (§9 stage 1, done); the fixture catalogue and the **first slice of the C# cost engine**, covering only the calculations the two stories need (§9 stage 2, decision 0019); a minimal CI workflow, security scanning and Dependabot (§9 stage 2, decision 0027); IaC skeleton, deployment pipeline and budget alerts (§9 stage 4, after the infrastructure decisions, before the first deployment). The fixture catalogue covers four English homes, one Welsh home (WALES-1, 7 Harbour Mews, postcode ZZ1 0AA, shown as "not yet covered"), one household and a fixed 23 October 2026 snapshot.
-2. **Clickable prototype of both stories** (§9 stage 5) on fixtures and the cost engine's generated results, with a design system from doc 03 §6. It is the **private vision and reference build** for the founder and the coding agents, not a public demo (decision 0045, which replaced the earlier "first public showcase" decision). Proposed decision 0046 would make a free public area check the first public thing.
+2. **Clickable prototype of both stories** (§9 stage 5) on fixtures and the cost engine's generated results, with a design system from doc 03 §6. It is the **private vision and reference build** for the founder and the coding agents, not a public demo (decision 0045, which replaced the earlier "first public showcase" decision). Decision 0046 makes a free public area check the first public thing (stage 5b).
 3. **Cost engine expansion** (§9 stage 6): grows the stage 2 engine to full buy and rent costs, England SDLT, move-in cash and stress scenarios, fully tested, behind the API.
-4. **Real England evidence** for one category at a time (EPC, then Price Paid, then planning and flood), with provenance and "not covered" states.
+4. **Real England evidence** for one category at a time, with provenance and "not covered" states. Area data (transport, schools, crime counts, flood, sold prices, planning, everyday places) goes live first, at stage 5b (decision 0046); this step then adds per-home evidence such as energy certificates and exact-address matching.
 5. **Questions, replies and decision history** as real persisted workflow.
 6. **Document extraction and conflict detection** with its evaluation suite.
 7. **Entitlements** for the free/paid boundary in doc 02 §8, enforced as business rules tied to the account and plan (not a feature-flag toggle; flags are only for gradual rollout), with a payment provider in test mode. CO-01 settles the design.
@@ -101,7 +101,7 @@ Do these now, because they are cheap now and expensive later:
 | Question | Decision |
 |---|---|
 | Repository visibility and licence | **Public, all rights reserved.** No open-source licence; a copyright notice in `LICENSE` and the README. Viewing the code doesn't grant permission to use it. Because it is public, never commit secrets, real personal data or licensed datasets, and accept that competitors can read the strategy documents. |
-| First public showcase | Superseded by decision 0045: the clickable prototype stays private. Proposed decision 0046: a free public area check first |
+| First public showcase | Superseded by decision 0045: the clickable prototype stays private. Decision 0046: a free public area check first (stage 5b) |
 | Monthly budget cap | **Decided in the infrastructure discussion** (stage 4 below), recorded as an architecture decision record before anything is deployed |
 
 ## 9. Roadmap from design decisions to implementation
@@ -171,7 +171,7 @@ Inputs from the founder's earlier projects are summarised in the [foundations re
 - **Prototype architecture (IN-01):** recommended: the prototype is the real frontend reading fixture files, with no backend yet.
 - **Hosting for the prototype (IN-02):** cost first (decision 0022), and private: local or an access-restricted preview (decision 0045); a fixture-only frontend needs nothing more.
 - **Infrastructure as code (IN-03):** match the chosen hosting (decision 0022); Bicep only for any Azure parts.
-- **CI/CD and environments (IN-04):** pipeline, pull-request previews, production demo, secrets handling and domain.
+- **CI/CD and environments (IN-04):** pipeline, pull-request previews, the public site's production environment, secrets handling and domain (needed before stage 5b, decision 0046).
 - **Budget cap and cost alerts (IN-05):** the monthly cap and alert thresholds, plus a daily model-spend cap for later AI features.
 
 Design work:
@@ -189,12 +189,13 @@ Design work:
 
 Build in vertical slices, each one deployed to the private preview:
 
-1. App shell, navigation and design system, loading the fixture catalogue.
-2. Home-to-home cost differences in the engine and its generated files (BE-27, #96), before the compare and decision-impact screens.
-3. Buyer story end to end.
-4. Renter story end to end, to the same standard.
-5. Edge states, mobile layouts and an accessibility pass (WCAG 2.2 AA target).
-6. "Illustrative example" labelling and a simulated-action audit. There is no public launch (decision 0045).
+1. App shell, navigation and design system, loading the fixture catalogue, and the component gallery.
+2. Area screens: summary-first Nearby, the map and Check an area (decision 0046).
+3. Home-to-home cost differences in the engine and its generated files (BE-27, #96), before the compare and decision-impact screens.
+4. Buyer story end to end.
+5. Renter story end to end, to the same standard.
+6. Edge states, mobile layouts and an accessibility pass (WCAG 2.2 AA target).
+7. "Illustrative example" labelling and a simulated-action audit. There is no public launch (decision 0045).
 
 **Gate:** both stories run end to end on the private prototype, every input comes from the fixture files and every calculated number from the cost engine's generated files, and the accessibility checks pass.
 
@@ -202,11 +203,11 @@ Build in vertical slices, each one deployed to the private preview:
 
 The first public release: a free postcode check of what is around a home, with no accounts.
 
-**Decisions first:** database and geospatial (DA-03), ingestion and caching (DA-04), source licences (DA-05), postcode lookup (DA-06), hosting, infrastructure and a budget cap (IN-01 to IN-03, IN-05), rate limiting, privacy part 1 and demo analytics and feedback (SE-02 part 1, FE-05).
+**Decisions first:** the API framework, architecture and contract (BE-01 framework and BE-02, #92) with the observability foundation (decision 0025); database and geospatial (DA-03), ingestion and caching (DA-04), source licences (DA-05), postcode lookup (DA-06, postcode only); hosting, infrastructure, environments, secrets, the domain and a budget cap (IN-01 to IN-05); rate limiting; privacy parts 1 and 2 (SE-02, decision 0014); analytics and feedback (FE-05).
 
 **Build:** a minimal ASP.NET Core API; one adapter per free source with Live, Cached, Fallback or Unavailable labels (0029) and our own cached copies; the area check screens from stage 5 on live data; the small public site (landing as the area check, How it works, About the data, privacy notice, accessibility statement).
 
-**Gate:** every fact shows its source, date and limits; the privacy notice and budget cap are live; accessibility checks pass; no feature that needs an account is presented as available.
+**Gate:** every fact shows its source, date and limits; the privacy notice and budget cap are live; searched postcodes are absent from every server, application and hosting log; accessibility checks pass; no feature that needs an account is presented as available.
 
 ### Stage 6: Validate, then build the real product
 
@@ -214,9 +215,9 @@ Run the six-buyer, six-renter study from doc 02 §10 using the prototype, then r
 
 | Before building | Decisions |
 |---|---|
-| Cost engine expansion (step 3) | **Backend language (BE-01)** is decided: C# on .NET (decision 0020, reaffirmed on .NET 11 with C# 15 by decision 0042), and BE-01 stays open only for the framework, with the cost engine started in stage 2 (decision 0019); confirm ASP.NET Core 11 minimal APIs for the API. The order of stage 6 work and the .NET 11 features it uses are in the [backlog](../planning/backlog.md) and the [.NET 11 and C# 15 plan](../planning/dotnet-11-and-csharp-15-plan.md). **Observability foundation (decision 0025):** OpenTelemetry and the Aspire app host and dashboard are set up with the first API code, so every later step is traceable locally. **Backend architecture (BE-02):** e.g. modular monolith, API style and contract (OpenAPI), shared types with the frontend. **Rules versioning (BE-03):** how tax and cost rule tables are stored, cited and reviewed. |
-| Real England data (step 4) | Apply **no scraping** (DA-07, decision 0028) and the **outside-services rule** (OP-03, decision 0029) to every source. **Database and geospatial (DA-03):** PostgreSQL/PostGIS confirmation, migrations, hosting tier. **Ingestion and scheduling (DA-04):** batch jobs, storage of raw versus processed data, refresh cadence. **Source licence register (DA-05):** format and review process. **Address and routing providers (DA-06):** when, if ever, to pay for one. **Privacy, part 2 (SE-02):** lawful basis and privacy notice covering personal data in public records, and log handling, before any real data is loaded. |
-| Questions workflow (step 5) | **Authentication and accounts (SE-01):** identity provider, account model, household sharing. **Privacy and data protection, part 3, the full decision (SE-02):** basis for user-stored data, retention and deletion, document isolation, ICO and DPIA steps. |
+| Cost engine expansion (step 3) | BE-01's framework, BE-02 and the observability foundation are settled at stage 5b (decision 0046), with the first API; what follows records the starting position. **Backend language (BE-01)** is decided: C# on .NET (decision 0020, reaffirmed on .NET 11 with C# 15 by decision 0042), and BE-01 stays open only for the framework, with the cost engine started in stage 2 (decision 0019); confirm ASP.NET Core 11 minimal APIs for the API. The order of stage 6 work and the .NET 11 features it uses are in the [backlog](../planning/backlog.md) and the [.NET 11 and C# 15 plan](../planning/dotnet-11-and-csharp-15-plan.md). **Observability foundation (decision 0025):** OpenTelemetry and the Aspire app host and dashboard are set up with the first API code, so every later step is traceable locally. **Backend architecture (BE-02):** e.g. modular monolith, API style and contract (OpenAPI), shared types with the frontend. **Rules versioning (BE-03):** how tax and cost rule tables are stored, cited and reviewed. |
+| Real England data (step 4) | DA-03 to DA-05 and privacy part 2 are settled at stage 5b for area data (decision 0046); here they extend to per-home data, and DA-06 decides paid address lookup and routing. Apply **no scraping** (DA-07, decision 0028) and the **outside-services rule** (OP-03, decision 0029) to every source. **Database and geospatial (DA-03):** PostgreSQL/PostGIS confirmation, migrations, hosting tier. **Ingestion and scheduling (DA-04):** batch jobs, storage of raw versus processed data, refresh cadence. **Source licence register (DA-05):** format and review process. **Address and routing providers (DA-06):** when, if ever, to pay for one. **Privacy, part 2 (SE-02):** lawful basis and privacy notice covering personal data in public records, and log handling, before any real data is loaded. |
+| Questions workflow (step 5) | **Authentication and accounts (SE-01),** needed before saved homes (decision 0046): identity provider, account model, household sharing. **Privacy and data protection, part 3, the full decision (SE-02):** basis for user-stored data, retention and deletion, document isolation, ICO and DPIA steps. |
 | Document extraction (step 6) | Apply the **extraction principles** (AI-06, decision 0030). **Model provider and runtime (AI-01):** the cheapest provider that passes the evaluation suite (decision 0022), Microsoft Foundry included as a candidate, and the model for each task. **Retrieval (AI-02):** pgvector versus Azure AI Search. **Evaluation tooling (AI-03):** evaluation-first is decided (decision 0025); eval sets, scoring and CI gating. **Orchestration (AI-04):** decided: Microsoft Agent Framework through its .NET packages (decision 0042), with the React chat connected over AG-UI, single agents for tasks and chat and a workflow with human approval for document investigation (decision 0023). **AI safety (AI-05):** requirements decided in decision 0025; prompt-injection defences and output validation. Build the AI capabilities in the order set in decision 0025, starting with the evaluation harness. |
 | Entitlements (step 7) | **Entitlements and payments (CO-01):** how entitlements are enforced as business rules tied to the account and plan (feature flags only for gradual rollout), and the payment provider in test mode. |
 | Monitoring (step 8) | **Observability (OP-01):** OpenTelemetry and the local Aspire dashboard already exist from step 3 (decision 0025); decide where production telemetry goes (cost first), error alerts and cost dashboards. **Scheduling and notifications (OP-02):** change-detection jobs and how users are told. |
@@ -229,5 +230,5 @@ The current rules live in **`AGENTS.md`**, the single rulebook (decision 0035). 
 - **How a decision gets made:** an agent drafts options with a recommendation, you choose and give your reason. Hard-to-reverse decisions get a full record; easily reversible ones get a line in the register. Changing a decision means a new record that supersedes the old one.
 - **How a change gets made:** plan (data contract first, then backend and frontend tasks) → build → `make check` → pre-push Opus review → pull request → Codex review → fix → merge → summary.
 - **Definition of ready:** a plan with acceptance criteria, its fixtures exist, and the decisions it depends on are accepted.
-- **Definition of done:** acceptance criteria met; `make check` and CI pass; the change introduces no GitHub security alert (for alerts already open on `main`, see `AGENTS.md`, "When merging", condition 4); works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the demo where relevant.
+- **Definition of done:** acceptance criteria met; `make check` and CI pass; the change introduces no GitHub security alert (for alerts already open on `main`, see `AGENTS.md`, "When merging", condition 4); works on mobile and with keyboard; no hand-typed calculated figures (inputs come from data files with their source); docs and decision records updated; deployed to the private preview or the public site where relevant.
 - **Cadence:** a short weekly plan (which gate is next, which issues serve it) and a weekly review (what shipped, your explain-back, cloud spend against the cap, and coding-agent spend and review rounds).

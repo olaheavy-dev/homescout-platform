@@ -12,15 +12,16 @@
 
 ## Site Map
 
-- **Public**
-  - Landing `/`: the shared promise, with buying and renting given equal weight, "Check a home", and the two example homes (buy and rent).
+- **Public site at launch** (stage 5b, decision 0046)
+  - Landing `/`: search first, with the area check as the main action (see Landing below).
+  - Check an area `/area#postcode=…`: postcode in, the Nearby topic summary out (without the commute row, which needs the household's own destination), with Summary and Map views, a download with sources, and "Save a home here" (needs an account). No account to use it. **The postcode goes in the URL fragment, never the query string**, so it never reaches server, application or hosting logs (0014). The first public page (decision 0046, accepted); in the prototype it runs on sample data.
   - How it works `/how-it-works`
-  - Check an area `/area?postcode=…`: postcode in, the Nearby topic summary out, with Summary and Map views, a download with sources, and "Save a home here" (needs an account). No account to use it. Proposed as the first public page (decision 0046); in the prototype it runs on sample data.
+  - About the data `/about-the-data`: every source, its date, coverage, limits and attribution.
+  - Privacy notice `/privacy` and accessibility statement `/accessibility`: live before launch (0014, 0046).
+  - Account features appear only as "coming next" until they are live.
+- **Prototype only** (private, decision 0045)
   - Example home `/example`: choose the buyer or renter example, then go to My move in that story.
   - Costs and comparison `/costs-and-comparison`: explains what Vestagraph works out and what it doesn't.
-  - About the data `/about-the-data`: every source, its date, coverage, limits and attribution (needed for the public area check, 0046).
-  - Privacy notice `/privacy` and accessibility statement `/accessibility`: required before the public area check goes live (0014, 0046).
-  - **Public site at launch (0046):** the landing page leads with the area check; account features appear only as "coming next" until they are live.
   - Sign in `/sign-in`: simulated, labelled as such.
 - **Check a home**
   - Choose buying or renting, then search the address `/check`
@@ -61,7 +62,8 @@
 ## Navigation Model
 
 - **Primary navigation:**
-  - **Public:** How it works · Example home · Costs and comparison · Sign in, plus the primary action **Check a home**.
+  - **Public site (0046):** How it works · About the data · Sign in (once accounts exist), with the postcode box as the primary action.
+  - **Prototype only:** How it works · Example home · Costs and comparison · Sign in (simulated), plus **Check a home**.
   - **Signed in (simulated):** **My move · Homes · Compare**, plus a persistent **Check a home**. That's three items, which is the maximum.
 - **Secondary navigation (inside a home):** tabs, Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Detail opens from the fact or finding that raised it (an evidence sheet, a question, the working behind a line).
 - **The example story timeline (demo control):**
@@ -107,7 +109,7 @@
 7. Below: evidence gaps, documents received and the activity preview.
 
 ### Nearby (summary first; the map is equal)
-The page opens as **one row per topic with its headline fact** (founder review, 11 Nov 2026: the full list was about four phone screens long). Tapping a topic opens its detail `/homes/[slug]/nearby/[topic]` with the full list, List and Map views, the source line and "What this doesn't tell you". The same summary is the public Check an area page. Topic order:
+The page opens as **one row per topic with its headline fact** (founder review, 11 Nov 2026: the full list was about four phone screens long). Tapping a topic opens its detail `/homes/[slug]/nearby/[topic]` with the full list, List and Map views, the source line and "What this doesn't tell you". The same summary, without the commute row, is the public Check an area page. Topic order:
 1. **Your commute:** your estimate next to your limit, with no verdict until the engine produces one (#147).
 2. **Getting around:** stops, with straight-line distances.
 3. **Everyday places:** supermarket or shop, park, healthcare, police station and childcare, with gaps shown.
@@ -159,14 +161,14 @@ In the private prototype the landing can also link the two example homes; the pu
 
 ## User Flows
 
-### Explore an example (the main showcase)
-1. The user lands on `/` and sees two example homes.
+### Explore an example (the main showcase, private prototype)
+1. The user opens `/example` and sees two example homes.
 2. They choose **"See the buying example"** (or renting).
 3. **My move** opens at the **Buyer story, step 1**, showing B1 and B2 cards with their costs so far and open questions.
 4. They open B1, then its Overview, Costs and Nearby.
 5. They press **Step 2** on the demo timeline. The B1 card shows "Reply received: partially answered", and the reply check shows that it gives no figure.
 6. **Step 3:** the management pack arrives, and the documents and findings appear.
-7. **Step 4:** the user confirms the budget. **What changed** opens with the before and after, explained. The card on My move now shows the new total and "£48.37 over budget" (from the engine).
+7. **Step 4:** the user confirms the budget. **What changed** opens with the before and after, explained. The card on My move now shows the new total and "£48.37 over budget before maintenance (not calculated)" (from the engine, `B1.from-step-4.monthly.budget`, a partial total).
 8. **Compare** shows B1 and B2 aligned, with no winner.
 
 ### Check a home
@@ -231,7 +233,7 @@ In the private prototype the landing can also link the two example homes; the pu
 
 | Component | Used on | Behaviour differences |
 |---|---|---|
-| Public layout (header and footer) | Landing, How it works, Example, Costs and comparison, Sign in | Editorial: more space, serif display |
+| Public layout (header and footer) | Landing, Check an area, How it works, About the data, Privacy, Accessibility; in the prototype also Example, Costs and comparison, Sign in | Editorial: more space, serif display |
 | App layout (top bar on desktop, bottom tabs on mobile) | My move, Homes, Compare, Settings | — |
 | Home layout (home header, tabs or bottom bar, demo timeline) | Every home page | Collapses on scroll on a phone |
 | Demo story timeline | My move, home pages, Compare (example homes only) | Hidden on non-example homes |
