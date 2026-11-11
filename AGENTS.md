@@ -151,7 +151,7 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 | Command | What it does |
 |---|---|
 | `make check` | Every automated check, in this order, the same as CI: `restore` (locked mode), `build`, `format-check`, `generated-check` (regenerates `packages/fixtures/generated/` and fails if that changes anything compared with what is committed), `validate` (fixture JSON against its schemas), `inspect` (JetBrains InspectCode; any warning fails), `test`. Run it before pushing. |
-| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`; the run stops after 10 minutes or 5 failed tests). |
+| `make test` | Builds, then runs the NUnit tests on Microsoft.Testing.Platform with code coverage (reports in `.artifacts/test-results/`; the run stops after 10 minutes or 5 failed tests). It includes the Gherkin specifications in `docs/specs/` (project `packages/specs`, Reqnroll, decision 0043) except scenarios tagged `@ui`, `@mcp` or `@withdrawn`. |
 | `make generate` | Builds, then runs the cost-engine generator: it reads `packages/fixtures/data/` and writes `packages/fixtures/generated/costs.json` (deleting any other `*.json` there). Commit the result; `make check` fails if it is stale. |
 | `make validate` | Checks every file in `packages/fixtures/data/`, `test-cases/` and `generated/` against its JSON Schema 2020-12 schema; prints each problem and fails if there is one. |
 | `make restore`, `make build`, `make format-check`, `make generated-check`, `make inspect` | The individual steps of `make check`. |
