@@ -390,6 +390,72 @@
       }
     },
     {
+      "id": "B1-AREA-AMENITY-7",
+      "homeId": "B1",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "recorded",
+      "label": "St Anne’s Church (synthetic)",
+      "value": {
+        "name": "St Anne’s Church (synthetic)",
+        "distanceMetres": 600,
+        "distanceMethod": "straight-line distance, synthetic",
+        "religion": "christian"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B1-AREA-AMENITY-8",
+      "homeId": "B1",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "recorded",
+      "label": "Quay Street Mosque (synthetic)",
+      "value": {
+        "name": "Quay Street Mosque (synthetic)",
+        "distanceMetres": 950,
+        "distanceMethod": "straight-line distance, synthetic",
+        "religion": "muslim"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B1-AREA-AMENITY-9",
+      "homeId": "B1",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "recorded",
+      "label": "Northbridge Gurdwara (synthetic)",
+      "value": {
+        "name": "Northbridge Gurdwara (synthetic)",
+        "distanceMetres": 1300,
+        "distanceMethod": "straight-line distance, synthetic",
+        "religion": "sikh"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
       "id": "B1-AREA-ENERGY-CERTIFICATE-1",
       "homeId": "B1",
       "topic": "energy-certificate",
@@ -922,6 +988,50 @@
       }
     },
     {
+      "id": "B2-AREA-AMENITY-7",
+      "homeId": "B2",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "recorded",
+      "label": "Orchard Row Methodist Church (synthetic)",
+      "value": {
+        "name": "Orchard Row Methodist Church (synthetic)",
+        "distanceMetres": 450,
+        "distanceMethod": "straight-line distance, synthetic",
+        "religion": "christian"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B2-AREA-AMENITY-8",
+      "homeId": "B2",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "recorded",
+      "label": "Northbridge Synagogue (synthetic)",
+      "value": {
+        "name": "Northbridge Synagogue (synthetic)",
+        "distanceMetres": 1600,
+        "distanceMethod": "straight-line distance, synthetic",
+        "religion": "jewish"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
       "id": "B2-AREA-ENERGY-CERTIFICATE-1",
       "homeId": "B2",
       "topic": "energy-certificate",
@@ -1305,6 +1415,28 @@
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "Does not establish places, ages taken, fees, funded hours or registration status.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R1-AREA-AMENITY-6",
+      "homeId": "R1",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "recorded",
+      "label": "Station Road Hindu Temple (synthetic)",
+      "value": {
+        "name": "Station Road Hindu Temple (synthetic)",
+        "distanceMetres": 800,
+        "distanceMethod": "straight-line distance, synthetic",
+        "religion": "hindu"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
       "source": {
         "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
@@ -1710,6 +1842,22 @@
       }
     },
     {
+      "id": "R2-AREA-AMENITY-6",
+      "homeId": "R2",
+      "topic": "amenity",
+      "subtype": "place-of-worship",
+      "status": "no-record-in-source",
+      "label": "No place of worship found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
       "id": "R2-AREA-ENERGY-CERTIFICATE-1",
       "homeId": "R2",
       "topic": "energy-certificate",
@@ -1890,7 +2038,7 @@
       "homeId": "WALES-1",
       "topic": "amenity",
       "status": "not-covered",
-      "label": "Shops, parks and healthcare locations: not yet covered for Wales",
+      "label": "Everyday places: not yet covered for Wales",
       "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
