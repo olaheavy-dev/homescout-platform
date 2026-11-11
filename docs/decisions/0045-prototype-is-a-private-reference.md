@@ -23,6 +23,14 @@ Asked whether it should become a public demo later, the founder chose **"Private
 - **Added** (founder): a **component gallery**, one route showing every component in every state in light and dark. It's the agents' visual dictionary and the baseline for design review.
 - **Unchanged:** every data rule (figures from the engine, missing never £0, no verdicts), the executable specifications (0043), and the stage gates.
 
+## Exception: design frames shared by link (founder, 11 Nov 2026)
+The founder chose to share the high-fidelity **design canvas** (the H1–H4 frames from phase 6 of the design flow, decision 0031) as "anyone with the link", to gather feedback. This is allowed because:
+- the frames are static pictures, not a working demo: no accounts, no data entry, no analytics, no storage of visitors' information;
+- every home, person and figure in them is synthetic sample data, labelled as such (rule 5);
+- the canvas carries a note asking viewers not to share the link further.
+
+The exception covers **design frames only**. The stage 5 clickable prototype stays private as decided above. If a frame ever gains forms, sign-in, analytics or real data, the exception lapses and SE-02 part 1 and FE-05 apply first.
+
 ## Consequences
 - Doc 04 §9 stage 5:
   - slice 5 becomes labelling, a simulated-action audit and the stage 5 gate, with no public launch;
