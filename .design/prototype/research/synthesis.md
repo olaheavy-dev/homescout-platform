@@ -88,6 +88,7 @@ Text-only research could not establish:
 5. **Who does the visual pass?** Recommendation: an agent with a browser covers public pages with screenshots; you do only the signed-in Rightmove and HomeSift views, which need your own accounts.
 
 ## Founder answers (11 Nov 2026)
+0. **The seven design principles above are agreed** by the founder (11 Nov 2026).
 1. **Landing page:** two example homes, one to buy and one to rent.
 2. **Drop a pin on a map:** **include it** in the prototype, alongside the "can't find it" manual-entry route. The founder chose this over the recommendation to wait.
 3. **Compare:** up to three homes.
