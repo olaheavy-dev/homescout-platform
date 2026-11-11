@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using HomeScout.Fixtures.Validator;
 
 namespace HomeScout.Fixtures.Tests;
 
@@ -20,6 +21,8 @@ internal sealed class AreaSchemaRejectionTests
     [TestCase(_crime)]
     [TestCase(_inspection)]
     [TestCase("UK-AREA-BANK-RATE-1")]
+    [TestCase("B1-AREA-ENERGY-CERTIFICATE-1")]
+    [TestCase("B1-AREA-COMMUTE-1")]
     public void Area_unchangedRealRecord_isAccepted(string id)
     {
         Assert.That(FixtureFiles.Validate("area", "area", FixtureFiles.AreaItem(id)), Is.Empty);
@@ -275,11 +278,140 @@ internal sealed class AreaSchemaRejectionTests
     }
 
     [Test]
-    public void ValidateFixtures_areaFileMissingFromData_isStillCheckedByName()
+    public void ValidateFixtures_invalidAreaFile_isReportedAgainstTheAreaSchema()
     {
-        // data/area.json is checked against schema/area.schema.json by the naming rule, like every other data file.
-        string path = Path.Combine(FixtureFiles.SchemaDirectory, "area.schema.json");
+        string folder = Path.Combine(Path.GetTempPath(), "homescout-fixtures-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(Path.Combine(folder, "data"));
+        Directory.CreateDirectory(Path.Combine(folder, "schema"));
+        foreach (string schema in Directory.EnumerateFiles(FixtureFiles.SchemaDirectory))
+        {
+            File.Copy(schema, Path.Combine(folder, "schema", Path.GetFileName(schema)));
+        }
 
-        Assert.That(File.Exists(path), Is.True);
+        File.WriteAllText(Path.Combine(folder, "data", "area.json"), "{ \"area\": [ { \"id\": \"x\" } ] }");
+        try
+        {
+            IReadOnlyList<FixtureProblem> problems = FixtureValidator.ValidateFixtures(folder);
+
+            Assert.That(problems.Select(p => p.ToString()), Has.Some.Contain("area.json").And.Some.Contain("\"topic\""));
+        }
+        finally
+        {
+            Directory.Delete(folder, true);
+        }
+    }
+
+    [TestCase("no-record-in-source")]
+    [TestCase("source-failed")]
+    [TestCase("not-covered")]
+    public void Area_gapItemThatCarriesAValue_isRejected(string status)
+    {
+        JsonObject item = FixtureFiles.AreaItem(_school);
+        item["status"] = status;
+
+        Assert.That(Problems(item), Has.Some.Contain("/value"));
+    }
+
+    [Test]
+    public void Area_staleItemWithNoValue_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem(_school);
+        item["status"] = "stale";
+        item.Remove("value");
+
+        Assert.That(Problems(item), Has.Some.Contain("value"));
+    }
+
+    [Test]
+    public void Area_floodSubtypeOnAnAmenity_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-1");
+        item["subtype"] = "rivers-and-sea";
+
+        Assert.That(Problems(item), Has.Some.Contain("/subtype"));
+    }
+
+    [Test]
+    public void Area_amenitySubtypeOnAFloodItem_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B2-AREA-FLOOD-1");
+        item["subtype"] = "supermarket";
+
+        Assert.That(Problems(item), Has.Some.Contain("/subtype"));
+    }
+
+    [Test]
+    public void Area_liveFloodWarningOnSurfaceWater_isRejected()
+    {
+        // The Environment Agency issues no surface-water warnings; long-term surface-water risk is a link only.
+        JsonObject item = FixtureFiles.AreaItem("B2-AREA-FLOOD-1");
+        item["subtype"] = "surface-water";
+
+        Assert.That(Problems(item), Has.Some.Contain("/subtype"));
+    }
+
+    [Test]
+    public void Area_childcareAmenity_isAccepted()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-1");
+        item["subtype"] = "childcare";
+
+        Assert.That(Problems(item), Is.Empty);
+    }
+
+    [Test]
+    public void Area_energyItemWithNoEvidenceLink_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-ENERGY-CERTIFICATE-1");
+        item["value"]!.AsObject().Remove("evidenceItemIds");
+
+        Assert.That(Problems(item), Has.Some.Contain("evidenceItemIds"));
+    }
+
+    [Test]
+    public void Area_energyItemThatCopiesTheRating_isRejected()
+    {
+        // Inputs are recorded once (rule 2): the certificate lives in the evidence file, the area item points at it.
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-ENERGY-CERTIFICATE-1");
+        item["value"]!["rating"] = "C";
+
+        Assert.That(Problems(item), Has.Some.Contain("/value"));
+    }
+
+    [Test]
+    public void Area_energyItemThatCopiesTheIssuedYear_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-ENERGY-CERTIFICATE-1");
+        item["value"]!["issuedYear"] = 2019;
+
+        Assert.That(Problems(item), Has.Some.Contain("/value"));
+    }
+
+    [Test]
+    public void Area_energyItemWithAHandMadeCostRange_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-ENERGY-CERTIFICATE-1");
+        item["value"]!["estimatedAnnualCostRange"] = new JsonObject { ["lowPence"] = 1, ["highPence"] = 2 };
+
+        Assert.That(Problems(item), Has.Some.Contain("/value"));
+    }
+
+    [Test]
+    public void Area_crimeCategoryRepeatedInOneMonth_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem(_crime);
+        JsonNode first = item["value"]!["counts"]![0]!.DeepClone();
+        item["value"]!["counts"]!.AsArray().Add(first);
+
+        Assert.That(Problems(item), Has.Some.Contain("counts"));
+    }
+
+    [Test]
+    public void Area_soldPriceOfAnOtherPropertyType_isAccepted()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-SOLD-PRICE-1");
+        item["value"]!["propertyType"] = "other";
+
+        Assert.That(Problems(item), Is.Empty);
     }
 }

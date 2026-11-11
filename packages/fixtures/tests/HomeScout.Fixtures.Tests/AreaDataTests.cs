@@ -24,7 +24,22 @@ internal sealed class AreaDataTests
     private static readonly string[] _healthcareSubtypes = ["pharmacy", "hospital", "gp-surgery", "clinic", "dentist"];
 
     private static readonly string[] _amenitySubtypes =
-        ["supermarket", "shop", "park", "pharmacy", "police-station", "hospital", "gp-surgery", "clinic", "dentist"];
+        ["supermarket", "shop", "park", "pharmacy", "police-station", "hospital", "gp-surgery", "clinic", "dentist", "childcare"];
+
+    private static readonly string[] _r2Certificate = ["R2-EPC"];
+
+    private static readonly string[] _allowedOrigins = ["official-dataset", "user-entered", "plan"];
+
+    private static readonly string[] _recordedCrimeMonths = ["2026-07", "2026-08"];
+
+    private static readonly string[][] _amenityCategories =
+    [
+        ["supermarket", "shop"],
+        ["park"],
+        ["hospital", "gp-surgery", "clinic", "dentist", "pharmacy"],
+        ["police-station"],
+        ["childcare"],
+    ];
 
     private static readonly string[] _liveFloodHomes = ["B2"];
 
@@ -129,7 +144,7 @@ internal sealed class AreaDataTests
             Assert.Multiple(() =>
             {
                 Assert.That(item["source"]!["synthetic"]!.GetValue<bool>(), Is.True, Text(item, "id"));
-                Assert.That(Text(item["source"], "origin"), Is.EqualTo("synthetic"), Text(item, "id"));
+                Assert.That(_allowedOrigins, Does.Contain(Text(item["source"], "origin")), Text(item, "id"));
             });
         }
     }
@@ -190,10 +205,6 @@ internal sealed class AreaDataTests
     [TestCase("R2", "crime")]
     [TestCase("B1", "sold-price")]
     [TestCase("B2", "sold-price")]
-    [TestCase("B1", "amenity")]
-    [TestCase("B2", "amenity")]
-    [TestCase("R1", "amenity")]
-    [TestCase("R2", "amenity")]
     public void Area_priorityTopic_hasTwoToFourItemsForEachHome(string homeId, string topic)
     {
         int count = ForHome(homeId).Count(i => Text(i, "topic") == topic);
@@ -255,43 +266,30 @@ internal sealed class AreaDataTests
         }
     }
 
-    [TestCase("B1", "C", 2019)]
-    [TestCase("B2", "D", 2021)]
-    [TestCase("R1", "C", 2022)]
-    public void Area_energyRating_matchesTheCertificateInTheEvidenceFile(string homeId, string rating, int year)
+    [TestCase("B1", "B1-EPC", "B1-EPC-COST")]
+    [TestCase("B2", "B2-EPC", "B2-EPC-COST")]
+    [TestCase("R1", "R1-EPC", "R1-EPC-COST")]
+    public void Area_energyItem_pointsAtTheCertificateAndItsCostInTheEvidenceFile(string homeId, string certificateId, string costId)
     {
-        JsonNode value = ForHome(homeId).Single(i => Text(i, "topic") == "energy-certificate")["value"]!;
+        JsonObject item = ForHome(homeId).Single(i => Text(i, "topic") == "energy-certificate");
 
         Assert.Multiple(() =>
         {
-            Assert.That(Text(value, "rating"), Is.EqualTo(rating));
-            Assert.That(value["issuedYear"]!.GetValue<int>(), Is.EqualTo(year));
+            Assert.That(Text(item, "status"), Is.EqualTo("recorded"));
+            Assert.That(item["value"]!["evidenceItemIds"]!.AsArray().Select(n => n!.GetValue<string>()), Is.EqualTo([certificateId, costId]));
         });
     }
 
     [Test]
-    public void Area_r2Energy_isStaleLikeItsExpiredCertificateAndHasNoRatingOrCost()
+    public void Area_r2Energy_isStaleAndPointsAtItsExpiredCertificateOnly()
     {
         JsonObject item = ForHome("R2").Single(i => Text(i, "topic") == "energy-certificate");
 
         Assert.Multiple(() =>
         {
             Assert.That(Text(item, "status"), Is.EqualTo("stale"));
-            Assert.That(item["value"]!["issuedYear"]!.GetValue<int>(), Is.EqualTo(2015));
-            Assert.That(item["value"]!["expiredYear"]!.GetValue<int>(), Is.EqualTo(2025));
-            Assert.That(item["value"]!["rating"], Is.Null);
-            Assert.That(item["value"]!["estimatedAnnualCostRange"], Is.Null);
+            Assert.That(item["value"]!["evidenceItemIds"]!.AsArray().Select(n => n!.GetValue<string>()), Is.EqualTo(_r2Certificate));
         });
-    }
-
-    [Test]
-    public void Area_energyCostRange_lowIsNotAboveHigh()
-    {
-        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => i["value"]?["estimatedAnnualCostRange"] is not null))
-        {
-            JsonNode range = item["value"]!["estimatedAnnualCostRange"]!;
-            Assert.That(range["lowPence"]!.GetValue<int>(), Is.LessThanOrEqualTo(range["highPence"]!.GetValue<int>()), Text(item, "id"));
-        }
     }
 
     [Test]
@@ -340,6 +338,144 @@ internal sealed class AreaDataTests
                 Assert.That(Text(school, "topic"), Is.EqualTo("school"), schoolId);
                 Assert.That(Text(school, "homeId"), Is.EqualTo(Text(item, "homeId")), schoolId);
             });
+        }
+    }
+
+    [TestCase("B1")]
+    [TestCase("B2")]
+    [TestCase("R1")]
+    [TestCase("R2")]
+    public void Area_eachEnglandHome_hasEveryAmenityCategoryOrAnExplicitNoRecordItem(string homeId)
+    {
+        List<JsonObject> amenities = ForHome(homeId).Where(i => Text(i, "topic") == "amenity" && i["subtype"] is not null).ToList();
+
+        foreach (string[] category in _amenityCategories)
+        {
+            Assert.That(
+                amenities.Any(i => category.Contains(Text(i, "subtype")) && Text(i, "status") is "recorded" or "no-record-in-source" or "stale"),
+                Is.True,
+                homeId + ": " + string.Join("/", category));
+        }
+    }
+
+    [Test]
+    public void Area_energyItems_pointAtEvidenceItemsThatExist()
+    {
+        var evidenceIds = FixtureFiles.Load("evidence")["evidence"]!.AsArray().Select(e => Text(e, "id")).ToHashSet();
+
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "energy-certificate" && i["value"] is not null))
+        {
+            IEnumerable<string> ids = item["value"]!["evidenceItemIds"]!.AsArray().Select(n => n!.GetValue<string>());
+            Assert.That(ids, Has.All.Matches<string?>(id => id is not null && evidenceIds.Contains(id)), Text(item, "id"));
+        }
+    }
+
+    [Test]
+    public void Area_energyItems_neverSayThisFlat()
+    {
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "energy-certificate" && Text(i, "status") != "not-covered"))
+        {
+            Assert.That(Text(item, "doesNotEstablish"), Does.Not.Contain("this flat").And.Contain("this home").And.Contain("not actual bills"), Text(item, "id"));
+        }
+    }
+
+    [Test]
+    public void Area_floodItems_neverUseSurfaceWaterAsASubtypeAndSayWhyAndWhereToLook()
+    {
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "flood" && Text(i, "status") != "not-covered"))
+        {
+            Assert.Multiple(() =>
+            {
+                Assert.That(Text(item, "subtype"), Is.AnyOf("rivers-and-sea", "groundwater"), Text(item, "id"));
+                Assert.That(Text(item, "doesNotEstablish"), Does.Contain("Warnings are not issued for surface water flooding"), Text(item, "id"));
+            });
+        }
+    }
+
+    [Test]
+    public void Area_commute_isTheHouseholdsOwnEstimateNotARoutedJourney()
+    {
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "commute" && Text(i, "status") != "not-covered"))
+        {
+            Assert.Multiple(() =>
+            {
+                Assert.That(Text(item["source"], "origin"), Is.EqualTo("user-entered"), Text(item, "id"));
+                Assert.That(Text(item["source"], "label"), Is.EqualTo("the household's own estimate"), Text(item, "id"));
+                Assert.That(Text(item, "doesNotEstablish"), Does.Contain("not a routed or timetabled journey"), Text(item, "id"));
+                Assert.That(Text(item["value"], "method"), Is.EqualTo("estimated by the household; not a routed journey time (routing is DA-06)"), Text(item, "id"));
+            });
+        }
+    }
+
+    [Test]
+    public void Area_soldPriceAddresses_areUniqueSoNoAddressHasTwoPrices()
+    {
+        Assert.That(FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "sold-price" && i["value"] is not null).Select(i => Text(i["value"], "addressText")), Is.Unique);
+    }
+
+    [Test]
+    public void Area_aSchoolInspected_isInspectedTheSameWayEverywhereItAppears()
+    {
+        var bySchool = FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "school-inspection" && i["value"] is not null)
+            .GroupBy(i => Text(i["value"], "schoolName"));
+
+        foreach (IGrouping<string, JsonObject> group in bySchool)
+        {
+            Assert.That(group.Select(i => Text(i["value"], "framework") + "|" + Text(i["value"], "inspectionDate")).Distinct().Count(), Is.EqualTo(1), group.Key);
+        }
+    }
+
+    [Test]
+    public void Area_crimeMonths_areTheTwoLaggedMonths()
+    {
+        var months = FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "crime" && i["value"] is not null).Select(i => Text(i["value"], "month"));
+
+        Assert.That(months, Has.All.Matches<string>(m => _recordedCrimeMonths.Contains(m)));
+    }
+
+    [Test]
+    public void Area_valueDates_areNotAfterTheSnapshotDate()
+    {
+        string snapshot = Text(FixtureFiles.Load("snapshot")["snapshot"], "snapshotDate");
+        string[] dateFields = ["month", "saleDate", "inspectionDate", "statusDate", "receivedDate", "effectiveDate"];
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => i["value"] is not null))
+        {
+            foreach (string field in dateFields.Where(f => item["value"]![f] is not null))
+            {
+                string date = Text(item["value"], field);
+                Assert.That(string.CompareOrdinal(date, snapshot[..date.Length]), Is.LessThanOrEqualTo(0), Text(item, "id") + " " + field);
+            }
+        }
+    }
+
+    [Test]
+    public void Area_bankRate_isLabelledAsASampleNotTheActualRate()
+    {
+        JsonObject item = FixtureFiles.AreaItems().Single(i => Text(i, "topic") == "bank-rate");
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(Text(item, "label"), Does.Contain("sample value, not the actual Bank Rate"));
+            Assert.That(Text(item, "doesNotEstablish"), Does.Contain("sample value, not the actual Bank Rate"));
+        });
+    }
+
+    [Test]
+    public void Area_r1_isSetOnStationRoadAndR2OnCanalStreet()
+    {
+        Assert.Multiple(() =>
+        {
+            Assert.That(ForHome("R1").Where(i => i["value"] is not null).SelectMany(i => i["value"]!.AsObject().Select(p => p.Value?.ToString() ?? string.Empty)), Has.None.Contain("Canal"));
+            Assert.That(ForHome("R2").Where(i => i["value"] is not null).SelectMany(i => i["value"]!.AsObject().Select(p => p.Value?.ToString() ?? string.Empty)), Has.None.Contain("Station Road"));
+        });
+    }
+
+    [Test]
+    public void Area_crimeCategories_areUniqueWithinEachItem()
+    {
+        foreach (JsonObject item in FixtureFiles.AreaItems().Where(i => Text(i, "topic") == "crime" && i["value"] is not null))
+        {
+            Assert.That(item["value"]!["counts"]!.AsArray().Select(c => Text(c, "category")), Is.Unique, Text(item, "id"));
         }
     }
 

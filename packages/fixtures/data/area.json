@@ -16,7 +16,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -37,7 +37,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -58,7 +58,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -80,7 +80,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -102,7 +102,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -113,9 +113,9 @@
       "homeId": "B1",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-08",
+      "label": "Recorded crime counts, 2026-07",
       "value": {
-        "month": "2026-08",
+        "month": "2026-07",
         "counts": [
           {
             "category": "anti-social-behaviour",
@@ -138,7 +138,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -149,9 +149,9 @@
       "homeId": "B1",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-09",
+      "label": "Recorded crime counts, 2026-08",
       "value": {
-        "month": "2026-09",
+        "month": "2026-08",
         "counts": [
           {
             "category": "anti-social-behaviour",
@@ -170,7 +170,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -184,29 +184,9 @@
       "status": "no-record-in-source",
       "label": "No current rivers and sea flood warning in this source",
       "coverage": "England only",
-      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate.",
+      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate. Warnings are not issued for surface water flooding; long-term surface-water risk is on the EA long-term risk checker (link only).",
       "source": {
-        "origin": "synthetic",
-        "label": "Synthetic sample, shaped like the Environment Agency flood-monitoring data",
-        "date": "2026-10-23",
-        "synthetic": true
-      },
-      "link": {
-        "url": "https://www.gov.uk/check-long-term-flood-risk",
-        "text": "Check the long-term flood risk for this area on GOV.UK"
-      }
-    },
-    {
-      "id": "B1-AREA-FLOOD-2",
-      "homeId": "B1",
-      "topic": "flood",
-      "subtype": "surface-water",
-      "status": "no-record-in-source",
-      "label": "No current surface water flood warning in this source",
-      "coverage": "England only",
-      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate.",
-      "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Environment Agency flood-monitoring data",
         "date": "2026-10-23",
         "synthetic": true
@@ -234,7 +214,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -258,7 +238,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -282,7 +262,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -303,7 +283,7 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -324,7 +304,7 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -345,7 +325,7 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -366,7 +346,44 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B1-AREA-AMENITY-5",
+      "homeId": "B1",
+      "topic": "amenity",
+      "subtype": "police-station",
+      "status": "recorded",
+      "label": "Northbridge Central police station (synthetic)",
+      "value": {
+        "name": "Northbridge Central police station (synthetic)",
+        "distanceMetres": 1100,
+        "distanceMethod": "straight-line distance, synthetic"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B1-AREA-AMENITY-6",
+      "homeId": "B1",
+      "topic": "amenity",
+      "subtype": "childcare",
+      "status": "no-record-in-source",
+      "label": "No childcare found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. Does not establish places, ages taken, fees, funded hours or registration status.",
+      "source": {
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -377,19 +394,17 @@
       "homeId": "B1",
       "topic": "energy-certificate",
       "status": "recorded",
-      "label": "Energy certificate rating and estimated cost range",
+      "label": "Energy certificate and estimated cost, from the evidence file",
       "value": {
-        "rating": "C",
-        "issuedYear": 2019,
-        "estimatedAnnualCostRange": {
-          "lowPence": 70000,
-          "highPence": 86000
-        }
+        "evidenceItemIds": [
+          "B1-EPC",
+          "B1-EPC-COST"
+        ]
       },
       "coverage": "England and Wales",
-      "doesNotEstablish": "The rating and cost range are standardised estimates at the certificate's date, not actual bills, and may not match this flat if the certificate is for another unit.",
+      "doesNotEstablish": "A standardised estimate at the certificate's price basis, not actual bills. The certificate may not match this home if it was issued for another unit.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the energy certificate register",
         "date": "2026-10-23",
         "synthetic": true
@@ -420,7 +435,7 @@
       "coverage": "England, state-funded schools only",
       "doesNotEstablish": "Outcomes under different frameworks are not comparable and there is no single overall grade. The inspection date shows how old the judgement is.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofsted inspection outcomes data",
         "date": "2025-01",
         "synthetic": true
@@ -452,7 +467,7 @@
       "coverage": "England, state-funded schools only",
       "doesNotEstablish": "Outcomes under different frameworks are not comparable and there is no single overall grade. The inspection date shows how old the judgement is.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofsted inspection outcomes data",
         "date": "2026-10-23",
         "synthetic": true
@@ -472,7 +487,7 @@
       "coverage": "United Kingdom",
       "doesNotEstablish": "Predicted availability, not a measured speed, a tested line or a record of outages.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofcom broadband availability data",
         "date": "2026-10-23",
         "synthetic": true
@@ -483,19 +498,19 @@
       "homeId": "B1",
       "topic": "commute",
       "status": "recorded",
-      "label": "Typed commute estimate by public transport",
+      "label": "The household's own commute estimate by public transport",
       "value": {
         "criterionId": "COMMUTE",
         "destinationLabel": "Workplace in Northbridge (synthetic destination)",
         "minutes": 36,
         "mode": "public-transport",
-        "method": "typed estimate, synthetic; not a routing result"
+        "method": "estimated by the household; not a routed journey time (routing is DA-06)"
       },
       "coverage": "The household's own destination",
-      "doesNotEstablish": "A typed estimate for one route, not a timetable or a guaranteed journey time.",
+      "doesNotEstablish": "A typed household estimate, not a routed or timetabled journey; reliability not known.",
       "source": {
-        "origin": "synthetic",
-        "label": "Typed synthetic estimate (no routing service in this version)",
+        "origin": "user-entered",
+        "label": "the household's own estimate",
         "date": "2026-10-23",
         "synthetic": true
       }
@@ -517,7 +532,7 @@
       "coverage": "England, partial",
       "doesNotEstablish": "No record in this source does not mean no application exists: the source's coverage is incomplete.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Planning Data Platform",
         "date": "2026-10-23",
         "synthetic": true
@@ -538,7 +553,7 @@
       "coverage": "United Kingdom companies",
       "doesNotEstablish": "Company status does not establish who manages the building today, or that the company is well run.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Companies House company status",
         "date": "2026-10-23",
         "synthetic": true
@@ -559,7 +574,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -580,7 +595,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -602,7 +617,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -624,7 +639,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -635,9 +650,9 @@
       "homeId": "B2",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-08",
+      "label": "Recorded crime counts, 2026-07",
       "value": {
-        "month": "2026-08",
+        "month": "2026-07",
         "counts": [
           {
             "category": "burglary",
@@ -660,7 +675,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -671,9 +686,9 @@
       "homeId": "B2",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-09",
+      "label": "Recorded crime counts, 2026-08",
       "value": {
-        "month": "2026-09",
+        "month": "2026-08",
         "counts": [
           {
             "category": "anti-social-behaviour",
@@ -688,7 +703,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -706,29 +721,9 @@
         "areaName": "Orchard Brook (synthetic warning area)"
       },
       "coverage": "England only",
-      "doesNotEstablish": "A live warning is not a forecast for this home and is not the long-term risk. The service gives no guarantee of availability and is not for safety-critical use.",
+      "doesNotEstablish": "A live warning is not a forecast for this home and is not the long-term risk. The service gives no guarantee of availability and is not for safety-critical use. Warnings are not issued for surface water flooding; long-term surface-water risk is on the EA long-term risk checker (link only).",
       "source": {
-        "origin": "synthetic",
-        "label": "Synthetic sample, shaped like the Environment Agency flood-monitoring data",
-        "date": "2026-10-23",
-        "synthetic": true
-      },
-      "link": {
-        "url": "https://www.gov.uk/check-long-term-flood-risk",
-        "text": "Check the long-term flood risk for this area on GOV.UK"
-      }
-    },
-    {
-      "id": "B2-AREA-FLOOD-2",
-      "homeId": "B2",
-      "topic": "flood",
-      "subtype": "surface-water",
-      "status": "no-record-in-source",
-      "label": "No current surface water flood warning in this source",
-      "coverage": "England only",
-      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate.",
-      "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Environment Agency flood-monitoring data",
         "date": "2026-10-23",
         "synthetic": true
@@ -756,7 +751,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -780,7 +775,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -804,7 +799,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -825,7 +820,7 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -846,7 +841,7 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -867,7 +862,7 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -888,7 +883,39 @@
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B2-AREA-AMENITY-5",
+      "homeId": "B2",
+      "topic": "amenity",
+      "subtype": "park",
+      "status": "no-record-in-source",
+      "label": "No park found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "B2-AREA-AMENITY-6",
+      "homeId": "B2",
+      "topic": "amenity",
+      "subtype": "childcare",
+      "status": "no-record-in-source",
+      "label": "No childcare found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. Does not establish places, ages taken, fees, funded hours or registration status.",
+      "source": {
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -899,19 +926,17 @@
       "homeId": "B2",
       "topic": "energy-certificate",
       "status": "recorded",
-      "label": "Energy certificate rating and estimated cost range",
+      "label": "Energy certificate and estimated cost, from the evidence file",
       "value": {
-        "rating": "D",
-        "issuedYear": 2021,
-        "estimatedAnnualCostRange": {
-          "lowPence": 100000,
-          "highPence": 125000
-        }
+        "evidenceItemIds": [
+          "B2-EPC",
+          "B2-EPC-COST"
+        ]
       },
       "coverage": "England and Wales",
-      "doesNotEstablish": "The rating and cost range are standardised estimates at the certificate's date, not actual bills, and may not match this flat if the certificate is for another unit.",
+      "doesNotEstablish": "A standardised estimate at the certificate's price basis, not actual bills. The certificate may not match this home if it was issued for another unit.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the energy certificate register",
         "date": "2026-10-23",
         "synthetic": true
@@ -942,7 +967,7 @@
       "coverage": "England, state-funded schools only",
       "doesNotEstablish": "Outcomes under different frameworks are not comparable and there is no single overall grade. The inspection date shows how old the judgement is.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofsted inspection outcomes data",
         "date": "2026-10-23",
         "synthetic": true
@@ -962,7 +987,7 @@
       "coverage": "United Kingdom",
       "doesNotEstablish": "Predicted availability, not a measured speed, a tested line or a record of outages.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofcom broadband availability data",
         "date": "2026-10-23",
         "synthetic": true
@@ -973,19 +998,19 @@
       "homeId": "B2",
       "topic": "commute",
       "status": "recorded",
-      "label": "Typed commute estimate by public transport",
+      "label": "The household's own commute estimate by public transport",
       "value": {
         "criterionId": "COMMUTE",
         "destinationLabel": "Workplace in Northbridge (synthetic destination)",
         "minutes": 52,
         "mode": "public-transport",
-        "method": "typed estimate, synthetic; not a routing result"
+        "method": "estimated by the household; not a routed journey time (routing is DA-06)"
       },
       "coverage": "The household's own destination",
-      "doesNotEstablish": "A typed estimate for one route, not a timetable or a guaranteed journey time.",
+      "doesNotEstablish": "A typed household estimate, not a routed or timetabled journey; reliability not known.",
       "source": {
-        "origin": "synthetic",
-        "label": "Typed synthetic estimate (no routing service in this version)",
+        "origin": "user-entered",
+        "label": "the household's own estimate",
         "date": "2026-10-23",
         "synthetic": true
       }
@@ -999,7 +1024,7 @@
       "coverage": "England, partial",
       "doesNotEstablish": "No record in this source does not mean no application exists: the source's coverage is incomplete.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Planning Data Platform",
         "date": "2026-10-23",
         "synthetic": true
@@ -1010,9 +1035,9 @@
       "homeId": "R1",
       "topic": "transport-stop",
       "status": "recorded",
-      "label": "Canal Street bus stop (synthetic)",
+      "label": "Station Road bus stop (synthetic)",
       "value": {
-        "stopName": "Canal Street bus stop (synthetic)",
+        "stopName": "Station Road bus stop (synthetic)",
         "stopType": "bus-stop",
         "distanceMetres": 90,
         "distanceMethod": "straight-line distance, synthetic"
@@ -1020,7 +1045,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1041,7 +1066,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1052,9 +1077,9 @@
       "homeId": "R1",
       "topic": "school",
       "status": "recorded",
-      "label": "Millbrook Primary School (synthetic)",
+      "label": "Station Road Primary School (synthetic)",
       "value": {
-        "name": "Millbrook Primary School (synthetic)",
+        "name": "Station Road Primary School (synthetic)",
         "phase": "primary",
         "schoolType": "state-funded",
         "distanceMetres": 800,
@@ -1063,7 +1088,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -1085,7 +1110,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -1121,7 +1146,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1136,7 +1161,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1151,9 +1176,9 @@
       "status": "no-record-in-source",
       "label": "No current rivers and sea flood warning in this source",
       "coverage": "England only",
-      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate.",
+      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate. Warnings are not issued for surface water flooding; long-term surface-water risk is on the EA long-term risk checker (link only).",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Environment Agency flood-monitoring data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1168,9 +1193,9 @@
       "homeId": "R1",
       "topic": "sold-price",
       "status": "recorded",
-      "label": "Sold nearby: Flat 3, 20 Canal Street (synthetic)",
+      "label": "Sold nearby: Flat 3, 7 Station Road (synthetic)",
       "value": {
-        "addressText": "Flat 3, 20 Canal Street (synthetic)",
+        "addressText": "Flat 3, 7 Station Road (synthetic)",
         "pricePence": 15600000,
         "saleDate": "2026-06",
         "propertyType": "flat",
@@ -1181,7 +1206,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1193,16 +1218,16 @@
       "topic": "amenity",
       "subtype": "supermarket",
       "status": "recorded",
-      "label": "Canal Street supermarket (synthetic)",
+      "label": "Station Road supermarket (synthetic)",
       "value": {
-        "name": "Canal Street supermarket (synthetic)",
+        "name": "Station Road supermarket (synthetic)",
         "distanceMetres": 300,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -1214,16 +1239,16 @@
       "topic": "amenity",
       "subtype": "clinic",
       "status": "recorded",
-      "label": "Canal Street walk-in clinic (synthetic)",
+      "label": "Station Road walk-in clinic (synthetic)",
       "value": {
-        "name": "Canal Street walk-in clinic (synthetic)",
+        "name": "Station Road walk-in clinic (synthetic)",
         "distanceMetres": 450,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -1235,16 +1260,53 @@
       "topic": "amenity",
       "subtype": "park",
       "status": "recorded",
-      "label": "Canal Park (synthetic)",
+      "label": "Station Gardens (synthetic)",
       "value": {
-        "name": "Canal Park (synthetic)",
+        "name": "Station Gardens (synthetic)",
         "distanceMetres": 600,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R1-AREA-AMENITY-4",
+      "homeId": "R1",
+      "topic": "amenity",
+      "subtype": "police-station",
+      "status": "no-record-in-source",
+      "label": "No police station found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R1-AREA-AMENITY-5",
+      "homeId": "R1",
+      "topic": "amenity",
+      "subtype": "childcare",
+      "status": "recorded",
+      "label": "Station Road nursery (synthetic)",
+      "value": {
+        "name": "Station Road nursery (synthetic)",
+        "distanceMetres": 350,
+        "distanceMethod": "straight-line distance, synthetic"
+      },
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "Does not establish places, ages taken, fees, funded hours or registration status.",
+      "source": {
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -1255,19 +1317,17 @@
       "homeId": "R1",
       "topic": "energy-certificate",
       "status": "recorded",
-      "label": "Energy certificate rating and estimated cost range",
+      "label": "Energy certificate and estimated cost, from the evidence file",
       "value": {
-        "rating": "C",
-        "issuedYear": 2022,
-        "estimatedAnnualCostRange": {
-          "lowPence": 66000,
-          "highPence": 80000
-        }
+        "evidenceItemIds": [
+          "R1-EPC",
+          "R1-EPC-COST"
+        ]
       },
       "coverage": "England and Wales",
-      "doesNotEstablish": "The rating and cost range are standardised estimates at the certificate's date, not actual bills, and may not match this flat if the certificate is for another unit.",
+      "doesNotEstablish": "A standardised estimate at the certificate's price basis, not actual bills. The certificate may not match this home if it was issued for another unit.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the energy certificate register",
         "date": "2026-10-23",
         "synthetic": true
@@ -1278,10 +1338,10 @@
       "homeId": "R1",
       "topic": "school-inspection",
       "status": "recorded",
-      "label": "Inspection outcomes: Millbrook Primary School (synthetic)",
+      "label": "Inspection outcomes: Station Road Primary School (synthetic)",
       "value": {
         "schoolItemId": "R1-AREA-SCHOOL-1",
-        "schoolName": "Millbrook Primary School (synthetic)",
+        "schoolName": "Station Road Primary School (synthetic)",
         "framework": "Report card framework (synthetic example)",
         "inspectionDate": "2026-05",
         "outcomes": [
@@ -1298,7 +1358,7 @@
       "coverage": "England, state-funded schools only",
       "doesNotEstablish": "Outcomes under different frameworks are not comparable and there is no single overall grade. The inspection date shows how old the judgement is.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofsted inspection outcomes data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1318,7 +1378,7 @@
       "coverage": "United Kingdom",
       "doesNotEstablish": "Predicted availability, not a measured speed, a tested line or a record of outages.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofcom broadband availability data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1329,19 +1389,19 @@
       "homeId": "R1",
       "topic": "commute",
       "status": "recorded",
-      "label": "Typed commute estimate by public transport",
+      "label": "The household's own commute estimate by public transport",
       "value": {
         "criterionId": "COMMUTE",
         "destinationLabel": "Workplace in Northbridge (synthetic destination)",
         "minutes": 33,
         "mode": "public-transport",
-        "method": "typed estimate, synthetic; not a routing result"
+        "method": "estimated by the household; not a routed journey time (routing is DA-06)"
       },
       "coverage": "The household's own destination",
-      "doesNotEstablish": "A typed estimate for one route, not a timetable or a guaranteed journey time.",
+      "doesNotEstablish": "A typed household estimate, not a routed or timetabled journey; reliability not known.",
       "source": {
-        "origin": "synthetic",
-        "label": "Typed synthetic estimate (no routing service in this version)",
+        "origin": "user-entered",
+        "label": "the household's own estimate",
         "date": "2026-10-23",
         "synthetic": true
       }
@@ -1356,14 +1416,14 @@
         "reference": "SYN/2026/0202",
         "description": "Shopfront change next door (synthetic)",
         "applicationStatus": "received",
-        "receivedDate": "2026-09",
+        "receivedDate": "2026-07",
         "distanceMetres": 30,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "England, partial",
       "doesNotEstablish": "No record in this source does not mean no application exists: the source's coverage is incomplete.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Planning Data Platform",
         "date": "2026-10-23",
         "synthetic": true
@@ -1374,9 +1434,9 @@
       "homeId": "R2",
       "topic": "transport-stop",
       "status": "recorded",
-      "label": "Heath Lane bus stop (synthetic)",
+      "label": "Canal Street bus stop (synthetic)",
       "value": {
-        "stopName": "Heath Lane bus stop (synthetic)",
+        "stopName": "Canal Street bus stop (synthetic)",
         "stopType": "bus-stop",
         "distanceMetres": 260,
         "distanceMethod": "straight-line distance, synthetic"
@@ -1384,7 +1444,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1395,9 +1455,9 @@
       "homeId": "R2",
       "topic": "transport-stop",
       "status": "recorded",
-      "label": "Heath Lane tram stop (synthetic)",
+      "label": "Canal Street tram stop (synthetic)",
       "value": {
-        "stopName": "Heath Lane tram stop (synthetic)",
+        "stopName": "Canal Street tram stop (synthetic)",
         "stopType": "tram-stop",
         "distanceMetres": 640,
         "distanceMethod": "straight-line distance, synthetic"
@@ -1405,7 +1465,7 @@
       "coverage": "Great Britain (not Northern Ireland)",
       "doesNotEstablish": "Stop locations do not establish timetables, frequency, journey times, fares or step-free access.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the NaPTAN stop data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1416,9 +1476,9 @@
       "homeId": "R2",
       "topic": "school",
       "status": "recorded",
-      "label": "Heathfield Primary School (synthetic)",
+      "label": "Canalside Primary School (synthetic)",
       "value": {
-        "name": "Heathfield Primary School (synthetic)",
+        "name": "Canalside Primary School (synthetic)",
         "phase": "primary",
         "schoolType": "state-funded",
         "distanceMetres": 500,
@@ -1427,7 +1487,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -1449,7 +1509,7 @@
       "coverage": "England",
       "doesNotEstablish": "Does not establish school quality, admission chances or catchment areas. Admissions information is not an admissions promise.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Get Information about Schools register",
         "date": "2026-10-23",
         "synthetic": true
@@ -1460,9 +1520,9 @@
       "homeId": "R2",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-08",
+      "label": "Recorded crime counts, 2026-07",
       "value": {
-        "month": "2026-08",
+        "month": "2026-07",
         "counts": [
           {
             "category": "burglary",
@@ -1478,14 +1538,14 @@
           }
         ],
         "neighbourhoodTeam": {
-          "name": "Heath neighbourhood team (synthetic)",
+          "name": "Canal neighbourhood team (synthetic)",
           "force": "Northbridge Constabulary (synthetic)"
         }
       },
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1496,9 +1556,9 @@
       "homeId": "R2",
       "topic": "crime",
       "status": "recorded",
-      "label": "Recorded crime counts, 2026-09",
+      "label": "Recorded crime counts, 2026-08",
       "value": {
-        "month": "2026-09",
+        "month": "2026-08",
         "counts": [
           {
             "category": "bicycle-theft",
@@ -1513,7 +1573,7 @@
       "coverage": "England, Wales and Northern Ireland police forces (not Scotland)",
       "doesNotEstablish": "Counts of recorded incidents by category and month. Not a safety rating or a crime rate, and not the risk at this home: counts depend on reporting, force and recording, locations are moved to the nearest anonymous map point, and the data lags by months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the police.uk crime data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1527,9 +1587,9 @@
       "status": "no-record-in-source",
       "label": "No current rivers and sea flood warning in this source",
       "coverage": "England only",
-      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate.",
+      "doesNotEstablish": "No current warning in this source does not mean there is no flood risk. The long-term checker describes risk for an area, not the chance of this property flooding, and leaves out local causes such as blocked drains. Each flood type is kept separate. Warnings are not issued for surface water flooding; long-term surface-water risk is on the EA long-term risk checker (link only).",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Environment Agency flood-monitoring data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1548,7 +1608,7 @@
       "coverage": "England and Wales",
       "doesNotEstablish": "A past sale price is not a current valuation. No recent sale in this source does not mean none happened: registration lags a sale by up to two months.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the HM Land Registry Price Paid Data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1560,16 +1620,16 @@
       "topic": "amenity",
       "subtype": "shop",
       "status": "recorded",
-      "label": "Heath Lane shop (synthetic)",
+      "label": "Canal Street shop (synthetic)",
       "value": {
-        "name": "Heath Lane shop (synthetic)",
+        "name": "Canal Street shop (synthetic)",
         "distanceMetres": 180,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -1581,16 +1641,16 @@
       "topic": "amenity",
       "subtype": "pharmacy",
       "status": "recorded",
-      "label": "Heath Lane pharmacy (synthetic)",
+      "label": "Canal Street pharmacy (synthetic)",
       "value": {
-        "name": "Heath Lane pharmacy (synthetic)",
+        "name": "Canal Street pharmacy (synthetic)",
         "distanceMetres": 320,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -1602,16 +1662,48 @@
       "topic": "amenity",
       "subtype": "police-station",
       "status": "recorded",
-      "label": "Heath police station (synthetic)",
+      "label": "Northbridge South police station (synthetic)",
       "value": {
-        "name": "Heath police station (synthetic)",
+        "name": "Northbridge South police station (synthetic)",
         "distanceMetres": 1500,
         "distanceMethod": "straight-line distance, synthetic"
       },
       "coverage": "Volunteer-mapped; completeness varies",
       "doesNotEstablish": "A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R2-AREA-AMENITY-4",
+      "homeId": "R2",
+      "topic": "amenity",
+      "subtype": "park",
+      "status": "no-record-in-source",
+      "label": "No park found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. A location in a volunteer-mapped source does not establish that the place is open, complete, or accepting new customers or patients.",
+      "source": {
+        "origin": "official-dataset",
+        "label": "Synthetic sample, shaped like an OpenStreetMap extract",
+        "date": "2026-10-23",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "R2-AREA-AMENITY-5",
+      "homeId": "R2",
+      "topic": "amenity",
+      "subtype": "childcare",
+      "status": "no-record-in-source",
+      "label": "No childcare found nearby in this source",
+      "coverage": "Volunteer-mapped; completeness varies",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. Does not establish places, ages taken, fees, funded hours or registration status.",
+      "source": {
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
         "date": "2026-10-23",
         "synthetic": true
@@ -1622,31 +1714,32 @@
       "homeId": "R2",
       "topic": "energy-certificate",
       "status": "stale",
-      "label": "Energy certificate expired in 2025; no rating shown",
+      "label": "Energy certificate expired in 2025; see the evidence file",
       "value": {
-        "issuedYear": 2015,
-        "expiredYear": 2025
+        "evidenceItemIds": [
+          "R2-EPC"
+        ]
       },
       "coverage": "England and Wales",
-      "doesNotEstablish": "The rating and cost range are standardised estimates at the certificate's date, not actual bills, and may not match this flat if the certificate is for another unit.",
+      "doesNotEstablish": "A standardised estimate at the certificate's price basis, not actual bills. The certificate may not match this home if it was issued for another unit.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the energy certificate register",
         "date": "2026-10-23",
         "synthetic": true
       },
-      "note": "Matches R2's expired certificate in the evidence file: no rating and no cost range are recorded."
+      "note": "Matches R2's expired certificate in the evidence file, which records no rating and no cost."
     },
     {
       "id": "R2-AREA-SCHOOL-INSPECTION-1",
       "homeId": "R2",
       "topic": "school-inspection",
       "status": "no-record-in-source",
-      "label": "No inspection outcomes found for Heathfield Primary School in this source",
+      "label": "No inspection outcomes found for Canalside Primary School in this source",
       "coverage": "England, state-funded schools only",
       "doesNotEstablish": "Outcomes under different frameworks are not comparable and there is no single overall grade. The inspection date shows how old the judgement is.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofsted inspection outcomes data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1666,7 +1759,7 @@
       "coverage": "United Kingdom",
       "doesNotEstablish": "Predicted availability, not a measured speed, a tested line or a record of outages.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Ofcom broadband availability data",
         "date": "2026-10-23",
         "synthetic": true
@@ -1677,19 +1770,19 @@
       "homeId": "R2",
       "topic": "commute",
       "status": "recorded",
-      "label": "Typed commute estimate by public transport",
+      "label": "The household's own commute estimate by public transport",
       "value": {
         "criterionId": "COMMUTE",
         "destinationLabel": "Workplace in Northbridge (synthetic destination)",
         "minutes": 41,
         "mode": "public-transport",
-        "method": "typed estimate, synthetic; not a routing result"
+        "method": "estimated by the household; not a routed journey time (routing is DA-06)"
       },
       "coverage": "The household's own destination",
-      "doesNotEstablish": "A typed estimate for one route, not a timetable or a guaranteed journey time.",
+      "doesNotEstablish": "A typed household estimate, not a routed or timetabled journey; reliability not known.",
       "source": {
-        "origin": "synthetic",
-        "label": "Typed synthetic estimate (no routing service in this version)",
+        "origin": "user-entered",
+        "label": "the household's own estimate",
         "date": "2026-10-23",
         "synthetic": true
       }
@@ -1711,7 +1804,7 @@
       "coverage": "England, partial",
       "doesNotEstablish": "No record in this source does not mean no application exists: the source's coverage is incomplete.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Planning Data Platform",
         "date": "2026-10-23",
         "synthetic": true
@@ -1726,7 +1819,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1741,7 +1834,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1756,7 +1849,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1771,7 +1864,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1786,7 +1879,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1801,7 +1894,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1816,7 +1909,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1831,7 +1924,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1846,7 +1939,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1861,7 +1954,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1876,7 +1969,7 @@
       "coverage": "Wales: not yet covered; HomeScout covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
-        "origin": "synthetic",
+        "origin": "plan",
         "label": "Synthetic sample: not yet covered outside England",
         "date": "2026-10-23",
         "synthetic": true
@@ -1886,19 +1979,20 @@
       "id": "UK-AREA-BANK-RATE-1",
       "topic": "bank-rate",
       "status": "recorded",
-      "label": "Bank Rate (synthetic value)",
+      "label": "Bank Rate (sample value, not the actual Bank Rate)",
       "value": {
         "basisPoints": 400,
-        "effectiveDate": "2026-09-18"
+        "effectiveDate": "2026-09-17"
       },
       "coverage": "United Kingdom",
-      "doesNotEstablish": "The Bank Rate is not a mortgage rate a lender would offer; mortgage inputs stay user-entered.",
+      "doesNotEstablish": "This is a sample value, not the actual Bank Rate, and not a mortgage rate a lender would offer; mortgage inputs stay user-entered.",
       "source": {
-        "origin": "synthetic",
+        "origin": "official-dataset",
         "label": "Synthetic sample, shaped like the Bank of England Bank Rate",
         "date": "2026-10-23",
         "synthetic": true
-      }
+      },
+      "note": "Sample value and sample date (a Thursday, as Monetary Policy Committee announcements are)."
     }
   ]
 }

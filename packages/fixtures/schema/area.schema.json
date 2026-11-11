@@ -76,9 +76,8 @@
             "gp-surgery",
             "clinic",
             "dentist",
+            "childcare",
             "rivers-and-sea",
-            "surface-water",
-            "reservoirs",
             "groundwater"
           ]
         },
@@ -453,7 +452,8 @@
                   "hospital",
                   "gp-surgery",
                   "clinic",
-                  "dentist"
+                  "dentist",
+                  "childcare"
                 ]
               }
             },
@@ -476,7 +476,7 @@
           }
         },
         {
-          "description": "Flood types are kept separate (doc 02 section 7); the type is required unless the whole topic is not covered or its source failed.",
+          "description": "Flood subtypes are those the Environment Agency issues warnings for (the long-term surface-water risk is a link only, no warning exists); the type is required unless the whole topic is not covered or its source failed.",
           "if": {
             "properties": {
               "topic": {
@@ -492,8 +492,6 @@
               "subtype": {
                 "enum": [
                   "rivers-and-sea",
-                  "surface-water",
-                  "reservoirs",
                   "groundwater"
                 ]
               }
@@ -630,6 +628,7 @@
         "counts": {
           "type": "array",
           "minItems": 1,
+          "uniqueItems": true,
           "items": {
             "type": "object",
             "required": [
@@ -735,7 +734,8 @@
             "detached",
             "semi-detached",
             "terraced",
-            "flat"
+            "flat",
+            "other"
           ]
         },
         "tenure": {
@@ -785,46 +785,19 @@
     },
     "energyCertificateValue": {
       "type": "object",
-      "description": "Rating plus a cost range, as the certificate states it.",
+      "description": "A pointer to the home's energy certificate evidence. No rating, year or cost range is stored here.",
       "required": [
-        "issuedYear"
+        "evidenceItemIds"
       ],
       "properties": {
-        "rating": {
-          "enum": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G"
-          ]
-        },
-        "issuedYear": {
-          "type": "integer",
-          "minimum": 1900
-        },
-        "expiredYear": {
-          "type": "integer",
-          "minimum": 1900
-        },
-        "estimatedAnnualCostRange": {
-          "type": "object",
-          "description": "Standardised estimate per year, in whole pence. Never actual bills; context only, never in a total.",
-          "required": [
-            "lowPence",
-            "highPence"
-          ],
-          "properties": {
-            "lowPence": {
-              "$ref": "common.schema.json#/$defs/pence"
-            },
-            "highPence": {
-              "$ref": "common.schema.json#/$defs/pence"
-            }
+        "evidenceItemIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
           },
-          "additionalProperties": false
+          "description": "Ids of the certificate and cost items in evidence.json. Inputs are recorded once (rule 2): the rating, year and cost live there, never copied here."
         }
       },
       "additionalProperties": false
