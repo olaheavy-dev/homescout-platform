@@ -41,11 +41,20 @@ internal static class PenceArbitraries
     }
 }
 
-/// <summary>A property run with the generators above.</summary>
+/// <summary>A property run with the generators above, seeded by <see cref="FsCheckReplay"/>.</summary>
 [AttributeUsage(AttributeTargets.Method)]
 internal sealed class PenceProperty : FsCheck.NUnit.PropertyAttribute
 {
-    public PenceProperty() => Arbitrary = [typeof(PenceArbitraries)];
+    public PenceProperty()
+    {
+        Arbitrary = [typeof(PenceArbitraries)];
+
+        string? replay = FsCheckReplay.FromEnvironment();
+        if (replay is not null)
+        {
+            Replay = replay;
+        }
+    }
 }
 
 /// <summary>

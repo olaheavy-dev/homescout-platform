@@ -11,7 +11,7 @@ Stryker.NET changes the cost engine's code in small ways (a `<` becomes `<=`, a 
 | Settings | `stryker-config.json`: project `HomeScout.CostEngine`, test project `HomeScout.CostEngine.Tests` only, `test-runner: mtp`, Release, thresholds high 97, low 93, **break 92** |
 | Reports | `.artifacts/mutation/reports/mutation-report.html` and `.json` (not committed) |
 | Runner | The `mtp` (Microsoft.Testing.Platform) runner worked first time with NUnit 5 and coverlet.MTP; no test-framework change. Stryker's documentation calls the `mtp` runner a preview. |
-| Tests that take part | Only `HomeScout.CostEngine.Tests`. (An earlier version of the config named the whole solution, which also pulled in the generator tests.) |
+| Tests that take part | Only `HomeScout.CostEngine.Tests`. (An earlier version of the config named the whole solution, which also pulled in the generator tests.) See the update of 11 Nov 2026: in practice the generator tests also ran, because the `mtp` runner did not honour `test-projects` (#111). |
 | Time | Under a minute, so it stays out of `make check` and CI. `make mutate` is a manual step: run it when the cost engine or its tests change. |
 
 ## Scores
@@ -68,3 +68,32 @@ Timeout, detected: `HomeCostBuilder.cs:78` (`index = last + 1` becomes `last - 1
 ## Reading the result
 
 Every remaining survivor is wording only, unreachable defensive code, an equivalent mutant, or run-to-run variation of the runner. Two follow-ups would be sensible but are not part of this task: look into the run-to-run variation (for example by comparing the `vstest` runner), and re-run `make mutate` when the cost engine changes.
+
+## Update, 11 Nov 2026 (#107)
+
+The "run-to-run variation" above had a cause, found in issue #107. This section corrects the record; the text above is left as it was written.
+
+**Cause.** `GeneratedFixture.cs` (generator tests) kept the generator output in a static `Lazy<string>`. Stryker's `mtp` runner reuses one test process for many mutants, so the first generator test to run built the output under whichever mutant was active, and every later generator test reused that copy. That killed mutants that cannot change behaviour (false kills) and let some real ones survive, depending on test order. The generator tests (48 of them) do take part in a run: the `mtp` runner did not honour `test-projects` in `stryker-config.json` (noticed issue #111), so the "only `HomeScout.CostEngine.Tests`" statement in the table above was not true. The scores above therefore included false kills.
+
+**Fix.** `GeneratedFixture.Json` keeps no copy, and `make mutate` fixes the FsCheck seed (`HOMESCOUT_FSCHECK_REPLAY`; `make test` and CI stay random).
+
+**New stable score: 92.70 %** on every run (381 detected of 411 scored: 378 Killed, 3 Timeout, 27 Survived, 3 No coverage; 52 compile errors and 56 ignored are not scored). This is the baseline for #59 and #60. `break` stays 92: 379 of 411 (92.21 %) passes and 378 of 411 (91.97 %) fails, so the margin is two mutants.
+
+Every survivor and no-coverage mutant (30), line numbers from the 11 Nov 2026 report:
+
+| Group | Mutants | Why |
+|---|---|---|
+| Equivalent (11) | `HomeCostBuilder.cs:121` | `previous` and `previousInputs` are always null or non-null together. |
+| | `HomeCostBuilder.cs:190` (two mutants) | A calculated monthly line always has one `AmountLine` source, so the two null checks are always true. When `monthly` is false (upfront), `oldSource` and `newSource` are always null, because `previousInputs` and `currentInputs` hold monthly lines only, so both `monthly \|\| ... is not null` conditions stay false. |
+| | `HomeCostBuilder.cs:212`, `:213` | A monthly difference exists only for a line with exactly one amount line on each side, so `Single` equals `SingleOrDefault`. |
+| | `AssumptionSelector.cs:227`, `:228` | The ordinary path gives the same `AmountLine` (same amount, `Period.Once`, same single evidence id); the anchor check has already rejected a missing, ambiguous or wrong-kind deposit. |
+| | `Pence.cs:73` (two mutants) | `<= 0` differs only for a zero numerator, whose result is 0p either way; `Sign / Sign` equals `Sign * Sign` for non-zero signs and the denominator is never zero there. |
+| | `Pence.cs:82` | The explicit `BigInteger` to `long` conversion throws `OverflowException` with or without `checked`; `RoundRatio_resultTooBigForALong_throwsOverflow` and `RoundRatio_resultTooSmallForALong_throwsOverflow` still pass. |
+| | `Mortgage.cs:61` | `termYears` is limited to 1 to 100 first, so `termYears * 12` cannot overflow. |
+| Removed statement, same exception type (2) | `AssumptionSelector.cs:40`, `Pence.cs:69` | The removed `throw` is replaced by the same exception type thrown by the framework (for `Pence.cs:69`, `BigInteger.DivRem` throws `DivideByZeroException`). |
+| Message or wording strings (16, 3 of them with no coverage) | `AssumptionSelector.cs:151`, `:162`, `:306`, `:307`, `:308`; `CostCategories.cs:26`, `:38`; `CostLines.cs:18`, `:26`, `:43`, `:88`; `Error.cs:37`; `Pence.cs:69`; `Result.cs:21`, `:74`, `:78` | Accepted: tests match error codes and exception types, not wording (see above). No coverage: `AssumptionSelector.cs:151`, `:162`, `:308`. |
+| Equivalent, was falsely killed (1) | `SelectedInputs.cs:30` (`"-"` to `""`) | The mode is already part of the scenario signature and `Mortgage` is null exactly when the mode is rent. |
+
+**Residual variation.** In 5 later runs one mutant, `Result.cs:74` (the message string, which no test executes), was reported Killed in 2 runs by `FailureOfT_withError_hidesValueAndExposesError`, a plain unit test that cannot fail on a message change. That moves the score from 92.70 % to 92.94 % (382/411). It is not caused by FsCheck (it is not a property test) and its cause is not known; it looks like a runner glitch. Compare scores to the nearest 0.3 points until it is understood.
+
+One real gap was found and fixed: `HomeCostBuilder.cs:175` (`&&` to `||` in the "unchanged" test) is now killed every run by two example tests (a line going from not applicable to Missing, and back).

@@ -229,6 +229,44 @@ internal sealed class HomeCostBuilderTests
         Assert.That(Build(facts, _fourSteps).Scenarios[1].Changes.Single().Kind, Is.EqualTo(ChangeKind.NoLongerApplies));
     }
 
+    // A line that is left out (not applicable) has no result at all, and a line with no information has a result with
+    // status Missing, no amount and no evidence. Neither has an amount, and neither has evidence ids, so only the status
+    // says they differ. ChangeKind (HomeCosts.cs) says what each move is: a line that was left out and is now unknown has
+    // had its status change with no figure moving (EvidenceChanged); a line that was unknown and is now left out "became
+    // not applicable" (NoLongerApplies). Both must be reported, or the change from "does not apply" to "unknown" would
+    // be hidden (AGENTS.md rule 7).
+
+    [Test]
+    public void Build_notApplicableThenMissing_isReportedAsEvidenceChanged()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("M-OLD", "maintenance", EvidenceStatus.NotApplicable),
+            TestFacts.NoValue("M-NEW", "maintenance", EvidenceStatus.Missing) with { UsedFromStep = 4, Supersedes = "M-OLD" },
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Category, Is.EqualTo(CostCategory.Maintenance));
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.EvidenceChanged));
+        Assert.That(change.MonthlyDifference, Is.Null);
+    }
+
+    [Test]
+    public void Build_missingThenNotApplicable_isReportedAsNoLongerApplies()
+    {
+        HomeFacts facts = TestFacts.Buying(
+        [
+            TestFacts.NoValue("M-OLD", "maintenance", EvidenceStatus.Missing),
+            TestFacts.NoValue("M-NEW", "maintenance", EvidenceStatus.NotApplicable) with { UsedFromStep = 4, Supersedes = "M-OLD" },
+        ]);
+
+        CostChange change = Build(facts, _fourSteps).Scenarios[1].Changes.Single();
+
+        Assert.That(change.Category, Is.EqualTo(CostCategory.Maintenance));
+        Assert.That(change.Kind, Is.EqualTo(ChangeKind.NoLongerApplies));
+    }
+
     [Test]
     public void Build_amountThatChanges_isReportedAsValueChanged()
     {

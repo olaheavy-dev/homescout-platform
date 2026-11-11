@@ -3,27 +3,33 @@ using System.Text.Json.Nodes;
 namespace HomeScout.CostEngine.Generator.Tests;
 
 /// <summary>
-/// Finds the repository's real fixtures and the independently worked cases, and runs the generator on them once.
+/// Finds the repository's real fixtures and the independently worked cases, and runs the generator on them each time `Json` is read.
 /// Tests take their inputs and expected values from the files and never from a copy (AGENTS.md rule 2).
 /// </summary>
 internal static class GeneratedFixture
 {
     private static readonly Lazy<string> _root = new(() => FindRoot(AppContext.BaseDirectory));
 
-    private static readonly Lazy<string> _json = new(() =>
-    {
-        Result<string> result = CostsGenerator.Generate(FixturesDirectory);
-        Assert.That(result.IsSuccess, Is.True, result.IsFailure ? result.Error.Code : string.Empty);
-        return result.Value;
-    });
-
     private static readonly Lazy<JsonNode> _cases = new(() =>
         JsonNode.Parse(File.ReadAllText(Path.Combine(FixturesDirectory, "test-cases", "story-calculations.json")))!["cases"]!);
 
     public static string FixturesDirectory => Path.Combine(_root.Value, "packages", "fixtures");
 
-    /// <summary>The text the generator produces from the real data.</summary>
-    public static string Json => _json.Value;
+    /// <summary>
+    /// The text the generator produces from the real data. It runs the generator on every call and keeps no copy: a copy
+    /// kept in a static field would be reused by every later test in the same test process, and under mutation testing
+    /// (<c>make mutate</c>) the process is shared by many mutants, so a copy made under one mutant would decide the result
+    /// for the others (issue #107).
+    /// </summary>
+    public static string Json
+    {
+        get
+        {
+            Result<string> result = CostsGenerator.Generate(FixturesDirectory);
+            Assert.That(result.IsSuccess, Is.True, result.IsFailure ? result.Error.Code : string.Empty);
+            return result.Value;
+        }
+    }
 
     public static JsonNode Output => JsonNode.Parse(Json)!;
 

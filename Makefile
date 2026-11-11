@@ -73,8 +73,12 @@ generated-check: generate
 # Mutation testing (stage 2 plan, task 5): Stryker.NET changes the cost engine's code in small ways and checks that the tests fail.
 # Slow (under a minute), so it is not part of `check` or CI. Settings are in stryker-config.json; reports go to
 # $(ARTIFACTS)/mutation/reports/ (HTML and JSON). Fails if the score drops below the break threshold in that file.
+# The FsCheck property tests start from a fixed seed here (format seed,gamma; read by EngineProperty), so the score is the
+# same on every run of the same code. `make test` and CI keep random seeds. Change the seed only on purpose.
+MUTATION_REPLAY := 123456789,987654321
+
 mutate: restore
-	dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
+	HOMESCOUT_FSCHECK_REPLAY=$(MUTATION_REPLAY) dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
 
 clean:
 	rm -rf $(ARTIFACTS)
