@@ -12,10 +12,11 @@ docs/
 ├── decisions/           one record per decision, plus the register
 ├── planning/            stage checklists and working plans
 ├── references/          links to official third-party documentation
-└── reviews/             dated document reviews and audits
+├── reviews/             dated document reviews and audits
+└── specs/               the prototype specification: executable Gherkin features (decision 0043)
 ```
 
-Planned folders, added when their stage starts: `.design/<feature>/` at the repository root for design-skill outputs (brief, information architecture, tasks, reviews), a deliberate exception to this structure (decision 0031), `docs/specs/` for the prototype specification (stage 3), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
+Planned folders, added when their stage starts: `.design/<feature>/` at the repository root for design-skill outputs (brief, information architecture, tasks, reviews), a deliberate exception to this structure (decision 0031), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
 
 ## What each document is for
 
@@ -31,6 +32,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
 | [Stage 2 plan](planning/stage-2-plan.md) | Approved sample data, data contract, tasks and gate | Stage 2 |
 | [.NET 11 and C# 15 plan](planning/dotnet-11-and-csharp-15-plan.md) | Which .NET 11 and C# 15 features HomeScout uses, where, and when (decision 0042) | Stage 2 onwards |
+| [Specifications](specs/README.md) | The prototype specification: rules, templates, and the executable screen, story and MCP features | Stage 3 onwards |
 | [Ordered backlog](planning/backlog.md) | Every issue from the stage 2 close-out to stage 6, in order, by milestone | All stages |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |

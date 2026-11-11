@@ -32,8 +32,10 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 | # | Issue | Item |
 |---|---|---|
 | 11 | #65 | Decision: specification format (SP-01) and work breakdown (SP-02) |
+| 11a | #121 | Run the Gherkin specs with Reqnroll; prove .NET 11, NUnit 5 and MTP support |
 | 12 | #66 | Design brief (grill-me, design-brief) |
 | 13 | #67 | Information architecture |
+| 13a | #120 | Synthetic area context fixtures (schools, transport, shops, flood, police…) for the Nearby screen |
 | 14 | #68 | Screen-by-screen specification |
 | 14a | #117 | MCP tool surface for AI assistants (decision 0037) |
 | 15 | #69 | Buyer story script |
@@ -63,8 +65,8 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 | 31 | #85 | Decision: visitor privacy (SE-02 part 1), demo analytics and feedback (FE-05) |
 | 32 | #86 | App shell, navigation, design system, fixture loading |
 | 32a | #96 | Home-to-home cost differences in the engine and `costs.json` (BE-27) |
-| 33 | #87 | Buyer story end to end |
-| 34 | #88 | Renter story end to end |
+| 33 | #87 | **Epic:** buyer story end to end (split into one ticket per story step at #71, SP-02) |
+| 34 | #88 | **Epic:** renter story end to end (split into one ticket per story step at #71, SP-02) |
 | 35 | #89 | Edge states, mobile, accessibility (WCAG 2.2 AA) |
 | 36 | #90 | Labelling, simulated-action audit, public launch; stage 5 gate |
 
@@ -90,7 +92,7 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 `noticed` issues are triaged at each stage gate (decision 0035). Status on 11 Nov 2026:
 - #33: scheduled in stage 6.
 - #115: folded into #70 (renter story script).
-- #37: being fixed in its own pull request.
+- #37: fixed by #119.
 - #111 (Stryker's `mtp` runner ignores `test-projects`): closed by the stage 2 audit tidy-up pull request.
 - #107 (repeatable mutation runs): done (pull request #112).
 - #34 and #114: recommended to close; the founder to confirm.

@@ -56,6 +56,8 @@ Listed so agents read the right documentation when these stages start. Versions 
 
 | Tool / package | Likely use | Decision | Documentation |
 |---|---|---|---|
+| Reqnroll (with its NUnit integration) | Runs the Gherkin specifications in `docs/specs/` as tests (#121); BSD-3-Clause; .NET 11, NUnit 5 and Microsoft.Testing.Platform support to be proven in #121 | 0043 | [Reqnroll documentation](https://docs.reqnroll.net/latest/), [compatibility](https://docs.reqnroll.net/latest/installation/compatibility.html) |
+| Microsoft.Playwright for .NET | Browser steps (`@ui`) of the specifications, from stage 5; Apache-2.0 | 0043, FE-04 | [Playwright for .NET](https://playwright.dev/dotnet/docs/intro) |
 | C# 15 | Language upgrade from C# 14 once CodeQL lists C# 15 and Stryker.NET handles it (issues #59, #60; BE-25) | 0042 | [What's new in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/overview), [What's new in C# 15](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-15), [breaking changes](https://learn.microsoft.com/en-us/dotnet/core/compatibility/11), [adoption plan](../planning/dotnet-11-and-csharp-15-plan.md) |
 | ASP.NET Core 11 minimal APIs | The API (stage 6) | BE-01, BE-02, 0042 | [Minimal APIs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis), [What's new in ASP.NET Core 11](https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-11) |
 | MCP C# SDK (`ModelContextProtocol`, `ModelContextProtocol.AspNetCore`) | MCP server (stage 6) | 0037, 0042 | [C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) |

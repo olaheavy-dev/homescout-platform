@@ -50,11 +50,11 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | WW-09 | Stage 2 engineering and security hardening | 2 | Accepted (partly superseded by 0035; the Python tool-only licence exceptions from 0039 and BE-22 are withdrawn by 0042) | [0027](0027-stage-2-engineering-hardening.md) |
 | WW-10 | Agent roster, design skills and working rules | 2 | Accepted (partly superseded by 0035) | [0031](0031-agent-roster.md) |
 | WW-11 | Review fallback when Codex is unavailable | 2 | Superseded by 0035 | [0033](0033-review-fallback.md) |
-| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted (partly superseded by 0042: point 9's pre-approved list gains the packages in 0042 (0039's Python additions are withdrawn); point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, kept by 0042) | [0035](0035-ways-of-working-v2.md) |
+| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted (partly superseded by 0042 and 0043: point 9's pre-approved list gains the packages in 0042 and, from 0043, Reqnroll and Microsoft.Playwright for .NET (0039's Python additions are withdrawn); point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, kept by 0042) | [0035](0035-ways-of-working-v2.md) |
 | DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location; 0036's language change superseded by 0042 before it took effect) | [0019](0019-cost-engine-in-csharp.md) |
-| SP-01 | Specification format | 3 | Not started | |
-| SP-02 | Work breakdown | 3 | Not started | |
+| SP-01 | Specification format | 3 | Accepted (founder, 11 Nov 2026: executable Gherkin scenarios with permanent IDs in `docs/specs/`, run with Reqnroll; browser scenarios with Microsoft.Playwright for .NET; both packages pre-approved) | [0043](0043-specification-format.md) |
+| SP-02 | Work breakdown | 3 | Accepted (register line: specifications become build tickets one story step at a time, each step working end to end across the screens it touches; default limit about 8 scenarios and about 400 hand-written lines per ticket (excluding generated files and fixtures), split if larger; the stage 5 story items #87 and #88 are epics split into step tickets at #71; founder, 11 Nov 2026) | — |
 | DS-01 | Design tooling | 4 | Not started (code-first indicated by 0031) | |
 | DS-02 | Design system foundation | 4 | Not started | |
 | FE-01 | Frontend framework and rendering | 4 | Proposed (TypeScript and Next.js accepted in 0020; routing and rendering at stage 4) | [0020](0020-application-languages.md) |
