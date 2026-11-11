@@ -77,9 +77,9 @@
             "clinic",
             "dentist",
             "childcare",
+            "place-of-worship",
             "rivers-and-sea",
-            "groundwater",
-            "place-of-worship"
+            "groundwater"
           ]
         },
         "status": {
@@ -547,7 +547,10 @@
                 "const": "place-of-worship"
               },
               "status": {
-                "const": "recorded"
+                "enum": [
+                  "recorded",
+                  "stale"
+                ]
               }
             },
             "required": [
@@ -847,10 +850,12 @@
             "sikh",
             "hindu",
             "buddhist",
+            "jain",
+            "multifaith",
             "other",
             "not-recorded"
           ],
-          "description": "Places of worship only, as tagged in the source. Every faith is shown alike, as the nearest places by distance; never counts, densities or an area's religious makeup."
+          "description": "Places of worship only, mapped from the source's religion tag (OpenStreetMap `religion=*`; 'multifaith' covers shared prayer rooms, 'other' any faith not listed, 'not-recorded' when the source has no tag). Every faith is shown alike, as the nearest places by distance; never counts, densities or an area's religious makeup (register PD-13)."
         }
       },
       "additionalProperties": false

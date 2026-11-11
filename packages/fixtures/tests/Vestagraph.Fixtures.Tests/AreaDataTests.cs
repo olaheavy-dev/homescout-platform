@@ -46,6 +46,8 @@ internal sealed class AreaDataTests
 
     private static readonly string[] _worshipValueFields = ["name", "distanceMetres", "distanceMethod", "religion"];
 
+    private const string _worshipLimit = "does not establish service times, which community it serves, or that the list of places is complete.";
+
     private static readonly string[] _gapStatuses = ["no-record-in-source", "stale", "source-failed", "not-covered"];
 
     private static IEnumerable<JsonObject> ForHome(string homeId) =>
@@ -345,7 +347,7 @@ internal sealed class AreaDataTests
     }
 
     // Places of worship are listed as the nearest places only, every faith alike: never counts,
-    // densities or an area's religious makeup (design brief, 11 Nov 2026).
+    // densities or an area's religious makeup (founder decision, 11 Nov 2026; register PD-13).
     [Test]
     public void Area_placesOfWorship_areSinglePlacesWithAReligionAndOneSharedLimit()
     {
@@ -353,12 +355,12 @@ internal sealed class AreaDataTests
             .Where(i => Text(i, "topic") == "amenity" && i["subtype"] is not null && Text(i, "subtype") == "place-of-worship").ToList();
 
         Assert.That(worship, Is.Not.Empty);
-        foreach (JsonObject item in worship.Where(i => Text(i, "status") == "recorded"))
+        foreach (JsonObject item in worship.Where(i => Text(i, "status") is "recorded" or "stale"))
         {
             Assert.That(item["value"]!.AsObject().Select(p => p.Key), Is.EquivalentTo(_worshipValueFields), Text(item, "id"));
         }
 
-        Assert.That(worship.Select(i => Text(i, "doesNotEstablish")).Distinct().Count(), Is.EqualTo(1));
+        Assert.That(worship.Select(i => Text(i, "doesNotEstablish")), Has.All.Contain(_worshipLimit));
     }
 
     [TestCase("B1")]

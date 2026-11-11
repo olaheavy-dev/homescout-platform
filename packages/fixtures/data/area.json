@@ -1849,7 +1849,7 @@
       "status": "no-record-in-source",
       "label": "No place of worship found nearby in this source",
       "coverage": "Volunteer-mapped; completeness varies",
-      "doesNotEstablish": "A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
+      "doesNotEstablish": "No matching record in this source does not mean none exists. A place in a volunteer-mapped source does not establish service times, which community it serves, or that the list of places is complete.",
       "source": {
         "origin": "official-dataset",
         "label": "Synthetic sample, shaped like an OpenStreetMap extract",
@@ -2038,7 +2038,7 @@
       "homeId": "WALES-1",
       "topic": "amenity",
       "status": "not-covered",
-      "label": "Shops, parks and healthcare locations: not yet covered for Wales",
+      "label": "Everyday places: not yet covered for Wales",
       "coverage": "Wales: not yet covered; Vestagraph covers England only in this version",
       "doesNotEstablish": "Nothing is established for this home: this topic is not yet covered outside England.",
       "source": {
