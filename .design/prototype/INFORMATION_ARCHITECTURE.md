@@ -14,7 +14,7 @@
 
 - **Public site at launch** (stage 5b, decision 0046)
   - Landing `/`: search first, with the area check as the main action (see Landing below).
-  - Check an area `/area#postcode=…`: postcode in, the Nearby topic summary out (without the commute row, which needs the household's own destination), with Summary and Map views, a download with sources, and "Save a home here" (needs an account). No account to use it. **The postcode goes in the URL fragment, never the query string**, so it never reaches server, application or hosting logs (0014). The first public page (decision 0046, accepted); in the prototype it runs on sample data.
+  - Check an area `/area#postcode=…`: postcode in, the Nearby topic summary out (without the commute row, which needs the household's own destination), with Summary and Map views, a download with sources, and "Save a home here" (needs an account). No account to use it. **The postcode goes in the URL fragment, never the query string**, so it never reaches server, application or hosting logs (0014); on live data the API call sends it in the request body (POST), never in a query string or URL path. The first public page (decision 0046, accepted); in the prototype it runs on sample data.
   - How it works `/how-it-works`
   - About the data `/about-the-data`: every source, its date, coverage, limits and attribution.
   - Privacy notice `/privacy` and accessibility statement `/accessibility`: live before launch (0014, 0046).

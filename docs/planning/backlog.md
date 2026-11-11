@@ -76,10 +76,10 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | # | Issue | Item |
 |---|---|---|
 | 31 | #85 | Decision: privacy parts 1 and 2 (SE-02, decision 0014), analytics and feedback (FE-05) |
-| 38 | #92 | Decision: API framework (BE-01), architecture and contract (BE-02), rules versioning (BE-03) |
+| 38 | #92 | Decision: API framework (BE-01), architecture and contract (BE-02); rules versioning (BE-03) stays at stage 6, before the cost engine expansion |
 | 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only) |
 | 38b | to open | Decision: public hosting, environments, secrets, domain and budget cap (IN-02, IN-04, IN-05; builds on #81) |
-| 39 | #93 | ASP.NET Core 11 API skeleton (OpenAPI 3.2, async validation, one cost endpoint) |
+| 39 | #93 | ASP.NET Core 11 API skeleton (OpenAPI 3.2, async validation, one area endpoint; the first cost endpoint waits for stage 6) |
 | 40 | #94 | Aspire app host and OpenTelemetry |
 | 41 | #95 | Generated TypeScript types from the OpenAPI document |
 | 44.1 | #126 | Foundation: data import pattern, source adapter, postcode-to-area lookup |

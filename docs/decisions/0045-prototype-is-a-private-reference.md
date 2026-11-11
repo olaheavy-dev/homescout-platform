@@ -49,5 +49,5 @@ The exception covers **design frames only**. The stage 5 clickable prototype sta
   - #85 (SE-02 part 1 and FE-05) moves to stage 6, before the first public release;
   - #81 (IN-01 to IN-03) plans private hosting;
   - a new component-gallery issue sits after the app shell (#86).
-- Decision 0044's domain and trade-mark tasks become less urgent, because nothing is public until stage 6. They're still needed before the first public release, now stage 5b (0046, 0009).
+- Decision 0044's domain and trade-mark tasks become less urgent than under the old plan. They're still needed before the first public release, now stage 5b (0046, 0009).
 - **Revisit if** the founder later wants a public portfolio demo. A new record would then restore SE-02 part 1, FE-05 and public hosting before publishing.

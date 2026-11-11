@@ -19,7 +19,7 @@ flowchart TB
 
     vestagraph["Vestagraph<br/>Home decision workspace.<br/>Today: synthetic sample data, a cost engine<br/>and its checks. No running app yet"]
 
-    data["Official and open England data<br/>PLANNED, stage 6. Sources not chosen<br/>(DA-04 to DA-06). Every value labelled<br/>Live, Cached, Fallback or Unavailable<br/>(decision 0029)"]
+    data["Official and open England data<br/>PLANNED: area data at stage 5b, per-home<br/>data at stage 6 (decision 0046). Sources not chosen<br/>(DA-04 to DA-06). Every value labelled<br/>Live, Cached, Fallback or Unavailable<br/>(decision 0029)"]
     models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 plans OpenAI and Anthropic<br/>behind Vestagraph's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
     portals["Listing portals and agent websites<br/>Never scraped or copied (decision 0028).<br/>The user supplies what they have"]
 
@@ -65,11 +65,11 @@ flowchart TB
     subgraph later["PLANNED: not built"]
         direction TB
         web["Web app, stage 5 (decision 0020)<br/>TypeScript, Next.js, React<br/>First: reads the fixture and generated files"]
-        api["API, stage 6<br/>ASP.NET Core 11 minimal APIs<br/>OpenAPI document; framework to confirm (BE-01)"]
+        api["API, stage 5b (decision 0046)<br/>ASP.NET Core 11 minimal APIs<br/>OpenAPI document; framework to confirm (BE-01)"]
         mcp["MCP server, stage 6<br/>MCP C# SDK, inside the API host<br/>Read-only cost tools (decision 0037)"]
         agents["Agents, stage 6 (decision 0023)<br/>Microsoft Agent Framework for .NET<br/>AG-UI endpoint on the API (decision 0023)"]
         copilot["Chat route in the web app, stage 6<br/>(decision 0042)<br/>CopilotKit runtime route (open-source path)<br/>Streams AG-UI to and from the API"]
-        aspire["Aspire app host and OpenTelemetry, stage 6<br/>Runs the pieces locally and shows traces<br/>(decision 0025)"]
+        aspire["Aspire app host and OpenTelemetry, stage 5b<br/>Runs the pieces locally and shows traces<br/>(decision 0025)"]
         db[("Database<br/>UNDECIDED (DA-03)<br/>Homes, questions, replies, decisions")]
     end
 
@@ -90,7 +90,7 @@ flowchart TB
 
     user -.->|"PLANNED: uses"| web
     web -.->|"PLANNED, stage 5: reads"| generated
-    web -.->|"PLANNED, stage 6: REST calls"| api
+    web -.->|"PLANNED, stage 5b: REST calls"| api
     web -.->|"PLANNED: chat"| copilot
     copilot -.->|"PLANNED: AG-UI"| agents
     api -.->|"PLANNED: uses"| engine
@@ -127,7 +127,7 @@ flowchart TB
 | Planned part | Stage | Notes |
 |---|---|---|
 | Web app (Next.js, React) | 5 | The clickable prototype. The recommended starting point is that it reads the fixture and generated files with no backend (IN-01, decided in stage 4). Language and framework: decision 0020. |
-| API (ASP.NET Core 11) | 6 | Serves costs and the questions workflow from the same engine. The framework choice is confirmed at stage 6 (BE-01); TypeScript types for the web app are generated from the API's OpenAPI document (decision 0042). |
+| API (ASP.NET Core 11) | 5b (area data), 6 (costs and questions) | Serves the public area check first (decision 0046), then costs and the questions workflow from the same engine. The framework choice is confirmed at stage 5b (BE-01, #92); TypeScript types for the web app are generated from the API's OpenAPI document (decision 0042). |
 | MCP server | 6 | Built with the official MCP C# SDK and hosted in the API, exposing read-only cost tools so other tools and agents can use the engine (decisions 0037, 0038, 0042). |
 | Agents and chat | 6 | Microsoft Agent Framework for .NET (decision 0023). The API streams agent replies over AG-UI; the web app talks to it through a CopilotKit runtime route, using the open-source path only (decision 0042). Agents quote only figures the engine supplied. |
 | Aspire and OpenTelemetry | 6 | Local app host and trace dashboard for the pieces above (decision 0025). |

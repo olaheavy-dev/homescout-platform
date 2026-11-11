@@ -88,7 +88,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live.
 - [ ] **P2 How it works** and **About the data:** every source with its date, coverage, limits and the attribution its licence requires (DA-05).
 - [ ] **P3 Privacy notice and accessibility statement** (SE-02 part 1, decision 0014), live before launch.
-- [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels.
+- [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels. The API call sends the postcode in the request body (POST), never in a query string or URL path, so it stays out of every log (0014).
 - Not now: pricing (PD-10 open), blog, business page (#151), one search page per postcode.
 
 ## Interactions & States
