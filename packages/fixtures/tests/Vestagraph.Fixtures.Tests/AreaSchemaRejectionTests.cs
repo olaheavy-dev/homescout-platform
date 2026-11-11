@@ -206,6 +206,33 @@ internal sealed class AreaSchemaRejectionTests
     }
 
     [Test]
+    public void Area_placeOfWorshipWithNoReligion_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-7");
+        item["value"]!.AsObject().Remove("religion");
+
+        Assert.That(Problems(item), Has.Some.Contain("religion"));
+    }
+
+    [Test]
+    public void Area_placeOfWorshipReligionOutsideTheList_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-7");
+        item["value"]!["religion"] = "unknown-faith";
+
+        Assert.That(Problems(item), Has.Some.Contain("/value/religion"));
+    }
+
+    [Test]
+    public void Area_religionOnAnAmenityThatIsNotAPlaceOfWorship_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-1");
+        item["value"]!["religion"] = "christian";
+
+        Assert.That(Problems(item), Has.Some.Contain("religion"));
+    }
+
+    [Test]
     public void Area_subtypeOnATopicThatHasNone_isRejected()
     {
         JsonObject item = FixtureFiles.AreaItem(_school);

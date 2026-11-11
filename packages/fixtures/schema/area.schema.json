@@ -78,7 +78,8 @@
             "dentist",
             "childcare",
             "rivers-and-sea",
-            "groundwater"
+            "groundwater",
+            "place-of-worship"
           ]
         },
         "status": {
@@ -453,7 +454,8 @@
                   "gp-surgery",
                   "clinic",
                   "dentist",
-                  "childcare"
+                  "childcare",
+                  "place-of-worship"
                 ]
               }
             },
@@ -532,6 +534,62 @@
           "else": {
             "properties": {
               "subtype": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "amenity"
+              },
+              "subtype": {
+                "const": "place-of-worship"
+              },
+              "status": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "topic",
+              "subtype",
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "required": [
+                  "religion"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "topic": {
+                "const": "amenity"
+              },
+              "subtype": {
+                "not": {
+                  "const": "place-of-worship"
+                }
+              }
+            },
+            "required": [
+              "topic",
+              "subtype"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "properties": {
+                  "religion": false
+                }
+              }
             }
           }
         }
@@ -760,7 +818,7 @@
     },
     "amenityValue": {
       "type": "object",
-      "description": "A place (the subtype is on the item). A location is not opening hours, availability or whether a surgery accepts new patients.",
+      "description": "A place (the subtype is on the item). A location is not opening hours, availability or whether a surgery accepts new patients. Places of worship also carry 'religion'; no other amenity does.",
       "required": [
         "name",
         "distanceMetres",
@@ -780,6 +838,19 @@
           "type": "string",
           "minLength": 1,
           "description": "How the distance was measured, for example 'straight-line distance, synthetic'. Required with every distance; a distance is never a walking time."
+        },
+        "religion": {
+          "enum": [
+            "christian",
+            "muslim",
+            "jewish",
+            "sikh",
+            "hindu",
+            "buddhist",
+            "other",
+            "not-recorded"
+          ],
+          "description": "Places of worship only, as tagged in the source. Every faith is shown alike, as the nearest places by distance; never counts, densities or an area's religious makeup."
         }
       },
       "additionalProperties": false

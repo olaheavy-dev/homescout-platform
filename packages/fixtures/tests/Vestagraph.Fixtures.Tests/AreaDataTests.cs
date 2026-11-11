@@ -24,7 +24,7 @@ internal sealed class AreaDataTests
     private static readonly string[] _healthcareSubtypes = ["pharmacy", "hospital", "gp-surgery", "clinic", "dentist"];
 
     private static readonly string[] _amenitySubtypes =
-        ["supermarket", "shop", "park", "pharmacy", "police-station", "hospital", "gp-surgery", "clinic", "dentist", "childcare"];
+        ["supermarket", "shop", "park", "pharmacy", "police-station", "hospital", "gp-surgery", "clinic", "dentist", "childcare", "place-of-worship"];
 
     private static readonly string[] _r2Certificate = ["R2-EPC"];
 
@@ -39,9 +39,12 @@ internal sealed class AreaDataTests
         ["hospital", "gp-surgery", "clinic", "dentist", "pharmacy"],
         ["police-station"],
         ["childcare"],
+        ["place-of-worship"],
     ];
 
     private static readonly string[] _liveFloodHomes = ["B2"];
+
+    private static readonly string[] _worshipValueFields = ["name", "distanceMetres", "distanceMethod", "religion"];
 
     private static readonly string[] _gapStatuses = ["no-record-in-source", "stale", "source-failed", "not-covered"];
 
@@ -339,6 +342,23 @@ internal sealed class AreaDataTests
                 Assert.That(Text(school, "homeId"), Is.EqualTo(Text(item, "homeId")), schoolId);
             });
         }
+    }
+
+    // Places of worship are listed as the nearest places only, every faith alike: never counts,
+    // densities or an area's religious makeup (design brief, 11 Nov 2026).
+    [Test]
+    public void Area_placesOfWorship_areSinglePlacesWithAReligionAndOneSharedLimit()
+    {
+        List<JsonObject> worship = _englandHomes.SelectMany(ForHome)
+            .Where(i => Text(i, "topic") == "amenity" && i["subtype"] is not null && Text(i, "subtype") == "place-of-worship").ToList();
+
+        Assert.That(worship, Is.Not.Empty);
+        foreach (JsonObject item in worship.Where(i => Text(i, "status") == "recorded"))
+        {
+            Assert.That(item["value"]!.AsObject().Select(p => p.Key), Is.EquivalentTo(_worshipValueFields), Text(item, "id"));
+        }
+
+        Assert.That(worship.Select(i => Text(i, "doesNotEstablish")).Distinct().Count(), Is.EqualTo(1));
     }
 
     [TestCase("B1")]
