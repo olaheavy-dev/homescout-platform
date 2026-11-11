@@ -145,7 +145,7 @@ Caveats that change meaning (the `doesNotEstablish` text) stay visible at L2 as 
 | **Cluster** | White disc with a count and the category glyph | 32 / 44 px | selecting one zooms to fit its places; at max zoom it opens the group in the sheet |
 | **Stale item** | The same place marker with a small amber corner notch + "older" in the label on selection | — | the notch never appears alone: the row says why |
 
-- **One glyph family, one neutral marker colour:** category is shown by shape. Apple HIG calls for "distinctive styling" with "color along with icons"; we deliberately use icons with *one* colour, because category hues would compete with the amber and red tokens reserved for findings.
+- **One glyph family, one neutral marker colour** (superseded 11 Nov 2026 by FE-08: one muted colour per category plus its crafted icon; the palette has no red, amber or orange, so findings keep those colours to themselves): category is shown by shape. Apple HIG calls for "distinctive styling" with "color along with icons"; we deliberately use icons with *one* colour, because category hues would compete with the amber and red tokens reserved for findings.
 - **Clustering:** per category, so a cluster never mixes stops and schools. Overlapping points are clustered for legibility, per HIG. NN/g reports that Redfin's clustering confused users (2014), so a cluster's count is a plain number with a category glyph, and selecting it always reveals its members, never a summary.
 - **No crime points, no sold-price price labels.** Airbnb's priced pins work because price is the decision variable for a booking. Here a price on a map invites "value" reading (rule 4 spirit, doc 02 §7). Sold markers carry only a "£" glyph; the price appears in the selected row with its date.
 

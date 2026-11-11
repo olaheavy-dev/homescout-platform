@@ -129,10 +129,13 @@ The page opens as **one row per topic with its headline fact** (founder review, 
 1. **Your commute:** your estimate next to your limit, with no verdict until the engine produces one (#147).
 2. **Getting around:** stops, with straight-line distances.
 3. **Everyday places:** supermarket or shop, park, healthcare, police station and childcare, with gaps shown.
-4. **Schools,** with framework and date.
-5. **Flood:** live warnings, plus the long-term link.
-6. **Recorded crime:** counts by month and category; never on the map.
-7. **Sold nearby:** history, not a valuation.
+4. **Places of worship** (PD-13): the nearest places of every faith recorded in the source, by distance; never counts or an area's religious makeup.
+5. **Schools,** with framework and date.
+6. **Flood:** live warnings, plus the long-term link.
+7. **Recorded crime:** counts by month and category; never on the map.
+8. **Sold nearby:** history, not a valuation.
+
+On desktop each topic carries its "What this doesn't tell you" as a margin note beside the list (founder, 11 Nov 2026); phones keep it as a disclosure under the source line.
 8. **Planning nearby** and **broadband.**
 
 Each topic detail ends with its source line. On a phone the map is a view inside each topic; on desktop it is a sticky column beside the list, with the selection kept in sync. The map has category filters, a legend, a hover card (desktop) or tap card (phone), and an optional 3D switch.
@@ -168,7 +171,7 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 
 ### Landing (search first, decision 0046)
 1. The promise in a Bricolage Grotesque headline, with the **postcode box** (persistent label, hint text, "Check postcode", "Try an example") as the main action. "England only for now" sits under it.
-2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring and a topic summary card.
+2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring, crafted category pins (FE-08) and a compact summary card on the map (the four nearest places and "+3 more nearby"), placed where no pin is under it.
 3. **Data from:** a source wall: one card per source shown in About the data (planned: Environment Agency, police.uk, HM Land Registry, Department for Education, Ofsted, NaPTAN, OpenStreetMap, Ofcom, Planning Data; the final list follows DA-05), with each source, what it covers and what it can’t tell you; names only, no logos; links to About the data.
 4. **How it works:** three illustrated steps (type a postcode, see what's around, print or save), followed by a full-width photo band (an AI-generated terraced street; honest alt text, footer note).
 5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, what it can't tell you).

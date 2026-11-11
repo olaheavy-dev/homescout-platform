@@ -90,8 +90,18 @@
   --color-map-water: #D5E3E6;
   --color-map-park: #D7E6D5;
   --color-map-road: #FFFFFF;
-  --color-map-marker: #4A5A53;    /* every place marker is one neutral colour */
-  --color-map-home: #153F35;      /* only the home pin is forest */
+  --color-map-marker: #4A5A53;    /* neutral: sold-price markers and anything without a category */
+  /* One muted colour per category, each with its crafted icon (FE-08, founder, 11 Nov 2026; replaces "one neutral
+   * colour"). No red, amber or orange, so findings keep those. Every colour is at least 3:1 (non-text, WCAG 1.4.11)
+   * against map land, park and road in its theme; colour is never the only signal (icon, legend, list name). */
+  --color-map-marker-transport: #3A6079;
+  --color-map-marker-shops: #7A4E7A;
+  --color-map-marker-health: #2F7A7A;
+  --color-map-marker-schools: #5C5A9E;
+  --color-map-marker-parks: #5E7A35;
+  --color-map-marker-police: #4C5560;
+  --color-map-marker-worship: #7A6A55;
+  --color-map-home: #153F35;      /* only the home or postcode-centre pin is deep forest */
 
   /* ── Typography ───────────────────────────────────────────────── */
   --font-family-display: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;  /* optical size set per size (opsz 12–96) */
@@ -274,6 +284,13 @@
   --color-map-park: #1F2520;
   --color-map-road: #2C2B28;
   --color-map-marker: #B8B2A6;
+  --color-map-marker-transport: #93B8CE;
+  --color-map-marker-shops: #CDA6CD;
+  --color-map-marker-health: #8CCAC6;
+  --color-map-marker-schools: #B0AEE6;
+  --color-map-marker-parks: #B7CB80;
+  --color-map-marker-police: #BCC3CC;
+  --color-map-marker-worship: #CBBFAE;
   --color-map-home: #9FD3BA;
 
   /* Dark shadows: darker and more transparent */
@@ -320,6 +337,7 @@
     --color-surface-overlay: rgba(0, 0, 0, 0.55);
     --color-map-land: #1F1F1C; --color-map-water: #1E2427; --color-map-park: #1F2520;
     --color-map-road: #2C2B28; --color-map-marker: #B8B2A6; --color-map-home: #9FD3BA;
+    --color-map-marker-transport: #93B8CE; --color-map-marker-shops: #CDA6CD; --color-map-marker-health: #8CCAC6; --color-map-marker-schools: #B0AEE6; --color-map-marker-parks: #B7CB80; --color-map-marker-police: #BCC3CC; --color-map-marker-worship: #CBBFAE;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30); --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
     --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
     --texture-paper-opacity: 0.04;
