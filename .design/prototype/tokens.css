@@ -46,6 +46,8 @@
   --color-text-inverse: #F7F5EF;
   --color-text-link: #153F35;
   --color-text-clay: #9A4A28;      /* editorial accent text, used sparingly */
+  --color-accent-complement: #9A4A28;     /* the second colour: eyebrow labels, step numbers, the hearth and ring in drawings, "coming next" outlines (clay in light) */
+  --color-bg-tint-illustration: #F5E8DC;  /* behind drawings only */
 
   /* ── Colour: borders ──────────────────────────────────────────── */
   --color-border-primary: #D9D4C8;   /* decorative hairline (exempt from 3:1) */
@@ -196,81 +198,85 @@
 /* ── Dark theme: warm charcoal, not inverted ─────────────────────── */
 [data-theme="dark"] {
   color-scheme: dark;
+  /* Founder, 11 Nov 2026: neutral layers, one accent (mint), one complement (slate, Option B), amber only for warnings.
+     Contrast (WCAG 2.2): text-tertiary 5.40 at worst (on bg-tertiary); complement 7.59 at worst (on its illustration tint); accent text 8.67 at worst. */
 
-  --color-bg-primary: #1C1B18;
-  --color-bg-secondary: #25241F;
-  --color-bg-tertiary: #2E2C27;
-  --color-bg-tint-sage: #21302A;
-  --color-bg-tint-clay: #33271F;
+  --color-bg-primary: #181816;
+  --color-bg-secondary: #21201D;
+  --color-bg-tertiary: #2A2925;
+  --color-bg-tint-sage: #24231F;   /* neutral in dark: tinted panels compete on charcoal */
+  --color-bg-tint-clay: #24231F;   /* neutral in dark, as above */
+  --color-bg-tint-illustration: #1A2329;  /* slate tint, behind drawings only */
   --color-bg-inverse: #ECE8DF;
 
   --color-text-primary: #ECE8DF;   /* off-white, never pure white */
-  --color-text-secondary: #BDB7AA;
-  --color-text-tertiary: #A39D90;  /* 5.12 at worst */
-  --color-text-inverse: #1C1B18;
+  --color-text-secondary: #B8B2A6;
+  --color-text-tertiary: #A39D90;  /* 5.40 at worst */
+  --color-text-inverse: #181816;
   --color-text-link: #9FD3BA;
-  --color-text-clay: #E8A07A;
+  --color-text-clay: #93B8CE;      /* the complement in dark is slate (Option B) */
+  --color-accent-complement: #93B8CE;  /* slate: 8.46 on the page, 7.59 on its tint */
 
-  --color-border-primary: #3A3832;
-  --color-border-secondary: #2F2E29;
-  --color-border-strong: #7C786E;  /* 3.14 */
-  --color-border-gap: #7C786E;     /* 3.14 */
+  --color-border-primary: #33322E;
+  --color-border-secondary: #2A2925;
+  --color-border-strong: #7C786E;  /* 3.70 on cards */
+  --color-border-gap: #7C786E;     /* 3.70 on cards */
   --color-border-focus: #9FD3BA;
 
-  --color-accent-primary: #8CCBAE;       /* forest lifted for dark */
-  --color-accent-primary-hover: #A2D7BE;
-  --color-accent-primary-active: #76B898;
-  --color-on-accent-primary: #10201A;    /* 9.06 on accent */
-  --color-accent-secondary: #2C3D35;
-  --color-on-accent-secondary: #CDE6D8;
+  --color-accent-primary: #9FD3BA;       /* mint: actions, links, selection */
+  --color-accent-primary-hover: #B5E0CB;
+  --color-accent-primary-active: #8CCBAE;
+  --color-on-accent-primary: #10201A;    /* 10.05 on accent */
+  --color-accent-secondary: #2A2925;
+  --color-on-accent-secondary: #ECE8DF;
 
-  --color-status-success: #8CCBAE;
-  --color-status-success-bg: #1F3329;
-  --color-status-warning: #E6B66C;
-  --color-status-warning-bg: #3A2C17;
+  --color-status-success: #9FD3BA;
+  --color-status-success-bg: #24231F;
+  --color-status-warning: #E6B66C;       /* amber only for warnings */
+  --color-status-warning-bg: #332A1A;
   --color-status-error: #F0948B;
-  --color-status-error-bg: #3D211F;
-  --color-status-info: #93BEDC;
+  --color-status-error-bg: #3A2220;
+  --color-status-info: #93BEDC;          /* rare; always with a label, so it isn't confused with the slate complement */
   --color-status-info-bg: #1E2E3A;
 
   --color-surface-overlay: rgba(0, 0, 0, 0.55);
-  --color-map-land: #23251F;
-  --color-map-water: #1F2D33;
-  --color-map-park: #22301F;
-  --color-map-road: #34332D;
-  --color-map-marker: #BDB7AA;
-  --color-map-home: #8CCBAE;
+  --color-map-land: #1F1F1C;
+  --color-map-water: #1E2427;
+  --color-map-park: #1F2520;
+  --color-map-road: #2C2B28;
+  --color-map-marker: #B8B2A6;
+  --color-map-home: #9FD3BA;
 
   /* Dark shadows: darker and more transparent */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
 
-  --texture-paper-opacity: 0.025;
+  --texture-paper-opacity: 0.04;  /* light grain on dark, behind drawings only */
 }
 
 /* The system preference applies unless the user chose light explicitly */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --color-bg-primary: #1C1B18; --color-bg-secondary: #25241F; --color-bg-tertiary: #2E2C27;
-    --color-bg-tint-sage: #21302A; --color-bg-tint-clay: #33271F; --color-bg-inverse: #ECE8DF;
-    --color-text-primary: #ECE8DF; --color-text-secondary: #BDB7AA; --color-text-tertiary: #A39D90;
-    --color-text-inverse: #1C1B18; --color-text-link: #9FD3BA; --color-text-clay: #E8A07A;
-    --color-border-primary: #3A3832; --color-border-secondary: #2F2E29; --color-border-strong: #7C786E;
+    --color-bg-primary: #181816; --color-bg-secondary: #21201D; --color-bg-tertiary: #2A2925;
+    --color-bg-tint-sage: #24231F; --color-bg-tint-clay: #24231F; --color-bg-tint-illustration: #1A2329; --color-bg-inverse: #ECE8DF;
+    --color-text-primary: #ECE8DF; --color-text-secondary: #B8B2A6; --color-text-tertiary: #A39D90;
+    --color-text-inverse: #181816; --color-text-link: #9FD3BA; --color-text-clay: #93B8CE; --color-accent-complement: #93B8CE;
+    --color-border-primary: #33322E; --color-border-secondary: #2A2925; --color-border-strong: #7C786E;
     --color-border-gap: #7C786E; --color-border-focus: #9FD3BA;
-    --color-accent-primary: #8CCBAE; --color-accent-primary-hover: #A2D7BE; --color-accent-primary-active: #76B898;
-    --color-on-accent-primary: #10201A; --color-accent-secondary: #2C3D35; --color-on-accent-secondary: #CDE6D8;
-    --color-status-success: #8CCBAE; --color-status-success-bg: #1F3329;
-    --color-status-warning: #E6B66C; --color-status-warning-bg: #3A2C17;
-    --color-status-error: #F0948B; --color-status-error-bg: #3D211F;
+    --color-accent-primary: #9FD3BA; --color-accent-primary-hover: #B5E0CB; --color-accent-primary-active: #8CCBAE;
+    --color-on-accent-primary: #10201A; --color-accent-secondary: #2A2925; --color-on-accent-secondary: #ECE8DF;
+    --color-status-success: #9FD3BA; --color-status-success-bg: #24231F;
+    --color-status-warning: #E6B66C; --color-status-warning-bg: #332A1A;
+    --color-status-error: #F0948B; --color-status-error-bg: #3A2220;
     --color-status-info: #93BEDC; --color-status-info-bg: #1E2E3A;
     --color-surface-overlay: rgba(0, 0, 0, 0.55);
-    --color-map-land: #23251F; --color-map-water: #1F2D33; --color-map-park: #22301F;
-    --color-map-road: #34332D; --color-map-marker: #BDB7AA; --color-map-home: #8CCBAE;
+    --color-map-land: #1F1F1C; --color-map-water: #1E2427; --color-map-park: #1F2520;
+    --color-map-road: #2C2B28; --color-map-marker: #B8B2A6; --color-map-home: #9FD3BA;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30); --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
     --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
-    --texture-paper-opacity: 0.025;
+    --texture-paper-opacity: 0.04;
   }
 }
 

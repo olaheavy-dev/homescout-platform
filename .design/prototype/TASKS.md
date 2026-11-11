@@ -31,7 +31,15 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
   _Depends on: H1–H3._
 - [ ] **H6 Immersive map** (founder, 11 Nov 2026): a 3D switch (tilt and approximate building heights), category filters with icons, a legend, a hover card on desktop and a tap card on phones, all on the sample map. Crime and flood stay off the map.
-- [ ] **H7 Public landing, desktop and phone** (decision 0046): search first, the sample 3D map with a summary card, "What you'll see", "Honest by design", and account features in a "Coming next · not available yet" panel.
+- [ ] **H7 Public landing, desktop and phone** (decision 0046): search first, the sample 3D map with a summary card, and account features in a "Coming next · not available yet" panel. **Design passes 2 and 3 (11 Nov 2026):**
+  - a labelled postcode box with hint text and "Not ready to type? Try an example";
+  - a "Data from" strip with source names only (no logos, which could read as endorsement);
+  - "How it works" as three illustrated steps;
+  - "How to read a result": a real Schools card with four numbered callouts, replacing generic feature columns;
+  - "Honest by design" as four illustrated cards, each with a real snippet;
+  - an illustrated "Coming next" panel and a short FAQ beside the brand mark;
+  - no testimonials, counters, recent searches or pricing teaser (rule 1, decision 0014, PD-10).
+- [ ] **Brand mark** (founder chose concept C, Contour home): primary and compact marks, lockups in both themes and one colour, the app icon, the browser icon, and clear space. Trade-mark clearance (0009) and the asset register first.
 - [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, and saving shown only as "Coming next". No commute row (it needs the household's own destination). States: loading, invalid format, postcode not found, outside England, one source unavailable (the frame shows three; loading and not found are added in the build).
 - [ ] **H8 Area summary export** (designed for A4; the sample runs to three pages): made in the browser and saved from the print dialog ("Print or save as PDF"), a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line.
 
@@ -89,7 +97,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **S-R1 to S-R4 Renter steps 1–4,** to the same standard: water conflicting, then partial, then specific, then the estimate added; "now complete" rather than "+£X" (#115).
 
 ## Public site (stage 5b, decision 0046)
-- [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live, never as active controls; the hero map's pin is "Postcode centre".
+- [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live, never as active controls; the hero map's pin is "Postcode centre". **The hero map is a static image** (SVG or an optimised raster), not the live map library, so the largest element loads within the 2.5 s budget (B18); the live map loads only on the results page.
 - [ ] **P2 How it works** and **About the data:** every source with its date, coverage, limits and the attribution its licence requires (DA-05).
 - [ ] **P3 Privacy notice and accessibility statement** (SE-02 part 1, decision 0014), live before launch.
 - [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels. The API call sends the postcode in the request body (POST), never in a query string or URL path, so it stays out of every log (0014).
@@ -113,7 +121,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
 ## Responsive & Polish
 - [ ] **B14 Responsive pass:** 375, 430, 768, 1024, 1280 and 1536 px; the mobile bottom bar plus the More menu; desktop tabs; Compare cards on a phone. Breakpoints come from the tokens.
-- [ ] **B15 Motion pass:** only the five purposeful transitions, all from the tokens; reduced motion respected; figures never animate.
+- [ ] **B15 Motion pass:** the five purposeful transitions plus the public-page entrances in the brief (ring draw, places popping in, sections rising), all from the tokens and 600 ms or less, each playing once; reduced motion respected; figures never animate.
 - [ ] **B16 Accessibility pass** (WCAG 2.2 AA in both themes):
   - contrast checked in context;
   - keyboard paths, with the list as the map's alternative;

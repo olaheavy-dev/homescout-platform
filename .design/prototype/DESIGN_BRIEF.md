@@ -91,10 +91,10 @@ Three principles that resolve the main tensions. The seven agreed principles in 
   - amber `#8F560E` for attention;
   - restrained red `#A33636` only on specific supported findings.
 
-  Colour roles, not raw hex, come from the tokens phase. **Both themes ship** (founder): dark mode is a warm charcoal with off-white text, not an inverted light theme, and every contrast is checked in both.
+  Colour roles, not raw hex, come from the tokens phase. **Both themes ship** (founder): dark mode is a warm charcoal with off-white text, not an inverted light theme, and every contrast is checked in both. **Dark colour roles** (founder, 11 Nov 2026, after two passes): neutral charcoal layers; mint for actions, links and selection; **slate blue** (`#93B8CE`) as the one complement, only for eyebrow labels, step numbers, the hearth and ring in drawings and "coming next" outlines, with its tint behind drawings only; amber only for warnings. Tinted panels stay in the light theme, where paper carries them; in dark they compete, so they turn neutral.
 - **Texture and imagery:**
   - **Photography:** editorial photos of each home on public pages, and small recognisable thumbnails in the workspace (doc 03 §7). Every image goes through the asset register first (rule 5).
-  - **Custom illustration, textured editorial style** (founder): paper texture, a print feel, limited palette (forest, sage, ink on paper), like magazine spot illustrations. It's used for empty states, onboarding, the "not yet covered" state and the drawn Northbridge sample map. One consistent style guide is needed before any illustration is made.
+  - **Custom illustration, textured editorial style** (founder): paper texture, a print feel, limited palette (forest, sage, ink on paper), like magazine spot illustrations. It's used for empty states, onboarding, the "not yet covered" state, the drawn Northbridge sample map, **every landing section below the hero** (How it works, Honest by design, Coming next, the FAQ) and one spot drawing per main app screen (What changed: the listing figure replaced by the management pack; Costs: a house, a slip and dashed gaps; Nearby: a distance ring; Compare: two homes on one level line). Drawings are decorative, with a text alternative, and never carry information the text doesn't. One consistent style guide is needed before any illustration is made.
   - A subtle paper grain may appear on editorial surfaces, never behind data.
 - **Money visualisation:** **cards per category** (founder), held to strict rules so it doesn't become a dashboard:
   1. The total comes first: one large figure, its period, and a "so far" or "partial" label that names what's missing.
@@ -110,6 +110,7 @@ Three principles that resolve the main tensions. The seven agreed principles in 
   - the decision-impact highlight.
 
   Each takes 150–400 ms, with a cut or fade under reduced motion. **Figures never count up, bounce or animate**, and risk colours never pulse.
+  - **Public pages and section entrances** (founder, 11 Nov 2026): the hero's distance ring draws once on load, places pop in on the How it works drawing, and sections rise gently as they enter. Each plays once and takes 600 ms or less; all of it is off under reduced motion.
 - **The hero moment, decision impact:** before and after, explained.
   - The old and new figures sit side by side, and the changed line is highlighted with a short fade.
   - One sentence says why, with the source: "The management pack shows £3,720 a year, not £2,400."
@@ -132,7 +133,7 @@ All components are new.
 | Component | Status | Notes |
 |---|---|---|
 | App shell: desktop top bar, mobile bottom navigation | New | Doc 03 §3: My move · Homes · Compare. Home tabs: Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Mobile bottom nav: Overview, Nearby, Costs, Questions |
-| Wordmark "Vestagraph" | New | Typographic only, no logo work yet |
+| Brand mark and wordmark | New | **Contour home** (founder chose concept C, 11 Nov 2026): three nested roof lines like map contours with a hearth at the centre; a primary mark (48 px and up) and a compact two-contour mark (32 px and below), beside the Fraunces 600 wordmark. Trade-mark clearance (0009) and the asset register (rule 5) come before use |
 | Landing hero, search first (0046) | New | The postcode box with the sample 3D map and a summary card. The private prototype's example page shows the two example homes (buy and rent) with equal weight |
 | Address search and identity confirmation | New | Combobox with manual selection, never a silent postcode-to-flat match. Includes the map pin flow (founder) and a "can't find it" route |
 | Home header | New | Photo thumbnail, address, mode, sample-data label |
