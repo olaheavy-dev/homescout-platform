@@ -23,6 +23,7 @@ internal sealed class AreaSchemaRejectionTests
     [TestCase("UK-AREA-BANK-RATE-1")]
     [TestCase("B1-AREA-ENERGY-CERTIFICATE-1")]
     [TestCase("B1-AREA-COMMUTE-1")]
+    [TestCase("B1-AREA-AMENITY-7")]
     public void Area_unchangedRealRecord_isAccepted(string id)
     {
         Assert.That(FixtureFiles.Validate("area", "area", FixtureFiles.AreaItem(id)), Is.Empty);
@@ -203,6 +204,43 @@ internal sealed class AreaSchemaRejectionTests
         item["subtype"] = "casino";
 
         Assert.That(Problems(item), Has.Some.Contain("/subtype"));
+    }
+
+    [Test]
+    public void Area_placeOfWorshipWithNoReligion_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-7");
+        item["value"]!.AsObject().Remove("religion");
+
+        Assert.That(Problems(item), Has.Some.Contain("religion"));
+    }
+
+    [Test]
+    public void Area_stalePlaceOfWorshipWithNoReligion_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-7");
+        item["status"] = "stale";
+        item["value"]!.AsObject().Remove("religion");
+
+        Assert.That(Problems(item), Has.Some.Contain("religion"));
+    }
+
+    [Test]
+    public void Area_placeOfWorshipReligionOutsideTheList_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-7");
+        item["value"]!["religion"] = "unknown-faith";
+
+        Assert.That(Problems(item), Has.Some.Contain("/value/religion"));
+    }
+
+    [Test]
+    public void Area_religionOnAnAmenityThatIsNotAPlaceOfWorship_isRejected()
+    {
+        JsonObject item = FixtureFiles.AreaItem("B1-AREA-AMENITY-1");
+        item["value"]!["religion"] = "christian";
+
+        Assert.That(Problems(item), Has.Some.Contain("religion"));
     }
 
     [Test]
