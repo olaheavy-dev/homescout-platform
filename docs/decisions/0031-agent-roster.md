@@ -1,7 +1,7 @@
 # 0031: Agent roster, design skills and working rules
 
 **ID:** WW-10  
-**Status:** Accepted (partly superseded: model column, planner lane and the "Noticed, not changed" issue label by [0035](0035-ways-of-working-v2.md))  
+**Status:** Accepted (partly superseded: model column, planner lane and the "Noticed, not changed" issue label by [0035](0035-ways-of-working-v2.md); the project agents in `.claude/agents/` by [0050](0050-agent-workflows-process.md), which keeps the design skills and the test-first skill)  
 **Date:** 2026-10-23  
 **Stage:** 2
 

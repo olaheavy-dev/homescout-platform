@@ -27,6 +27,9 @@ obj/
 TestResults/
 *.user
 
+# Superpowers' local record of plan progress (decision 0050)
+.superpowers/
+
 # Claude Code local-only files
 .claude/settings.local.json
 .claude/worktrees/

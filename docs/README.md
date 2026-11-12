@@ -11,10 +11,11 @@ docs/
 │   ├── concepts/        AI-generated concept images (discussion only)
 │   └── imagery/         AI-generated atmosphere photos (illustrative)
 ├── decisions/           one record per decision, plus the register
-├── planning/            stage checklists and working plans
+├── planning/            the status file, stage checklists and working plans
 ├── references/          links to official third-party documentation
 ├── reviews/             dated document reviews and audits
-└── specs/               the prototype specification: executable Gherkin features (decision 0043)
+├── specs/               the prototype specification: executable Gherkin features (decision 0043)
+└── superpowers/         agent specs and plans written with the Superpowers skills (decision 0050)
 ```
 
 Planned folders, added when their stage starts: `.design/<feature>/` at the repository root for design-skill outputs (brief, information architecture, tasks, reviews), a deliberate exception to this structure (decision 0031), and `docs/learning-log.md` for the founder's explain-back notes (decision 0011).
@@ -31,6 +32,8 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Architecture (C4 diagrams)](architecture/README.md) | The system context and container diagrams: what exists today and what is planned (decision 0027) | Current |
 | [Decision register](decisions/README.md) | Every decision's status and record | Current |
 | [Asset register](assets/README.md) | Where each image or media file came from and its terms | Current |
+| [Status](planning/status.md) | Current stage, open pull requests, what's next, blockers and the founder's to-dos; overwritten every session (decision 0050) | Current |
+| [Superpowers specs and plans](superpowers/) | Feature specs and implementation plans written with the Superpowers skills, each summarised in the chat when written (decision 0050) | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
 | [Stage 2 plan](planning/stage-2-plan.md) | Approved sample data, data contract, tasks and gate | Stage 2 |
 | [.NET 11 and C# 15 plan](planning/dotnet-11-and-csharp-15-plan.md) | Which .NET 11 and C# 15 features Vestagraph uses, where, and when (decision 0042) | Stage 2 onwards |
@@ -44,7 +47,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 | [Stage 2 mutation-testing report, 23 Oct 2026](reviews/2026-10-23-stage-2-mutation-report.md) | Stryker.NET scores before and after, and how each surviving mutant was handled | Record |
 
-Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decision 0035). Where 02, 03, 04 and 05 overlap, each owns the area listed above; 05 gives way to 02 on scope.
+Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decisions 0035, 0050). Where 02, 03, 04 and 05 overlap, each owns the area listed above; 05 gives way to 02 on scope.
 
 **Reading order for someone new:** 02 → 03 → 04 → 05 → the decision register. Read 01 only for background.
 
