@@ -80,8 +80,8 @@ internal sealed partial class OutputShapeTests
         Assert.That(output["$schema"]!.GetValue<string>(), Is.EqualTo("../schema/generated-costs.schema.json"));
         Assert.That(output["formatVersion"]!.GetValue<int>(), Is.EqualTo(1));
         Assert.That(output["money"]!.GetValue<string>(), Is.EqualTo("integer pence"));
-        Assert.That(output["rounding"]!.GetValue<string>(), Does.Contain("0021"));
-        Assert.That(output["generatedBy"]!.GetValue<string>(), Is.Not.Empty);
+        Assert.That(output["rounding"]!.GetValue<string>(), Does.EndWith("(decisions 0034 and 0039)."));
+        Assert.That(output["generatedBy"]!.GetValue<string>(), Is.EqualTo("Vestagraph cost engine"));
     }
 
     [Test]

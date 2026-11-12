@@ -118,10 +118,10 @@ internal static class CostsGenerator
         var document = new CostsDocument(
             "../schema/generated-costs.schema.json",
             1,
-            "Vestagraph.CostEngine.Generator",
+            "Vestagraph cost engine",
             data.SnapshotDate,
             "integer pence",
-            "Each yearly amount is divided by 12 and rounded once to the nearest penny, halves away from zero; a total is the sum of its rounded lines; a mortgage repayment is rounded once from the exact fraction (decision 0021).",
+            "Each yearly amount is divided by 12 and rounded once to the nearest penny, halves away from zero; a total is the sum of its rounded lines; a mortgage repayment is rounded once from the exact fraction (decisions 0034 and 0039).",
             homes);
 
         return Result.Success(JsonSerializer.Serialize(document, _options) + "\n");
