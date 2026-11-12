@@ -267,6 +267,12 @@ def test_upfront_cash_text_as_lines_raises_type_error() -> None:
         upfront_cash(Mode.RENT, "deposit")  # type: ignore[arg-type]  # deliberately wrong
 
 
+def test_upfront_cash_empty_text_as_lines_raises_type_error() -> None:
+    # Text is a sequence, and an empty one would otherwise pass as "no lines".
+    with pytest.raises(TypeError):
+        upfront_cash(Mode.RENT, "")  # type: ignore[arg-type]  # deliberately wrong
+
+
 def test_upfront_cash_none_in_the_list_of_lines_raises_type_error() -> None:
     with pytest.raises(TypeError):
         upfront_cash(Mode.RENT, [_once(CostCategory.DEPOSIT, 1), None])  # type: ignore[list-item]  # deliberately wrong

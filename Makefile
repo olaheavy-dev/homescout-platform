@@ -14,13 +14,14 @@ GENERATED     := packages/fixtures/generated
 
 PYTEST_XML    := $(ARTIFACTS)/test-results/python/coverage.xml
 
-.PHONY: help restore requirements requirements-check build format-check generated-check validate inspect lint test check generate mutate clean
+.PHONY: help restore requirements requirements-check build format-check generated-check validate inspect lint test check generate mutate mutate-dotnet clean
 
 help:
-	@echo "Targets: restore build format-check generated-check validate inspect lint test check generate mutate clean"
+	@echo "Targets: restore build format-check generated-check validate inspect lint test check generate mutate mutate-dotnet clean"
 	@echo "  check = restore + build + format-check + generated-check + validate + inspect + lint + test (same as CI)"
 	@echo "  restore, build, format-check, lint and test also run the Python side (uv); build = .NET build + mypy"
-	@echo "  mutate = Stryker.NET mutation testing of the cost engine (slow; not part of check or CI)"
+	@echo "  mutate = mutmut mutation testing of the Python cost engine (about a minute; not part of check or CI)"
+	@echo "  mutate-dotnet = Stryker.NET mutation testing of the C# cost engine (until the C# is removed, decision 0049 step P8)"
 
 # Locked mode: fails if packages.lock.json (.NET) or uv.lock (Python) is out of date.
 restore:
@@ -108,17 +109,35 @@ generated-check: generate
 	fi
 	@echo "Generated files: up to date."
 
-# Mutation testing (stage 2 plan, task 5): Stryker.NET changes the cost engine's code in small ways and checks that the tests fail.
-# Slow (under a minute), so it is not part of `check` or CI. Settings are in stryker-config.json; reports go to
-# $(ARTIFACTS)/mutation/reports/ (HTML and JSON). Fails if the score drops below the break threshold in that file.
-# The FsCheck property tests start from a fixed seed here (format seed,gamma; read by EngineProperty), so the score is the
-# same on every run of the same code. `make test` and CI keep random seeds. Change the seed only on purpose.
-MUTATION_REPLAY := 123456789,987654321
+# Mutation testing of the Python cost engine (decision 0049 item 11b, register line BE-33): mutmut changes the engine's code in
+# small ways (a `<` becomes `<=`, a string is altered, a line is removed) and checks that a test fails each time. Slow (about a
+# minute), so it is not part of `check` or CI: run it when the engine or its tests change.
+# - mutmut reads [tool.mutmut] in packages/vestagraph-engine/pyproject.toml and must run in that folder (see the note there).
+# - CI=true makes Hypothesis load its built-in `ci` profile (derandomize=True), so the property tests give the same result on
+#   every run and the score is repeatable. `make test` keeps random seeds.
+# - mutmut has no pass mark: tools/mutation_score.py reads its statistics and fails below MUTATION_BREAK (percent). The break
+#   score sits just below the final measured score (BE-33); change it only on purpose, with the report.
+# - mutants/ is deleted first so every run is a full, uncached run; the result is in mutants/mutmut-cicd-stats.json.
+# Needs `fork`: macOS and Linux only (Windows through WSL).
+MUTATION_BREAK  := 85
+ENGINE_DIR      := packages/vestagraph-engine
 
 mutate: restore
+	rm -rf $(ENGINE_DIR)/mutants
+	cd $(ENGINE_DIR) && CI=true uv run --locked mutmut run
+	cd $(ENGINE_DIR) && uv run --locked mutmut export-cicd-stats
+	uv run --locked python tools/mutation_score.py $(ENGINE_DIR)/mutants/mutmut-cicd-stats.json --break-score $(MUTATION_BREAK)
+
+# Mutation testing of the C# cost engine (stage 2 plan, task 5): Stryker.NET. Kept until the C# is removed (decision 0049 step P8).
+# Settings are in stryker-config.json; reports go to $(ARTIFACTS)/mutation/reports/ (HTML and JSON). Fails if the score drops below
+# the break threshold in that file. The FsCheck property tests start from a fixed seed here (format seed,gamma; read by
+# EngineProperty), so the score is the same on every run of the same code. Change the seed only on purpose.
+MUTATION_REPLAY := 123456789,987654321
+
+mutate-dotnet: restore
 	VESTAGRAPH_FSCHECK_REPLAY=$(MUTATION_REPLAY) dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
 
 clean:
-	rm -rf $(ARTIFACTS) .coverage .mypy_cache .ruff_cache .pytest_cache .hypothesis mutants
+	rm -rf $(ARTIFACTS) .coverage .mypy_cache .ruff_cache .pytest_cache .hypothesis mutants $(ENGINE_DIR)/mutants
 	find packages -type d -name __pycache__ -prune -exec rm -rf {} +
 	dotnet clean $(SOLUTION) --configuration $(CONFIGURATION) --verbosity quiet

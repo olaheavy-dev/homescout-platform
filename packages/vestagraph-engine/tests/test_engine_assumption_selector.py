@@ -784,6 +784,24 @@ def test_select_assumptions_deposit_zero_fails_as_not_positive() -> None:
     assert _failure_code(facts) == "input.not-positive.mortgage-deposit"
 
 
+def test_select_assumptions_one_penny_rent_is_accepted_as_positive() -> None:
+    # The smallest amount above zero is still positive: a rent of 1p is not a failure.
+    facts = renting([money("RENT", "rent", 1, Period.MONTH)])
+
+    assert select_assumptions(facts, 1).is_success
+
+
+@pytest.mark.parametrize("category", ["asking-price", "mortgage-deposit"])
+def test_select_assumptions_one_penny_price_or_deposit_is_accepted_as_positive(
+    category: str,
+) -> None:
+    penny = money("PENNY", category, 1, Period.ONCE)
+
+    facts = buying_from(anchors_except(category, penny))
+
+    assert select_assumptions(facts, 1).is_success
+
+
 def test_select_assumptions_price_in_the_wrong_period_and_zero_reports_the_period_first() -> None:
     price = money("PRICE", "asking-price", 0, Period.MONTH)
 

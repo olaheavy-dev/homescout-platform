@@ -51,6 +51,7 @@ mypy_path = [
   "packages/vestagraph-generator/src",
   "packages/vestagraph-fixture-validator/src",
   "packages/specs/tests",
+  "tools",
 ]
 files = [
   "packages/vestagraph-engine/src",
@@ -60,12 +61,13 @@ files = [
   "packages/vestagraph-fixture-validator/src",
   "packages/vestagraph-fixture-validator/tests",
   "packages/specs/tests",
+  "tools",
 ]
 
 [tool.pytest]
 minversion = "9.0"
 strict = true
-testpaths = ["packages/*/tests"]
+testpaths = ["packages/*/tests", "tools/tests"]
 addopts = ["--import-mode=importlib"]
 # Lets tests import shared helpers (engine_support.py, generator_support.py, fixtures_support.py) by name.
 pythonpath = [
@@ -73,6 +75,7 @@ pythonpath = [
   "packages/vestagraph-generator/tests",
   "packages/vestagraph-fixture-validator/tests",
   "packages/specs/tests",
+  "tools",
 ]
 filterwarnings = ["error"]
 # Gherkin tags become pytest markers (pytest-bdd); `strict = true` above makes an unregistered tag fail, as the C# runner's

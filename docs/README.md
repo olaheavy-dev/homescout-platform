@@ -47,6 +47,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 | [Stage 2 mutation-testing report, 23 Oct 2026](reviews/2026-10-23-stage-2-mutation-report.md) | Stryker.NET scores before and after, and how each surviving mutant was handled | Record |
+| [Python mutation-testing report, 12 Nov 2026](reviews/2026-11-12-python-mutation-report.md) | mutmut scores on the Python cost engine, the tests added, and how each surviving mutant is handled (P7, BE-33) | Record |
 
 Accepted decision records override anything in the documents that contradicts them. For process (planning, building, reviewing, merging, dependencies), `AGENTS.md` is the single current rulebook (decisions 0035, 0050). Where 02, 03, 04 and 05 overlap, each owns the area listed above; 05 gives way to 02 on scope.
 

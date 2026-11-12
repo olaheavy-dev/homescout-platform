@@ -78,6 +78,8 @@ def test_figure_ids_text_part_that_is_not_a_str_raises_type_error(bad: Any) -> N
         figure_ids.total("B1", "from-step-1", bad)
     with pytest.raises(TypeError):
         figure_ids.mortgage(bad, "from-step-1")
+    with pytest.raises(TypeError):
+        figure_ids.mortgage("B1", bad)
 
 
 @pytest.mark.parametrize("bad", [None, "rent", 3])
