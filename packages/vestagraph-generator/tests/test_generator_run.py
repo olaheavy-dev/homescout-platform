@@ -237,3 +237,15 @@ def test_run_into_a_temporary_folder_writes_the_bytes_of_the_committed_costs_jso
     committed = fixtures_directory() / "generated" / "costs.json"
     assert exit_code == 0
     assert (fixtures / "generated" / "costs.json").read_bytes() == committed.read_bytes()
+
+
+def test_run_folder_named_like_a_json_file_in_generated_is_left_alone(tmp_path: Path) -> None:
+    fixtures = copy_data_to(tmp_path)
+    folder = fixtures / "generated" / "x.json"
+    folder.mkdir(parents=True)
+
+    exit_code = run(fixtures, io.StringIO())
+
+    assert exit_code == 0
+    assert folder.is_dir()
+    assert (fixtures / "generated" / "costs.json").is_file()

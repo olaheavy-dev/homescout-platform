@@ -235,3 +235,11 @@ def test_read_fixtures_home_missing_from_homes_file_is_left_for_the_generator_to
 
     assert "B1" in data.home_ids
     assert "B1" not in [h.id for h in data.homes]
+
+
+def test_read_fixtures_pence_beyond_32_bits_but_within_64_bits_is_accepted(tmp_path: Path) -> None:
+    fixtures = _edit(
+        tmp_path, "household", lambda d: d["household"]["monthlyBudget"].update(pence=2**40)
+    )
+
+    assert read_fixtures(fixtures).monthly_budget == Pence(2**40)

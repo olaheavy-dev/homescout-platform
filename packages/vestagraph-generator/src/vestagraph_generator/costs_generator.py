@@ -91,7 +91,7 @@ def run(fixtures_directory: Path, error: TextIO) -> int:
         temporary.unlink(missing_ok=True)
 
     for other in folder.glob("*.json"):
-        if other.name != FILE_NAME:
+        if other.name != FILE_NAME and not other.is_dir():
             other.unlink()
     return 0
 

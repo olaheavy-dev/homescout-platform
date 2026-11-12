@@ -2,8 +2,10 @@
 
 The files are checked against their schemas by ``make validate``. Anything this reader does not
 understand is an ``InvalidDataError`` rather than a guess; a missing file is an ``OSError``.
-Decimals are read as exact ``Fraction`` values and then refused where a whole number belongs, so
-a ``float`` never carries money (AGENTS rule 2).
+Decimals are read as exact ``Fraction`` values (``parse_float=Fraction``, so no ``float`` is ever
+made); the whole-number check is the guard that refuses them where a whole number belongs
+(AGENTS rule 2). NaN and Infinity are refused, and whole numbers must fit the C# reader's 32 bits
+(64 for pence).
 """
 
 import json
@@ -90,12 +92,25 @@ def read_fixtures(fixtures_directory: Path) -> FixtureData:
     )
 
 
+def _refuse_constant(text: str) -> object:
+    raise InvalidDataError(
+        f"A data file holds {text}, which is not a number the generator accepts."
+    )
+
+
 def _load(fixtures_directory: Path, name: str) -> Any:
     path = fixtures_directory / "data" / f"{name}.json"
-    text = path.read_text(encoding="utf-8")
     try:
-        return json.loads(text, parse_float=Fraction)
-    except json.JSONDecodeError as exception:
+        text = path.read_text(encoding="utf-8")
+        return json.loads(text, parse_float=Fraction, parse_constant=_refuse_constant)
+    except UnicodeDecodeError as exception:
+        message = f"{path} is not valid UTF-8 text: {exception}"
+        raise InvalidDataError(message) from exception
+    except InvalidDataError as exception:
+        message = f"{path}: {exception}"
+        raise InvalidDataError(message) from exception
+    except ValueError as exception:
+        # Bad JSON, or a whole number with more digits than Python converts (4300).
         message = f"{path} is not valid JSON: {exception}"
         raise InvalidDataError(message) from exception
 
@@ -140,12 +155,15 @@ def _as_text(value: Any, key: str) -> str:
     return value
 
 
-def _as_whole_number(value: Any, key: str) -> int:
+def _as_whole_number(value: Any, key: str, bits: int = 32) -> int:
     # bool is a subclass of int and a decimal is read as a Fraction: neither is a whole number.
+    # The range is the signed size the C# reader used (32 bits, 64 for pence).
     if type(value) is not int:
         raise _invalid(
             f"A data file has a value of the wrong type: '{key}' must be a whole number."
         )
+    if not -(2 ** (bits - 1)) <= value < 2 ** (bits - 1):
+        raise _invalid(f"A data file has a value out of range: '{key}' must fit in {bits} bits.")
     return value
 
 
@@ -156,11 +174,11 @@ def _text(node: dict[str, Any], key: str) -> str:
     return _as_text(value, key)
 
 
-def _number(node: dict[str, Any], key: str) -> int:
+def _number(node: dict[str, Any], key: str, bits: int = 32) -> int:
     value = node.get(key)
     if value is None:
         raise _invalid(f"A required number field '{key}' is missing.")
-    return _as_whole_number(value, key)
+    return _as_whole_number(value, key, bits)
 
 
 def _enum[E: Enum](kind: type[E], text: str, what: str) -> E:
@@ -203,7 +221,7 @@ def _read_budget(household: dict[str, Any]) -> Pence:
 def _read_pence(node: dict[str, Any], missing: str) -> Pence:
     if node.get("pence") is None:
         raise _invalid(missing)
-    return Pence(_number(node, "pence"))
+    return Pence(_number(node, "pence", 64))
 
 
 def _read_evidence(item: Any) -> EvidenceRow:

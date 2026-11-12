@@ -3,10 +3,19 @@
 import io
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
+from typing import Any
 
 import pytest
-from generator_support import copy_data_to, fixtures_directory, remove_evidence, repository_root
+from generator_support import (
+    copy_data_to,
+    fixtures_directory,
+    read_json,
+    remove_evidence,
+    repository_root,
+    write_json,
+)
 from vestagraph_generator.__main__ import find_repository_root, main
 
 
@@ -117,3 +126,91 @@ def test_python_dash_m_runs_the_generator_and_returns_its_exit_code(tmp_path: Pa
         cwd=tmp_path,
     )
     assert failed.returncode == 2
+
+
+def _exit_two_message(root: Path) -> str:
+    err = io.StringIO()
+    exit_code = main([str(root)], io.StringIO(), err, root)
+    assert exit_code == 2
+    assert err.getvalue().startswith("Generator could not run: ")
+    return err.getvalue()
+
+
+def _edit(root: Path, name: str, change: Callable[[Any], None]) -> None:
+    path = root / "packages" / "fixtures" / "data" / f"{name}.json"
+    document = read_json(path)
+    change(document)
+    write_json(path, document)
+
+
+def test_main_rate_basis_points_beyond_32_bits_exits_two(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+
+    def change(document: Any) -> None:
+        item = next(e for e in document["evidence"] if e["value"]["kind"] == "rate")
+        item["value"]["basisPoints"] = 2**40
+
+    _edit(root, "evidence", change)
+
+    assert "basisPoints" in _exit_two_message(root)
+
+
+def test_main_pence_beyond_64_bits_exits_two(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+
+    def change(document: Any) -> None:
+        item = next(e for e in document["evidence"] if e["value"]["kind"] == "money")
+        item["value"]["pence"] = 2**70
+
+    _edit(root, "evidence", change)
+
+    assert "pence" in _exit_two_message(root)
+
+
+def test_main_story_step_beyond_32_bits_exits_two(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+    _edit(root, "snapshot", lambda d: d["snapshot"]["stories"][0]["steps"][0].update(step=2**40))
+
+    assert "step" in _exit_two_message(root)
+
+
+def test_main_file_that_is_not_utf8_exits_two(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+    (root / "packages" / "fixtures" / "data" / "homes.json").write_bytes(b'{"homes": "\xff"}')
+
+    message = _exit_two_message(root)
+    assert "homes" in message
+    assert "UTF-8" in message
+
+
+def test_main_number_with_thousands_of_digits_exits_two(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+    path = root / "packages" / "fixtures" / "data" / "household.json"
+    text = path.read_text(encoding="utf-8")
+    original = read_json(path)["household"]["monthlyBudget"]["pence"]
+    assert f'"pence": {original}' in text
+    path.write_text(
+        text.replace(f'"pence": {original}', '"pence": ' + "9" * 5000), encoding="utf-8"
+    )
+
+    assert "household" in _exit_two_message(root)
+
+
+def test_main_decimal_pence_exits_two_saying_a_whole_number_is_needed(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+    path = root / "packages" / "fixtures" / "data" / "household.json"
+    text = path.read_text(encoding="utf-8")
+    original = read_json(path)["household"]["monthlyBudget"]["pence"]
+    path.write_text(text.replace(f'"pence": {original}', '"pence": 12.5'), encoding="utf-8")
+
+    assert "whole number" in _exit_two_message(root)
+
+
+def test_main_not_a_number_value_exits_two(tmp_path: Path) -> None:
+    root = _fake_repository(tmp_path)
+    path = root / "packages" / "fixtures" / "data" / "household.json"
+    text = path.read_text(encoding="utf-8")
+    original = read_json(path)["household"]["monthlyBudget"]["pence"]
+    path.write_text(text.replace(f'"pence": {original}', '"pence": NaN'), encoding="utf-8")
+
+    assert "NaN" in _exit_two_message(root)

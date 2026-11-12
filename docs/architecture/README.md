@@ -53,7 +53,7 @@ flowchart TB
         data[("Fixture data<br/>JSON, packages/fixtures/data<br/>Inputs only, each with its source")]
         schema[("Schemas<br/>JSON Schema 2020-12<br/>packages/fixtures/schema")]
         cases[("Test cases<br/>JSON, packages/fixtures/test-cases<br/>Independently worked examples")]
-        engine["Cost engine<br/>C# class library, Vestagraph.CostEngine<br/>(.NET 11, C# 14)<br/>No I/O, HTTP, AI, clock or random"]
+        engine["Cost engine<br/>Python package, vestagraph_engine<br/>(packages/vestagraph-engine)<br/>No I/O, HTTP, AI, clock or random<br/>C# Vestagraph.CostEngine kept until P8,<br/>proven to the same bytes"]
         generator["Generator<br/>Python package<br/>vestagraph_generator"]
         generated[("Generated costs<br/>packages/fixtures/generated/costs.json<br/>Every calculated output, each with a figure ID")]
         validator["Validator<br/>C# console app<br/>Vestagraph.Fixtures.Validator"]
@@ -112,7 +112,7 @@ flowchart TB
 | Fixture data | `packages/fixtures/data/` | Hand-maintained inputs only: household, homes, evidence, documents, questions, replies, the snapshot and synthetic area context. No totals (`AGENTS.md` rule 2). |
 | Schemas | `packages/fixtures/schema/` | The contract: JSON Schema files for the data, the test cases and the generated output. |
 | Test cases | `packages/fixtures/test-cases/` | Calculations worked out independently of the engine, with their working, so a wrong calculation cannot confirm itself. |
-| Cost engine | `packages/cost-engine/src/Vestagraph.CostEngine/` | The only place calculated figures come from (decision 0019). Architecture tests keep it free of I/O. |
+| Cost engine | `packages/vestagraph-engine/` (Python, `vestagraph_engine`; the C# `packages/cost-engine/src/Vestagraph.CostEngine/` stays until port step P8 and is proven to write the same bytes, decision 0049) | The only place calculated figures come from (decision 0019); it produces `costs.json` through the generator. Architecture tests keep it free of I/O. |
 | Generator | `packages/vestagraph-generator/` (the C# generator in `packages/cost-engine/src/Vestagraph.CostEngine.Generator/` stays until port step P8, decision 0049) | `make generate`: reads the data, calls the engine, writes `costs.json`. |
 | Generated costs | `packages/fixtures/generated/costs.json` | The committed output. Never edited by hand. |
 | Validator | `packages/fixtures/tools/Vestagraph.Fixtures.Validator/` | `make validate`: checks every data, test-case and generated file against its schema. |
@@ -133,7 +133,7 @@ flowchart TB
 | Aspire and OpenTelemetry | 5b | Local app host, written in TypeScript, and trace dashboard for the pieces above (decisions 0025, 0049). |
 | Database | 6 | Not decided (DA-03). It would hold homes, questions, replies and decisions once there is real data; hosting follows decision 0022 (cost first). |
 
-The planned pieces and their order are in the [ordered backlog](../planning/backlog.md). Until the Python port (decision 0049) removes the .NET code (port step P8), the built pieces above stay in C#.
+The planned pieces and their order are in the [ordered backlog](../planning/backlog.md). Until the Python port (decision 0049) removes the .NET code (port step P8), the cost engine and the generator run in Python (from port steps P3 and P4) and the rest of the built pieces above stay in C#.
 
 ## Keeping this page true
 
