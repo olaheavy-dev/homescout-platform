@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 import pytest
-from fixtures_support import copy_fixture_folders, repository_root
+from fixtures_support import copy_fixture_folders, fixtures_directory, repository_root
 from vestagraph_fixture_validator.__main__ import main
 from vestagraph_fixture_validator.validator import find_repository_root
 
@@ -145,3 +145,12 @@ def test_python_dash_m_runs_the_validator_and_returns_its_exit_code(tmp_path: Pa
     )
     assert failed.returncode == 1
     assert failed.stderr.endswith("Fixtures: 1 problem(s) found.\n")
+
+
+def test_fixtures_directory_reads_no_environment_variable_for_its_path(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    # A leftover variable must never make the data tests check another copy of the fixtures.
+    monkeypatch.setenv("VESTAGRAPH_FIXTURES_DIR", str(tmp_path))
+
+    assert fixtures_directory() == repository_root() / "packages" / "fixtures"

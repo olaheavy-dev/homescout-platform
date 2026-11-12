@@ -3,15 +3,10 @@
 Every test starts from the repository's real fixture files and breaks one thing; no copy of the
 data is kept here (AGENTS rule 2). Decimals are read as exact fractions (``Fraction``), so a
 test can tell ``240000.5`` and ``5.0`` from a whole number, the same way the validator does.
-
-``VESTAGRAPH_FIXTURES_DIR`` points the helpers at another copy of ``packages/fixtures``. It exists
-only so the mutant self-check can prove the data tests fail on altered data without touching the
-real files; leave it unset otherwise.
 """
 
 import copy
 import json
-import os
 import shutil
 from fractions import Fraction
 from pathlib import Path
@@ -31,8 +26,7 @@ def repository_root() -> Path:
 
 
 def fixtures_directory() -> Path:
-    override = os.environ.get("VESTAGRAPH_FIXTURES_DIR")
-    return Path(override) if override else repository_root() / "packages" / "fixtures"
+    return repository_root() / "packages" / "fixtures"
 
 
 def schema_directory() -> Path:

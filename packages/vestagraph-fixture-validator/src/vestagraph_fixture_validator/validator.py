@@ -98,12 +98,32 @@ def _properties(
                 if subschema is False:
                     error.path.appendleft(name)
                     error.schema_path.appendleft(name)
+                    error.validator = "false"  # the library leaves it as None
                 yield error
+
+
+def _pattern_properties(
+    validator: Draft202012Validator,
+    pattern_properties: dict[str, Any],
+    instance: object,
+    _schema: object,
+) -> Iterator[ValidationError]:
+    # Same as the library's own ``patternProperties``, with ASCII-only matching like ``pattern``.
+    if not isinstance(instance, dict):
+        return
+    for pattern, subschema in pattern_properties.items():
+        for key, value in instance.items():
+            if re.search(pattern, key, re.ASCII):
+                yield from validator.descend(value, subschema, path=key, schema_path=pattern)
 
 
 _Validator = validators.extend(
     Draft202012Validator,
-    validators={"pattern": _pattern, "properties": _properties},
+    validators={
+        "pattern": _pattern,
+        "patternProperties": _pattern_properties,
+        "properties": _properties,
+    },
     type_checker=Draft202012Validator.TYPE_CHECKER.redefine("integer", _is_integer),
 )
 

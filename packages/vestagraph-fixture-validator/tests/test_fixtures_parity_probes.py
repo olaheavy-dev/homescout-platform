@@ -101,7 +101,8 @@ def test_validate_fixtures_a_property_the_schema_forbids_with_false_is_reported_
     problems = _probe(tmp_path, schema, '{"outer": {"value": 1}}')
 
     assert len(problems) == 1
-    assert problems[0].startswith("probe.json: /outer/value: ")
+    assert problems[0].startswith("probe.json: /outer/value: false: ")
+    assert "None" not in problems[0]
 
 
 def test_the_schema_files_never_use_a_false_subschema_where_the_path_fix_does_not_reach() -> None:
@@ -140,6 +141,35 @@ def test_validate_fixtures_a_pointer_escapes_slash_and_tilde_in_a_property_name(
     problems = _probe(tmp_path, schema, '{"a/b": "x", "c~d": "y"}')
 
     assert [p.split(": ")[1] for p in problems] == ["/a~1b", "/c~0d"]
+
+
+def test_validate_fixtures_a_failed_any_of_lists_the_branch_problems_too(tmp_path: Path) -> None:
+    # No real schema has an anyOf outside an `if` (where errors are not reported), so this uses a
+    # probe
+    # schema. C# lists each failing branch's detail as well as the anyOf itself.
+    schema = {"anyOf": [{"required": ["a"]}, {"properties": {"b": {"type": "integer"}}}]}
+
+    problems = _probe(tmp_path, schema, '{"b": "x"}')
+
+    locations = [p.split(": ")[1] for p in problems]
+    assert "/" in locations
+    assert "/b" in locations
+
+
+@pytest.mark.parametrize(
+    ("key", "value_is_checked"),
+    [("12", True), ("\u0661\u0662", False)],
+)
+def test_validate_fixtures_pattern_properties_keys_match_ascii_only(
+    tmp_path: Path, key: str, value_is_checked: bool
+) -> None:
+    schema = {"patternProperties": {"^\\d+$": {"type": "integer"}}}
+
+    problems = _probe(tmp_path, schema, json.dumps({key: "x"}))
+
+    # A key that is not made of ASCII digits is not covered by the pattern, so its value is not
+    # checked.
+    assert (problems != []) is value_is_checked
 
 
 # --- format is an annotation, never an assertion (JsonSchema.Net 2020-12 default) -------------
