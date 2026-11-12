@@ -46,6 +46,26 @@ def test_then_figure_exists_before_any_given_step_accepts_any_known_figure() -> 
     DataSteps(StoryPosition()).then_figure_exists("B1.from-step-3.monthly.total")
 
 
+def test_then_figure_exists_prefix_inside_but_not_at_the_start_of_the_id_fails(
+    position: StoryPosition,
+) -> None:
+    position.set("B1", "from-step")
+
+    with pytest.raises(AssertionError) as failure:
+        DataSteps(position).then_figure_exists(_TOTAL)
+
+    assert 'figures here start with "B1.from-step."' in str(failure.value)
+
+
+def test_then_figure_exists_id_containing_the_prefix_later_fails(
+    position: StoryPosition,
+) -> None:
+    position.set("1", "from-step-1")
+
+    with pytest.raises(AssertionError):
+        DataSteps(position).then_figure_exists(_TOTAL)
+
+
 def test_then_figure_has_status_wrong_status_fails(steps: DataSteps) -> None:
     with pytest.raises(AssertionError) as failure:
         steps.then_figure_has_status(_INSURANCE, "calculated")

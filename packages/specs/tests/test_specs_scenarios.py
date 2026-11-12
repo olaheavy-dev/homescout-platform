@@ -10,5 +10,6 @@ from specs_runner import name_scenarios_by_id
 from specs_steps import *  # noqa: F403  (steps and fixtures must live in this module)
 from specs_support import specs_directory
 
-scenarios(str(specs_directory()))
-name_scenarios_by_id(globals())
+_SPECS = str(specs_directory())
+scenarios(_SPECS)
+name_scenarios_by_id(globals(), _SPECS)

@@ -74,18 +74,16 @@ pythonpath = [
 ]
 filterwarnings = ["error"]
 # Gherkin tags become pytest markers (pytest-bdd); `strict = true` above makes an unregistered tag fail, as the C# runner's
-# categories did not. Tags in docs/specs/ are listed in docs/specs/README.md; the last three are used by the runner's own proof.
+# categories did not. These are Gherkin tags only (docs/specs/README.md): never put them on an ordinary Python test, because
+# `make test` runs `-m "not ui and not mcp and not withdrawn"` over the whole run.
 markers = [
   "screen: a screen specification",
   "story: a story specification",
   "buying: applies to buying",
   "renting: applies to renting",
-  "ui: browser steps, not run by make test (decision 0043)",
-  "mcp: MCP server steps, not run by make test (decision 0043)",
-  "withdrawn: a scenario that is no longer needed, kept for its ID",
-  "proof: the runner's own proof feature file",
-  "rule_tag: used by the runner's Rule proof",
-  "scenario_tag: used by the runner's Rule proof",
+  "ui: Gherkin tag, browser steps, not run by make test (decision 0043)",
+  "mcp: Gherkin tag, MCP server steps, not run by make test (decision 0043)",
+  "withdrawn: Gherkin tag, a scenario that is no longer needed, kept for its ID",
 ]
 
 [tool.coverage.run]

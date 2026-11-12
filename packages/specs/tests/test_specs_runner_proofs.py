@@ -23,7 +23,7 @@ from specs_runner import name_scenarios_by_id
 from specs_steps import *  # noqa: F403
 
 scenarios({feature!r})
-name_scenarios_by_id(globals())
+name_scenarios_by_id(globals(), {feature!r})
 
 
 @given("a proof step")
@@ -32,7 +32,7 @@ def a_proof_step() -> None:
 """
 
 
-def _pytest(*arguments: str) -> subprocess.CompletedProcess[str]:
+def _pytest(*arguments: str, own_path: bool = True) -> subprocess.CompletedProcess[str]:
     return subprocess.run(  # noqa: S603  (fixed arguments, no shell)
         [
             sys.executable,
@@ -44,8 +44,7 @@ def _pytest(*arguments: str) -> subprocess.CompletedProcess[str]:
             str(_ROOT),
             "-p",
             "no:cacheprovider",
-            "-o",
-            f"pythonpath={_TESTS}",
+            *(["-o", f"pythonpath={_TESTS}"] if own_path else []),
             *arguments,
         ],
         capture_output=True,
@@ -86,7 +85,7 @@ def test_scenario_id_in_the_test_name_dotted_id_is_selectable_with_k(tmp_path: P
     assert result.stdout.count("::test_BUY-3.2_dotted_id") == 1, result.stdout
 
 
-@pytest.mark.parametrize("tag", ["rule_tag", "scenario_tag", "proof"])
+@pytest.mark.parametrize("tag", ["story", "renting", "screen"])
 def test_rule_block_scenario_inside_a_rule_runs_and_keeps_its_tags(
     tmp_path: Path, tag: str
 ) -> None:
@@ -105,7 +104,11 @@ def test_rule_block_scenario_inside_a_rule_runs_and_keeps_its_tags(
 def test_feature_files_from_docs_specs_are_loaded_in_place_without_copying() -> None:
     declared = 0
     for feature in sorted((_ROOT / "docs" / "specs").rglob("*.feature")):
-        declared += len(re.findall(r"^\s*Scenario:", feature.read_text(encoding="utf-8"), re.M))
+        declared += len(
+            re.findall(
+                r"^\s*(?:Scenario(?: Outline)?|Example):", feature.read_text(encoding="utf-8"), re.M
+            )
+        )
     collected = _pytest(str(_SCENARIOS_MODULE), "--collect-only", "-q")
 
     assert declared > 0
@@ -171,3 +174,15 @@ def test_marker_filter_excludes_the_tag(tmp_path: Path, excluded: str) -> None:
 
     assert "1 deselected" in result.stdout, result.stdout
     assert result.returncode == 5
+
+
+def test_excluded_gherkin_tags_select_only_pytest_bdd_scenarios() -> None:
+    """``make test`` runs ``-m "not ui and not mcp and not withdrawn"`` over every Python test."""
+    result = _pytest("-m", "ui or mcp or withdrawn", "--collect-only", "-q", own_path=False)
+
+    selected = [line for line in result.stdout.splitlines() if "::test_" in line]
+    scenario_tests = [
+        line for line in selected if line.startswith("packages/specs/tests/test_specs_")
+    ]
+    assert result.returncode in {0, 5}, result.stdout
+    assert selected == scenario_tests, selected

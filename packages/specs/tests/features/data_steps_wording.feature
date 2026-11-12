@@ -1,4 +1,4 @@
-@proof
+@screen @buying
 Feature: Every data step wording runs against the real data (proof for issue #193)
   The wording is the contract in docs/specs/README.md; the real specifications use only some of it.
 

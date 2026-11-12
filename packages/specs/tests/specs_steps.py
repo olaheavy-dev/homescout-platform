@@ -5,8 +5,10 @@ failure messages. A step whose wording is not here makes its scenario fail as un
 step here (with a test) rather than rewording the scenario around it.
 
 A test module that calls ``scenarios()`` imports everything from here with ``import *``: pytest-bdd
-finds step definitions and fixtures in the test module's namespace, and the decorators register
-each step under a generated name (``pytestbdd_stepdef_...``) that only a star import carries over.
+finds step definitions and fixtures in the test module's namespace (or in a ``conftest.py``, which
+its documentation also describes). The decorators register each step under a generated name
+(``pytestbdd_stepdef_...``) that only a star import carries over. This layout keeps the steps
+importable by the proof tests' temporary modules, which a ``conftest.py`` here would not reach.
 """
 
 import pytest
