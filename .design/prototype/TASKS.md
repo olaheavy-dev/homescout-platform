@@ -52,7 +52,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
   **Done:** H1 matches in the browser in both themes. _Philosophy: Scandinavian + Editorial. New layouts._
 - [ ] **B2 Component gallery** (#150): every component from the brief's inventory in every state, light and dark, from fixture data, at `/gallery`. Axe passes in both themes. _Depends on: B1._
-- [ ] **B3 Demo story timeline and step routing:** `?step=1..4` drives every example screen. The step captions come from `snapshot.json`, and "What changed" links appear when a step changes a figure. Reqnroll `@ui` scenarios open any screen at any step. _Depends on: B1._
+- [ ] **B3 Demo story timeline and step routing:** `?step=1..4` drives every example screen. The step captions come from `snapshot.json`, and "What changed" links appear when a step changes a figure. The playwright-bdd `@ui` scenarios (decision 0049) open any screen at any step. _Depends on: B1._
   - **One place for the demo strip:** on a phone, directly after the page's headline summary; on desktop, in the header. Step buttons are 44 px tall. Screens never mention step numbers outside the strip ("Before" and "Now", not "Step 3" and "Step 4").
   - **Shorter captions** (founder review of H1, 11 Nov 2026): update the step labels in `snapshot.json` to the shorter wording, e.g. step 1 "Listing costs added. Service charge question sent."
   - **Rules from the fourth design review (11 Nov 2026):**

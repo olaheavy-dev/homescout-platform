@@ -1,7 +1,7 @@
 # 0039: Python engineering foundation
 
 **ID:** BE-20  
-**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026; the Q3 rule, a minor bump of a direct `0.x` dependency or action pin counts as major, is carried over)  
+**Status:** Accepted (adopted again by [0049](0049-back-to-python-final.md), founder, 12 Nov 2026, with its amendments: package names `vestagraph_*`, PSF-2.0 now on the allow-list (section 7's exception is no longer needed), the port order in 0049; had been superseded by [0042](0042-back-to-dotnet-11.md) on 10 Nov 2026)  
 **Date:** 2026-11-07  
 **Stage:** 2 (the Python port, step P0 of the port plan in issue #42)  
 **Supersedes in part (no older text is rewritten):**

@@ -1,7 +1,7 @@
 # 0048: Frontend foundation: routing and rendering, styling and components, frontend checks, design system
 
 **ID:** FE-01, FE-02, FE-04, DS-01, DS-02  
-**Status:** Accepted (founder, 12 Nov 2026)  
+**Status:** Accepted (founder, 12 Nov 2026; partly superseded by [0049](0049-back-to-python-final.md): the app starts from the founder's Next.js template with pnpm, its TypeScript 5.9 and the `frontend/` folder; browser tests in TypeScript with playwright-bdd and `@axe-core/playwright`)  
 **Date:** 2026-11-11 (accepted 2026-11-12)  
 **Stage:** 4  
 **Supersedes in part (no older text is rewritten):** doc 04 §9's stage order for stage 5 slice 1 (the app shell may start before the stage 4 gate); issue #86's dependency on the stage 4 gate (#84) and its acceptance criterion "deployed to the demo environment from IN-04", which moves to stage 5b (stage 5 runs locally only); [0043](0043-specification-format.md)'s "browser steps run from stage 5", which become "from #86"; doc 04's stage-gate rule (only stages 3 and 4 may overlap, [0035](0035-ways-of-working-v2.md) point 11) gains one named exception, below; and, because stage 5 now runs locally only, doc 04 §9's placing of IN-01 to IN-05 at stage 4 (they move to stage 5b), the stage 4 gate's need for IN records and a budget cap, stage 5's "each one deployed to the private preview", and the private-preview half of the definition of done's "deployed to the private preview or the public site".

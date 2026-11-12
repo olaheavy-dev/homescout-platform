@@ -1,7 +1,7 @@
 # 0043: Specification format — executable Gherkin scenarios in `docs/specs/`, run with Reqnroll
 
 **ID:** SP-01  
-**Status:** Accepted (founder, 11 Nov 2026)  
+**Status:** Accepted (founder, 11 Nov 2026; partly superseded by [0049](0049-back-to-python-final.md): data scenarios run with pytest-bdd and `@ui` scenarios with playwright-bdd; IDs, tags and wording unchanged)  
 **Date:** 2026-11-11  
 **Stage:** 3  
 **Supersedes in part (no older text is rewritten):** [0035](0035-ways-of-working-v2.md) point 9 (the pre-approved package list gains Reqnroll and Microsoft.Playwright for .NET, approved by the founder below).

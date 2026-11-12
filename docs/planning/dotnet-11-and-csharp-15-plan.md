@@ -1,5 +1,7 @@
 # .NET 11 and C# 15 adoption plan
 
+> **Superseded by [decision 0049](../decisions/0049-back-to-python-final.md) (founder, 12 Nov 2026: back to Python, final).** Kept only because accepted records link to it. No further .NET 11 or C# 15 work is planned; the C# code stays until port step P8 removes it.
+
 **Decision:** [0042](../decisions/0042-back-to-dotnet-11.md) (back to .NET; React stays). **Written:** 10 Nov 2026, the day .NET 11 shipped, by the Opus planner. **Ordered tickets:** [backlog](backlog.md).
 
 Every feature below was checked against Microsoft's official pages on 10 Nov 2026 (sources at the end). Package versions are the latest on nuget.org or npm that day, for orientation only: each pull request that adds a package checks its documentation and pins the version then. Anything not confirmed is marked **unverified**.

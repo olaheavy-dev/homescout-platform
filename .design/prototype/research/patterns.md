@@ -48,7 +48,7 @@ Avoid: letting generated UI invent numbers; figure cards must be filled from eng
 
 ## 7. Agent channel: MCP and assistants
 
-Specification read: the version served as "latest" was dated 2026-07-28 (check which version the C# SDK targets).
+Specification read: the version served as "latest" was dated 2026-07-28 (check which version the MCP Python SDK targets, decision 0049).
 
 - **Tools.** Model-controlled; schema-defined inputs; optional outputSchema; results may carry structuredContent (plus a text copy), resource links and embedded resources, each with audience/priority/lastModified annotations. The spec says there should always be a human able to deny calls, clients should show inputs before sending, and tool annotations are untrusted unless the server is trusted. Execution errors use isError so the model can self-correct.
 - **Resources and prompts.** Resources are application-controlled context identified by URIs (the user or app picks them); a missing resource must be an error, never an empty list (a close parallel to rule 7). Prompts (not fetched in detail) are user-triggered templates.

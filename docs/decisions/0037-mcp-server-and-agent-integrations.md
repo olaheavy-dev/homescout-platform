@@ -1,7 +1,7 @@
 # 0037: MCP server and coding-agent integrations
 
 **ID:** AI-07  
-**Status:** Proposed (partly superseded by [0042](0042-back-to-dotnet-11.md): the server uses the official MCP C# SDK in the ASP.NET Core host, not FastMCP; founder direction 11 Nov 2026: the MCP server is a product channel for Claude, ChatGPT/Codex, GitHub Copilot and other assistants; tool surface specified in stage 3 (#117); whether a local fixture-backed server comes forward to stage 5 is decided after #117)  
+**Status:** Proposed (partly superseded by [0049](0049-back-to-python-final.md): the server uses the official `mcp` Python SDK, confirmed at #97; [0042](0042-back-to-dotnet-11.md)'s C# SDK no longer applies; founder direction 11 Nov 2026: the MCP server is a product channel for Claude, ChatGPT/Codex, GitHub Copilot and other assistants; tool surface specified in stage 3 (#117); whether a local fixture-backed server comes forward to stage 5 is decided after #117)  
 **Date:** 2026-11-06  
 **Stage:** 6 for the remote server; a local fixture-backed server may come earlier (see "Decision")
 
