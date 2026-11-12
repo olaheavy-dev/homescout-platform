@@ -849,7 +849,17 @@ version = "0.0.0"
 source = { editable = "packages/vestagraph-generator" }
 dependencies = [
     { name = "vestagraph-engine" },
+    { name = "vestagraph-proof-nonexistent-9137" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "vestagraph-engine", editable = "packages/vestagraph-engine" }]
+requires-dist = [
+    { name = "vestagraph-engine", editable = "packages/vestagraph-engine" },
+    { name = "vestagraph-proof-nonexistent-9137", specifier = "==1.0.0" },
+]
+
+[[package]]
+name = "vestagraph-proof-nonexistent-9137"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/00/00/0000000000000000000000000000000000000000000000000000000000000000/vestagraph_proof_nonexistent_9137-1.0.0.tar.gz", hash = "sha256:0000000000000000000000000000000000000000000000000000000000000000", size = 1 }
