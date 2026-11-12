@@ -1,1 +1,1 @@
-"""Vestagraph fixture-validator package (empty until its port step)."""
+"""Vestagraph fixture validator: checks the fixture files against their JSON Schemas."""

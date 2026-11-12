@@ -64,8 +64,12 @@ minversion = "9.0"
 strict = true
 testpaths = ["packages/*/tests"]
 addopts = ["--import-mode=importlib"]
-# Lets tests import shared helpers (engine_support.py, generator_support.py) by name.
-pythonpath = ["packages/vestagraph-engine/tests", "packages/vestagraph-generator/tests"]
+# Lets tests import shared helpers (engine_support.py, generator_support.py, fixtures_support.py) by name.
+pythonpath = [
+  "packages/vestagraph-engine/tests",
+  "packages/vestagraph-generator/tests",
+  "packages/vestagraph-fixture-validator/tests",
+]
 filterwarnings = ["error"]
 
 [tool.coverage.run]
