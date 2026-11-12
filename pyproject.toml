@@ -70,8 +70,23 @@ pythonpath = [
   "packages/vestagraph-engine/tests",
   "packages/vestagraph-generator/tests",
   "packages/vestagraph-fixture-validator/tests",
+  "packages/specs/tests",
 ]
 filterwarnings = ["error"]
+# Gherkin tags become pytest markers (pytest-bdd); `strict = true` above makes an unregistered tag fail, as the C# runner's
+# categories did not. Tags in docs/specs/ are listed in docs/specs/README.md; the last three are used by the runner's own proof.
+markers = [
+  "screen: a screen specification",
+  "story: a story specification",
+  "buying: applies to buying",
+  "renting: applies to renting",
+  "ui: browser steps, not run by make test (decision 0043)",
+  "mcp: MCP server steps, not run by make test (decision 0043)",
+  "withdrawn: a scenario that is no longer needed, kept for its ID",
+  "proof: the runner's own proof feature file",
+  "rule_tag: used by the runner's Rule proof",
+  "scenario_tag: used by the runner's Rule proof",
+]
 
 [tool.coverage.run]
 branch = true

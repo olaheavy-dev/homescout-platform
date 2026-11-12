@@ -74,6 +74,9 @@ inspect: build
 # The Gherkin specs (docs/specs, run by packages/specs) tag scenarios that need a browser (@ui), an MCP server (@mcp) or that
 # are withdrawn; those do not run here. NUnit exposes each tag as a test category.
 SPEC_FILTER := TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn
+# The same Gherkin files run a second time under pytest-bdd (packages/specs/tests, decision 0049 step P6), where each tag is a
+# pytest marker; the Reqnroll runner stays until P8.
+SPEC_MARKERS := not ui and not mcp and not withdrawn
 
 # Python lint (ruff, explicit rule list in pyproject.toml; decision 0039 section 2).
 lint: restore
@@ -82,7 +85,7 @@ lint: restore
 # pytest stops after 5 failures (register line BE-30); CI's job timeout is the only time limit.
 test: build
 	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --timeout 10m --maximum-failed-tests 5 --filter "$(SPEC_FILTER)" --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
-	uv run --locked pytest --maxfail=5 --cov --cov-branch --cov-report=xml:$(PYTEST_XML) --cov-report=term
+	uv run --locked pytest -m "$(SPEC_MARKERS)" --maxfail=5 --cov --cov-branch --cov-report=xml:$(PYTEST_XML) --cov-report=term
 
 check: restore build format-check generated-check validate inspect lint test
 
