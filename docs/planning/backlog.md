@@ -60,6 +60,9 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 | 30 | #84 | Stage 4 gate and audit |
 
 ## Stage 5: clickable prototype
+
+#86 may start once the stage 3 gate (#71) passes, before the stage 4 gate (#84), and runs locally only until stage 5b; the rest of stage 5 waits for #84 (decision 0048). Rows 18, 19, 20 and 22 are answered by 0048.
+
 | # | Issue | Item |
 |---|---|---|
 | 32 | #86 | App shell, navigation, design system, fixture loading |

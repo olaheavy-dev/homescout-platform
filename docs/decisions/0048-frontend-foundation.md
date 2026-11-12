@@ -1,10 +1,10 @@
 # 0048: Frontend foundation: routing and rendering, styling and components, frontend checks, design system
 
 **ID:** FE-01, FE-02, FE-04, DS-01, DS-02  
-**Status:** Proposed (awaiting the founder's choices)  
-**Date:** 2026-11-11  
+**Status:** Accepted (founder, 12 Nov 2026)  
+**Date:** 2026-11-11 (accepted 2026-11-12)  
 **Stage:** 4  
-**Would supersede in part, once accepted (no older text is rewritten):** doc 04 §9's stage order for stage 5 slice 1 (the app shell may start before the stage 4 gate); issue #86's dependency on the stage 4 gate (#84) and its acceptance criterion "deployed to the demo environment from IN-04", which moves to a later step after IN-04; [0043](0043-specification-format.md)'s "browser steps run from stage 5", which become "from #86"; and doc 04's stage-gate rule (only stages 3 and 4 may overlap, [0035](0035-ways-of-working-v2.md) point 11) gains one named exception, below.
+**Supersedes in part (no older text is rewritten):** doc 04 §9's stage order for stage 5 slice 1 (the app shell may start before the stage 4 gate); issue #86's dependency on the stage 4 gate (#84) and its acceptance criterion "deployed to the demo environment from IN-04", which moves to stage 5b (stage 5 runs locally only); [0043](0043-specification-format.md)'s "browser steps run from stage 5", which become "from #86"; and doc 04's stage-gate rule (only stages 3 and 4 may overlap, [0035](0035-ways-of-working-v2.md) point 11) gains one named exception, below.
 
 ## Context
 Issue #86 builds the app shell: `apps/web` with Next.js, the design tokens, the navigation from `.design/prototype/INFORMATION_ARCHITECTURE.md` and typed loading of `packages/fixtures/data/` and `generated/costs.json`. Before it starts, four open register questions need answers: FE-01 (routing and rendering; TypeScript and Next.js are already accepted in [0020](0020-application-languages.md)), FE-02 (styling and components), FE-04 (frontend checks) and DS-01/DS-02 (design tooling and the design system). On 11 Nov 2026 the founder agreed to "get to something clickable sooner", which is question 5. This record answers issues #73 (FE-01), #74 (FE-02), #76 (FE-04) and #72 (DS-01, DS-02).
@@ -87,9 +87,27 @@ FE-01 option A, reading query parameters in the browser (a); FE-02 CSS Modules w
 `next`, `react`, `react-dom` and `typescript` are already pre-approved by 0042.
 
 ## Decision
-Awaiting the founder's choices.
+The founder chose on 12 Nov 2026, in answer to the questions above:
+- **FE-01: option B, the App Router with server rendering, run locally only.** The founder asked why the preview would be deployed at all; under 0045 it may stay local, and then a running server costs nothing. **Stage 5 runs only on the founder's machine and in CI** (`next dev`, or `next build` then `next start`); hosting is decided once at stage 5b with IN-01 to IN-05, for the public area check (0046). What this changes from the analysis above:
+  - pages read `?story=`, `?step=`, `?homes=` and `?q=` on the server through the page's `searchParams` prop, so the static-export trade-off and options (a) to (c) no longer apply;
+  - `@ui` scenarios and Lighthouse CI run against `next start` instead of an `out/` folder; Make's `web-build` step runs `next build`;
+  - the postcode rule still holds, because a URL fragment is never sent to a server;
+  - **no backend before stage 5b** (0046): no route handlers, Server Actions or proxy that fetch or store data until then; server components only read the committed fixtures. A reviewer treats a breach as P1;
+  - security headers, including a nonce-based strict CSP, become possible on a server and are decided with hosting at stage 5b;
+  - if the app is ever hosted, it needs a Node host rather than a free static one (an IN-02 cost, founder-only).
+- **FE-02: Tailwind CSS v4 with React Aria Components.** Styling uses Tailwind utility classes on the tokens, not CSS Modules:
+  - packages from Tailwind's [Next.js guide](https://tailwindcss.com/docs/installation/framework-guides/nextjs): `tailwindcss`, `@tailwindcss/postcss` and `postcss` (all MIT; 4.3 and 8.5), with `postcss.config.mjs` and `@import "tailwindcss"` in the global stylesheet;
+  - every token in `tokens.css` is mapped once in `@theme inline { --color-…: var(--color-…) }`, and Tailwind's own palette is removed with `--color-*: initial` ([theme variables](https://tailwindcss.com/docs/theme)), so only Vestagraph colours exist as classes;
+  - light and dark switch inside `tokens.css` (`[data-theme]` and `prefers-color-scheme`), so a class such as `bg-surface` changes with the theme without `dark:` classes. If a `dark:` variant is ever needed, a `@custom-variant` matches the tokens' rules: Tailwind's [dark-mode page](https://tailwindcss.com/docs/dark-mode) documents the `[data-theme=dark]` form but not combined with the system preference, so #86 tests that;
+  - React Aria states are styled with Tailwind's data-attribute variants, for example `data-[selected]:…` ([React Aria styling](https://react-aria.adobe.com/styling)); its optional Tailwind plugin is not adopted;
+  - the "no raw colours" check now forbids arbitrary values such as `bg-[#…]` or `text-[13px]` (settled in #86's plan).
+- **FE-04: as listed**, with ESLint 9 and Prettier, TypeScript 6.0 and `@size-limit/file`.
+- **DS-01, DS-02: code-first.**
+- **Order:** #86 starts after the stage 3 gate (#71), before the stage 4 gate (#84), as question 5 describes. The founder chose "screens first, local": the screens are built on sample data, and live area data follows at stage 5b without rebuilding them.
+
+**Packages named by this decision** (pre-approved, under 0042's licence and documentation checks): the list under Recommendation, plus `tailwindcss`, `@tailwindcss/postcss` and `postcss`.
 
 ## Consequences
-- **If accepted:** the register moves FE-01, FE-02, FE-04, DS-01 and DS-02 to Accepted; #86 starts on the order above, and its pull request updates the Makefile, CI, `.github/dependabot.yml`, `AGENTS.md` "Commands" and `third-party.md` together; the gallery (#150) follows it. Accepting the record also moves #86 ahead of the stage 4 rows in `docs/planning/backlog.md`. When #86 moves `tokens.css`, it updates every place that quotes the old path: doc 03 (the colour table), `.design/prototype/DESIGN_BRIEF.md` and `.design/prototype/TASKS.md`.
+- The register moves FE-01, FE-02, FE-04, DS-01 and DS-02 to Accepted; #86 starts on the order above, and its pull request updates the Makefile, CI, `.github/dependabot.yml`, `AGENTS.md` "Commands" and `third-party.md` together; the gallery (#150) follows it. Its folder structure uses the global stylesheet for `@import "tailwindcss"`, `tokens.css` and the `@theme` mapping in place of `.module.css` files. `docs/planning/backlog.md` notes the earlier start for #86 (done with this record). When #86 moves `tokens.css`, it updates every place that quotes the old path: doc 03 (the colour table), `.design/prototype/DESIGN_BRIEF.md` and `.design/prototype/TASKS.md`.
 - **Not decided here:** maps and charts (FE-03, including MapLibre), hosting and environments (IN-01 to IN-05), and analytics (FE-05).
-- **Revisit if:** a server route is needed before stage 6 (switch FE-01 to server output); query parameters read in the browser miss the CLS or size budget (switch to path segments, (b)); `typescript-eslint` supports TypeScript 7 (move up); React Aria pushes a route over the 170 KB budget; or the CSS Modules token rule proves too weak to stop hard-coded values.
+- **Revisit if:** hosting at stage 5b would be much cheaper as a static export (FE-01 could then move to option A); `typescript-eslint` supports TypeScript 7 (move up); React Aria or Tailwind pushes a route over the 170 KB budget; or the arbitrary-value check proves too weak to stop hard-coded values.
