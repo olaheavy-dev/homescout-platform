@@ -53,6 +53,7 @@ Official documentation for the tools and packages Vestagraph uses or has chosen.
 | mypy | Python type gate (`strict`, `warn_unreachable`, five extra error codes) | 2 | 0039 | [Configuration file](https://mypy.readthedocs.io/en/stable/config_file.html), [optional error codes](https://mypy.readthedocs.io/en/stable/error_code_list2.html) |
 | pytest | Python tests (`[tool.pytest]`, `strict = true`, warnings as errors; `--maxfail=5`, BE-30) | 9 | 0039 | [Configuration](https://docs.pytest.org/en/stable/reference/customize.html), [reference](https://docs.pytest.org/en/stable/reference/reference.html), [good practices](https://docs.pytest.org/en/stable/explanation/goodpractices.html) |
 | pytest-cov and coverage.py | Python coverage (branch coverage, report only) | pytest-cov 7, coverage 7 | 0039 | [pytest-cov](https://pytest-cov.readthedocs.io/), [coverage.py configuration](https://coverage.readthedocs.io/en/latest/config.html) |
+| pytest-bdd | Runs the Gherkin specifications in `docs/specs/` except `@ui`, `@mcp` and `@withdrawn` (from P6; register line SP-03); brings `gherkin-official`, `parse`, `parse-type`, `Mako`, `MarkupSafe`, `six` (MIT or BSD-3-Clause) | 9 (MIT, pytest-dev) | 0049 | [pytest-bdd](https://pytest-bdd.readthedocs.io/en/stable/) |
 | Hypothesis | Property-based tests (from P2) | 6 (MPL-2.0) | 0039 | [Hypothesis](https://hypothesis.readthedocs.io/) |
 | jsonschema and referencing | Python fixture validator (from P5) | jsonschema 4, referencing 0.37 (0.x) | 0039 | [jsonschema](https://python-jsonschema.readthedocs.io/), [referencing](https://referencing.readthedocs.io/) |
 | mutmut | Python mutation testing (from P7, by hand, not in `make check`) | 3 | 0039, 0049 | [mutmut](https://mutmut.readthedocs.io/) |
@@ -78,7 +79,6 @@ Listed so agents read the right documentation when these stages start. Updated f
 
 | Tool / package | Likely use | Decision | Documentation |
 |---|---|---|---|
-| pytest-bdd | Data scenarios of the specifications, everything except `@ui` (from port step P6); MIT | 0049, SP-03 | [pytest-bdd](https://pytest-bdd.readthedocs.io/en/stable/) |
 | Playwright Test, playwright-bdd, `@axe-core/playwright` | Browser (`@ui`) scenarios and accessibility checks, from #86; Apache-2.0, MIT, MPL-2.0 | 0049, FE-09 | [Playwright](https://playwright.dev/docs/intro), [playwright-bdd](https://vitalets.github.io/playwright-bdd/), [`@axe-core/playwright`](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright) |
 | FastAPI and Pydantic | The API, from the founder's template (stage 5b, #93; packages approved by the founder there) | BE-01, 0040, 0049 | [FastAPI](https://fastapi.tiangolo.com/), [Pydantic](https://docs.pydantic.dev/latest/) |
 | MCP Python SDK (`mcp`) | MCP server (stage 6, #97) | 0037, 0049 | [Python SDK](https://github.com/modelcontextprotocol/python-sdk) |

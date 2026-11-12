@@ -519,29 +519,29 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_unknownLineStatus_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_unknown_line_status_is_rejected |
 | P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCases_crossCaseLinks_pointAtCasesThatExist` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_test_cases_cross_case_links_point_at_cases_that_exist |
 | P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCases_idsAreUnique` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_test_cases_ids_are_unique |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_stepInsideRange_setsTheScenario` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_stepOutOfRange_fails` | 2 | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_unknownHome_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureCitesEvidence_citedEvidence_passes` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureCitesEvidence_evidenceNotCitedByFigure_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureCitesEvidence_unknownEvidence_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureExists_figureFromAnotherStep_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureExists_unknownFigure_failsNamingTheId` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureHasStatus_correctStatus_passes` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureHasStatus_total_failsSayingItIsATotal` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureHasStatus_wrongStatus_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_budgetWithBudgetPence_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_lineWithPence_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_lineWithoutAmount_passes` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_total_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenTotalIsPartialWithReason_listedReason_passes` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenTotalIsPartialWithReason_reasonNotListed_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenTotalIsPartialWithReason_totalNotPartial_fails` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `EvidenceIds_knownEvidence_containsIt` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `FigureIds_generatedFile_isNotEmpty` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `HasScenarioFromStep_stepInsideAScenarioRange_isTrue` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `HasScenarioFromStep_stepWithNoScenario_isFalse` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `HomeIds_knownHome_containsItAndNotAnUnknownOne` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `TryGetFigure_knownFigureId_findsIt` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `TryGetFigure_unknownFigureId_doesNotFindIt` |  | |
-| P6 | Vestagraph.Specs.Tests | SpecDataTests | `TryGetFigure_wrongCase_doesNotFindIt` |  | |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_stepInsideRange_setsTheScenario` |  | packages/specs/tests/test_specs_data_steps.py::test_given_home_is_at_story_step_step_inside_range_sets_the_scenario |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_stepOutOfRange_fails` | 2 | packages/specs/tests/test_specs_data_steps.py::test_given_home_is_at_story_step_step_out_of_range_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_unknownHome_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_given_home_is_at_story_step_unknown_home_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureCitesEvidence_citedEvidence_passes` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_cites_evidence_cited_evidence_passes |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureCitesEvidence_evidenceNotCitedByFigure_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_cites_evidence_evidence_not_cited_by_figure_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureCitesEvidence_unknownEvidence_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_cites_evidence_unknown_evidence_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureExists_figureFromAnotherStep_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_exists_figure_from_another_step_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureExists_unknownFigure_failsNamingTheId` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_exists_unknown_figure_fails_naming_the_id |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureHasStatus_correctStatus_passes` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_has_status_correct_status_passes |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureHasStatus_total_failsSayingItIsATotal` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_has_status_total_fails_saying_it_is_a_total |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureHasStatus_wrongStatus_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_has_status_wrong_status_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_budgetWithBudgetPence_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_shows_no_amount_budget_with_budget_pence_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_lineWithPence_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_shows_no_amount_line_with_pence_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_lineWithoutAmount_passes` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_shows_no_amount_line_without_amount_passes |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenFigureShowsNoAmount_total_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_figure_shows_no_amount_total_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenTotalIsPartialWithReason_listedReason_passes` |  | packages/specs/tests/test_specs_data_steps.py::test_then_total_is_partial_with_reason_listed_reason_passes |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenTotalIsPartialWithReason_reasonNotListed_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_total_is_partial_with_reason_reason_not_listed_fails |
+| P6 | Vestagraph.Specs.Tests | DataStepsTests | `ThenTotalIsPartialWithReason_totalNotPartial_fails` |  | packages/specs/tests/test_specs_data_steps.py::test_then_total_is_partial_with_reason_total_not_partial_fails |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `EvidenceIds_knownEvidence_containsIt` |  | packages/specs/tests/test_specs_data.py::test_evidence_ids_known_evidence_contains_it |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `FigureIds_generatedFile_isNotEmpty` |  | packages/specs/tests/test_specs_data.py::test_figure_ids_generated_file_is_not_empty |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `HasScenarioFromStep_stepInsideAScenarioRange_isTrue` |  | packages/specs/tests/test_specs_data.py::test_has_scenario_from_step_step_inside_a_scenario_range_is_true |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `HasScenarioFromStep_stepWithNoScenario_isFalse` |  | packages/specs/tests/test_specs_data.py::test_has_scenario_from_step_step_with_no_scenario_is_false |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `HomeIds_knownHome_containsItAndNotAnUnknownOne` |  | packages/specs/tests/test_specs_data.py::test_home_ids_known_home_contains_it_and_not_an_unknown_one |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `TryGetFigure_knownFigureId_findsIt` |  | packages/specs/tests/test_specs_data.py::test_try_get_figure_known_figure_id_finds_it |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `TryGetFigure_unknownFigureId_doesNotFindIt` |  | packages/specs/tests/test_specs_data.py::test_try_get_figure_unknown_figure_id_does_not_find_it |
+| P6 | Vestagraph.Specs.Tests | SpecDataTests | `TryGetFigure_wrongCase_doesNotFindIt` |  | packages/specs/tests/test_specs_data.py::test_try_get_figure_wrong_case_does_not_find_it |
