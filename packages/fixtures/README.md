@@ -8,7 +8,7 @@ Synthetic sample data for the prototype (decision 0018, stage 2 plan section 1).
 | `data/` | Hand-maintained **inputs**: household, homes, evidence, documents, questions, replies, snapshot, area. No totals or other calculated figures (AGENTS.md rule 2). |
 | `test-cases/` | Independently worked examples (task 3), checked against `schema/test-case.schema.json`. |
 | `generated/` | Cost-engine output (task 4b): one file, `costs.json`, checked against `schema/generated-costs.schema.json`. Written only by the generator (`make generate`) and committed; never edited by hand. `make check` regenerates it and fails if anything under `generated/` differs from what is committed. |
-| `tools/Vestagraph.Fixtures.Validator/` | The checker run by `make validate` and `make check`. |
+| `tools/Vestagraph.Fixtures.Validator/` | The C# checker. `make validate` (and so `make check`) now runs `packages/vestagraph-fixture-validator/` (Python, decision 0049 P5); this tool stays until P8 for its NUnit tests. |
 | `tests/Vestagraph.Fixtures.Tests/` | NUnit tests that prove the schemas reject bad data and accept the real files. |
 
 ## Which schema checks which file

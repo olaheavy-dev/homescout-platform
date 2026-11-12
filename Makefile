@@ -11,7 +11,6 @@ SOLUTION      := Vestagraph.slnx
 CONFIGURATION := Release
 ARTIFACTS     := .artifacts
 GENERATED     := packages/fixtures/generated
-VALIDATOR     := packages/fixtures/tools/Vestagraph.Fixtures.Validator/Vestagraph.Fixtures.Validator.csproj
 
 PYTEST_XML    := $(ARTIFACTS)/test-results/python/coverage.xml
 
@@ -55,8 +54,9 @@ format-check: restore
 	uv run --locked ruff format --check
 
 # Checks every packages/fixtures/data, test-cases and generated file against its JSON Schema (decision 0018, BE-07).
-validate: build
-	dotnet run --project $(VALIDATOR) --configuration $(CONFIGURATION) --no-build
+# Runs the Python validator (vestagraph_fixture_validator, decision 0049 step P5); the C# validator stays until P8.
+validate: restore
+	uv run --locked python -m vestagraph_fixture_validator
 
 # JetBrains InspectCode (local tool). Any issue at warning severity or above fails the target.
 inspect: build

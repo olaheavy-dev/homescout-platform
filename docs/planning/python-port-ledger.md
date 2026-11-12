@@ -328,197 +328,197 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_upfrontStoryCase_matchesWorkedResultInEveryScenario` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_upfront_story_case_matches_worked_result_in_every_scenario |
 | P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_waterAtStepFour_isNowCalculated` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_water_at_step_four_is_now_calculated |
 | P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_waterAtStepOne_isConflictingWithBothStatementsAsEvidence` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_water_at_step_one_is_conflicting_with_both_statements_as_evidence |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_aSchoolInspected_isInspectedTheSameWayEverywhereItAppears` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_amenities_coverEverySubtypeSomewhereInEngland` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_bankRate_isLabelledAsASampleNotTheActualRate` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_bankRate_isOneSharedItemWithASourceDate` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_commute_isTheHouseholdsOwnEstimateNotARoutedJourney` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_commute_usesTheHouseholdCommuteCriterion` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_councilTax_isNotAreaData` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_crimeCategories_areUniqueWithinEachItem` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_crimeForB1AndB2_coversTwoDifferentMonths` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_crimeMonths_areTheTwoLaggedMonths` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_dates_areNotAfterTheSnapshotDate` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_eachEnglandHome_hasEveryAmenityCategoryOrAnExplicitNoRecordItem` | 4 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_eachEnglandHome_hasEveryRequiredTopicOrAnExplicitGap` | 4 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItem_pointsAtTheCertificateAndItsCostInTheEvidenceFile` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItemsThatAreStale_doNotCopyTheCertificateYear` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItems_neverSayThisFlat` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItems_pointAtEvidenceItemsThatExist` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyDistance_namesItsSyntheticMethod` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyEnglandHomeWithCrime_coversBothLaggedMonthsRecordedOrNamedAsFailed` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyEnglandHome_hasACommuteItem` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyEnglandHome_hasAFloodItem` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyHomeId_isAHomeInTheHomesFile` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyHomeItem_ofAnEnglandHome_isCoveredOrAGapThatSaysWhy` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyHome_hasAHealthcareLocation` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyId_followsHomeAreaTopicNumber` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everySource_isSyntheticAndLabelled` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyTopic_isInTheAgreedEnumOrder` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_file_neverUsesSafeUnsafeVerifiedOrApprovedWording` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_floodItemsWithNoRecord_pointTheUserToTheLongTermChecker` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_floodItems_neverUseSurfaceWaterAsASubtypeAndSayWhyAndWhereToLook` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_floodWarnings_exactlyOneHomeHasALiveWarning` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_gapExamples_includeEveryStatusTheIssueRequires` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_ids_areUnique` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_placesOfWorship_areSinglePlacesWithAReligionAndOneSharedLimit` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_priorityTopic_hasTwoToFourItemsForEachHome` | 14 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_r1_isSetOnStationRoadAndR2OnCanalStreet` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_r2Energy_isStaleAndPointsAtItsExpiredCertificateOnly` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_schemaFile_hasNoRatingOrScoreFieldOnCrime` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_schoolInspections_pointAtASchoolOfTheSameHome` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_soldPriceAddresses_areUniqueSoNoAddressHasTwoPrices` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_valueDates_areNotAfterTheSnapshotDate` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_wales1_hasAnItemForEachPerHomeTopicExceptLeaseholdAndBankRate` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_wales1_hasOnlyNotCoveredItems` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_amenitySubtypeOnAFloodItem_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_amenitySubtypeOutsideTheList_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_amenityWithNoSubtype_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_bankRateAsADecimal_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_bankRateTiedToAHome_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_childcareAmenity_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeCategoryOutsideTheList_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeCountOfZero_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeCountsThatAreExactDuplicates_areRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeItemWithARatingField_isRejected` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_distanceAsADecimal_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_distanceWithNoMethod_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemThatCopiesTheIssuedYear_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemThatCopiesTheRating_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemWithAHandMadeCostRange_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemWithNoEvidenceLink_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_floodItemThatHasNoFloodType_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_floodSubtypeOnAnAmenity_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_gapItemThatCarriesAValue_isRejected` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_homeItemWithNoHomeId_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_idThatDoesNotFollowThePattern_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_itemWithNoCoverage_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_itemWithNoDoesNotEstablishText_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_itemWithNoSource_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_linkThatIsNotHttps_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_liveFloodWarningOnSurfaceWater_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_notCoveredItemThatCarriesAValue_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_placeOfWorshipReligionOutsideTheList_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_placeOfWorshipWithNoReligion_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_recordedItemWithNoValue_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_religionOnAnAmenityThatIsNotAPlaceOfWorship_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_schoolInspectionWithASingleOverallGrade_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_schoolInspectionWithNoFramework_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_schoolInspectionWithNoInspectionDate_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_soldPriceOfAnOtherPropertyType_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_sourceWithNoDate_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_sourceWithNoSyntheticFlag_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_staleItemWithNoValue_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_stalePlaceOfWorshipWithNoReligion_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_statusOutsideTheEnum_isRejected` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_subtypeOnATopicThatHasNone_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_topicOutsideTheEnum_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_unchangedRealRecord_isAccepted` | 7 | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_unknownExtraField_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `ValidateFixtures_invalidAreaFile_isReportedAgainstTheAreaSchema` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_badFigureId_isRejected` | 7 | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_budgetWithoutPartialFlag_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_buyingScenarioWithNoMortgage_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_calculatedLineWithoutPence_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_calculatedLineWithoutSourcePeriod_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_changeWithUnknownKind_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_completeTotalWithReasons_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_coveredHomeWithNoScenarios_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_decimalPence_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_includedLineWithNoEvidence_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_missingLineThatNamesEvidence_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_missingLineWithPence_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_missingSnapshotDate_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageLoanOfZero_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageRepaymentOfZero_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageTermOver100Years_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageWithZeroRate_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_negativePenceOnACalculatedLine_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_nonCalculatedLineWithPence_isRejected` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_notYetCoveredHomeWithScenarios_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_partialReasonForACalculatedLine_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_partialTotalWithNoReasons_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_sampleShape_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_unknownCategory_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_unknownKeyInALine_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_unknownLineStatus_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_walesMarkedCovered_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_wrongFormatVersion_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_wrongScenarioId_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_generatedFileWithNoSchemaLine_isReported` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_invalidGeneratedFile_isReported` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_noGeneratedFolder_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_validGeneratedFile_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `AllFixtureFiles_validateAgainstTheirSchemas_withNoProblems` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_buildingsInsurance_isIncludedInTheServiceCharge_notZero` | 1 | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_buildingsInsurance_isUsedFromStepThree_whenItsOnlySourceArrives` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_postcode_matchesSixCandidateUnits_andTheSelectedOneIsAmongThem` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_serviceCharge_keepsTheListingFigureAndTheLaterBudget` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `EnergyCertificateCosts_areFlaggedContextOnly_atTheirOldPrices` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `EvidenceItem_markedContextOnly_isAnEnergyCertificateCost` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Home_inEveryRecord_hasANation` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `LeaseAndCouncilTaxBands_approvedInPlan_matchTheFile` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `MoneyInput_approvedInPlan_matchesTheFile` | 28 | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `MortgageAndBudgetInputs_approvedInPlan_matchTheFile` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `NorthbridgeHomes_postcodes_startWithNb` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `NotCalculatedItems_areNotCalculated_notZero` | 5 | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Numbers_inEveryFixtureFile_areWholeNumbers` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Question_finalStatus_equalsItsLastTransition` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Question_statuses_matchTheStoriesInThePlan` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `R2_bills_areIncluded_notZero` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `R2_certificate_isExpired2025_issued2015_withCitedGovUkText` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Reference_inAnyRecord_pointsAtARecordThatExists` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `SnapshotDate_inSnapshotFile_isTheApprovedDate` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `ValidateFixtures_dataFileWithNoSchemaAvailable_isReported` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `ValidateFixtures_nonStringSchemaField_isReportedReadably` |  | |
-| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Wales1_address_isWalesAndNotYetCovered` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_availableItemWithNoValue_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_billRecordedAsZeroInsteadOfIncluded_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_certificateCostNotMarkedContextOnly_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_citedTextWithoutCitationUrl_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_includedBillThatAlsoHasAValue_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_misspeltCategory_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_moneyAsAPoundsString_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_moneyWithDecimals_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_mortgageTermOf100Years_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_mortgageTermOver100Years_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_notCalculatedItemRecordedAsZero_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_notCalculatedItemThatAlsoHasAValue_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_rateAsADecimal_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_sourceWithNoOrigin_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_sourceWithNoSyntheticFlag_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_syntheticOriginWithSyntheticFlagFalse_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_unchangedRealRecord_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_unknownStatus_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_valueWithNoSource_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_addressWithNoNation_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_candidateUnitsWithNoSelectedUnit_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_englandMarkedAsNotCovered_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_englishHomeMissingADescriptiveField_isRejected` | 5 | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_selectedUnitOutsideTheCandidates_isNotCaughtBySchemaButIsCaughtByDataTest` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_walesMarkedAsCovered_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Question_eachStatusFromDoc02_isAccepted` | 8 | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Question_resolvedStatusThatIsNotInDoc02_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Question_transitionWithNoReason_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `B1ServiceChargeBudget_afterTheUserConfirms_isUsedFromStep4` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `EnergyCertificate_ofEachHomeWithOne_hasTheApprovedRatingAndYear` | 3 | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Ids_acrossEvidenceDocumentsQuestionsAndReplies_areUnique` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R1WaterEstimate_afterTheUserConfirms_isUsedFromStep4` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R1WaterListingClaim_whenCheckedAgainstTheStatement_isConflicting` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R1WaterWrittenStatement_inBillsSection_saysTenantPaysWater` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R2CouncilTax_whenRentIncludesBills_isPresentAndNotIncluded` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Snapshot_householdAndHomeIds_resolveToRecords` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Source_syntheticFlag_isTrueInEveryDataFile` |  | |
-| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Story_homeIds_resolveToHomesInTheSnapshot` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_caseWithNoRule_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_costLineAsZeroAmount_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_lineStatusMissing_isAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_moneyFieldWithDecimals_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_partialTotalWithNoReason_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_realFile_namesItsSchemaAndIsAccepted` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_unknownLineStatus_isRejected` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCases_crossCaseLinks_pointAtCasesThatExist` |  | |
-| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCases_idsAreUnique` |  | |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_aSchoolInspected_isInspectedTheSameWayEverywhereItAppears` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_a_school_inspected_is_inspected_the_same_way_everywhere_it_appears |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_amenities_coverEverySubtypeSomewhereInEngland` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_amenities_cover_every_subtype_somewhere_in_england |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_bankRate_isLabelledAsASampleNotTheActualRate` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_bank_rate_is_labelled_as_a_sample_not_the_actual_rate |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_bankRate_isOneSharedItemWithASourceDate` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_bank_rate_is_one_shared_item_with_a_source_date |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_commute_isTheHouseholdsOwnEstimateNotARoutedJourney` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_commute_is_the_households_own_estimate_not_a_routed_journey |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_commute_usesTheHouseholdCommuteCriterion` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_commute_uses_the_household_commute_criterion |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_councilTax_isNotAreaData` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_council_tax_is_not_area_data |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_crimeCategories_areUniqueWithinEachItem` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_crime_categories_are_unique_within_each_item |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_crimeForB1AndB2_coversTwoDifferentMonths` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_crime_for_b1_and_b2_covers_two_different_months |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_crimeMonths_areTheTwoLaggedMonths` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_crime_months_are_the_two_lagged_months |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_dates_areNotAfterTheSnapshotDate` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_dates_are_not_after_the_snapshot_date |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_eachEnglandHome_hasEveryAmenityCategoryOrAnExplicitNoRecordItem` | 4 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_each_england_home_has_every_amenity_category_or_an_explicit_no_record_item |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_eachEnglandHome_hasEveryRequiredTopicOrAnExplicitGap` | 4 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_each_england_home_has_every_required_topic_or_an_explicit_gap |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItem_pointsAtTheCertificateAndItsCostInTheEvidenceFile` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_energy_item_points_at_the_certificate_and_its_cost_in_the_evidence_file |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItemsThatAreStale_doNotCopyTheCertificateYear` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_energy_items_that_are_stale_do_not_copy_the_certificate_year |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItems_neverSayThisFlat` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_energy_items_never_say_this_flat |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_energyItems_pointAtEvidenceItemsThatExist` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_energy_items_point_at_evidence_items_that_exist |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyDistance_namesItsSyntheticMethod` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_distance_names_its_synthetic_method |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyEnglandHomeWithCrime_coversBothLaggedMonthsRecordedOrNamedAsFailed` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_england_home_with_crime_covers_both_lagged_months_or_names_a_failure |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyEnglandHome_hasACommuteItem` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_england_home_has_a_commute_item |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyEnglandHome_hasAFloodItem` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_england_home_has_a_flood_item |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyHomeId_isAHomeInTheHomesFile` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_home_id_is_a_home_in_the_homes_file |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyHomeItem_ofAnEnglandHome_isCoveredOrAGapThatSaysWhy` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_home_item_of_an_england_home_is_covered_or_a_gap_that_says_why |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyHome_hasAHealthcareLocation` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_home_has_a_healthcare_location |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyId_followsHomeAreaTopicNumber` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_id_follows_home_area_topic_number |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everySource_isSyntheticAndLabelled` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_source_is_synthetic_and_labelled |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_everyTopic_isInTheAgreedEnumOrder` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_every_topic_is_in_the_agreed_enum_order |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_file_neverUsesSafeUnsafeVerifiedOrApprovedWording` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_file_never_uses_safe_unsafe_verified_or_approved_wording |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_floodItemsWithNoRecord_pointTheUserToTheLongTermChecker` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_flood_items_with_no_record_point_the_user_to_the_long_term_checker |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_floodItems_neverUseSurfaceWaterAsASubtypeAndSayWhyAndWhereToLook` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_flood_items_never_use_surface_water_as_a_subtype_and_say_why_and_where_to_look |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_floodWarnings_exactlyOneHomeHasALiveWarning` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_flood_warnings_exactly_one_home_has_a_live_warning |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_gapExamples_includeEveryStatusTheIssueRequires` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_gap_examples_include_every_status_the_issue_requires |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_ids_areUnique` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_ids_are_unique |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_placesOfWorship_areSinglePlacesWithAReligionAndOneSharedLimit` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_places_of_worship_are_single_places_with_a_religion_and_one_shared_limit |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_priorityTopic_hasTwoToFourItemsForEachHome` | 14 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_priority_topic_has_two_to_four_items_for_each_home |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_r1_isSetOnStationRoadAndR2OnCanalStreet` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_r1_is_set_on_station_road_and_r2_on_canal_street |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_r2Energy_isStaleAndPointsAtItsExpiredCertificateOnly` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_r2_energy_is_stale_and_points_at_its_expired_certificate_only |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_schemaFile_hasNoRatingOrScoreFieldOnCrime` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_schema_file_has_no_rating_or_score_field_on_crime |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_schoolInspections_pointAtASchoolOfTheSameHome` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_school_inspections_point_at_a_school_of_the_same_home |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_soldPriceAddresses_areUniqueSoNoAddressHasTwoPrices` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_sold_price_addresses_are_unique_so_no_address_has_two_prices |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_valueDates_areNotAfterTheSnapshotDate` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_value_dates_are_not_after_the_snapshot_date |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_wales1_hasAnItemForEachPerHomeTopicExceptLeaseholdAndBankRate` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_wales1_has_an_item_for_each_per_home_topic_except_leasehold_and_bank_rate |
+| P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_wales1_hasOnlyNotCoveredItems` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_data.py::test_area_wales1_has_only_not_covered_items |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_amenitySubtypeOnAFloodItem_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_amenity_subtype_on_a_flood_item_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_amenitySubtypeOutsideTheList_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_amenity_subtype_outside_the_list_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_amenityWithNoSubtype_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_amenity_with_no_subtype_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_bankRateAsADecimal_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_bank_rate_as_a_decimal_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_bankRateTiedToAHome_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_bank_rate_tied_to_a_home_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_childcareAmenity_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_childcare_amenity_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeCategoryOutsideTheList_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_crime_category_outside_the_list_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeCountOfZero_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_crime_count_of_zero_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeCountsThatAreExactDuplicates_areRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_crime_counts_that_are_exact_duplicates_are_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_crimeItemWithARatingField_isRejected` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_crime_item_with_a_rating_field_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_distanceAsADecimal_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_distance_as_a_decimal_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_distanceWithNoMethod_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_distance_with_no_method_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemThatCopiesTheIssuedYear_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_energy_item_that_copies_the_issued_year_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemThatCopiesTheRating_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_energy_item_that_copies_the_rating_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemWithAHandMadeCostRange_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_energy_item_with_a_hand_made_cost_range_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_energyItemWithNoEvidenceLink_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_energy_item_with_no_evidence_link_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_floodItemThatHasNoFloodType_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_flood_item_that_has_no_flood_type_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_floodSubtypeOnAnAmenity_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_flood_subtype_on_an_amenity_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_gapItemThatCarriesAValue_isRejected` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_gap_item_that_carries_a_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_homeItemWithNoHomeId_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_home_item_with_no_home_id_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_idThatDoesNotFollowThePattern_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_id_that_does_not_follow_the_pattern_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_itemWithNoCoverage_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_item_with_no_coverage_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_itemWithNoDoesNotEstablishText_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_item_with_no_does_not_establish_text_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_itemWithNoSource_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_item_with_no_source_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_linkThatIsNotHttps_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_link_that_is_not_https_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_liveFloodWarningOnSurfaceWater_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_live_flood_warning_on_surface_water_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_notCoveredItemThatCarriesAValue_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_not_covered_item_that_carries_a_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_placeOfWorshipReligionOutsideTheList_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_place_of_worship_religion_outside_the_list_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_placeOfWorshipWithNoReligion_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_place_of_worship_with_no_religion_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_recordedItemWithNoValue_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_recorded_item_with_no_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_religionOnAnAmenityThatIsNotAPlaceOfWorship_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_religion_on_a_non_worship_amenity_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_schoolInspectionWithASingleOverallGrade_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_school_inspection_with_a_single_overall_grade_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_schoolInspectionWithNoFramework_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_school_inspection_with_no_framework_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_schoolInspectionWithNoInspectionDate_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_school_inspection_with_no_inspection_date_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_soldPriceOfAnOtherPropertyType_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_sold_price_of_an_other_property_type_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_sourceWithNoDate_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_source_with_no_date_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_sourceWithNoSyntheticFlag_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_source_with_no_synthetic_flag_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_staleItemWithNoValue_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_stale_item_with_no_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_stalePlaceOfWorshipWithNoReligion_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_stale_place_of_worship_with_no_religion_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_statusOutsideTheEnum_isRejected` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_status_outside_the_enum_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_subtypeOnATopicThatHasNone_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_subtype_on_a_topic_that_has_none_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_topicOutsideTheEnum_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_topic_outside_the_enum_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_unchangedRealRecord_isAccepted` | 7 | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_unchanged_real_record_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `Area_unknownExtraField_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_instance_area_unknown_extra_field_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | AreaSchemaRejectionTests | `ValidateFixtures_invalidAreaFile_isReportedAgainstTheAreaSchema` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_area_schema_rejection.py::test_validate_fixtures_invalid_area_file_is_reported_against_the_area_schema |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_badFigureId_isRejected` | 7 | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_bad_figure_id_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_budgetWithoutPartialFlag_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_budget_without_partial_flag_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_buyingScenarioWithNoMortgage_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_buying_scenario_with_no_mortgage_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_calculatedLineWithoutPence_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_calculated_line_without_pence_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_calculatedLineWithoutSourcePeriod_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_calculated_line_without_source_period_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_changeWithUnknownKind_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_change_with_unknown_kind_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_completeTotalWithReasons_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_complete_total_with_reasons_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_coveredHomeWithNoScenarios_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_covered_home_with_no_scenarios_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_decimalPence_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_decimal_pence_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_includedLineWithNoEvidence_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_included_line_with_no_evidence_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_missingLineThatNamesEvidence_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_missing_line_that_names_evidence_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_missingLineWithPence_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_missing_line_with_pence_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_missingSnapshotDate_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_missing_snapshot_date_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageLoanOfZero_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_mortgage_loan_of_zero_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageRepaymentOfZero_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_mortgage_repayment_of_zero_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageTermOver100Years_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_mortgage_term_over_100_years_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_mortgageWithZeroRate_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_mortgage_with_zero_rate_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_negativePenceOnACalculatedLine_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_negative_pence_on_a_calculated_line_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_nonCalculatedLineWithPence_isRejected` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_non_calculated_line_with_pence_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_notYetCoveredHomeWithScenarios_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_not_yet_covered_home_with_scenarios_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_partialReasonForACalculatedLine_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_partial_reason_for_a_calculated_line_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_partialTotalWithNoReasons_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_partial_total_with_no_reasons_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_sampleShape_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_sample_shape_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_unknownCategory_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_unknown_category_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_unknownKeyInALine_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_unknown_key_in_a_line_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_unknownLineStatus_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_unknown_line_status_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_walesMarkedCovered_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_wales_marked_covered_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_wrongFormatVersion_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_wrong_format_version_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `GeneratedCosts_wrongScenarioId_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_instance_generated_costs_wrong_scenario_id_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_generatedFileWithNoSchemaLine_isReported` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_fixtures_generated_file_with_no_schema_line_is_reported |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_invalidGeneratedFile_isReported` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_fixtures_invalid_generated_file_is_reported |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_noGeneratedFolder_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_fixtures_no_generated_folder_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | GeneratedCostsSchemaTests | `ValidateFixtures_validGeneratedFile_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_generated_costs_schema.py::test_validate_fixtures_valid_generated_file_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `AllFixtureFiles_validateAgainstTheirSchemas_withNoProblems` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_validate_fixtures_all_fixture_files_validate_against_their_schemas_with_no_problems |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_buildingsInsurance_isIncludedInTheServiceCharge_notZero` | 1 | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_b1_buildings_insurance_is_included_in_the_service_charge_not_zero |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_buildingsInsurance_isUsedFromStepThree_whenItsOnlySourceArrives` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_b1_buildings_insurance_is_used_from_step_three_when_its_only_source_arrives |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_postcode_matchesSixCandidateUnits_andTheSelectedOneIsAmongThem` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_b1_postcode_matches_six_candidate_units_and_the_selected_one_is_among_them |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `B1_serviceCharge_keepsTheListingFigureAndTheLaterBudget` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_b1_service_charge_keeps_the_listing_figure_and_the_later_budget |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `EnergyCertificateCosts_areFlaggedContextOnly_atTheirOldPrices` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_energy_certificate_costs_are_flagged_context_only_at_their_old_prices |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `EvidenceItem_markedContextOnly_isAnEnergyCertificateCost` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_evidence_item_marked_context_only_is_an_energy_certificate_cost |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Home_inEveryRecord_hasANation` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_home_in_every_record_has_a_nation |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `LeaseAndCouncilTaxBands_approvedInPlan_matchTheFile` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_lease_and_council_tax_bands_approved_in_plan_match_the_file |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `MoneyInput_approvedInPlan_matchesTheFile` | 28 | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_money_input_approved_in_plan_matches_the_file |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `MortgageAndBudgetInputs_approvedInPlan_matchTheFile` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_mortgage_and_budget_inputs_approved_in_plan_match_the_file |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `NorthbridgeHomes_postcodes_startWithNb` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_northbridge_homes_postcodes_start_with_nb |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `NotCalculatedItems_areNotCalculated_notZero` | 5 | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_not_calculated_items_are_not_calculated_not_zero |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Numbers_inEveryFixtureFile_areWholeNumbers` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_numbers_in_every_fixture_file_are_whole_numbers |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Question_finalStatus_equalsItsLastTransition` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_question_final_status_equals_its_last_transition |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Question_statuses_matchTheStoriesInThePlan` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_question_statuses_match_the_stories_in_the_plan |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `R2_bills_areIncluded_notZero` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_r2_bills_are_included_not_zero |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `R2_certificate_isExpired2025_issued2015_withCitedGovUkText` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_r2_certificate_is_expired_2025_issued_2015_with_cited_gov_uk_text |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Reference_inAnyRecord_pointsAtARecordThatExists` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_reference_in_any_record_points_at_a_record_that_exists |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `SnapshotDate_inSnapshotFile_isTheApprovedDate` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_snapshot_date_in_snapshot_file_is_the_approved_date |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `ValidateFixtures_dataFileWithNoSchemaAvailable_isReported` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_validate_fixtures_data_file_with_no_schema_available_is_reported |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `ValidateFixtures_nonStringSchemaField_isReportedReadably` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_validate_fixtures_non_string_schema_field_is_reported_readably |
+| P5 | Vestagraph.Fixtures.Tests | RealDataTests | `Wales1_address_isWalesAndNotYetCovered` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_real_data.py::test_wales1_address_is_wales_and_not_yet_covered |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_availableItemWithNoValue_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_available_item_with_no_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_billRecordedAsZeroInsteadOfIncluded_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_bill_recorded_as_zero_instead_of_included_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_certificateCostNotMarkedContextOnly_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_certificate_cost_not_marked_context_only_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_citedTextWithoutCitationUrl_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_cited_text_without_citation_url_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_includedBillThatAlsoHasAValue_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_included_bill_that_also_has_a_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_misspeltCategory_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_misspelt_category_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_moneyAsAPoundsString_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_money_as_a_pounds_string_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_moneyWithDecimals_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_money_with_decimals_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_mortgageTermOf100Years_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_mortgage_term_of_100_years_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_mortgageTermOver100Years_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_mortgage_term_over_100_years_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_notCalculatedItemRecordedAsZero_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_not_calculated_item_recorded_as_zero_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_notCalculatedItemThatAlsoHasAValue_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_not_calculated_item_that_also_has_a_value_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_rateAsADecimal_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_rate_as_a_decimal_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_sourceWithNoOrigin_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_source_with_no_origin_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_sourceWithNoSyntheticFlag_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_source_with_no_synthetic_flag_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_syntheticOriginWithSyntheticFlagFalse_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_synthetic_origin_with_synthetic_flag_false_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_unchangedRealRecord_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_unchanged_real_record_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_unknownStatus_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_unknown_status_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Evidence_valueWithNoSource_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_evidence_value_with_no_source_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_addressWithNoNation_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_home_address_with_no_nation_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_candidateUnitsWithNoSelectedUnit_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_home_candidate_units_with_no_selected_unit_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_englandMarkedAsNotCovered_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_home_england_marked_as_not_covered_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_englishHomeMissingADescriptiveField_isRejected` | 5 | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_home_english_home_missing_a_descriptive_field_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_selectedUnitOutsideTheCandidates_isNotCaughtBySchemaButIsCaughtByDataTest` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_home_selected_unit_outside_the_candidates_is_not_caught_by_schema |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Home_walesMarkedAsCovered_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_home_wales_marked_as_covered_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Question_eachStatusFromDoc02_isAccepted` | 8 | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_question_each_status_from_doc02_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Question_resolvedStatusThatIsNotInDoc02_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_question_resolved_status_that_is_not_in_doc02_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | SchemaRejectionTests | `Question_transitionWithNoReason_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_schema_rejection.py::test_validate_instance_question_transition_with_no_reason_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `B1ServiceChargeBudget_afterTheUserConfirms_isUsedFromStep4` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_b1_service_charge_budget_after_the_user_confirms_is_used_from_step4 |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `EnergyCertificate_ofEachHomeWithOne_hasTheApprovedRatingAndYear` | 3 | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_energy_certificate_of_each_home_with_one_has_the_approved_rating_and_year |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Ids_acrossEvidenceDocumentsQuestionsAndReplies_areUnique` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_ids_across_evidence_documents_questions_and_replies_are_unique |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R1WaterEstimate_afterTheUserConfirms_isUsedFromStep4` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_r1_water_estimate_after_the_user_confirms_is_used_from_step4 |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R1WaterListingClaim_whenCheckedAgainstTheStatement_isConflicting` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_r1_water_listing_claim_when_checked_against_the_statement_is_conflicting |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R1WaterWrittenStatement_inBillsSection_saysTenantPaysWater` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_r1_water_written_statement_in_bills_section_says_tenant_pays_water |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `R2CouncilTax_whenRentIncludesBills_isPresentAndNotIncluded` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_r2_council_tax_when_rent_includes_bills_is_present_and_not_included |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Snapshot_householdAndHomeIds_resolveToRecords` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_snapshot_household_and_home_ids_resolve_to_records |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Source_syntheticFlag_isTrueInEveryDataFile` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_source_synthetic_flag_is_true_in_every_data_file |
+| P5 | Vestagraph.Fixtures.Tests | StoryTests | `Story_homeIds_resolveToHomesInTheSnapshot` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_story.py::test_story_home_ids_resolve_to_homes_in_the_snapshot |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_caseWithNoRule_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_case_with_no_rule_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_costLineAsZeroAmount_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_cost_line_as_zero_amount_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_lineStatusMissing_isAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_line_status_missing_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_moneyFieldWithDecimals_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_money_field_with_decimals_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_partialTotalWithNoReason_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_partial_total_with_no_reason_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_realFile_namesItsSchemaAndIsAccepted` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_real_file_names_its_schema_and_is_accepted |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCaseFile_unknownLineStatus_isRejected` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_validate_instance_test_case_unknown_line_status_is_rejected |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCases_crossCaseLinks_pointAtCasesThatExist` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_test_cases_cross_case_links_point_at_cases_that_exist |
+| P5 | Vestagraph.Fixtures.Tests | TestCaseFileTests | `TestCases_idsAreUnique` |  | packages/vestagraph-fixture-validator/tests/test_fixtures_test_case_files.py::test_test_cases_ids_are_unique |
 | P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_stepInsideRange_setsTheScenario` |  | |
 | P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_stepOutOfRange_fails` | 2 | |
 | P6 | Vestagraph.Specs.Tests | DataStepsTests | `GivenHomeIsAtStoryStep_unknownHome_fails` |  | |

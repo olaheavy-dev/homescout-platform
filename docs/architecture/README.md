@@ -56,7 +56,7 @@ flowchart TB
         engine["Cost engine<br/>Python package, vestagraph_engine<br/>(packages/vestagraph-engine)<br/>No I/O, HTTP, AI, clock or random<br/>C# Vestagraph.CostEngine kept until P8,<br/>proven to the same bytes"]
         generator["Generator<br/>Python package<br/>vestagraph_generator"]
         generated[("Generated costs<br/>packages/fixtures/generated/costs.json<br/>Every calculated output, each with a figure ID")]
-        validator["Validator<br/>C# console app<br/>Vestagraph.Fixtures.Validator"]
+        validator["Validator<br/>Python package<br/>vestagraph_fixture_validator<br/>C# Vestagraph.Fixtures.Validator kept until P8"]
         tests["Test projects<br/>NUnit, FsCheck, architecture tests<br/>engine, generator and fixture tests"]
         specs["Specification tests<br/>packages/specs, Reqnroll<br/>Gherkin specs from docs/specs/"]
         ci["Checks<br/>make check and GitHub Actions CI<br/>CodeQL, dependency review, mutation testing (manual)"]
@@ -115,7 +115,7 @@ flowchart TB
 | Cost engine | `packages/vestagraph-engine/` (Python, `vestagraph_engine`; the C# `packages/cost-engine/src/Vestagraph.CostEngine/` stays until port step P8 and is proven to write the same bytes, decision 0049) | The only place calculated figures come from (decision 0019); it produces `costs.json` through the generator. Architecture tests keep it free of I/O. |
 | Generator | `packages/vestagraph-generator/` (the C# generator in `packages/cost-engine/src/Vestagraph.CostEngine.Generator/` stays until port step P8, decision 0049) | `make generate`: reads the data, calls the engine, writes `costs.json`. |
 | Generated costs | `packages/fixtures/generated/costs.json` | The committed output. Never edited by hand. |
-| Validator | `packages/fixtures/tools/Vestagraph.Fixtures.Validator/` | `make validate`: checks every data, test-case and generated file against its schema. |
+| Validator | `packages/vestagraph-fixture-validator/` (Python, `vestagraph_fixture_validator`, on jsonschema and referencing; the C# `packages/fixtures/tools/Vestagraph.Fixtures.Validator/` stays until port step P8, decision 0049) | `make validate`: checks every data, test-case and generated file against its schema. |
 | Test projects | `packages/cost-engine/tests/`, `packages/fixtures/tests/` | NUnit tests, FsCheck property tests, architecture tests and the generator's end-to-end tests. |
 | Specification tests | `packages/specs/Vestagraph.Specs.Tests/` | Reqnroll runs the Gherkin specifications in `docs/specs/` (decision 0043); data steps check every cited figure and evidence ID against the fixtures and `costs.json`. |
 | Checks | `Makefile`, `.github/workflows/`, repository settings | `make check` locally and in CI, running the .NET checks and, until the .NET code is removed (decision 0049, P8), the Python ones beside them (mypy strict, `ruff format` and `ruff check`, pytest); `make generated-check` fails if the committed output is out of date. CodeQL (`actions` and `csharp`), dependency review and workflow linting also run. `make mutate` (Stryker.NET) is manual and not part of CI. |
