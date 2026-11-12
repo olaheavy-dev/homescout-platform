@@ -20,6 +20,10 @@ def _stats(**overrides: int) -> dict[str, int]:
         "segfault": 0,
     }
     base.update(overrides)
+    if "total" not in overrides:
+        base["total"] = sum(
+            v for k, v in base.items() if k not in ("total", "check_was_interrupted_by_user")
+        )
     return base
 
 
@@ -83,3 +87,17 @@ def test_main_prints_the_numbers(tmp_path: Path, capsys: pytest.CaptureFixture[s
     assert "survived 2" in out
     assert "80.00%" in out
     assert "break score 50.00%" in out
+
+
+def test_main_total_larger_than_the_listed_counts_fails_as_incomplete(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # 5 mutants were never checked or were caught by the type checker: the export omits them.
+    path = _write(tmp_path, _stats(killed=95, survived=0, total=100))
+    assert mutation_score.main([str(path), "--break-score", "50"]) == 1
+    assert "incomplete" in capsys.readouterr().out
+
+
+def test_main_total_equal_to_the_listed_counts_passes(tmp_path: Path) -> None:
+    path = _write(tmp_path, _stats(killed=90, survived=5, skipped=5, total=100))
+    assert mutation_score.main([str(path), "--break-score", "50"]) == 0

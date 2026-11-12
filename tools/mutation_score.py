@@ -7,7 +7,8 @@ the score is below the break score.
 Score = (killed + timeout) / (killed + timeout + survived + suspicious + no_tests + segfault).
 A timeout counts as detected, because a mutant that makes the code hang was noticed. A suspicious
 mutant, one with no covering test or a crashed run is counted as not detected. Skipped mutants
-are left out. A run with no scored mutants, or one the user interrupted, fails.
+are left out. A run with no scored mutants, one the user interrupted, or one where the listed
+counts do not add up to `total` (some mutants not checked) fails.
 """
 
 import argparse
@@ -62,6 +63,24 @@ def main(argv: list[str]) -> int:
     _say(f"mutmut: {counts}")
     if stats["check_was_interrupted_by_user"]:
         _say("The run was interrupted: the score is not complete.")
+        return 1
+    listed = sum(
+        stats[key]
+        for key in (
+            "killed",
+            "timeout",
+            "survived",
+            "suspicious",
+            "no_tests",
+            "segfault",
+            "skipped",
+        )
+    )
+    if listed != stats["total"]:
+        _say(
+            f"The run is incomplete: {stats['total']} mutants in total but only {listed} have a "
+            "verdict listed (the rest were not checked or were caught by the type checker)."
+        )
         return 1
     result = score(stats)
     if result is None:

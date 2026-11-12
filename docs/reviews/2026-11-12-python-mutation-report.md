@@ -9,7 +9,7 @@ mutmut changes the Python cost engine's code in small ways (a `<` becomes `<=`, 
 | Tool | mutmut 3.8.1 (BSD-3-Clause), in the `dev` group of `uv.lock`; no new package |
 | Command | `make mutate`: deletes `packages/vestagraph-engine/mutants/`, runs `CI=true uv run --locked mutmut run` and `mutmut export-cicd-stats` in `packages/vestagraph-engine`, then `tools/mutation_score.py` |
 | Scope | `packages/vestagraph-engine/src/vestagraph_engine` (19 files, 2002 mutants), the same code Stryker.NET covered in the C# engine |
-| Tests that decide | the engine's own tests, `packages/vestagraph-engine/tests` (1435 tests after this step) |
+| Tests that decide | the engine's own tests, `packages/vestagraph-engine/tests` (721 tests; 702 under mutmut, because the 19 purity-rule cases are deselected) |
 | Settings | `[tool.mutmut]` in `packages/vestagraph-engine/pyproject.toml` (see "Setup notes") |
 | Repeatable score | `CI=true`: Hypothesis loads its built-in `ci` profile at import (`derandomize=True`, no deadline, no database; `hypothesis/_settings.py`, `is_in_ci()`), so the property tests draw the same examples on every run. We register no profile of our own |
 | Pass mark | mutmut has none. `tools/mutation_score.py` reads `mutants/mutmut-cicd-stats.json` and fails below `MUTATION_BREAK` (Makefile). Score = (killed + timeout) / (killed + timeout + survived + suspicious + no tests + segfault); a timeout counts as detected, the others as not detected; skipped mutants are left out; no scored mutants, or an interrupted run, fails |
@@ -34,7 +34,7 @@ mutmut changes the Python cost engine's code in small ways (a `<` becomes `<=`, 
 
 The two final runs agree on every count. A third run (with the break score set) gave 1706 killed, 3 timeout, 293 survived: one infinite-loop mutant was cut off by the timeout instead of failing a test first, which moves one mutant between "killed" and "timeout" under machine load. Both count as detected, so the score is the same 85.36%. **Break score: 85**, just below the final 85.36%. The two timeouts (`build_home_costs`, `last += 1` becoming `last = 1` and `index = last + 1` becoming `last - 1`) are infinite loops the run correctly cut off; they count as detected.
 
-The Stryker.NET score on the C# engine was 92 to 95%. The figures are not comparable: mutmut mutates every string literal (three or four variants each) and the engine's rule is that tests match error codes and exception types, never their wording, so most survivors are wording (see below).
+Stryker.NET's approved baseline on the C# engine was 92.70% (BE-26). The two figures are not comparable. Both tools mutate strings, but mutmut makes three or four variants of each, and the engine's rule is that tests match error codes and exception types, never their wording, so most survivors are wording (see below). The denominators also differ: Stryker left out 52 compile-error and 56 ignored mutants before scoring; Python has no compile step, so mutmut scores all 2002. In plain terms: with the 266 wording survivors set aside, 1709 of the 1736 other mutants are detected, about 98.4%.
 
 ## Tests added (9 survivors killed)
 
@@ -57,7 +57,7 @@ By kind (the counts add up to 293):
 
 | Kind | Count | Handling |
 |---|---|---|
-| Wording of an error or exception message, or of a field label passed to a check (`"A change"`, `"A scenario's from_step"`), changed to `XX...XX`, upper case, lower case, or `None` | 266 | **Deliberately unpinned.** Tests match the error code and the exception type, never the message (AGENTS.md "Rules for every agent", and the docstrings of `select_assumptions`, `monthly_cost` and `build_home_costs`). Pinning wording would make a copy edit fail a test. The error codes themselves (first argument of `Error`) are mutated too and are all killed. |
+| Wording of an error or exception message, or of a field label passed to a check (`"A change"`, `"A scenario's from_step"`), changed to `XX...XX`, upper case, lower case, or `None` | 266 | **Deliberately unpinned.** Tests match the error code and the exception type, never the message (stated in the docstrings of `select_assumptions`, `build_home_costs` and `monthly_cost`). Pinning wording would make a copy edit fail a test. The error codes themselves (first argument of `Error`) are mutated too and are all killed. |
 | Equivalent: no behaviour change | 13 | listed below |
 | Unreachable defensive code | 10 | listed below |
 | Separators in `SelectedInputs.signature` | 4 | listed below |
