@@ -59,18 +59,18 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location; 0036's language change superseded by 0042 before it took effect) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Accepted (founder, 11 Nov 2026: executable Gherkin scenarios with permanent IDs in `docs/specs/`, run with Reqnroll; browser scenarios with Microsoft.Playwright for .NET; both packages pre-approved) | [0043](0043-specification-format.md) |
 | SP-02 | Work breakdown | 3 | Accepted (register line: specifications become build tickets one story step at a time, each step working end to end across the screens it touches; default limit about 8 scenarios and about 400 hand-written lines per ticket (excluding generated files and fixtures), split if larger; the stage 5 story items #87 and #88 are epics split into step tickets at #71; founder, 11 Nov 2026) | — |
-| DS-01 | Design tooling | 4 | Not started (code-first indicated by 0031) | |
-| DS-02 | Design system foundation | 4 | Not started | |
-| FE-01 | Frontend framework and rendering | 4 | Proposed (TypeScript and Next.js accepted in 0020; routing and rendering at stage 4) | [0020](0020-application-languages.md) |
-| FE-02 | Styling and components | 4 | Not started | |
+| DS-01 | Design tooling | 4 | Accepted (founder, 12 Nov 2026: code-first, no design tool) | [0048](0048-frontend-foundation.md) |
+| DS-02 | Design system foundation | 4 | Accepted (founder, 12 Nov 2026: `tokens.css` as the source of truth, the component gallery #150 as the living reference; fonts FE-07, both themes per 0045) | [0048](0048-frontend-foundation.md) |
+| FE-01 | Frontend framework and rendering | 4 | Accepted (founder, 12 Nov 2026: TypeScript and Next.js from 0020; App Router with server rendering, run locally only in stage 5; no backend code before stage 5b; hosting decided at 5b) | [0020](0020-application-languages.md), [0048](0048-frontend-foundation.md) |
+| FE-02 | Styling and components | 4 | Accepted (founder, 12 Nov 2026: Tailwind CSS v4 mapped to the `tokens.css` custom properties, React Aria Components for complex widgets) | [0048](0048-frontend-foundation.md) |
 | FE-03 | Maps and charts | 4 | Not started | |
-| FE-04 | Frontend practices | 4 | Not started | |
+| FE-04 | Frontend practices | 4 | Accepted (founder, 12 Nov 2026: Vitest and Testing Library, ESLint 9 and Prettier, TypeScript 6.0, fixture types from the schemas, axe in the `@ui` scenarios, size-limit and Lighthouse CI) | [0048](0048-frontend-foundation.md) |
 | IN-00 | Hosting strategy | 2 (brought forward) | Accepted (cost first) | [0022](0022-cost-first-hosting.md) |
-| IN-01 | Prototype architecture | 4 | Not started | |
-| IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 4 | Not started | |
-| IN-03 | Infrastructure as code | 4 | Not started | |
-| IN-04 | CI/CD and environments | 4 (domain and secrets before the public area check, 0046) | Not started | |
-| IN-05 | Budget cap and cost alerts | 4 (before any running cost; 0046) | Not started | |
+| IN-01 | Prototype architecture | 5b (moved from 4 by 0048: stage 5 runs locally only) | Not started | |
+| IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 5b (moved from 4 by 0048) | Not started | |
+| IN-03 | Infrastructure as code | 5b (moved from 4 by 0048) | Not started | |
+| IN-04 | CI/CD and environments | 5b (moved from 4 by 0048; domain and secrets before the public area check, 0046) | Not started | |
+| IN-05 | Budget cap and cost alerts | 5b (moved from 4 by 0048; before any running cost, 0046) | Not started | |
 | FE-05 | Demo analytics and feedback | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
 | FE-06 | Area summary export format | 3 | Default (11 Nov 2026): a PDF printed from the browser (no package; the postcode never reaches the server). CSV is not planned for now; a later option | `.design/prototype/INFORMATION_ARCHITECTURE.md` (Check an area) |
 | FE-07 | Typefaces | 3 | Default (founder, 11 Nov 2026): Bricolage Grotesque for headlines and the wordmark, Geist for UI and figures; replaces Fraunces. Both SIL Open Font License, Google Fonts | `.design/prototype/tokens.css`, `DESIGN_BRIEF.md` |
