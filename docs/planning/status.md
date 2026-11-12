@@ -18,7 +18,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 
 4. After P8: #86, the app shell, built from the Next.js template; then screens #165–#175.
 
 ## Blockers
-- None. Issues #59–#61 (C# 15) will close as not planned once 0049 is accepted.
+- None. Issues #59 and #60 (C# 15) and #61 (.NET Skills repository) will close as not planned once 0049 is accepted.
 
 ## Founder to-dos
 - Restart Claude Code so the Superpowers and house-reviewers plugins load in this project.
@@ -28,4 +28,4 @@ Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 
 - Narrow the sharing of the design-canvas link.
 
 ## Open `noticed` issues
-#159, #179 (closed by the 0050 pull request), #184.
+#33, #115, #151, #159, #179 (closed by the 0050 pull request), #184.

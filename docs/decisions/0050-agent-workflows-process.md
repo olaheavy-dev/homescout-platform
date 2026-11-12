@@ -15,17 +15,17 @@ On 12 Nov 2026 the founder chose, in prompt windows, to adopt **agent-workflows*
 ## What was checked (12 Nov 2026)
 | Item | Version | Licence | Source |
 |---|---|---|---|
-| agent-workflows | v0.4.0 | the founder's own repository | `olaheavy-dev/agent-workflows` README and CHANGELOG |
+| agent-workflows | v0.4.0 | the founder's own repository (private) | `olaheavy-dev/agent-workflows` README and CHANGELOG |
 | Superpowers (vendored in agent-workflows) | 7.0.2, upstream commit `22f0b46` | MIT | [obra/superpowers](https://github.com/obra/superpowers) |
 | `pr` skill (vendored) | upstream commit `5863806` | MIT | [mattpocock/skills](https://github.com/mattpocock/skills) |
-| `house-reviewers` plugin | from agent-workflows v0.4.0 | the founder's own repository | agent-workflows `plugins/house-reviewers` |
+| `house-reviewers` plugin | from agent-workflows v0.4.0 | the founder's own repository (private) | agent-workflows `plugins/house-reviewers` |
 
 These are agent instructions, not packages the product ships or `make check` runs, so the licence allow-list in [0027](0027-stage-2-engineering-hardening.md) and the pre-approved package list don't apply. They're installed on the founder's machine at user scope by `./sync claude-code` in agent-workflows.
 
 ## Options
 - **Adopt agent-workflows and retire the project agents (chosen).** One process across all the founder's projects; Vestagraph's `AGENTS.md` keeps only what is specific to Vestagraph.
 - **Adopt it but keep the project agents for one more stage.** Gives a fallback, but agents could follow either process, and a later pull request has to remove them.
-- **Hybrid overlay, as chosen for SabiTutor.** Fits a project with its own specialist agents (deployer, security gates). Vestagraph's five agents all duplicate a Superpowers skill, so there is nothing left to overlay.
+- **Hybrid overlay, as chosen for another of the founder's projects.** Fits a project with its own specialist agents (deployer, security gates). Vestagraph's five agents all duplicate a Superpowers skill, so there is nothing left to overlay.
 
 ## Decision
 The founder approved the design on 12 Nov 2026 ("Approve as described" in the prompt window), after choosing to adopt agent-workflows earlier that day.
@@ -50,7 +50,7 @@ The founder approved the design on 12 Nov 2026 ("Approve as described" in the pr
 5. **Retired project agents:** `.claude/agents/` planner, implementer, verifier, reviewer and review-handler are deleted. Each maps to a skill in point 1. The `test-first` skill stays as Vestagraph's extra rules on top of Superpowers test-driven development for money and legal code. The design skills (0031) stay.
 6. **Codex review rules:** `AGENTS.md` "When reviewing" is renamed **`## Code Review Rules`**, which is the heading hosted `@codex review` reads. Its content is unchanged.
 7. **Status file:** `docs/planning/status.md` holds the project's current state: open pull requests, what's next, blockers and the founder's to-dos. It is **overwritten** at the end of every session, not added to. It replaces the "current stage" line in the README. Agent memory keeps only personal preferences and approvals.
-8. **Superpowers ledger:** `.superpowers/` (Superpowers' local record of plan progress) is git-ignored.
+8. **Superpowers ledger:** `.superpowers/` (Superpowers' local working files: plan progress and brainstorming sessions, which can include a session token) is git-ignored.
 9. **Weekly process review:** the weekly review (doc 04 §10) gains a 10-minute process slot. It looks at open `process` issues in agent-workflows and three numbers: review rounds per pull request, P0/P1 findings Codex caught after the pre-push review, and decisions reopened. It changes at most one or two things. Process friction is logged as it happens, as a `process` issue in agent-workflows (house rules).
 
 ## Carried over unchanged

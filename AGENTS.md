@@ -61,9 +61,8 @@ Haiku may do clearly mechanical subtasks (renaming across files, reformatting a 
 
 ## Planning (decisions 0035, 0050)
 
-- Plans are written with Superpowers `brainstorming` then `writing-plans`, saved in `docs/superpowers/specs/` and `docs/superpowers/plans/`, with a short plain summary posted in the chat. For a process or product decision the decision record is the spec, so there is no separate spec file.
-
 - **Every feature gets a plan** before building. Small changes get a short plan in the issue.
+- Plans are written with Superpowers `brainstorming` then `writing-plans`, saved in `docs/superpowers/specs/` and `docs/superpowers/plans/`, with a short plain summary posted in the chat. For a process or product decision the decision record is the spec, so there is no separate spec file. For UI work, the design skills' brief and tasks in `.design/<feature>/` (decision 0031) feed `writing-plans`.
 - The plan fixes the **data contract first** (JSON Schema and generated files now, OpenAPI later), then splits the work into **backend tasks** (C# cost engine, generator, later the API) and **frontend tasks** (Next.js screens; the design skills produce the brief and tasks, decision 0031), each with acceptance criteria, edge cases and the test that proves each.
 - Until a running backend exists, "backend tasks" means fixtures and the cost engine.
 - Hard-to-reverse choices get a decision record; easily reversible ones get one line in the register with their default.

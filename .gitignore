@@ -27,7 +27,7 @@ obj/
 TestResults/
 *.user
 
-# Superpowers' local record of plan progress (decision 0050)
+# Superpowers' local working files: plan progress, brainstorming sessions (decision 0050)
 .superpowers/
 
 # Claude Code local-only files
