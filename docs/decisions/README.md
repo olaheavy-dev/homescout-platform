@@ -59,12 +59,12 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location; 0036's language change superseded by 0042 before it took effect) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Accepted (founder, 11 Nov 2026: executable Gherkin scenarios with permanent IDs in `docs/specs/`, run with Reqnroll; browser scenarios with Microsoft.Playwright for .NET; both packages pre-approved) | [0043](0043-specification-format.md) |
 | SP-02 | Work breakdown | 3 | Accepted (register line: specifications become build tickets one story step at a time, each step working end to end across the screens it touches; default limit about 8 scenarios and about 400 hand-written lines per ticket (excluding generated files and fixtures), split if larger; the stage 5 story items #87 and #88 are epics split into step tickets at #71; founder, 11 Nov 2026) | — |
-| DS-01 | Design tooling | 4 | Not started (code-first indicated by 0031) | |
-| DS-02 | Design system foundation | 4 | Not started | |
-| FE-01 | Frontend framework and rendering | 4 | Proposed (TypeScript and Next.js accepted in 0020; routing and rendering at stage 4) | [0020](0020-application-languages.md) |
-| FE-02 | Styling and components | 4 | Not started | |
+| DS-01 | Design tooling | 4 | Proposed (awaiting founder, 11 Nov 2026; recommended: code-first, as 0031 indicated, no design tool) | [0048](0048-frontend-foundation.md) |
+| DS-02 | Design system foundation | 4 | Proposed (awaiting founder, 11 Nov 2026; recommended: `tokens.css` as the source of truth, the component gallery #150 as the living reference) | [0048](0048-frontend-foundation.md) |
+| FE-01 | Frontend framework and rendering | 4 | Proposed (awaiting founder, 11 Nov 2026; TypeScript and Next.js accepted in 0020; recommended: App Router with a static export, server output when the first server route is needed) | [0020](0020-application-languages.md), [0048](0048-frontend-foundation.md) |
+| FE-02 | Styling and components | 4 | Proposed (awaiting founder, 11 Nov 2026; recommended: CSS Modules on the `tokens.css` custom properties, React Aria Components for complex widgets) | [0048](0048-frontend-foundation.md) |
 | FE-03 | Maps and charts | 4 | Not started | |
-| FE-04 | Frontend practices | 4 | Not started | |
+| FE-04 | Frontend practices | 4 | Proposed (awaiting founder, 11 Nov 2026; recommended: Vitest and Testing Library, ESLint and Prettier, TypeScript 6.0, fixture types from the schemas, axe in the `@ui` scenarios, size-limit and Lighthouse CI) | [0048](0048-frontend-foundation.md) |
 | IN-00 | Hosting strategy | 2 (brought forward) | Accepted (cost first) | [0022](0022-cost-first-hosting.md) |
 | IN-01 | Prototype architecture | 4 | Not started | |
 | IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 4 | Not started | |
