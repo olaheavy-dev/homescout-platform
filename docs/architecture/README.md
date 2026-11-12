@@ -54,7 +54,7 @@ flowchart TB
         schema[("Schemas<br/>JSON Schema 2020-12<br/>packages/fixtures/schema")]
         cases[("Test cases<br/>JSON, packages/fixtures/test-cases<br/>Independently worked examples")]
         engine["Cost engine<br/>C# class library, Vestagraph.CostEngine<br/>(.NET 11, C# 14)<br/>No I/O, HTTP, AI, clock or random"]
-        generator["Generator<br/>C# console app<br/>Vestagraph.CostEngine.Generator"]
+        generator["Generator<br/>Python package<br/>vestagraph_generator"]
         generated[("Generated costs<br/>packages/fixtures/generated/costs.json<br/>Every calculated output, each with a figure ID")]
         validator["Validator<br/>C# console app<br/>Vestagraph.Fixtures.Validator"]
         tests["Test projects<br/>NUnit, FsCheck, architecture tests<br/>engine, generator and fixture tests"]
@@ -113,7 +113,7 @@ flowchart TB
 | Schemas | `packages/fixtures/schema/` | The contract: JSON Schema files for the data, the test cases and the generated output. |
 | Test cases | `packages/fixtures/test-cases/` | Calculations worked out independently of the engine, with their working, so a wrong calculation cannot confirm itself. |
 | Cost engine | `packages/cost-engine/src/Vestagraph.CostEngine/` | The only place calculated figures come from (decision 0019). Architecture tests keep it free of I/O. |
-| Generator | `packages/cost-engine/src/Vestagraph.CostEngine.Generator/` | `make generate`: reads the data, calls the engine, writes `costs.json`. |
+| Generator | `packages/vestagraph-generator/` (the C# generator in `packages/cost-engine/src/Vestagraph.CostEngine.Generator/` stays until port step P8, decision 0049) | `make generate`: reads the data, calls the engine, writes `costs.json`. |
 | Generated costs | `packages/fixtures/generated/costs.json` | The committed output. Never edited by hand. |
 | Validator | `packages/fixtures/tools/Vestagraph.Fixtures.Validator/` | `make validate`: checks every data, test-case and generated file against its schema. |
 | Test projects | `packages/cost-engine/tests/`, `packages/fixtures/tests/` | NUnit tests, FsCheck property tests, architecture tests and the generator's end-to-end tests. |

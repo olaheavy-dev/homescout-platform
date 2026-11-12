@@ -291,43 +291,43 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_storyCase_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_story_case_matches_worked_result |
 | P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_totalTooBigForALong_throwsOverflow` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_total_too_big_for_64_bits_raises_overflow |
 | P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_undefinedMode_throws` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_undefined_mode_raises_type_error |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_buyerStory_mergesStepsOneToTwoThenSplitsAtStepsThreeAndFour` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_englishHomes_carryModeNationCoverageAndStory` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyFigureId_isUniqueAndMatchesThePattern` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyKey_followsTheOrderOfTheContractSchema` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyPartialReason_pointsAtALineInTheSameScenario` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_header_copiesTheSnapshotDateAndNamesTheContract` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_noMoneyAnywhere_isAFloatingPointNumber` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_realData_derivesTheExpectedScenarios` | 5 | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_realData_listsTheHomesInTheOrderOfTheSnapshot` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_runTwice_givesIdenticalText` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_text_usesLfLineEndingsTwoSpaceIndentAndOneFinalNewline` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_walesHome_isNotYetCoveredWithNoScenariosAndNoMode` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `CommittedCostsFile_matchesWhatTheGeneratorProduces` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_coveredHomeInNoStory_failsWithItsCodeNotGuessing` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_dataFileMissing_throwsInsteadOfWritingGuesses` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_homeInTwoStories_failsWithItsCode` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_listWhereAnObjectIsExpected_throwsInvalidData` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_quantityInOtherUnits_isReadAsAnotherKindOfValueNotAnError` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_textWhereANumberIsExpected_throwsInvalidDataNotAStackTrace` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_unknownEvidenceStatus_throwsInsteadOfGuessing` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_costsJsonCannotBeReplaced_keepsTheOtherJsonFilesAndLeavesNoTemporaryFile` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_engineFailure_exitsNonZeroNamesTheErrorCodeAndWritesNothing` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_engineFailure_leavesAnExistingGeneratedFolderUntouched` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_otherJsonFileInGenerated_isDeletedAndOtherFilesAreKept` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_realData_writesCostsJsonAsUtf8WithoutByteOrderMark` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_success_leavesNoTemporaryFile` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_twice_givesByteIdenticalFiles` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_budgetBeatCase_landsAsWorked` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_energyCertificateCosts_neverEnterAnyLineOrTotal` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_insuranceAtStepThree_isEvidenceChangedWithNoTotalChange` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_monthlyStoryCase_matchesWorkedResult` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_mortgageStoryCases_matchTheWorkedRepayments` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_rentedHomeWhoseBillsAreIncluded_showsThemAsIncludedNotZero` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_serviceChargeDifferenceCase_matchesWorkedResult` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_upfrontStoryCase_matchesWorkedResultInEveryScenario` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_waterAtStepFour_isNowCalculated` |  | |
-| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_waterAtStepOne_isConflictingWithBothStatementsAsEvidence` |  | |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_buyerStory_mergesStepsOneToTwoThenSplitsAtStepsThreeAndFour` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_buyer_story_merges_steps_one_to_two_then_splits_at_steps_three_and_four |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_englishHomes_carryModeNationCoverageAndStory` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_english_homes_carry_mode_nation_coverage_and_story |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyFigureId_isUniqueAndMatchesThePattern` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_every_figure_id_is_unique_and_matches_the_pattern |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyKey_followsTheOrderOfTheContractSchema` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_every_key_follows_the_order_of_the_contract_schema |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyPartialReason_pointsAtALineInTheSameScenario` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_every_partial_reason_points_at_a_line_in_the_same_scenario |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_header_copiesTheSnapshotDateAndNamesTheContract` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_header_copies_the_snapshot_date_and_names_the_contract |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_noMoneyAnywhere_isAFloatingPointNumber` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_no_money_anywhere_is_a_floating_point_number |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_realData_derivesTheExpectedScenarios` | 5 | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_real_data_derives_the_expected_scenarios |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_realData_listsTheHomesInTheOrderOfTheSnapshot` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_real_data_lists_the_homes_in_the_order_of_the_snapshot |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_runTwice_givesIdenticalText` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_run_twice_gives_identical_text |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_text_usesLfLineEndingsTwoSpaceIndentAndOneFinalNewline` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_text_uses_lf_line_endings_two_space_indent_and_one_final_newline |
+| P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_walesHome_isNotYetCoveredWithNoScenariosAndNoMode` |  | packages/vestagraph-generator/tests/test_generator_output_shape.py::test_generate_wales_home_is_not_yet_covered_with_no_scenarios_and_no_mode |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `CommittedCostsFile_matchesWhatTheGeneratorProduces` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_committed_costs_json_matches_what_the_generator_produces |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_coveredHomeInNoStory_failsWithItsCodeNotGuessing` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_covered_home_in_no_story_fails_with_its_code_not_guessing |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_dataFileMissing_throwsInsteadOfWritingGuesses` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_data_file_missing_raises_instead_of_writing_guesses |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_homeInTwoStories_failsWithItsCode` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_home_in_two_stories_fails_with_its_code |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_listWhereAnObjectIsExpected_throwsInvalidData` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_list_where_an_object_is_expected_raises_invalid_data |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_quantityInOtherUnits_isReadAsAnotherKindOfValueNotAnError` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_quantity_in_other_units_is_read_as_another_kind_of_value_not_an_error |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_textWhereANumberIsExpected_throwsInvalidDataNotAStackTrace` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_text_where_a_number_is_expected_raises_invalid_data_not_a_stack_trace |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Generate_unknownEvidenceStatus_throwsInsteadOfGuessing` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_generate_unknown_evidence_status_raises_instead_of_guessing |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_costsJsonCannotBeReplaced_keepsTheOtherJsonFilesAndLeavesNoTemporaryFile` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_costs_json_cannot_be_replaced_keeps_the_other_json_files_and_leaves_no_temporary_file |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_engineFailure_exitsNonZeroNamesTheErrorCodeAndWritesNothing` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_engine_failure_exits_non_zero_names_the_error_code_and_writes_nothing |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_engineFailure_leavesAnExistingGeneratedFolderUntouched` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_engine_failure_leaves_an_existing_generated_folder_untouched |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_otherJsonFileInGenerated_isDeletedAndOtherFilesAreKept` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_other_json_file_in_generated_is_deleted_and_other_files_are_kept |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_realData_writesCostsJsonAsUtf8WithoutByteOrderMark` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_real_data_writes_costs_json_as_utf8_without_byte_order_mark |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_success_leavesNoTemporaryFile` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_success_leaves_no_temporary_file |
+| P4 | Vestagraph.CostEngine.Generator.Tests | RunTests | `Run_twice_givesByteIdenticalFiles` |  | packages/vestagraph-generator/tests/test_generator_run.py::test_run_twice_gives_byte_identical_files |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_budgetBeatCase_landsAsWorked` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_budget_beat_case_lands_as_worked |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_energyCertificateCosts_neverEnterAnyLineOrTotal` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_energy_certificate_costs_never_enter_any_line_or_total |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_insuranceAtStepThree_isEvidenceChangedWithNoTotalChange` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_insurance_at_step_three_is_evidence_changed_with_no_total_change |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_monthlyStoryCase_matchesWorkedResult` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_monthly_story_case_matches_worked_result |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_mortgageStoryCases_matchTheWorkedRepayments` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_mortgage_story_cases_match_the_worked_repayments |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_rentedHomeWhoseBillsAreIncluded_showsThemAsIncludedNotZero` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_rented_home_whose_bills_are_included_shows_them_as_included_not_zero |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_serviceChargeDifferenceCase_matchesWorkedResult` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_service_charge_difference_case_matches_worked_result |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_upfrontStoryCase_matchesWorkedResultInEveryScenario` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_upfront_story_case_matches_worked_result_in_every_scenario |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_waterAtStepFour_isNowCalculated` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_water_at_step_four_is_now_calculated |
+| P4 | Vestagraph.CostEngine.Generator.Tests | WorkedCaseTests | `Generate_waterAtStepOne_isConflictingWithBothStatementsAsEvidence` |  | packages/vestagraph-generator/tests/test_generator_worked_cases.py::test_generate_water_at_step_one_is_conflicting_with_both_statements_as_evidence |
 | P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_aSchoolInspected_isInspectedTheSameWayEverywhereItAppears` |  | |
 | P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_amenities_coverEverySubtypeSomewhereInEngland` |  | |
 | P5 | Vestagraph.Fixtures.Tests | AreaDataTests | `Area_bankRate_isLabelledAsASampleNotTheActualRate` |  | |
