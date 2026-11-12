@@ -78,7 +78,7 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 31 | #85 | Decision: privacy parts 1 and 2 (SE-02, decision 0014), analytics and feedback (FE-05) |
 | 38 | #92 | Decision: API framework (BE-01), architecture and contract (BE-02); rules versioning (BE-03) stays at stage 6, before the cost engine expansion |
 | 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only) |
-| 38b | to open | Decision: public hosting, environments, secrets, domain and budget cap (IN-02, IN-04, IN-05; builds on #81) |
+| 38b | — | Hosting for the public area check: rows 38b.1 to 38b.3 below, decided once (0048). #81's IN-02 becomes public hosting for 0046, and #82 adds the domain and secrets |
 | 38b.1 | #81 | Decision: prototype architecture, hosting, infrastructure as code (IN-01 to IN-03) |
 | 38b.2 | #82 | Decision: CI/CD and environments (IN-04) |
 | 38b.3 | #83 | Decision: budget cap and cost alerts (IN-05) |
