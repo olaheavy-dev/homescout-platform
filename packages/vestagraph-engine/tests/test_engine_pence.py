@@ -168,3 +168,13 @@ def test_annual_to_monthly_max_value_does_not_overflow() -> None:
 
 def test_annual_to_monthly_exact_multiple_of_twelve_is_exact() -> None:
     assert Pence(240000).annual_to_monthly() == Pence(20000)
+
+
+def test_multiply_method_bool_factor_raises_type_error() -> None:
+    with pytest.raises(TypeError):
+        Pence(10).multiply(True)
+
+
+def test_subtract_plain_int_raises_type_error() -> None:
+    with pytest.raises(TypeError):
+        Pence(1) - 3  # type: ignore[operator]  # deliberately mixing types

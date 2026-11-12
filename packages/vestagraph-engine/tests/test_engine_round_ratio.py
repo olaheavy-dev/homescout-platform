@@ -27,10 +27,10 @@ def test_round_ratio_signs_and_halves_round_away_from_zero(
 
 def test_round_ratio_large_exact_half_rounds_away_from_zero_without_losing_precision() -> None:
     # (2n + 1) / 2 is exactly n + 0.5, so the answer is n + 1 (and -(n + 1)).
-    # 2n + 1 is already too big for a signed 64-bit integer.
-    n = 4_000_000_000_000_000_000
-    assert round_ratio(2 * n + 1, 2) == Pence(4_000_000_000_000_000_001)
-    assert round_ratio(-(2 * n + 1), 2) == Pence(-4_000_000_000_000_000_001)
+    # 2n + 1 = 10^19 + 1 is already too big for a signed 64-bit integer, but n + 1 fits.
+    n = 5_000_000_000_000_000_000
+    assert round_ratio(2 * n + 1, 2) == Pence(5_000_000_000_000_000_001)
+    assert round_ratio(-(2 * n + 1), 2) == Pence(-5_000_000_000_000_000_001)
 
 
 def test_round_ratio_result_too_big_for_64_bit_raises_overflow() -> None:
@@ -54,3 +54,14 @@ def test_round_ratio_non_int_argument_raises_type_error(
 ) -> None:
     with pytest.raises(TypeError):
         round_ratio(numerator, denominator)  # type: ignore[arg-type]  # deliberately wrong types
+
+
+def test_round_ratio_exact_64_bit_edges_are_accepted() -> None:
+    assert round_ratio(-(2**63), 1) == Pence(-(2**63))
+    assert round_ratio(2**63, -1) == Pence(-(2**63))
+    assert round_ratio(2**63 - 1, 1) == Pence(2**63 - 1)
+
+
+def test_round_ratio_positive_result_one_past_the_maximum_raises_overflow() -> None:
+    with pytest.raises(OverflowError):
+        round_ratio(-(2**63), -1)

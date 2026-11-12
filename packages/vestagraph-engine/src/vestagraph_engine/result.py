@@ -45,6 +45,14 @@ class Result[T]:
     _value: T | None
     _error: Error | None
 
+    def __post_init__(self) -> None:
+        if self._error is not None and not is_a(self._error, Error):
+            message = "A failed result needs an Error."
+            raise TypeError(message)
+        if self._error is not None and self._value is not None:
+            message = "A result cannot hold both a value and an error."
+            raise ValueError(message)
+
     @staticmethod
     def success[V](value: V) -> Result[V]:
         """A success carrying ``value``. ``None`` is rejected; use ``ok`` for no value."""

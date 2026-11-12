@@ -1,6 +1,7 @@
 """Property tests for Pence, ported from the C# PenceProperties (FsCheck becomes Hypothesis).
 
-Hypothesis's built-in `ci` profile comes from pyproject/CI; no profile is registered here.
+Hypothesis loads its built-in `ci` profile itself when it detects a CI run (checked in the locked
+version, 6.170.15); no profile is registered here.
 """
 
 from fractions import Fraction
@@ -66,8 +67,17 @@ def test_annual_to_monthly_negated_input_is_negated_result(annual: int) -> None:
 
 
 @given(INT32)
-def test_annual_to_monthly_any_input_matches_rounding_the_exact_quotient(annual: int) -> None:
-    assert Pence(annual).annual_to_monthly() == Pence.from_exact(Fraction(annual, 12))
+def test_annual_to_monthly_any_input_is_the_nearest_penny_to_the_exact_quotient(
+    annual: int,
+) -> None:
+    # An oracle written here, not a second call to round_ratio: the result is within half a penny
+    # of annual / 12, and when it is exactly half a penny away the choice is the one away from zero.
+    exact = Fraction(annual, 12)
+    monthly = Pence(annual).annual_to_monthly().value
+    distance = abs(Fraction(monthly) - exact)
+    assert distance <= Fraction(1, 2)
+    if distance == Fraction(1, 2):
+        assert abs(monthly) > abs(exact)
 
 
 @given(INT32, INT32, INT32)

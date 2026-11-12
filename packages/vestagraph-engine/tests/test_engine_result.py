@@ -103,3 +103,22 @@ def test_error_created_keeps_code_and_message() -> None:
 
 def test_error_same_parts_are_equal() -> None:
     assert Error("a", "b", ErrorCategory.CONFLICT) == Error("a", "b", ErrorCategory.CONFLICT)
+
+
+def test_ok_no_value_reading_value_raises_runtime_error() -> None:
+    with pytest.raises(RuntimeError):
+        _ = Result.ok().value
+
+
+def test_constructor_value_and_error_both_set_raises_value_error() -> None:
+    with pytest.raises(ValueError, match="both"):
+        Result(5, SAMPLE)
+
+
+def test_constructor_non_error_in_error_slot_raises_type_error() -> None:
+    with pytest.raises(TypeError):
+        Result(None, "oops")  # type: ignore[arg-type]  # deliberately wrong type
+
+
+def test_constructor_neither_value_nor_error_is_the_same_as_ok() -> None:
+    assert Result(None, None) == Result.ok()

@@ -13,97 +13,147 @@ from pathlib import Path
 import pytest
 
 OWN_PACKAGE = "vestagraph_engine"
-# Standard-library modules the engine may import. Extend only with a reason:
+# The only imports the engine may make, and only as `from <module> import <name>` so nothing can be
+# reached through a module object (`fractions.math`, `typing.sys`). Extend only with a reason:
 #   dataclasses, enum, typing: value types; fractions: exact rational input for Pence.from_exact;
-#   collections.abc: abstract types for later cost lines. Nothing here can read a clock, a file,
-#   the network, the environment or a random number.
-ALLOWED_IMPORTS = frozenset(
-    {"__future__", "dataclasses", "enum", "fractions", "typing", "collections"}
-)
-ALLOWED_COLLECTIONS_SUBMODULES = frozenset({"collections.abc"})
+#   collections.abc: abstract types for later cost lines. Nothing here reads a clock, a file, the
+#   network, the environment or a random number.
+ALLOWED_IMPORTS: dict[str, frozenset[str]] = {
+    "__future__": frozenset({"annotations"}),
+    "dataclasses": frozenset({"dataclass"}),
+    "enum": frozenset({"Enum"}),
+    "fractions": frozenset({"Fraction"}),
+    "typing": frozenset({"ClassVar", "Final", "Literal", "Never", "Protocol", "Self", "overload"}),
+    "collections.abc": frozenset(
+        {"Callable", "Iterable", "Iterator", "Mapping", "Sequence", "Set"}
+    ),
+}
 FORBIDDEN_NAMES = frozenset(
     {"float", "round", "eval", "exec", "open", "__import__", "input", "print"}
 )
 FORBIDDEN_ATTRIBUTES = frozenset({"now", "today", "utcnow"})
-# Division in any form is only allowed inside this one function (and `/` nowhere: it makes a float).
+# Dunder routes to division, truncation or rounding that would sidestep the rules below.
+FORBIDDEN_DUNDERS = frozenset(
+    {
+        "__floordiv__",
+        "__mod__",
+        "__divmod__",
+        "__truediv__",
+        "__rshift__",
+        "__floor__",
+        "__trunc__",
+        "__round__",
+        "__int__",
+    }
+)
+# Division in any form is only allowed inside this one module-level function, in this one module
+# (and `/` nowhere: it makes a float; register line BE-32).
 DIVISION_FUNCTION = "round_ratio"
-DIVISION_OPERATORS = (ast.FloorDiv, ast.Mod)
+DIVISION_MODULE = "pence.py"
+DIVISION_OPERATORS = (ast.FloorDiv, ast.Mod, ast.RShift)
 
 
 class _Rules(ast.NodeVisitor):
-    def __init__(self) -> None:
+    def __init__(self, filename: str) -> None:
         self.violations: list[str] = []
-        self._functions: list[str] = []
+        self._may_divide_here = filename == DIVISION_MODULE
+        self._scope: list[ast.AST] = []  # enclosing functions and classes, outermost first
+        self._exempt_depth = 0
 
     def _report(self, node: ast.AST, text: str) -> None:
         self.violations.append(f"line {getattr(node, 'lineno', '?')}: {text}")
 
-    def _in_division_function(self) -> bool:
-        return DIVISION_FUNCTION in self._functions
+    def _exempt(self) -> bool:
+        return self._exempt_depth > 0
+
+    def _enter_scope(self, node: ast.FunctionDef | ast.ClassDef) -> None:
+        # Exempt only a function defined directly at module level: not nested, not a method.
+        is_the_function = (
+            isinstance(node, ast.FunctionDef)
+            and node.name == DIVISION_FUNCTION
+            and not self._scope
+            and self._may_divide_here
+        )
+        self._scope.append(node)
+        self._exempt_depth += is_the_function
+        self.generic_visit(node)
+        self._exempt_depth -= is_the_function
+        self._scope.pop()
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
-        self._functions.append(node.name)
-        self.generic_visit(node)
-        self._functions.pop()
+        self._enter_scope(node)
+
+    def visit_ClassDef(self, node: ast.ClassDef) -> None:
+        self._enter_scope(node)
 
     def visit_Import(self, node: ast.Import) -> None:
         for alias in node.names:
-            self._check_module(node, alias.name)
+            if alias.name.split(".")[0] != OWN_PACKAGE:
+                self._report(node, f"plain import of {alias.name}: use `from ... import Name`")
 
     def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
-        if node.level > 0:
-            return  # a relative import stays inside this package
-        self._check_module(node, node.module or "")
+        if node.level > 0 or (node.module or "").split(".")[0] == OWN_PACKAGE:
+            return  # inside this package
+        module = node.module or ""
+        allowed = ALLOWED_IMPORTS.get(module)
+        if allowed is None:
+            self._report(node, f"import from {module} is not on the allow-list")
+            return
+        for alias in node.names:
+            if alias.name not in allowed:
+                self._report(node, f"import of {module}.{alias.name} is not on the allow-list")
 
-    def _check_module(self, node: ast.AST, module: str) -> None:
-        top = module.split(".")[0]
-        if top == OWN_PACKAGE:
-            return
-        if top == "collections":
-            if module not in ALLOWED_COLLECTIONS_SUBMODULES:
-                self._report(node, f"import of {module} (only collections.abc is allowed)")
-            return
-        if top not in ALLOWED_IMPORTS:
-            self._report(node, f"import of {module} is not on the allow-list")
+    def visit_Constant(self, node: ast.Constant) -> None:
+        if isinstance(node.value, float | complex):
+            self._report(node, "float or complex literal")
 
     def visit_Name(self, node: ast.Name) -> None:
         if node.id in FORBIDDEN_NAMES:
             self._report(node, f"use of {node.id}")
-        if node.id == "divmod" and not self._in_division_function():
+        if node.id == "divmod" and not self._exempt():
             self._report(node, f"divmod outside {DIVISION_FUNCTION}")
         self.generic_visit(node)
 
     def visit_Attribute(self, node: ast.Attribute) -> None:
         if node.attr in FORBIDDEN_ATTRIBUTES:
             self._report(node, f"use of .{node.attr} (clock)")
+        if node.attr in FORBIDDEN_DUNDERS:
+            self._report(node, f"use of .{node.attr} (sidesteps the division rules)")
         self.generic_visit(node)
 
     def visit_Call(self, node: ast.Call) -> None:
-        if (
-            isinstance(node.func, ast.Name)
-            and node.func.id == "int"
-            and not self._in_division_function()
-        ):
-            self._report(node, f"int(...) outside {DIVISION_FUNCTION}")
+        if isinstance(node.func, ast.Name):
+            if node.func.id == "int" and not self._exempt():
+                self._report(node, f"int(...) outside {DIVISION_FUNCTION}")
+            if node.func.id == "pow" and not (
+                len(node.args) == 2 and _is_non_negative_int(node.args[1])
+            ):
+                self._report(node, "pow(...) needs two arguments and a non-negative int exponent")
         self.generic_visit(node)
 
     def visit_BinOp(self, node: ast.BinOp) -> None:
-        self._check_operator(node, node.op)
+        self._check_operator(node, node.op, node.right)
         self.generic_visit(node)
 
     def visit_AugAssign(self, node: ast.AugAssign) -> None:
-        self._check_operator(node, node.op)
+        self._check_operator(node, node.op, node.value)
         self.generic_visit(node)
 
-    def _check_operator(self, node: ast.AST, operator: ast.operator) -> None:
+    def _check_operator(self, node: ast.AST, operator: ast.operator, right: ast.expr) -> None:
         if isinstance(operator, ast.Div):
             self._report(node, "true division (/) makes a float")
-        elif isinstance(operator, DIVISION_OPERATORS) and not self._in_division_function():
-            self._report(node, f"// or % outside {DIVISION_FUNCTION}")
+        elif isinstance(operator, DIVISION_OPERATORS) and not self._exempt():
+            self._report(node, f"//, % or >> outside {DIVISION_FUNCTION}")
+        elif isinstance(operator, ast.Pow) and not _is_non_negative_int(right):
+            self._report(node, "** needs a non-negative int constant exponent")
 
 
-def violations_in(source: str) -> list[str]:
-    rules = _Rules()
+def _is_non_negative_int(node: ast.expr) -> bool:
+    return isinstance(node, ast.Constant) and type(node.value) is int and node.value >= 0
+
+
+def violations_in(source: str, filename: str = DIVISION_MODULE) -> list[str]:
+    rules = _Rules(filename)
     rules.visit(ast.parse(source))
     return rules.violations
 
@@ -123,7 +173,7 @@ def test_engine_sources_found_include_the_money_modules() -> None:
 
 @pytest.mark.parametrize("path", _engine_files(), ids=lambda p: p.name)
 def test_engine_source_obeys_every_purity_rule(path: Path) -> None:
-    assert violations_in(path.read_text(encoding="utf-8")) == []
+    assert violations_in(path.read_text(encoding="utf-8"), path.name) == []
 
 
 # Each rule applied to a small bad source string: it must fail, or the rule matches nothing.
@@ -143,6 +193,7 @@ def test_engine_source_obeys_every_purity_rule(path: Path) -> None:
         "import vestagraph_fixture_validator",
         "from collections import OrderedDict",
         "import time",
+        "import uuid",
     ],
 )
 def test_import_rule_applied_to_a_disallowed_import_fails_as_expected(source: str) -> None:
@@ -215,3 +266,85 @@ def test_division_rule_applied_to_division_inside_round_ratio_passes() -> None:
         "    return q + a + b + c\n"
     )
     assert violations_in(source) == []
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        "def other():\n    def round_ratio():\n        return a // b",
+        "class X:\n    def round_ratio(self):\n        return a // b",
+        "class round_ratio:\n    x = a // b",
+    ],
+)
+def test_division_exemption_applied_to_a_nested_or_method_round_ratio_fails_as_expected(
+    source: str,
+) -> None:
+    assert violations_in(source)
+
+
+def test_division_exemption_applied_to_round_ratio_in_another_module_fails_as_expected() -> None:
+    assert violations_in("def round_ratio(n, d):\n    return n // d", "other.py")
+
+
+@pytest.mark.parametrize("source", ["x = 0.5 * a", "x = 1e3", "x = 2j", "x = -1.0"])
+def test_float_literal_rule_applied_to_float_or_complex_constants_fails_as_expected(
+    source: str,
+) -> None:
+    assert violations_in(source)
+
+
+@pytest.mark.parametrize("source", ["x = a >> 1", "x >>= 1"])
+def test_shift_rule_applied_to_right_shift_outside_round_ratio_fails_as_expected(
+    source: str,
+) -> None:
+    assert violations_in(source)
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        "x = a ** -1",
+        "x = a ** b",
+        "x = a ** 0.5",
+        "x **= -1",
+        "x = pow(a, -1)",
+        "x = pow(a, b)",
+        "x = pow(a, 2, 5)",
+        "x = pow(a)",
+    ],
+)
+def test_power_rule_applied_to_a_negative_or_unknown_exponent_fails_as_expected(
+    source: str,
+) -> None:
+    assert violations_in(source)
+
+
+@pytest.mark.parametrize("source", ["x = a ** 2", "x **= 3", "x = pow(a, 2)", "x = a ** 0"])
+def test_power_rule_applied_to_a_non_negative_int_exponent_passes(source: str) -> None:
+    assert violations_in(source) == []
+
+
+@pytest.mark.parametrize("attribute", sorted(FORBIDDEN_DUNDERS))
+def test_dunder_rule_applied_to_a_route_around_the_division_rules_fails_as_expected(
+    attribute: str,
+) -> None:
+    assert violations_in(f"x = a.{attribute}(b)")
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        "import fractions\nx = fractions.math.floor(a)",
+        "import fractions",
+        "import dataclasses",
+        "import typing",
+        "from typing import sys",
+        "from fractions import math",
+        "from fractions import *",
+        "from collections.abc import ClassVar",
+    ],
+)
+def test_import_rule_applied_to_a_plain_import_or_reach_through_fails_as_expected(
+    source: str,
+) -> None:
+    assert violations_in(source)
