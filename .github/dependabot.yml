@@ -21,6 +21,38 @@ updates:
         update-types:
           - "major"
 
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      # 0.x tools (ruff, referencing, uv-build; register line WW-14): a minor bump may break things, so it goes to full review, not into
+      # the minor-and-patch group (decision 0039 Q3). GitHub's options reference says a dependency goes into the first
+      # group it matches; check the first real run. Whether Dependabot updates the uv_build line under [build-system]
+      # is unverified. dependabot-core's main branch installs uv 0.13.7 (uv/Dockerfile, uv/helpers/requirements.txt;
+      # read 9 Nov 2026). The risk comes if Dependabot moves to uv 0.14 before Vestagraph does: pyproject.toml's
+      # required-version then makes its uv job fail with ToolVersionNotSupported (no pull request opens, only a job
+      # error), until required-version is raised here.
+      uv-zero-x:
+        patterns:
+          - "ruff"
+          - "referencing"
+          - "uv-build"
+      python-minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      python-major:
+        update-types:
+          - "major"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

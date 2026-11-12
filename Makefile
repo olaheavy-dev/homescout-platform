@@ -1,5 +1,6 @@
 # Vestagraph: single entry point for every automated check (decisions 0021, 0035).
 # CI runs `make check`; run it before pushing. Works on macOS and Linux with GNU Make 3.81 or later.
+# Two stacks run side by side until the C# is removed (decision 0049, port step P8): .NET and Python (uv, decision 0039).
 
 # No telemetry from the .NET CLI or the test platform.
 export DOTNET_CLI_TELEMETRY_OPTOUT := 1
@@ -13,23 +14,46 @@ GENERATED     := packages/fixtures/generated
 GENERATOR     := packages/cost-engine/src/Vestagraph.CostEngine.Generator/Vestagraph.CostEngine.Generator.csproj
 VALIDATOR     := packages/fixtures/tools/Vestagraph.Fixtures.Validator/Vestagraph.Fixtures.Validator.csproj
 
-.PHONY: help restore build format-check generated-check validate inspect test check generate mutate clean
+PYTEST_XML    := $(ARTIFACTS)/test-results/python/coverage.xml
+
+.PHONY: help restore requirements requirements-check build format-check generated-check validate inspect lint test check generate mutate clean
 
 help:
-	@echo "Targets: restore build format-check generated-check validate inspect test check generate mutate clean"
-	@echo "  check = restore + build + format-check + generated-check + validate + inspect + test (same as CI)"
+	@echo "Targets: restore build format-check generated-check validate inspect lint test check generate mutate clean"
+	@echo "  check = restore + build + format-check + generated-check + validate + inspect + lint + test (same as CI)"
+	@echo "  restore, build, format-check, lint and test also run the Python side (uv); build = .NET build + mypy"
 	@echo "  mutate = Stryker.NET mutation testing of the cost engine (slow; not part of check or CI)"
 
-# Locked mode: fails if packages.lock.json is out of date.
+# Locked mode: fails if packages.lock.json (.NET) or uv.lock (Python) is out of date.
 restore:
+	@command -v uv >/dev/null || { echo "uv is missing: install uv 0.13.x (https://docs.astral.sh/uv/)"; exit 1; }
 	dotnet tool restore
 	dotnet restore $(SOLUTION) --locked-mode
+	uv sync --locked --all-packages
+
+# OPTIONAL, not part of `check` (register line BE-23): a pip-format export of uv.lock, kept as the fallback in case dependency
+# review stops reading uv.lock. The 9 Nov 2026 proof (PRs #50, #51), repeated in P1 of decision 0049, showed it reads uv.lock
+# directly. To adopt it: add `requirements-check` after `restore` in `check`, commit requirements.txt, and allow both targets.
+requirements:
+	uv export --locked --all-packages --all-groups --no-emit-workspace --format requirements.txt --output-file requirements.txt
+
+# Regenerates the export, then fails if it differs from what is committed (a staged-only change counts as stale).
+requirements-check: requirements
+	@changes="$$(git status --porcelain --untracked-files=all -- requirements.txt)"; \
+	if [ -n "$$changes" ]; then \
+		echo "requirements.txt is out of date: run 'make requirements' and commit it."; \
+		echo "$$changes"; \
+		exit 1; \
+	fi
+	@echo "requirements.txt: up to date."
 
 build: restore
 	dotnet build $(SOLUTION) --configuration $(CONFIGURATION) --no-restore
+	uv run --locked mypy
 
 format-check: restore
 	dotnet format $(SOLUTION) --verify-no-changes --no-restore
+	uv run --locked ruff format --check
 
 # Checks every packages/fixtures/data, test-cases and generated file against its JSON Schema (decision 0018, BE-07).
 validate: build
@@ -52,10 +76,16 @@ inspect: build
 # are withdrawn; those do not run here. NUnit exposes each tag as a test category.
 SPEC_FILTER := TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn
 
+# Python lint (ruff, explicit rule list in pyproject.toml; decision 0039 section 2).
+lint: restore
+	uv run --locked ruff check
+
+# pytest stops after 5 failures (register line BE-30); CI's job timeout is the only time limit.
 test: build
 	dotnet test --solution $(SOLUTION) --configuration $(CONFIGURATION) --no-build --timeout 10m --maximum-failed-tests 5 --filter "$(SPEC_FILTER)" --coverlet --coverlet-output-format cobertura --results-directory $(ARTIFACTS)/test-results
+	uv run --locked pytest --maxfail=5 --cov --cov-branch --cov-report=xml:$(PYTEST_XML) --cov-report=term
 
-check: restore build format-check generated-check validate inspect test
+check: restore build format-check generated-check validate inspect lint test
 
 # Runs the cost-engine generator: it reads packages/fixtures/data and writes packages/fixtures/generated/costs.json.
 # Commit the result. The generator deletes any other *.json in generated/.
@@ -86,5 +116,6 @@ mutate: restore
 	VESTAGRAPH_FSCHECK_REPLAY=$(MUTATION_REPLAY) dotnet dotnet-stryker --config-file stryker-config.json --output $(ARTIFACTS)/mutation
 
 clean:
-	rm -rf $(ARTIFACTS)
+	rm -rf $(ARTIFACTS) .coverage .mypy_cache .ruff_cache .pytest_cache .hypothesis mutants
+	find packages -type d -name __pycache__ -prune -exec rm -rf {} +
 	dotnet clean $(SOLUTION) --configuration $(CONFIGURATION) --verbosity quiet
