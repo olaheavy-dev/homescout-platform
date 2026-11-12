@@ -916,3 +916,30 @@ def test_select_assumptions_step_above_32_bits_raises_value_error() -> None:
 
 def test_select_assumptions_step_at_the_32_bit_maximum_is_accepted() -> None:
     assert _select(buying([]), 2**31 - 1).mode == Mode.BUY
+
+
+def test_select_assumptions_two_money_and_a_wrong_kind_item_fails_as_wrong_kind_for_a_line() -> (
+    None
+):
+    facts = buying(
+        [
+            money("EN-1", "energy", 9_000, Period.MONTH),
+            money("EN-2", "energy", 9_500, Period.MONTH),
+            _item("EN-3", "energy", RateValue(500)),
+        ]
+    )
+
+    assert _failure_code(facts) == "input.wrong-kind.energy"
+
+
+def test_select_assumptions_two_money_and_a_wrong_kind_item_fails_as_wrong_kind_for_an_anchor() -> (
+    None
+):
+    facts = buying(
+        [
+            money("PRICE-2", "asking-price", 21_000_000, Period.ONCE),
+            _item("PRICE-3", "asking-price", RateValue(500)),
+        ]
+    )
+
+    assert _failure_code(facts) == "input.wrong-kind.asking-price"

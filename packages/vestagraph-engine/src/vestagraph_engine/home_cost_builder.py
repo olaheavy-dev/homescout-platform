@@ -29,7 +29,9 @@ from vestagraph_engine.selected_inputs import SelectedInputs
 from vestagraph_engine.upfront_cash import upfront_cash
 
 
-def build_home_costs(facts: HomeFacts, story_steps: Sequence[int]) -> Result[HomeCosts]:
+def build_home_costs(
+    facts: HomeFacts, story_steps: list[int] | tuple[int, ...]
+) -> Result[HomeCosts]:
     """Build the scenarios of a home.
 
     A scenario is named ``from-step-N`` after its first step. A change is reported for every line
@@ -50,7 +52,7 @@ def build_home_costs(facts: HomeFacts, story_steps: Sequence[int]) -> Result[Hom
     if not is_a(facts, HomeFacts):
         message = "build_home_costs needs HomeFacts."
         raise TypeError(message)
-    if not is_a(story_steps, Sequence) or is_a(story_steps, str):
+    if type(story_steps) not in (list, tuple):
         message = "build_home_costs needs its steps as a list or tuple of whole numbers (int)."
         raise TypeError(message)
     steps = tuple(story_steps)

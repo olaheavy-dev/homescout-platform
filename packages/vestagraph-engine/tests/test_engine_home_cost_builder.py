@@ -63,6 +63,10 @@ BUY_BILLS = (
     "maintenance",
 )
 RENT_BILLS = ("council-tax", "energy", "water", "broadband")
+# Bills a worked monthly case leaves out because the home does not have them.
+NOT_APPLICABLE_BILLS: dict[str, tuple[str, ...]] = {
+    "b2-monthly-housing-cost": ("service-charge", "ground-rent"),
+}
 
 
 def _build(facts: HomeFacts, steps: tuple[int, ...] | list[int]) -> HomeCosts:
@@ -768,9 +772,15 @@ def test_build_home_costs_steps_that_start_above_one_are_accepted() -> None:
     assert (scenario.from_step, scenario.to_step) == (2, 3)
 
 
-def test_build_home_costs_steps_as_a_tuple_or_a_range_are_accepted() -> None:
+def test_build_home_costs_steps_as_a_tuple_or_a_list_are_accepted() -> None:
     assert len(_build(buying([]), (1, 2)).scenarios) == 1
-    assert _build(buying([]), range(1, 4)).scenarios[0].to_step == 3  # type: ignore[arg-type]  # a range is a sequence of int
+    assert len(_build(buying([]), [1, 2]).scenarios) == 1
+
+
+@pytest.mark.parametrize("bad", [range(1, 5), b"\x01\x02", bytearray(b"\x01"), {1: 2}.keys()])
+def test_build_home_costs_steps_that_are_not_a_list_or_tuple_raise_type_error(bad: Any) -> None:
+    with pytest.raises(TypeError, match="list or tuple"):
+        build_home_costs(buying([]), bad)
 
 
 def test_build_home_costs_upfront_line_given_monthly_fails_as_wrong_period() -> None:
@@ -971,14 +981,18 @@ def test_build_home_costs_worked_home_matches_the_worked_monthly_and_upfront_cas
     home_id = monthly_case["inputs"]["home"]
     upfront_case = case(f"{home_id.lower()}-upfront-cash")
     monthly_items, monthly_ids = _mapped_evidence(case_id, monthly_case)
-    # A bill the case does not list is one the home does not have (B2 is a freehold house): the
-    # evidence says "not applicable", so the line is left out and the total is not partial.
+    # A bill the case does not list must be named here as "not applicable" (rule 7: an unlisted
+    # bill is never quietly assumed away). B2 is a freehold house: the fixture records B2-SC and
+    # B2-GROUND-RENT as not-applicable evidence (packages/fixtures/data/evidence.json).
     listed = {line["category"] for line in monthly_case["inputs"]["lines"]}
     bills = BUY_BILLS if mode_of(monthly_case) == Mode.BUY else RENT_BILLS
+    not_applicable = NOT_APPLICABLE_BILLS.get(case_id, ())
+    unexplained = [name for name in bills if name not in listed and name not in not_applicable]
+    assert unexplained == [], f"{case_id} leaves out {unexplained} without saying why"
+    assert not [name for name in not_applicable if name in listed], "listed and not applicable"
     monthly_items += [
         no_value(f"{case_id}:{name}", name, EvidenceStatus.NOT_APPLICABLE)
-        for name in bills
-        if name not in listed
+        for name in not_applicable
     ]
     upfront_items, upfront_ids = _mapped_evidence(upfront_case["id"], upfront_case)
     # A buyer's deposit is one input: both worked cases must agree on it.
