@@ -1,7 +1,7 @@
 # 0040: The founder's FastAPI template as the API starting point
 
 **ID:** BE-19  
-**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026; nothing was imported from the template)  
+**Status:** Accepted (adopted again by [0049](0049-back-to-python-final.md), founder, 12 Nov 2026: the one-time trimmed import happens at stage 5b (#93), recording the template version used; had been superseded by [0042](0042-back-to-dotnet-11.md) on 10 Nov 2026)  
 **Date:** 2026-11-06  
 **Stage:** 6 (the API slice, P7 of the port plan); the template changes can run earlier, in parallel with the port  
 **Amends:** the "Private reference sources" rule in `AGENTS.md`, for this one public repository only.

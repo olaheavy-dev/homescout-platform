@@ -1,7 +1,7 @@
 # 0036: Python for the backend, cost engine and AI layer
 
 **ID:** BE-18  
-**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026; only port step P1 had merged, so the C# code was never removed)  
+**Status:** Accepted (adopted again by [0049](0049-back-to-python-final.md), founder, 12 Nov 2026: "Switch to python", with its amendments: package names `vestagraph_*`, the API at stage 5b; had been superseded by [0042](0042-back-to-dotnet-11.md) on 10 Nov 2026)  
 **Date:** 2026-11-06  
 **Stage:** 2 (reopens the stage 2 cost engine)  
 **Supersedes in part:** [0019](0019-cost-engine-in-csharp.md) (the C# language choice only), [0020](0020-application-languages.md) (the backend half; the TypeScript and Next.js frontend half stands), [0021](0021-dotnet-engineering-foundation.md) (the .NET setup; its design rules are carried over, see below) and [0032](0032-own-result-type.md) (the type is rewritten in Python; the principle stands).

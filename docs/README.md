@@ -36,7 +36,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Superpowers specs and plans](superpowers/) | Feature specs and implementation plans written with the Superpowers skills, each summarised in the chat when written (decision 0050) | Current |
 | [Stage 1 confirmation list](planning/stage-1-confirmation.md) | Stage 1 decisions and gate | Stage 1 |
 | [Stage 2 plan](planning/stage-2-plan.md) | Approved sample data, data contract, tasks and gate | Stage 2 |
-| [.NET 11 and C# 15 plan](planning/dotnet-11-and-csharp-15-plan.md) | Which .NET 11 and C# 15 features Vestagraph uses, where, and when (decision 0042) | Stage 2 onwards |
+| [.NET 11 and C# 15 plan](planning/dotnet-11-and-csharp-15-plan.md) | Superseded by decision 0049 (back to Python); kept because older records link to it | History |
 | [Specifications](specs/README.md) | The prototype specification: rules, templates, and the executable screen, story and MCP features | Stage 3 onwards |
 | [Ordered backlog](planning/backlog.md) | Every issue from the stage 2 close-out to stage 6, in order, by milestone | All stages |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |

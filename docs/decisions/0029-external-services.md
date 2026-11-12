@@ -1,7 +1,7 @@
 # 0029: Outside services: provenance and live tests
 
 **ID:** OP-03  
-**Status:** Accepted  
+**Status:** Accepted (partly superseded by [0049](0049-back-to-python-final.md): live-service tests are excluded with a pytest marker)  
 **Date:** 2026-10-23  
 **Stage:** 6 (rule set early)
 

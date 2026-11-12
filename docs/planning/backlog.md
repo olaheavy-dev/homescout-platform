@@ -1,6 +1,6 @@
 # Ordered backlog
 
-**Written:** 10 Nov 2026 with decision [0042](../decisions/0042-back-to-dotnet-11.md) and the [.NET 11 and C# 15 plan](dotnet-11-and-csharp-15-plan.md). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone (or the C# 15 milestone). Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
+**Written:** 10 Nov 2026 with decision 0042; reordered 12 Nov 2026 by decision [0049](../decisions/0049-back-to-python-final.md) (back to Python, final). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone (or the C# 15 milestone). Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
 
 Each stage starts with its decisions and ends with its gate (doc 04 §9). Items marked **epic** are split into issues when their stage starts. When an issue's plan changes, update the issue, not this list; this list only changes when the order does.
 
@@ -12,14 +12,25 @@ Each stage starts with its decisions and ends with its gate (doc 04 §9). Items 
 | 03 | #24 | Stage 2 close-out: doc corrections, C4 diagrams, Stryker.NET report, audit, gate | Can pass on .NET 11 (C# 14) |
 | 04 | #58 | Upgrade to .NET 11 (SDK and runtime; language stays C# 14) | SDK and runtime now, C# 14 |
 
-## C# 15 (waits for CodeQL support)
-Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C# 15 (#59); #61 is low priority and not tied to CodeQL.
+## Python port (decision 0049)
+Milestone "Python port (decision 0049)". Runs alongside the stage 3 gate (#71); #86 starts after P8. The port ledger (from PC) shows which C# test each Python test replaces.
 
 | # | Issue | Item | Notes |
 |---|---|---|---|
-| 05 | #59 | Closed hierarchies for `LineInput` and `EvidenceValue` | First C# 15 change. **Blocked** until CodeQL and Stryker.NET support C# 15 (#59, #60; BE-25) |
-| 06 | #60 | Spike: `Result` as a C# 15 union | Outcome is a register line. **Blocked** until CodeQL supports C# 15 |
-| 07 | #61 | Evaluate .NET Skills for the coding agents | Low priority |
+| PC | #186 | Language-neutral `generatedBy` and the port ledger | Before any Python |
+| P0 | — | Decision 0049 | This pull request |
+| P1 | #187 | Python foundation (uv workspace beside .NET) | Founder merge |
+| P2 | #188 | Engine basics: `Pence`, `round_ratio`, `Result`, architecture test | Test first |
+| P3a | #189 | Monthly and mortgage costs | Test first |
+| P3b | #190 | Upfront costs and the builder | Test first |
+| P4 | #191 | Generator with the port proof (byte-identical `costs.json`) | |
+| P5 | #192 | Fixture validator and fixture tests | |
+| P6 | #193 | pytest-bdd spec runner for the data scenarios | Three proofs; back to the founder if one fails |
+| P7 | #194 | Mutation testing with mutmut | Replaces BE-26 |
+| P8 | #195 | Remove .NET | Founder merge; only when the ledger is complete |
+
+## C# 15 (closed by decision 0049)
+#59, #60 and #61 (rows 05 to 07) close as not planned: decision 0049 moved the backend to Python.
 
 ## Design research (stage 4 milestone; starts after the stage 2 gate, alongside stage 3)
 | # | Issue | Item |
@@ -58,14 +69,14 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 
 ## Stage 5: clickable prototype
 
-#86 may start once the stage 3 gate (#71) passes, before the stage 4 gate (#84), and runs locally only until stage 5b; the rest of stage 5 waits for #84 (decision 0048). Stage 5 is never deployed: #81 to #83 (IN-01 to IN-05) moved to stage 5b, rows 38b.1 to 38b.3. Rows 18, 19, 20 and 22 are answered by 0048.
+#86 may start once the stage 3 gate (#71) passes and the .NET code is removed (P8, decision 0049), before the stage 4 gate (#84), and runs locally only until stage 5b. It starts from the founder's Next.js template in `frontend/`, with its `@ui` scenarios in playwright-bdd (0049); the rest of stage 5 waits for #84 (decision 0048). Stage 5 is never deployed: #81 to #83 (IN-01 to IN-05) moved to stage 5b, rows 38b.1 to 38b.3. Rows 18, 19, 20 and 22 are answered by 0048.
 
 | # | Issue | Item |
 |---|---|---|
 | 32 | #86 | App shell, navigation, design system, fixture loading |
 | 32b | #150 | Component gallery (decision 0045) |
 | 32c | to open | Area screens on fixtures: summary-first Nearby, map with 3D switch, Check an area (decision 0046, TASKS B6, B6a, B7) |
-| 32a | #96 | Home-to-home cost differences in the engine and `costs.json` (BE-27) |
+| 32a | #96 | Home-to-home cost differences in the engine and `costs.json` (BE-27), after P8 in Python |
 | 33 | #87 | **Epic:** buyer story end to end (split into one ticket per story step at #71, SP-02) |
 | 34 | #88 | **Epic:** renter story end to end (split into one ticket per story step at #71, SP-02) |
 | 35 | #89 | Edge states, mobile, accessibility (WCAG 2.2 AA) |
@@ -76,14 +87,14 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | # | Issue | Item |
 |---|---|---|
 | 31 | #85 | Decision: privacy parts 1 and 2 (SE-02, decision 0014), analytics and feedback (FE-05) |
-| 38 | #92 | Decision: API framework (BE-01), architecture and contract (BE-02); rules versioning (BE-03) stays at stage 6, before the cost engine expansion |
+| 38 | #92 | Decision: API architecture and contract (BE-02; BE-01 is decided by 0049: FastAPI); rules versioning (BE-03) stays at stage 6, before the cost engine expansion |
 | 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only) |
 | 38b | — | Hosting for the public area check: rows 38b.1 to 38b.3 below, decided once (0048). #81's IN-02 becomes public hosting for 0046, and #82 adds the domain and secrets |
 | 38b.1 | #81 | Decision: prototype architecture, hosting, infrastructure as code (IN-01 to IN-03) |
 | 38b.2 | #82 | Decision: CI/CD and environments (IN-04) |
 | 38b.3 | #83 | Decision: budget cap and cost alerts (IN-05) |
-| 39 | #93 | ASP.NET Core 11 API skeleton (OpenAPI 3.2, async validation, one area endpoint; the first cost endpoint waits for stage 6) |
-| 40 | #94 | Aspire app host and OpenTelemetry |
+| 39 | #93 | FastAPI API skeleton from a one-time copy of the founder's template (decisions 0040, 0049; one area endpoint; the first cost endpoint waits for stage 6) |
+| 40 | #94 | Aspire app host in TypeScript and OpenTelemetry (decision 0049) |
 | 41 | #95 | Generated TypeScript types from the OpenAPI document |
 | 44.1 | #126 | Foundation: data import pattern, source adapter, postcode-to-area lookup |
 | 44.3 | #128 | Transport stops nearby (NaPTAN) |
@@ -98,11 +109,11 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 38c | to open | Public site: landing (search first), How it works, About the data, privacy notice, accessibility statement (TASKS P1 to P4) |
 | 38d | to open | Stage 5b gate: sources on every fact, no searched postcode in any log, privacy notice and budget cap live, accessibility checks pass |
 
-## Stage 6: the real product on .NET 11
+## Stage 6: the real product
 | # | Issue | Item |
 |---|---|---|
 | 37 | #91 | Validation study (six buyers, six renters) |
-| 43 | #97 | MCP server with the official C# SDK (read-only, local first) |
+| 43 | #97 | MCP server with the official `mcp` Python SDK (read-only, local first) |
 | 44 | #98 | **Epic:** real England data, per-home parts (area sources moved to stage 5b by decision 0046) |
 | 44.2 | #127 | Exact-home address search and matching (DA-06), needed for per-home data only |
 | 44.9 | #134 | Energy rating and energy cost range (energy certificate register) |
@@ -113,8 +124,8 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 44.17 | #142 | Deferred: NHS services, air quality, rail and TfL, radon |
 | 45 | #99 | **Epic:** accounts, households and the questions workflow |
 | 46 | #100 | AI evaluation harness and model provider choice (AI-03, AI-01) |
-| 47 | #101 | Agent Framework gateway in .NET |
-| 48 | #102 | Agent chat over AG-UI (CopilotKit and `MapAGUIServer`) |
+| 47 | #101 | AI gateway: short trial of Agent Framework and LangGraph in the founder's template, then a second recorded import (decision 0049, AI-09) |
+| 48 | #102 | Agent chat over AG-UI (CopilotKit), on the framework AI-09 chooses |
 | 49 | #103 | Document investigation workflow with human approval |
 | 50 | #104 | **Epic:** entitlements and payments (CO-01) |
 | 51 | #105 | **Epic:** monitoring, scheduling and notifications (OP-01, OP-02) |

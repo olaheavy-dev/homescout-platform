@@ -1,7 +1,7 @@
 # 0041: The Microsoft Agent Framework gateway is built in the template first
 
 **ID:** AI-08  
-**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026; the gateway is built in HomeScout's .NET API at stage 6)  
+**Status:** Superseded by [0042](0042-back-to-dotnet-11.md) (founder, 10 Nov 2026); [0049](0049-back-to-python-final.md) brings back only its idea of a second recorded import of the template's AI gateway at stage 6, after a framework trial  
 **Date:** 2026-11-07  
 **Stage:** 6 (the AI layer), or P7 if the gateway is ready; the template work runs earlier, beside the port  
 **Supersedes in part (no older text is rewritten):**

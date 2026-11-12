@@ -25,12 +25,12 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 - **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for Vestagraph.
 - **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
 - The AI sample has no licence: ideas only.
-- **Former exception (decision 0040, superseded by 0042):** the founder's public FastAPI template and its base template may still be named where older records mention them, but they are no longer Vestagraph's starting point and nothing was imported from them. The rules above apply to every source.
+- **Exception: the founder's own public templates (decisions 0040 and 0049).** The founder owns `house-template-fastapi`, its base template `house-template-base` and `house-template-nextjs`, and chose them as Vestagraph's starting points: the frontend (#86) and the API (#93) each start from a one-time, trimmed copy, recorded with the template version, and Vestagraph then owns its copy. These templates may be named and copied from. The rules above still apply to every other source.
 
 ## Rules for every agent
 
 1. **No invented facts.** Never make up property data, legal or tax rules, sources, dates or competitor claims. If something isn't known, the product says so.
-2. **No hand-typed calculated figures.** Figures come in two kinds. **Inputs** (a listing's claimed charge, a figure in a document, a user-entered estimate, an official dataset value) are recorded once in the fixture or data files, each with its source. **Calculated outputs** (totals, differences, repayments, comparisons) always come from the C# cost engine (decision 0019), never typed by hand. UI and docs quote inputs from the data files and outputs from the cost engine's generated files. **Test expectations are the one exception:** they must be worked out independently of the engine, as reviewed worked examples that show their working and cite the rule or source they follow, so a wrong calculation can't confirm itself.
+2. **No hand-typed calculated figures.** Figures come in two kinds. **Inputs** (a listing's claimed charge, a figure in a document, a user-entered estimate, an official dataset value) are recorded once in the fixture or data files, each with its source. **Calculated outputs** (totals, differences, repayments, comparisons) always come from the cost engine (decision 0019; written in C# until the Python port replaces it, decision 0049), never typed by hand. UI and docs quote inputs from the data files and outputs from the cost engine's generated files. **Test expectations are the one exception:** they must be worked out independently of the engine, as reviewed worked examples that show their working and cite the rule or source they follow, so a wrong calculation can't confirm itself.
 3. **Rules come from cited sources.** Tax, tenancy, lease and privacy rules live in versioned tables or records with a source URL and effective date.
 4. **The product never says a home is "verified", "safe" or "approved"**, and AI never calculates numbers. Follow decision 0004 for AI and chat behaviour.
 5. **Public repository.** Never commit secrets, API keys, real personal data, real customer documents or licensed datasets. Use the synthetic fixtures. Record every image or media file in `docs/assets/README.md` before committing it.
@@ -63,7 +63,7 @@ Haiku may do clearly mechanical subtasks (renaming across files, reformatting a 
 
 - **Every feature gets a plan** before building. Small changes get a short plan in the issue.
 - Plans are written with Superpowers `brainstorming` then `writing-plans`, saved in `docs/superpowers/specs/` and `docs/superpowers/plans/`, with a short plain summary posted in the chat. For a process or product decision the decision record is the spec, so there is no separate spec file. For UI work, the design skills' brief and tasks in `.design/<feature>/` (decision 0031) feed `writing-plans`.
-- The plan fixes the **data contract first** (JSON Schema and generated files now, OpenAPI later), then splits the work into **backend tasks** (C# cost engine, generator, later the API) and **frontend tasks** (Next.js screens; the design skills produce the brief and tasks, decision 0031), each with acceptance criteria, edge cases and the test that proves each.
+- The plan fixes the **data contract first** (JSON Schema and generated files now, OpenAPI later), then splits the work into **backend tasks** (cost engine, generator, later the API) and **frontend tasks** (Next.js screens; the design skills produce the brief and tasks, decision 0031), each with acceptance criteria, edge cases and the test that proves each.
 - Until a running backend exists, "backend tasks" means fixtures and the cost engine.
 - Hard-to-reverse choices get a decision record; easily reversible ones get one line in the register with their default.
 
@@ -73,7 +73,7 @@ Haiku may do clearly mechanical subtasks (renaming across files, reformatting a 
 - Start from the issue's plan and acceptance criteria. If the plan is unclear or conflicts with a decision, stop and ask rather than guess.
 - Small vertical slices. Tests first for anything numeric or legal, using the test-first skill once it's added (decision 0031) and the boundary cases in decision 0034.
 - **Noticed, not changed:** list anything spotted outside the task under that heading in the pull request description, and open an issue labelled `noticed` for each. Don't fix unrelated things in the same change.
-- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list (decision 0035 point 9 with the additions in decisions 0042 and 0043, and later register lines), or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
+- **Stop and ask** when a task needs an undecided domain rule (open a decision issue instead of inventing one), a package not on the pre-approved list (decision 0035 point 9 with the additions in decisions 0042, 0043, 0048 and 0049, and later register lines), or work well beyond the issue. **Stop after 3 failed attempts** at the same problem and report what was tried.
 - **Stop what you start:** servers, watchers and temporary worktrees.
 - **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
 - **Result type:** use Vestagraph's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
@@ -121,7 +121,7 @@ How to report:
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. **Codex has reviewed the latest commit.** Exceptions:
    - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "Code Review Rules" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
-   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example the zizmor action), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0042, carried over from 0039 Q3).
+   - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example the zizmor action), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0049, carried over from 0039 Q3 through 0042).
    Code otherwise waits for Codex, and a rebased pull request gets a fresh review.
 2. Every review finding is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
 3. Every check on the pull request has passed: none failing, none still running, whether or not GitHub marks it as required.
@@ -132,7 +132,7 @@ Claude Code may merge a pull request (squash merge) only when **all** of these a
 - Changes to `LICENSE`, repository settings, CI permissions, agent permission settings (`.claude/settings.json`) or these merge rules.
 - New or changed tax, legal, tenancy or privacy rule tables.
 - Infrastructure, cloud resources or anything that changes running costs.
-- Adding a package that isn't on the pre-approved list in decision 0035 with the additions in 0042, or a later register line.
+- Adding a package that isn't on the pre-approved list in decision 0035 with the additions in 0042, 0043, 0048 and 0049, or a later register line.
 - Any pull request where Claude Code disputes a finding as wrong (not merely defers it). The founder decides whether the finding stands.
 
 P0/P1 findings always block, with no override.
