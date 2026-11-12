@@ -32,8 +32,8 @@ restore:
 	uv sync --locked --all-packages
 
 # OPTIONAL, not part of `check` (register line BE-23): a pip-format export of uv.lock, kept as the fallback in case dependency
-# review stops reading uv.lock. The 9 Nov 2026 proof (PRs #50, #51), repeated in P1 of decision 0049, showed it reads uv.lock
-# directly. To adopt it: add `requirements-check` after `restore` in `check`, commit requirements.txt, and allow both targets.
+# review stops reading uv.lock. The 9 Nov 2026 proof (PRs #50, #51) showed it reads uv.lock directly;
+# P1 of decision 0049 (#187) repeated it on 12 Nov 2026 (PRs #199, #200). To adopt it: add `requirements-check` after `restore` in `check`, commit requirements.txt, and allow both targets.
 requirements:
 	uv export --locked --all-packages --all-groups --no-emit-workspace --format requirements.txt --output-file requirements.txt
 
