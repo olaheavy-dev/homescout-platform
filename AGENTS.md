@@ -70,7 +70,7 @@ This file is the **single current rulebook for how work is done** (planning, bui
 - **Stop what you start:** servers, watchers and temporary worktrees.
 - **Data sources:** never scrape or copy listing content (decision 0028). Outside services go through adapters that label values Live, Cached, Fallback or Unavailable, and live-service tests stay out of the merge gate (decision 0029).
 - **Result type:** use Vestagraph's own `Result` for expected failures only; programming errors throw (decisions 0021, 0032).
-- Before using a framework or package API, check its official documentation for the pinned major version via `docs/references/third-party.md`, not memory. When adding a dependency or changing a major version, update that file in the same pull request.
+- Before using a framework or package API, check its official documentation for the pinned major version via `docs/references/third-party.md`, not memory. The documentation MCP servers in `.mcp.json` (Microsoft Learn, Context7) help find it quickly; cite the official page, not the server. When adding a dependency or changing a major version, update that file in the same pull request.
 - For a major version update, read the official migration notes, fix breaking changes in the same pull request, and summarise them in the description.
 - Commit messages: `feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`.
 - Pull request description: what changed and why, how it was tested, **any assumptions you made**, "Noticed, not changed", and the pre-flight check done.
