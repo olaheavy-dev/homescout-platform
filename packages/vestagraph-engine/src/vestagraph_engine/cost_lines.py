@@ -1,4 +1,4 @@
-"""What monthly (and later upfront) calculations share: checking the lines and placing them in a
+"""What monthly and upfront calculations share: checking the lines and placing them in a
 fixed order, finding partial reasons, and totalling (ported from the C# ``CostLines``)."""
 
 from collections.abc import Iterable, Sequence
@@ -38,7 +38,17 @@ _MONTHLY_RENT_ORDER = (
     CostCategory.WATER,
     CostCategory.BROADBAND,
 )
-# Rent and the mortgage payment are monthly figures; other bills may be monthly or yearly.
+_UPFRONT_BUY_ORDER = (
+    CostCategory.MORTGAGE_DEPOSIT,
+    CostCategory.MOVING_COSTS,
+    CostCategory.STAMP_DUTY,
+    CostCategory.LEGAL_FEES,
+)
+_UPFRONT_RENT_ORDER = (
+    CostCategory.DEPOSIT,
+    CostCategory.FIRST_MONTH_RENT,
+    CostCategory.MOVING_COSTS,
+)
 _MONTH_ONLY = (CostCategory.RENT, CostCategory.MORTGAGE_REPAYMENT)
 
 
@@ -56,14 +66,29 @@ def monthly_order(mode: Mode) -> tuple[CostCategory, ...]:
             assert_never(mode)
 
 
-def resolve(
-    lines: Sequence[LineInput], order: Sequence[CostCategory]
-) -> Result[tuple[LineResult, ...]]:
-    """Check each monthly line and turn it into a result line, returned in ``order``.
+def upfront_order(mode: Mode) -> tuple[CostCategory, ...]:
+    """Which categories belong in an upfront breakdown, in the fixed order."""
+    if not is_a(mode, Mode):
+        message = "upfront_order needs a Mode."
+        raise TypeError(message)
+    match mode:
+        case Mode.BUY:
+            return _UPFRONT_BUY_ORDER
+        case Mode.RENT:
+            return _UPFRONT_RENT_ORDER
+        case _:
+            assert_never(mode)
 
-    A yearly amount becomes monthly with ``Pence.annual_to_monthly``, rounded once. The first
-    problem found, in input order, is the failure. A line that is not one of the known kinds
-    (including ``None``) raises ``TypeError``.
+
+def resolve(
+    lines: Sequence[LineInput], order: Sequence[CostCategory], *, upfront: bool = False
+) -> Result[tuple[LineResult, ...]]:
+    """Check each line and turn it into a result line, returned in ``order``.
+
+    ``upfront`` is true for upfront lines, which are amounts paid once; false for monthly lines.
+    A yearly monthly-list amount becomes monthly with ``Pence.annual_to_monthly``, rounded once.
+    The first problem found, in input order, is the failure. A line that is not one of the known
+    kinds (including ``None``) raises ``TypeError``.
     """
     resolved: dict[CostCategory, LineResult] = {}
     for line in lines:
@@ -86,7 +111,7 @@ def resolve(
                 ErrorCategory.CONFLICT,
             )
 
-        result = _resolve_line(line, name)
+        result = _resolve_line(line, name, upfront=upfront)
         if result.is_failure:
             return Result.failure(result.error)
         resolved[line.category] = result.value
@@ -111,10 +136,10 @@ def total(lines: Iterable[LineResult]) -> Pence:
     return running
 
 
-def _resolve_line(line: LineInput, name: str) -> Result[LineResult]:
+def _resolve_line(line: LineInput, name: str, *, upfront: bool) -> Result[LineResult]:
     match line:
         case AmountLine():
-            return _resolve_amount(line, name)
+            return _resolve_amount(line, name, upfront=upfront)
         case IncludedLine():
             return _without_amount(line.category, LineStatus.INCLUDED, line.evidence_ids)
         case NotCalculatedLine():
@@ -133,7 +158,7 @@ def _without_amount(
     return Result.success(LineResult(category, status, None, None, evidence_ids))
 
 
-def _resolve_amount(line: AmountLine, name: str) -> Result[LineResult]:
+def _resolve_amount(line: AmountLine, name: str, *, upfront: bool) -> Result[LineResult]:
     if line.amount.value <= 0:
         return _fail_line(
             f"input.not-positive.{name}",
@@ -141,8 +166,13 @@ def _resolve_amount(line: AmountLine, name: str) -> Result[LineResult]:
             ErrorCategory.VALIDATION,
         )
 
+    # Upfront amounts are paid once; rent and the mortgage payment are monthly figures; other
+    # bills may be monthly or yearly.
     month_only = line.category in _MONTH_ONLY
-    allowed = line.period == Period.MONTH or (line.period == Period.YEAR and not month_only)
+    if upfront:
+        allowed = line.period == Period.ONCE
+    else:
+        allowed = line.period == Period.MONTH or (line.period == Period.YEAR and not month_only)
     if not allowed:
         return _fail_line(
             f"input.wrong-period.{name}",

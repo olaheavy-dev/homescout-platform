@@ -1,4 +1,4 @@
-"""What the monthly calculation gives back (ported from the C# ``Breakdowns``)."""
+"""What the monthly and upfront calculations give back (ported from the C# ``Breakdowns``)."""
 
 from dataclasses import dataclass
 
@@ -49,3 +49,18 @@ class MonthlyBreakdown:
     budget_difference: Pence
     within_budget: bool
     based_on_partial_total: bool
+
+
+@dataclass(frozen=True, slots=True)
+class UpfrontBreakdown:
+    """The cash needed up front for a home.
+
+    ``lines`` are in the engine's fixed order for the mode, each amount paid once; ``total`` is
+    the sum of the calculated lines; ``is_partial`` is true exactly when some line is not
+    calculated, conflicting or missing, with one reason for each.
+    """
+
+    lines: tuple[LineResult, ...]
+    total: Pence
+    is_partial: bool
+    partial_reasons: tuple[PartialReason, ...]
