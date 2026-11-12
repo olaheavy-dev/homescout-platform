@@ -78,7 +78,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 - [ ] **B5 Costs:** hero figure, the cost bar, the monthly lines as a receipt with a numbered source key and every status, ending with the engine's "Total so far" with its Partial tag and "?" slots, upfront section, the "How this was worked out" disclosure, and editable assumptions recorded as the user's own. _Reuses: hero figure, cost bar, gap card._
 - [ ] **B6 Nearby, list first:** every section from the IA (including places of worship, PD-13) with source lines and gap cards; "What this doesn't tell you" as margin notes on desktop and a visible muted note on phones, never collapsed; crime and flood in the list only. _Depends on: area fixtures (merged in #145)._
 - [ ] **B6a Check an area** (`/area#postcode=`, decision 0046; the postcode stays in the URL fragment so it never reaches a log): reuses the Nearby topic summary and topic details. Needs a postcode-level fixture (distances from the postcode centre) so the screen doesn't borrow one home's distances. Includes the states from the IA (loading, invalid format, postcode not found, outside England, one source unavailable) and the browser-made export (H8). Public pages never offer an account feature as an active control before it exists, and the map's centre pin is "Postcode centre". _Depends on: B6._
-- [ ] **B7 Nearby map** (MapLibre, to be named by FE-03; no record approves it yet):
+- [ ] **B7 Nearby map** (MapLibre, approved):
   - the drawn Northbridge sample map (#146);
   - one muted colour and one crafted icon per category (FE-08; tokens `--color-map-marker-*`), with the home or postcode-centre pin the only deep-forest pin; colour is never the only signal (icon, legend and list name too);
   - the bottom sheet (peek, half, full) on a phone and the split view on desktop;
@@ -139,7 +139,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - 44 px targets;
   - axe and Playwright in CI.
 - [ ] **B17 Illustration and photography:** the textured editorial style guide first, then the illustrations for empty states, not covered, onboarding and the landing; home photos through the asset register (rule 5).
-- [ ] **B18 Performance budgets:** LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1, and the Nearby route JavaScript ≤ 170 KB gzip without the map. Checked by @lhci/cli and size-limit (named in proposed decision [0048](../../docs/decisions/0048-frontend-foundation.md); pre-approved once it is accepted).
+- [ ] **B18 Performance budgets:** LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1, and the Nearby route JavaScript ≤ 170 KB gzip without the map. Checked by @lhci/cli and size-limit (approved).
 
 ## Review
 - [ ] **Design review:** run `/designer-skills:design-review` against the brief after H4, and after each build slice, using the gallery as the baseline. Screenshots go in `.design/prototype/screenshots/`, which is git-ignored.
