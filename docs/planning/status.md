@@ -46,6 +46,8 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 - None.
 
 ## Founder to-dos
+Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (register line IN-06); turn on DNSSEC for both in Cloudflare when convenient.
+
 | To-do | Why | How | When |
 |---|---|---|---|
 | Approve the two documentation MCP servers (Microsoft Learn, Context7) | Agents read current official documentation instead of memory (WW-15) | Accept them when Claude Code asks at the start of an interactive session in this project | Next session |
