@@ -36,23 +36,23 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-25000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-185000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-185000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
-| P3a | `story-calculations.json` | `b1-service-charge-difference` | |
-| P3a | `story-calculations.json` | `b1-mortgage-repayment` | |
-| P3a | `story-calculations.json` | `b2-mortgage-repayment` | |
-| P3a | `story-calculations.json` | `mortgage-repayment-boundary-10025200` | |
-| P3a | `story-calculations.json` | `mortgage-repayment-boundary-10060700` | |
-| P3a | `story-calculations.json` | `b1-monthly-housing-cost-listing-service-charge` | |
-| P3a | `story-calculations.json` | `b1-monthly-housing-cost-management-pack-arrived` | |
-| P3a | `story-calculations.json` | `b1-monthly-housing-cost-2026-budget` | |
-| P3a | `story-calculations.json` | `b2-monthly-housing-cost` | |
-| P3a | `story-calculations.json` | `r1-monthly-housing-cost-before-water` | |
-| P3a | `story-calculations.json` | `r1-monthly-housing-cost-after-water` | |
-| P3a | `story-calculations.json` | `r2-monthly-housing-cost` | |
+| P3a | `story-calculations.json` | `b1-service-charge-difference` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_service_charge_difference_case_matches_the_difference_of_the_two_monthly_lines |
+| P3a | `story-calculations.json` | `b1-mortgage-repayment` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `b2-mortgage-repayment` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `mortgage-repayment-boundary-10025200` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `mortgage-repayment-boundary-10060700` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `b1-monthly-housing-cost-listing-service-charge` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `b1-monthly-housing-cost-management-pack-arrived` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `b1-monthly-housing-cost-2026-budget` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `b2-monthly-housing-cost` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `r1-monthly-housing-cost-before-water` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `r1-monthly-housing-cost-after-water` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | `story-calculations.json` | `r2-monthly-housing-cost` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
 | P3b | `story-calculations.json` | `b1-upfront-cash` | |
 | P3b | `story-calculations.json` | `b2-upfront-cash` | |
 | P3b | `story-calculations.json` | `r1-upfront-cash` | |
 | P3b | `story-calculations.json` | `r2-upfront-cash` | |
-| P3a | `story-calculations.json` | `b1-budget-beat` | |
+| P3a | `story-calculations.json` | `b1-budget-beat` | packages/vestagraph-engine/tests/test_engine_budget_beat.py::test_budget_beat_story_case_lands_as_worked |
 
 ## C# tests
 
@@ -137,51 +137,51 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `BoundaryFile_loaded_hasAllSixDirectRoundingCases` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_boundary_file_loaded_has_all_six_direct_rounding_cases |
 | P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `BoundaryFile_loaded_hasTheAnnualToMonthlyCases` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_boundary_file_loaded_has_the_annual_to_monthly_cases |
 | P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `Round_boundaryCaseFromFile_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
-| P3a | Vestagraph.CostEngine.Tests | BudgetBeatTests | `BudgetBeat_file_hasOneBudgetBeatCase` |  | |
-| P3a | Vestagraph.CostEngine.Tests | BudgetBeatTests | `BudgetBeat_storyCase_landsAsWorked` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_aNonCalculatedLineNeverCarriesPence` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_budgetDifferenceIsBudgetMinusTotalAndWithinMeansAtOrBelow` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_isPartialExactlyWhenALineIsNotCalculatedConflictingOrMissing` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_noLineOrTotalIsNegative` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_totalEqualsTheSumOfTheCalculatedLines` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_higherRent_neverLowersTheTotal` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyRepayment_anyValidInput_isNeverNegative` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyRepayment_higherRate_neverLowersTheRepayment` |  | |
-| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyRepayment_largerLoan_neverLowersTheRepayment` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `CostCategories_missingStatus_isNamedMissing` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `CostCategories_undefinedValues_throw` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCases_file_hasTheSevenWorkedMonthlyCases` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_amountNotPositive_failsAsNotPositive` | 2 | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_anchorLineThatIsNotAnAmount_failsAsMissing` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_billGivenOnce_failsAsWrongPeriod` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_budgetNotPositive_failsAsNotPositive` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_includedLine_doesNotMakeTheTotalPartial` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_lineThatDoesNotBelongToTheMode_failsAsNotForMode` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_linesGivenOutOfOrder_comeBackInTheFixedBuyOrder` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_linesGivenOutOfOrder_comeBackInTheFixedRentOrder` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_missingLine_makesTheTotalPartialWithACodedReason` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_noAnchorLine_failsAsMissing` | 2 | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_nonCalculatedLines_haveNoAmountAndNoSourcePeriod` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_nullLineInTheList_throws` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_nullLines_throws` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_rentGivenYearly_failsAsWrongPeriod` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_sameCategoryTwice_failsAsAmbiguous` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_storyCase_matchesWorkedResult` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_tinyYearlyAmount_roundsToZeroButStaysCalculated` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_totalExactlyEqualToBudget_isWithinBudget` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_totalOnePennyOverBudget_isNotWithinBudget` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_totalTooBigForALong_throwsOverflow` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_undefinedMode_throws` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_unknownKindOfLine_throwsForThatLine` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_upfrontCategoryInAMonthlyList_failsAsNotForMode` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_yearlyLine_keepsItsSourcePeriodAndEvidence` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `BasisPoints_rateThatIsNotWholeBasisPoints_failsTheTest` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_invalidInput_failsWithTheCode` | 6 | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_storyCase_matchesWorkedResult` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_termOf100Years_isCalculated` |  | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_termOver100Years_failsAsTooLong` | 3 | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_veryLargeLoan_neverGivesAWrongSuccess` | 3 | |
-| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MortgageCases_file_hasTheFourWorkedMortgageCases` |  | |
+| P3a | Vestagraph.CostEngine.Tests | BudgetBeatTests | `BudgetBeat_file_hasOneBudgetBeatCase` |  | packages/vestagraph-engine/tests/test_engine_budget_beat.py::test_budget_beat_file_has_one_budget_beat_case |
+| P3a | Vestagraph.CostEngine.Tests | BudgetBeatTests | `BudgetBeat_storyCase_landsAsWorked` |  | packages/vestagraph-engine/tests/test_engine_budget_beat.py::test_budget_beat_story_case_lands_as_worked |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_aNonCalculatedLineNeverCarriesPence` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_cost_any_lines_a_non_calculated_line_never_carries_pence |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_budgetDifferenceIsBudgetMinusTotalAndWithinMeansAtOrBelow` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_cost_any_lines_budget_difference_is_budget_minus_total |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_isPartialExactlyWhenALineIsNotCalculatedConflictingOrMissing` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_cost_any_lines_is_partial_exactly_when_a_line_has_no_amount |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_noLineOrTotalIsNegative` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_cost_any_lines_no_line_or_total_is_negative |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_totalEqualsTheSumOfTheCalculatedLines` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_cost_any_lines_total_equals_the_sum_of_the_calculated_lines |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_higherRent_neverLowersTheTotal` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_cost_higher_rent_never_lowers_the_total |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyRepayment_anyValidInput_isNeverNegative` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_repayment_any_valid_input_is_never_negative |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyRepayment_higherRate_neverLowersTheRepayment` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_repayment_higher_rate_never_lowers_the_repayment |
+| P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyRepayment_largerLoan_neverLowersTheRepayment` |  | packages/vestagraph-engine/tests/test_engine_calculation_properties.py::test_monthly_repayment_larger_loan_never_lowers_the_repayment |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `CostCategories_missingStatus_isNamedMissing` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_cost_categories_missing_status_is_named_missing |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `CostCategories_undefinedValues_throw` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_cost_categories_undefined_values_raise_type_error |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCases_file_hasTheSevenWorkedMonthlyCases` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cases_file_has_the_seven_worked_monthly_cases |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_amountNotPositive_failsAsNotPositive` | 2 | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_amount_not_positive_fails_as_not_positive |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_anchorLineThatIsNotAnAmount_failsAsMissing` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_anchor_line_that_is_not_an_amount_fails_as_missing |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_billGivenOnce_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_bill_given_once_fails_as_wrong_period |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_budgetNotPositive_failsAsNotPositive` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_budget_not_positive_fails_as_not_positive |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_includedLine_doesNotMakeTheTotalPartial` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_included_line_does_not_make_the_total_partial |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_lineThatDoesNotBelongToTheMode_failsAsNotForMode` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_line_that_does_not_belong_to_the_mode_fails_as_not_for_mode |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_linesGivenOutOfOrder_comeBackInTheFixedBuyOrder` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_lines_given_out_of_order_come_back_in_the_fixed_buy_order |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_linesGivenOutOfOrder_comeBackInTheFixedRentOrder` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_lines_given_out_of_order_come_back_in_the_fixed_rent_order |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_missingLine_makesTheTotalPartialWithACodedReason` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_missing_line_makes_the_total_partial_with_a_coded_reason |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_noAnchorLine_failsAsMissing` | 2 | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_no_anchor_line_fails_as_missing |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_nonCalculatedLines_haveNoAmountAndNoSourcePeriod` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_non_calculated_lines_have_no_amount_and_no_source_period |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_nullLineInTheList_throws` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_none_in_the_list_of_lines_raises_type_error |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_nullLines_throws` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_non_sequence_lines_raises_type_error |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_rentGivenYearly_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_rent_given_yearly_fails_as_wrong_period |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_sameCategoryTwice_failsAsAmbiguous` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_same_category_twice_fails_as_ambiguous |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_storyCase_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_tinyYearlyAmount_roundsToZeroButStaysCalculated` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_tiny_yearly_amount_rounds_to_zero_but_stays_calculated |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_totalExactlyEqualToBudget_isWithinBudget` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_total_exactly_equal_to_budget_is_within_budget |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_totalOnePennyOverBudget_isNotWithinBudget` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_total_one_penny_over_budget_is_not_within_budget |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_totalTooBigForALong_throwsOverflow` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_total_too_big_for_64_bits_raises_overflow |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_undefinedMode_throws` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_undefined_mode_raises_type_error |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_unknownKindOfLine_throwsForThatLine` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_unknown_kind_of_line_raises_type_error |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_upfrontCategoryInAMonthlyList_failsAsNotForMode` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_upfront_category_in_a_monthly_list_fails_as_not_for_mode |
+| P3a | Vestagraph.CostEngine.Tests | MonthlyCostTests | `MonthlyCost_yearlyLine_keepsItsSourcePeriodAndEvidence` |  | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_yearly_line_keeps_its_source_period_and_evidence |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `BasisPoints_rateThatIsNotWholeBasisPoints_failsTheTest` |  | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_basis_points_rate_that_is_not_whole_basis_points_fails_the_test |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_invalidInput_failsWithTheCode` | 6 | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_invalid_input_fails_with_the_code |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_storyCase_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_termOf100Years_isCalculated` |  | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_term_of_100_years_is_calculated |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_termOver100Years_failsAsTooLong` | 3 | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_term_over_100_years_fails_as_too_long |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_veryLargeLoan_neverGivesAWrongSuccess` | 3 | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_very_large_loan_never_gives_a_wrong_success |
+| P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MortgageCases_file_hasTheFourWorkedMortgageCases` |  | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_mortgage_cases_file_has_the_four_worked_mortgage_cases |
 | P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_anchorFromTwoItems_failsAsAmbiguous` |  | |
 | P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_anchorItemWithStatusMissing_failsAsMissing` |  | |
 | P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingHome_hasNoMortgageRepaymentLineAndTheDepositUpfront` |  | |

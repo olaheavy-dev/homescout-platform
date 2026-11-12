@@ -16,14 +16,17 @@ OWN_PACKAGE = "vestagraph_engine"
 # The only imports the engine may make, and only as `from <module> import <name>` so nothing can be
 # reached through a module object (`fractions.math`, `typing.sys`). Extend only with a reason:
 #   dataclasses, enum, typing: value types; fractions: exact rational input for Pence.from_exact;
-#   collections.abc: abstract types for later cost lines. Nothing here reads a clock, a file, the
+#   collections.abc: abstract types for later cost lines; typing.assert_never: ends a `match` over
+#   an enum or union so mypy proves every case is handled. Nothing here reads a clock, a file, the
 #   network, the environment or a random number.
 ALLOWED_IMPORTS: dict[str, frozenset[str]] = {
     "__future__": frozenset({"annotations"}),
     "dataclasses": frozenset({"dataclass"}),
     "enum": frozenset({"Enum"}),
     "fractions": frozenset({"Fraction"}),
-    "typing": frozenset({"ClassVar", "Final", "Literal", "Never", "Protocol", "Self", "overload"}),
+    "typing": frozenset(
+        {"ClassVar", "Final", "Literal", "Never", "Protocol", "Self", "assert_never", "overload"}
+    ),
     "collections.abc": frozenset(
         {"Callable", "Iterable", "Iterator", "Mapping", "Sequence", "Set"}
     ),
