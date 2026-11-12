@@ -39,6 +39,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [.NET 11 and C# 15 plan](planning/dotnet-11-and-csharp-15-plan.md) | Superseded by decision 0049 (back to Python); kept because older records link to it | History |
 | [Specifications](specs/README.md) | The prototype specification: rules, templates, and the executable screen, story and MCP features | Stage 3 onwards |
 | [Ordered backlog](planning/backlog.md) | Every issue from the stage 2 close-out to stage 6, in order, by milestone | All stages |
+| [Python port ledger](planning/python-port-ledger.md) | Every C# test and worked case, with the Python test that replaces it; P8 removes .NET only when it is complete (decision 0049) | Python port |
 | [Document review, 23 Oct 2026](reviews/2026-10-23-document-review.md) | Corrections and specification gaps found in the first review | Record |
 | [Free data sources assessment](references/data-sources.md) | Licence, terms, limits and coverage of free UK data sources for area information, checked 11 Nov 2026 (#123) | Stage 3 onwards |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |

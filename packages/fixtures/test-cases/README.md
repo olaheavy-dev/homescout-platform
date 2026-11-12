@@ -1,6 +1,6 @@
 # Independently worked test cases (stage 2, task 3)
 
-These are the **expected values** the C# cost engine must reproduce. They were worked out by hand, from the inputs in [the stage 2 plan](../../../docs/planning/stage-2-plan.md) section 1 and the rules in decisions [0021](../../../docs/decisions/0021-dotnet-engineering-foundation.md) and [0034](../../../docs/decisions/0034-rounding-boundary-cases.md), without reading or running any engine code (AGENTS.md rule 2). Each figure was then re-checked with a separate throwaway Python calculation using `decimal.Decimal` and `ROUND_HALF_UP` applied to the absolute value (which is "half away from zero"). The Python is not committed.
+These are the **expected values** the cost engine must reproduce. They were worked out by hand, from the inputs in [the stage 2 plan](../../../docs/planning/stage-2-plan.md) section 1 and the rules in decisions [0021](../../../docs/decisions/0021-dotnet-engineering-foundation.md) and [0034](../../../docs/decisions/0034-rounding-boundary-cases.md), without reading or running any engine code (AGENTS.md rule 2). Each figure was then re-checked with a separate throwaway Python calculation using `decimal.Decimal` and `ROUND_HALF_UP` applied to the absolute value (which is "half away from zero"). The Python is not committed.
 
 Files:
 - `rounding-boundaries.json`: rounding boundary cases (decision 0034).

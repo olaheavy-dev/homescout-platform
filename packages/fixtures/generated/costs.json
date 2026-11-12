@@ -1,10 +1,10 @@
 {
   "$schema": "../schema/generated-costs.schema.json",
   "formatVersion": 1,
-  "generatedBy": "Vestagraph.CostEngine.Generator",
+  "generatedBy": "Vestagraph cost engine",
   "snapshotDate": "2026-10-23",
   "money": "integer pence",
-  "rounding": "Each yearly amount is divided by 12 and rounded once to the nearest penny, halves away from zero; a total is the sum of its rounded lines; a mortgage repayment is rounded once from the exact fraction (decision 0021).",
+  "rounding": "Each yearly amount is divided by 12 and rounded once to the nearest penny, halves away from zero; a total is the sum of its rounded lines; a mortgage repayment is rounded once from the exact fraction (decisions 0034 and 0036).",
   "homes": [
     {
       "homeId": "B1",

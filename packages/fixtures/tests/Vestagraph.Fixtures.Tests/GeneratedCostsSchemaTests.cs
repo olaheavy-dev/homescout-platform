@@ -17,10 +17,10 @@ internal sealed class GeneratedCostsSchemaTests
         {
           "$schema": "../schema/generated-costs.schema.json",
           "formatVersion": 1,
-          "generatedBy": "Vestagraph.CostEngine.Generator",
+          "generatedBy": "Vestagraph cost engine",
           "snapshotDate": "2026-10-23",
           "money": "integer pence",
-          "rounding": "Nearest penny, exact halves away from zero (decision 0021).",
+          "rounding": "Nearest penny, exact halves away from zero (decisions 0034 and 0036).",
           "homes": [
             {
               "homeId": "B1",
