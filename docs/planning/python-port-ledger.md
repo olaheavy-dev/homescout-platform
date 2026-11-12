@@ -1,5 +1,7 @@
 # Python port ledger
 
+**Complete: P8 merged.** The .NET code, tests and tooling were removed in port step P8 (#195, decision 0049) after every row below had a Python test or a written reason. The rows stay as the record of what each C# test became; the C# paths they mention no longer exist.
+
 Decision [0049](../decisions/0049-back-to-python-final.md), issue #186. Every C# test and every worked test case, with the Python test that replaces it. Each port pull request fills in the **Python test** column for the rows it covers (`file::test`, or several separated by `;`). P8 (#195), which removes .NET, may merge only when every row has a Python test or a written reason why none is needed.
 
 Generated on 12 Nov 2026 from the test methods (`[Test]`, `[TestCase]`, `[TestCaseSource]` and the FsCheck property attributes `[PenceProperty]` and `[EngineProperty]`) in `packages/` and the cases in `packages/fixtures/test-cases/`. **Cases** is the number of `[TestCase]` rows on a method; the Python test must cover each of them. Gherkin scenarios in `docs/specs/` are not listed: they are the same files, and P6 (#193) runs them with pytest-bdd.

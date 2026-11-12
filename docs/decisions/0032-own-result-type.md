@@ -1,7 +1,7 @@
 # 0032: Our own Result type
 
 **ID:** BE-05  
-**Status:** Accepted (the principle stands under [0049](0049-back-to-python-final.md); the type is rewritten in Python in port step P2, and the C# 15 union trial (#60) is closed)  
+**Status:** Accepted (the principle stands under [0049](0049-back-to-python-final.md); the type is rewritten in Python in port step P2, the C# type was removed in P8, and the C# 15 union trial (#60) is closed)  
 **Date:** 2026-10-23  
 **Stage:** 2
 

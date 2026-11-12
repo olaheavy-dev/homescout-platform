@@ -53,12 +53,12 @@ flowchart TB
         data[("Fixture data<br/>JSON, packages/fixtures/data<br/>Inputs only, each with its source")]
         schema[("Schemas<br/>JSON Schema 2020-12<br/>packages/fixtures/schema")]
         cases[("Test cases<br/>JSON, packages/fixtures/test-cases<br/>Independently worked examples")]
-        engine["Cost engine<br/>Python package, vestagraph_engine<br/>(packages/vestagraph-engine)<br/>No I/O, HTTP, AI, clock or random<br/>C# Vestagraph.CostEngine kept until P8,<br/>proven to the same bytes"]
+        engine["Cost engine<br/>Python package, vestagraph_engine<br/>(packages/vestagraph-engine)<br/>No I/O, HTTP, AI, clock or random"]
         generator["Generator<br/>Python package<br/>vestagraph_generator"]
         generated[("Generated costs<br/>packages/fixtures/generated/costs.json<br/>Every calculated output, each with a figure ID")]
-        validator["Validator<br/>Python package<br/>vestagraph_fixture_validator<br/>C# Vestagraph.Fixtures.Validator kept until P8"]
-        tests["Test projects<br/>NUnit, FsCheck, architecture tests<br/>engine, generator and fixture tests"]
-        specs["Specification tests<br/>packages/specs, Reqnroll<br/>and pytest-bdd (packages/specs/tests) until P8<br/>Gherkin specs from docs/specs/"]
+        validator["Validator<br/>Python package<br/>vestagraph_fixture_validator"]
+        tests["Python tests<br/>pytest, Hypothesis, architecture tests<br/>engine, generator and fixture tests"]
+        specs["Specification tests<br/>pytest-bdd (packages/specs/tests)<br/>Gherkin specs from docs/specs/"]
         ci["Checks<br/>make check and GitHub Actions CI<br/>CodeQL, dependency review, mutation testing (manual)"]
     end
 
@@ -112,13 +112,13 @@ flowchart TB
 | Fixture data | `packages/fixtures/data/` | Hand-maintained inputs only: household, homes, evidence, documents, questions, replies, the snapshot and synthetic area context. No totals (`AGENTS.md` rule 2). |
 | Schemas | `packages/fixtures/schema/` | The contract: JSON Schema files for the data, the test cases and the generated output. |
 | Test cases | `packages/fixtures/test-cases/` | Calculations worked out independently of the engine, with their working, so a wrong calculation cannot confirm itself. |
-| Cost engine | `packages/vestagraph-engine/` (Python, `vestagraph_engine`; the C# `packages/cost-engine/src/Vestagraph.CostEngine/` stays until port step P8 and is proven to write the same bytes, decision 0049) | The only place calculated figures come from (decision 0019); it produces `costs.json` through the generator. Architecture tests keep it free of I/O. |
-| Generator | `packages/vestagraph-generator/` (the C# generator in `packages/cost-engine/src/Vestagraph.CostEngine.Generator/` stays until port step P8, decision 0049) | `make generate`: reads the data, calls the engine, writes `costs.json`. |
+| Cost engine | `packages/vestagraph-engine/` (Python, `vestagraph_engine`, decision 0049) | The only place calculated figures come from (decision 0019); it produces `costs.json` through the generator. Architecture tests keep it free of I/O. |
+| Generator | `packages/vestagraph-generator/` (Python, `vestagraph_generator`) | `make generate`: reads the data, calls the engine, writes `costs.json`. |
 | Generated costs | `packages/fixtures/generated/costs.json` | The committed output. Never edited by hand. |
-| Validator | `packages/vestagraph-fixture-validator/` (Python, `vestagraph_fixture_validator`, on jsonschema and referencing; the C# `packages/fixtures/tools/Vestagraph.Fixtures.Validator/` stays until port step P8, decision 0049) | `make validate`: checks every data, test-case and generated file against its schema. |
-| Test projects | `packages/cost-engine/tests/`, `packages/fixtures/tests/` | NUnit tests, FsCheck property tests, architecture tests and the generator's end-to-end tests. |
-| Specification tests | `packages/specs/Vestagraph.Specs.Tests/`, `packages/specs/tests/` (Python) | Reqnroll and, until port step P8 (decision 0049), pytest-bdd run the Gherkin specifications in `docs/specs/` (decision 0043); data steps check every cited figure and evidence ID against the fixtures and `costs.json`. |
-| Checks | `Makefile`, `.github/workflows/`, repository settings | `make check` locally and in CI, running the .NET checks and, until the .NET code is removed (decision 0049, P8), the Python ones beside them (mypy strict, `ruff format` and `ruff check`, pytest); `make generated-check` fails if the committed output is out of date. CodeQL (`actions` and `csharp`), dependency review and workflow linting also run. `make mutate` (mutmut on the Python engine) and `make mutate-dotnet` (Stryker.NET, until P8) are manual and not part of CI. |
+| Validator | `packages/vestagraph-fixture-validator/` (Python, `vestagraph_fixture_validator`, on jsonschema and referencing) | `make validate`: checks every data, test-case and generated file against its schema. |
+| Python tests | `packages/*/tests/` | pytest tests, Hypothesis property tests, architecture tests and the generator's end-to-end tests. |
+| Specification tests | `packages/specs/tests/` | pytest-bdd runs the Gherkin specifications in `docs/specs/` (decision 0043); data steps check every cited figure and evidence ID against the fixtures and `costs.json`. |
+| Checks | `Makefile`, `.github/workflows/`, repository settings | `make check` locally and in CI, running the Python checks (mypy strict, `ruff format`, `ruff check`, the validator, pytest); `make generated-check` fails if the committed output is out of date. CodeQL (`actions` and `python`), dependency review and workflow linting also run. `make mutate` (mutmut on the Python engine) is manual and not part of CI. |
 
 **In plain language: how data flows today.** A person edits the inputs in the fixture data. The generator reads them, asks the cost engine to calculate every total (differences between homes are deferred to stage 5: BE-27, #96), and writes one file, `costs.json`. The validator checks that the inputs, the worked test cases and that output all match their schemas, and CI regenerates `costs.json` and fails if the committed copy is different. That is how the project keeps one rule: **inputs are typed once with a source; calculated figures only ever come from the engine.**
 
@@ -133,7 +133,7 @@ flowchart TB
 | Aspire and OpenTelemetry | 5b | Local app host, written in TypeScript, and trace dashboard for the pieces above (decisions 0025, 0049). |
 | Database | 6 | Not decided (DA-03). It would hold homes, questions, replies and decisions once there is real data; hosting follows decision 0022 (cost first). |
 
-The planned pieces and their order are in the [ordered backlog](../planning/backlog.md). Until the Python port (decision 0049) removes the .NET code (port step P8), the cost engine and the generator run in Python (from port steps P3 and P4) and the rest of the built pieces above stay in C#.
+The planned pieces and their order are in the [ordered backlog](../planning/backlog.md). The built pieces above are all Python (the .NET code was removed in port step P8, decision 0049).
 
 ## Keeping this page true
 

@@ -1,7 +1,7 @@
 # 0019: Calculations in a C# cost engine from day one
 
 **ID:** DA-02  
-**Status:** Accepted (partly superseded: solution file location by [0021](0021-dotnet-engineering-foundation.md); the engine's language by [0049](0049-back-to-python-final.md), which moves it to Python; one engine and generated figures only still stand)  
+**Status:** Accepted (partly superseded: solution file location by [0021](0021-dotnet-engineering-foundation.md); the engine's language by [0049](0049-back-to-python-final.md), which moves it to Python (the C# engine was removed in port step P8); one engine and generated figures only still stand)  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:** in [0013](0013-repo-and-tracking.md), the placement of the "calculation script" in `packages/fixtures`. The rest of 0013 stands.

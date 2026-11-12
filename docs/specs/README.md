@@ -1,6 +1,6 @@
 # Specifications
 
-The prototype specification lives here (decision [0043](../decisions/0043-specification-format.md), SP-01). It describes what each screen, story step and MCP tool must do, precisely enough to build and test it from this folder and the fixtures alone (doc 04 §9 stage 3). The specifications are **executable**: a .NET test project runs these Gherkin files with Reqnroll and, until port step P8 (decision 0049) removes the .NET code, a Python project (`packages/specs/tests`) runs them again with pytest-bdd.
+The prototype specification lives here (decision [0043](../decisions/0043-specification-format.md), SP-01). It describes what each screen, story step and MCP tool must do, precisely enough to build and test it from this folder and the fixtures alone (doc 04 §9 stage 3). The specifications are **executable**: a Python project (`packages/specs/tests`) runs these Gherkin files with pytest-bdd (decision 0049; the Reqnroll runner was removed in port step P8).
 
 ## Layout
 | Path | Holds | Issue |
@@ -24,7 +24,7 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
 4. **Required states:** each feature's description maps every required state from doc 03 §5 that applies to it to at least one scenario, for example ambiguous match, not covered, stale, partial answer or source failed.
 5. **No forbidden words:** a scenario never expects the product to call a home "verified", "safe" or "approved" (rule 4). An AI step never calculates a figure (decision 0004).
 6. **Tags decide when a scenario runs:**
-   - `@ui`: browser steps, run with Microsoft.Playwright for .NET from stage 5.
+   - `@ui`: browser steps, run with playwright-bdd from stage 5 (decision 0049).
    - `@mcp`: MCP server steps, run from #97.
    - No tag: data steps (fixtures and `costs.json`), run by `make check` from stage 3.
 
@@ -34,10 +34,8 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
 
 ## Running the specifications
 - `make test` (and so `make check` and CI) runs every scenario that is **not** tagged `@ui`, `@mcp` or `@withdrawn`. A scenario that cites an ID missing from `packages/fixtures/generated/costs.json` or `packages/fixtures/data/` fails with a message naming the ID.
-- To run only the specifications: `dotnet test --project packages/specs/Vestagraph.Specs.Tests --filter "TestCategory!=ui&TestCategory!=mcp&TestCategory!=withdrawn"`. Reqnroll turns each tag into an NUnit category, so `--filter "TestCategory=screen"` runs one tag and a scenario name can be filtered with `--filter "Name~COSTS_02"`.
-- The same scenarios also run with **pytest-bdd** (decision 0049 step P6; the Reqnroll runner stays until P8): `uv run --locked pytest packages/specs/tests -m "not ui and not mcp and not withdrawn"`. Each tag is a registered pytest marker (`pyproject.toml`; an unregistered tag fails), so `-m screen` runs one tag, and the test name starts with the scenario ID. `-k` matches substrings, case-insensitively: `-k COSTS-0` picks all three COSTS scenarios, so for exactly one use `-k "COSTS-02_"` (trailing underscore) or the full node ID, `packages/specs/tests/test_specs_scenarios.py::test_COSTS-02_missing_buildings_insurance_is_not_shown_as_zero`. The steps are in `packages/specs/tests/specs_steps.py` and `specs_support.py` (the same wording and the same failure messages as `DataSteps.cs`). The `.feature` files are loaded from this folder in place; nothing is copied. A new tag must be added to `markers` in `pyproject.toml`.
-- The `.feature` files are linked into `packages/specs/Vestagraph.Specs.Tests/` from this folder; nothing is copied, and the generated test code goes in `obj/`.
-- **Data steps** (`packages/specs/Vestagraph.Specs.Tests/DataSteps.cs` and `packages/specs/tests/specs_steps.py`; the wording must match exactly in both):
+- To run only the specifications (pytest-bdd, decision 0049 step P6; it replaced the Reqnroll runner in P8): `uv run --locked pytest packages/specs/tests -m "not ui and not mcp and not withdrawn"`. Each tag is a registered pytest marker (`pyproject.toml`; an unregistered tag fails), so `-m screen` runs one tag, and the test name starts with the scenario ID. `-k` matches substrings, case-insensitively: `-k COSTS-0` picks all three COSTS scenarios, so for exactly one use `-k "COSTS-02_"` (trailing underscore) or the full node ID, `packages/specs/tests/test_specs_scenarios.py::test_COSTS-02_missing_buildings_insurance_is_not_shown_as_zero`. The steps are in `packages/specs/tests/specs_steps.py` and `specs_support.py`. The `.feature` files are loaded from this folder in place; nothing is copied. A new tag must be added to `markers` in `pyproject.toml`.
+- **Data steps** (`packages/specs/tests/specs_steps.py`):
   - `Given home "B1" is at story step 1`
   - `Then figure "<figure ID>" exists`
   - `Then figure "<figure ID>" has status "<calculated | missing | not-calculated | ...>"`
@@ -47,11 +45,7 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
   - `Then evidence "<evidence ID>" exists`
 
   `Given home ... is at story step N` accepts any step from a scenario's `fromStep` to its `toStep` (for B1, step 2 is `from-step-1`) and then requires every figure ID cited in that scenario to start with `<home>.<scenario>.`. `has status` and `shows no amount` apply to cost lines only, not totals. The wording in decision 0043's example is illustrative; this list is the contract.
-  A step with no matching wording makes the scenario fail as undefined: add the step to both `DataSteps.cs` and `packages/specs/tests/specs_steps.py` (with tests) until P8, rather than rewording the scenario around it.
-
-**Set-up notes** (proved in #121): the project targets `net11.0` with the repository's strict build settings; Reqnroll.NUnit 3.3.4 runs on NUnit 5 and Microsoft.Testing.Platform (`make test` passes `--timeout` and `--maximum-failed-tests`); the project sets `PredefinedCulturesOnly=false` because Reqnroll asks for the `en-US` culture by name and the repository uses invariant globalization.
-
-**Telemetry:** Reqnroll sends usage telemetry unless `REQNROLL_TELEMETRY_ENABLED=0`. The Makefile and CI set it. In an IDE or a bare `dotnet build`/`dotnet test`, set that variable in your shell profile or the run configuration. (GitHub's CodeQL default setup builds without it and cannot be configured to set it.)
+  A step with no matching wording makes the scenario fail as undefined: add the step to `packages/specs/tests/specs_steps.py` (with tests), rather than rewording the scenario around it.
 
 ## Screen template
 ```gherkin

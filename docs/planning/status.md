@@ -4,7 +4,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 
 
 ## Where we are
 - **Stage 3** (prototype specification) is open; its gate is issue #71. Stage 4's frontend foundation is decided: [0048](../decisions/0048-frontend-foundation.md), accepted 12 Nov 2026.
-- **Backend language: Python, final** ([0049](../decisions/0049-back-to-python-final.md), founder, 12 Nov 2026). The C# code keeps running until the port removes it (P8).
+- **Backend language: Python, final** ([0049](../decisions/0049-back-to-python-final.md), founder, 12 Nov 2026). The .NET code was removed in port step P8 (#195); the project is Python only.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
 - Design canvas and new ideas are frozen until something is clickable (founder, 11 Nov 2026).
 

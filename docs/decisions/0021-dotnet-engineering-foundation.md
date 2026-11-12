@@ -1,7 +1,7 @@
 # 0021: .NET engineering foundation
 
 **ID:** BE-04  
-**Status:** Accepted (partly superseded: boundary examples by [0034](0034-rounding-boundary-cases.md); the toolchain by [0049](0049-back-to-python-final.md), which adopts [0039](0039-python-engineering-foundation.md)'s again; fully superseded when the .NET code is removed, port step P8)  
+**Status:** Superseded by [0049](0049-back-to-python-final.md) (fully, at port step P8 when the .NET code was removed; the Python toolchain is [0039](0039-python-engineering-foundation.md); boundary examples stay in [0034](0034-rounding-boundary-cases.md))  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:** in [0019](0019-cost-engine-in-csharp.md), the solution file's location ("a .NET solution under `packages/cost-engine/`"). The solution file moves to the repository root so it can include the API later; the cost-engine projects stay under `packages/cost-engine/`.

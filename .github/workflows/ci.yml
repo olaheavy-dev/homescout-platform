@@ -25,11 +25,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up the .NET SDK from global.json
-        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
-        with:
-          global-json-file: global.json
-
       - name: Set up uv (lowest version in pyproject.toml's range; no cache, decision 0039)
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
@@ -40,10 +35,6 @@ jobs:
 
       - name: Run every automated check
         run: make check
-        env:
-          DOTNET_CLI_TELEMETRY_OPTOUT: "1"
-          TESTINGPLATFORM_TELEMETRY_OPTOUT: "1"
-          REQNROLL_TELEMETRY_ENABLED: "0"
 
       - name: Upload the coverage report
         if: ${{ !cancelled() }}
