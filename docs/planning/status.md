@@ -12,7 +12,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 
 - Decision 0049 (branch `docs/back-to-python-0049`). Founder merge: it adds PSF-2.0 to the licence allow-list.
 
 ## Next, in order
-1. Merge decision 0049, then do its issue changes: close #59, #60, #61 as not planned; retitle #93, #94, #97, #101, #102; rename the stage 6 milestone.
+1. Merge decision 0049, then do its issue changes: close #59, #60, #61 as not planned; retitle #93, #94, #97, #101, #102; narrow #92 to BE-02; note "after P8" on #86 and #96; rename the stage 6 milestone and close the C# 15 one.
 2. Port pull requests in order (milestone "Python port (decision 0049)"): PC #186, P1 #187 (founder merge), P2 #188, P3a #189, P3b #190, P4 #191, P5 #192, P6 #193, P7 #194, P8 #195 (founder merge). The stage 3 gate (#71) runs alongside.
 3. After P8: #86, the app shell, built from the Next.js template; then screens #165–#175.
 

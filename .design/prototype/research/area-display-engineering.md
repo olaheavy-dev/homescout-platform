@@ -1,5 +1,7 @@
 # Area display: engineering research (issue #143, track B)
 
+> **Note (12 Nov 2026):** the test tools named here for stage 5 (Reqnroll, Playwright for .NET, `Deque.AxeCore.Playwright`) were replaced by [decision 0049](../../../docs/decisions/0049-back-to-python-final.md): browser scenarios run with playwright-bdd and `@axe-core/playwright`, and the backend is Python.
+
 **Status:** research notes for the founder to review. Nothing here is decided. It feeds FE-03 maps and charts (#75), FE-04 frontend practices (#76), IN-02 hosting (#81) and the Nearby screen specification (#68). The UX track is in `area-display-ux.md`.
 **Date:** 11 Nov 2026. Every external fact links its official source and was checked on 11 Nov 2026 unless marked **unverified**. Bundle sizes were **measured on 11 Nov 2026**: `gzip -9` of the published `dist` files from jsDelivr, at the npm `latest` version on that day.
 **Scope:** the Next.js prototype on sample data (IN-01: it reads fixture files and has no backend), then the stage 6 product with real data.

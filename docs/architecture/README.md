@@ -20,7 +20,7 @@ flowchart TB
     vestagraph["Vestagraph<br/>Home decision workspace.<br/>Today: synthetic sample data, a cost engine<br/>and its checks. No running app yet"]
 
     data["Official and open England data<br/>PLANNED: area data at stage 5b, per-home<br/>data at stage 6 (decision 0046). Sources not chosen<br/>(DA-04 to DA-06). Every value labelled<br/>Live, Cached, Fallback or Unavailable<br/>(decision 0029)"]
-    models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 planned OpenAI and Anthropic<br/>(kept by 0049) behind Vestagraph's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
+    models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 planned OpenAI and Anthropic<br/>behind Vestagraph's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
     portals["Listing portals and agent websites<br/>Never scraped or copied (decision 0028).<br/>The user supplies what they have"]
 
     user -.->|"PLANNED: enters their own listing details,<br/>documents and estimates; reads results"| vestagraph

@@ -281,7 +281,7 @@ In the private prototype the landing can also link the two example homes; the pu
 - **Pattern:** `/section/[slug]/tab/[item-slug]`, in lower case with hyphens.
 - **Slugs:** readable and derived from the address; IDs stay internal. Question and document slugs come from their fixture IDs in lower case.
 - **Query parameters:**
-  - `step=1..4`: the example story step. It's on every example screen, so any screen at any step can be linked and tested (the pytest-bdd data scenarios and the playwright-bdd `@ui` scenarios use it, decision 0049).
+  - `step=1..4`: the example story step. It's on every example screen, so any screen at any step can be linked and tested (the playwright-bdd `@ui` scenarios use it, decision 0049).
   - `story=buyer|renter`: on My move.
   - `homes=a,b,c`: on Compare (at most three).
   - `view=list|map` and `selected=[area-item-id]`: on Nearby.

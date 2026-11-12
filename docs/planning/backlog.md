@@ -1,6 +1,6 @@
 # Ordered backlog
 
-**Written:** 10 Nov 2026 with decision 0042; reordered 12 Nov 2026 by decision [0049](../decisions/0049-back-to-python-final.md) (back to Python, final). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone (or the C# 15 milestone). Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
+**Written:** 10 Nov 2026 with decision 0042; reordered 12 Nov 2026 by decision [0049](../decisions/0049-back-to-python-final.md) (back to Python, final). Each item is a GitHub issue whose title starts with its order number (for example `[08]`) and which sits in its stage's milestone (or the Python port milestone). Work goes in this order unless an item says it can run alongside another. Stages 3 and 4 may overlap (decision 0035), so the design research (08 to 10) can start once the stage 2 gate passes, alongside stage 3.
 
 Each stage starts with its decisions and ends with its gate (doc 04 §9). Items marked **epic** are split into issues when their stage starts. When an issue's plan changes, update the issue, not this list; this list only changes when the order does.
 

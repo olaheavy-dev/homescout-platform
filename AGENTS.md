@@ -25,7 +25,7 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 - **Never copy** code, configuration, file layouts or wording from those sources. Write everything fresh for Vestagraph.
 - **Never write** their names, company names, paths, URLs or identifiers into any tracked file, commit message, pull request or issue. Refer to them only as "the founder's earlier projects" or "the reviewed AI sample".
 - The AI sample has no licence: ideas only.
-- **Exception: the founder's own public templates (decisions 0040 and 0049).** The founder owns `house-template-fastapi`, its base template `house-template-base` and `house-template-nextjs`, and chose them as Vestagraph's starting points: the frontend (#86) and the API (#93) each start from a one-time, trimmed copy, recorded with the template version, and Vestagraph then owns its copy. These templates may be named and copied from. The rules above still apply to every other source.
+- **Exception: the founder's own public templates (decisions 0040 and 0049).** The founder owns `house-template-fastapi`, its base template `house-template-base` and `house-template-nextjs`, and chose them as Vestagraph's starting points: the frontend (#86) and the API (#93) each start from a one-time, trimmed copy, recorded with the template version, and Vestagraph then owns its copy. These templates are the founder's own copyright (0040), so they may be named, and their own files may be copied from a recorded release. The import pull request checks that nothing it brings names or quotes another source; the rules above still apply to any such content and to every other source. This also covers 0049's second recorded import of the AI gateway at stage 6.
 
 ## Rules for every agent
 

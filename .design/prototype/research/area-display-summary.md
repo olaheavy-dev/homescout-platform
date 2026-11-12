@@ -1,5 +1,7 @@
 # Displaying area information: summary and founder decisions (#143)
 
+> **Note (12 Nov 2026):** the test tools named here for stage 5 (Reqnroll, Playwright for .NET, `Deque.AxeCore.Playwright`) were replaced by [decision 0049](../../../docs/decisions/0049-back-to-python-final.md): browser scenarios run with playwright-bdd and `@axe-core/playwright`, and the backend is Python.
+
 There are two detailed notes:
 - [`area-display-ux.md`](area-display-ux.md): experience and visual design (track A);
 - [`area-display-engineering.md`](area-display-engineering.md): engineering (track B).

@@ -1,7 +1,7 @@
 # 0042: Back to .NET: C# 15 on .NET 11 for the backend, React stays for the frontend
 
 **ID:** BE-24  
-**Status:** Superseded by [0049](0049-back-to-python-final.md) (founder, 12 Nov 2026: "Switch to python"); its frontend stack, frontend packages, prerelease rule, `0.x` minor-bump rule and BE-22 gate are carried over. Had been accepted on 10 Nov 2026, with upgrade conditions amended by register line BE-25  
+**Status:** Superseded by [0049](0049-back-to-python-final.md) (founder, 12 Nov 2026: "Switch to python"; its frontend stack, frontend packages, prerelease rule, `0.x` minor-bump rule and BE-22 gate are carried over. Had been accepted on 10 Nov 2026, with upgrade conditions amended by register line BE-25)  
 **Date:** 2026-11-10  
 **Stage:** 2 (reopens the backend language choice before the port went past step P1)  
 **Supersedes (no older text is rewritten):**

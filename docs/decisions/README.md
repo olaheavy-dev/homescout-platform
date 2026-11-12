@@ -11,6 +11,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 - **Accepted (partly superseded by NNNN):** some parts replaced by a later record.
 - **Proposed (partly superseded by NNNN):** not yet fully decided, and some parts already replaced by a later record.
 - **Superseded by NNNN:** fully replaced.
+- **Default:** an easily reversible choice recorded as one register line with its default value (decision 0035); changed by a new line.
 - **Open:** deliberately undecided, with a reason and a revisit point.
 - **Parked:** paused, with a point by which it must resume.
 
@@ -54,7 +55,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | WW-09 | Stage 2 engineering and security hardening | 2 | Accepted (partly superseded by 0035; by 0049: PSF-2.0 joins the allow-list, CodeQL adds Python, `libcst` is a tool-only exemption again) | [0027](0027-stage-2-engineering-hardening.md) |
 | WW-10 | Agent roster, design skills and working rules | 2 | Accepted (partly superseded by 0035 and 0050: the project agents are retired and the shared visual reviewer runs on UI pull requests; the design skills and test-first skill stay) | [0031](0031-agent-roster.md) |
 | WW-11 | Review fallback when Codex is unavailable | 2 | Superseded by 0035 | [0033](0033-review-fallback.md) |
-| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted (partly superseded by 0042, 0043, 0049 and 0050; 0050 replaces points 1, 2 and 4's how (skills from agent-workflows, Haiku for mechanical subtasks); point 9's pre-approved list gains the packages in 0042 and 0043 (withdrawn when the .NET code is removed, port step P8) and the Python, frontend-template and Aspire lists in 0049; point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, carried over by 0042 and 0049) | [0035](0035-ways-of-working-v2.md) |
+| WW-12 | Ways of working v2 (consolidated rulebook) | 2 | Accepted (partly superseded by 0042, 0043, 0049 and 0050; 0050 replaces points 1, 2 and 4's how (skills from agent-workflows, Haiku for mechanical subtasks); point 9's pre-approved list gains the packages in 0042 and 0043 (their .NET packages withdrawn when the .NET code is removed, port step P8) and the Python, frontend-template and Aspire lists in 0049; point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, carried over by 0042 and 0049) | [0035](0035-ways-of-working-v2.md) |
 | DA-01 | Fixture data format | 2 | Accepted (partly superseded by 0027) | [0018](0018-fixture-data-format.md) |
 | DA-02 | Calculation script and test vectors | 2 | Accepted (partly superseded by 0021: solution location; by 0049: the engine is written in Python) | [0019](0019-cost-engine-in-csharp.md) |
 | SP-01 | Specification format | 3 | Accepted (founder, 11 Nov 2026: executable Gherkin scenarios with permanent IDs in `docs/specs/`; partly superseded by 0049: data scenarios run with pytest-bdd and `@ui` scenarios with playwright-bdd, SP-03) | [0043](0043-specification-format.md) |
@@ -127,7 +128,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | AI-01 | Model provider and runtime | 6 (before document extraction) | Not started | |
 | AI-02 | Retrieval | 6 (before document extraction) | Not started | |
 | AI-03 | Evaluation tooling | 6 (before document extraction) | Proposed (evaluation-first accepted in 0025; tooling at stage 6) | [0025](0025-ai-platform-capabilities.md) |
-| AI-04 | Orchestration | 6 (decided early) | Accepted (partly superseded by 0049: the framework is chosen at stage 6 after a short trial of Microsoft Agent Framework for Python against LangChain and LangGraph in the founder's template (AI-09); task interfaces stay framework-neutral; no framework packages before stage 6) | [0023](0023-microsoft-agent-framework.md) |
+| AI-04 | Orchestration | 6 (decided early) | Open (0049 reopened it: the framework is chosen at stage 6 after a short trial of Microsoft Agent Framework for Python against LangChain and LangGraph in the founder's template (AI-09); task interfaces stay framework-neutral; no framework packages before stage 6; 0023's single agents and approval workflow stand) | [0023](0023-microsoft-agent-framework.md) |
 | AI-05 | AI safety | 6 (requirements decided early) | Accepted (capability requirements; partly superseded by 0035) | [0025](0025-ai-platform-capabilities.md) |
 | AI-06 | Document extraction principles | 6 (rules set early) | Accepted | [0030](0030-extraction-principles.md) |
 | AI-08 | MAF gateway built in the template first | 6 (template work runs earlier) | Superseded by 0042 (founder, 10 Nov 2026); 0049 brings back only a second recorded import of the template's AI gateway at stage 6, after the AI-09 trial | [0041](0041-maf-gateway-built-in-the-template.md) |
