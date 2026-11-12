@@ -22,8 +22,8 @@ Delete every .NET file and step, so `make check` and CI run Python only, with no
 - **Decision status lines and register:** 0021 → Superseded by 0049 (fully, at P8); 0019 and 0032 (C# type gone; principle stands in Python); 0043 (Reqnroll withdrawn); 0035 point 9 (.NET packages withdrawn); 0042 note unchanged. Register: BE-04 Superseded by 0049; BE-05 (Python `Result`); BE-07 (JsonSchema.Net withdrawn; Python validator); BE-08, BE-09 and WW-13 lapse (their packages are gone) → "Superseded by 0049 (P8: package removed)"; BE-22 (NuGet exemptions removed); WW-14 (dependency-submission action gone from `actions-zero-x`); 0050/AGENTS.md references to `make check` still hold.
 - **0049 item 11e re-check list**, run and reported: `make mutate` passes (score ≥ 85); `generated-check` passes (port proof); CodeQL's required check covers Python (default setup languages include `python`).
 
-## After merge (founder)
-Remove `csharp` from CodeQL's default setup languages (repository setting); close #59-#61 leftovers if any; noticed issues #202 and #210 close with this PR.
+## Founder steps
+Remove `csharp` from CodeQL's default setup languages before the PR opens, so its checks run clean (done 12 Nov 2026, founder's choice in a prompt window); after merge: close #59-#61 leftovers if any; noticed issues #202 and #210 close with this PR.
 
 ## Acceptance
 - No `.cs`, `.csproj`, `.slnx`, `.props`, `global.json` or `nuget.config` left; `git grep` finds no current-state .NET instruction outside history (decision records, reviews, dated plans, the ledger's rows).
