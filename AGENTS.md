@@ -2,7 +2,7 @@
 
 Shared instructions for every AI agent on this project. `CLAUDE.md` is a symbolic link to this file, so Claude Code and OpenAI Codex read the same text. Edit **this** file only.
 
-Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonnet 5.5 builds and verifies, Codex reviews every pull request except small dependency updates, and Claude Code merges. Builders follow "When building"; every reviewer (Opus pre-push, Codex, fallback) follows "When reviewing"; merging follows "When merging".
+Who does what is in **"How work flows"** below: Opus 5.5 plans and reviews, Sonnet 5.5 builds and verifies, Codex reviews every pull request except small dependency updates, and Claude Code merges. The steps use the skills from the founder's agent-workflows kit (decision 0050). Builders follow "When building"; every reviewer (Opus pre-push, Codex, fallback) follows "Code Review Rules"; merging follows "When merging". The project status is in `docs/planning/status.md`.
 
 ## What this project is
 
@@ -15,7 +15,7 @@ Read before working (the [documentation index](docs/README.md) explains the fold
 - `docs/product/05-ideas-and-product-thinking.md`: how we think about new features (use it when proposing one) and the ideas to explore
 - `docs/decisions/`: accepted decisions. Don't contradict one; propose a new record instead.
 
-The current stage is in the README and `docs/planning/`.
+The current stage, open work and next steps are in `docs/planning/status.md` (decision 0050).
 
 ## Private reference sources
 
@@ -39,23 +39,30 @@ The founder's earlier projects and a third-party AI sample were reviewed to info
 8. **Plain language for the founder.** When explaining options or decisions, say what each option means in practice and give a clear recommendation.
 9. **No agent attribution.** Commit messages and pull request descriptions carry no `Co-Authored-By` or "generated with" lines for any coding agent (set in `.claude/settings.json`). Founder decision, 6 Nov 2026.
 
-## How work flows (decision 0035)
+## How work flows (decisions 0035, 0050)
 
-This file is the **single current rulebook for how work is done** (planning, building, reviewing, merging, dependencies). Where an older decision record differs on those process matters, this file and decision 0035 apply. Product, data and technical decisions stay with their records, and this file must not contradict them.
+This file is the **single current rulebook for how work is done** (planning, building, reviewing, merging, dependencies). Where an older decision record differs on those process matters, this file and decisions 0035 and 0050 apply. Product, data and technical decisions stay with their records, and this file must not contradict them.
 
-| Step | Who | Model |
+The process follows **agent-workflows** (the founder's process kit, v0.4.0): Superpowers skills, the `pr` skill and the `house-reviewers` agents, installed at user scope. A **skill** is a packaged set of instructions an agent loads for one kind of task ([Claude Code skills](https://code.claude.com/docs/en/skills)). This file adds Vestagraph's own rules on top and wins where it is more specific.
+
+| Step | Skill or agent | Model |
 |---|---|---|
-| 1. Plan the feature | Planner agent | Opus 5.5 |
-| 2. Build each task | Implementer agent | Sonnet 5.5 |
-| 3. Run `make check` and map criteria to tests | Verifier agent | Sonnet 5.5 |
-| 4. Pre-push review (fresh context, "When reviewing") | Reviewer agent | Opus 5.5 |
-| 5. Open the pull request; Codex reviews the latest commit | Codex | — |
-| 6. Handle review comments | Review handler | Opus 5.5 |
-| 7. Merge when the conditions below are met; post a one-line summary | Claude Code | — |
+| 1. Understand and agree the change | Superpowers `brainstorming` | Opus 5.5 |
+| 1b. UI or journey work: design review before planning | `design-reviewer` (house-reviewers) | as the agent sets |
+| 2. Plan the feature | Superpowers `writing-plans` | Opus 5.5 |
+| 3. Build each task | Superpowers `subagent-driven-development` (or `executing-plans`) with `test-driven-development`, plus `test-first` for anything numeric or legal | Sonnet 5.5 |
+| 4. Run `make check` and map criteria to tests | Superpowers `verification-before-completion` | Sonnet 5.5 |
+| 5. Pre-push review (fresh context, "Code Review Rules") | Superpowers `requesting-code-review` plus `code-security-reviewer`; `visual-reviewer` for UI changes | Opus 5.5 |
+| 6. Open the pull request | Superpowers `finishing-a-development-branch` and the `pr` skill | Sonnet 5.5 |
+| 7. Codex reviews the latest commit; handle comments | `@codex review`, then Superpowers `receiving-code-review` | Opus 5.5 |
+| 8. Merge when the conditions below are met; post a one-line summary | Claude Code | — |
 
-## Planning (decision 0035)
+Haiku may do clearly mechanical subtasks (renaming across files, reformatting a table). If a skill or agent isn't loaded in a session, read its instructions file directly rather than skipping the step.
+
+## Planning (decisions 0035, 0050)
 
 - **Every feature gets a plan** before building. Small changes get a short plan in the issue.
+- Plans are written with Superpowers `brainstorming` then `writing-plans`, saved in `docs/superpowers/specs/` and `docs/superpowers/plans/`, with a short plain summary posted in the chat. For a process or product decision the decision record is the spec, so there is no separate spec file. For UI work, the design skills' brief and tasks in `.design/<feature>/` (decision 0031) feed `writing-plans`.
 - The plan fixes the **data contract first** (JSON Schema and generated files now, OpenAPI later), then splits the work into **backend tasks** (C# cost engine, generator, later the API) and **frontend tasks** (Next.js screens; the design skills produce the brief and tasks, decision 0031), each with acceptance criteria, edge cases and the test that proves each.
 - Until a running backend exists, "backend tasks" means fixtures and the cost engine.
 - Hard-to-reverse choices get a decision record; easily reversible ones get one line in the register with their default.
@@ -76,7 +83,9 @@ This file is the **single current rulebook for how work is done** (planning, bui
 - Pull request description: what changed and why, how it was tested, **any assumptions you made**, "Noticed, not changed", and the pre-flight check done.
 - **Pre-flight check:** search the repository for every term, decision ID, rule and figure the change touches, and fix any contradiction or stale statement in the same pull request. Check new facts against their sources.
 - **Run `make check` before pushing.** It runs every automated check the same way as CI, including JetBrains InspectCode.
-- **Pre-push review:** before pushing, run a fresh-context Opus review using "When reviewing" below, and fix its findings first.
+- **Map criteria to tests:** before the pre-push review, name the test (file and test name) that proves each acceptance criterion and edge case. A criterion with no test is a gap to fix.
+- **Pre-push review:** before pushing, run a fresh-context Opus review using "Code Review Rules" below, with `code-security-reviewer` (and `visual-reviewer` for UI changes), and fix its findings first.
+- **End of session:** overwrite `docs/planning/status.md` with open pull requests, next steps, blockers and the founder's to-dos (decision 0050).
 - Ask the founder before installing packages not on the pre-approved list, changing infrastructure, cloud resources or repository settings. Never push to `main`.
 - **Agent permissions:** the first code pull request adds Claude Code project settings with an allow-list for safe read, build and test commands; installing packages, infrastructure and repository-setting changes need approval; pushing to `main` is denied, and only a push of one feature branch to the same-named remote branch (`feat/`, `fix/`, `docs/`, `chore/`, `test/`, `refactor/`) runs without asking; refspecs with `:` and pushes naming several branches are denied. These rules are a convenience guard, not a security boundary: GitHub branch protection on `main` is the real guard.
 
@@ -85,11 +94,13 @@ This file is the **single current rulebook for how work is done** (planning, bui
 The founder is learning the languages, frameworks and tools through this project.
 - **Feature** pull requests include **"How it works"** (plain language) and **"Concepts to learn"** (links to the official documentation pages for what it uses). Documentation, chore and dependency pull requests don't need them.
 - When the founder asks why, answer in plain language with a small example and a link to the official source.
-- **Decisions for the founder go in a prompt window** (register WW-16; how rule 8 is applied). Claude Code asks with its question tool (`AskUserQuestion`: up to four questions per window, two to four options each), one question per decision. Each question explains in plain language what is being decided and why it matters, and each option says what it means in practice (cost, effort, risk, what changes later). The recommended option comes first, marked "(Recommended)", and the question says why. When the detail doesn't fit the window, give it as text just before the prompt and keep the question and options short and self-contained; with more than four realistic options, offer the strongest and mention the rest in that text. The founder's answer may be a question back: answer it, then ask again rather than assume. Record the answer, with the founder's reason or own words, in the decision record or register line. Agents that can't use the tool (Codex, and subagents such as the planner and reviewer) hand the same content back as text, and the main Claude Code session asks the founder in the prompt window.
+- **Decisions for the founder go in a prompt window** (register WW-16; how rule 8 is applied). Claude Code asks with its question tool (`AskUserQuestion`: up to four questions per window, two to four options each), one question per decision. Each question explains in plain language what is being decided and why it matters, and each option says what it means in practice (cost, effort, risk, what changes later). The recommended option comes first, marked "(Recommended)", and the question says why. When the detail doesn't fit the window, give it as text just before the prompt and keep the question and options short and self-contained; with more than four realistic options, offer the strongest and mention the rest in that text. The founder's answer may be a question back: answer it, then ask again rather than assume. Record the answer, with the founder's reason or own words, in the decision record or register line. Agents that can't use the tool (Codex, and subagents such as a planning or review subagent) hand the same content back as text, and the main Claude Code session asks the founder in the prompt window.
 - For each significant slice, offer a short walkthrough: which files matter, how data flows, why it was built this way, and the alternatives. The founder learns by understanding, not by writing the code. Explain-back happens in a weekly batch.
 - AI-layer work follows decision 0025: each implementation links the official documentation it follows.
 
-## When reviewing (Opus pre-push review, Codex, and fallback reviews)
+## Code Review Rules
+
+For every reviewer: the Opus pre-push review, Codex, and fallback reviews (heading named for hosted `@codex review`, decision 0050).
 
 Check in priority order:
 1. **Correctness:** bugs, wrong logic, unhandled states. For money, tax, dates and lease terms, recalculate the figures and check them against the cited source.
@@ -109,7 +120,7 @@ How to report:
 
 Claude Code may merge a pull request (squash merge) only when **all** of these are true:
 1. **Codex has reviewed the latest commit.** Exceptions:
-   - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "When reviewing" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
+   - (a) **Fallback:** while Codex is unavailable (usage limit, outage, or stuck over an hour), a **documentation-only** pull request (Markdown and images only; no code, workflow, configuration, schema, settings or dependency files) may merge on a fresh-context Opus review using "Code Review Rules" (the built-in `/code-review` alone isn't enough). Post it as **one numbered pull request comment** headed **"Fallback review (Codex unavailable)"**, not as inline review threads. The pre-push review counts as the fallback if it's posted this way and the head commit hasn't changed since.
    - (b) **Small dependency updates:** a Dependabot pull request that changes only package manifests, lock files or action pins, with **no major version bump** anywhere in it, merges on green checks without an AI review. Any major bump follows the normal route. For a **direct** dependency or action pin whose current version starts with `0.` (for example the zizmor action), a **minor** bump counts as a major bump here; indirect packages that only appear in a lock file follow their parent (decision 0042, carried over from 0039 Q3).
    Code otherwise waits for Codex, and a rebased pull request gets a fresh review.
 2. Every review finding is fixed, answered with a reason, or deferred under "Review rounds" below; every Codex review thread is resolved, and every fallback finding has a reply.
@@ -138,7 +149,7 @@ After merging, post a one-line summary for the founder: what merged, and any fol
 
 ## Keeping agent cost down
 
-- **Opus 5.5 plans and reviews; Sonnet 5.5 does everything else** (decision 0035).
+- **Opus 5.5 plans and reviews; Sonnet 5.5 does everything else; Haiku may do clearly mechanical subtasks** (decisions 0035, 0050).
 - Keep pull requests focused on one topic, but group small related documentation changes into one pull request.
 - Read only the files a task needs; don't reload whole documents to change one line.
 - Run `make check` and the pre-push review before pushing, so Codex rounds are rare.
@@ -160,4 +171,4 @@ Run from the repository root. Needs the .NET SDK in `global.json` and GNU Make; 
 | `make mutate` | Mutation testing with Stryker.NET on the cost engine (`stryker-config.json`; reports in `.artifacts/mutation/reports/`). Slow (under a minute), so it is **not** part of `make check` or CI; run it when the cost engine or its tests change. Fails below the break score in the config. It sets `VESTAGRAPH_FSCHECK_REPLAY` so the FsCheck property tests start from a fixed seed, which makes the score the same on every run of the same code; `make test` and CI keep random seeds. |
 | `make clean` | Removes build output and `.artifacts/`. |
 
-The Makefile and CI turn off .NET CLI, test-platform and Reqnroll telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`, `REQNROLL_TELEMETRY_ENABLED=0`). Test names follow `Method_condition_result` in C# (decision 0021). Project agents are in `.claude/agents/`, the test-first skill is in `.claude/skills/test-first/`, `.claude/settings.json` holds the permission rules (decision 0035, point 13), and `.mcp.json` lists the documentation MCP servers (WW-15).
+The Makefile and CI turn off .NET CLI, test-platform and Reqnroll telemetry (`DOTNET_CLI_TELEMETRY_OPTOUT=1`, `TESTINGPLATFORM_TELEMETRY_OPTOUT=1`, `REQNROLL_TELEMETRY_ENABLED=0`). Test names follow `Method_condition_result` in C# (decision 0021). The test-first skill is in `.claude/skills/test-first/`, `.claude/settings.json` holds the permission rules (decision 0035, point 13), and `.mcp.json` lists the documentation MCP servers (WW-15).

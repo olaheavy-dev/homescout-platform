@@ -1,7 +1,7 @@
 # 0035: Ways of working v2 (consolidated rulebook)
 
 **ID:** WW-12  
-**Status:** Accepted (partly superseded by [0042](0042-back-to-dotnet-11.md) and [0043](0043-specification-format.md): point 9's pre-approved list gains the packages in [0042](0042-back-to-dotnet-11.md) and, from 0043, Reqnroll and Microsoft.Playwright for .NET ([0039](0039-python-engineering-foundation.md)'s Python additions are withdrawn); point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, kept by 0042)  
+**Status:** Accepted (partly superseded by [0050](0050-agent-workflows-process.md): points 1, 2 and 4 are now carried out with the agent-workflows skills, and Haiku may do mechanical subtasks; by [0042](0042-back-to-dotnet-11.md) and [0043](0043-specification-format.md): point 9's pre-approved list gains the packages in [0042](0042-back-to-dotnet-11.md) and, from 0043, Reqnroll and Microsoft.Playwright for .NET ([0039](0039-python-engineering-foundation.md)'s Python additions are withdrawn); point 9's small-update rule changes: a minor bump of a direct `0.x` dependency or action pin counts as major, from 0039 Q3, kept by 0042)  
 **Date:** 2026-10-23  
 **Stage:** 2  
 **Supersedes:**
