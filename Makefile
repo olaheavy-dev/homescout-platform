@@ -11,7 +11,6 @@ SOLUTION      := Vestagraph.slnx
 CONFIGURATION := Release
 ARTIFACTS     := .artifacts
 GENERATED     := packages/fixtures/generated
-GENERATOR     := packages/cost-engine/src/Vestagraph.CostEngine.Generator/Vestagraph.CostEngine.Generator.csproj
 VALIDATOR     := packages/fixtures/tools/Vestagraph.Fixtures.Validator/Vestagraph.Fixtures.Validator.csproj
 
 PYTEST_XML    := $(ARTIFACTS)/test-results/python/coverage.xml
@@ -87,10 +86,11 @@ test: build
 
 check: restore build format-check generated-check validate inspect lint test
 
-# Runs the cost-engine generator: it reads packages/fixtures/data and writes packages/fixtures/generated/costs.json.
-# Commit the result. The generator deletes any other *.json in generated/.
-generate: build
-	dotnet run --project $(GENERATOR) --configuration $(CONFIGURATION) --no-build
+# Runs the Python generator (vestagraph_generator, decision 0049 step P4): it reads packages/fixtures/data and writes
+# packages/fixtures/generated/costs.json. Commit the result. The generator deletes any other *.json in generated/.
+# The C# generator stays until P8; its own test still proves it writes the same bytes as the committed file.
+generate: restore
+	uv run --locked python -m vestagraph_generator
 
 # Regenerates, then fails if anything under packages/fixtures/generated/ differs from what is committed: a hand edit, an extra
 # file, a deleted file or a stale costs.json (stage 2 plan, task 4b). It reads git status, so run it in a git checkout, and
