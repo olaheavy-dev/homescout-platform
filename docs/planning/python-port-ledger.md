@@ -48,10 +48,10 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P3a | `story-calculations.json` | `r1-monthly-housing-cost-before-water` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
 | P3a | `story-calculations.json` | `r1-monthly-housing-cost-after-water` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
 | P3a | `story-calculations.json` | `r2-monthly-housing-cost` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_monthly_cost_story_case_matches_worked_result |
-| P3b | `story-calculations.json` | `b1-upfront-cash` | |
-| P3b | `story-calculations.json` | `b2-upfront-cash` | |
-| P3b | `story-calculations.json` | `r1-upfront-cash` | |
-| P3b | `story-calculations.json` | `r2-upfront-cash` | |
+| P3b | `story-calculations.json` | `b1-upfront-cash` | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_story_case_matches_worked_result |
+| P3b | `story-calculations.json` | `b2-upfront-cash` | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_story_case_matches_worked_result |
+| P3b | `story-calculations.json` | `r1-upfront-cash` | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_story_case_matches_worked_result |
+| P3b | `story-calculations.json` | `r2-upfront-cash` | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_story_case_matches_worked_result |
 | P3a | `story-calculations.json` | `b1-budget-beat` | packages/vestagraph-engine/tests/test_engine_budget_beat.py::test_budget_beat_story_case_lands_as_worked |
 
 ## C# tests
@@ -182,115 +182,115 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_termOver100Years_failsAsTooLong` | 3 | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_term_over_100_years_fails_as_too_long |
 | P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MonthlyRepayment_veryLargeLoan_neverGivesAWrongSuccess` | 3 | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_very_large_loan_never_gives_a_wrong_success |
 | P3a | Vestagraph.CostEngine.Tests | MortgageTests | `MortgageCases_file_hasTheFourWorkedMortgageCases` |  | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_mortgage_cases_file_has_the_four_worked_mortgage_cases |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_anchorFromTwoItems_failsAsAmbiguous` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_anchorItemWithStatusMissing_failsAsMissing` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingHome_hasNoMortgageRepaymentLineAndTheDepositUpfront` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingHome_returnsTheMortgageInputsWithTheirEvidence` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingWithoutAnAnchorInput_failsAsMissing` | 4 | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_conflictingItemWithoutAnAmount_givesAConflictingLine` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_conflictingWaterResponsibility_givesConflictingWaterWithBothItems` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_contextOnlyItem_isIgnored` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_depositGivenYearly_failsAsWrongPeriod` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_homeOutsideEngland_failsAsNotCovered` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_homeWithNoMode_failsAsModeMissing` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedAlongsideConflicting_givesConflicting` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedAlongsideNotApplicable_givesIncluded` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedItem_givesAnIncludedLine` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedWaterAlongsideConflictingResponsibility_givesConflicting` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_itemNotYetUsed_isIgnoredBeforeItsStep` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_itemWithNoStartStep_isInUseFromTheFirstStep` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_itemWithStatusMissing_givesAMissingLineWithNoEvidence` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_lineThatDoesNotBelongToTheMode_isNotReturned` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_moneyAlongsideConflicting_stillGivesTheAmount` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_moneyItemWithAValue_givesAnAmountWhateverItsStatus` | 3 | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_noEvidenceForACategory_givesAMissingLineWithNoEvidence` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notApplicableAlongsideConflicting_givesConflicting` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notApplicableItem_leavesTheLineOut` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notCalculatedAlongsideIncluded_givesNotCalculatedAsTheMoreCautious` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notCalculatedItem_givesANotCalculatedLine` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_nullEvidenceList_throws` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_nullFacts_throws` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_priceGivenMonthly_failsAsWrongPeriod` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_priceZero_failsAsNotPositive` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rateGivenAsMoney_failsAsWrongKind` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentGivenYearly_failsAsWrongPeriod` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentNotMoreThanZero_failsAsNotPositive` | 2 | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentWithWrongKindAndTwoValues_failsAsWrongKind` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentingHome_hasNoMortgage` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentingWithoutRent_failsAsMissing` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_serviceChargeGivenAsRate_failsAsWrongKind` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_stepBelowOne_failsAsOutOfRange` | 2 | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_supersedeChain_usesOnlyTheLatestItemThatHasStarted` | 4 | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_supersededItem_isUsedUntilTheNewOneStarts` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_termGivenAsRate_failsAsWrongKind` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_twoMoneyItemsForOneCategory_failsAsAmbiguous` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_upfrontCostGivenAsRate_failsAsWrongKind` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_waterEstimate_winsOverConflictingResponsibility` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_waterResponsibility_doesNotAffectAnotherCategory` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_wrongKindAndTwoValues_failsAsWrongKindForAnAnchor` |  | |
-| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_wrongKindAndTwoValues_failsAsWrongKindForAnOrdinaryLine` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_amountThatChanges_isReportedAsValueChanged` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_amountThenIncluded_isReportedAsNoLongerCalculated` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_amountThenNotApplicable_isReportedAsNoLongerApplies` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_anchorInputMissing_passesOnTheSelectorsFailure` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_anyMonthlyBudget_isCarriedIntoEachScenario` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_buyingHome_hasAMortgageWithTheEvidenceBehindIt` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_changeEvidence_namesThePreviousAndCurrentItems` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_conflictingThenNotApplicable_isReportedAsNoLongerApplies` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_conflictingWaterThenAnEstimate_givesNoMonthlyTotalChange` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_conflictingWaterThenAnEstimate_isReportedAsNowCalculated` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_depositLargerThanThePrice_failsBecauseTheLoanIsNotPositive` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_evidenceChangesAtStepFour_givesTwoScenariosNamedFromTheirFirstStep` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_firstScenario_hasNoChanges` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeDetails_comeFromTheFacts` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeOutsideEnglandAndNoSteps_reportsTheHomeFirst` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeOutsideEngland_failsAsNotCovered` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeWithNoMode_failsAsModeMissing` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_lineNotApplicableThenEstimated_isReportedAsNowCalculated` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_lineThatBecomesConflicting_givesNoMonthlyTotalChange` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_missingThenNotApplicable_isReportedAsNoLongerApplies` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_monthlyDifference_isTheDifferenceOfTheRoundedMonthlyLines` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_monthlyLineOnTheSourceEvidenceButNewAmount_hasNoAnnualDifferenceWhenOnlyOneSideIsYearly` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_newEvidenceWithTheSameAmount_isReportedAsEvidenceChangedNotValueChanged` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_noBudget_failsAsNotPositive` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_notApplicableThenMissing_isReportedAsEvidenceChanged` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_nullArguments_throw` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_onlyTheMortgageRateChanges_givesTwoScenariosWithARepaymentChange` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_rentingHome_hasNoMortgage` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_sameAmountChangingPeriod_isReportedAsValueChanged` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_sameEvidenceAtEveryStep_givesOneScenarioCoveringAllSteps` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_sameLinesLeftOutOfBothTotals_keepsTheMonthlyTotalChange` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_statusChangeBetweenTwoLinesWithNoAmount_isReportedAsEvidenceChanged` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_stepsThatAreEmptyBelowOneOrNotIncreasing_failAsOutOfRange` | 4 | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_stepsThatStartAboveOne_areAccepted` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontAmountChanges_isAValueChangeWithNoMonthlyOrAnnualDifference` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontAmountThenSameAmountFromNewEvidence_isAnEvidenceChange` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontLineGivenMonthly_failsAsWrongPeriod` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontLineOfZero_failsAsNotPositive` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_yearlyAmountRisesByOnePenceButMonthlyRoundingHidesIt_stillReportsTheAnnualDifference` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `FigureIds_lineTotalBudgetAndChange_followTheContractFormat` |  | |
-| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `ServiceChargeChange_storyCase_matchesWorkedResult` |  | |
-| P3b | Vestagraph.CostEngine.Tests | StoryCalculationCoverageTests | `StoryCalculations_everyCase_isRunByADataDrivenTest` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_aNonCalculatedLineNeverCarriesPence` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_isPartialExactlyWhenALineIsNotCalculatedConflictingOrMissing` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_noLineOrTotalIsNegative` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_totalEqualsTheSumOfTheCalculatedLines` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCases_file_hasTheFourWorkedUpfrontCases` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_amountGivenMonthly_failsAsWrongPeriod` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_amountNotPositive_failsAsNotPositive` | 2 | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_buyingWithMortgageDepositMissing_failsAsMissingMortgageDeposit` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_buyingWithNoLines_failsAsMissingMortgageDeposit` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_lineThatDoesNotBelongToTheMode_failsAsNotForMode` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_linesGivenOutOfOrder_comeBackInTheFixedBuyOrder` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_linesGivenOutOfOrder_comeBackInTheFixedRentOrder` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_missingMovingCosts_makesTheTotalPartial` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_nullLines_throws` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_rentingWithNoLines_hasNoLinesAndATotalOfZeroThatIsNotPartial` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_sameCategoryTwice_failsAsAmbiguous` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_stampDutyAndLegalFees_stayNotCalculatedWithNoAmount` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_storyCase_matchesWorkedResult` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_totalTooBigForALong_throwsOverflow` |  | |
-| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_undefinedMode_throws` |  | |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_anchorFromTwoItems_failsAsAmbiguous` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_anchor_from_two_items_fails_as_ambiguous |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_anchorItemWithStatusMissing_failsAsMissing` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_anchor_item_with_status_missing_fails_as_missing |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingHome_hasNoMortgageRepaymentLineAndTheDepositUpfront` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_buying_home_has_no_repayment_line_and_the_deposit_upfront |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingHome_returnsTheMortgageInputsWithTheirEvidence` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_buying_home_returns_the_mortgage_inputs_with_their_evidence |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_buyingWithoutAnAnchorInput_failsAsMissing` | 4 | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_buying_without_an_anchor_input_fails_as_missing |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_conflictingItemWithoutAnAmount_givesAConflictingLine` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_conflicting_item_without_an_amount_gives_a_conflicting_line |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_conflictingWaterResponsibility_givesConflictingWaterWithBothItems` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_conflicting_water_responsibility_names_both_items |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_contextOnlyItem_isIgnored` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_context_only_item_is_ignored |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_depositGivenYearly_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_deposit_given_yearly_fails_as_wrong_period |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_homeOutsideEngland_failsAsNotCovered` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_home_outside_england_fails_as_not_covered |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_homeWithNoMode_failsAsModeMissing` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_home_with_no_mode_fails_as_mode_missing |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedAlongsideConflicting_givesConflicting` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_included_alongside_conflicting_gives_conflicting |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedAlongsideNotApplicable_givesIncluded` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_included_alongside_not_applicable_gives_included |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedItem_givesAnIncludedLine` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_included_item_gives_an_included_line |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_includedWaterAlongsideConflictingResponsibility_givesConflicting` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_included_water_alongside_conflicting_responsibility_conflicts |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_itemNotYetUsed_isIgnoredBeforeItsStep` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_item_not_yet_used_is_ignored_before_its_step |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_itemWithNoStartStep_isInUseFromTheFirstStep` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_item_with_no_start_step_is_in_use_from_the_first_step |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_itemWithStatusMissing_givesAMissingLineWithNoEvidence` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_item_with_status_missing_gives_a_missing_line_without_evidence |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_lineThatDoesNotBelongToTheMode_isNotReturned` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_line_that_does_not_belong_to_the_mode_is_not_returned |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_moneyAlongsideConflicting_stillGivesTheAmount` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_money_alongside_conflicting_still_gives_the_amount |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_moneyItemWithAValue_givesAnAmountWhateverItsStatus` | 3 | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_money_item_with_a_value_gives_an_amount_whatever_its_status |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_noEvidenceForACategory_givesAMissingLineWithNoEvidence` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_no_evidence_for_a_category_gives_a_missing_line_without_evidence |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notApplicableAlongsideConflicting_givesConflicting` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_not_applicable_alongside_conflicting_gives_conflicting |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notApplicableItem_leavesTheLineOut` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_not_applicable_item_leaves_the_line_out |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notCalculatedAlongsideIncluded_givesNotCalculatedAsTheMoreCautious` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_not_calculated_alongside_included_gives_not_calculated |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_notCalculatedItem_givesANotCalculatedLine` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_not_calculated_item_gives_a_not_calculated_line |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_nullEvidenceList_throws` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_evidence_that_is_not_a_tuple_raises_type_error |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_nullFacts_throws` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_non_facts_raises_type_error |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_priceGivenMonthly_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_price_given_monthly_fails_as_wrong_period |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_priceZero_failsAsNotPositive` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_price_zero_fails_as_not_positive |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rateGivenAsMoney_failsAsWrongKind` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_rate_given_as_money_fails_as_wrong_kind |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentGivenYearly_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_rent_given_yearly_fails_as_wrong_period |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentNotMoreThanZero_failsAsNotPositive` | 2 | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_rent_not_more_than_zero_fails_as_not_positive |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentWithWrongKindAndTwoValues_failsAsWrongKind` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_rent_with_wrong_kind_and_two_values_fails_as_wrong_kind |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentingHome_hasNoMortgage` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_renting_home_has_no_mortgage |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_rentingWithoutRent_failsAsMissing` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_renting_without_rent_fails_as_missing |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_serviceChargeGivenAsRate_failsAsWrongKind` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_service_charge_given_as_a_rate_fails_as_wrong_kind |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_stepBelowOne_failsAsOutOfRange` | 2 | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_step_below_one_fails_as_out_of_range |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_supersedeChain_usesOnlyTheLatestItemThatHasStarted` | 4 | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_supersede_chain_uses_only_the_latest_item_that_has_started |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_supersededItem_isUsedUntilTheNewOneStarts` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_superseded_item_is_used_until_the_new_one_starts |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_termGivenAsRate_failsAsWrongKind` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_term_given_as_rate_fails_as_wrong_kind |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_twoMoneyItemsForOneCategory_failsAsAmbiguous` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_two_money_items_for_one_category_fails_as_ambiguous |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_upfrontCostGivenAsRate_failsAsWrongKind` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_upfront_cost_given_as_a_rate_fails_as_wrong_kind |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_waterEstimate_winsOverConflictingResponsibility` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_water_estimate_wins_over_conflicting_responsibility |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_waterResponsibility_doesNotAffectAnotherCategory` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_water_responsibility_does_not_affect_another_category |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_wrongKindAndTwoValues_failsAsWrongKindForAnAnchor` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_wrong_kind_and_two_values_fails_as_wrong_kind_for_an_anchor |
+| P3b | Vestagraph.CostEngine.Tests | AssumptionSelectorTests | `Select_wrongKindAndTwoValues_failsAsWrongKindForAnOrdinaryLine` |  | packages/vestagraph-engine/tests/test_engine_assumption_selector.py::test_select_assumptions_wrong_kind_and_two_values_fails_as_wrong_kind_for_a_line |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_amountThatChanges_isReportedAsValueChanged` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_amount_that_changes_is_reported_as_value_changed |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_amountThenIncluded_isReportedAsNoLongerCalculated` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_amount_then_included_is_reported_as_no_longer_calculated |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_amountThenNotApplicable_isReportedAsNoLongerApplies` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_amount_then_not_applicable_is_reported_as_no_longer_applies |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_anchorInputMissing_passesOnTheSelectorsFailure` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_anchor_input_missing_passes_on_the_selectors_failure |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_anyMonthlyBudget_isCarriedIntoEachScenario` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_any_monthly_budget_is_carried_into_each_scenario |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_buyingHome_hasAMortgageWithTheEvidenceBehindIt` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_buying_home_has_a_mortgage_with_the_evidence_behind_it |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_changeEvidence_namesThePreviousAndCurrentItems` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_change_evidence_names_the_previous_and_current_items |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_conflictingThenNotApplicable_isReportedAsNoLongerApplies` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_conflicting_then_not_applicable_is_reported_as_no_longer_applies |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_conflictingWaterThenAnEstimate_givesNoMonthlyTotalChange` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_conflicting_water_then_an_estimate_gives_no_monthly_total_change |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_conflictingWaterThenAnEstimate_isReportedAsNowCalculated` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_conflicting_water_then_an_estimate_is_reported_as_now_calculated |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_depositLargerThanThePrice_failsBecauseTheLoanIsNotPositive` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_deposit_larger_than_the_price_fails_as_loan_not_positive |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_evidenceChangesAtStepFour_givesTwoScenariosNamedFromTheirFirstStep` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_evidence_changes_at_step_four_gives_two_scenarios_named_from_step |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_firstScenario_hasNoChanges` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_first_scenario_has_no_changes |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeDetails_comeFromTheFacts` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_home_details_come_from_the_facts |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeOutsideEnglandAndNoSteps_reportsTheHomeFirst` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_home_outside_england_and_no_steps_reports_the_home_first |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeOutsideEngland_failsAsNotCovered` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_home_outside_england_fails_as_not_covered |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_homeWithNoMode_failsAsModeMissing` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_home_with_no_mode_fails_as_mode_missing |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_lineNotApplicableThenEstimated_isReportedAsNowCalculated` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_line_not_applicable_then_estimated_is_reported_as_now_calculated |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_lineThatBecomesConflicting_givesNoMonthlyTotalChange` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_line_that_becomes_conflicting_gives_no_monthly_total_change |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_missingThenNotApplicable_isReportedAsNoLongerApplies` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_missing_then_not_applicable_is_reported_as_no_longer_applies |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_monthlyDifference_isTheDifferenceOfTheRoundedMonthlyLines` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_monthly_difference_is_the_difference_of_the_rounded_monthly_lines |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_monthlyLineOnTheSourceEvidenceButNewAmount_hasNoAnnualDifferenceWhenOnlyOneSideIsYearly` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_monthly_line_with_only_one_side_yearly_has_no_annual_difference |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_newEvidenceWithTheSameAmount_isReportedAsEvidenceChangedNotValueChanged` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_new_evidence_with_the_same_amount_is_evidence_changed_not_value |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_noBudget_failsAsNotPositive` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_no_budget_fails_as_not_positive |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_notApplicableThenMissing_isReportedAsEvidenceChanged` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_not_applicable_then_missing_is_reported_as_evidence_changed |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_nullArguments_throw` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_facts_that_are_not_home_facts_raise_type_error;packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_steps_that_are_not_a_sequence_raise_type_error |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_onlyTheMortgageRateChanges_givesTwoScenariosWithARepaymentChange` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_only_the_mortgage_rate_changes_gives_a_repayment_change |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_rentingHome_hasNoMortgage` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_renting_home_has_no_mortgage |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_sameAmountChangingPeriod_isReportedAsValueChanged` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_same_amount_changing_period_is_reported_as_value_changed;packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_same_source_amount_changing_period_is_reported_as_value_changed |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_sameEvidenceAtEveryStep_givesOneScenarioCoveringAllSteps` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_same_evidence_at_every_step_gives_one_scenario_covering_all_steps |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_sameLinesLeftOutOfBothTotals_keepsTheMonthlyTotalChange` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_same_lines_left_out_of_both_totals_keeps_the_monthly_total_change |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_statusChangeBetweenTwoLinesWithNoAmount_isReportedAsEvidenceChanged` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_status_change_between_two_lines_with_no_amount_is_evidence_changed |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_stepsThatAreEmptyBelowOneOrNotIncreasing_failAsOutOfRange` | 4 | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_steps_that_are_empty_below_one_or_not_increasing_fail_as_out_of_range |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_stepsThatStartAboveOne_areAccepted` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_steps_that_start_above_one_are_accepted |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontAmountChanges_isAValueChangeWithNoMonthlyOrAnnualDifference` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_upfront_amount_changes_is_a_value_change_with_no_differences |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontAmountThenSameAmountFromNewEvidence_isAnEvidenceChange` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_upfront_same_amount_from_new_evidence_is_evidence_changed |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontLineGivenMonthly_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_upfront_line_given_monthly_fails_as_wrong_period |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_upfrontLineOfZero_failsAsNotPositive` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_upfront_line_of_zero_fails_as_not_positive |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `Build_yearlyAmountRisesByOnePenceButMonthlyRoundingHidesIt_stillReportsTheAnnualDifference` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_build_home_costs_yearly_rise_hidden_by_monthly_rounding_still_reports_annual |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `FigureIds_lineTotalBudgetAndChange_followTheContractFormat` |  | packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_line_in_the_monthly_section_follows_the_contract_format;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_total_follows_the_contract_format;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_budget_follows_the_contract_format;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_mortgage_loan_follows_the_contract_format;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_change_follows_the_contract_format;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_monthly_total_change_follows_the_contract_format;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_mortgage_as_a_whole_has_no_name_part;packages/vestagraph-engine/tests/test_engine_figure_ids.py::test_figure_ids_monthly_repayment_follows_the_contract_format |
+| P3b | Vestagraph.CostEngine.Tests | HomeCostBuilderTests | `ServiceChargeChange_storyCase_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_home_cost_builder.py::test_service_charge_change_story_case_matches_worked_result |
+| P3b | Vestagraph.CostEngine.Tests | StoryCalculationCoverageTests | `StoryCalculations_everyCase_isRunByADataDrivenTest` |  | packages/vestagraph-engine/tests/test_engine_story_coverage.py::test_story_calculations_every_case_is_run_by_a_data_driven_test |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_aNonCalculatedLineNeverCarriesPence` |  | packages/vestagraph-engine/tests/test_engine_upfront_properties.py::test_upfront_cash_any_lines_a_non_calculated_line_never_carries_pence |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_isPartialExactlyWhenALineIsNotCalculatedConflictingOrMissing` |  | packages/vestagraph-engine/tests/test_engine_upfront_properties.py::test_upfront_cash_any_lines_is_partial_exactly_when_a_line_has_no_amount |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_noLineOrTotalIsNegative` |  | packages/vestagraph-engine/tests/test_engine_upfront_properties.py::test_upfront_cash_any_lines_no_line_or_total_is_negative |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashProperties | `UpfrontCash_anyLines_totalEqualsTheSumOfTheCalculatedLines` |  | packages/vestagraph-engine/tests/test_engine_upfront_properties.py::test_upfront_cash_any_lines_total_equals_the_sum_of_the_calculated_lines |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCases_file_hasTheFourWorkedUpfrontCases` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cases_file_has_the_four_worked_upfront_cases |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_amountGivenMonthly_failsAsWrongPeriod` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_amount_given_monthly_fails_as_wrong_period |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_amountNotPositive_failsAsNotPositive` | 2 | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_amount_not_positive_fails_as_not_positive |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_buyingWithMortgageDepositMissing_failsAsMissingMortgageDeposit` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_buying_with_mortgage_deposit_missing_fails_as_missing_mortgage_deposit |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_buyingWithNoLines_failsAsMissingMortgageDeposit` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_buying_with_no_lines_fails_as_missing_mortgage_deposit |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_lineThatDoesNotBelongToTheMode_failsAsNotForMode` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_line_that_does_not_belong_to_the_mode_fails_as_not_for_mode |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_linesGivenOutOfOrder_comeBackInTheFixedBuyOrder` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_lines_given_out_of_order_come_back_in_the_fixed_buy_order |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_linesGivenOutOfOrder_comeBackInTheFixedRentOrder` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_lines_given_out_of_order_come_back_in_the_fixed_rent_order |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_missingMovingCosts_makesTheTotalPartial` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_missing_moving_costs_makes_the_total_partial |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_nullLines_throws` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_non_sequence_lines_raises_type_error |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_rentingWithNoLines_hasNoLinesAndATotalOfZeroThatIsNotPartial` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_renting_with_no_lines_has_no_lines_and_a_total_of_zero_not_partial |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_sameCategoryTwice_failsAsAmbiguous` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_same_category_twice_fails_as_ambiguous |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_stampDutyAndLegalFees_stayNotCalculatedWithNoAmount` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_stamp_duty_and_legal_fees_stay_not_calculated_with_no_amount |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_storyCase_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_story_case_matches_worked_result |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_totalTooBigForALong_throwsOverflow` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_total_too_big_for_64_bits_raises_overflow |
+| P3b | Vestagraph.CostEngine.Tests | UpfrontCashTests | `UpfrontCash_undefinedMode_throws` |  | packages/vestagraph-engine/tests/test_engine_upfront_cash.py::test_upfront_cash_undefined_mode_raises_type_error |
 | P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_buyerStory_mergesStepsOneToTwoThenSplitsAtStepsThreeAndFour` |  | |
 | P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_englishHomes_carryModeNationCoverageAndStory` |  | |
 | P4 | Vestagraph.CostEngine.Generator.Tests | OutputShapeTests | `Generate_everyFigureId_isUniqueAndMatchesThePattern` |  | |
