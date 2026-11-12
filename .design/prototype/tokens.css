@@ -32,8 +32,8 @@
  * Tabular figures: use font-variant-numeric: tabular-nums for every figure, and check that Geist
  * supports it in the first build.
  *
- * Format: CSS custom properties, the most portable option. FE-02 (#74) decides the styling
- * approach, and whatever it picks reads these values. Do not hard-code values in components.
+ * Format: CSS custom properties, the most portable option. FE-02 (decision 0048) chose
+ * Tailwind CSS v4, which reads these values through `@theme inline`. Do not hard-code values in components.
  */
 
 :root {

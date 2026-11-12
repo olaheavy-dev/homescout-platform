@@ -66,11 +66,11 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | FE-03 | Maps and charts | 4 | Not started | |
 | FE-04 | Frontend practices | 4 | Accepted (founder, 12 Nov 2026: Vitest and Testing Library, ESLint 9 and Prettier, TypeScript 6.0, fixture types from the schemas, axe in the `@ui` scenarios, size-limit and Lighthouse CI) | [0048](0048-frontend-foundation.md) |
 | IN-00 | Hosting strategy | 2 (brought forward) | Accepted (cost first) | [0022](0022-cost-first-hosting.md) |
-| IN-01 | Prototype architecture | 4 | Not started | |
-| IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 4 | Not started | |
-| IN-03 | Infrastructure as code | 4 | Not started | |
-| IN-04 | CI/CD and environments | 4 (domain and secrets before the public area check, 0046) | Not started | |
-| IN-05 | Budget cap and cost alerts | 4 (before any running cost; 0046) | Not started | |
+| IN-01 | Prototype architecture | 5b (moved from 4 by 0048: stage 5 runs locally only) | Not started | |
+| IN-02 | Hosting: private prototype (0045), then the public area check (0046) | 5b (moved from 4 by 0048) | Not started | |
+| IN-03 | Infrastructure as code | 5b (moved from 4 by 0048) | Not started | |
+| IN-04 | CI/CD and environments | 5b (moved from 4 by 0048; domain and secrets before the public area check, 0046) | Not started | |
+| IN-05 | Budget cap and cost alerts | 5b (moved from 4 by 0048; before any running cost, 0046) | Not started | |
 | FE-05 | Demo analytics and feedback | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
 | FE-06 | Area summary export format | 3 | Default (11 Nov 2026): a PDF printed from the browser (no package; the postcode never reaches the server). CSV is not planned for now; a later option | `.design/prototype/INFORMATION_ARCHITECTURE.md` (Check an area) |
 | FE-07 | Typefaces | 3 | Default (founder, 11 Nov 2026): Bricolage Grotesque for headlines and the wordmark, Geist for UI and figures; replaces Fraunces. Both SIL Open Font License, Google Fonts | `.design/prototype/tokens.css`, `DESIGN_BRIEF.md` |

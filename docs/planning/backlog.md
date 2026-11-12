@@ -54,14 +54,11 @@ Milestone "C# 15 (waits for CodeQL support)". These start once CodeQL supports C
 | 24 | #78 | Agent chat and approval experience (designed now, built at stage 6) |
 | 25 | #79 | High-fidelity key screens |
 | 26 | #80 | Image pass |
-| 27 | #81 | Decision: prototype architecture, hosting, infrastructure as code (IN-01 to IN-03) |
-| 28 | #82 | Decision: CI/CD and environments (IN-04) |
-| 29 | #83 | Decision: budget cap and cost alerts (IN-05) |
 | 30 | #84 | Stage 4 gate and audit |
 
 ## Stage 5: clickable prototype
 
-#86 may start once the stage 3 gate (#71) passes, before the stage 4 gate (#84), and runs locally only until stage 5b; the rest of stage 5 waits for #84 (decision 0048). Rows 18, 19, 20 and 22 are answered by 0048.
+#86 may start once the stage 3 gate (#71) passes, before the stage 4 gate (#84), and runs locally only until stage 5b; the rest of stage 5 waits for #84 (decision 0048). Stage 5 is never deployed: #81 to #83 (IN-01 to IN-05) moved to stage 5b, rows 38b.1 to 38b.3. Rows 18, 19, 20 and 22 are answered by 0048.
 
 | # | Issue | Item |
 |---|---|---|
@@ -82,6 +79,9 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 38 | #92 | Decision: API framework (BE-01), architecture and contract (BE-02); rules versioning (BE-03) stays at stage 6, before the cost engine expansion |
 | 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only) |
 | 38b | to open | Decision: public hosting, environments, secrets, domain and budget cap (IN-02, IN-04, IN-05; builds on #81) |
+| 38b.1 | #81 | Decision: prototype architecture, hosting, infrastructure as code (IN-01 to IN-03) |
+| 38b.2 | #82 | Decision: CI/CD and environments (IN-04) |
+| 38b.3 | #83 | Decision: budget cap and cost alerts (IN-05) |
 | 39 | #93 | ASP.NET Core 11 API skeleton (OpenAPI 3.2, async validation, one area endpoint; the first cost endpoint waits for stage 6) |
 | 40 | #94 | Aspire app host and OpenTelemetry |
 | 41 | #95 | Generated TypeScript types from the OpenAPI document |
