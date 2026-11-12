@@ -760,6 +760,31 @@ def test_build_home_costs_a_step_above_32_bits_raises_value_error() -> None:
         build_home_costs(buying([]), [1, 2**31])
 
 
+def test_build_home_costs_a_step_of_exactly_the_largest_32_bit_number_is_accepted() -> None:
+    home = _build(buying([]), [2**31 - 1])
+
+    (scenario,) = home.scenarios
+    assert (scenario.from_step, scenario.to_step) == (2**31 - 1, 2**31 - 1)
+
+
+def test_build_home_costs_a_line_not_applicable_in_every_scenario_is_left_out_of_the_changes() -> (
+    None
+):
+    # Ground rent is not applicable in both scenarios, so it is in neither list of lines and is
+    # not a change; only the energy bill moves.
+    facts = buying(
+        [
+            no_value("GR", "ground-rent", EvidenceStatus.NOT_APPLICABLE),
+            money("EN-OLD", "energy", 9_000, Period.MONTH),
+            money("EN-NEW", "energy", 12_000, Period.MONTH, used_from_step=4, supersedes="EN-OLD"),
+        ]
+    )
+
+    home = _build(facts, FOUR_STEPS)
+
+    assert [c.category for c in home.scenarios[1].changes] == [CostCategory.ENERGY]
+
+
 def test_build_home_costs_home_outside_england_and_no_steps_reports_the_home_first() -> None:
     assert _failure_code(buying([], Nation.WALES), []) == "home.not-covered"
 

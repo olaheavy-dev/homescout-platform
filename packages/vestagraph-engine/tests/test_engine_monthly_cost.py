@@ -415,6 +415,12 @@ def test_monthly_cost_non_sequence_lines_raises_type_error() -> None:
         monthly_cost(Mode.RENT, None, BUDGET_160000)  # type: ignore[arg-type]  # deliberately wrong
 
 
+def test_monthly_cost_empty_text_as_lines_raises_type_error() -> None:
+    # Text is a sequence, and an empty one would otherwise pass as "no lines".
+    with pytest.raises(TypeError):
+        monthly_cost(Mode.RENT, "", BUDGET_160000)  # type: ignore[arg-type]  # deliberately wrong
+
+
 def test_monthly_cost_none_in_the_list_of_lines_raises_type_error() -> None:
     with pytest.raises(TypeError):
         monthly_cost(Mode.RENT, [_rent(120_000), None], BUDGET_160000)  # type: ignore[list-item]  # deliberately wrong

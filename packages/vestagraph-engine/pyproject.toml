@@ -8,3 +8,13 @@ dependencies = []
 [build-system]
 requires = ["uv_build>=0.13.7,<0.14"]
 build-backend = "uv_build"
+
+# mutmut 3.8.1 reads only the pyproject.toml of the folder it runs in, and it names a mutant from the path of the source file
+# relative to that folder, so it must run here (`make mutate` does `cd packages/vestagraph-engine`) for the names to match the
+# modules the tests import (decision 0049 item 11b, register line BE-33).
+[tool.mutmut]
+source_paths = ["src/vestagraph_engine"]
+pytest_add_cli_args_test_selection = ["tests"]
+# The purity test reads the engine's source text, which mutmut has rewritten (it adds its own import), so it cannot run on a mutant.
+# The architecture rules are still checked on the real source by `make test`.
+pytest_add_cli_args = ["--deselect=tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule"]
