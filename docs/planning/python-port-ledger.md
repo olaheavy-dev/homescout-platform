@@ -36,7 +36,7 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-25000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-185000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-185000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
-| P3a | `story-calculations.json` | `b1-service-charge-difference` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_service_charge_difference_case_matches_the_difference_of_the_two_monthly_lines |
+| P3a | `story-calculations.json` | `b1-service-charge-difference` | packages/vestagraph-engine/tests/test_engine_monthly_cost.py::test_service_charge_difference_case_matches_the_difference_of_the_two_monthly_lines; end-to-end check also in P3b's builder test |
 | P3a | `story-calculations.json` | `b1-mortgage-repayment` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
 | P3a | `story-calculations.json` | `b2-mortgage-repayment` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |
 | P3a | `story-calculations.json` | `mortgage-repayment-boundary-10025200` | packages/vestagraph-engine/tests/test_engine_mortgage.py::test_monthly_repayment_story_case_matches_worked_result |

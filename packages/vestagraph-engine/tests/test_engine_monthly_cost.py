@@ -192,6 +192,42 @@ def test_monthly_cost_non_calculated_lines_have_no_amount_and_no_source_period()
     assert all(line.amount is None for line in others)
     assert all(line.source_period is None for line in others)
     assert result.total == Pence(120_000)
+    # The evidence behind a line with no amount is carried through untouched.
+    evidence = {line.category: line.evidence_ids for line in others}
+    assert evidence == {
+        CostCategory.WATER: ANY_EVIDENCE,
+        CostCategory.ENERGY: ANY_EVIDENCE,
+        CostCategory.BROADBAND: ANY_EVIDENCE,
+        CostCategory.COUNCIL_TAX: (),
+    }
+
+
+def test_monthly_cost_monthly_line_keeps_month_as_its_source_period_and_its_evidence() -> None:
+    result = monthly_cost(Mode.RENT, [_rent(120_000)], BUDGET_160000).value
+
+    (rent,) = result.lines
+    assert rent.status == LineStatus.CALCULATED
+    assert rent.source_period == Period.MONTH
+    assert rent.evidence_ids == ANY_EVIDENCE
+
+
+def test_monthly_cost_partial_reasons_name_each_line_without_an_amount_and_its_status() -> None:
+    lines: list[LineInput] = [
+        _rent(120_000),
+        IncludedLine(CostCategory.WATER, ANY_EVIDENCE),
+        NotCalculatedLine(CostCategory.ENERGY, ANY_EVIDENCE),
+        ConflictingLine(CostCategory.BROADBAND, ANY_EVIDENCE),
+        MissingLine(CostCategory.COUNCIL_TAX),
+    ]
+
+    result = monthly_cost(Mode.RENT, lines, BUDGET_160000).value
+
+    # Fixed rent order: council tax, energy, water (included: no reason), broadband.
+    assert result.partial_reasons == (
+        PartialReason(CostCategory.COUNCIL_TAX, LineStatus.MISSING),
+        PartialReason(CostCategory.ENERGY, LineStatus.NOT_CALCULATED),
+        PartialReason(CostCategory.BROADBAND, LineStatus.CONFLICTING),
+    )
 
 
 def test_monthly_cost_missing_line_makes_the_total_partial_with_a_coded_reason() -> None:
@@ -262,11 +298,16 @@ def test_service_charge_difference_case_matches_the_difference_of_the_two_monthl
 
     assert on_listing.amount is not None
     assert on_budget.amount is not None
-    annual_difference = (
-        worked["inputs"]["budgetServiceChargeAnnualPence"]
-        - (worked["inputs"]["listingServiceChargeAnnualPence"])
-    )
-    assert annual_difference == worked["expected"]["annualDifferencePence"]
+
+    # The two monthly cases use the same yearly service charges as the difference case.
+    def service_charge_input(story_case: dict[str, Any]) -> int:
+        (line,) = [x for x in story_case["inputs"]["lines"] if x["category"] == "service-charge"]
+        assert line["period"] == "year"
+        amount: int = line["amountPence"]
+        return amount
+
+    assert service_charge_input(listing_case) == worked["inputs"]["listingServiceChargeAnnualPence"]
+    assert service_charge_input(budget_case) == worked["inputs"]["budgetServiceChargeAnnualPence"]
     assert on_budget.amount - on_listing.amount == Pence(
         worked["expected"]["monthlyDifferencePence"]
     )

@@ -13,6 +13,8 @@ from vestagraph_engine.whole_power import whole_power
 MAX_TERM_YEARS: Final = 100
 
 _MONTHS_PER_YEAR: Final = 12
+# The C# rate is a 32-bit ``int``, so it can never be larger than this.
+_MAX_RATE_BASIS_POINTS: Final = 2**31 - 1
 # The denominator of the monthly rate: a rate in basis points is 1/10,000 of a year, and a month
 # is 1/12 of that.
 _BASIS_POINTS_PER_MONTH_DENOMINATOR: Final = 10_000 * _MONTHS_PER_YEAR
@@ -49,12 +51,20 @@ def monthly_repayment(
 
     Expected failures (``mortgage.loan-not-positive``, ``mortgage.rate-not-positive``,
     ``mortgage.term-not-positive``, ``mortgage.term-too-long``) come back as a failed ``Result``.
+    The rate is limited to the largest 32-bit ``int`` (2,147,483,647 basis points), the same limit
+    the C# ``int`` parameter has, so a huge rate cannot make the exact arithmetic run for ages;
+    a larger rate raises ``ValueError``.
+
     Raises ``TypeError`` for arguments of the wrong type and ``OverflowError`` when the rounded
     repayment does not fit in 64 bits.
     """
     if not is_a(loan, Pence) or type(rate_basis_points) is not int or type(term_years) is not int:
         message = "monthly_repayment needs a Pence loan and whole-number (int) rate and term."
         raise TypeError(message)
+
+    if rate_basis_points > _MAX_RATE_BASIS_POINTS:
+        message = "The interest rate is above the largest allowed whole number of basis points."
+        raise ValueError(message)
 
     if loan.value <= 0:
         return _fail("mortgage.loan-not-positive", "The loan must be more than zero.")

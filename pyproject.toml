@@ -64,6 +64,8 @@ minversion = "9.0"
 strict = true
 testpaths = ["packages/*/tests"]
 addopts = ["--import-mode=importlib"]
+# Lets tests import shared helpers (engine_support.py) by name.
+pythonpath = ["packages/vestagraph-engine/tests"]
 filterwarnings = ["error"]
 
 [tool.coverage.run]

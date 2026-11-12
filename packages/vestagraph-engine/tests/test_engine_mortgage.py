@@ -118,3 +118,15 @@ def test_monthly_repayment_non_int_argument_raises_type_error(
             rate,  # type: ignore[arg-type]  # deliberately wrong types
             term,  # type: ignore[arg-type]  # deliberately wrong types
         )
+
+
+@pytest.mark.parametrize("rate", [2**31, 10**1000], ids=["2^31", "10^1000"])
+def test_monthly_repayment_rate_above_a_32_bit_int_raises_value_error(rate: int) -> None:
+    # The C# rate is a 32-bit int, so nothing above 2^31 - 1 can be passed there. A huge rate would
+    # also make the exact arithmetic very slow.
+    with pytest.raises(ValueError, match="rate"):
+        monthly_repayment(Pence(1), rate, 100)
+
+
+def test_monthly_repayment_rate_of_the_largest_32_bit_int_is_calculated() -> None:
+    assert monthly_repayment(Pence(1), 2**31 - 1, 1).is_success
