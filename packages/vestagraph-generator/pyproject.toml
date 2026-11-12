@@ -3,7 +3,7 @@ name = "vestagraph-generator"
 version = "0.0.0"
 description = "Reads the fixtures, calls the cost engine and writes costs.json (decision 0039)."
 requires-python = ">=3.14"
-dependencies = ["vestagraph-engine"]
+dependencies = ["vestagraph-engine", "psycopg==3.3.6"]
 
 [tool.uv.sources]
 vestagraph-engine = { workspace = true }
