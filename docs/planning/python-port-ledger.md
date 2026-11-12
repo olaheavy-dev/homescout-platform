@@ -16,26 +16,26 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 
 | Port step | File | Case ID | Python test |
 |---|---|---|---|
-| P2 | `rounding-boundaries.json` | `round-positive-just-below-half` | |
-| P2 | `rounding-boundaries.json` | `round-positive-exactly-half` | |
-| P2 | `rounding-boundaries.json` | `round-positive-just-above-half` | |
-| P2 | `rounding-boundaries.json` | `round-negative-just-below-half` | |
-| P2 | `rounding-boundaries.json` | `round-negative-exactly-half` | |
-| P2 | `rounding-boundaries.json` | `round-negative-just-above-half` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-5` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-5` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-6` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-6` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-7` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-7` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-18` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-18` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-30` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-30` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-25000` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-25000` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-185000` | |
-| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-185000` | |
+| P2 | `rounding-boundaries.json` | `round-positive-just-below-half` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `round-positive-exactly-half` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `round-positive-just-above-half` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `round-negative-just-below-half` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `round-negative-exactly-half` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `round-negative-just-above-half` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-5` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-5` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-6` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-6` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-7` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-7` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-18` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-18` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-30` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-30` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-25000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-25000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-185000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-185000` | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
 | P3a | `story-calculations.json` | `b1-service-charge-difference` | |
 | P3a | `story-calculations.json` | `b1-mortgage-repayment` | |
 | P3a | `story-calculations.json` | `b2-mortgage-repayment` | |
@@ -58,85 +58,85 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 
 | Port step | Project | Class | Test | Cases | Python test |
 |---|---|---|---|---|---|
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `ClockAndRandomTypeRule_appliedToCodeThatUsesRandom_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `ClockRule_appliedToCodeThatReadsTheTime_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_hasNoDependencyOnClockOrRandom` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_hasNoDependencyOnIoNetworkCloudOrAi` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_hasNoDependencyOnSystemTextJson` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_neverReadsTheClockOrMakesGuids` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_referencesOnlyTheFrameworkAndSystemLibraries` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_everyTypeOutsideTheCoverageTracker_livesUnderTheEngineNamespace` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_publicSignatures_useNoDoubleOrFloat` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `DependencyRule_appliedToCodeThatUsesFiles_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `FloatingPointRule_appliedToCodeThatExposesDouble_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `ForbiddenMemberRule_appliedToCodeThatCallsGuidNewGuid_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `FrameworkOnlyRule_appliedToTheTestAssembly_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `JsonRule_appliedToCodeThatUsesJson_failsAsExpected` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `NamespaceMatch_prefixThatIsNotAWholeNamespaceSegment_isNotInside` | 6 | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Add_negatedAmount_returnsZero` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Add_threeAmounts_isAssociative` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Add_twoAmounts_isCommutative` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `AnnualToMonthly_anyInput_matchesRoundingTheExactQuotient` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `AnnualToMonthly_negatedInput_isNegatedResult` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `AnnualToMonthly_twelveTimesMonthly_returnsMonthly` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `CompareTo_twoAmounts_agreesWithSign` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_anyInput_isWithinHalfAPennyOfTheInput` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_appliedTwice_equalsAppliedOnce` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_exactHalf_roundsAwayFromZero` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_negatedInput_isNegatedResult` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_wholePence_isIdempotent` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Subtract_amount_equalsAddingTheNegation` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Add_negativeAmount_reducesTotal` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Add_overflow_throwsOverflowException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Add_twoAmounts_returnsSum` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `AnnualToMonthly_exactMultipleOfTwelve_isExact` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `AnnualToMonthly_maxValue_doesNotOverflow` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `AnnualToMonthly_minValue_doesNotOverflow` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `CompareTo_smallerAndLarger_ordersByValue` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `ComparisonOperators_variousPairs_followValueOrder` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Comparison_equalAmounts_areNotStrictlyLessOrGreater` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Equals_sameValue_isEqual` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Multiply_byWholeNumber_returnsProduct` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Multiply_overflow_throwsOverflowException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_minValue_throwsOverflowException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_negative_returnsPositive` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_positive_returnsNegative` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_zero_returnsZero` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Round_amountTooLargeForLong_throwsOverflowException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Round_halfPenny_isNotBankersRounding` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Round_wholeNumber_isUnchanged` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Subtract_methodForm_matchesOperator` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Subtract_overflow_throwsOverflowException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Subtract_twoAmounts_returnsDifference` |  | |
-| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Zero_default_equalsNewPenceOfZero` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ErrorCategory_definedValues_areExactlyTheFourDecided` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_blankCode_throwsArgumentException` | 2 | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_blankMessage_throwsArgumentException` | 2 | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_created_keepsCodeAndMessage` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_eachCategory_isKeptOnTheError` | 4 | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_sameParts_areEqual` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_undefinedCategory_throwsArgumentOutOfRangeException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `FailureOfT_nullError_throwsArgumentNullException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `FailureOfT_withError_hidesValueAndExposesError` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Failure_nullError_throwsArgumentNullException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Failure_withError_isFailureCarryingThatError` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `SuccessOfT_nullValue_throwsArgumentNullException` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `SuccessOfT_withValue_exposesValue` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Success_noValue_isSuccessWithNoError` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ToResult_failure_keepsError` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ToResult_failure_keepsTheError` |  | |
-| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ToResult_successWithAValue_isASuccess` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `BoundaryFile_loaded_hasAllSixRatioCases` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_boundaryCaseFromFile_matchesWorkedResult` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_largeExactHalf_roundsAwayFromZeroWithoutLosingPrecision` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_resultTooBigForALong_throwsOverflow` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_resultTooSmallForALong_throwsOverflow` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_signsAndHalves_roundAwayFromZero` | 10 | |
-| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_zeroDenominator_throwsDivideByZero` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `AnnualToMonthly_boundaryCaseFromFile_matchesWorkedResult` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `BoundaryFile_loaded_hasAllSixDirectRoundingCases` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `BoundaryFile_loaded_hasTheAnnualToMonthlyCases` |  | |
-| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `Round_boundaryCaseFromFile_matchesWorkedResult` |  | |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `ClockAndRandomTypeRule_appliedToCodeThatUsesRandom_failsAsExpected` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_import_rule_applied_to_a_disallowed_import_fails_as_expected |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `ClockRule_appliedToCodeThatReadsTheTime_failsAsExpected` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_clock_rule_applied_to_code_that_reads_the_time_fails_as_expected |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_hasNoDependencyOnClockOrRandom` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_hasNoDependencyOnIoNetworkCloudOrAi` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_hasNoDependencyOnSystemTextJson` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule (json is not on the import allow-list) |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_neverReadsTheClockOrMakesGuids` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_assembly_referencesOnlyTheFrameworkAndSystemLibraries` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule (the import allow-list replaces the assembly reference check) |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_everyTypeOutsideTheCoverageTracker_livesUnderTheEngineNamespace` |  | No Python equivalent (.NET-only): the engine is one package, `vestagraph_engine`, so every module is inside it by construction, and the import rule forbids other Vestagraph packages |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `CostEngine_publicSignatures_useNoDoubleOrFloat` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_engine_source_obeys_every_purity_rule; packages/vestagraph-engine/tests/test_engine_architecture.py::test_forbidden_name_rule_applied_to_a_float_annotation_fails_as_expected |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `DependencyRule_appliedToCodeThatUsesFiles_failsAsExpected` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_import_rule_applied_to_a_disallowed_import_fails_as_expected; packages/vestagraph-engine/tests/test_engine_architecture.py::test_forbidden_name_rule_applied_to_code_using_it_fails_as_expected |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `FloatingPointRule_appliedToCodeThatExposesDouble_failsAsExpected` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_forbidden_name_rule_applied_to_a_float_annotation_fails_as_expected; packages/vestagraph-engine/tests/test_engine_architecture.py::test_true_division_rule_applied_to_true_division_fails_as_expected |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `ForbiddenMemberRule_appliedToCodeThatCallsGuidNewGuid_failsAsExpected` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_import_rule_applied_to_a_disallowed_import_fails_as_expected (includes `import uuid`) |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `FrameworkOnlyRule_appliedToTheTestAssembly_failsAsExpected` |  | No Python equivalent (.NET-only): it checked that the rule also fails for a test assembly; the Python import rule is proved by `test_import_rule_applied_to_a_disallowed_import_fails_as_expected` and `test_import_rule_applied_to_an_allowed_import_passes` |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `JsonRule_appliedToCodeThatUsesJson_failsAsExpected` |  | packages/vestagraph-engine/tests/test_engine_architecture.py::test_import_rule_applied_to_a_disallowed_import_fails_as_expected |
+| P2 | Vestagraph.CostEngine.Tests | ArchitectureTests | `NamespaceMatch_prefixThatIsNotAWholeNamespaceSegment_isNotInside` | 6 | packages/vestagraph-engine/tests/test_engine_architecture.py::test_import_rule_applied_to_a_disallowed_import_fails_as_expected; packages/vestagraph-engine/tests/test_engine_architecture.py::test_import_rule_applied_to_an_allowed_import_passes (modules match by whole top-level name: `vestagraph_generator` is rejected) |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Add_negatedAmount_returnsZero` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_add_negated_amount_returns_zero |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Add_threeAmounts_isAssociative` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_add_three_amounts_is_associative |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Add_twoAmounts_isCommutative` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_add_two_amounts_is_commutative |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `AnnualToMonthly_anyInput_matchesRoundingTheExactQuotient` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_annual_to_monthly_any_input_is_the_nearest_penny_to_the_exact_quotient |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `AnnualToMonthly_negatedInput_isNegatedResult` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_annual_to_monthly_negated_input_is_negated_result |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `AnnualToMonthly_twelveTimesMonthly_returnsMonthly` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_annual_to_monthly_twelve_times_monthly_returns_monthly |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `CompareTo_twoAmounts_agreesWithSign` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_compare_two_amounts_agrees_with_sign |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_anyInput_isWithinHalfAPennyOfTheInput` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_from_exact_any_input_is_within_half_a_penny_of_the_input |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_appliedTwice_equalsAppliedOnce` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_from_exact_applied_twice_equals_applied_once |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_exactHalf_roundsAwayFromZero` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_from_exact_exact_half_rounds_away_from_zero |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_negatedInput_isNegatedResult` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_from_exact_negated_input_is_negated_result |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Round_wholePence_isIdempotent` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_from_exact_whole_pence_is_idempotent |
+| P2 | Vestagraph.CostEngine.Tests | PenceProperties | `Subtract_amount_equalsAddingTheNegation` |  | packages/vestagraph-engine/tests/test_engine_pence_properties.py::test_subtract_amount_equals_adding_the_negation |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Add_negativeAmount_reducesTotal` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_add_negative_amount_reduces_total |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Add_overflow_throwsOverflowException` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_add_overflow_raises_overflow_error |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Add_twoAmounts_returnsSum` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_add_two_amounts_returns_sum |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `AnnualToMonthly_exactMultipleOfTwelve_isExact` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_annual_to_monthly_exact_multiple_of_twelve_is_exact |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `AnnualToMonthly_maxValue_doesNotOverflow` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_annual_to_monthly_max_value_does_not_overflow |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `AnnualToMonthly_minValue_doesNotOverflow` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_annual_to_monthly_min_value_does_not_overflow |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `CompareTo_smallerAndLarger_ordersByValue` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_compare_smaller_and_larger_orders_by_value |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `ComparisonOperators_variousPairs_followValueOrder` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_comparison_operators_various_pairs_follow_value_order |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Comparison_equalAmounts_areNotStrictlyLessOrGreater` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_comparison_equal_amounts_are_not_strictly_less_or_greater |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Equals_sameValue_isEqual` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_equals_same_value_is_equal |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Multiply_byWholeNumber_returnsProduct` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_multiply_by_whole_number_returns_product |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Multiply_overflow_throwsOverflowException` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_multiply_overflow_raises_overflow_error |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_minValue_throwsOverflowException` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_negate_min_value_raises_overflow_error |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_negative_returnsPositive` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_negate_negative_returns_positive |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_positive_returnsNegative` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_negate_positive_returns_negative |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Negate_zero_returnsZero` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_negate_zero_returns_zero |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Round_amountTooLargeForLong_throwsOverflowException` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_from_exact_amount_too_large_raises_overflow_error |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Round_halfPenny_isNotBankersRounding` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_from_exact_half_penny_is_not_bankers_rounding |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Round_wholeNumber_isUnchanged` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_from_exact_whole_number_is_unchanged |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Subtract_methodForm_matchesOperator` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_subtract_method_form_matches_operator |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Subtract_overflow_throwsOverflowException` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_subtract_overflow_raises_overflow_error |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Subtract_twoAmounts_returnsDifference` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_subtract_two_amounts_returns_difference |
+| P2 | Vestagraph.CostEngine.Tests | PenceTests | `Zero_default_equalsNewPenceOfZero` |  | packages/vestagraph-engine/tests/test_engine_pence.py::test_zero_default_equals_pence_of_zero |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ErrorCategory_definedValues_areExactlyTheFourDecided` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_error_category_defined_values_are_exactly_the_four_decided |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_blankCode_throwsArgumentException` | 2 | packages/vestagraph-engine/tests/test_engine_result.py::test_error_blank_code_raises_value_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_blankMessage_throwsArgumentException` | 2 | packages/vestagraph-engine/tests/test_engine_result.py::test_error_blank_message_raises_value_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_created_keepsCodeAndMessage` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_error_created_keeps_code_and_message |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_eachCategory_isKeptOnTheError` | 4 | packages/vestagraph-engine/tests/test_engine_result.py::test_error_each_category_is_kept_on_the_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_sameParts_areEqual` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_error_same_parts_are_equal |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Error_undefinedCategory_throwsArgumentOutOfRangeException` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_error_non_category_raises_type_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `FailureOfT_nullError_throwsArgumentNullException` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_failure_non_error_raises_type_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `FailureOfT_withError_hidesValueAndExposesError` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_failure_of_t_with_error_hides_value_and_exposes_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Failure_nullError_throwsArgumentNullException` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_failure_non_error_raises_type_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Failure_withError_isFailureCarryingThatError` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_failure_with_error_is_failure_carrying_that_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `SuccessOfT_nullValue_throwsArgumentNullException` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_success_none_value_raises_value_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `SuccessOfT_withValue_exposesValue` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_success_with_value_exposes_value |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `Success_noValue_isSuccessWithNoError` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_ok_no_value_is_success_with_no_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ToResult_failure_keepsError` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_to_result_failure_keeps_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ToResult_failure_keepsTheError` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_to_result_failure_keeps_error |
+| P2 | Vestagraph.CostEngine.Tests | ResultTests | `ToResult_successWithAValue_isASuccess` |  | packages/vestagraph-engine/tests/test_engine_result.py::test_to_result_success_with_a_value_is_a_success |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `BoundaryFile_loaded_hasAllSixRatioCases` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_boundary_file_loaded_has_all_six_direct_rounding_cases |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_boundaryCaseFromFile_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_largeExactHalf_roundsAwayFromZeroWithoutLosingPrecision` |  | packages/vestagraph-engine/tests/test_engine_round_ratio.py::test_round_ratio_large_exact_half_rounds_away_from_zero_without_losing_precision |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_resultTooBigForALong_throwsOverflow` |  | packages/vestagraph-engine/tests/test_engine_round_ratio.py::test_round_ratio_result_too_big_for_64_bit_raises_overflow |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_resultTooSmallForALong_throwsOverflow` |  | packages/vestagraph-engine/tests/test_engine_round_ratio.py::test_round_ratio_result_too_small_for_64_bit_raises_overflow |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_signsAndHalves_roundAwayFromZero` | 10 | packages/vestagraph-engine/tests/test_engine_round_ratio.py::test_round_ratio_signs_and_halves_round_away_from_zero |
+| P2 | Vestagraph.CostEngine.Tests | RoundRatioTests | `RoundRatio_zeroDenominator_throwsDivideByZero` |  | packages/vestagraph-engine/tests/test_engine_round_ratio.py::test_round_ratio_zero_denominator_raises_zero_division |
+| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `AnnualToMonthly_boundaryCaseFromFile_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_annual_to_monthly_boundary_case_from_file_matches_worked_result |
+| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `BoundaryFile_loaded_hasAllSixDirectRoundingCases` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_boundary_file_loaded_has_all_six_direct_rounding_cases |
+| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `BoundaryFile_loaded_hasTheAnnualToMonthlyCases` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_boundary_file_loaded_has_the_annual_to_monthly_cases |
+| P2 | Vestagraph.CostEngine.Tests | RoundingBoundaryTests | `Round_boundaryCaseFromFile_matchesWorkedResult` |  | packages/vestagraph-engine/tests/test_engine_boundaries.py::test_round_ratio_boundary_case_from_file_matches_worked_result |
 | P3a | Vestagraph.CostEngine.Tests | BudgetBeatTests | `BudgetBeat_file_hasOneBudgetBeatCase` |  | |
 | P3a | Vestagraph.CostEngine.Tests | BudgetBeatTests | `BudgetBeat_storyCase_landsAsWorked` |  | |
 | P3a | Vestagraph.CostEngine.Tests | CalculationProperties | `MonthlyCost_anyLines_aNonCalculatedLineNeverCarriesPence` |  | |
