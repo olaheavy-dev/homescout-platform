@@ -85,6 +85,7 @@ This file is the **single current rulebook for how work is done** (planning, bui
 The founder is learning the languages, frameworks and tools through this project.
 - **Feature** pull requests include **"How it works"** (plain language) and **"Concepts to learn"** (links to the official documentation pages for what it uses). Documentation, chore and dependency pull requests don't need them.
 - When the founder asks why, answer in plain language with a small example and a link to the official source.
+- **Decisions for the founder go in a prompt window** (register WW-16). Claude Code asks with its question tool (`AskUserQuestion`), one question per decision, up to four at a time. Each question explains in plain language what is being decided and why it matters, and each option says what it means in practice (cost, effort, risk, what changes later). The recommended option comes first, marked "(Recommended)", and the question says why. The founder's answer may be a question back: answer it, then ask again rather than assume. Agents without a question tool (Codex, background agents) give the same content as text.
 - For each significant slice, offer a short walkthrough: which files matter, how data flows, why it was built this way, and the alternatives. The founder learns by understanding, not by writing the code. Explain-back happens in a weekly batch.
 - AI-layer work follows decision 0025: each implementation links the official documentation it follows.
 
