@@ -20,7 +20,7 @@ internal sealed class GeneratedCostsSchemaTests
           "generatedBy": "Vestagraph cost engine",
           "snapshotDate": "2026-10-23",
           "money": "integer pence",
-          "rounding": "Nearest penny, exact halves away from zero (decisions 0034 and 0039).",
+          "rounding": "Nearest penny, exact halves away from zero (decisions 0034 and 0036).",
           "homes": [
             {
               "homeId": "B1",

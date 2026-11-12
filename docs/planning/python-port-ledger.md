@@ -4,6 +4,10 @@ Decision [0049](../decisions/0049-back-to-python-final.md), issue #186. Every C#
 
 Generated on 12 Nov 2026 from the test methods (`[Test]`, `[TestCase]`, `[TestCaseSource]` and the FsCheck property attributes `[PenceProperty]` and `[EngineProperty]`) in `packages/` and the cases in `packages/fixtures/test-cases/`. **Cases** is the number of `[TestCase]` rows on a method; the Python test must cover each of them. Gherkin scenarios in `docs/specs/` are not listed: they are the same files, and P6 (#193) runs them with pytest-bdd.
 
+**How to read it:** a row is done when its **Python test** column names a Python test that checks the same thing; a blank means not yet ported. A few C# tests check .NET-only things (for example `NamespaceMatch_*`, `FrameworkOnlyRule_*` and `CostEngine_assembly_hasNoDependencyOnSystemTextJson`); for those, write the Python equivalent if there is one, or a short reason why none is needed. The worked cases are also checked again through the generator in P4 (`WorkedCaseTests`).
+
+**The header of `costs.json` stays as PC set it:** `generatedBy` is `Vestagraph cost engine` and the `rounding` text cites decisions 0034 and 0036 (register line BE-31). This replaces 0039 section 5's plan for those two fields, so P4's port proof expects no change at all.
+
 **Totals:** 487 test methods; 175 `[TestCase]` rows; worked cases below.
 
 ## Worked test cases
@@ -32,23 +36,23 @@ Independently worked expectations (`AGENTS.md` rule 2). Each needs a Python test
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-25000` | |
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-pos-185000` | |
 | P2 | `rounding-boundaries.json` | `annual-to-monthly-neg-185000` | |
-| P3a, P3b | `story-calculations.json` | `b1-service-charge-difference` | |
-| P3a, P3b | `story-calculations.json` | `b1-mortgage-repayment` | |
-| P3a, P3b | `story-calculations.json` | `b2-mortgage-repayment` | |
-| P3a, P3b | `story-calculations.json` | `mortgage-repayment-boundary-10025200` | |
-| P3a, P3b | `story-calculations.json` | `mortgage-repayment-boundary-10060700` | |
-| P3a, P3b | `story-calculations.json` | `b1-monthly-housing-cost-listing-service-charge` | |
-| P3a, P3b | `story-calculations.json` | `b1-monthly-housing-cost-management-pack-arrived` | |
-| P3a, P3b | `story-calculations.json` | `b1-monthly-housing-cost-2026-budget` | |
-| P3a, P3b | `story-calculations.json` | `b2-monthly-housing-cost` | |
-| P3a, P3b | `story-calculations.json` | `r1-monthly-housing-cost-before-water` | |
-| P3a, P3b | `story-calculations.json` | `r1-monthly-housing-cost-after-water` | |
-| P3a, P3b | `story-calculations.json` | `r2-monthly-housing-cost` | |
-| P3a, P3b | `story-calculations.json` | `b1-upfront-cash` | |
-| P3a, P3b | `story-calculations.json` | `b2-upfront-cash` | |
-| P3a, P3b | `story-calculations.json` | `r1-upfront-cash` | |
-| P3a, P3b | `story-calculations.json` | `r2-upfront-cash` | |
-| P3a, P3b | `story-calculations.json` | `b1-budget-beat` | |
+| P3a | `story-calculations.json` | `b1-service-charge-difference` | |
+| P3a | `story-calculations.json` | `b1-mortgage-repayment` | |
+| P3a | `story-calculations.json` | `b2-mortgage-repayment` | |
+| P3a | `story-calculations.json` | `mortgage-repayment-boundary-10025200` | |
+| P3a | `story-calculations.json` | `mortgage-repayment-boundary-10060700` | |
+| P3a | `story-calculations.json` | `b1-monthly-housing-cost-listing-service-charge` | |
+| P3a | `story-calculations.json` | `b1-monthly-housing-cost-management-pack-arrived` | |
+| P3a | `story-calculations.json` | `b1-monthly-housing-cost-2026-budget` | |
+| P3a | `story-calculations.json` | `b2-monthly-housing-cost` | |
+| P3a | `story-calculations.json` | `r1-monthly-housing-cost-before-water` | |
+| P3a | `story-calculations.json` | `r1-monthly-housing-cost-after-water` | |
+| P3a | `story-calculations.json` | `r2-monthly-housing-cost` | |
+| P3b | `story-calculations.json` | `b1-upfront-cash` | |
+| P3b | `story-calculations.json` | `b2-upfront-cash` | |
+| P3b | `story-calculations.json` | `r1-upfront-cash` | |
+| P3b | `story-calculations.json` | `r2-upfront-cash` | |
+| P3a | `story-calculations.json` | `b1-budget-beat` | |
 
 ## C# tests
 
