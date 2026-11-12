@@ -10,7 +10,7 @@ A home decision workspace for people buying or renting in England: check a home,
 - [Decision register](docs/decisions/README.md): every decision made and still to make
 - [Roadmap](docs/product/04-project-goals-and-delivery.md#9-roadmap-from-design-decisions-to-implementation) and [ways of working](docs/product/04-project-goals-and-delivery.md#10-ways-of-working)
 - [How we think about new features, and ideas to explore](docs/product/05-ideas-and-product-thinking.md)
-- Build and check: install the .NET 11 SDK (version in `global.json`), then run `make check`; `make help` lists the other commands
+- Build and check: install the .NET 11 SDK (version in `global.json`) and [uv](https://docs.astral.sh/uv/) (0.13.7 or later, below 0.14), then run `make check`; `make help` lists the other commands
 - [Agent instructions](AGENTS.md): rules for the AI agents that build and review this project (`CLAUDE.md` links to the same file)
 
 Document 01 is the historical concept record. Its old labels and paid-feature descriptions are not a second current specification, but requirements it raises that later documents don't address must be considered explicitly when writing the implementation specification. The [document review](docs/reviews/2026-10-23-document-review.md) records corrections and remaining specification gaps.
