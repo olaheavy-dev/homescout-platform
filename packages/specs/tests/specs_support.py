@@ -18,6 +18,7 @@ Json = Any
 _COSTS = "packages/fixtures/generated/costs.json"
 _EVIDENCE = "packages/fixtures/data/evidence.json"
 _HOMES = "packages/fixtures/data/homes.json"
+_AREA = "packages/fixtures/data/area.json"
 
 
 @dataclass(frozen=True)
@@ -34,6 +35,8 @@ class _Loaded:
     scenarios: list[_ScenarioRange]
     evidence: frozenset[str]
     homes: frozenset[str]
+    home_records: dict[str, Json]
+    area: dict[str, Json]
 
 
 def repository_root() -> Path:
@@ -83,8 +86,9 @@ def _load() -> _Loaded:
         for scenario in home["scenarios"]
     ]
     evidence = frozenset(item["id"] for item in _read(_EVIDENCE)["evidence"])
-    homes = frozenset(item["id"] for item in _read(_HOMES)["homes"])
-    return _Loaded(figures, scenarios, evidence, homes)
+    home_records = {item["id"]: item for item in _read(_HOMES)["homes"]}
+    area = {item["id"]: item for item in _read(_AREA)["area"]}
+    return _Loaded(figures, scenarios, evidence, frozenset(home_records), home_records, area)
 
 
 def evidence_ids() -> frozenset[str]:
@@ -203,6 +207,28 @@ class DataSteps:
             f'Evidence "{evidence_id}" is not in packages/fixtures/data/evidence.json.'
         )
 
+    def then_area_record_has_status(self, record_id: str, status: str) -> None:
+        record = _require_area_record(record_id)
+        actual = record.get("status")
+        assert actual == status, (
+            f'Area record "{record_id}" has status "{actual}", not "{status}", in {_AREA}.'
+        )
+
+    def then_area_record_shows_no_value(self, record_id: str) -> None:
+        """Rule 7: a gap, a failed source or an uncovered topic carries no value to show."""
+        record = _require_area_record(record_id)
+        assert "value" not in record, (
+            f'Area record "{record_id}" has a value in {_AREA}, so the screen would show one.'
+        )
+
+    def then_home_has_coverage(self, home_id: str, coverage: str) -> None:
+        home = _load().home_records.get(home_id)
+        assert home is not None, f'Home "{home_id}" is not in {_HOMES}.'
+        actual = home.get("coverage")
+        assert actual == coverage, (
+            f'Home "{home_id}" has coverage "{actual}", not "{coverage}", in {_HOMES}.'
+        )
+
     def _require_figure(self, figure_id: str) -> Json:
         figure = try_get_figure(figure_id)
         assert figure is not None, (
@@ -215,3 +241,12 @@ class DataSteps:
             f'figures here start with "{prefix}".'
         )
         return figure
+
+
+def _require_area_record(record_id: str) -> Json:
+    record = _load().area.get(record_id)
+    assert record is not None, (
+        f'Area record "{record_id}" is not in {_AREA}. '
+        "Check the ID against that file; records are cited by ID and never typed."
+    )
+    return record

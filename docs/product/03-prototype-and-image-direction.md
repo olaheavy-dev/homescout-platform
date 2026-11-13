@@ -181,7 +181,7 @@ Prototype controls must distinguish simulated source checks, document attachment
 
 | Screen / interaction | Main question it answers | Required content and behaviour |
 |---|---|---|
-| Search-led landing | “What can this help me do?” | Shared promise, equal buy/rent choice, address input, optional example journey |
+| Search-led landing | “What can this help me do?” | Shared promise with the **postcode box first**, which opens Check an area; "England only for now"; account features (costs, compare, questions) only as "coming next" until they exist; "Try an example" opens the sample area (decision 0046 replaced the address input and equal buy/rent choice as the landing's main action) |
 | Identity confirmation | “Is this the exact home?” | Unit/building candidates, clear correction route; no quiet postcode-to-flat inference |
 | Home overview | “What matters here?” | Three concise findings as appropriate, current cost assumption, open questions, source/scope labels and next action |
 | Nearby and routines | “Would daily life work?” | Map/list, optional destinations, selected categories, route assumptions and missing information |
@@ -194,6 +194,7 @@ Prototype controls must distinguish simulated source checks, document attachment
 | Decision impact | “What changed for us?” | Previous/current assumption, deterministic delta, affected comparison and continuing questions |
 | My move / activity | “What deserves attention now?” | Outstanding actions, material changes, saved homes and access to the dated decision snapshot |
 | Share / snapshot | “What am I sharing?” | Content preview, permissions, evidence dates, assumptions and remaining unknowns; private-document access separately controlled |
+| Check an area (decision 0046) | “What is around this postcode?” | Postcode in, the Nearby topic summary out (without the commute row), with Summary and Map views and a print-or-save page with sources; no account; the postcode stays in the URL fragment so it never reaches a log; "Postcode centre" pin; loading, invalid, not found, source unavailable and outside England states |
 
 Include realistic empty, loading, failure and ambiguity states. In particular:
 

@@ -5,7 +5,7 @@ The prototype specification lives here (decision [0043](../decisions/0043-specif
 ## Layout
 | Path | Holds | Issue |
 |---|---|---|
-| `screens/NN-<screen>.feature` | One feature per screen in doc 03 §5, numbered in that order (for example `05-real-costs.feature`) | #68 |
+| `screens/NN-<screen>.feature` | One feature per screen in doc 03 §5, numbered in that order (for example `05-real-costs.feature`); 14 screens, with Check an area (decision 0046) appended as `14-check-an-area.feature` so earlier numbers and IDs never move | #68 |
 | `stories/buyer.feature`, `stories/renter.feature` | The step-by-step story scripts | #69, #70 |
 | `mcp-tools.feature` | The MCP tool surface for AI assistants | #117 |
 
@@ -28,7 +28,7 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
    - `@mcp`: MCP server steps, run from #97.
    - No tag: data steps (fixtures and `costs.json`), run by `make check` from stage 3.
 
-   Tags are lower case; the filter is case-sensitive. Data scenarios (no tag) may go straight from `Given` to `Then`: they check data, not an action. `@ui` and `@mcp` scenarios always have a `When`.
+   Tags are lower case; the filter is case-sensitive. Data scenarios (no tag) need no `When`: they check data, not an action, and may have only `Then` steps when no story position applies. `@ui` and `@mcp` scenarios always have a `When`.
 
    Until their stage, `@ui` and `@mcp` scenarios are excluded by tag, never deleted.
 
@@ -43,6 +43,9 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
   - `Then the total "<figure ID>" is partial with reason "<category>"`
   - `Then figure "<figure ID>" cites evidence "<evidence ID>"` (the figure's evidence list contains it and the evidence exists)
   - `Then evidence "<evidence ID>" exists`
+  - `Then area record "<record ID>" has status "<recorded | no-record-in-source | stale | source-failed | not-covered>"` (a record in `packages/fixtures/data/area.json`)
+  - `Then area record "<record ID>" shows no value` (the record carries no `value`, so the screen has nothing to show as a result; rule 7)
+  - `Then home "<home ID>" has coverage "<covered | not-yet-covered>"`
 
   `Given home ... is at story step N` accepts any step from a scenario's `fromStep` to its `toStep` (for B1, step 2 is `from-step-1`) and then requires every figure ID cited in that scenario to start with `<home>.<scenario>.`. `has status` and `shows no amount` apply to cost lines only, not totals. The wording in decision 0043's example is illustrative; this list is the contract.
   A step with no matching wording makes the scenario fail as undefined: add the step to `packages/specs/tests/specs_steps.py` (with tests), rather than rewording the scenario around it.

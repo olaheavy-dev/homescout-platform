@@ -144,7 +144,7 @@ The prototype's credibility depends on this, and the images show what happens wi
 - **Specification format (SP-01):** where specs live, their template, and how acceptance criteria are written (for example given/when/then or numbered checks) so agents and tests can use them directly.
 - **Work breakdown (SP-02):** how a spec turns into issues and slices that are small enough to review.
 
-- A screen-by-screen spec for the 13 screens in doc 03 §5: the content, actions, states and which fixture each uses.
+- A screen-by-screen spec for the 14 screens in doc 03 §5 (13, plus Check an area from decision 0046): the content, actions, states and which fixture each uses.
 - Step-by-step scripts for the buyer and renter stories, with acceptance criteria for each step.
 - The required states from doc 03 §5 (ambiguous match, not covered, stale, partial answer, and so on) assigned to specific screens.
 - MCP tool surface for AI assistants (#117, decision 0037).
