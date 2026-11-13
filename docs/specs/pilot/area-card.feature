@@ -46,6 +46,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Expand: the larger view, keyboard, focus trap, labelled dialog, list rows -> CARD-21 to CARD-24, CARD-27, CARD-28
     full screen in hosts that allow it, leaving it, and no Expand where it can't work -> CARD-25, CARD-26, CARD-29
     an icon beside every place name, matching its pin -> CARD-30
+    on a phone, a closer expanded map that moves by dragging and zooms, with every place still listed -> CARD-31
 
   # fixture needed: #216
   @ui @mcp
@@ -244,3 +245,10 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Given the card is drawn for a sample postcode
     When the list and the expanded view are shown
     Then each place in the list, and the selected place, shows its category icon beside its name, the same icon and colour as its pin on the map
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-31 on a phone the expanded map opens closer and moves by dragging
+    Given the compact card is drawn in our chat for a sample postcode on a 390 px wide screen
+    When the user chooses "Expand"
+    Then the map opens larger than the compact card, centred on the postcode centre, moves by dragging and zooms with "Zoom in" and "Zoom out" buttons, and every place, including any outside the visible part, is in the list below it
