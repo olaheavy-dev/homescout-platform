@@ -46,6 +46,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Expand: the larger view, keyboard, focus trap, labelled dialog, list rows -> CARD-21 to CARD-24, CARD-27, CARD-28
     full screen in hosts that allow it, leaving it, and no Expand where it can't work -> CARD-25, CARD-26, CARD-29
     an icon beside every place name, matching its pin -> CARD-30
+    on a phone, a closer expanded map that moves by dragging, by choosing a place or by Tab, and zooms, with every place still listed -> CARD-31 to CARD-35
 
   # fixture needed: #216
   @ui @mcp
@@ -148,8 +149,8 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
   @ui @mcp
   Scenario: CARD-15 the card does not move when reduced motion is set
     Given the user's device asks for reduced motion
-    When the card is drawn
-    Then no pin or building animates
+    When the card is drawn, zoomed, or moved to show a chosen place
+    Then no pin, building or map movement animates
 
   @mcp
   Scenario: CARD-16 place names are drawn as text, never as markup
@@ -187,7 +188,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
   Scenario: CARD-21 Expand opens a larger view of the same places
     Given the compact card is drawn for a sample postcode, in our chat or in a host that grants full screen
     When the user chooses "Expand"
-    Then a larger view opens with every place at the same distance and bearing as on the compact card, and the same places in the list
+    Then a larger view opens with every place at the same true distance and bearing as on the compact card (the drawing is larger, the distances are not), and the same places in the list
 
   @ui
   Scenario: CARD-22 in our chat the expanded view is a dialog on desktop and full screen on a phone
@@ -244,3 +245,38 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Given the card is drawn for a sample postcode
     When the list and the expanded view are shown
     Then each place in the list, and the selected place, shows its category icon beside its name, the same icon and colour as its pin on the map
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-31 on a phone the expanded map opens closer, centred on the postcode
+    Given the compact card is drawn in our chat for a sample postcode on a 390 px wide screen
+    When the user chooses "Expand"
+    Then the map opens larger than on the compact card, with the postcode centre in the middle of the visible part
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-32 on a phone the expanded map moves by dragging
+    Given the expanded map is open on a 390 px wide screen
+    When the user drags the map
+    Then the visible part moves with the drag, and the list below still shows every place
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-33 the zoom buttons change the scale and keep every place at its distance
+    Given the expanded map is open on a 390 px wide screen
+    When the user chooses "Zoom in" and then "Zoom out"
+    Then the scale changes each time, and every place stays at its listed distance and bearing within 2%
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-34 choosing a place, or tabbing to its pin, moves the map to show it
+    Given the expanded map is open on a 390 px wide screen and one place is outside the visible part
+    When the user chooses that place in the list, or moves to its pin with Tab
+    Then the map moves so that pin is fully visible and not covered, with no dragging needed
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-35 a place scrolled out of view is not off the map
+    Given the expanded map is open on a 390 px wide screen and one place is outside the visible part
+    When the map is shown
+    Then that place is not labelled "off the map", and it is reachable by dragging, by its list row or by Tab
