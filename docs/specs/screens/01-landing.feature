@@ -8,9 +8,12 @@ Feature: Landing
   Sections, in order, from the information architecture's "Landing": the promise with the postcode
     box; the hero map; Data from (the source wall); How it works; How to read a result; Honest by
     design; Coming next, with a free account; Questions; the footer.
-  Required states (doc 03 §5): none of the listed states belongs to the landing. Its postcode box
-    hands over to Check an area (14-check-an-area.feature), which holds the loading, invalid,
-    not found, source failed and outside England states.
+  Required states (doc 03 §5):
+    basic/paid boundaries -> LAND-05
+    narrow and mobile layouts with a list alternative to the map -> LAND-11
+    invalid postcode on the landing's own box -> LAND-12
+    A complete postcode hands over to Check an area (14-check-an-area.feature), which holds the
+    loading, not found, source failed and outside England states.
   Free and paid: the area check is free and needs no account. Account features (cost estimate,
     compare, questions) are described only as "Coming next … not available yet" (LAND-05; decision 0046).
 
@@ -74,3 +77,16 @@ Feature: Landing
     Given the user is not signed in
     When the user opens the landing page
     Then no text calls an area or a home "safe", "verified" or "approved" (AGENTS.md rule 4)
+
+  @ui
+  Scenario: LAND-11 on a phone the postcode box comes first and the hero's places are text
+    Given the user is not signed in
+    And the screen is 390 pixels wide
+    When the user opens the landing page
+    Then the postcode box is the first control, and the hero's places and distances are readable as text, not only in the image
+
+  @ui
+  Scenario: LAND-12 an incomplete postcode on the landing is not searched
+    Given the user is on the landing page
+    When the user checks an incomplete postcode
+    Then an inline message under the "Postcode" field explains the format, and the page does not move to Check an area

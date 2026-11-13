@@ -8,15 +8,17 @@ Feature: Check an area
     never reaches a server, application or hosting log; decisions 0014 and 0046).
   Reuses the Nearby topic summary and topic details (04-nearby.feature), without the commute row.
   Required states (doc 03 §5, the information architecture's "Check an area" and AGENTS.md rule 7):
+    the postcode never reaches a log (decisions 0014, 0046) -> AREA-03, AREA-15
     loading -> AREA-06
     invalid format -> AREA-04
     postcode not found, never shown as empty topics -> AREA-05
-    a source request that failed, not shown as a clean result -> AREA-07
+    a source request that failed, not shown as a clean result -> AREA-07, AREA-14
     an address in Wales, Scotland or Northern Ireland, "not yet covered" -> AREA-01, AREA-02, AREA-08
     narrow and mobile layouts with a list alternative to the map -> covered by NEAR-11 (same topic details)
   Free and paid: the area check is free and needs no account. Saving a home needs an account that
     doesn't exist yet, so it appears only as "Coming next · not available yet" (AREA-11; decision 0046).
 
+  # Home "WALES-1" stands in for a postcode outside England until the postcode-level fixture (#216).
   Scenario: AREA-01 a postcode outside England is not yet covered
     Then home "WALES-1" has coverage "not-yet-covered"
 
@@ -59,7 +61,7 @@ Feature: Check an area
   Scenario: AREA-08 outside England shows a not yet covered card
     Given the user is on Check an area
     When the user checks the postcode of home "WALES-1"
-    Then a "Not yet covered" card is shown, and no topic is shown as empty
+    Then a "Not yet covered" card is shown on Check an area with the postcode still only after "#postcode=", and no topic is shown as empty
 
   @ui
   Scenario: AREA-09 the map's centre pin is the postcode centre
@@ -85,9 +87,34 @@ Feature: Check an area
     When the user chooses "Print or save as PDF"
     Then the print page lists every topic with its source, data date and label, the failed topic prints as "Unavailable", and the header says "Sample data"
 
+  @ui
+  Scenario: AREA-16 a not covered postcode prints as not covered
+    Given the user has checked the postcode of home "WALES-1"
+    When the user chooses "Print or save as PDF"
+    Then the print page shows "Not yet covered" and leaves nothing out
+
+  @ui
+  Scenario: AREA-17 the printout is made in the browser
+    Given the user has checked a complete postcode
+    When the user chooses "Print or save as PDF"
+    Then the print page is made in the browser, and no request is sent that carries the postcode
+
   # fixture needed: #216 (distances from the postcode centre)
   @ui
   Scenario: AREA-13 distances are measured from the postcode centre
     Given the user has checked a sample postcode
     When the results are shown
     Then every distance comes from the postcode-level sample data, measured from the postcode centre, not from a home
+
+  # fixture needed: #216 (no flood source-failed record exists yet)
+  @ui
+  Scenario: AREA-14 a failed flood source is not the same as no warning
+    Given the user is on Check an area
+    When the user checks a complete postcode and the flood source fails
+    Then the flood topic shows "Unavailable", "Couldn't fetch this time · Try again" and "This is not the same as no warning"
+
+  @ui
+  Scenario: AREA-15 no request carries the postcode in its address
+    Given the user is on Check an area
+    When the user checks a complete postcode
+    Then no request the page makes carries the postcode in its URL path or query string

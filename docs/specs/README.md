@@ -28,7 +28,7 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
    - `@mcp`: MCP server steps, run from #97.
    - No tag: data steps (fixtures and `costs.json`), run by `make check` from stage 3.
 
-   Tags are lower case; the filter is case-sensitive. Data scenarios (no tag) may go straight from `Given` to `Then`: they check data, not an action. `@ui` and `@mcp` scenarios always have a `When`.
+   Tags are lower case; the filter is case-sensitive. Data scenarios (no tag) need no `When`: they check data, not an action, and may have only `Then` steps when no story position applies. `@ui` and `@mcp` scenarios always have a `When`.
 
    Until their stage, `@ui` and `@mcp` scenarios are excluded by tag, never deleted.
 

@@ -3,7 +3,8 @@ Feature: Nearby
   Question it answers: "Would daily life work?"
   Modes: both
   Fixtures: homes B1, R1, WALES-1; inputs: area records "R1-AREA-CRIME-2", "B1-AREA-FLOOD-1",
-    "B1-AREA-SCHOOL-INSPECTION-1", "B1-AREA-AMENITY-6", "WALES-1-AREA-FLOOD-1"; figures: none
+    "B1-AREA-SCHOOL-INSPECTION-1", "B1-AREA-AMENITY-6", "B1-AREA-COMMUTE-1", "WALES-1-AREA-FLOOD-1",
+    household criterion "COMMUTE" (packages/fixtures/data/household.json); figures: none
     (Nearby shows recorded facts with distances from the fixtures, never calculated figures).
   Route: /homes/[slug]/nearby, with each topic at /homes/[slug]/nearby/[topic]
     (.design/prototype/INFORMATION_ARCHITECTURE.md, "Nearby").
@@ -14,7 +15,10 @@ Feature: Nearby
     stale information keeps its date -> NEAR-03, NEAR-09
     missing never shown as zero or a favourable value -> NEAR-02, NEAR-05, NEAR-08
     narrow and mobile layouts with a list alternative to the map -> NEAR-11
-  Free and paid: Nearby is free in the prototype; no limit applies (doc 02 §8, decision 0046).
+    basic/paid boundaries -> NEAR-16
+  Free and paid (doc 02 §8): the Nearby map and list with straight-line distances are free; routed
+    travel times to the household's own destinations are paid (routing is a metered third-party
+    cost), so the prototype shows them only as a labelled, simulated boundary (NEAR-16).
 
   Scenario: NEAR-01 a failed crime lookup is not shown as no crime
     Then area record "R1-AREA-CRIME-2" has status "source-failed"
@@ -46,19 +50,19 @@ Feature: Nearby
   Scenario: NEAR-07 the failed crime topic says it is unavailable
     Given home "R1" is at story step 1
     When the user opens Nearby
-    Then the recorded crime topic shows "Unavailable", "Try again" and "This doesn't mean there's nothing to report" for "R1-AREA-CRIME-2"
+    Then the recorded crime topic shows "Unavailable", "Couldn't fetch this time · Try again" and "This doesn't mean there's nothing to report" for "R1-AREA-CRIME-2"
 
   @ui
   Scenario: NEAR-08 the flood gap is never a reassuring label
     Given home "B1" is at story step 1
     When the user opens Nearby
-    Then the flood topic for "B1-AREA-FLOOD-1" says "This is not the same as no warning" and shows no "no risk" or similar label
+    Then the flood topic shows the label and the "What this doesn't tell you" note of "B1-AREA-FLOOD-1" as recorded, with its long-term flood risk link, and no "no risk", "low risk" or "clear" label
 
   @ui
   Scenario: NEAR-09 the stale inspection shows its date
     Given home "B1" is at story step 1
     When the user opens the schools topic
-    Then "B1-AREA-SCHOOL-INSPECTION-1" shows its source date and a stale label
+    Then "B1-AREA-SCHOOL-INSPECTION-1" shows its inspection date and source date with the "Old" label
 
   @ui
   Scenario: NEAR-10 Wales shows one not yet covered card
@@ -90,4 +94,16 @@ Feature: Nearby
   Scenario: NEAR-14 the commute row gives no verdict
     Given home "B1" is at story step 1
     When the user opens Nearby
-    Then the commute row shows "B1-AREA-COMMUTE-1" next to the household's limit, with no verdict
+    Then the commute row shows "B1-AREA-COMMUTE-1" next to the household's criterion "COMMUTE", with no verdict
+
+  @ui
+  Scenario: NEAR-15 flood is shown in the list and never on the map
+    Given home "B1" is at story step 1
+    When the user opens the flood topic
+    Then flood shows in the list only, and the map shows no flood marker
+
+  @ui
+  Scenario: NEAR-16 distances are straight-line and routed times are a labelled boundary
+    Given home "B1" is at story step 1
+    When the user opens getting around
+    Then every distance is labelled straight-line, and routed travel time appears only as a labelled, simulated paid feature, never as a working control
