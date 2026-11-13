@@ -1,7 +1,7 @@
 # 0049: Back to Python for the backend (final); the frontend starts from the founder's Next.js template
 
 **ID:** BE-28  
-**Status:** Accepted (founder, 12 Nov 2026)  
+**Status:** Accepted (founder, 12 Nov 2026; partly superseded by [0051](0051-ai-in-the-public-pilot.md): the framework trial and choice move to stage 5b for the pilot chat)  
 **Date:** 2026-11-12  
 **Stage:** 3 (reopens the backend language before stage 4; the port runs alongside the stage 3 gate, #71)  
 **Supersedes (no older text is rewritten; each record's status line says what changed):**

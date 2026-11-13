@@ -1,7 +1,7 @@
 # 0038: Accounts and API keys for MCP and API access
 
 **ID:** SE-03  
-**Status:** Proposed (partly superseded by [0049](0049-back-to-python-final.md): token checks use the API's authentication hook from the founder's FastAPI template; [0042](0042-back-to-dotnet-11.md)'s ASP.NET Core authentication no longer applies)  
+**Status:** Proposed (partly superseded by [0049](0049-back-to-python-final.md): token checks use the API's authentication hook from the founder's FastAPI template; [0042](0042-back-to-dotnet-11.md)'s ASP.NET Core authentication no longer applies; partly superseded by [0051](0051-ai-in-the-public-pilot.md): a public read-only MCP server without keys for public area data only)  
 **Date:** 2026-11-06  
 **Stage:** 6 (before any public remote MCP server or API); partly brings forward SE-01
 

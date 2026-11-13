@@ -197,7 +197,7 @@ All components are new.
 
 - Real data, live APIs, accounts and sign-in. Sign-in is simulated; the prototype runs on the fixtures (IN-01).
 - Payments. The free/paid boundaries are shown as labelled, simulated limits (doc 02 §8).
-- Building the in-app assistant chat or the MCP server. The assistant's look is designed in #78, and the build is stage 6.
+- Building the in-app assistant chat or the MCP server in the prototype. The assistant's look is designed in #78; the home assistant is built at stage 6, and the public pilot's area chat and area MCP tools at stage 5b (decision 0051).
 - Journeys for Wales, Scotland and Northern Ireland beyond the "not yet covered" state.
 - The final logo files and trade-mark clearance (0009). The working mark, Lit doorway (D1 · Ruled light), is in scope as a design asset; production SVGs go through the asset register first (rule 5).
 - Stamp duty, legal fees and home-to-home differences until the engine produces them (BE-27, #96 and #147). Until then the screens say "not calculated".

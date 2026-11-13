@@ -69,7 +69,7 @@ Milestone "Python port (decision 0049)". Runs alongside the stage 3 gate (#71); 
 
 ## Stage 5: clickable prototype
 
-#86 may start once the stage 3 gate (#71) passes and the .NET code is removed (P8, decision 0049), before the stage 4 gate (#84), and runs locally only until stage 5b. It starts from the founder's Next.js template in `frontend/`, with its `@ui` scenarios in playwright-bdd (0049); the rest of stage 5 waits for #84 (decision 0048). Stage 5 is never deployed: #81 to #83 (IN-01 to IN-05) moved to stage 5b, rows 38b.1 to 38b.3. Rows 18, 19, 20 and 22 are answered by 0048.
+#86 may start once the pilot gate passes (decision 0052; earlier, the full stage 3 gate #71) and the .NET code is removed (P8, decision 0049), before the stage 4 gate (#84), and runs locally only until stage 5b. It starts from the founder's Next.js template in `frontend/`, with its `@ui` scenarios in playwright-bdd (0049); the rest of stage 5 waits for #84 (decision 0048). Stage 5 is never deployed: #81 to #83 (IN-01 to IN-05) moved to stage 5b, rows 38b.1 to 38b.3. Rows 18, 19, 20 and 22 are answered by 0048.
 
 | # | Issue | Item |
 |---|---|---|
@@ -106,14 +106,20 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 44.10 | #135 | School inspection results (Ofsted) |
 | 44.11 | #136 | Broadband and mobile coverage (Ofcom) |
 | 44.14 | #139 | Planning applications nearby |
+| 38e | to open | Pilot AI (decision 0051): the AI-09 framework trial, then the model provider (AI-01) and orchestration (AI-04) |
+| 38f | to open | Pilot AI evaluation set (AI-03): questions the area chat and tools must answer or refuse |
+| 38g | to open | Area tools package shared by the API, the public MCP server and the area chat |
+| 38h | to open | Public read-only MCP server for the area tools (no key; global and per-host caps) |
+| 38i | to open | On-page area chat with the disclaimer, daily AI cap, bot check and "paused" and "unavailable" states; the isometric area card |
+| 38j | to open | Pilot features: Explain this, Share a link, Recent postcodes (opt-in), Report a problem; questions to ask; go-check-in-person list |
 | 38c | to open | Public site: landing (search first), How it works, About the data, privacy notice, accessibility statement (TASKS P1 to P4) |
-| 38d | to open | Stage 5b gate: sources on every fact, no searched postcode in any log, privacy notice and budget cap live, accessibility checks pass |
+| 38d | to open | Stage 5b gate: sources on every fact, no searched postcode in any log, privacy notice and budget cap live, accessibility checks pass; AI caps, rate limits and bot check live; the evaluation set passes (decision 0051) |
 
 ## Stage 6: the real product
 | # | Issue | Item |
 |---|---|---|
 | 37 | #91 | Validation study (six buyers, six renters) |
-| 43 | #97 | MCP server with the official `mcp` Python SDK (read-only, local first) |
+| 43 | #97 | MCP server with the official `mcp` Python SDK (read-only, local first); its public area tools come first at 5b (row 38h, decision 0051) |
 | 44 | #98 | **Epic:** real England data, per-home parts (area sources moved to stage 5b by decision 0046) |
 | 44.2 | #127 | Exact-home address search and matching (DA-06), needed for per-home data only |
 | 44.9 | #134 | Energy rating and energy cost range (energy certificate register) |
@@ -124,8 +130,8 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 44.17 | #142 | Deferred: NHS services, air quality, rail and TfL, radon |
 | 45 | #99 | **Epic:** accounts, households and the questions workflow |
 | 46 | #100 | AI evaluation harness and model provider choice (AI-03, AI-01) |
-| 47 | #101 | AI gateway: short trial of Agent Framework and LangGraph in the founder's template, then a second recorded import (decision 0049, AI-09) |
-| 48 | #102 | Agent chat over AG-UI (CopilotKit), on the framework AI-09 chooses |
+| 47 | #101 | AI gateway: short trial of Agent Framework and LangGraph in the founder's template, then a second recorded import (decision 0049, AI-09); the trial now runs at 5b (row 38e, decision 0051), and this row keeps the gateway import |
+| 48 | #102 | Agent chat over AG-UI (CopilotKit), on the framework AI-09 chooses; the pilot's area chat comes first at 5b (row 38i, decision 0051), and this row is the home chat |
 | 49 | #103 | Document investigation workflow with human approval |
 | 50 | #104 | **Epic:** entitlements and payments (CO-01) |
 | 51 | #105 | **Epic:** monitoring, scheduling and notifications (OP-01, OP-02) |
