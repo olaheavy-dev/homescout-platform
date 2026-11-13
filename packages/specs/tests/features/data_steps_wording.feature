@@ -10,3 +10,8 @@ Feature: Every data step wording runs against the real data (proof for issue #19
     And figure "B1.from-step-1.monthly.service-charge" cites evidence "B1-SC-LISTING"
     And the total "B1.from-step-1.monthly.total" is partial with reason "buildings-insurance"
     And evidence "B1-STAMP-DUTY" exists
+
+  Scenario: WORD-02 the area and coverage steps accept the documented wording
+    Then area record "R1-AREA-CRIME-2" has status "source-failed"
+    And area record "R1-AREA-CRIME-2" shows no value
+    And home "WALES-1" has coverage "not-yet-covered"
