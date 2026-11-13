@@ -247,7 +247,7 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
   @mcp
   Scenario: TOOLS-31 a zero, negative or non-numeric radius, or an unknown category, is refused
     Given an assistant is connected to the area tools
-    When it calls a tool with a radius of 0, a negative radius, a radius that is not a number, or a category the tools don't have
+    When it calls a tool with a radius of 0, a negative radius, a radius that is not a number, a category the tools don't have, or a number of places below 1 or above 10
     Then the call is refused with what is allowed, no lookup is made, and nothing is returned as "none" or an empty list
 
   # fixture needed: #216
@@ -322,7 +322,7 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
 
   # fixture needed: #216
   @mcp
-  Scenario: TOOLS-43 the nearest places of any kind, up to the number asked for, within 5 km
+  Scenario: TOOLS-43 the nearest places of the kinds asked for, up to the number asked for (at most 10), within 5 km
     Given an assistant is connected to the area tools
-    When it calls the nearby places tool for the nearest 10 places of any kind for a sample postcode
-    Then the result holds at most 10 places, of any category, nearest first, none farther than 5 km
+    When it calls the nearby places tool for the nearest 10 places, naming no kind, for a sample postcode
+    Then the result holds at most 10 places, of any kind, nearest first, none farther than 5 km

@@ -8,8 +8,8 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     small isometric scene in the approved style (FE-10), with the postcode centre in the middle. It comes
     after the plain answers work in every host (decision 0037).
   How many (founder, 13 Nov 2026, typed "1km might not have a lot of places most time, will mobile view not
-    be useless", then in a prompt window: "Up to 10 (Recommended)", FE-19): the card shows the nearest places
-    of any kind, at most 10, looked up to 5 km (FE-12), and the map's scale fits the places shown, so a
+    be useless", then in a prompt window: "Up to 10 (Recommended)", FE-19): the card shows the places in the
+    result, of the kinds asked for (any kind when none is named), nearest first, at most 10, looked up to 5 km (FE-12), and the map's scale fits the places shown, so a
     sparse area still gets a useful card; it is never a fixed radius such as 1 km.
   Two versions (founder, 13 Nov 2026: "Two versions", FE-15): a component in our own chat
     (area-chat.feature, CHAT-31 to CHAT-33) and a widget for ChatGPT and Claude (the open MCP Apps
@@ -155,7 +155,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
 
   @ui @mcp
   Scenario: CARD-14 a result with no places shows no card
-    Given a nearby places result with no place within the radius
+    Given a nearby places result with no place within 5 km
     When the answer is shown
     Then no card is drawn, and the text says "No places found within 5 km" (TOOLS-06), never an empty card
 
@@ -304,7 +304,8 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
 
   # fixture needed: #216
   @ui
-  # The count is the number of places the card shows, from the tool result (TOOLS-42), not a sum of figures (AGENTS.md rule 2).
+  # The count is the number of places the card shows, from the tool result (TOOLS-43), not a sum of figures; the distance is the
+  # farthest shown place's listed distance, quoted, not calculated (AGENTS.md rule 2).
   Scenario: CARD-37 the preview's count comes from the tool result
     Given an answer about nearby places in our chat on a 390 px wide screen
     When the preview is shown
@@ -334,7 +335,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
   Scenario: CARD-41 the preview's map strip is hidden from screen readers, and Open map says what it opens
     Given the preview is shown in our chat on a 390 px wide screen
     When a screen reader moves through the preview
-    Then the map strip is skipped as decorative, and the button is announced as "Open map, nearest <n> places up to <distance>, button"
+    Then the map strip is skipped as decorative, and the button is announced as "Open map, nearest <n> places up to <distance>, button", or "Open map, nearest place, <distance>, button" when there is one
 
   # fixture needed: #216
   @ui
@@ -348,7 +349,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
   Scenario: CARD-43 the card never shows more than 10 places
     Given a sample postcode with more than 10 places within 5 km
     When the card is drawn
-    Then it shows the 10 nearest, and the text says more places are listed on Check an area, with a link to it
+    Then it shows the 10 nearest, and the text answer states the total number of places within 5 km that the result reports (TOOLS-42)
 
   # fixture needed: #216 (a sparse sample postcode, with its nearest places between 1 and 5 km away)
   @ui @mcp
