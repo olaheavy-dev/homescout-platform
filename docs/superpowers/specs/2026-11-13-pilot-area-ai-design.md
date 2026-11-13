@@ -1,6 +1,6 @@
 # Pilot release: area check with AI on the page and in ChatGPT and Claude — design
 
-**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later prompt-window answers (goal 7, the isometric card, the 0014 change)
+**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later answers (goal 7, the isometric card, the 0014 change, search distances, outbound links); the Accuracy section and the country-aware data contract are the agent's proposals in answer to the founder's questions, awaiting the founder's review
 
 ## Intent
 The pilot (stage 5b) is Vestagraph's first public release: anyone types a postcode and sees what is around it, with sources and limits, no account and no personal details collected (0046). The founder wants the pilot to also offer AI in two places from day one:
@@ -100,10 +100,11 @@ Founder, 13 Nov 2026: typed "I like the show wider should we default 5km for all
 |---|---|---|
 | Nearest places (shops, pharmacy, GP, parks, bus stops, stations, schools) | Look up to 5 km; show the nearest few, each with its distance | "Show more" lists more places, not a wider area |
 | Sold prices, planning applications | 500 m | "Show wider" up to 5 km, the radius stated beside the results |
-| Crime counts | 1 mile, fixed by the source ("within a 1 mile radius of a single point", [data.police.uk](https://data.police.uk/docs/method/crime-street/)) | Cannot widen; the page says so |
+| Crime counts | 1 mile, matching police.uk's own street-level search ("within a 1 mile radius of a single point", [data.police.uk](https://data.police.uk/docs/method/crime-street/)) | Kept fixed in the pilot so counts compare with police.uk, and because crime locations are approximate; the page says so. The source also accepts a custom area, so widening is possible later |
 | Flood, broadband, air quality | The postcode itself | — |
 
-- Nothing is "none" only because it is out of range: "No pharmacy within 5 km · nearest is 6.2 km" (rule 7).
+- Nothing is shown as "none": beyond the limit the page says "No pharmacy found within 5 km", never "none" or zero (rule 7).
+- The landing hero's "+N more nearby" counts places within 5 km; the home workspace's Nearby follows the same distances.
 - Every distance is labelled "straight-line from the postcode centre".
 - The chosen widths live in the link's `#` part, like the postcode; the chat and the MCP tools take a radius up to the same 5 km cap and state it in every answer.
 - The map fits itself to the places shown; the list holds everything. The 400 m ring on the landing hero is an illustration, not this rule.
@@ -118,17 +119,17 @@ Founder, 13 Nov 2026: typed "yes add the Google Maps link"; then, in prompt wind
 
 Rules for every link:
 - The link names where it goes and, when it carries the postcode, says so ("Opens Google Maps · Google will see this postcode").
-- Nothing is sent until the visitor clicks; links use `rel="noreferrer"`, so the other site isn't told which Vestagraph page the visitor came from.
-- The postcode never reaches our own logs (0014); the privacy notice says which linked sites receive it when clicked.
+- Nothing is sent until the visitor clicks; links use `rel="noreferrer"`, and the site sends a `Referrer-Policy` header too. (Browsers never send the `#` part of a link in the referrer anyway, so the page's own postcode doesn't leak that way; this is extra protection.)
+- The postcode never reaches our own logs (0014); the privacy notice says which linked sites receive it when clicked (0014, "Still to decide"). Scenario AREA-18 covers the label and the referrer; AREA-15 covers requests the page makes by itself.
 - A link is never a fact: the page never says what the linked site will show.
 
 ## Accuracy
 The founder asked, typed: "how do we ensure that the 3d representation and our facts are very very accurate". Agent's proposal, part of this design:
 
 **Facts**
-1. Nothing typed by hand: every value comes from a stored official source with its date (rule 2); the fixtures are the only test data.
-2. Tested distance maths: straight-line distance is computed by one function with independent worked examples (test-first), from the postcode centre.
-3. Source-change alarms: each adapter has a contract test that fails when a source changes its format; a stale source is labelled "Old", never shown as current (0029).
+1. Nothing typed by hand: every value comes from a stored, cited source with its date (official records, or OpenStreetMap for places) (rule 2); the fixtures are the only test data.
+2. Tested distance maths: straight-line distance (and its display in metres or kilometres) is a calculated output, so rule 2 applies to it: one deterministic geometry module in the area tools package, written test-first with independent worked examples, from the postcode centre; the result is stored with the area result, and screens and AI only quote it. Nearby's "never calculated figures" means the UI and AI never calculate.
+3. Source-change alarms: each adapter has a contract test that fails when a source changes its format, run nightly and advisory, outside the merge gate, a failure opening an issue (0029); a stale source is labelled "Old", never shown as current (0029).
 4. Spot checks: a fixed set of postcodes is compared with the official sites on a schedule, by hand first and by script where the site allows; "Report a problem" adds a signal.
 5. AI cannot invent numbers: every number in a chat answer must appear in the tool results it was given, or the answer is rejected; the evaluation set tests attempts to make it guess.
 
