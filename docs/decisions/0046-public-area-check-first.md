@@ -1,7 +1,7 @@
 # 0046: A free public area check comes first; saved homes need an account
 
 **ID:** PD-12  
-**Status:** Accepted (founder, 11 Nov 2026: Option B; partly superseded by [0049](0049-back-to-python-final.md): the minimal API is the FastAPI API from the founder's template; partly superseded by [0051](0051-ai-in-the-public-pilot.md): the pilot gains an area chat and a public read-only MCP server)  
+**Status:** Accepted (founder, 11 Nov 2026: Option B; partly superseded by [0049](0049-back-to-python-final.md): the minimal API is the FastAPI API from the founder's template; partly superseded by [0051](0051-ai-in-the-public-pilot.md): the pilot gains an area chat and a public read-only MCP server; and by [0052](0052-pilot-only-gate.md): the pilot's screens are built at 5b after a pilot-only gate, not first on fixtures at stage 5)  
 **Date:** 2026-11-11  
 **Stage:** 3  
 **Supersedes in part (no older text is rewritten):** [0045](0045-prototype-is-a-private-reference.md) ("the real product (stage 6) is the first public thing", and its deferral of SE-02 part 1 and FE-05 to stage 6); [0006](0006-prototype-centrepiece.md) ("the first public showcase"; "isn't launched publicly until both stories are complete"); the doc 02 §9 row "the clickable prototype is the first public showcase"; the stage timing of [0014](0014-privacy-and-data-protection.md) parts 1 and 2 (both now before the public area check); the stage 6 timing of the Aspire and OpenTelemetry packages in [0025](0025-ai-platform-capabilities.md) (now with the first API, at stage 5b); the order of doc 04 §9 stage 6, which builds data, accounts and privacy after the validation study; the register timing of SE-01 ("before questions workflow") and DA-03 to DA-06 ("before real data").

@@ -4,10 +4,10 @@
 **Status:** Accepted (founder, 13 Nov 2026, in a prompt window)  
 **Date:** 2026-11-13  
 **Stage:** 3  
-**Supersedes in part (no older text is rewritten):** doc 04 §9's order "stage 3 gate, then stage 5, then stage 5b" for the pilot's screens; the stage 3 gate (#71) as one gate over every screen
+**Supersedes in part (no older text is rewritten):** doc 04 §9's order "stage 3 gate, then stage 5, then stage 5b" for the pilot's screens; the stage 3 gate (#71) as one gate over every screen; [0046](0046-public-area-check-first.md) Option B point 1 ("stage 5, area first": the area screens built on fixtures in the private prototype before 5b) for the pilot's screens; the backlog's start condition for #86 (after the full stage 3 gate), which becomes the pilot gate
 
 ## Context
-The founder chose, on 13 Nov 2026, to write the pilot's specifications first ("Pilot specs first (Recommended)") and then asked to "start the development tickets as soon as we are done with pilot specs". The stage 3 gate (#71) expects every screen's specification, including the home workspace screens (#68 parts 2 and 3) and the story scripts (#69, #70), before anything is built. The pilot (stage 5b, decisions 0046 and 0051) needs none of the home screens.
+The founder chose, on 13 Nov 2026, to write the pilot's specifications first ("Pilot specs first (Recommended)") and then typed: "Let us document just what we need for Pilot specs document where we stpped on the home specs and start the devlopment tickets as as we are done with pilot specs" [sic]. The stage 3 gate (#71) expects every screen's specification, including the home workspace screens (#68 parts 2 and 3) and the story scripts (#69, #70), before anything is built. The pilot (stage 5b, decisions 0046 and 0051) needs none of the home screens.
 
 ## Options
 ### Option A: Pilot-only gate (recommended)
