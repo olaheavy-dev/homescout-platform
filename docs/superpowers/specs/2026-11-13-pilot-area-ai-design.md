@@ -1,6 +1,6 @@
 # Pilot release: area check with AI on the page and in ChatGPT and Claude — design
 
-**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later answers (goal 7, the isometric card, the 0014 change, search distances, outbound links); the Accuracy section and the country-aware data contract were the agent's proposals in answer to the founder's questions, approved by the founder in prompt windows on 13 Nov 2026 ("Approve (Recommended)" for each)
+**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later answers (goal 7, the isometric card, the 0014 change, search distances, outbound links, and the Accuracy and Countries sections, each approved in a prompt window)
 
 ## Intent
 The pilot (stage 5b) is Vestagraph's first public release: anyone types a postcode and sees what is around it, with sources and limits, no account and no personal details collected (0046). The founder wants the pilot to also offer AI in two places from day one:
