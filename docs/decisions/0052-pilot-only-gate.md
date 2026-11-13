@@ -26,7 +26,7 @@ Finish every specification and pass the whole stage 3 gate first. Slowest; today
 - every pilot screen and feature in the design (`docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md`) has a specification in `docs/specs/` and, where it is a screen, a board on the design canvas's "Pilot · public area check" page;
 - every required state in those specifications maps to a scenario, and every missing fixture has a `noticed` issue;
 - the AI evaluation set (AI-03) is written;
-- no `review-followup` issue is open against the pilot specifications.
+- no `review-followup` issue is open anywhere in the repository (the `AGENTS.md` rule for every stage gate applies to the pilot gate unchanged).
 
 **Then:** one development ticket per buildable slice, each with acceptance criteria and its tests, starting with the stage 5b decisions (0046) and the app shell (#86).
 

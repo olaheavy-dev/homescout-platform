@@ -20,7 +20,7 @@ flowchart TB
     vestagraph["Vestagraph<br/>Home decision workspace.<br/>Today: synthetic sample data, a cost engine<br/>and its checks. No running app yet"]
 
     data["Official and open England data<br/>PLANNED: area data at stage 5b, per-home<br/>data at stage 6 (decision 0046). Sources not chosen<br/>(DA-04 to DA-06). Every value labelled<br/>Live, Cached, Fallback or Unavailable<br/>(decision 0029)"]
-    models["AI model providers<br/>PLANNED, stage 6. Provider chosen at stage 6 (AI-01);<br/>decision 0042 planned OpenAI and Anthropic<br/>behind Vestagraph's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
+    models["AI model providers<br/>PLANNED: stage 5b for the pilot area chat (decision 0051), stage 6 for the rest. Provider chosen at 5b (AI-01);<br/>decision 0042 planned OpenAI and Anthropic<br/>behind Vestagraph's adapter.<br/>Explain and draft; never calculate<br/>(decisions 0004, 0023)"]
     portals["Listing portals and agent websites<br/>Never scraped or copied (decision 0028).<br/>The user supplies what they have"]
 
     user -.->|"PLANNED: enters their own listing details,<br/>documents and estimates; reads results"| vestagraph
@@ -67,8 +67,8 @@ flowchart TB
         web["Web app, stage 5 (decisions 0020, 0048, 0049)<br/>TypeScript, Next.js, React, in frontend/,<br/>from the founder's Next.js template<br/>First: reads the fixture and generated files"]
         api["API, stage 5b (decisions 0046, 0049)<br/>Python, FastAPI, from the founder's template<br/>OpenAPI document"]
         mcp["MCP server: public area tools at stage 5b (decision 0051), cost tools at stage 6<br/>official mcp Python SDK (decision 0049)<br/>read-only (decision 0037)"]
-        agents["Agents, stage 6 (decision 0023)<br/>Framework chosen by a trial at stage 6:<br/>Agent Framework or LangGraph, Python (0049)<br/>AG-UI endpoint on the API"]
-        copilot["Chat route in the web app, stage 6<br/>(decisions 0042, 0049)<br/>CopilotKit runtime route (open-source path)<br/>Streams AG-UI to and from the API"]
+        agents["Agents: pilot area chat at stage 5b (decision 0051), home agents at stage 6 (decision 0023)<br/>Framework chosen by a trial at the start of 5b:<br/>Agent Framework or LangGraph, Python (0049)<br/>AG-UI endpoint on the API"]
+        copilot["Chat route in the web app: pilot area chat at 5b (decision 0051), home chat at stage 6<br/>(decisions 0042, 0049)<br/>CopilotKit runtime route (open-source path)<br/>Streams AG-UI to and from the API"]
         aspire["Aspire app host and OpenTelemetry, stage 5b<br/>App host written in TypeScript (decision 0049)<br/>Runs the pieces locally and shows traces<br/>(decision 0025)"]
         db[("Database<br/>UNDECIDED (DA-03)<br/>Homes, questions, replies, decisions")]
     end
@@ -129,7 +129,7 @@ flowchart TB
 | Web app (Next.js, React) | 5 | The clickable prototype, run locally only in stage 5 (decision 0048). It starts from a one-time copy of the founder's Next.js template in `frontend/` and reads the fixture and generated files with no backend until stage 5b (decisions 0048, 0049). |
 | API (Python, FastAPI) | 5b (area data), 6 (costs and questions) | Serves the public area check first (decision 0046), then costs and the questions workflow from the same engine. Starts from a one-time copy of the founder's FastAPI template (decisions 0040, 0049, #93); TypeScript types for the web app are generated from the API's OpenAPI document (decision 0042). |
 | MCP server | 5b (public area tools, decision 0051), 6 (cost tools) | Built with the official `mcp` Python SDK. At 5b it exposes read-only public area tools without keys (decision 0051); at stage 6 it adds read-only cost tools behind 0038's keys (decisions 0037, 0038, 0049). |
-| Agents and chat | 6 | Microsoft Agent Framework for Python or LangChain with LangGraph, chosen by a short trial at stage 6 (decisions 0023, 0049). The API streams agent replies over AG-UI; the web app talks to it through a CopilotKit runtime route, using the open-source path only (decision 0042). Agents quote only figures the engine supplied. |
+| Agents and chat | 5b (pilot area chat, decision 0051), 6 (home agents and chat) | Microsoft Agent Framework for Python or LangChain with LangGraph, chosen by a short trial at the start of the pilot's AI work at 5b (decisions 0023, 0049, 0051). The API streams agent replies over AG-UI; the web app talks to it through a CopilotKit runtime route, using the open-source path only (decision 0042). Agents quote only figures the engine supplied. |
 | Aspire and OpenTelemetry | 5b | Local app host, written in TypeScript, and trace dashboard for the pieces above (decisions 0025, 0049). |
 | Database | 6 | Not decided (DA-03). It would hold homes, questions, replies and decisions once there is real data; hosting follows decision 0022 (cost first). |
 
