@@ -97,6 +97,8 @@ Feature: Nearby
     When the user opens Nearby
     Then the commute row shows "B1-AREA-COMMUTE-1" next to the household's criterion "COMMUTE", with no verdict
 
+  # FE-25 (13 Nov 2026): on the pilot area check, the flood topic's own flat map (FE-20) may draw the
+  # official outlines if an open dataset is licensed; on Nearby the main map still shows no flood marker.
   @ui
   Scenario: NEAR-15 flood is shown in the list and never on the map
     Given home "B1" is at story step 1

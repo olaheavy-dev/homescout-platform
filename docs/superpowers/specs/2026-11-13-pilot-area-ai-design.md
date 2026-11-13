@@ -19,7 +19,7 @@ Why it matters: it shows what makes Vestagraph different (every fact with its so
 5. **Pilot extras, wave 2** (agent's proposal from the planned data, for the founder to trim): planning applications nearby, school inspection results, air quality, compare two postcodes. **Added on 13 Nov 2026** after research on a ChatGPT review ([research](../../reviews/2026-11-13-chatgpt-ideas-research.md); founder, typed: "present all the free ones that chatgpt suggested one and let us discuss the ones thta should go in and make us standout" [sic], then each in a prompt window):
    - **Walking times and buses per hour** ("Pilot, wave 2 (Recommended)"): each nearby place shows its walking time along paths beside its straight-line distance, and each stop its timetabled buses per hour; worked out in a batch on our own machine with an open-source routing engine over OpenStreetMap paths and the Bus Open Data Service timetables. Needs DA-08 (walking-time routing).
    - **School demand** ("Pilot, wave 2 (Recommended)"): first-preference applications and places offered per school, from DfE's applications and offers data, shown as past-year facts beside the inspection results, never as a chance of a place; no ratios are shown, and any derived figure comes from a tested module (rule 2).
-   - **Council tax by band** ("Pilot area check too", over the agent's recommendation of the home's monthly cost only): the council's charge per band from MHCLG's council tax levels table, labelled "Average for the council area, for a home with two adults, including an average of parish charges. Your bill can be higher or lower, depending on your parish and any discounts", with links to the council and a link to the VOA checker for the home's band; later also in the home's monthly cost through the cost engine.
+   - **Council tax by band** ("Pilot area check too", over the agent's recommendation of the home's monthly cost only): the council's charge per band from MHCLG's council tax levels table, labelled "The council area's published charge for each band, for a home with two adults. It may include parish charges; your bill can be higher or lower, depending on your parish and any discounts" (wording to confirm once the MHCLG table's notes are read), with links to the council and a link to the VOA checker for the home's band; later also in the home's monthly cost through the cost engine.
    - **Family view** ("Pilot, wave 2", over the agent's recommendation of the ideas list): childcare (Ofsted register: capacity, not vacancies; childminders not listed), schools, parks and playgrounds grouped together; facts only, never "suits a family".
    - Each sits behind its own switch like the other extras, so launch never waits for it (builder check answer 3).
    - **How they are shown** (founder, 13 Nov 2026): each topic is one summary line that opens a sheet on phone and a side panel on desktop (FE-20); the printout becomes a designed report (FE-21). Both are designed on the canvas before their specifications.
@@ -32,9 +32,9 @@ Why it matters: it shows what makes Vestagraph different (every fact with its so
 
 ## Non-goals
 - Accounts, saved homes, stored searches or chat history (0046: accounts come after the pilot).
-- Costs, compare-homes, documents, questions tracking or any home-level feature; the chat and tools are about an area only.
+- Costs, compare-homes, documents, questions tracking or any home-level feature; the chat and tools are about an area only. Exception: one home's energy certificate, found by its certificate number (DA-09).
 - Any write tool, in MCP or chat (0004, doc 05: writes need their own decision).
-- Energy ratings (need the exact home, a paid address lookup, DA-06) and commute times (paid routing) in the pilot.
+- Energy ratings by address lookup (need the exact home, a paid address lookup, DA-06; replaced in the pilot by the certificate-number route, DA-09) and commute times (paid routing) in the pilot.
 - Business-only features (#151).
 
 ## Anti-goals (failure even if it works)
@@ -144,7 +144,7 @@ The founder asked, typed: "how do we ensure that the 3d representation and our f
 **The 3D map and the area card**
 1. Drawn only from data: positions from coordinates at one fixed scale, never placed by hand.
 2. A map-matches-list test: every listed place is drawn at its listed distance within 2%, in list order, or named "off the map" (the check that caught the canvas maps' mismatch on 13 Nov 2026).
-3. Honest labels: building heights "approximate"; no flood or crime shading (0046); the list is the source of truth and the accessible version.
+3. Honest labels: building heights "approximate"; no flood or crime shading (0046; FE-25: except the flood topic's own flat map); the list is the source of truth and the accessible version.
 4. Screenshot tests catch a map that changes silently between versions.
 
 ## Countries support different things
