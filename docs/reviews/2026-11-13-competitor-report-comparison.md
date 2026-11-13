@@ -1,8 +1,8 @@
-# AreaSense comparison, 13 Nov 2026
+# Competitor report comparison, 13 Nov 2026
 
-**Purpose:** the founder asked to see AreaSense's designs, reports and layouts "and see where we can go better", then: "We need to be better than [AreaSense] … whatever specs we have built needs to be reviewed thoroughly" (founder, typed). This page records what was observed and what it changes for Vestagraph.
+**Purpose:** the founder asked to see a competitor's designs, reports and layouts "and see where we can go better", then: "We need to be better than [the competitor] … whatever specs we have built needs to be reviewed thoroughly" (founder, typed). This page records what was observed and what it changes for Vestagraph.
 
-**Method:** on 13 Nov 2026 the agent used the founder's Chrome to view [areasense.co.uk](https://areasense.co.uk/). It looked at the public pages and the free preview first. The founder then created a free account and bought a one-day pass. With the pass, the agent opened:
+**Method:** on 13 Nov 2026 the agent used the founder's Chrome to view the website of a UK area-report product. It looked at the public pages and the free preview first. The founder then created a free account and bought a one-day pass. With the pass, the agent opened:
 - full area reports for eight postcodes in England, Scotland, Wales and Northern Ireland;
 - one property overview, for an address the founder chose;
 - an area comparison;
@@ -10,9 +10,9 @@
 - the account, usage and saved-report pages;
 - three report PDFs.
 
-Everything below was seen on AreaSense's own pages that day, so it is **[F]** (seen on the product's own page) throughout. AreaSense's terms of use were not found at /terms (404) and were not read before viewing. Screenshots and PDFs are kept privately on the founder's machine and are not committed: they are AreaSense's copyright, and the repository is public (rule 5). Quotes are kept short. Figures quoted are AreaSense's outputs, recorded as observations, not as facts about the places.
+Everything below was seen on the competitor's own pages that day, so it is **[F]** (seen on the product's own page) throughout. The competitor's terms of use were not read before viewing. The competitor is named only in the founder's private research notes (founder, 13 Nov 2026, prompt window: "Anonymise the paid details (Recommended)"), because these observations come from paid, signed-in pages. Screenshots and PDFs are kept privately on the founder's machine and are not committed: they are the competitor's copyright, and the repository is public (rule 5). Quotes are kept short. Figures quoted are the competitor's outputs, recorded as observations, not as facts about the places.
 
-## What AreaSense offers (observed)
+## What the competitor offers (observed)
 - **Area report:**
   - a satellite map with layers you can switch on and off;
   - an "AI intelligence score" out of 100, with verdict tags (for example "Safe area", "Excellent healthcare") and four section scores;
