@@ -1,6 +1,6 @@
 # Pilot release: area check with AI on the page and in ChatGPT and Claude — design
 
-**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later answers (goal 7, the isometric card, the 0014 change, search distances, outbound links); the Accuracy section and the country-aware data contract are the agent's proposals in answer to the founder's questions, awaiting the founder's review
+**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later answers (goal 7, the isometric card, the 0014 change, search distances, outbound links); the Accuracy section and the country-aware data contract were the agent's proposals in answer to the founder's questions, approved by the founder in prompt windows on 13 Nov 2026 ("Approve (Recommended)" for each)
 
 ## Intent
 The pilot (stage 5b) is Vestagraph's first public release: anyone types a postcode and sees what is around it, with sources and limits, no account and no personal details collected (0046). The founder wants the pilot to also offer AI in two places from day one:
@@ -124,7 +124,7 @@ Rules for every link:
 - A link is never a fact: the page never says what the linked site will show.
 
 ## Accuracy
-The founder asked, typed: "how do we ensure that the 3d representation and our facts are very very accurate". Agent's proposal, part of this design:
+The founder asked, typed: "how do we ensure that the 3d representation and our facts are very very accurate". The agent's proposal, approved by the founder in a prompt window ("Approve (Recommended)", 13 Nov 2026):
 
 **Facts**
 1. Nothing typed by hand: every value comes from a stored, cited source with its date (official records, or OpenStreetMap for places) (rule 2); the fixtures are the only test data.
@@ -140,7 +140,7 @@ The founder asked, typed: "how do we ensure that the 3d representation and our f
 4. Screenshot tests catch a map that changes silently between versions.
 
 ## Countries support different things
-The founder, typed: "this should inform us on how to set up our model as different countries will support different things". England is the only country at launch ("keep it out of the pilot"), but the pilot's data contract (DA-03, BE-02) is built so that adding a country is a data job, not a rewrite:
+The founder, typed: "this should inform us on how to set up our model as different countries will support different things". England is the only country at launch ("keep it out of the pilot"), but the pilot's data contract (DA-03, BE-02) is built so that adding a country is a data job, not a rewrite (the agent's proposal, approved by the founder in a prompt window, "Approve (Recommended)", 13 Nov 2026):
 - **A coverage registry:** for each country (and region where it varies), which topics exist, the source for each, its licence and its geographic level. Screens and tools read the topic list from it, never from a hard-coded list.
 - **A location scheme per country:** the UK postcode now; others later (for example Nigeria's 11-character building-level NIPOST code), each with its own format check and privacy rule.
 - **Every topic answer carries its geographic level** (street, council area, state), so a coarse figure is never shown as if it described the street.
