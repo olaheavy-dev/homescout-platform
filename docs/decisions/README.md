@@ -137,7 +137,7 @@ Hard-to-reverse decisions get a full record; easily reversible choices get one l
 | DA-03 | Database and geospatial | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
 | DA-04 | Ingestion and scheduling | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
 | DA-05 | Source licence register | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
-| DA-06 | Address and routing providers | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started | |
+| DA-06 | Address and routing providers | 5b (before the public area check, [0046](0046-public-area-check-first.md)) | Not started; now also the walking-time routing engine for pilot wave 2 (13 Nov 2026; options and licences in the [research](../reviews/2026-11-13-chatgpt-ideas-research.md)) | |
 | DA-07 | Data sourcing: no scraping | 2 | Accepted | [0028](0028-no-scraping.md) |
 | SE-01 | Authentication and accounts | 6 (before saved homes, [0046](0046-public-area-check-first.md)) | Not started | |
 | SE-02 | Privacy and data protection | 5b (parts 1 and 2, [0046](0046-public-area-check-first.md)), 6 (full, before saved homes) | Proposed (starting position agreed; 0051 replaces 0014's "no AI calls per anonymous visitor" for the pilot's chat and Explain this, with safeguards; FE-11: outbound links may carry the postcode on a click, named in the privacy notice) | [0014](0014-privacy-and-data-protection.md) |
