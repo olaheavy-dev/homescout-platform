@@ -56,7 +56,7 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 **Correction recorded:** 0049 first said a `uv export` file would be committed; the founder's 9 Nov proof (BE-23) showed dependency review reads `uv.lock` directly, so no export is committed. Re-proved on 12 Nov (PRs #199, #200).
 
 ## Open pull requests
-- `docs/area-card-phone-preview`: the card's preview in the phone chat (CARD-36 to CARD-38), FE-18.
+- `docs/area-card-phone-preview`: the card's preview in the phone chat (CARD-36 to CARD-42; TOOLS-42, nearby places nearest first with a total), FE-18.
 
 ## Next, in order
 On 13 Nov 2026 the founder put the pilot first (decisions 0051 and 0052); the design canvas has a "Pilot · public area check" page for reviewing it.
