@@ -32,9 +32,9 @@ Why it matters: it shows what makes Vestagraph different (every fact with its so
 
 ## Non-goals
 - Accounts, saved homes, stored searches or chat history (0046: accounts come after the pilot).
-- Costs, compare-homes, documents, questions tracking or any home-level feature; the chat and tools are about an area only.
+- Costs, compare-homes, documents, questions tracking or any home-level feature; the chat and tools are about an area only. Exception: one home's energy certificate, found by its certificate number (DA-09).
 - Any write tool, in MCP or chat (0004, doc 05: writes need their own decision).
-- Energy ratings (need the exact home, a paid address lookup, DA-06) and commute times (paid routing) in the pilot.
+- Energy ratings by address lookup (need the exact home, a paid address lookup, DA-06; replaced in the pilot by the certificate-number route, DA-09) and commute times (paid routing) in the pilot.
 - Business-only features (#151).
 
 ## Anti-goals (failure even if it works)
@@ -144,7 +144,7 @@ The founder asked, typed: "how do we ensure that the 3d representation and our f
 **The 3D map and the area card**
 1. Drawn only from data: positions from coordinates at one fixed scale, never placed by hand.
 2. A map-matches-list test: every listed place is drawn at its listed distance within 2%, in list order, or named "off the map" (the check that caught the canvas maps' mismatch on 13 Nov 2026).
-3. Honest labels: building heights "approximate"; no flood or crime shading (0046); the list is the source of truth and the accessible version.
+3. Honest labels: building heights "approximate"; no flood or crime shading (0046; FE-25: except the flood topic's own flat map); the list is the source of truth and the accessible version.
 4. Screenshot tests catch a map that changes silently between versions.
 
 ## Countries support different things

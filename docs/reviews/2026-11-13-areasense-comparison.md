@@ -10,7 +10,7 @@
 - the account, usage and saved-report pages;
 - three report PDFs.
 
-Everything below was seen on AreaSense's own pages that day, so it is **[F]** throughout. Screenshots and PDFs are kept privately on the founder's machine and are not committed: they are AreaSense's copyright, and the repository is public (rule 5). Quotes are kept short. Figures quoted are AreaSense's outputs, recorded as observations, not as facts about the places.
+Everything below was seen on AreaSense's own pages that day, so it is **[F]** (seen on the product's own page) throughout. AreaSense's terms of use were not found at /terms (404) and were not read before viewing. Screenshots and PDFs are kept privately on the founder's machine and are not committed: they are AreaSense's copyright, and the repository is public (rule 5). Quotes are kept short. Figures quoted are AreaSense's outputs, recorded as observations, not as facts about the places.
 
 ## What AreaSense offers (observed)
 - **Area report:**
@@ -36,7 +36,7 @@ Everything below was seen on AreaSense's own pages that day, so it is **[F]** th
 - **Onboarding:** "Which areas do you know?" and "What brings you here?" (buy, rent, invest, research, advise).
 - **Pricing:** one-off passes, with no subscription. The free tier is limited, and full reports, comparisons and PDFs need a pass.
 
-## Where its output went wrong (observed)
+## Problems we observed in its output (13 Nov 2026)
 These show what a careful buyer or renter would notice, and which of our rules prevent each:
 
 | Observed | Example | Our rule or decision |
@@ -45,7 +45,7 @@ These show what a careful buyer or renter would notice, and which of our rules p
 | Verdicts despite missing data | EH1 2NG: crime "unknown", education "—", overall "Below average 34/100"; BT1 5GS "Poor 25/100" | Missing never shown as a value (rule 7); "Not yet covered" per topic outside England (rule 6, coverage registry) |
 | Impossible or out-of-range figures | "Rank 42,862 of 32,844"; volatility "Score 57 / 10" | Calculated figures from one tested module (rule 2) |
 | Internal text shown to users | "Built NO DATA!"; "final_file_generated_alias" | A scenario must forbid placeholder text (gap; see below) |
-| One coarse figure applied to many places | "Find an area", Sheffield: every candidate scored 100/100 on a city-level crime figure | Every figure shows the area it applies to (pilot design, "Countries support different things") |
+| One coarse figure applied to many places | "Find an area", Sheffield: every candidate showed crime as "Area-level · Sheffield" with 100/100 (our reading: one city-wide figure) | Every figure shows the area it applies to (pilot design, "Countries support different things") |
 | Verdict labels from their own cut-offs | "Safe area" at 41.4 per 1,000, from thresholds on the page ("< 60: safe") | No scores or verdicts; the visitor's own limits (FE-22) |
 
 ## What it does well, and what we take from it
@@ -65,7 +65,7 @@ These show what a careful buyer or renter would notice, and which of our rules p
 ## Founder decisions, 13 Nov 2026 (prompt windows)
 After the review of our specs against these findings:
 
-- **D1:** energy certificates in the pilot, "Energy certificates in pilot" (DA-09).
+- **D1:** energy certificates in the pilot, "Energy certificates in pilot", then, after the official licensing terms were checked, "Certificate number (Recommended)": the visitor enters the certificate number, and no address is shown (DA-09).
 - **D2:** a valuation only later, as an index-adjusted past sale, "Later, index-adjusted sale" (BE-34).
 - **D3:** plain-words area search later, with AI, "Later, with AI" (AI-10).
 - **D4:** theme and a text-size control, "Also a text-size control" (FE-23).
@@ -75,7 +75,7 @@ After the review of our specs against these findings:
 - **D8:** planning constraints if licensed, "Add if licensed (Recommended)" (DA-11).
 
 ## Gaps found in our own specifications
-The full review lists them with file and line. Fixes come in the planned pull requests:
+Fixes come in the next pull requests, in this order: (1) these contradictions; (2) licence research for long-term flood risk, rents, planning constraints and the house price index (DA-05); (3) canvas boards for the topic detail view, priorities and the designed report (FE-20 to FE-22), then their specifications; (4) the wave 1 and wave 2 extras, comparison and accessibility (FE-23).
 - the topic detail is still a sub-page in the site plan (FE-20 says sheet or panel);
 - the desktop right column is claimed by the map, the topic panel and the chat;
 - NEAR-16 calls routed times paid, but wave 2 walking times are free;

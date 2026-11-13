@@ -44,6 +44,8 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Free data sources assessment](references/data-sources.md) | Licence, terms, limits and coverage of free UK data sources for area information, checked 11 Nov 2026 (#123) | Stage 3 onwards |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |
 | [Competitor check of the doc 05 ideas, 11 Nov 2026](reviews/2026-11-11-competitor-check-of-ideas.md) | What UK products publicly offered for each idea, with how each claim was verified | Record |
+| [Research on a ChatGPT product review, 13 Nov 2026](reviews/2026-11-13-chatgpt-ideas-research.md) | Free and paid sources behind ChatGPT's suggestions; pilot wave 2 extras | Record |
+| [AreaSense comparison, 13 Nov 2026](reviews/2026-11-13-areasense-comparison.md) | A competitor's reports, observed with a day pass; gaps in our specs; founder decisions D1 to D8 | Record |
 | [Best-practice audit, 23 Oct 2026](reviews/2026-10-23-best-practice-audit.md) | Gaps found and the practices planned for each stage | Record |
 | [Foundations review, 23 Oct 2026](reviews/2026-10-23-foundation-review.md) | Lessons from earlier projects, as inputs for stages 2, 4 and 6 | Record |
 | [Stage 2 mutation-testing report, 23 Oct 2026](reviews/2026-10-23-stage-2-mutation-report.md) | Stryker.NET scores before and after, and how each surviving mutant was handled | Record |

@@ -70,7 +70,7 @@ AI explains, reads, drafts and connects at every step; the rules and the cost en
 
 | Step | Where AI helps | Never |
 |---|---|---|
-| Choosing where to look | Typed sentences turned into search inputs the user confirms | Recommending an area |
+| Choosing where to look | Typed sentences turned into search inputs the user confirms (later, AI-10: areas meeting the visitor's limits, never ranked) | Recommending an area |
 | Checking an area | Plain-language explanation of any sourced fact; a gap turned into a suggested question | Calling an area safe or good |
 | Checking a home | Reading the listing details the user pasted and flagging what's missing against a cited list | Fetching listings (0028) |
 | Costs | Explaining a figure from the engine's working | Calculating any figure |
@@ -92,7 +92,7 @@ These are well covered by free or established products. Where we still show them
 | **Environment pack** (i) | Facts with limits where sources allow (air quality assessed; radon as a link; noise to check), feeding "Go and check in person"; never a score |
 | **Area history** (o) | Not planned on its own; dated series could support the watch feed later |
 | **Area panel on property sites** (r) | Not pursued; any business use goes through #151 |
-| **Priorities as a score** (l) | Not pursued. Doc 02 §5 D's user-selected priorities stay inside Compare, highlighting matches and gaps without a total; a worship priority is faith-neutral, stays in the browser and is never stored (PD-13, 0014) |
+| **Priorities as a score** (l) | Not pursued. Doc 02 §5 D's user-selected priorities stay inside Compare and, since FE-22 (13 Nov 2026), the area check, highlighting matches and gaps without a total; a worship priority is faith-neutral, stays in the browser and is never stored (PD-13, 0014) |
 | **AI-drafted change-of-address messages** (t) | Dropped: low value next to paid services that send for you |
 
 ### Already planned elsewhere (not ideas; linked so they aren't researched again)
@@ -101,7 +101,8 @@ These are well covered by free or established products. Where we still show them
 |---|---|
 | The public area check (a) | Decided in [0046](../decisions/0046-public-area-check-first.md) (stage 5b, no accounts). Competitively common; once questions and saved homes exist, its gaps could lead into "Ask about this" and "Go and check in person" |
 | Upfront cash estimate | Core scope (doc 02 §5 B); the cost engine's `upfront` figures, with stamp duty not yet calculated |
-| Energy rating lookup | #134 (stage 6); the energy certificate register is assessed in `data-sources.md` and needs exact-home matching |
+| Energy rating lookup | #134 (stage 6); the energy certificate register is assessed in `data-sources.md` and needs exact-home matching. In the pilot, by certificate number (DA-09) |
+| Index-updated past sale (BE-34) | Later, through a decision record that settles its label: an index-updated sale is close to an estimate of current value, while doc 02 says recorded sales are "not a current valuation"; the house price index is not yet assessed in `data-sources.md` |
 | Viewing checklist | The viewing companion, doc 02 §5 A |
 | Drafted messages to agents | Doc 02 §5 E; the Questions screen (#169) |
 | Reading an uploaded document | Document extraction, doc 04 and decision 0030; privacy points in 0014 |

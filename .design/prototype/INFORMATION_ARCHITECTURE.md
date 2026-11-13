@@ -217,7 +217,7 @@ In the private prototype the landing can also link the two example homes; the pu
 1. The user opens Nearby, which is a list.
 2. They tap the map preview, and a full-screen map with a bottom sheet opens (desktop shows a split view).
 3. Selecting a stop highlights it in both the list and the map.
-4. Crime and flood stay in the list only.
+4. Crime and flood stay in the list only (FE-25: except the pilot flood topic's own flat map).
 5. Gaps ("no record in this source") are visible in the list.
 
 ### Compare homes
