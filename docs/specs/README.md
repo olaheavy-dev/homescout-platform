@@ -6,6 +6,7 @@ The prototype specification lives here (decision [0043](../decisions/0043-specif
 | Path | Holds | Issue |
 |---|---|---|
 | `screens/NN-<screen>.feature` | One feature per screen in doc 03 §5, numbered in that order (for example `05-real-costs.feature`); 14 screens, with Check an area (decision 0046) appended as `14-check-an-area.feature` so earlier numbers and IDs never move | #68 |
+| `pilot/<feature>.feature` | The pilot's specifications (stage 5b, decisions 0051 and 0052), for example `area-chat.feature`; checked by the pilot gate | #223 and later pilot specifications |
 | `stories/buyer.feature`, `stories/renter.feature` | The step-by-step story scripts | #69, #70 |
 | `mcp-tools.feature` | The MCP tool surface for AI assistants | #117 |
 
