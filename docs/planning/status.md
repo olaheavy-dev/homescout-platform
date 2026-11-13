@@ -25,6 +25,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 | #229 | The phone's expanded map: closer, drag, zoom, moves to a chosen place (CARD-31 to CARD-35) |
 | #230 | The area card's preview in the phone chat (CARD-36 to CARD-42), FE-18; nearby places nearest first with a total (TOOLS-42) |
 | #231 | The area card shows the nearest places, at most 10, up to 5 km (CARD-43, CARD-44, TOOLS-43), FE-19 (provisional) |
+| #237 | AreaSense comparison (`docs/reviews/2026-11-13-areasense-comparison.md`); FE-22 to FE-25, DA-09 (energy certificate by certificate number) to DA-11, BE-34, AI-10 |
 | #236 | Research on a ChatGPT review; pilot wave 2 extras (walking times and buses per hour, school demand, council tax by band, family view); FE-20, FE-21, DA-08; follow-ups #232 to #234 |
 | agent-workflows #13 | House rules v0.6.0: keep the status file current in every plan-changing pull request (founder: "Habit only") |
 
@@ -59,7 +60,7 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 **Correction recorded:** 0049 first said a `uv export` file would be committed; the founder's 9 Nov proof (BE-23) showed dependency review reads `uv.lock` directly, so no export is committed. Re-proved on 12 Nov (PRs #199, #200).
 
 ## Open pull requests
-- `docs/design-pass-wave2`: the AreaSense comparison (`docs/reviews/2026-11-13-areasense-comparison.md`), FE-22 (priorities, no total) and the founder's decisions D1 to D8 (FE-23 to FE-25, DA-09 to DA-11, BE-34, AI-10); council tax label wording corrected.
+- `docs/handover-2026-11-13`: this end-of-session status update.
 
 ## Next, in order
 On 13 Nov 2026 the founder put the pilot first (decisions 0051 and 0052); the design canvas has a "Pilot · public area check" page for reviewing it.
@@ -85,6 +86,7 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
 | Set the pilot's budget caps (IN-05) | The pilot has running costs and an on-page AI chat (decision 0051); a monthly cap and a daily AI cap must be set before launch | Decide the two amounts in pounds when the agent asks at stage 5b | Before the pilot launches |
 | Check the design canvas's Pilot page | The pilot is reviewed there now | Open the canvas link above; comment on any board | Any time |
+| Close or keep the AreaSense account | It was made for the 13 Nov research (day pass ended 14 Nov 2026); the private screenshots, three PDFs, `CATALOGUE.md` and the spec review are in `~/Documents/AreaSense research 2026-11-13/`, not in the repository | Keep it for later checks, or use its Account page to request deletion | Any time |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
 ## Open `noticed` issues
