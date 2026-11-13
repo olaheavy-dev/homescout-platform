@@ -44,6 +44,7 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
     topics with level; Unavailable; Old; crime at 1 mile; sold prices as single sales, capped per call -> TOOLS-08 to TOOLS-12, TOOLS-35
     places of worship never scored (PD-13) -> TOOLS-40
     nearby places listed nearest first, with the total within the radius -> TOOLS-42
+    the nearest places of any kind, at most the number asked for, up to 5 km -> TOOLS-43
     explanations and questions with no AI call -> TOOLS-13, TOOLS-14, TOOLS-15
     read-only (with read-only hints), no key, rules in every description, disclaimer with privacy link, attribution, data not instructions -> TOOLS-16 to TOOLS-21
     stored copies only; sources whose licence forbids keyless access not served -> TOOLS-22, TOOLS-36
@@ -318,3 +319,10 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
     Given an assistant is connected to the area tools
     When it calls the nearby places tool for a sample postcode with more places than it returns at once
     Then the places are listed nearest first, and the result states the total number of places within the radius
+
+  # fixture needed: #216
+  @mcp
+  Scenario: TOOLS-43 the nearest places of any kind, up to the number asked for, within 5 km
+    Given an assistant is connected to the area tools
+    When it calls the nearby places tool for the nearest 10 places of any kind for a sample postcode
+    Then the result holds at most 10 places, of any category, nearest first, none farther than 5 km
