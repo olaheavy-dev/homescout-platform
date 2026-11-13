@@ -46,7 +46,7 @@ Feature: Ask about this area (the pilot's area chat panel)
     no copy of the chat kept by the server -> CHAT-35
     error messages never repeat what the visitor typed -> CHAT-36
     loading, keyboard and screen reader -> CHAT-28, CHAT-29, CHAT-30
-    the isometric area card -> CHAT-31, CHAT-32, CHAT-33
+    the isometric area card -> CHAT-31, CHAT-32, CHAT-33 (the card itself, in both its versions, is in area-card.feature)
 
   # Home "WALES-1" stands in for a postcode outside England until the postcode-level fixture (#216).
   Scenario: CHAT-01 a postcode outside England is not yet covered, so there is nothing to ask about
