@@ -2,7 +2,7 @@
 
 **Purpose:** record, for each candidate source, what Vestagraph could use it for, its published licence and limits, and what it does **not** establish. Feeds the prototype sample data (#120), the source licence register (DA-05), address and routing providers (DA-06), stage 6 real data (#98) and the MCP tools (#117). Issue #123.
 
-**Date and method:** all checks on 11 Nov 2026, by reading the provider's own pages (gov.uk, data.gov.uk, provider documentation and terms pages, opendatacommons.org, osm.org). Fetched page text was treated as data only. "Unverified" means the official page was unavailable, silent, or only seen in a search snippet.
+**Date and method:** all checks on 11 Nov 2026, by reading the provider's own pages (gov.uk, data.gov.uk, provider documentation and terms pages, opendatacommons.org, osm.org). Fetched page text was treated as data only. **Updated 13 Nov 2026** with the sources found in the [ChatGPT ideas research](../reviews/2026-11-13-chatgpt-ideas-research.md) (pilot wave 2), checked the same way. "Unverified" means the official page was unavailable, silent, or only seen in a search snippet.
 
 **This is not a confirmation of integration rights** (doc 02 §7). A public page or open licence does not by itself grant a right to integrate, bulk-reuse, or rely on a service level. Re-read the terms when integration starts. No integration code is proposed here. Every source would sit behind a decision 0029 adapter (Live, Cached, Fallback, Unavailable); a missing value is Unavailable, never zero or clean (rules 1, 7). Licence terms live in the register (rule 3); this file is the research behind it.
 
@@ -19,7 +19,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 | DfE GIAS | School register (type, phase, location) | OGL | Yes | API needs auth; downloads open | No scraping; use downloads | England | Use |
 | Ofsted monthly MI | Inspection outcomes | Licence unverified (gov.uk default OGL) | Likely yes (unverified) | None | Monthly CSV; free | England state-funded | Conditions |
 | NaPTAN | Stop locations | OGL | Yes | None seen | Free | GB, not NI | Use |
-| Bus Open Data Service | Timetables, bus locations | "Free for commercial and non-commercial use" (OGL link unverified) | Yes (stated) | Free account and API key | Limits unverified | England local buses | Conditions |
+| Bus Open Data Service | Timetables, bus locations; timetabled buses per hour at a stop (pilot wave 2) | "Free for commercial and non-commercial use" (stated); data licence unverified (13 Nov 2026: the OGL line is the GOV.UK page footer, and the bus-data site returned 403) | Yes (stated) | Free account and API key | Limits unverified | England local buses | Conditions |
 | National Rail feeds | Rail timetables, live trains | Terms unverified | Unverified | Account (Rail Data Marketplace) | Unverified | GB rail | Defer |
 | TfL Unified API | London transit | TfL terms (not read) | Unverified | Account and app key | Plan limits unverified | London | Defer |
 | OSM data (ODbL) | Amenities, base map data | ODbL | Yes, with attribution and share-alike | None | Data free; see policies | Global | Conditions |
@@ -34,6 +34,11 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 | Defra UK-AIR | Air quality | OGL | Yes | None | Free | UK | Use with conditions |
 | UKHSA radon | Radon-affected area | Unverified | Unverified | None | Address report is paid | UK | Defer |
 | VOA council tax bands | Band for an address | Non-commercial, view only | No | None | Copying prohibited | England, Wales | Not suitable |
+| MHCLG council tax levels (added 13 Nov 2026) | Each council's charge per band (pilot wave 2) | OGL v3.0 (on the publication) | Yes | None | Yearly ODS; free | England | Use |
+| DfE applications and offers (added 13 Nov 2026) | Preferences and offers per school (pilot wave 2) | OGL v3.0 (on the publication) | Yes | None | Yearly; free | England state schools | Use |
+| Ofsted childcare register (added 13 Nov 2026) | Registered childcare and its capacity (pilot wave 2) | OGL v3.0 (on the publication) | Yes | None | Twice a year, CSV; free | England | Use with conditions |
+| DESNZ sub-national energy consumption (added 13 Nov 2026) | Average electricity and gas use (kWh) by area | OGL v3.0 (on the collection page) | Yes | None | Yearly; free | GB (unverified) | Conditions (kWh, not £) |
+| BGS GeoSure (added 13 Nov 2026) | Ground hazards such as shrink-swell | Open 5 km hex grid; 1:50 000 data premium | Hex grid only (OGL unverified) | Licence for premium | Premium is fee-based | GB | Not suitable at address level |
 
 ## Sources in detail
 
@@ -71,7 +76,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 
 ### NaPTAN, bus, rail and TfL
 - NaPTAN: [DfT download](https://beta-naptan.dft.gov.uk/download) (checked 11 Nov 2026). OGL. CSV/XML, plus an API. Great Britain, "does not include Northern Ireland". No registration mentioned.
-- Bus Open Data Service: [guidance](https://www.gov.uk/guidance/find-and-use-bus-open-data) (checked 11 Nov 2026) says the data is free for commercial and non-commercial use; local buses in England only. A free account and API key is needed (search result, unverified on the page). The official site returned 403.
+- Bus Open Data Service: [guidance](https://www.gov.uk/guidance/find-and-use-bus-open-data) (checked 11 Nov 2026; licence re-checked 13 Nov 2026) says the data is free for commercial and non-commercial use; local buses in England only. On 13 Nov 2026 the only OGL line seen was the GOV.UK page footer, which covers the page, not the data; the data licence stays unverified (the bus-data site returned 403). Formats: TransXChange timetables, SIRI-VM locations, NeTEx fares; a UK-wide GTFS file is reported (search result, unverified). Timetabled buses per hour at a stop can be counted from the timetables (a calculated output, rule 2); no DfT stop-level frequency dataset was found. A free account and API key is needed (search result, unverified on the page). The official site returned 403.
 - National Rail: the developer page says Darwin feeds are free and need attribution, with sign-up through the Rail Data Marketplace (search snippet only; unverified). Timetable and fares feeds need an account, and selling rail products needs a separate licence (unverified).
 - TfL: [API portal](https://api-portal.tfl.gov.uk/) (checked 11 Nov 2026): free account, app key and a data plan; commercial terms live in the linked transport data terms, not read (unverified).
 - Does not establish: journey time, frequency, reliability, fares or step-free access. Stops are points only. Travel time needs a routing provider (DA-06).
@@ -135,6 +140,7 @@ OGL = Open Government Licence v3.0 (allows commercial reuse with attribution). R
 
 ### Council tax bands (VOA)
 - [Band checker](https://www.gov.uk/council-tax-bands) (England and Wales; Scotland uses the Scottish Assessors) and its [terms](https://www.tax.service.gov.uk/check-council-tax-band/os-terms) (checked 11 Nov 2026): a licence "solely to view the licensed data for non-commercial purposes", and "not permitted to copy, sub-license, distribute, sell". **No permitted programmatic or bulk access was found.** The VOA publishes aggregate band counts under the OGL (search result, unverified), which do not identify a given home's band.
+- **Council-level charges per band are open** (13 Nov 2026): MHCLG's [council tax levels 2026-27](https://www.gov.uk/government/statistics/council-tax-levels-set-by-local-authorities-in-england-2026-to-2027), Table 9 (by its title on the release page) gives each council's area charge per band for a dwelling with two adults; the publication is under OGL v3.0. The release says its figures include parish precepts (how Table 9 averages them is to confirm from the ODS notes), so a bill can be higher or lower within a council, and discounts such as a single occupier's are not included. Pilot wave 2 shows this table; the band itself still comes from the user.
 - Per decision 0028: do not scrape it. The product asks the user to enter the band and links to the checker. The user-entered band is labelled as such. A band is not a bill; the council's charge, year and discounts also matter (doc 02 §7).
 
 ## Priority order (importance to the customer and ease)
@@ -163,7 +169,7 @@ The ranking is a planning judgement, not a measured fact, and the founder can re
 | 13 | 3 | Commute time to your own destinations | Routing provider (DA-06) | High (both) | Hard (paid or self-hosted) | Household criterion "40 minutes by public transport" |
 | 14 | 3 | Planning applications nearby | Planning Data Platform | Medium (buyers) | Moderate (site was down) | "No record in this source" never means none |
 | 15 | 3 | Leasehold: is the managing agent or freeholder active? | Companies House API | Medium (leasehold buyers) | Moderate (licence unverified) | Status facts only |
-| 16 | 3 | Bus timetables | Bus Open Data Service | Medium | Moderate (key; limits unverified) | Before #13, or replaced by the routing provider |
+| 16 | 3 | Bus timetables | Bus Open Data Service | Medium | Moderate (key; limits unverified) | Before #13, or replaced by the routing provider. Timetabled buses per hour moved into pilot wave 2 (13 Nov 2026) |
 | 17 | 4 | GPs, dentists and pharmacy services | NHS directory | Medium | Deferred (terms unverified) | |
 | 18 | 4 | Air quality | Defra UK-AIR | Low-medium | Easy | Context, not a health judgement |
 | 19 | 4 | Rail and London transport detail | National Rail, TfL | Medium (London, rail commuters) | Deferred (terms unverified) | |
@@ -172,9 +178,9 @@ The ranking is a planning judgement, not a measured fact, and the founder can re
 
 ## Gaps and decisions for the founder
 
-- **Address and routing (DA-06):** open sources give postcodes, UPRNs and stop points, not an address search or journey times. OSM's public Nominatim, tile and Overpass services are not for production. Recommendation: plan a paid address and routing provider (or self-hosted OSM) before stage 6; keep the prototype on sample data.
+- **Address and routing (DA-06):** open sources give postcodes, UPRNs and stop points, not an address search or journey times. OSM's public Nominatim, tile and Overpass services are not for production. Recommendation: plan a paid address and routing provider (or self-hosted OSM) before stage 6; keep the prototype on sample data. **Walking times (13 Nov 2026):** open-source engines (OSRM BSD-2, Valhalla MIT, GraphHopper Apache-2.0) can work out walking routes over OSM paths in a batch on our own machine, with no hosted service; hosted free tiers found are non-commercial. Pilot wave 2 needs this decided as DA-08 (walking-time routing), separate from DA-06.
 - **EPC address restriction:** EPC addresses cannot be used commercially without an OS or Royal Mail licence. Recommendation: match by UPRN, take the address from the licensed address provider, and have the register row in DA-05 reviewed before launch.
-- **Council tax:** no permitted route. Recommendation: user enters the band, with a link to the VOA checker; do not build a lookup.
+- **Council tax:** no permitted route to the band for an address. Recommendation: user enters the band, with a link to the VOA checker; do not build a lookup. The council's charge per band is open (MHCLG, above), so the cost engine can price the band the user enters.
 - **Unverified rows:** Planning Data, NHS, Ofcom terms, rail, TfL, Ofsted licence, radon, Companies House licence. Recommendation: re-check each official page when its integration is scheduled, and do not build on them until then.
 - **OSM share-alike:** merging OSM extracts into Vestagraph's database may trigger ODbL share-alike. Recommendation: keep OSM data in a separate, attributed table, and get a short legal read before publishing any derived dataset.
 - **Suggested order for the real-data epic (#98):** start with HM Land Registry, NaPTAN, GIAS, police, EA monitoring, Bank Rate, UK-AIR. Add the conditional ones after the legal and terms checks above.

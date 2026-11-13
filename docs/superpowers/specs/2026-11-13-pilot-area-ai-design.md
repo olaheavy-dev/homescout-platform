@@ -16,7 +16,13 @@ Why it matters: it shows what makes Vestagraph different (every fact with its so
 2. **Public read-only MCP server** with the area tools, usable from ChatGPT and Claude, no key, rate-limited.
 3. **On-page chat** on Check an area and the landing result, answering only from that postcode's sourced area data.
 4. **Pilot extras, wave 1** (founder's picks): questions to ask, broadband and mobile coverage, nearby sold prices, a "go and check in person" list.
-5. **Pilot extras, wave 2** (agent's proposal from the planned data, for the founder to trim): planning applications nearby, school inspection results, air quality, compare two postcodes.
+5. **Pilot extras, wave 2** (agent's proposal from the planned data, for the founder to trim): planning applications nearby, school inspection results, air quality, compare two postcodes. **Added on 13 Nov 2026** after research on a ChatGPT review ([research](../../reviews/2026-11-13-chatgpt-ideas-research.md); founder, typed: "present all the free ones that chatgpt suggested one and let us discuss the ones thta should go in and make us standout" [sic], then each in a prompt window):
+   - **Walking times and buses per hour** ("Pilot, wave 2 (Recommended)"): each nearby place shows its walking time along paths beside its straight-line distance, and each stop its timetabled buses per hour; worked out in a batch on our own machine with an open-source routing engine over OpenStreetMap paths and the Bus Open Data Service timetables. Needs DA-08 (walking-time routing).
+   - **School demand** ("Pilot, wave 2 (Recommended)"): first-preference applications and places offered per school, from DfE's applications and offers data, shown as past-year facts beside the inspection results, never as a chance of a place; no ratios are shown, and any derived figure comes from a tested module (rule 2).
+   - **Council tax by band** ("Pilot area check too", over the agent's recommendation of the home's monthly cost only): the council's charge per band from MHCLG's council tax levels table, labelled "Average for the council area, for a home with two adults, including an average of parish charges. Your bill can be higher or lower, depending on your parish and any discounts", with links to the council and a link to the VOA checker for the home's band; later also in the home's monthly cost through the cost engine.
+   - **Family view** ("Pilot, wave 2", over the agent's recommendation of the ideas list): childcare (Ofsted register: capacity, not vacancies; childminders not listed), schools, parks and playgrounds grouped together; facts only, never "suits a family".
+   - Each sits behind its own switch like the other extras, so launch never waits for it (builder check answer 3).
+   - **How they are shown** (founder, 13 Nov 2026): each topic is one summary line that opens a sheet on phone and a side panel on desktop (FE-20); the printout becomes a designed report (FE-21). Both are designed on the canvas before their specifications.
 6. Day-one safeguards for cost, abuse, privacy and accuracy, all in place before launch.
 7. **More pilot features with no personal data** (founder, 13 Nov 2026, asked in a prompt window, chose all four: "Explain-this buttons, Share a link, Recent postcodes (browser), Report a problem"):
    - **Explain this:** one tap per topic for a plain-language explanation of that source (0004's task AI), using the same AI rules as the chat; counts towards the daily AI cap and sits behind the same bot check and rate limits as the chat. Each topic's explanation is cached once written (an exact-match cache per topic and source version, 0025), so repeat taps cost nothing; `explain_source` in the MCP server returns only cached or pre-written text and never calls a model; every pilot topic's text is written and reviewed before launch, and if one is missing it returns "Explanation not yet available" with no text, never an empty or invented one (rule 7).
@@ -65,7 +71,7 @@ All three share one area-tools layer, so approach 2 adds launch-day risk, not ex
 ```
 area tools (Python, one package)
   find_postcode_area(postcode)         -> area codes, nation; "not yet covered" outside England
-  nearby_places(postcode, categories)  -> places with straight-line distance, source, date, label
+  nearby_places(postcode, categories)  -> places with straight-line distance (and walking time, wave 2), source, date, label
   area_topic(postcode, topic)          -> flood, crime counts, schools, transport, broadband, sold prices, ...
   explain_source(topic)                -> what the source says and doesn't establish
   questions_for_gaps(postcode)         -> ready questions from the gaps (wave 1 "questions to ask")
@@ -84,9 +90,11 @@ area tools (Python, one package)
 2. **AI-01 model provider and AI-04 framework,** brought forward from stage 6. AI-09's trial (Microsoft Agent Framework for Python against LangChain and LangGraph) would run first, or the pilot uses the simplest option and the trial follows.
 3. **IN-05 budget:** the monthly cap and the daily AI cap, in pounds (founder-only, running cost).
 4. **SE-02 parts 1 and 2:** the privacy notice covering chat, the provider and how long it keeps inputs, and the log rules.
-5. **DA-05 licences** for each wave 1 and wave 2 source, including whether each allows keyless, bulk-capable access through the public MCP server (0014 rate-limits partly because some licences require it) (Ofcom's API terms are unread and its mobile v1 API ends 30 Nov 2026; Price Paid limits address use to price display; Ofsted's licence is unverified).
+5. **DA-05 licences** for each wave 1 and wave 2 source, including whether each allows keyless, bulk-capable access through the public MCP server (0014 rate-limits partly because some licences require it) (Ofcom's API terms are unread and its mobile v1 API ends 30 Nov 2026; Price Paid limits address use to price display; Ofsted's licence is unverified). Wave 2's added sources: DfE applications and offers, the Ofsted childcare register and MHCLG council tax levels (OGL v3.0 on each publication), the Bus Open Data Service (free for commercial use on its guidance page; data licence unverified, the bus-data site returned 403), and walking times derived from OpenStreetMap (ODbL share-alike: a legal read before publishing them in bulk).
 6. **AI-03 evaluation set** for the chat and tools before launch (0025: evaluation first): a fixed set of questions, including attempts to get "is it safe", a score, a calculation or personal advice, each with the expected refusal or sourced answer.
 7. **Doc 04 §9:** stage 5b grows to include the AI pieces; the order inside 5b is planned in `writing-plans`.
+8. **DA-08 walking-time routing** for wave 2 (a separate line, so DA-06 stays "postcode only" as decision 0046 states): which open-source engine (OSRM, Valhalla or GraphHopper), batch or on demand, and where the batch runs (research: [2026-11-13](../../reviews/2026-11-13-chatgpt-ideas-research.md)).
+9. **The council tax charges table** is a tax table: its pull request is a founder merge (`AGENTS.md`, "When merging").
 
 ## Privacy rule changed (13 Nov 2026)
 0014 says the free public view makes "no AI calls per anonymous visitor". The founder, asked in a prompt window, chose "Allow with safeguards (Recommended)": for the pilot's chat and Explain this only, AI calls per anonymous visitor are allowed when the provider never trains on inputs and keeps them only briefly, nothing is stored by us, the disclaimer is shown and the privacy notice names the provider. Recorded in decision 0051; everything else in 0014 stands.
@@ -105,7 +113,7 @@ Founder, 13 Nov 2026: typed "I like the show wider should we default 5km for all
 
 - Nothing is shown as "none": beyond the limit the page says "No pharmacy found within 5 km", never "none" or zero (rule 7).
 - The landing hero's "+N more nearby" counts places within 5 km; the home workspace's Nearby follows the same distances.
-- Every distance is labelled "straight-line from the postcode centre".
+- Every distance is labelled "straight-line from the postcode centre". Where wave 2's walking time exists it is shown beside it, labelled "walk from the postcode centre"; where no route is found the page says so and keeps the straight-line distance, never zero (rule 7). Walking times are a calculated output (rule 2), from the same tested module as the distances.
 - The chosen widths live in the link's `#` part, like the postcode; the chat and the MCP tools take a radius up to the same 5 km cap and state it in every answer.
 - The map fits itself to the places shown; the list holds everything. The 400 m ring on the landing hero is an illustration, not this rule.
 

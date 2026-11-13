@@ -18,7 +18,8 @@ Feature: Nearby
     basic/paid boundaries -> NEAR-16
   Free and paid (doc 02 §8): the Nearby map and list with straight-line distances are free; routed
     travel times to the household's own destinations are paid (routing is a metered third-party
-    cost), so the prototype shows them only as a labelled, simulated boundary (NEAR-16).
+    cost), so the prototype shows them only as a labelled, simulated boundary (NEAR-16). Walking times
+    from the postcode centre to nearby places (a self-hosted batch, pilot wave 2, DA-08) are free.
 
   Scenario: NEAR-01 a failed crime lookup is not shown as no crime
     Then area record "R1-AREA-CRIME-2" has status "source-failed"
