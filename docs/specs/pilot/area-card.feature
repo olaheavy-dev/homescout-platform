@@ -20,6 +20,12 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     of our tool result instead.
   Tap a pin (founder, 13 Nov 2026: "Tap a pin for its name", FE-14): tapping a pin, or pressing Enter or
     Space on it, shows its name, distance and source.
+  Expand (founder, 13 Nov 2026: "Yes, Expand button", FE-16): the card in an answer is compact; an Expand
+    button opens a larger view of the same places (a dialog on desktop, full screen on a phone in our chat).
+    The widget asks the host for full screen with the MCP Apps ui/request-display-mode method
+    (https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx), only
+    when the host lists fullscreen in its availableDisplayModes; the host may refuse and returns the mode
+    in effect.
   Copy: quoted messages are proposed wording, finalised in the build.
   Required states (design docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md, "Isometric area card"
     and "Accuracy"; decision 0046's map rules; AGENTS.md rules 4 and 7):
@@ -29,6 +35,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     no network from load, nothing stored -> CARD-11, CARD-12
     hosts without widgets, no places, reduced motion -> CARD-13, CARD-14, CARD-15
     the widget's sandbox: names as text, messages only from the host, no tool calls, no secrets -> CARD-16 to CARD-19
+    Expand: the larger view, keyboard and focus, list rows, full screen in hosts that allow it -> CARD-21 to CARD-25
     no silent change between versions (screenshot test) -> CARD-20
 
   # fixture needed: #216
@@ -165,3 +172,35 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Given a saved screenshot of the card for a fixed sample result
     When the card is drawn again from the same result after a change to the code
     Then it matches the saved screenshot, or the difference is reviewed and the screenshot updated in the same pull request
+
+  # fixture needed: #216
+  @ui @mcp
+  Scenario: CARD-21 Expand opens a larger view of the same places
+    Given the compact card is drawn for a sample postcode
+    When the user chooses "Expand"
+    Then a larger view opens with every place at the same distance and bearing as on the compact card, and the same places in the list
+
+  @ui
+  Scenario: CARD-22 in our chat the expanded view is a dialog on desktop and full screen on a phone
+    Given the compact card is drawn in our chat
+    When the user chooses "Expand" on a 1280 px wide screen, and again on a 390 px wide screen
+    Then it opens as a dialog over the chat on the wide screen, and full screen on the phone, each with a "Close" button
+
+  @ui @mcp
+  Scenario: CARD-23 the expanded view works with the keyboard and returns focus
+    Given the compact card is drawn for a sample postcode
+    When the user reaches "Expand" with Tab, opens it with Enter, then presses Escape
+    Then the view opens with focus inside it, Escape closes it, and focus returns to the "Expand" button
+
+  # fixture needed: #216
+  @ui @mcp
+  Scenario: CARD-24 choosing a row in the expanded list selects its pin
+    Given the expanded view is open for a sample postcode
+    When the user chooses a place in the list
+    Then that place's pin is selected on the map, and its name, distance and source with its date are shown, the same as a tap
+
+  @mcp
+  Scenario: CARD-25 the widget asks for full screen only where the host allows it
+    Given the widget is drawn in a host
+    When the user chooses "Expand"
+    Then the widget requests full screen only if the host lists it as an available display mode, and if the host refuses or does not list it, the card stays compact with nothing lost and no error shown
