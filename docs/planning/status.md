@@ -1,6 +1,6 @@
 # Status
 
-Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 2026**.
+Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 2026**.
 
 ## Where we are
 - **Stage 3** (prototype specification) is open; its gate is issue #71. Stage 4's frontend foundation is decided: [0048](../decisions/0048-frontend-foundation.md), amended by [0049](../decisions/0049-back-to-python-final.md) (the frontend starts from the founder's Next.js template).
@@ -54,6 +54,7 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | To-do | Why | How | When |
 |---|---|---|---|
 | Approve the two documentation MCP servers (Microsoft Learn, Context7) | Agents read current official documentation instead of memory (WW-15) | Accept them when Claude Code asks at the start of an interactive session in this project | Next session |
+| Finish the trade-mark clearance (PD-09) | Your name search was clean (13 Nov 2026); decision 0044 also asks for classes 9, 36, 42 and 45, EUIPO and WIPO, the "Contour home" mark and a fresh Companies House check | Tell the agent which register and classes you searched, check the mark, then accept PD-09 | Before the public area check (stage 5b) |
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
