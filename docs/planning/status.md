@@ -46,12 +46,13 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 - None.
 
 ## Next, in order
-Corrected on 13 Nov 2026: the gate (#71) depends on #68, #69 and #70, which were still open.
+On 13 Nov 2026 the founder put the pilot first (decisions 0051 and 0052); the design canvas has a "Pilot · public area check" page for reviewing it.
 1. **The pilot's specifications first** (founder, 13 Nov 2026: "Pilot specs first (Recommended)"; design `docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md`, decision 0051): the area chat panel, the ChatGPT and Claude area tools with the isometric area card, the wave 1 and wave 2 extras, Explain this, Share a link, Recent postcodes, Report a problem, the public pages (How it works, About the data, privacy notice, accessibility statement), the printout update and the AI evaluation set. Each as a screen specification, with a canvas board where it is a screen.
-2. **#68, the remaining screen specifications**, in three pull requests in the stage 5 build order (decision 0046; design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`): the area screens merged as #217 (13 Nov 2026, closing #67); next, home and money (identity confirmation, home overview, costs, compare, what changed), then questions and sharing.
-3. **#69 and #70, the buyer and renter story scripts.**
-4. **The stage 3 gate (#71).**
-5. **#86, the app shell**, built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
+2. **The pilot gate, then the pilot's development tickets** (decision 0052, founder, 13 Nov 2026: "Pilot-only gate (Recommended)"): the gate checks only the pilot's specifications; then one ticket per buildable slice, starting with the stage 5b decisions (0046) and the app shell (#86).
+3. **Later, before the home workspace: #68, the remaining screen specifications** (paused after part 1; the resume point is on #68), in three pull requests in the stage 5 build order (decision 0046; design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`): the area screens merged as #217 (13 Nov 2026, closing #67); next, home and money (identity confirmation, home overview, costs, compare, what changed), then questions and sharing.
+4. **#69 and #70, the buyer and renter story scripts.**
+5. **The full stage 3 gate (#71).**
+6. **The home workspace build:** after the app shell (#86), built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
 
 ## Blockers
 - None.
@@ -64,6 +65,7 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | Approve the two documentation MCP servers (Microsoft Learn, Context7) | Agents read current official documentation instead of memory (WW-15) | Accept them when Claude Code asks at the start of an interactive session in this project | Next session |
 | Finish the trade-mark clearance (PD-09) | Your name search was clean, and you kept the new logo (Lit doorway, D1) after its UK screen: "i think it is unique enough" (13 Nov 2026); still open: which register and classes the name search covered, EUIPO and WIPO for the name and the logo, the logo's international registrations that have no pictures on the IPO site, a light-rays picture code, and a fresh Companies House check (decision 0044) | Finish those checks (or ask an attorney about UK00004266938), then accept PD-09 | Before the public area check (stage 5b) |
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
+| Set the pilot's budget caps (IN-05) | The pilot has running costs and an on-page AI chat (decision 0051); a monthly cap and a daily AI cap must be set before launch | Decide the two amounts in pounds when the agent asks at stage 5b | Before the pilot launches |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
 ## Open `noticed` issues

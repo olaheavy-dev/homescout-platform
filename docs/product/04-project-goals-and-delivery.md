@@ -20,7 +20,7 @@ When they conflict: **never trade away commercial cleanliness** (licences, priva
 The product is **built mostly by AI coding agents**, with you as product owner, architect and reviewer. It does not mean the product runs on a multi-agent system.
 
 - **In the build:** agents write most of the code, tests, infrastructure and documentation, working from the specs in this folder. Opus 5.5 plans and reviews (including a fresh-context review before every push); Sonnet 5.5 builds and verifies; OpenAI Codex reviews every pull request (except small dependency updates) as an independent second opinion (decision 0035, rules in `AGENTS.md`). You set direction and own decisions, merge founder-only pull requests, and review routine changes by exception.
-- **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools, **plus an optional, closable chat panel about the current home** (decision 0004). The chat cites evidence or says it doesn't know, uses the cost engine for any number, and needs its own scripted sample replies in the prototype and its own evaluation set later. All numbers come from deterministic code. Microsoft Agent Framework is the AI framework (decision 0023): single agents for tasks and chat, and a workflow with a human approval step for document investigation. Calculations stay in plain code.
+- **In the product:** behaviour stays mostly deterministic. AI is used inside specific tasks (document extraction, drafting a question, checking a reply, explaining a change) as single, task-specific model calls with tools, **plus an optional, closable chat panel about the current home** (decision 0004; on the public pilot, about the current area, decision 0051). The chat cites evidence or says it doesn't know, uses the cost engine for any number, and needs its own scripted sample replies in the prototype and its own evaluation set later. All numbers come from deterministic code. Microsoft Agent Framework is the AI framework (decision 0023): single agents for tasks and chat, and a workflow with a human approval step for document investigation. Calculations stay in plain code.
 
 This is also the stronger portfolio story: "AI-assisted engineering with rigorous verification" is more credible to a reviewer than "a dashboard of agents."
 
@@ -199,6 +199,8 @@ Build in vertical slices, each one deployed to the private preview:
 **Gate:** both stories run end to end on the private prototype, every input comes from the fixture files and every calculated number from the cost engine's generated files, and the accessibility checks pass.
 
 ### Stage 5b: Public area check (decision 0046)
+
+Order changed on 13 Nov 2026 (decision 0052): the pilot passes its own gate on its specifications alone and is built before the home workspace; #68's remaining screens, the story scripts and the full stage 3 gate follow before the home workspace.
 
 The first public release: a free postcode check of what is around a home, with no accounts.
 

@@ -1,7 +1,7 @@
 # 0014: Privacy and data protection
 
 **ID:** SE-02  
-**Status:** Proposed. The starting position below was agreed by the founder on 23 October 2026; the decision is completed in three parts: **visitor data, before the first public deployment** (stage 5, the clickable prototype); **public-record data and logs, before any real data is loaded** (stage 6, step 4); and **the full decision, before the questions workflow** (stage 6, step 5).  
+**Status:** Proposed (partly superseded by [0051](0051-ai-in-the-public-pilot.md): "no AI calls per anonymous visitor" is replaced, for the pilot's chat and Explain this only, by its safeguards). The starting position below was agreed by the founder on 23 October 2026; the decision is completed in three parts: **visitor data, before the first public deployment** (stage 5, the clickable prototype); **public-record data and logs, before any real data is loaded** (stage 6, step 4); and **the full decision, before the questions workflow** (stage 6, step 5).  
 **Date:** 2026-10-23  
 **Stage:** 5 (part 1), 6 step 4 (part 2), 6 step 5 (full decision)  
 **Timing changed by [0046](0046-public-area-check-first.md) (11 Nov 2026):** parts 1 and 2 are now settled before the public area check (stage 5b), because that is the first public deployment and the first time real searches and real public data are handled. The prototype itself stays private (0045).
