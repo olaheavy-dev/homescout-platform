@@ -7,7 +7,14 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 - **Backend: Python, final** ([0049](../decisions/0049-back-to-python-final.md)). The port is complete and .NET is gone: every C# test and worked case has a Python counterpart ([port ledger](python-port-ledger.md)), and `costs.json` stayed byte-identical throughout.
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
-- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66), and the landing hero's Northbridge sample map with recognisable buildings (version 70); the founder on the drawings: "IT LOOKS VERY GOOD TO ME". The new brand mark, Lit doorway D1 · Ruled light, is on the board "Brand mark · exploration" (versions 68 and 69; PD-09).
+- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66; the founder, before the hero was redone: "CAN YOU NOT CHECK THE CANVAS YOURSELF, IT LOOKS VERY GOOD TO ME"), and the landing hero's Northbridge sample map with recognisable buildings (version 70, awaiting the founder's look). The new brand mark, Lit doorway D1 · Ruled light, is on the board "Brand mark · exploration" (versions 68 and 69; PD-09).
+
+## Done on 13 Nov 2026
+| Pull request | What merged |
+|---|---|
+| #215 | The Vestagraph domains (register line IN-06) |
+| #217 | #68 part 1: area screen specifications (Landing, Nearby, Check an area); closes #67 |
+| #218 | Isometric illustration style (FE-10), canvas freeze lifted, image terms and trade-mark search recorded |
 
 ## Done on 12 Nov 2026
 | Pull request | What merged |
@@ -40,7 +47,7 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 
 ## Next, in order
 Corrected on 13 Nov 2026: the gate (#71) depends on #68, #69 and #70, which were still open.
-1. **#68, the screen specifications**, in three pull requests in the stage 5 build order (decision 0046): the area screens (Landing, Nearby, Check an area), then home and money, then questions and sharing (design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`). #67 closes with the first.
+1. **#68, the screen specifications**, in three pull requests in the stage 5 build order (decision 0046; design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`): the area screens merged as #217 (13 Nov 2026, closing #67); next, home and money (identity confirmation, home overview, costs, compare, what changed), then questions and sharing.
 2. **#69 and #70, the buyer and renter story scripts.**
 3. **The stage 3 gate (#71).**
 4. **#86, the app shell**, built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
@@ -54,7 +61,7 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | To-do | Why | How | When |
 |---|---|---|---|
 | Approve the two documentation MCP servers (Microsoft Learn, Context7) | Agents read current official documentation instead of memory (WW-15) | Accept them when Claude Code asks at the start of an interactive session in this project | Next session |
-| Finish the trade-mark clearance (PD-09) | Your name search was clean, and you kept the new logo (Lit doorway, D1) after its UK screen: "i think it is unique enough" (13 Nov 2026); still open: which register and classes the name search covered, EUIPO and WIPO for the name and the logo, and a fresh Companies House check (decision 0044) | Finish those checks (or ask an attorney about UK00004266938), then accept PD-09 | Before the public area check (stage 5b) |
+| Finish the trade-mark clearance (PD-09) | Your name search was clean, and you kept the new logo (Lit doorway, D1) after its UK screen: "i think it is unique enough" (13 Nov 2026); still open: which register and classes the name search covered, EUIPO and WIPO for the name and the logo, the logo's international registrations that have no pictures on the IPO site, a light-rays picture code, and a fresh Companies House check (decision 0044) | Finish those checks (or ask an attorney about UK00004266938), then accept PD-09 | Before the public area check (stage 5b) |
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
