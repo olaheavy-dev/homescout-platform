@@ -39,8 +39,11 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 - None.
 
 ## Next, in order
-1. **The stage 3 gate (#71).**
-2. **#86, the app shell**, built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
+Corrected on 13 Nov 2026: the gate (#71) depends on #68, #69 and #70, which were still open.
+1. **#68, the screen specifications**, in three pull requests in the stage 5 build order (decision 0046): the area screens (Landing, Nearby, Check an area), then home and money, then questions and sharing (design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`). #67 closes with the first.
+2. **#69 and #70, the buyer and renter story scripts.**
+3. **The stage 3 gate (#71).**
+4. **#86, the app shell**, built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
 
 ## Blockers
 - None.
