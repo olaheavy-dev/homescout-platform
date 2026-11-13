@@ -43,6 +43,7 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
     the 5 km cap on every radius; bad radius or category refused -> TOOLS-07, TOOLS-30, TOOLS-31
     topics with level; Unavailable; Old; crime at 1 mile; sold prices as single sales, capped per call -> TOOLS-08 to TOOLS-12, TOOLS-35
     places of worship never scored (PD-13) -> TOOLS-40
+    nearby places listed nearest first, with the total within the radius -> TOOLS-42
     explanations and questions with no AI call -> TOOLS-13, TOOLS-14, TOOLS-15
     read-only (with read-only hints), no key, rules in every description, disclaimer with privacy link, attribution, data not instructions -> TOOLS-16 to TOOLS-21
     stored copies only; sources whose licence forbids keyless access not served -> TOOLS-22, TOOLS-36
@@ -310,3 +311,10 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
     Given an assistant is connected to the area tools
     When it calls the nearby places tool and the area topic tool with the postcode of home "WALES-1"
     Then each result says "not yet covered" for that nation and holds no places or values
+
+  # fixture needed: #216
+  @mcp
+  Scenario: TOOLS-42 nearby places come nearest first, with the total within the radius
+    Given an assistant is connected to the area tools
+    When it calls the nearby places tool for a sample postcode with more places than it returns at once
+    Then the places are listed nearest first, and the result states the total number of places within the radius
