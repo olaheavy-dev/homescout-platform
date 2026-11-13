@@ -90,6 +90,7 @@
   - an account menu (settings, theme, plan, sign out);
   - a "Sample data" label on every example screen;
   - **Ask about this home**, a contextual entry inside a home (sheet or side panel).
+  - **Ask about this area** (pilot, decision 0051), on Check an area and the landing result: an optional, closable panel (side panel on desktop, bottom sheet on a phone) with an "AI" badge on the entry (FE-13); spec `docs/specs/pilot/area-chat.feature`.
 - **Mobile navigation:**
   - **App level:** bottom tabs **My move · Homes · Compare**, plus a floating **Check a home** action.
   - **Inside a home:** a compact home header and a bottom bar of **Overview · Nearby · Costs · Questions**. A labelled **More** menu holds Viewings (one tap away during a visit), Documents and Activity (doc 03 §3).
@@ -250,6 +251,7 @@ In the private prototype the landing can also link the two example homes; the pu
 | Demo story control | Example story · Demo | Never "simulation" in product copy |
 | Sample data marker | Sample data | Everywhere fixtures are shown |
 | Assistant entry | Ask about this home | No "Copilot", no "AI" badge |
+| Area assistant entry (pilot) | Ask about this area | "AI" badge on the entry and "Answers are written by AI from the sources below" in the header (FE-13); no "Copilot" |
 | Paid tier (simulated) | Move pass | A labelled hypothesis, doc 02 §8 |
 | Forbidden labels | — | Never "verified", "safe", "approved", scores or "best" (rule 4) |
 

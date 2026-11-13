@@ -160,4 +160,4 @@ A fresh reviewer read this design as its builder. Its questions, settled:
 8. **Questions to ask (agent's call).** `questions_for_gaps` is rule-based templates built from each gap, with no AI model, so MCP calls cost no AI money.
 
 ## Left to the builder
-An "Ask about this area" entry in the information architecture (`.design/prototype/INFORMATION_ARCHITECTURE.md`, which has only "Ask about this home"), added by the pilot specs; tool names and exact signatures, prompt wording within the rules above, the chat panel's layout (an optional, closable panel per 0004), widget design, rate-limit numbers within the caps, and which wave 2 extras fit before launch.
+An "Ask about this area" entry in the information architecture (`.design/prototype/INFORMATION_ARCHITECTURE.md`, which had only "Ask about this home"), added by the pilot specs (done in #223, with the AI badge of FE-13); tool names and exact signatures, prompt wording within the rules above, the chat panel's layout (an optional, closable panel per 0004), widget design, rate-limit numbers within the caps, and which wave 2 extras fit before launch.
