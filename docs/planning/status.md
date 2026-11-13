@@ -1,13 +1,13 @@
 # Status
 
-Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 2026**.
+Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 2026**.
 
 ## Where we are
 - **Stage 3** (prototype specification) is open; its gate is issue #71. Stage 4's frontend foundation is decided: [0048](../decisions/0048-frontend-foundation.md), amended by [0049](../decisions/0049-back-to-python-final.md) (the frontend starts from the founder's Next.js template).
 - **Backend: Python, final** ([0049](../decisions/0049-back-to-python-final.md)). The port is complete and .NET is gone: every C# test and worked case has a Python counterpart ([port ledger](python-port-ledger.md)), and `costs.json` stayed byte-identical throughout.
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
-- Design canvas and new ideas are frozen until something is clickable (founder, 11 Nov 2026).
+- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66); the landing hero's Northbridge sample map is still to do, and the founder is reviewing the new drawings.
 
 ## Done on 12 Nov 2026
 | Pull request | What merged |
@@ -54,8 +54,7 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | To-do | Why | How | When |
 |---|---|---|---|
 | Approve the two documentation MCP servers (Microsoft Learn, Context7) | Agents read current official documentation instead of memory (WW-15) | Accept them when Claude Code asks at the start of an interactive session in this project | Next session |
-| Check the OpenAI image policy | Carried over from earlier sessions: any AI-made image used on the public site must be allowed by the provider's terms | Read OpenAI's current usage and image terms; tell the agent what you find so it is recorded | Before stage 5b |
-| Trade-mark clearance for "Vestagraph" | The public name (0044, PD-09) must be safe to use | A UK IPO search, or a professional clearance; PD-09 stays Open until done | Before the public area check (stage 5b) |
+| Finish the trade-mark clearance (PD-09) | Your name search was clean (13 Nov 2026); decision 0044 also asks for classes 9, 36, 42 and 45, EUIPO and WIPO, the "Contour home" mark and a fresh Companies House check | Tell the agent which register and classes you searched, check the mark, then accept PD-09 | Before the public area check (stage 5b) |
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
