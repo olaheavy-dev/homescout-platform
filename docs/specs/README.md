@@ -33,6 +33,8 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
 
    Until their stage, `@ui` and `@mcp` scenarios are excluded by tag, never deleted.
 
+   A scenario tagged both `@ui` and `@mcp` describes a behaviour with two versions (for example the area card, register line FE-15) and runs once in each suite, against that suite's version.
+
 ## Running the specifications
 - `make test` (and so `make check` and CI) runs every scenario that is **not** tagged `@ui`, `@mcp` or `@withdrawn`. A scenario that cites an ID missing from `packages/fixtures/generated/costs.json` or `packages/fixtures/data/` fails with a message naming the ID.
 - To run only the specifications (pytest-bdd, decision 0049 step P6; it replaced the Reqnroll runner in P8): `uv run --locked pytest packages/specs/tests -m "not ui and not mcp and not withdrawn"`. Each tag is a registered pytest marker (`pyproject.toml`; an unregistered tag fails), so `-m screen` runs one tag, and the test name starts with the scenario ID. `-k` matches substrings, case-insensitively: `-k COSTS-0` picks all three COSTS scenarios, so for exactly one use `-k "COSTS-02_"` (trailing underscore) or the full node ID, `packages/specs/tests/test_specs_scenarios.py::test_COSTS-02_missing_buildings_insurance_is_not_shown_as_zero`. The steps are in `packages/specs/tests/specs_steps.py` and `specs_support.py`. The `.feature` files are loaded from this folder in place; nothing is copied. A new tag must be added to `markers` in `pyproject.toml`.
