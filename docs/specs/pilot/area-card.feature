@@ -31,6 +31,10 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     place as a selectable row; the compact card holds the map, Expand and the list of places.
   The expanded view keeps every guarantee of CARD-11, CARD-12 and CARD-16 to CARD-19; its only message to
     the host is the display-mode request.
+  Phone chat preview (founder, 13 Nov 2026, prompt window: "Preview + Open map", FE-18): in our chat on a
+    phone the card is a preview, not a squeezed map: a small map strip with only the postcode centre, the
+    number of places and the nearest one, and a full-width "Open map" button (the phone's Expand) that opens
+    the full-screen view; the list of places with their icons stays in the answer.
   Icons (founder, 13 Nov 2026, typed: "we need to make sure icon logos are beside the text", FE-17): every
     place in a list, and the selected place, shows its category icon beside its name, the same icon as its pin.
   Copy: quoted messages are proposed wording, finalised in the build.
@@ -47,6 +51,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     full screen in hosts that allow it, leaving it, and no Expand where it can't work -> CARD-25, CARD-26, CARD-29
     an icon beside every place name, matching its pin -> CARD-30
     on a phone, a closer expanded map that moves by dragging, by choosing a place or by Tab, and zooms, with every place still listed -> CARD-31 to CARD-35
+    in the phone chat, a preview with Open map instead of a squeezed map -> CARD-36, CARD-37, CARD-38
 
   # fixture needed: #216
   @ui @mcp
@@ -280,3 +285,23 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Given the expanded map is open on a 390 px wide screen and one place is outside the visible part
     When the map is shown
     Then that place is not labelled "off the map", and it is reachable by dragging, by its list row or by Tab
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-36 in the phone chat the card is a preview, not a squeezed map
+    Given an answer about nearby places in our chat on a 390 px wide screen
+    When the answer is shown
+    Then the card shows a map strip with only the postcode centre, no place pins or place labels, and a full-width "Open map" button
+
+  # fixture needed: #216
+  @ui
+  Scenario: CARD-37 the preview's count and nearest place come from the tool result
+    Given an answer about nearby places in our chat on a 390 px wide screen
+    When the preview is shown
+    Then "<n> places within <radius>" uses the number of places in the nearby places result, and "Nearest:" names its first place with that place's listed distance
+
+  @ui
+  Scenario: CARD-38 Open map opens the full-screen view
+    Given the preview is shown in our chat on a 390 px wide screen
+    When the user chooses "Open map"
+    Then the expanded view opens full screen (CARD-31), and Close returns focus to "Open map"
