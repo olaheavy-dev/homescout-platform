@@ -1,0 +1,76 @@
+@screen @buying @renting
+Feature: Landing
+  Question it answers: "What can this help me do?"
+  Modes: both (and anyone, with no account; decision 0046)
+  Fixtures: the postcode-level sample area data for the hero is not in the fixtures yet
+    (fixture needed: #216); inputs: none yet; figures: none.
+  Route: / (the landing is the area check: the postcode box is the main action; decision 0046).
+  Sections, in order, from the information architecture's "Landing": the promise with the postcode
+    box; the hero map; Data from (the source wall); How it works; How to read a result; Honest by
+    design; Coming next, with a free account; Questions; the footer.
+  Required states (doc 03 §5): none of the listed states belongs to the landing. Its postcode box
+    hands over to Check an area (14-check-an-area.feature), which holds the loading, invalid,
+    not found, source failed and outside England states.
+  Free and paid: the area check is free and needs no account. Account features (cost estimate,
+    compare, questions) are described only as "Coming next … not available yet" (LAND-05; decision 0046).
+
+  @ui
+  Scenario: LAND-01 the postcode box is the main action
+    Given the user is not signed in
+    When the user opens the landing page
+    Then the first action is a field with a persistent "Postcode" label, hint text under it and a "Check postcode" button
+
+  @ui
+  Scenario: LAND-02 the landing says it covers England only
+    Given the user is not signed in
+    When the user opens the landing page
+    Then "England only for now" is shown under the postcode box
+
+  @ui
+  Scenario: LAND-03 checking a postcode opens Check an area with the postcode in the fragment
+    Given the user is on the landing page
+    When the user checks a complete postcode
+    Then Check an area opens with the postcode after "#postcode=", and the query string holds no postcode
+
+  @ui
+  Scenario: LAND-04 the example opens the sample area
+    Given the user is on the landing page
+    When the user chooses "Try an example"
+    Then Check an area opens on the sample postcode, labelled "Sample data"
+
+  @ui
+  Scenario: LAND-05 account features are described, never offered
+    Given the user is not signed in
+    When the user opens the landing page
+    Then the cost estimate, compare and questions appear only in a "Coming next" panel labelled "not available yet", with no active control
+
+  # fixture needed: #216 (the hero's nearest places, distances and "+N more nearby" count)
+  @ui
+  Scenario: LAND-06 the hero's places come from the sample data
+    Given the user is not signed in
+    When the user opens the landing page
+    Then the hero summary card's four nearest places, their distances and the "+N more nearby" count come from the postcode-level sample data, and the pin is labelled "Postcode centre"
+
+  @ui
+  Scenario: LAND-07 the hero map is a static image
+    Given the user is not signed in
+    When the user opens the landing page
+    Then the hero map is a static image, and the live map library is not loaded
+
+  @ui
+  Scenario: LAND-08 the source wall names each source and links About the data
+    Given the user is not signed in
+    When the user opens the landing page
+    Then each "Data from" card shows a source's name, what it covers and what it can't tell you, with no logo, and links to About the data
+
+  @ui
+  Scenario: LAND-09 the example result is labelled as a sample
+    Given the user is not signed in
+    When the user opens the landing page
+    Then the Schools card in "How to read a result" is labelled "Sample"
+
+  @ui
+  Scenario: LAND-10 the landing never calls an area or home safe
+    Given the user is not signed in
+    When the user opens the landing page
+    Then no text calls an area or a home "safe", "verified" or "approved" (AGENTS.md rule 4)
