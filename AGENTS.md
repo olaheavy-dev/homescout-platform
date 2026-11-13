@@ -85,6 +85,7 @@ Haiku may do clearly mechanical subtasks (renaming across files, reformatting a 
 - **Run `make check` before pushing.** It runs every automated check the same way as CI, the same checks in the same order (Python only: mypy, ruff, the generated-file check, the fixture validator, pytest).
 - **Map criteria to tests:** before the pre-push review, name the test (file and test name) that proves each acceptance criterion and edge case. A criterion with no test is a gap to fix.
 - **Pre-push review:** before pushing, run a fresh-context Opus review using "Code Review Rules" below, with `code-security-reviewer` (and `visual-reviewer` for UI changes), and fix its findings first.
+- **Keep the handover current:** any pull request that changes what is done, open or next, a decision, a plan or the backlog updates `docs/planning/status.md` in the same pull request (agent-workflows house rules v0.6.0, founder: "Habit only").
 - **End of session:** overwrite `docs/planning/status.md` with open pull requests, next steps, blockers and the founder's to-dos (decision 0050).
 - Ask the founder before installing packages not on the pre-approved list, changing infrastructure, cloud resources or repository settings. Never push to `main`.
 - **Agent permissions:** the first code pull request adds Claude Code project settings with an allow-list for safe read, build and test commands; installing packages, infrastructure and repository-setting changes need approval; pushing to `main` is denied, and only a push of one feature branch to the same-named remote branch (`feat/`, `fix/`, `docs/`, `chore/`, `test/`, `refactor/`) runs without asking; refspecs with `:` and pushes naming several branches are denied. These rules are a convenience guard, not a security boundary: GitHub branch protection on `main` is the real guard.
@@ -108,6 +109,7 @@ Check in priority order:
 3. **Spec match:** does the change meet the plan's acceptance criteria, including mobile, keyboard access and edge states?
 4. **Tests:** are the important cases covered, especially numbers and edge states?
 5. **Clarity:** could the founder understand and maintain this? Flag unnecessary complexity.
+6. **Handover:** a pull request that changes what is done, open or next, a decision, a plan or the backlog without updating `docs/planning/status.md` is a P2 finding, always fixed in the same pull request.
 
 How to report:
 - Most serious findings first. For each: file and line, what's wrong, a concrete example of the failure, and a suggested fix.
