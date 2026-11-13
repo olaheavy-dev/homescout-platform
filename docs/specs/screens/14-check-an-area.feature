@@ -5,10 +5,13 @@ Feature: Check an area
   Fixtures: home WALES-1 (outside England); inputs: area record "WALES-1-AREA-SCHOOL-1";
     the postcode-level sample area data is not in the fixtures yet (fixture needed: #216); figures: none.
   Route: /area#postcode=… (the postcode lives in the URL fragment, never the query string, so it
-    never reaches a server, application or hosting log; decisions 0014 and 0046).
+    never reaches a server, application or hosting log of ours; decisions 0014 and 0046). The one
+    exception is an outbound link the visitor clicks, which may carry the postcode to that site and
+    says so (register line FE-11).
   Reuses the Nearby topic summary and topic details (04-nearby.feature), without the commute row.
   Required states (doc 03 §5, the information architecture's "Check an area" and AGENTS.md rule 7):
     the postcode never reaches a log (decisions 0014, 0046) -> AREA-03, AREA-15
+    an outbound link says where it goes and whether it carries the postcode (FE-11) -> AREA-18
     loading -> AREA-06
     invalid format -> AREA-04
     postcode not found, never shown as empty topics -> AREA-05
@@ -117,4 +120,11 @@ Feature: Check an area
   Scenario: AREA-15 no request carries the postcode in its address
     Given the user is on Check an area
     When the user checks a complete postcode
-    Then no request the page makes carries the postcode in its URL path or query string
+    Then no request the page makes by itself carries the postcode in its URL path or query string
+
+  @ui
+  Scenario: AREA-18 an outbound link says where it goes and that it carries the postcode
+    Given the user is on Check an area
+    When the user checks a complete postcode
+    Then each outbound link that carries the postcode names its site and says that site will see the postcode
+    And no outbound link sends a referrer, and nothing is sent until the user clicks it

@@ -1,6 +1,6 @@
 # Pilot release: area check with AI on the page and in ChatGPT and Claude — design
 
-**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later prompt-window answers (goal 7, the isometric card, the 0014 change)
+**Date:** 13 Nov 2026 · **Stage:** 5b (the public area check, decision 0046) · **Status:** approved by the founder, 13 Nov 2026 ("Approve (Recommended)"); extended after approval by the founder's later answers (goal 7, the isometric card, the 0014 change, search distances, outbound links); the Accuracy section and the country-aware data contract are the agent's proposals in answer to the founder's questions, awaiting the founder's review
 
 ## Intent
 The pilot (stage 5b) is Vestagraph's first public release: anyone types a postcode and sees what is around it, with sources and limits, no account and no personal details collected (0046). The founder wants the pilot to also offer AI in two places from day one:
@@ -90,6 +90,63 @@ area tools (Python, one package)
 
 ## Privacy rule changed (13 Nov 2026)
 0014 says the free public view makes "no AI calls per anonymous visitor". The founder, asked in a prompt window, chose "Allow with safeguards (Recommended)": for the pilot's chat and Explain this only, AI calls per anonymous visitor are allowed when the provider never trains on inputs and keeps them only briefly, nothing is stored by us, the disclaimer is shown and the privacy notice names the provider. Recorded in decision 0051; everything else in 0014 stands.
+
+## How it differs from Google Maps
+The founder asked, typed: "how is this different from Google maps? just validating". Google Maps is better at finding places, opening hours, reviews, directions and Street View, and the pilot does not compete there: it links out (below). The pilot leads with what Google Maps doesn't show: official public records (recorded crime counts, flood warnings, school inspections, sold prices, planning applications), every fact with its source, date and limits, gaps said out loud, questions to ask and a check-in-person list, AI that cites or says "not known", and no tracking, account or ads. Nearby places are context, not the headline.
+
+## Search distances
+Founder, 13 Nov 2026: typed "I like the show wider should we default 5km for all the topics, lets discuss?", then, in a prompt window, "Yes, this split (Recommended)":
+| Topic | Default | Wider |
+|---|---|---|
+| Nearest places (shops, pharmacy, GP, parks, bus stops, stations, schools) | Look up to 5 km; show the nearest few, each with its distance | "Show more" lists more places, not a wider area |
+| Sold prices, planning applications | 500 m | "Show wider" up to 5 km, the radius stated beside the results |
+| Crime counts | 1 mile, matching police.uk's own street-level search ("within a 1 mile radius of a single point", [data.police.uk](https://data.police.uk/docs/method/crime-street/)) | Kept fixed in the pilot so counts compare with police.uk, and because crime locations are approximate; the page says so. The source also accepts a custom area, so widening is possible later |
+| Flood, broadband, air quality | The postcode itself | — |
+
+- Nothing is shown as "none": beyond the limit the page says "No pharmacy found within 5 km", never "none" or zero (rule 7).
+- The landing hero's "+N more nearby" counts places within 5 km; the home workspace's Nearby follows the same distances.
+- Every distance is labelled "straight-line from the postcode centre".
+- The chosen widths live in the link's `#` part, like the postcode; the chat and the MCP tools take a radius up to the same 5 km cap and state it in every answer.
+- The map fits itself to the places shown; the list holds everything. The 400 m ring on the landing hero is an illustration, not this rule.
+
+## Outbound links
+Founder, 13 Nov 2026: typed "yes add the Google Maps link"; then, in prompt windows, the link groups "Official checks, School and health pages, Local council, Travel" and, for the postcode, "Any site that accepts it" (the agent had recommended official sites only).
+- **Google Maps:** directions and the place itself, beside each place.
+- **Official checks:** the GOV.UK long-term flood risk checker, find an energy certificate, check a council tax band, the police.uk neighbourhood team, the Coal Authority map. These cover what the pilot cannot show itself (licences or exact-address limits).
+- **School and health pages:** each school's Ofsted report and register page; each GP's or pharmacy's NHS page.
+- **Local council:** the council's website and planning search for the postcode's area.
+- **Travel:** National Rail journey planner from the nearest station.
+
+Rules for every link:
+- The link names where it goes and, when it carries the postcode, says so ("Opens Google Maps · Google will see this postcode").
+- Nothing is sent until the visitor clicks; links use `rel="noreferrer"`, and the site sends a `Referrer-Policy` header too. (Browsers never send the `#` part of a link in the referrer anyway, so the page's own postcode doesn't leak that way; this is extra protection.)
+- The postcode never reaches our own logs (0014); the privacy notice says which linked sites receive it when clicked (0014, "Still to decide"). Scenario AREA-18 covers the label and the referrer; AREA-15 covers requests the page makes by itself.
+- A link is never a fact: the page never says what the linked site will show.
+
+## Accuracy
+The founder asked, typed: "how do we ensure that the 3d representation and our facts are very very accurate". Agent's proposal, part of this design:
+
+**Facts**
+1. Nothing typed by hand: every value comes from a stored, cited source with its date (official records, or OpenStreetMap for places) (rule 2); the fixtures are the only test data.
+2. Tested distance maths: straight-line distance (and its display in metres or kilometres) is a calculated output, so rule 2 applies to it: one deterministic geometry module in the area tools package, written test-first with independent worked examples, from the postcode centre; the result is stored with the area result, and screens and AI only quote it. Nearby's "never calculated figures" means the UI and AI never calculate.
+3. Source-change alarms: each adapter has a contract test that fails when a source changes its format, run nightly and advisory, outside the merge gate, a failure opening an issue (0029); a stale source is labelled "Old", never shown as current (0029).
+4. Spot checks: a fixed set of postcodes is compared with the official sites on a schedule, by hand first and by script where the site allows; "Report a problem" adds a signal.
+5. AI cannot invent numbers: every number in a chat answer must appear in the tool results it was given, or the answer is rejected; the evaluation set tests attempts to make it guess.
+
+**The 3D map and the area card**
+1. Drawn only from data: positions from coordinates at one fixed scale, never placed by hand.
+2. A map-matches-list test: every listed place is drawn at its listed distance within 2%, in list order, or named "off the map" (the check that caught the canvas maps' mismatch on 13 Nov 2026).
+3. Honest labels: building heights "approximate"; no flood or crime shading (0046); the list is the source of truth and the accessible version.
+4. Screenshot tests catch a map that changes silently between versions.
+
+## Countries support different things
+The founder, typed: "this should inform us on how to set up our model as different countries will support different things". England is the only country at launch ("keep it out of the pilot"), but the pilot's data contract (DA-03, BE-02) is built so that adding a country is a data job, not a rewrite:
+- **A coverage registry:** for each country (and region where it varies), which topics exist, the source for each, its licence and its geographic level. Screens and tools read the topic list from it, never from a hard-coded list.
+- **A location scheme per country:** the UK postcode now; others later (for example Nigeria's 11-character building-level NIPOST code), each with its own format check and privacy rule.
+- **Every topic answer carries its geographic level** (street, council area, state), so a coarse figure is never shown as if it described the street.
+- **A privacy profile per country:** which notice applies and what may be stored.
+- Units, currency and language come from the country entry.
+Research on Nigeria is in `docs/product/05-ideas-and-product-thinking.md`.
 
 ## Answers to the builder check (13 Nov 2026)
 A fresh reviewer read this design as its builder. Its questions, settled:

@@ -38,6 +38,7 @@ Supporting rules:
 **Before the first public deployment (stage 5):**
 - Lawful basis and a short privacy notice for data about anonymous visitors that the site, hosting and security services handle: IP addresses (an IP address used to tell visitors apart can be personal data, see [ICO guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-information-what-is-it/what-is-personal-data/what-are-identifiers-and-related-factors/)), browser details, and the hosting provider's own logs. This applies even when IPs are only held in memory for rate limiting.
 - Whether the project must pay the [ICO data protection fee](https://ico.org.uk/for-organisations/data-protection-fee/faqs-data-protection-fee-payment-and-online-registration) or is exempt; pay it before going public if required.
+- The privacy notice names which linked sites receive the postcode when a visitor clicks an outbound link (founder's choice "Any site that accepts it", register line FE-11, 13 Nov 2026), and that nothing is sent until the click.
 - A PECR check of anything the demo stores on or reads from the visitor's device (for example preferences or session storage), confirming each item is strictly necessary or has consent.
 
 **Before real data is loaded (stage 6, step 4):**
