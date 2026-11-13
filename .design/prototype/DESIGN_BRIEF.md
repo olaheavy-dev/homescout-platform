@@ -140,7 +140,7 @@ All components are new.
 | Component | Status | Notes |
 |---|---|---|
 | App shell: desktop top bar, mobile bottom navigation | New | Doc 03 §3: My move · Homes · Compare. Home tabs: Overview · Nearby · Costs · Viewings · Questions · Documents · Activity. Mobile bottom nav: Overview, Nearby, Costs, Questions |
-| Brand mark and wordmark | New | **Contour home** (founder's choice of four concepts drawn on the design canvas, 11 Nov 2026): three nested roof lines like map contours with a hearth at the centre; a primary mark (48 px and up) and a compact two-contour mark (32 px and below), beside the Bricolage Grotesque 700 wordmark. Trade-mark clearance (0009) and the asset register (rule 5) come before use |
+| Brand mark and wordmark | New | **Lit doorway, D1 · Ruled light** (founder's choice, 13 Nov 2026, on the design canvas board "Brand mark · exploration", replacing Contour home of 11 Nov): a solid forest block with a squared doorway cut out, light falling out across the floor as three ruled lines (two at 32 px and below) for the "-graph", and the rust hearth dot inside the door; beside the Bricolage Grotesque 700 wordmark; works in one colour. Trade-mark clearance (0009, PD-09) and the asset register (rule 5) come before use |
 | Landing hero, search first (0046) | New | The postcode box with the sample 3D map (crafted category pins, the 400 m ring and the "Postcode centre" pin) and a compact summary card on the map: the four nearest places by straight-line distance and "+3 more nearby". The card sits where no pin is under it (bottom left on desktop; across the bottom of a taller map on phones), so it never hides a place. Its places, distances and count come from the postcode-level sample fixture, never typed by hand (rule 2). The private prototype's example page shows the two example homes (buy and rent) with equal weight |
 | Address search and identity confirmation | New | Combobox with manual selection, never a silent postcode-to-flat match. Includes the map pin flow (founder) and a "can't find it" route |
 | Home header | New | Photo thumbnail, address, mode, sample-data label |
@@ -199,7 +199,7 @@ All components are new.
 - Payments. The free/paid boundaries are shown as labelled, simulated limits (doc 02 §8).
 - Building the in-app assistant chat or the MCP server. The assistant's look is designed in #78, and the build is stage 6.
 - Journeys for Wales, Scotland and Northern Ireland beyond the "not yet covered" state.
-- The final logo files and trade-mark clearance (0009). The working mark, Contour home, is in scope as a design asset; production SVGs go through the asset register first (rule 5).
+- The final logo files and trade-mark clearance (0009). The working mark, Lit doorway (D1 · Ruled light), is in scope as a design asset; production SVGs go through the asset register first (rule 5).
 - Stamp duty, legal fees and home-to-home differences until the engine produces them (BE-27, #96 and #147). Until then the screens say "not calculated".
 - Native apps.
 - Public release: no public hosting, visitor privacy notice (SE-02 part 1) or analytics (FE-05). The prototype is private (decision 0045).

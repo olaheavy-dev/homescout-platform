@@ -7,7 +7,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 - **Backend: Python, final** ([0049](../decisions/0049-back-to-python-final.md)). The port is complete and .NET is gone: every C# test and worked case has a Python counterpart ([port ledger](python-port-ledger.md)), and `costs.json` stayed byte-identical throughout.
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
-- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66); the landing hero's Northbridge sample map is still to do, and the founder is reviewing the new drawings.
+- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66), and the landing hero's Northbridge sample map with recognisable buildings (version 70); the founder on the drawings: "IT LOOKS VERY GOOD TO ME". The new brand mark, Lit doorway D1 · Ruled light, is on the board "Brand mark · exploration" (versions 68 and 69; PD-09).
 
 ## Done on 12 Nov 2026
 | Pull request | What merged |
@@ -49,12 +49,12 @@ Corrected on 13 Nov 2026: the gate (#71) depends on #68, #69 and #70, which were
 - None.
 
 ## Founder to-dos
-Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (register line IN-06); turn on DNSSEC for both in Cloudflare when convenient.
+Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (register line IN-06); DNSSEC is on for both (13 Nov 2026).
 
 | To-do | Why | How | When |
 |---|---|---|---|
 | Approve the two documentation MCP servers (Microsoft Learn, Context7) | Agents read current official documentation instead of memory (WW-15) | Accept them when Claude Code asks at the start of an interactive session in this project | Next session |
-| Finish the trade-mark clearance (PD-09) | Your name search was clean (13 Nov 2026); decision 0044 also asks for classes 9, 36, 42 and 45, EUIPO and WIPO, the "Contour home" mark and a fresh Companies House check | Tell the agent which register and classes you searched, check the mark, then accept PD-09 | Before the public area check (stage 5b) |
+| Finish the trade-mark clearance (PD-09) | Your name search was clean, and you kept the new logo (Lit doorway, D1) after its UK screen: "i think it is unique enough" (13 Nov 2026); still open: which register and classes the name search covered, EUIPO and WIPO for the name and the logo, and a fresh Companies House check (decision 0044) | Finish those checks (or ask an attorney about UK00004266938), then accept PD-09 | Before the public area check (stage 5b) |
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
