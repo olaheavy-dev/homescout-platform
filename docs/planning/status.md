@@ -8,7 +8,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
 - **Design canvas** (https://claude.ai/artifact/MpvQNDVYCePp4iWM3j3Jx4, version 75): three pages, opening on "Pilot · public area check" (Landing, Check an area, Nearby topics, Map, each light then dark, with a note listing what is still to design), then "Home workspace (later)" and "Brand and style". Everything is isometric (FE-10), including the hero map and the data maps, with every place at its listed distance; the brand mark Lit doorway D1 · Ruled light is on every board, with a D1 brand sheet and a warm clay hearth in dark mode. Founder, 13 Nov 2026: "IT LOOKS VERY GOOD TO ME" (the first redraw), "The new hero map is okay", "restyle the data maps too".
-- **Pilot design:** `docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md` (approved), with search distances (FE-12) and outbound links (FE-11) from the founder's answers, and the accuracy plan and the country-aware data contract as the agent's proposals awaiting the founder's review, added in this pull request.
+- **Pilot design:** `docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md` (approved), with search distances (FE-12) and outbound links (FE-11) from the founder's answers, and the accuracy plan and the country-aware data contract, approved by the founder on 13 Nov 2026 ("Approve (Recommended)" for each).
 
 ## Done on 13 Nov 2026
 | Pull request | What merged |
@@ -18,9 +18,10 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 | #218 | Isometric illustration style (FE-10), canvas freeze lifted, image terms and trade-mark search recorded |
 | #219 | Brand mark Lit doorway D1 (PD-09), the UK logo screen, DNSSEC on both domains, the isometric hero map |
 | #220 | The pilot design; decision 0051 (AI in the public pilot: area chat and public read-only MCP server, both on day one); decision 0052 (pilot-only gate) |
+| #221 | Pilot design additions: search distances (FE-12), outbound links (FE-11), accuracy, countries; AREA-18; the countries idea with the Nigeria research; handover rule in `AGENTS.md` (WW-19) |
 | agent-workflows #13 | House rules v0.6.0: keep the status file current in every plan-changing pull request (founder: "Habit only") |
 
-**Founder decisions on 13 Nov 2026** (prompt windows unless marked typed; recorded where shown): the isometric style and the D1 logo (PD-09, FE-10); "both, on the page and in their own ChatGPT or Claude" (typed) and "Both on day one", the provider standard, "Trial first", the 0014 change "Allow with safeguards", the isometric area card (0051); "Pilot specs first" and "Pilot-only gate" (0052); "Habit only" for the handover; search distances (FE-12) and outbound links (FE-11); Nigeria and other countries kept out of the pilot and added to the ideas (doc 05). Trade-mark: the founder kept D1 after the UK screen, "let us stick with the logo i think it is unique enough" (typed).
+**Founder decisions on 13 Nov 2026** (prompt windows unless marked typed; recorded where shown): the isometric style and the D1 logo (PD-09, FE-10); "both, on the page and in their own ChatGPT or Claude" (typed) and "Both on day one", the provider standard, "Trial first", the 0014 change "Allow with safeguards", the isometric area card (0051); "Pilot specs first" and "Pilot-only gate" (0052); "Habit only" for the handover; search distances (FE-12) and outbound links (FE-11); the pilot design's Accuracy section and the country-aware data contract ("Approve (Recommended)" for each); Nigeria and other countries kept out of the pilot and added to the ideas (doc 05). Trade-mark: the founder kept D1 after the UK screen, "let us stick with the logo i think it is unique enough" (typed).
 
 ## Done on 12 Nov 2026
 | Pull request | What merged |
@@ -49,7 +50,7 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 **Correction recorded:** 0049 first said a `uv export` file would be committed; the founder's 9 Nov proof (BE-23) showed dependency review reads `uv.lock` directly, so no export is committed. Re-proved on 12 Nov (PRs #199, #200).
 
 ## Open pull requests
-- This pull request: the pilot design additions (search distances, links, accuracy, countries), the countries idea with the Nigeria research, the handover lines in `AGENTS.md`, and this status.
+- None.
 
 ## Next, in order
 On 13 Nov 2026 the founder put the pilot first (decisions 0051 and 0052); the design canvas has a "Pilot · public area check" page for reviewing it.
@@ -72,7 +73,7 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | Finish the trade-mark clearance (PD-09) | Your name search was clean, and you kept the new logo (Lit doorway, D1) after its UK screen: "i think it is unique enough" (13 Nov 2026); still open: which register and classes the name search covered, EUIPO and WIPO for the name and the logo, the logo's international registrations that have no pictures on the IPO site, a light-rays picture code, and a fresh Companies House check (decision 0044) | Finish those checks (or ask an attorney about UK00004266938), then accept PD-09 | Before the public area check (stage 5b) |
 | Narrow the sharing of the design-canvas link | The prototype is a private reference (0045) | In claude.ai, set the canvas artifact's sharing to only the people who need it | Any time |
 | Set the pilot's budget caps (IN-05) | The pilot has running costs and an on-page AI chat (decision 0051); a monthly cap and a daily AI cap must be set before launch | Decide the two amounts in pounds when the agent asks at stage 5b | Before the pilot launches |
-| Check the design canvas's Pilot page, and the pilot design's Accuracy and countries sections | The pilot is reviewed there now; those two sections are the agent's proposals | Open the canvas link above; comment on any board | Any time |
+| Check the design canvas's Pilot page | The pilot is reviewed there now | Open the canvas link above; comment on any board | Any time |
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
 ## Open `noticed` issues
