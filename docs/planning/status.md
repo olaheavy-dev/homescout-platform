@@ -7,7 +7,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **12 Nov 
 - **Backend: Python, final** ([0049](../decisions/0049-back-to-python-final.md)). The port is complete and .NET is gone: every C# test and worked case has a Python counterpart ([port ledger](python-port-ledger.md)), and `costs.json` stayed byte-identical throughout.
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
-- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations are being redrawn in the isometric style (FE-10).
+- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66); the landing hero's Northbridge sample map is still to do, and the founder is reviewing the new drawings.
 
 ## Done on 12 Nov 2026
 | Pull request | What merged |
