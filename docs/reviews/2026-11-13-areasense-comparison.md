@@ -81,5 +81,5 @@ The full review lists them with file and line. Fixes come in the planned pull re
 - NEAR-16 calls routed times paid, but wave 2 walking times are free;
 - no scenario outside the landing page forbids verdict words, scores or placeholder text;
 - if the postcode service is down, the spec would wrongly say the postcode was "not found" (AREA-05);
-- the council tax label states parish averaging as fact before it is confirmed (`data-sources.md`);
+- the council tax label stated parish averaging as fact before it was confirmed (`data-sources.md`): fixed in this change;
 - no scenarios yet for FE-20 to FE-25, the wave 1 and wave 2 extras, or the goal 7 features.
