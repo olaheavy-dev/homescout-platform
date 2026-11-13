@@ -7,7 +7,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 - **Backend: Python, final** ([0049](../decisions/0049-back-to-python-final.md)). The port is complete and .NET is gone: every C# test and worked case has a Python counterpart ([port ledger](python-port-ledger.md)), and `costs.json` stayed byte-identical throughout.
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
-- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66; the founder, before the hero was redone: "CAN YOU NOT CHECK THE CANVAS YOURSELF, IT LOOKS VERY GOOD TO ME"), and the landing hero's Northbridge sample map with recognisable buildings (version 70, awaiting the founder's look). The new brand mark, Lit doorway D1 · Ruled light, is on the board "Brand mark · exploration" (versions 68 and 69; PD-09).
+- Design canvas: the 11 Nov freeze was lifted fully by the founder on 13 Nov 2026; the illustrations were redrawn in the isometric style (FE-10, canvas versions 65 and 66; the founder, before the hero was redone: "CAN YOU NOT CHECK THE CANVAS YOURSELF, IT LOOKS VERY GOOD TO ME"), and the landing hero's Northbridge sample map with recognisable buildings (version 70; the founder: "The new hero map is okay"). The brand mark Lit doorway D1 · Ruled light replaced Contour home on every board, with a D1 brand sheet, the mark beside every wordmark and a warm clay hearth in dark mode (versions 71 and 72; founder's answers "Add the mark (Recommended)", "Keep photos alongside (Recommended)", "Warm clay (Recommended)"). The data maps are being restyled isometric (founder: "restyle the data maps too").
 
 ## Done on 13 Nov 2026
 | Pull request | What merged |
@@ -47,10 +47,11 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 
 ## Next, in order
 Corrected on 13 Nov 2026: the gate (#71) depends on #68, #69 and #70, which were still open.
-1. **#68, the screen specifications**, in three pull requests in the stage 5 build order (decision 0046; design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`): the area screens merged as #217 (13 Nov 2026, closing #67); next, home and money (identity confirmation, home overview, costs, compare, what changed), then questions and sharing.
-2. **#69 and #70, the buyer and renter story scripts.**
-3. **The stage 3 gate (#71).**
-4. **#86, the app shell**, built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
+1. **The pilot's specifications first** (founder, 13 Nov 2026: "Pilot specs first (Recommended)"; design `docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md`, decision 0051): the area chat panel, the ChatGPT and Claude area tools with the isometric area card, the wave 1 and wave 2 extras, Explain this, Share a link, Recent postcodes, Report a problem, the public pages (How it works, About the data, privacy notice, accessibility statement), the printout update and the AI evaluation set. Each as a screen specification, with a canvas board where it is a screen.
+2. **#68, the remaining screen specifications**, in three pull requests in the stage 5 build order (decision 0046; design `docs/superpowers/specs/2026-11-13-screen-specs-design.md`): the area screens merged as #217 (13 Nov 2026, closing #67); next, home and money (identity confirmation, home overview, costs, compare, what changed), then questions and sharing.
+3. **#69 and #70, the buyer and renter story scripts.**
+4. **The stage 3 gate (#71).**
+5. **#86, the app shell**, built from the founder's Next.js template (pnpm, TypeScript 5.9, `frontend/`, `@ui` scenarios with playwright-bdd and `@axe-core/playwright`). Then screens #165–#175, and #96 (home-to-home differences, now in Python).
 
 ## Blockers
 - None.

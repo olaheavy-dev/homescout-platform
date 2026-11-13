@@ -18,6 +18,11 @@ Why it matters: it shows what makes Vestagraph different (every fact with its so
 4. **Pilot extras, wave 1** (founder's picks): questions to ask, broadband and mobile coverage, nearby sold prices, a "go and check in person" list.
 5. **Pilot extras, wave 2** (agent's proposal from the planned data, for the founder to trim): planning applications nearby, school inspection results, air quality, compare two postcodes.
 6. Day-one safeguards for cost, abuse, privacy and accuracy, all in place before launch.
+7. **More pilot features with no personal data** (founder, 13 Nov 2026, asked in a prompt window, chose all four: "Explain-this buttons, Share a link, Recent postcodes (browser), Report a problem"):
+   - **Explain this:** one tap per topic for a plain-language explanation of that source (0004's task AI), using the same AI rules as the chat; counts towards the daily AI cap.
+   - **Share a link:** copies a link to the postcode's result with the postcode in the `#` part, so nothing is stored or logged.
+   - **Recent postcodes:** a short list kept only in the visitor's browser, with a Clear button; never sent to us.
+   - **Report a problem with this fact:** a one-tap flag carrying only which fact and source, no free text, so no personal details can be typed in.
 
 ## Non-goals
 - Accounts, saved homes, stored searches or chat history (0046: accounts come after the pilot).
