@@ -267,7 +267,7 @@ In the private prototype the landing can also link the two example homes; the pu
 | Gap card | Nearby, Costs, Compare, Overview | — |
 | Sheet (bottom sheet on mobile, side panel on desktop) | Evidence, cost working, map selection, Ask about this home | Full-screen on a phone for evidence |
 | Home summary card | My move, Homes, Compare picker | Compact and full variants |
-| Empty state with illustration | Homes (none yet), Questions (none), Not yet covered | Textured editorial illustration |
+| Empty state with illustration | Homes (none yet), Questions (none), Not yet covered | Isometric illustration |
 
 ## Content Growth Plan
 

@@ -138,7 +138,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - screen-reader labels that read each figure with its period and status;
   - 44 px targets;
   - axe and Playwright in CI.
-- [ ] **B17 Illustration and photography:** the textured editorial style guide first, then the illustrations for empty states, not covered, onboarding and the landing; home photos through the asset register (rule 5).
+- [ ] **B17 Illustration and photography:** the isometric style guide first (FE-10), then the illustrations for empty states, not covered, onboarding and the landing; home photos through the asset register (rule 5).
 - [ ] **B18 Performance budgets:** LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1, and the Nearby route JavaScript ≤ 170 KB gzip without the map. Checked by @lhci/cli and size-limit (approved).
 
 ## Review
