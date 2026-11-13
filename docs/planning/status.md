@@ -7,7 +7,7 @@ Overwritten at the end of every session (decision 0050). Last updated: **13 Nov 
 - **Backend: Python, final** ([0049](../decisions/0049-back-to-python-final.md)). The port is complete and .NET is gone: every C# test and worked case has a Python counterpart ([port ledger](python-port-ledger.md)), and `costs.json` stayed byte-identical throughout.
 - **Checks:** `make check` runs Python only (mypy, ruff, the generated-file check, the fixture validator, pytest with the pytest-bdd specifications). `make mutate` runs mutmut by hand (break score 85, BE-33). CodeQL scans `actions` and `python`.
 - **Process:** agent-workflows (Superpowers) is the process from decision [0050](../decisions/0050-agent-workflows-process.md).
-- **Design canvas** (https://claude.ai/artifact/MpvQNDVYCePp4iWM3j3Jx4, version 76): three pages, opening on "Pilot · public area check" (Landing, Check an area, Nearby topics, Map, Ask about this area, each light then dark, with a note listing what is still to design), then "Home workspace (later)" and "Brand and style". Everything is isometric (FE-10), including the hero map and the data maps, with every place at its listed distance; the brand mark Lit doorway D1 · Ruled light is on every board, with a D1 brand sheet and a warm clay hearth in dark mode. Founder, 13 Nov 2026: "IT LOOKS VERY GOOD TO ME" (the first redraw), "The new hero map is okay", "restyle the data maps too".
+- **Design canvas** (https://claude.ai/artifact/MpvQNDVYCePp4iWM3j3Jx4, version 77): three pages, opening on "Pilot · public area check" (Landing, Check an area, Nearby topics, Map, Ask about this area, each light then dark, with a note listing what is still to design), then "Home workspace (later)" and "Brand and style". Everything is isometric (FE-10), including the hero map and the data maps, with every place at its listed distance; the brand mark Lit doorway D1 · Ruled light is on every board, with a D1 brand sheet and a warm clay hearth in dark mode. Founder, 13 Nov 2026: "IT LOOKS VERY GOOD TO ME" (the first redraw), "The new hero map is okay", "restyle the data maps too".
 - **Pilot design:** `docs/superpowers/specs/2026-11-13-pilot-area-ai-design.md` (approved), with search distances (FE-12) and outbound links (FE-11) from the founder's answers, and the accuracy plan and the country-aware data contract, approved by the founder on 13 Nov 2026 ("Approve (Recommended)" for each).
 
 ## Done on 13 Nov 2026
@@ -50,7 +50,7 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 **Correction recorded:** 0049 first said a `uv export` file would be committed; the founder's 9 Nov proof (BE-23) showed dependency review reads `uv.lock` directly, so no export is committed. Re-proved on 12 Nov (PRs #199, #200).
 
 ## Open pull requests
-- The area chat panel specification (#223): `docs/specs/pilot/area-chat.feature` (CHAT-01 to CHAT-33), register line FE-13, the site plan's "Ask about this area", canvas row "Pilot 5" (version 76).
+- `docs/pilot-area-chat-spec`, the area chat panel specification for issue #223: `docs/specs/pilot/area-chat.feature` (CHAT-01 to CHAT-49), register line FE-13, the site plan's "Ask about this area", canvas row "Pilot 5" (version 77).
 
 ## Next, in order
 On 13 Nov 2026 the founder put the pilot first (decisions 0051 and 0052); the design canvas has a "Pilot · public area check" page for reviewing it.
