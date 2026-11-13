@@ -88,7 +88,7 @@ Decisions first, then the API and the area adapters, then the public site. Items
 |---|---|---|
 | 31 | #85 | Decision: privacy parts 1 and 2 (SE-02, decision 0014), analytics and feedback (FE-05) |
 | 38 | #92 | Decision: API architecture and contract (BE-02; BE-01 is decided by 0049: FastAPI); rules versioning (BE-03) stays at stage 6, before the cost engine expansion |
-| 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only; DA-06 also chooses the walking-time routing engine for wave 2, 13 Nov 2026) |
+| 38a | to open | Decisions: database and geospatial, ingestion and caching, source licences, postcode lookup (DA-03 to DA-06, postcode only); DA-08, the walking-time routing engine for wave 2 (13 Nov 2026) |
 | 38b | — | Hosting for the public area check: rows 38b.1 to 38b.3 below, decided once (0048). #81's IN-02 becomes public hosting for 0046, and #82 adds the domain and secrets |
 | 38b.1 | #81 | Decision: prototype architecture, hosting, infrastructure as code (IN-01 to IN-03) |
 | 38b.2 | #82 | Decision: CI/CD and environments (IN-04) |
@@ -112,7 +112,7 @@ Decisions first, then the API and the area adapters, then the public site. Items
 | 38h | to open | Public read-only MCP server for the area tools (no key; global and per-host caps; spec `docs/specs/pilot/area-tools.feature`), then the area card widget (FE-15 to FE-19, `area-card.feature`) |
 | 38i | to open | On-page area chat with the disclaimer, daily AI cap, bot check and "paused" and "unavailable" states (spec `docs/specs/pilot/area-chat.feature`); the isometric area card component (FE-14 to FE-19, `area-card.feature`) |
 | 38j | to open | Pilot features: Explain this, Share a link, Recent postcodes (opt-in), Report a problem; questions to ask; go-check-in-person list |
-| 38k | to open | Pilot extras, wave 2 (pilot design, Goals 5): planning applications nearby, school inspection results with school demand (DfE applications and offers), air quality, compare two postcodes; walking times and timetabled buses per hour (needs DA-06); council tax by band (a tax table, so a founder merge); a family view. Each behind its own switch (research `docs/reviews/2026-11-13-chatgpt-ideas-research.md`) |
+| 38k | to open | Pilot extras, wave 2 (pilot design, Goals 5): planning applications nearby, school inspection results with school demand (DfE applications and offers), air quality, compare two postcodes; walking times and timetabled buses per hour (needs DA-08); council tax by band (a tax table, so a founder merge); a family view. Each behind its own switch (research `docs/reviews/2026-11-13-chatgpt-ideas-research.md`) |
 | 38c | to open | Public site: landing (search first), How it works, About the data, privacy notice, accessibility statement (TASKS P1 to P4) |
 | 38d | to open | Stage 5b gate: sources on every fact, no searched postcode in any log, privacy notice and budget cap live, accessibility checks pass; AI caps, rate limits and bot check live; the evaluation set passes (decision 0051) |
 

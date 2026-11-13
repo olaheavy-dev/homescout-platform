@@ -41,7 +41,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - no testimonials, counters, recent searches or pricing teaser (rule 1, decision 0014, PD-10).
 - [ ] **Brand mark** (Lit doorway, D1 · Ruled light, the founder's choice on 13 Nov 2026; a single wider ruled line at 16 px still to try, the agent's suggestion): primary and compact marks, lockups in both themes and one colour, the app icon, the browser icon, and clear space. Trade-mark clearance (0009) and the asset register first.
 - [ ] **H5 Check an area, public, phone** (decision 0046, accepted): postcode in, the Nearby topic summary out, Summary and Map, download with sources, and saving shown only as "Coming next". No commute row (it needs the household's own destination). States: loading, invalid format, postcode not found, outside England, one source unavailable (the frame shows three; loading and not found are added in the build).
-- [ ] **H8 Area summary export** (designed for A4; the sample runs to three pages): made in the browser and saved from the print dialog ("Print or save as PDF"), a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line.
+- [ ] **H8 Area summary export** (designed for A4; the sample runs to three pages): made in the browser and saved from the print dialog ("Print or save as PDF"), a flat numbered map matching the tables, sources and limits on every topic, attribution and a privacy line. **To be redesigned (FE-21, 13 Nov 2026):** an isometric cover, an "At a glance" page, topic pages and a sources page, with the flat numbered map kept inside.
 
 ## Foundation (stage 5 build)
 - [ ] **B1 App shell, tokens and the first screen** (#86):
