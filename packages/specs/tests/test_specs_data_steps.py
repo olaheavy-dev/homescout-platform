@@ -1,4 +1,7 @@
-"""The seven data steps, one by one (ported from DataStepsTests, issue #193).
+"""The data steps, one by one.
+
+The first seven were ported from DataStepsTests (issue #193); the area and coverage steps
+were added for the screen specifications (#68).
 
 Each failing case checks the message too: the message tells an author which ID to fix.
 """
@@ -225,3 +228,60 @@ def test_given_home_is_at_story_step_unknown_home_fails(steps: DataSteps) -> Non
 
 def test_story_position_before_any_given_step_has_no_prefix() -> None:
     assert StoryPosition().figure_prefix is None
+
+
+def test_then_area_record_has_status_unknown_record_fails_naming_the_id(steps: DataSteps) -> None:
+    with pytest.raises(AssertionError) as failure:
+        steps.then_area_record_has_status("B1-AREA-NOPE", "recorded")
+
+    assert "B1-AREA-NOPE" in str(failure.value)
+    assert "area.json" in str(failure.value)
+
+
+def test_then_area_record_has_status_wrong_status_fails(steps: DataSteps) -> None:
+    with pytest.raises(AssertionError) as failure:
+        steps.then_area_record_has_status("R1-AREA-CRIME-2", "recorded")
+
+    assert "source-failed" in str(failure.value)
+
+
+def test_then_area_record_has_status_correct_status_passes(steps: DataSteps) -> None:
+    steps.then_area_record_has_status("R1-AREA-CRIME-2", "source-failed")
+
+
+def test_then_area_record_shows_no_value_record_with_value_fails(steps: DataSteps) -> None:
+    with pytest.raises(AssertionError) as failure:
+        steps.then_area_record_shows_no_value("B1-AREA-SCHOOL-INSPECTION-1")
+
+    assert "B1-AREA-SCHOOL-INSPECTION-1" in str(failure.value)
+
+
+def test_then_area_record_shows_no_value_record_without_value_passes(steps: DataSteps) -> None:
+    steps.then_area_record_shows_no_value("WALES-1-AREA-FLOOD-1")
+
+
+def test_then_area_record_shows_no_value_unknown_record_fails_naming_the_id(
+    steps: DataSteps,
+) -> None:
+    with pytest.raises(AssertionError) as failure:
+        steps.then_area_record_shows_no_value("B1-AREA-NOPE")
+
+    assert "B1-AREA-NOPE" in str(failure.value)
+
+
+def test_then_home_has_coverage_wrong_coverage_fails(steps: DataSteps) -> None:
+    with pytest.raises(AssertionError) as failure:
+        steps.then_home_has_coverage("WALES-1", "covered")
+
+    assert "not-yet-covered" in str(failure.value)
+
+
+def test_then_home_has_coverage_correct_coverage_passes(steps: DataSteps) -> None:
+    steps.then_home_has_coverage("WALES-1", "not-yet-covered")
+
+
+def test_then_home_has_coverage_unknown_home_fails_naming_the_id(steps: DataSteps) -> None:
+    with pytest.raises(AssertionError) as failure:
+        steps.then_home_has_coverage("ZZ-9", "covered")
+
+    assert "ZZ-9" in str(failure.value)
