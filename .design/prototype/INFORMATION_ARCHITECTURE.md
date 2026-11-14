@@ -23,17 +23,17 @@
       - outside England: per-topic coverage (#158); until then a "Not yet covered" card;
       - our stored copy of a source is missing or failed (corrected 14 Nov 2026, C3: the pilot reads only our stored copies, never a source live, so asking again changes nothing until our next refresh): that topic shows the decision 0029 label **"Unavailable"** with "We don't hold a current copy of this source", a general line ("This doesn't mean there's nothing to report"; the flood topic says "This is not the same as no warning") and an official link where one exists, with **no "Try again"**; the other topics still show;
       - the visitor's own request to us fails (network, or our API down): "Couldn't load this · Try again". This is a different state and is never shown as "not found" or as an empty result;
-      - **flood warnings** (register line DA-12): refreshed every 15 minutes; the flood row always reads "Warnings in force when we last checked, at <time>" with the official flood-warning link first, never the word "live"; labelled "Old" when our copy is over 1 hour old and "Unavailable" when over 1 day old. The Environment Agency says its data updates every 15 minutes, gives no service guarantee and is not for safety-critical use; the 1 hour and 1 day limits are the founder's accepted default, not an Environment Agency rule.
+      - **flood warnings** (register line DA-12): refreshed every 15 minutes; the flood row reads "Warnings in force in our latest copy" with the official flood-warning link first, never the word "live", and shows no time and no label (amended 14 Nov 2026, FE-33 and DA-12, founder: "No exceptions"); our copy is labelled "Old" when over 1 hour old and "Unavailable" when over 1 day old, and About the data shows that label and the time we last checked. The Environment Agency says its data updates every 15 minutes, gives no service guarantee and is not for safety-critical use; the 1 hour and 1 day limits are the founder's accepted default, not an Environment Agency rule.
     - **Export** ("Print or save as PDF"): a print-ready page made **in the browser** from the results on screen, which the visitor saves as PDF from the print dialog, so the postcode never goes back to the server and no PDF package is needed (register FE-06). Designed for A4 (the sample runs to three pages). **To be redesigned (FE-21, 13 Nov 2026):** a designed report with an isometric cover map, an "At a glance" page, topic pages and a sources page; the flat numbered map below stays inside the report. The contents below stand until the design pass updates them (to update with the report spec, FE-21: the report's contents, M8). Contents:
       - a header with "Sample data" for the example postcode only, or the made-at time for any other postcode (corrected 14 Nov 2026, C5: real postcodes are real data);
       - a **flat 2D map** whose numbered pins match the table rows (3D distorts distance and hides pins on paper);
-      - every topic with its facts, gaps, source, data date, its decision 0029 label (Cached with when it was fetched, Fallback, Old or Unavailable; "Live" is reserved for a later live adapter, since the pilot reads only stored copies, C4) and its limits (on paper they are collected on a closing "How we got this" page, since there is nothing to open, FE-34). An Unavailable or Not yet covered topic prints as such and is never left out;
+      - every topic with its facts, gaps, source and its limits (a fact's source is its icon and name, linking to the official page, with no date or label; the source's data date and decision 0029 label, Cached, Fallback, Old or Unavailable, are on the closing "How we got this" page, as on About the data, FE-33 amended 14 Nov 2026; "Live" is reserved for a later live adapter, since the pilot reads only stored copies, C4), and a topic with no copy prints "Not known right now" (on paper they are collected on a closing "How we got this" page, since there is nothing to open, FE-34). An Unavailable or Not yet covered topic prints as such and is never left out;
       - crime as a counts table only;
       - the attribution each licence requires;
       - a privacy line. Its wording ("made in your browser; Vestagraph didn't store your search") is **provisional**: it is checked against the privacy notice once SE-02 parts 1 and 2 settle logs, including the map-tile host's access logs (#85).
       - A later option: an "Include 3D view" tick box adding a small 3D picture.
   - How it works `/how-it-works`
-  - About the data `/about-the-data`: every source, its date, coverage, limits and attribution.
+  - About the data `/about-the-data`: every source with its icon, name and official link, its data date, its decision 0029 label (Cached, Fallback, Old or Unavailable; never Live in the pilot), coverage, limits and attribution; the flood source also shows when we last checked (FE-33 and DA-12, 14 Nov 2026: this is the only place the date and label are shown; a fact on the page carries just its source's icon, name and ↗ link).
   - Privacy notice `/privacy` and accessibility statement `/accessibility`: live before launch (0014, 0046).
   - Account features appear only as "coming next" until they are live.
 - **Prototype only** (private, decision 0045)
@@ -134,7 +134,7 @@ The page opens as **one row per topic with its headline fact** (founder review, 
 3. **Everyday places:** supermarket or shop, park, healthcare, police station and childcare, with gaps shown.
 4. **Places of worship** (PD-13), its own topic: the nearest places of every faith recorded in the source, by distance; never counts or an area's religious makeup. In the fixtures it is the `place-of-worship` amenity subtype.
 5. **Schools,** with framework and date.
-6. **Flood:** warnings in force when we last checked, with the time and the official link first (DA-12), plus the long-term link.
+6. **Flood:** warnings in force in our latest copy, with the official link first and no time or label on the row (the check time is on About the data, DA-12 amended 14 Nov 2026), plus the long-term link.
 7. **Recorded crime:** counts by month and category; never on the map.
 8. **Sold nearby:** history, not a valuation.
 9. **Planning nearby** and **broadband.**
@@ -248,11 +248,11 @@ In the private prototype the landing can also link the two example homes; the pu
 | Unknown cost line | "Missing" (always with "not £0") | Rule 7 |
 | Line the engine doesn't calculate | "Not calculated" | |
 | No data in a source | "No record in this source" | Plus "this doesn't mean there are none" |
-| Out-of-date item | "Old" | Shows the date |
-| No current stored copy of a source | "Unavailable" (decision 0029 label) | With "We don't hold a current copy of this source", the official link and "This doesn't mean there's nothing to report"; no Try again in the pilot (C3) |
+| Out-of-date item | No label on the fact | "Old" and the date are shown on About the data (FE-33, 14 Nov 2026) |
+| No current stored copy of a source | "Not known right now" in the fact's own text; the decision 0029 label "Unavailable" is on About the data (FE-33) | With "We don't hold a current copy of this source", the official link and "This doesn't mean there's nothing to report"; no Try again in the pilot (C3) |
 | The visitor's request to us failed | "Couldn't load this" | With "Try again" (C3) |
 | Nothing found in a radius | "No <place> found within <radius>" | Never "none" or zero |
-| Flood warnings | "Warnings in force when we last checked, at <time>" | Official link first; "Old" over 1 hour, "Unavailable" over 1 day (DA-12) |
+| Flood warnings | "Warnings in force in our latest copy" | Official link first; no time or label on the row; "Old" over 1 hour and "Unavailable" over 1 day, with the check time, on About the data (DA-12 amended 14 Nov 2026) |
 | Distances (England) | Under 1 mile: metres to the nearest 10 m ("120 m", "1,450 m"); from 1 mile: miles to one decimal ("1.3 miles"); crime "within 1 mile" | Stored in metres; display follows the country (FE-27) |
 | Wales, Scotland, Northern Ireland | "Not yet covered" | Per topic once #158 lands |
 | Postcode not found | "We couldn't find that postcode" | Nothing else shown |

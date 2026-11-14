@@ -107,9 +107,9 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
 
 ## Public site (stage 5b, decision 0046)
 - [ ] **P1 Landing** as H7, with the area check as the main action. Account features labelled "coming next" until live, never as active controls; the hero map's pin is "Postcode centre", with crafted category pins and the compact summary card (four nearest places, "+3 more nearby") placed where it covers no pin; its places, distances and count come from the postcode-level sample fixture (B6a), never typed by hand. **The hero map is a static image** (SVG or an optimised raster), not the live map library, so the largest element loads within the 2.5 s budget (B18); the live map loads only on the results page.
-- [ ] **P2 How it works** and **About the data:** every source with its date, coverage, limits and the attribution its licence requires (DA-05).
+- [ ] **P2 How it works** and **About the data:** every source with its icon, name and link, its date, its decision 0029 status (Cached, Fallback, Old or Unavailable), coverage, limits and the attribution its licence requires (DA-05). This is the one place dates and statuses are shown; a fact on a page carries only its source's icon, name and ↗ link (FE-33 amended 14 Nov 2026; the flood check time is here too, DA-12).
 - [ ] **P3 Privacy notice and accessibility statement** (SE-02 part 1, decision 0014), live before launch.
-- [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels. The API call sends the postcode in the request body (POST), never in a query string or URL path, so it stays out of every log (0014).
+- [ ] **P4 Area check on live data:** the B6a screens through the API adapters (0029), with Live, Cached, Fallback or Unavailable labels kept in the data and shown on About the data, not beside each fact (FE-33). The API call sends the postcode in the request body (POST), never in a query string or URL path, so it stays out of every log (0014).
 - Not now: pricing (PD-10 open), blog, business page (#151), one search page per postcode.
 
 ## Interactions & States

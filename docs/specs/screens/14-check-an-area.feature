@@ -16,6 +16,10 @@ Feature: Check an area
   Words for gaps and states: the site plan's vocabulary table (P1, 14 Nov 2026): "Unavailable" (we hold
     no current copy of a source), "Couldn't load this" (the visitor's request to us failed), "No record
     in this source", "No <place> found within <radius>", "Old", "Not yet covered".
+  Changed 14 Nov 2026 (FE-33, DA-12): on the page, a fact shows only its source's icon, name and link, with
+    no status word and no date; a fact whose source is unavailable says "Not known right now" in its own
+    text. "Unavailable" and "Old" (with the date and the flood check time) are shown on About the data
+    (AREA-25); the stored data, the area tools and our chat's grounding keep them (area-tools.feature).
   Required states (doc 03 §5, the information architecture's "Check an area" and AGENTS.md rule 7):
     the postcode never reaches a log (decisions 0014, 0046) -> AREA-03, AREA-15
     an outbound link says where it goes and whether it carries the postcode (FE-11) -> AREA-18
@@ -24,7 +28,8 @@ Feature: Check an area
     postcode not found, never shown as empty topics -> AREA-05
     our stored copy of a source is missing or failed, not shown as a clean result -> AREA-07, AREA-14
     the visitor's own request to us failed, a different state with Try again -> AREA-19
-    flood warnings: when we last checked, official link first, Old after 1 hour, Unavailable after 1 day -> AREA-21, AREA-22, AREA-23
+    flood warnings: official link first, no time or label on the row; Old after 1 hour and Unavailable after 1 day on About the data -> AREA-21, AREA-22, AREA-23, AREA-25
+    a fact's stamp is its source's icon, name and link, with no status word and no date -> AREA-26
     the printout: the sample postcode says "Sample data", any other postcode its made-at time -> AREA-12, AREA-20
     distances in England: metres under 1 mile, miles from 1 mile, stored in metres -> AREA-24
     an address in Wales, Scotland or Northern Ireland, "not yet covered" -> AREA-01, AREA-02, AREA-08
@@ -66,10 +71,11 @@ Feature: Check an area
     Then each topic shows a loading skeleton, and no topic shows as empty
 
   @ui
-  Scenario: AREA-07 a source we hold no current copy of is labelled Unavailable and the rest still shows
+  # Changed 14 Nov 2026 (FE-33, DA-12): the row says "Not known right now" in its own text; the label "Unavailable" is on About the data.
+  Scenario: AREA-07 a source we hold no current copy of says it is not known right now and the rest still shows
     Given the user is on Check an area
     When the user checks a complete postcode and our stored copy of one topic's source is missing or failed to load
-    Then that topic shows "Unavailable" with "We don't hold a current copy of this source", its official link where one exists and no "Try again", and the other topics still show
+    Then that topic shows "Not known right now" with "We don't hold a current copy of this source", its official link where one exists and no "Try again", and the other topics still show
 
   # Corrected 14 Nov 2026 (C3 of the pilot design review): the pilot reads only our stored copies, never
   # a source live, so asking again cannot change the result until our next refresh.
@@ -107,14 +113,14 @@ Feature: Check an area
   Scenario: AREA-12 the printout of the example postcode keeps every topic, including gaps, and says "Sample data"
     Given the user has checked the example sample postcode and one topic has no current copy
     When the user chooses "Print or save as PDF"
-    Then the print page lists every topic with its source, data date and label, the topic with no copy prints as "Unavailable", and the header says "Sample data"
+    Then the print page lists every topic with its source's name, the topic with no copy prints as "Not known right now", the closing "How we got this" page gives each source's data date and status, and the header says "Sample data"
 
   # Split 14 Nov 2026 (C5): real postcodes are real data, so "Sample data" belongs only to the example.
   @ui
   Scenario: AREA-20 the printout of any other postcode shows when it was made, not "Sample data"
     Given the user has checked a postcode that is not the example and one topic has no current copy
     When the user chooses "Print or save as PDF"
-    Then the print page header shows the time the report was made, each topic shows its data date and label, the topic with no copy prints as "Unavailable", and nothing says "Sample data"
+    Then the print page header shows the time the report was made, each topic shows its source's name, the topic with no copy prints as "Not known right now", the closing "How we got this" page gives each source's data date and status, and nothing says "Sample data"
 
   @ui
   Scenario: AREA-16 a not covered postcode prints as not covered
@@ -151,7 +157,7 @@ Feature: Check an area
   Scenario: AREA-14 a missing flood copy is not the same as no warning
     Given the user is on Check an area
     When the user checks a complete postcode and we hold no current copy of the flood warnings
-    Then the flood topic shows "Unavailable", "We don't hold a current copy of this source", the official flood-warning link first and "This is not the same as no warning", with no "Try again"
+    Then the flood topic shows "Not known right now", "We don't hold a current copy of this source", the official flood-warning link first and "This is not the same as no warning", with no "Try again" and no status word or date on the row
 
   # Flood warnings (register line DA-12, 14 Nov 2026). The Environment Agency says its flood data is updated
   # every 15 minutes, gives no service-level guarantee and is not for safety-critical use
@@ -159,22 +165,41 @@ Feature: Check an area
   # 1 day limits below are the founder's accepted default, not an Environment Agency rule.
   # fixture needed: #216 (flood copies of a known age for AREA-21 to AREA-23)
   @ui
-  Scenario: AREA-21 the flood row says when we last checked and puts the official link first
+  # Changed 14 Nov 2026 (FE-33, DA-12): the flood row no longer shows the check time or a label (founder: "No exceptions"); About the data does (AREA-25).
+  Scenario: AREA-21 the flood row puts the official link first and shows no time or label
     Given the user is on Check an area and our flood copy was refreshed within the last hour
     When the user views the flood row
-    Then it shows "Warnings in force when we last checked, at" and that time, the official flood-warning link comes first, and the word "live" and any "clear" or "safe" label are not shown; when our copy holds no warning for the area, the row says "No flood warnings in force when we last checked, at" and that time, followed by "This is not a flood risk check" and the long-term flood risk link (FE-25)
+    Then it shows "Warnings in force in our latest copy", the official flood-warning link comes first, no time and no status word, and the word "live" and any "clear" or "safe" label are not shown; when our copy holds no warning for the area, the row says "No flood warnings in force in our latest copy", followed by "This is not a flood risk check" and the long-term flood risk link (FE-25)
 
   @ui
-  Scenario: AREA-22 a flood copy over 1 hour old is labelled Old
+  # Changed 14 Nov 2026 (FE-33, DA-12): the Old label and the check time move to About the data.
+  Scenario: AREA-22 a flood copy over 1 hour old is labelled Old on About the data
     Given our flood copy is more than 1 hour old and less than 1 day old
-    When the user views the flood row
-    Then the row is labelled "Old" with the time we last checked, and the official link still comes first
+    When the user views the flood row and then About the data
+    Then the flood row still shows only the source's icon, name and link, with the official link first and no label or time, and About the data shows the flood source as "Old" with the time we last checked
 
   @ui
-  Scenario: AREA-23 a flood copy over 1 day old is Unavailable
+  # Changed 14 Nov 2026 (FE-33, DA-12): the row says "Not known right now" in its own text; "Unavailable" is on About the data.
+  Scenario: AREA-23 a flood copy over 1 day old is Unavailable on About the data
     Given our flood copy is more than 1 day old
-    When the user views the flood row
-    Then the row shows "Unavailable" and "This is not the same as no warning", and no warning status from the old copy is shown
+    When the user views the flood row and then About the data
+    Then the row shows "Not known right now" and "This is not the same as no warning", no warning status from the old copy is shown, and About the data shows the flood source as "Unavailable" with the time we last checked
+
+  # Added 14 Nov 2026 (FE-33, DA-12): where the source date and status now live.
+  # fixture needed: #216 (sources with known dates and statuses)
+  @ui
+  Scenario: AREA-25 About the data lists every source with its date and status
+    Given the user is on Check an area and has checked a postcode
+    When the user opens About the data
+    Then every source the area check uses is listed with its icon, name and official link, its data date and its status (Cached, Fallback, Old or Unavailable, never Live in the pilot), and the flood source shows when we last checked
+
+  # Added 14 Nov 2026 (FE-33): the stamp on a fact.
+  # fixture needed: #216
+  @ui
+  Scenario: AREA-26 a fact's source stamp is the source's icon, name and link only
+    Given the user is on Check an area and has checked a postcode
+    When the user looks at the source on any fact
+    Then it shows the source's icon, its name and a "↗" mark and is a link to the official page, with no status word (Cached, Old, Unavailable or Fallback) and no date
 
   @ui
   Scenario: AREA-15 no request carries the postcode in its address

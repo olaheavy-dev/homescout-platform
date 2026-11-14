@@ -14,7 +14,7 @@ Feature: Nearby
     a source request that failed, not shown as a clean result -> NEAR-01, NEAR-07
     a source that does not cover the location -> NEAR-04, NEAR-10
     an address in Wales, Scotland or Northern Ireland, "not yet covered" -> NEAR-04, NEAR-10
-    stale information keeps its date -> NEAR-03, NEAR-09
+    stale information: the row shows no label or source date, About the data does (FE-33); a fact's own date, such as an inspection date, stays -> NEAR-03, NEAR-09
     missing never shown as zero or a favourable value -> NEAR-02, NEAR-05, NEAR-08
     narrow and mobile layouts with a list alternative to the map -> NEAR-11
     a topic's limits inside "How we got this", never on the row or at the top of the sheet -> NEAR-13
@@ -51,10 +51,11 @@ Feature: Nearby
     Then one row per topic shows its headline fact, and opening a row opens its sheet or panel, not a new page, in the order of the information architecture: your commute, getting around, everyday places, places of worship, schools, flood, recorded crime, sold nearby, planning nearby and broadband
 
   @ui
-  Scenario: NEAR-07 the failed crime topic says it is unavailable
+  # Changed 14 Nov 2026 (FE-33, DA-12): the row says "Not known right now" in its own text; the "Unavailable" label is on About the data.
+  Scenario: NEAR-07 the failed crime topic says it is not known right now
     Given home "R1" is at story step 1
     When the user opens Nearby
-    Then the recorded crime topic shows "Unavailable", "Couldn't fetch this time · Try again" and "This doesn't mean there's nothing to report" for "R1-AREA-CRIME-2"
+    Then the recorded crime topic shows "Not known right now", "Couldn't fetch this time · Try again" and "This doesn't mean there's nothing to report" for "R1-AREA-CRIME-2"
 
   @ui
   # Changed 14 Nov 2026 (FE-34): the "doesn't tell you" note is no longer a visible line; it sits inside "How we got this".
@@ -64,10 +65,11 @@ Feature: Nearby
     Then the flood topic shows the label of "B1-AREA-FLOOD-1" as recorded, with its long-term flood risk link, and no "no risk", "low risk" or "clear" label, and the recorded limit note is inside the flood topic's "How we got this"
 
   @ui
-  Scenario: NEAR-09 the stale inspection shows its date
+  # Changed 14 Nov 2026 (FE-33, DA-12): the "Old" label and the source date move to About the data; the inspection date is the fact itself and stays.
+  Scenario: NEAR-09 the stale inspection shows its inspection date and no label
     Given home "B1" is at story step 1
     When the user opens the schools topic
-    Then "B1-AREA-SCHOOL-INSPECTION-1" shows its inspection date and source date with the "Old" label
+    Then "B1-AREA-SCHOOL-INSPECTION-1" shows its inspection date, and its source stamp shows only the source's icon, name and link, with no "Old" label and no source date
 
   @ui
   Scenario: NEAR-10 Wales shows one not yet covered card
