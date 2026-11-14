@@ -178,7 +178,7 @@ None are P0 or P1: this review is about look and feel. Two visible defects are P
 | D5 | Sources | "Source stamp (Recommended)" | FE-33 |
 
 ## Founder review of pass A, 14 Nov 2026
-The founder reviewed canvas pass A on 14 Nov 2026 (prompt windows unless marked typed). The canvas now carries the review's edits (canvas version 95).
+The founder reviewed canvas pass A on 14 Nov 2026 (prompt windows unless marked typed). The canvas carried the review's edits from version 95; the later changes the same day, up to version 101, are listed in `docs/planning/status.md`.
 
 | # | Item | Answer | Recorded |
 |---|---|---|---|
