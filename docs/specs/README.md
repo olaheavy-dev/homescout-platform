@@ -23,7 +23,7 @@ The design skills' working notes in `.design/<feature>/` (decision 0031) feed th
 
    A value the engine does not produce is written "not calculated". Missing and partial states are named explicitly, and missing is never shown as £0 (rule 7).
 4. **Required states:** each feature's description maps every required state from doc 03 §5 that applies to it to at least one scenario, for example ambiguous match, not covered, stale, partial answer or source failed.
-5. **No forbidden words:** a scenario never expects the product to call a home "verified", "safe" or "approved" (rule 4). An AI step never calculates a figure (decision 0004).
+5. **No forbidden words:** a scenario never expects the product to call a home or an area "verified", "safe" or "approved" (rule 4), and never expects a score, rating, band or verdict about a place (for example "good", "best", "low risk", "clear", "n/100", "leads"). The full word list will live in one shared file, used by the chat's output guard and by the page, report and tool-result scenarios (the pilot design review, A3, still to be written); until it exists, use this rule's examples. The output guard blocks claims, not the bare word (CHAT-51). An AI step never calculates a figure (decision 0004).
 6. **Tags decide when a scenario runs:**
    - `@ui`: browser steps, run with playwright-bdd from stage 5 (decision 0049).
    - `@mcp`: MCP server steps, run from #97.

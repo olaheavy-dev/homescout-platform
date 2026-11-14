@@ -92,7 +92,7 @@ These are well covered by free or established products. Where we still show them
 | **Environment pack** (i) | Facts with limits where sources allow (air quality assessed; radon as a link; noise to check), feeding "Go and check in person"; never a score |
 | **Area history** (o) | Not planned on its own; dated series could support the watch feed later |
 | **Area panel on property sites** (r) | Not pursued; any business use goes through #151 |
-| **Priorities as a score** (l) | Not pursued. Doc 02 §5 D's user-selected priorities stay inside Compare and, since FE-22 (13 Nov 2026), the area check, highlighting matches and gaps without a total; a worship priority is faith-neutral, stays in the browser and is never stored (PD-13, 0014) |
+| **Priorities as a score** (l) | Not pursued. Doc 02 §5 D's user-selected priorities stay inside Compare and, since FE-22 (13 Nov 2026), the area check, highlighting matches and gaps without a total; a worship priority is faith-neutral and is never stored or logged (PD-13, 0014; since 0053 the limit is sent to the server to work out meets or misses) |
 | **AI-drafted change-of-address messages** (t) | Dropped: low value next to paid services that send for you |
 
 ### Already planned elsewhere (not ideas; linked so they aren't researched again)

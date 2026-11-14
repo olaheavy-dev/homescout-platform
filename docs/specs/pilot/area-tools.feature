@@ -92,7 +92,7 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
   Scenario: TOOLS-07 a radius over 5 km is capped, and the radius used is stated
     Given an assistant is connected to the area tools
     When it calls the nearby places tool with a radius of 20 km
-    Then the search uses 5 km, and the result states "within 5 km"
+    Then the search uses the 5 km cap, and the result states the radius used, in the country's display unit (FE-27)
 
   # fixture needed: #216
   @mcp
@@ -127,7 +127,9 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
   Scenario: TOOLS-12 sold prices are single recorded sales, never an average
     Given an assistant is connected to the area tools
     When it calls the area topic tool for sold prices
-    Then each sale carries its price and date with its address beside it, and the result holds no average, median or other summary
+    Then each sale carries its price and date with its street and property type beside it (for example "Mill Court · leasehold flat"), no house number, and the result holds no average, median or other summary
+
+  # Register line DA-13 (14 Nov 2026): street and property type only until the DA-05 licence check records the terms.
 
   @mcp
   Scenario: TOOLS-13 the explain-source tool returns stored text and calls no AI model
@@ -242,7 +244,7 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
   Scenario: TOOLS-30 a topic radius over 5 km is capped, and the radius used is stated
     Given an assistant is connected to the area tools
     When it calls the area topic tool for sold prices with a radius of 20 km
-    Then the search uses 5 km, and the result states "within 5 km"
+    Then the search uses the 5 km cap, and the result states the radius used, in the country's display unit (FE-27)
 
   @mcp
   Scenario: TOOLS-31 a zero, negative or non-numeric radius, or an unknown category, is refused

@@ -45,14 +45,14 @@ Feature: Landing
   Scenario: LAND-05 account features are described, never offered
     Given the user is not signed in
     When the user opens the landing page
-    Then the cost estimate, compare and questions appear only in a "Coming next" panel labelled "not available yet", with no active control
+    Then the cost estimate, compare, and tracking questions and answers per home appear only in a "Coming next" panel labelled "not available yet", with no active control
 
   # fixture needed: #216 (the hero's nearest places, distances and "+N more nearby" count)
   @ui
   Scenario: LAND-06 the hero's places come from the sample data
     Given the user is not signed in
     When the user opens the landing page
-    Then the hero summary card's four nearest places, their distances and the "+N more nearby" count come from the postcode-level sample data, and the pin is labelled "Postcode centre"
+    Then the hero summary card's four nearest places, their distances and the "+N more nearby" count come from the postcode-level sample data, the pin is labelled "Postcode centre", and the hero map and card carry a visible "Sample area" label (M5: the town is invented and the page sits beside real data)
 
   @ui
   Scenario: LAND-07 the hero map is a static image
