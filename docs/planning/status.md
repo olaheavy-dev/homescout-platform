@@ -102,4 +102,4 @@ Domains `vestagraph.com` and `vestagraph.co.uk` were bought on 12 Nov 2026 (regi
 | Optional: decide on `types-jsonschema` | Typing information for the validator's `jsonschema` imports, so two `# type: ignore` lines can go | Say yes or no; it is dev-only, free, Apache-2.0, not on the approved list | Any time (recommended after P8, which is done) |
 
 ## Open `noticed` issues
-#33, #115, #151, #159, #184, #197, #216 (the postcode-level sample area fixture that LAND-06, AREA-13, AREA-14 and the pilot specs wait for, now including a sparse postcode for CARD-44) (no record states the divide-by-12 rule), #207 (validators accept duplicate JSON keys), #212 (C# wording left in Python docstrings). #202 and #210 closed with P8.
+#33, #115, #151, #159, #184, #197, #244 (NEAR-07 wording for the home workspace), #216 (the postcode-level sample area fixture that LAND-06, AREA-13, AREA-14 and the pilot specs wait for, now including a sparse postcode for CARD-44) (no record states the divide-by-12 rule), #207 (validators accept duplicate JSON keys), #212 (C# wording left in Python docstrings). #202 and #210 closed with P8.
