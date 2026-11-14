@@ -69,7 +69,7 @@ Feature: Nearby
   Scenario: NEAR-09 the stale inspection shows its inspection date and no label
     Given home "B1" is at story step 1
     When the user opens the schools topic
-    Then "B1-AREA-SCHOOL-INSPECTION-1" shows its inspection date, and its source stamp shows only the source's icon, name and link, with no "Old" label and no source date
+    Then "B1-AREA-SCHOOL-INSPECTION-1" shows its inspection date, and its source stamp shows only the source's icon, name and link, with no "Old" label, no "Older inspection" badge (FE-35) and no source date
 
   @ui
   Scenario: NEAR-10 Wales shows one not yet covered card

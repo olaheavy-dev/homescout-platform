@@ -185,9 +185,10 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 3. **Data from:** a source wall: one card per source shown in About the data (planned: Environment Agency, covering "Flood warnings and flood risk by postcode" (DA-16), police.uk, HM Land Registry, Department for Education, Ofsted, NaPTAN, OpenStreetMap, Ofcom, Planning Data, and, added 14 Nov 2026, MHCLG (neighbourhood deprivation rank, English Indices of Deprivation 2025, decision 0054), Department for Transport (transport connectivity, 0054), Natural England (access to green space, DA-16) and the Office for National Statistics (housing affordability by council, DA-16); the final list follows DA-05), with each source and what it covers, and no limit line (FE-34); names only, no logos; links to About the data.
 4. **How it works:** three illustrated steps (type a postcode, see what's around, print or save), followed by a full-width photo band (an AI-generated terraced street; honest alt text, footer note).
 5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, how we got this).
-6. **Honest by design:** four illustrated rules, each with a sample snippet: sources and dates; missing shown as missing; we measure, never "safe"; crime as counts, never on the map.
-7. **Coming next, with a free account** (labelled "not available yet" until live): cost estimate, compare, track questions and answers per home. White panel with a slate outline in light; neutral panel with a slate outline in dark.
-8. **Questions:** a short FAQ beside a photo (kitchen table; honest alt text, footer note).
+
+(The "Honest by design" section was removed on 14 Nov 2026, FE-35: founder, prompt window, "Remove the whole section".)
+6. **Coming next, with a free account** (labelled "not available yet" until live): cost estimate, compare, track questions and answers per home. White panel with a slate outline in light; neutral panel with a slate outline in dark.
+7. **Questions:** a short FAQ beside a photo (kitchen table; honest alt text, footer note).
 9. Footer: How it works, About the data, Privacy, Accessibility.
 In the private prototype the landing can also link the two example homes; the public landing doesn't until 0045 is revisited.
 

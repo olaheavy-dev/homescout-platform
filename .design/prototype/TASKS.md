@@ -36,7 +36,7 @@ Date: 11 Nov 2026 (phase 5 of the design flow)
   - a "Data from" strip with source names only (no logos, which could read as endorsement);
   - "How it works" as three illustrated steps;
   - "How to read a result": a Schools card from the sample data (labelled Sample) with four numbered callouts, replacing generic feature columns;
-  - "Honest by design" as four illustrated cards, each with a sample snippet;
+  - "Honest by design" as four illustrated cards, each with a sample snippet (removed 14 Nov 2026, FE-35);
   - an illustrated "Coming next" panel and a short FAQ beside the brand mark;
   - no testimonials, counters, recent searches or pricing teaser (rule 1, decision 0014, PD-10).
 - [ ] **Brand mark** (Lit doorway, D1 · Ruled light, the founder's choice on 13 Nov 2026; a single wider ruled line at 16 px still to try, the agent's suggestion): primary and compact marks, lockups in both themes and one colour, the app icon, the browser icon, and clear space. Trade-mark clearance (0009) and the asset register first.
