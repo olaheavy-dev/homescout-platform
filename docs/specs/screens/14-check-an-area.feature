@@ -171,7 +171,7 @@ Feature: Check an area
     Given the user is on Check an area and our flood copy was refreshed within the last hour
     When the user views the flood row
     Then it shows the warnings in force "when we last checked, at <time>", the official flood-warning link comes first, no status word, and the word "live" and any "clear" or "safe" label are not shown
-    And when our copy holds no warning for the area, the row says "No flood warnings in force when we last checked, at <time>", with the long-term flood risk link (FE-25), and "This is not a flood risk check" sits inside the topic's "How we got this" (FE-34)
+    And when our copy holds no warning for the area, the row says "No flood warnings right now (when we last checked, at <time>)" followed in the same fact by the link "Long-term flood risk ↗" (FE-25; founder, 14 Nov 2026: "Say it in the fact (Recommended)", so the fact cannot read as an all-clear), and "This is not a flood risk check" sits inside the topic's "How we got this" (FE-34)
 
   @ui
   # Changed 14 Nov 2026 (FE-33, DA-12): the Old label and the check time move to About the data.
