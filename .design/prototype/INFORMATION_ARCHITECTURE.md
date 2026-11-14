@@ -27,7 +27,7 @@
     - **Export** ("Print or save as PDF"): a print-ready page made **in the browser** from the results on screen, which the visitor saves as PDF from the print dialog, so the postcode never goes back to the server and no PDF package is needed (register FE-06). Designed for A4 (the sample runs to three pages). **To be redesigned (FE-21, 13 Nov 2026):** a designed report with an isometric cover map, an "At a glance" page, topic pages and a sources page; the flat numbered map below stays inside the report. The contents below stand until the design pass updates them (to update with the report spec, FE-21: the report's contents, M8). Contents:
       - a header with "Sample data" for the example postcode only, or the made-at time for any other postcode (corrected 14 Nov 2026, C5: real postcodes are real data);
       - a **flat 2D map** whose numbered pins match the table rows (3D distorts distance and hides pins on paper);
-      - every topic with its facts, gaps, source, data date, its decision 0029 label (Cached with when it was fetched, Fallback, Old or Unavailable; "Live" is reserved for a later live adapter, since the pilot reads only stored copies, C4) and "doesn't tell you". An Unavailable or Not yet covered topic prints as such and is never left out;
+      - every topic with its facts, gaps, source, data date, its decision 0029 label (Cached with when it was fetched, Fallback, Old or Unavailable; "Live" is reserved for a later live adapter, since the pilot reads only stored copies, C4) and its limits, printed in full in the report (the screen keeps them inside "How we got this", FE-34). An Unavailable or Not yet covered topic prints as such and is never left out;
       - crime as a counts table only;
       - the attribution each licence requires;
       - a privacy line. Its wording ("made in your browser; Vestagraph didn't store your search") is **provisional**: it is checked against the privacy notice once SE-02 parts 1 and 2 settle logs, including the map-tile host's access logs (#85).
@@ -128,7 +128,7 @@
 7. Below: evidence gaps, documents received and the activity preview.
 
 ### Nearby (summary first; the map is equal)
-The page opens as **one row per topic with its headline fact** (founder review, 11 Nov 2026: the full list was about four phone screens long). Tapping a topic opens its detail as a **bottom sheet on a phone and a side panel on desktop, never a separate page** (register line FE-20; corrected 14 Nov 2026, C1); the open topic is linkable through the `#` part (on Check an area, the same fragment as the postcode). The detail has the full list, List and Map views, the source line and "What this doesn't tell you". The same summary, without the commute row, is the public Check an area page. Topic order:
+The page opens as **one row per topic with its headline fact** (founder review, 11 Nov 2026: the full list was about four phone screens long). Tapping a topic opens its detail as a **bottom sheet on a phone and a side panel on desktop, never a separate page** (register line FE-20; corrected 14 Nov 2026, C1); the open topic is linkable through the `#` part (on Check an area, the same fragment as the postcode). The detail has the full list, List and Map views, the source line and "How we got this", which holds the topic's limits (FE-34). The same summary, without the commute row, is the public Check an area page. Topic order:
 1. **Your commute:** your estimate next to your limit, with no verdict until the engine produces one (#147).
 2. **Getting around:** stops, with straight-line distances.
 3. **Everyday places:** supermarket or shop, park, healthcare, police station and childcare, with gaps shown.
@@ -139,7 +139,7 @@ The page opens as **one row per topic with its headline fact** (founder review, 
 8. **Sold nearby:** history, not a valuation.
 9. **Planning nearby** and **broadband.**
 
-Caveats (register line FE-28, 14 Nov 2026): the short list shows a **one-line limit** on the rows where it changes the meaning (flood, recorded crime, sold prices, schools); the full "What this doesn't tell you" note is **always open at the top of the topic's sheet or panel**, never collapsed, in the same text size and contrast as the fact it qualifies (research `area-display-ux.md`: caveats that change meaning stay visible).
+Limits (register line FE-34, 14 Nov 2026, replacing FE-28): there is **no visible limit line** on the landing cards, the rows or the top of a topic's sheet or panel. Each topic's limits sit inside its **"How we got this"** (FE-24; closed by default, reachable by keyboard) and on About the data. A missing value is still said on the row, never zero (rule 7).
 
 #### Layering (register line FE-26, founder, 14 Nov 2026: "one at a time")
 One rule for what shows where; the feature files point here (CHAT-06, CHAT-38, CARD-22).
@@ -182,9 +182,9 @@ Each topic detail ends with its source line. On a phone the map is a view inside
 ### Landing (search first, decision 0046)
 1. The promise in a Bricolage Grotesque headline, with the **postcode box** (persistent label, hint text, "Check postcode", "Try an example") as the main action. "England only for now" sits under it.
 2. A hero visual: the sample 3D map as a **static image** with a "Postcode centre" pin, a 400 m ring, crafted category pins (FE-08) and a compact summary card on the map (the four nearest places and "+3 more nearby"), placed where no pin is under it. Its places, distances and count come from the postcode-level sample fixture (B6a), never typed by hand.
-3. **Data from:** a source wall: one card per source shown in About the data (planned: Environment Agency, police.uk, HM Land Registry, Department for Education, Ofsted, NaPTAN, OpenStreetMap, Ofcom, Planning Data; the final list follows DA-05; to update with the report spec (FE-21), since the pilot's later extras add five more sources), with each source, what it covers and what it can’t tell you; names only, no logos; links to About the data.
+3. **Data from:** a source wall: one card per source shown in About the data (planned: Environment Agency, covering "Flood warnings and flood risk by postcode" (DA-16), police.uk, HM Land Registry, Department for Education, Ofsted, NaPTAN, OpenStreetMap, Ofcom, Planning Data, and, added 14 Nov 2026, MHCLG (neighbourhood deprivation rank, English Indices of Deprivation 2025, decision 0054), Department for Transport (transport connectivity, 0054), Natural England (access to green space, DA-16) and the Office for National Statistics (housing affordability by council, DA-16); the final list follows DA-05), with each source and what it covers, and no limit line (FE-34); names only, no logos; links to About the data.
 4. **How it works:** three illustrated steps (type a postcode, see what's around, print or save), followed by a full-width photo band (an AI-generated terraced street; honest alt text, footer note).
-5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, what it can't tell you).
+5. **How to read a result:** a Schools card from the sample data, labelled Sample, with four numbered callouts (distance, inspection date, source, how we got this).
 6. **Honest by design:** four illustrated rules, each with a sample snippet: sources and dates; missing shown as missing; we measure, never "safe"; crime as counts, never on the map.
 7. **Coming next, with a free account** (labelled "not available yet" until live): cost estimate, compare, track questions and answers per home. White panel with a slate outline in light; neutral panel with a slate outline in dark.
 8. **Questions:** a short FAQ beside a photo (kitchen table; honest alt text, footer note).

@@ -17,7 +17,7 @@ Feature: Nearby
     stale information keeps its date -> NEAR-03, NEAR-09
     missing never shown as zero or a favourable value -> NEAR-02, NEAR-05, NEAR-08
     narrow and mobile layouts with a list alternative to the map -> NEAR-11
-    what a topic doesn't tell you, on the row and in the sheet -> NEAR-13
+    a topic's limits inside "How we got this", never on the row or at the top of the sheet -> NEAR-13
     basic/paid boundaries -> NEAR-16
   Free and paid (doc 02 §8): the Nearby map and list with straight-line distances are free; routed
     travel times to the household's own destinations are paid (routing is a metered third-party
@@ -57,10 +57,11 @@ Feature: Nearby
     Then the recorded crime topic shows "Unavailable", "Couldn't fetch this time · Try again" and "This doesn't mean there's nothing to report" for "R1-AREA-CRIME-2"
 
   @ui
+  # Changed 14 Nov 2026 (FE-34): the "doesn't tell you" note is no longer a visible line; it sits inside "How we got this".
   Scenario: NEAR-08 the flood gap is never a reassuring label
     Given home "B1" is at story step 1
     When the user opens Nearby
-    Then the flood topic shows the label and the "What this doesn't tell you" note of "B1-AREA-FLOOD-1" as recorded, with its long-term flood risk link, and no "no risk", "low risk" or "clear" label
+    Then the flood topic shows the label of "B1-AREA-FLOOD-1" as recorded, with its long-term flood risk link, and no "no risk", "low risk" or "clear" label, and the recorded limit note is inside the flood topic's "How we got this"
 
   @ui
   Scenario: NEAR-09 the stale inspection shows its date
@@ -88,15 +89,14 @@ Feature: Nearby
     Then crime shows as counts by month and category, and the map shows no crime marker
 
   @ui
-  # Changed 14 Nov 2026 (M3, register line FE-28): the full note on every row made the list long again.
-  # The short list carries a one-line limit only where the limit changes the meaning; the full note is
-  # always open at the top of the topic's sheet or panel. P2: "as prominent" means the same text size
-  # and contrast as the fact it qualifies.
-  Scenario: NEAR-13 what a topic doesn't tell you stays in view where it changes the meaning
+  # Changed 14 Nov 2026 (FE-34, replacing FE-28): the founder removed every visible limit line. The limits
+  # live inside each topic's "How we got this" (FE-24), closed by default, and on About the data.
+  # Earlier change (M3, FE-28): the full note on every row made the list long again.
+  Scenario: NEAR-13 what a topic doesn't tell you sits inside "How we got this"
     Given home "B1" is at story step 1
     And the screen is 390 pixels wide
     When the user opens Nearby and then a topic
-    Then the flood, recorded crime, sold nearby and schools rows each show a one-line limit under their headline fact, and the opened topic's sheet shows the full "What this doesn't tell you" note at the top, never collapsed, in the same text size and contrast as the fact it qualifies
+    Then no row and no sheet or panel top shows a limit line or a "What this doesn't tell you" note, the topic's "How we got this" section is closed by default, and opening it by keyboard shows the topic's limits
 
   @ui
   Scenario: NEAR-14 the commute row gives no verdict
