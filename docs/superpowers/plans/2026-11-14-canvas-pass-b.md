@@ -17,7 +17,7 @@ Pass A, published before this plan, set the brand system on "Brand and style" an
 ## The boards (each light and dark)
 1. Nearby topics, phone
 2. Nearby › Schools, phone
-3. Nearby desktop with margin notes
+3. Nearby desktop (formerly with margin notes; FE-34 moved those limits into "How we got this")
 4. Map, phone
 5. Map, desktop
 
@@ -27,7 +27,7 @@ That is five boards in two themes, ten in all.
 1. **Copy, then move.** Copy each original to the "Home workspace (later)" page, labelled "Home workspace version". Pass B changes only the pilot copies.
 2. **Strip the home context.** Remove the saved-home title, the signed-in menu, the demo step strip, the commute row and anything that needs an account. The header becomes the public header (logo, How it works, About the data, theme and text-size controls when FE-23 is drawn). The page title is the postcode ("Around NB1 4XY", Bricolage 28, from the look review's quick wins).
 3. **Topic detail follows FE-20 and FE-26.** "Nearby › Schools" becomes the Schools topic opened as a bottom sheet on the phone over the Check an area list, and as the right-column side panel on desktop. It is never a separate page. One panel shows at a time; the chat opens as a drawer.
-4. **Desktop Nearby with margin notes** (14 Nov 2026: the notes became limits inside "How we got this", FE-34; the layout below still applies) stays the strongest honesty device (look review "What to keep"). Redraw it as the desktop Check an area result: the topic list on the left with margin notes, and the map in the right column until a topic opens. This also covers the missing desktop result board ("the desktop result for Check an area" in the review's first batch).
+4. **Desktop Nearby** (14 Nov 2026: its margin notes were limits, which FE-34 moved into each topic's closed "How we got this"; no limit lines in the margin). Redraw it as the desktop Check an area result: the topic list on the left, and the map in the right column until a topic opens, when the topic's side panel replaces it. This also covers the missing desktop result board ("the desktop result for Check an area" in the review's first batch).
 5. **Maps.** The map shows the postcode centre, not a home. Distances are measured from the postcode centre and say so. Filter chips stay clear of the list panel. Every control is at least 44 px. Phone and desktop markers use the one marker style.
 6. **Content rules:**
    - Figures as ledger rows, each starting with our icon, a place icon or a topic icon (FE-30, founder: "Every row"), in England metres to the nearest 10 m under 1 mile ("120 m", "1,450 m") and miles to one decimal from 1 mile ("1.3 miles"), crime "within 1 mile" (FE-27, amended by the founder on 14 Nov 2026).
