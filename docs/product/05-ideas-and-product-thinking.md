@@ -16,7 +16,7 @@ Use these eleven questions on every new idea, in this order. Question 10 is a ga
    - **link** to the official place that does, when we can't hold the data (for example bin days, 0028);
    - **say it's unknown** and how to find out, when nothing can tell us (for example who supplies a home's energy). Never a guess (rule 7).
 4. **Gaps can be features.** What we can't tell is useful when it becomes an action: "go and check this in person", "ask the agent this".
-5. **No scores or verdicts from us.** Facts with their source, date and limits; nothing is called safe, verified or approved (rule 4). Doc 02 §5 D allows comparing by priorities the user selects; any total or ranking would need its own decision record.
+5. **No scores or verdicts from us.** Facts with their source, date and limits; nothing is called safe, verified or approved (rule 4). Doc 02 §5 D allows comparing by priorities the user selects; any total or ranking would need its own decision record. The only such record is [0054](../decisions/0054-official-rankings-in-the-pilot.md) (DA-15): government-published ranks and indices, such as the deprivation decile, may be quoted with source, edition and level; a score, total or ranking of our own is still not allowed.
 6. **Browser first, no account.** Keep inputs in the browser where possible; anything the server needs (such as a postcode) travels in the request body or URL fragment and is neither stored nor logged (0046, 0014). Accounts come only when saving something is the value (SE-01).
 7. **Reuse before building.** Name what the idea reuses: the postcode lookup, the source adapters (0029), the cost engine (0019), the browser export, the checklist pattern, the 3D map. Prefer ideas that are mostly reuse.
 8. **AI explains, drafts and fills in; it never decides.** Following 0004 (and 0030 for extraction):
@@ -88,7 +88,7 @@ These are well covered by free or established products. Where we still show them
 
 | Idea | Where it stands |
 |---|---|
-| **Compare two postcodes** (d) | A page feature in the pilot's wave 2 (pilot design, builder-check answer 7); otherwise only inside Compare for homes, not as a separate tool |
+| **Compare two postcodes** (d) | A page feature in the pilot (pilot design, builder-check answer 7); otherwise only inside Compare for homes, not as a separate tool |
 | **Environment pack** (i) | Facts with limits where sources allow (air quality assessed; radon as a link; noise to check), feeding "Go and check in person"; never a score |
 | **Area history** (o) | Not planned on its own; dated series could support the watch feed later |
 | **Area panel on property sites** (r) | Not pursued; any business use goes through #151 |
@@ -106,7 +106,7 @@ These are well covered by free or established products. Where we still show them
 | Viewing checklist | The viewing companion, doc 02 §5 A |
 | Drafted messages to agents | Doc 02 §5 E; the Questions screen (#169) |
 | Reading an uploaded document | Document extraction, doc 04 and decision 0030; privacy points in 0014 |
-| Walking times and buses per hour; school demand (applications and offers); council tax by band; a family view (13 Nov 2026) | Pilot wave 2 ([pilot design](../superpowers/specs/2026-11-13-pilot-area-ai-design.md), Goals 5), each chosen by the founder in a prompt window after the [13 Nov research](../reviews/2026-11-13-chatgpt-ideas-research.md) |
+| Walking times and buses per hour; school demand (applications and offers); council tax by band; a family view (13 Nov 2026) | In the pilot, one phase since 14 Nov 2026 (PD-16) ([pilot design](../superpowers/specs/2026-11-13-pilot-area-ai-design.md), Goals 5), each chosen by the founder in a prompt window after the [13 Nov research](../reviews/2026-11-13-chatgpt-ideas-research.md) |
 
 ### Current leaning (to revisit at each stage gate)
 

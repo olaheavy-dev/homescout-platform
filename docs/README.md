@@ -44,7 +44,7 @@ Planned folders, added when their stage starts: `.design/<feature>/` at the repo
 | [Free data sources assessment](references/data-sources.md) | Licence, terms, limits and coverage of free UK data sources for area information, checked 11 Nov 2026 (#123) | Stage 3 onwards |
 | [Third-party documentation](references/third-party.md) | Official documentation links and pinned versions for tools and packages | Current |
 | [Competitor check of the doc 05 ideas, 11 Nov 2026](reviews/2026-11-11-competitor-check-of-ideas.md) | What UK products publicly offered for each idea, with how each claim was verified | Record |
-| [Research on a ChatGPT product review, 13 Nov 2026](reviews/2026-11-13-chatgpt-ideas-research.md) | Free and paid sources behind ChatGPT's suggestions; pilot wave 2 extras | Record |
+| [Research on a ChatGPT product review, 13 Nov 2026](reviews/2026-11-13-chatgpt-ideas-research.md) | Free and paid sources behind ChatGPT's suggestions; pilot extras | Record |
 | [Competitor report comparison, 13 Nov 2026](reviews/2026-11-13-competitor-report-comparison.md) | A competitor's reports, observed with a day pass; gaps in our specs; founder decisions D1 to D8 | Record |
 | [Pilot design review, 14 Nov 2026](reviews/2026-11-14-pilot-design-review.md) | The competitor benchmark checklist, a scorecard of the pilot specifications and boards, findings, and founder decisions on layering, units, flood age, sold prices, "Is it safe?" and priorities | Record |
 | [Pilot look-and-feel review, 14 Nov 2026](reviews/2026-11-14-pilot-look-and-feel-review.md) | What would elevate the pilot's look: what to keep, ranked elevations, quick wins, and founder decisions on surfaces, figures, dark mode, photos and sources | Record |

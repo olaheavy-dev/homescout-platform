@@ -6,13 +6,13 @@
 **Inputs:** [pilot design review](../../reviews/2026-11-14-pilot-design-review.md) (the "ten Nearby, Schools and Map boards" row under "Wrong now (P1), fixed first", and founder decision 2), [look-and-feel review](../../reviews/2026-11-14-pilot-look-and-feel-review.md), register lines FE-20 and FE-26 to FE-33, DA-12 to DA-14, and the postcode-level sample data from #216.
 
 ## Before starting: the postcode sample data (#216)
-Pass B cannot start until #216 has merged. Every distance on these boards is measured from the postcode centre (AREA-13), but `packages/fixtures/data/area.json` holds only distances from a saved home (records keyed by `homeId`). Using those figures would label a home's distances as postcode distances (rules 1 and 2). Codex raised this as a P1 on #245; the founder chose "#216 first, with levels (Recommended)" (14 Nov 2026, prompt window). #216 adds a postcode-level sample fixture in which every fact also records the area it covers (DA-14).
+Pass B cannot start until #216 has merged. Every distance on these boards is measured from the postcode centre (AREA-13), but `packages/fixtures/data/area.json` holds only distances from a saved home (records keyed by `homeId`). Using those figures would label a home's distances as postcode distances (rules 1 and 2). Codex raised this as a P1 on #245; the founder chose "#216 first, with levels (Recommended)" (14 Nov 2026, prompt window). #216 adds a postcode-level sample fixture in which every fact also records the area it covers (DA-14) and the flood-warning check time.
 
 ## Why
 Ten boards on the pilot page still show the later home workspace: a saved home ("Flat 2, 14 Mill Court", "This home"), a signed-in menu (My move, Homes, Compare), a demo step strip and a commute row. The pilot has no accounts (decision 0046), and the boards are the reference the build follows. The founder chose "Redraw, move originals (Recommended)" (14 Nov 2026, prompt window).
 
 ## What pass A already did
-Pass A, published before this plan, set the brand system on "Brand and style" and carried it to the existing pilot boards: one soft-gloss layer (FE-29), ledger rows (FE-30), forest-night dark mode (FE-31), both landing photos kept (FE-32), the source stamp (FE-33) and one marker style. It also fixed the four wrong boards and the quick wins. Pass B uses those components, never local copies.
+Pass A, published before this plan, set the brand system on "Brand and style" and carried it to the existing pilot boards: one soft-gloss layer (FE-29), ledger rows (FE-30), forest-night dark mode (FE-31), both landing photos kept (FE-32), the source stamp (FE-33) and one marker style. It also fixed the four wrong boards and the quick wins. Pass B uses those components, never local copies. The founder reviewed pass A on 14 Nov 2026 and kept it, with two additions applied to the canvas (canvas version CANVAS_VERSION): every ledger row starts with our icon, and the source stamp is the link ([review](../../reviews/2026-11-14-pilot-look-and-feel-review.md), "Founder review of pass A").
 
 ## The boards (each light and dark)
 1. Nearby topics, phone
@@ -30,8 +30,9 @@ That is five boards in two themes, ten in all.
 4. **Desktop Nearby with margin notes** stays the strongest honesty device (look review "What to keep"). Redraw it as the desktop Check an area result: the topic list on the left with margin notes, and the map in the right column until a topic opens. This also covers the missing desktop result board ("the desktop result for Check an area" in the review's first batch).
 5. **Maps.** The map shows the postcode centre, not a home. Distances are measured from the postcode centre and say so. Filter chips stay clear of the list panel. Every control is at least 44 px. Phone and desktop markers use the one marker style.
 6. **Content rules:**
-   - Figures as ledger rows, England in miles to one decimal place (FE-27), crime "within 1 mile".
-   - A source stamp on every fact (Cached, Old or Unavailable; never Live).
+   - Figures as ledger rows, each starting with our icon, a place icon or a topic icon (FE-30, founder: "Every row"), England in miles to one decimal place (FE-27), crime "within 1 mile". Distances below 0.1 miles read "under 0.1 miles", never "0.0 miles" (FE-27, confirmed by the founder on 14 Nov 2026).
+   - A source stamp on every fact (Cached, Old or Unavailable; never Live); the stamp is the link to the official source page, with source, status and date visible (FE-33).
+   - The flood check time is settled: the postcode sample data from #216 gains a flood-warning check time ("09:40", founder, 14 Nov 2026: "Add the time to the sample data", over the agent's recommendation of labelling it an example), and the boards quote it from the fixture rather than a drawn placeholder.
    - One-line limits on flood, crime, sold prices and schools (FE-28).
    - Sold prices show street and property type only (DA-13).
    - Flood wording from AREA-21.

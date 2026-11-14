@@ -176,3 +176,21 @@ None are P0 or P1: this review is about look and feel. Two visible defects are P
 | D3 | Dark mode | "Forest night (Recommended)" | FE-31 |
 | D2 | Landing photos | "Keep both", over the agent's recommendation of none | FE-32 |
 | D5 | Sources | "Source stamp (Recommended)" | FE-33 |
+
+## Founder review of pass A, 14 Nov 2026
+The founder reviewed canvas pass A on 14 Nov 2026 (prompt windows unless marked typed). The canvas now carries the review's edits (canvas version CANVAS_VERSION).
+
+| # | Item | Answer | Recorded |
+|---|---|---|---|
+| 1 | Soft gloss | "Keep as is" | FE-29 |
+| 2 | Ledger rows | Typed: "We can discuss but if this where the facts or number was goten from, i think we should remove and just add a link to the official docs, we can discuss this further" [sic]; then asked "what is this, where can i confirm this?" (shown Brand and style › Craft sheet › section 9); then typed "should we not include our icons here?"; then "Every row (Recommended)": every ledger row starts with our icon (a place icon or a topic icon) | FE-30 (extends FE-17) |
+| 3 | Forest night | "Keep as is" | FE-31 |
+| 4 | Both photos | "Keep as is" | FE-32 |
+| 5 | Source stamp | "Short stamp that is the link (Recommended)": the stamp is the link to the official source page; source, status and date stay visible | FE-33 |
+| 6 | One marker style | "Keep as is" | |
+| 7 | Three weights, seven sizes | "Keep as is" | |
+| 8 | Miles | "Keep, incl. "under 0.1" (Recommended)": distances below 0.1 miles read "under 0.1 miles", never "0.0 miles"; the Craft sheet's "Bus stop 0.1 miles" for 120 m was a defect, fixed on the canvas | FE-27 |
+| 9 | Error fixes | "Yes, all fine" | |
+| 10 | Quick wins | "Yes, all fine" | |
+| 11 | Craft sheet sections 8 and 9 as the single reference | "Keep as the reference (Recommended)" | |
+| 12 | Flood check time "09:40" | "Add the time to the sample data", over the agent's recommendation to label it an example: #216's postcode sample data gains a flood-warning check time and the boards quote it | Pass B plan, #216 |

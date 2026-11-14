@@ -213,7 +213,7 @@ The free/paid plan still holds: free gives a complete, honest first look at any 
 |---|---|---|---|
 | Address check, unit confirmation, home overview | ✓ | ✓ | Entry point and trust; mostly cached open data |
 | Public evidence with sources, dates and coverage gaps (energy, sold prices, flood context, planning records) | ✓ | ✓ | Public-interest facts are never paywalled |
-| Nearby map and list | ✓ (straight-line distances) | ✓ plus routed travel times to the household's own destinations | Routing is a metered third-party cost. Walking times from the postcode centre to nearby places, worked out in a self-hosted batch, are free (pilot wave 2, DA-08, 13 Nov 2026) |
+| Nearby map and list | ✓ (straight-line distances) | ✓ plus routed travel times to the household's own destinations | Routing is a metered third-party cost. Walking times from the postcode centre to nearby places, worked out in a self-hosted batch, are free (pilot, DA-08, 13 Nov 2026) |
 | Buy and rent cost calculators, one downside scenario | ✓ | ✓ plus multiple saved scenarios and stress sets | Deterministic and cheap; the free version must be honest |
 | Compare homes | Up to 2 homes | Up to a larger limit, with household priorities | Comparison is core value; a limit, not a lock |
 | Viewing notes and manual question list (record replies yourself) | ✓ | ✓ | The answer-tracking habit should form before payment |

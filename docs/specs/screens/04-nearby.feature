@@ -22,7 +22,7 @@ Feature: Nearby
   Free and paid (doc 02 §8): the Nearby map and list with straight-line distances are free; routed
     travel times to the household's own destinations are paid (routing is a metered third-party
     cost), so the prototype shows them only as a labelled, simulated boundary (NEAR-16). Walking times
-    from the postcode centre to nearby places (a self-hosted batch, pilot wave 2, DA-08) are free.
+    from the postcode centre to nearby places (a self-hosted batch, pilot, DA-08) are free.
 
   Scenario: NEAR-01 a failed crime lookup is not shown as no crime
     Then area record "R1-AREA-CRIME-2" has status "source-failed"
@@ -116,4 +116,4 @@ Feature: Nearby
   Scenario: NEAR-16 distances are straight-line and routed times to the household's own destinations are a labelled boundary
     Given home "B1" is at story step 1
     When the user opens getting around
-    Then every distance is labelled straight-line, and routed travel time to the household's own destinations appears only as a labelled, simulated paid feature, never as a working control; walking times from the postcode centre to nearby places (pilot wave 2) are a separate free feature
+    Then every distance is labelled straight-line, and routed travel time to the household's own destinations appears only as a labelled, simulated paid feature, never as a working control; walking times from the postcode centre to nearby places (pilot) are a separate free feature
