@@ -18,7 +18,7 @@ Each item is written so it can be tested on a screen or in a scenario. Each answ
 ### A. Truthful figures
 | # | Item (testable) |
 |---|---|
-| B1 | No score, rating, band or verdict word about a place anywhere on the surface ("safe", "good", "best", "low risk", "clear", "n/100", "leads"). Tested by a scenario on that surface against one shared word list. |
+| B1 | No score, rating, band or verdict word about a place anywhere on the surface ("safe", "good", "best", "low risk", "clear", "n/100", "leads"). A classification quoted from its source and labelled with it (for example the official flood risk band, FE-25) is a sourced fact, not our verdict. Tested by a scenario on that surface against one shared word list. |
 | B2 | Five gap states have five different wordings and none is zero, "none", a dash beside a verdict or a clean banner: no record in this source; none found within the stated radius; Unavailable; Old; Not yet covered. |
 | B3 | Every figure shows, beside it, the area it covers (postcode, street, radius, council area) and its radius. No row mixes radii without saying so. |
 | B4 | Every fact shows its source, its data date and its label, and the source is one tap away. |
@@ -78,7 +78,7 @@ Each item is written so it can be tested on a screen or in a scenario. Each answ
 ## Scorecard of the specifications
 Key: **Y** meets (a scenario proves it), **P** partly (a rule or a related scenario exists, the proof for this surface is missing), **X** missing, **–** not applicable. Columns: **L** Landing (`01-landing.feature`), **A** Check an area (`14-check-an-area.feature`), **N** Nearby topics (`04-nearby.feature`, the topic summary the pilot reuses), **M** Map (no file of its own: AREA-09, NEAR-11, NEAR-12, NEAR-15 and the information architecture line 142), **C** area chat, **T** area tools, **K** area card (both versions, Expand, phone preview).
 
-| # | L |
+| # | L | A | N | M | C | T | K | Why (scenario IDs) |
 |---|---|---|---|---|---|---|---|---|
 | B1 no verdicts | P | X | P | P | Y | P | Y | LAND-10 names three words only; nothing on A; NEAR-08, NEAR-14; CHAT-11 to 15, 39 to 43; TOOLS-11, 18, 40 cover descriptions, not result text; CARD-08 |
 | B2 five gap states | – | P | Y | X | Y | Y | P | A has not found, Unavailable, not covered (AREA-05, 07, 08, 14) but no "none found within", "no record" or "Old"; CARD-14 only covers no places |
@@ -158,7 +158,7 @@ Two lists: one per review. The specification review found 60 (8 change, 30 add, 
 - **Polish:** touch targets under 44 px on the map and chat controls; a clipped hero tooltip and chat placeholder; dark-mode dividers; the Schools source date; one vocabulary for gaps.
 
 ## Founder decisions, 14 Nov 2026 (prompt windows)
-| # | Question |
+| # | Question | Answer | Recorded |
 |---|---|---|---|
 | 1 | Topic, map and chat on the result | "One at a time (Recommended)" | FE-26 |
 | 2 | The ten home-context boards | "Redraw, move originals (Recommended)" | This page; canvas |
