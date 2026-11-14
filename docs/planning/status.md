@@ -86,7 +86,7 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 **First thing next session (founder, 14 Nov 2026, typed: "the first thing next session is to list all that was chnaged then i can reveiew one by one" [sic]):** before any new work, list every change made on 14 Nov 2026, so the founder can review each one in turn:
 - #243's specification fixes and new scenarios;
 - the register lines FE-26 to FE-28, AI-11, AI-12, DA-12, DA-13 and SE-04, and decision 0053 (the founder has already reviewed canvas pass A and FE-29 to FE-33);
-- this session's records: DA-14, PD-16, decision 0054 (DA-15), DA-16, FE-34, and the amended FE-25, FE-28, FE-27, FE-30, FE-33 (again: icon, name and link only, dates on About the data), DA-12 (check time and label moved to About the data), DA-08 and DA-10.
+- this session's records: DA-14, PD-16, decision 0054 (DA-15), DA-16, FE-34, and the amended FE-25, FE-28, FE-27, FE-30, FE-33 (again: icon, name and link only, dates on About the data), DA-12 (label moved to About the data; the flood row keeps its check time), DA-08 and DA-10.
 
 Take the founder's answer on each item, record it, and only then start #216 (b0), with levels (DA-14) and the flood-warning check time, then pass B.
 

@@ -31,7 +31,7 @@ That is five boards in two themes, ten in all.
 5. **Maps.** The map shows the postcode centre, not a home. Distances are measured from the postcode centre and say so. Filter chips stay clear of the list panel. Every control is at least 44 px. Phone and desktop markers use the one marker style.
 6. **Content rules:**
    - Figures as ledger rows, each starting with our icon, a place icon or a topic icon (FE-30, founder: "Every row"), in England metres to the nearest 10 m under 1 mile ("120 m", "1,450 m") and miles to one decimal from 1 mile ("1.3 miles"), crime "within 1 mile" (FE-27, amended by the founder on 14 Nov 2026).
-   - A source stamp on every fact (Cached, Old or Unavailable; never Live); the stamp is the link to the official source page, with source, status and date visible (FE-33).
+   - A source stamp on every fact: the source's icon, name and ↗, as the link to the official page; no date or status on the fact, those are on About the data (FE-33 amended); the flood row keeps its check time (DA-12).
    - The flood check time is settled: the postcode sample data from #216 gains a flood-warning check time ("09:40", founder, 14 Nov 2026: "Add the time to the sample data", over the agent's recommendation of labelling it an example), and the boards quote it from the fixture rather than a drawn placeholder.
    - No visible limit lines: limits sit inside each topic's "How we got this" (FE-34, 14 Nov 2026; replaces the one-line limits of FE-28).
    - Sold prices show street and property type only (DA-13).
