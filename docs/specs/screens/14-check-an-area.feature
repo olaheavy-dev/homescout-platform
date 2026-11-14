@@ -28,7 +28,7 @@ Feature: Check an area
     postcode not found, never shown as empty topics -> AREA-05
     our stored copy of a source is missing or failed, not shown as a clean result -> AREA-07, AREA-14
     the visitor's own request to us failed, a different state with Try again -> AREA-19
-    flood warnings: official link first, no time or label on the row; Old after 1 hour and Unavailable after 1 day on About the data -> AREA-21, AREA-22, AREA-23, AREA-25
+    flood warnings: official link first, the check time on the row but no label; Old after 1 hour and Unavailable after 1 day on About the data -> AREA-21, AREA-22, AREA-23, AREA-25
     a fact's stamp is its source's icon, name and link, with no status word and no date -> AREA-26
     the printout: the sample postcode says "Sample data", any other postcode its made-at time -> AREA-12, AREA-20
     distances in England: metres under 1 mile, miles from 1 mile, stored in metres -> AREA-24
@@ -165,18 +165,20 @@ Feature: Check an area
   # 1 day limits below are the founder's accepted default, not an Environment Agency rule.
   # fixture needed: #216 (flood copies of a known age for AREA-21 to AREA-23)
   @ui
-  # Changed 14 Nov 2026 (FE-33, DA-12): the flood row no longer shows the check time or a label (founder: "No exceptions"); About the data does (AREA-25).
-  Scenario: AREA-21 the flood row puts the official link first and shows no time or label
+  # Changed 14 Nov 2026 (FE-33, DA-12): no status label on the flood row (founder: "No exceptions"); About the data shows it (AREA-25).
+  # Changed again 14 Nov 2026 (DA-12): the flood row keeps its check time (founder: "keep time for the flood"); its limit sits in "How we got this" (FE-34).
+  Scenario: AREA-21 the flood row puts the official link first and shows the check time but no label
     Given the user is on Check an area and our flood copy was refreshed within the last hour
     When the user views the flood row
-    Then it shows "Warnings in force in our latest copy", the official flood-warning link comes first, no time and no status word, and the word "live" and any "clear" or "safe" label are not shown; when our copy holds no warning for the area, the row says "No flood warnings in force in our latest copy", followed by "This is not a flood risk check" and the long-term flood risk link (FE-25)
+    Then it shows the warnings in force "when we last checked, at <time>", the official flood-warning link comes first, no status word, and the word "live" and any "clear" or "safe" label are not shown
+    And when our copy holds no warning for the area, the row says "No flood warnings in force when we last checked, at <time>", with the long-term flood risk link (FE-25), and "This is not a flood risk check" sits inside the topic's "How we got this" (FE-34)
 
   @ui
   # Changed 14 Nov 2026 (FE-33, DA-12): the Old label and the check time move to About the data.
   Scenario: AREA-22 a flood copy over 1 hour old is labelled Old on About the data
     Given our flood copy is more than 1 hour old and less than 1 day old
     When the user views the flood row and then About the data
-    Then the flood row still shows only the source's icon, name and link, with the official link first and no label or time, and About the data shows the flood source as "Old" with the time we last checked
+    Then the flood row still shows the source's icon, name and link with the official link first and "when we last checked, at <time>", but no label, and About the data shows the flood source as "Old" with the time we last checked
 
   @ui
   # Changed 14 Nov 2026 (FE-33, DA-12): the row says "Not known right now" in its own text; "Unavailable" is on About the data.
