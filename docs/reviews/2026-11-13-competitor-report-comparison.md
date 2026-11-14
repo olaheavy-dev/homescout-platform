@@ -10,7 +10,7 @@
 - the account, usage and saved-report pages;
 - three report PDFs.
 
-Everything below was seen on the competitor's own pages that day, so it is **[F]** (seen on the product's own page) throughout. The competitor's terms of use were not read before viewing. The competitor is named only in the founder's private research notes (founder, 13 Nov 2026, prompt window: "Anonymise the paid details (Recommended)"), because these observations come from paid, signed-in pages. Screenshots and PDFs are kept privately on the founder's machine and are not committed: they are the competitor's copyright, and the repository is public (rule 5). Quotes are kept short. Figures quoted are the competitor's outputs, recorded as observations, not as facts about the places.
+Everything below was seen on the competitor's own pages that day, so it is **[F]** (seen on the product's own page) throughout. The competitor's terms of use were not read before viewing. The competitor is named only in the founder's private research notes (founder, 13 Nov 2026, prompt window: "Anonymise the paid details (Recommended)"), because these observations come from paid, signed-in pages. Screenshots and PDFs are kept privately on the founder's machine and are not committed: they are the competitor's copyright, and the repository is public (rule 5). Quotes are kept short. Figures quoted are the competitor's outputs, recorded as observations, not as facts about the places. Facts from the competitor's public website may still be named and linked in other research notes, so they can be checked (founder, 14 Nov 2026, #241: "Keep names (Recommended)"); content from paid, signed-in pages stays anonymous.
 
 ## What the competitor offers (observed)
 - **Area report:**
@@ -60,7 +60,7 @@ These show what a careful buyer or renter would notice, and which of our rules p
 - **The home, not just the area.** Their property overview has no real monthly cost and no tracked questions. Ours has the cost engine and questions per home (doc 02 §3).
 - **No scores and no verdicts.** The visitor's own priorities and limits, with never a total (FE-22); "How we got this" for every calculated figure (FE-24).
 - **Public facts free, with no account.** The pilot has no sign-up and no passes (0046).
-- **Honest coverage outside England,** topic by topic, never a verdict built on missing data.
+- **Honest coverage outside England,** never a verdict built on missing data. "Topic by topic" describes how the coverage registry records each source's nations; the pilot screen itself shows one whole-page "Not yet covered" outside England (founder, 14 Nov 2026, prompt window: "Whole page 'Not yet covered' (Recommended)"; [pilot design review](2026-11-14-pilot-design-review.md)).
 
 ## Founder decisions, 13 Nov 2026 (prompt windows)
 After the review of our specs against these findings:

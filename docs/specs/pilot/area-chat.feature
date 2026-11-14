@@ -4,8 +4,12 @@ Feature: Ask about this area (the pilot's area chat panel)
   Modes: both (and anyone, with no account; decisions 0046 and 0051)
   Fixtures: home WALES-1 (outside England); the postcode-level sample area data is not in the
     fixtures yet (fixture needed: #216); figures: none (the chat never calculates; decision 0004).
-  Where: on Check an area and on the landing result, as an optional, closable panel (decision 0004),
-    never a permanent column. A side panel on desktop, a bottom sheet on a phone.
+  Where: on Check an area only (the landing has no result: it hands a complete postcode to Check an area,
+    LAND-03; corrected 14 Nov 2026, C6), as an optional, closable panel (decision 0004), never a permanent
+    column. A drawer over the right column on desktop, a bottom sheet on a phone. Layering (register line
+    FE-26, written once in the site plan's "Layering"): one thing at a time; on desktop the drawer covers the
+    map or the open topic panel and closing it returns to what was there; on a phone, opening the chat from
+    inside a topic replaces the topic sheet and Back returns to it.
   Entry: "Ask about this area" with an "AI" badge (register line FE-13). The panel header says
     "Answers are written by AI from the sources below", above the disclaimer (decision 0051):
     "Answers come only from the sources shown, and can still be wrong. Check the source before relying on it."
@@ -13,9 +17,11 @@ Feature: Ask about this area (the pilot's area chat panel)
     and a link to the privacy notice.
   The AI reply in @ui scenarios comes from a fake AI provider that returns a fixed stand-in reply and
     records what the server sent it, so these scenarios test the panel, the server and the guards, not
-    the model. Whether the real model follows the rules (declining "is it safe", scores, sums, advice and
-    other places) is tested by the AI evaluation set (AI-03); CHAT-11 to CHAT-14 and CHAT-17 are also
+    the model. Whether the real model follows the rules (declining scores, sums, advice and other places, and
+    rephrased "is it safe" questions) is tested by the AI evaluation set (AI-03); CHAT-12 to CHAT-14 and CHAT-17 are also
     AI-03 cases.
+  Fixed replies (register line AI-11): the "is it safe", score, advice and best-area questions are answered by
+    text we wrote and reviewed, not the model (CHAT-11, CHAT-50).
   The ui tag also covers server checks (logs, server storage, refusals made by the server): they run in the
     same playwright-bdd suite against the running stack (SP-03).
   Limits: the message limit, the turn limit, the token limit per answer, the rate limits and the daily
@@ -35,8 +41,9 @@ Feature: Ask about this area (the pilot's area chat panel)
     not known, never a guess -> CHAT-08
     a failed source is Unavailable, never none or zero -> CHAT-09
     suggested questions from the gaps -> CHAT-10
-    the rules sent to the model: no "safe", scores, sums, personal advice or other places -> CHAT-11, CHAT-12, CHAT-13, CHAT-14, CHAT-17
-    output guard (forbidden words, verdicts, scores, recommendations) and invented numbers -> CHAT-15, CHAT-16, CHAT-39 to CHAT-44
+    "is this area safe?" and the other forbidden classes get a fixed, reviewed reply, no model call -> CHAT-11, CHAT-50
+    the rules sent to the model: no scores, sums, personal advice or other places -> CHAT-12, CHAT-13, CHAT-14, CHAT-17
+    output guard (claims, verdicts, scores, recommendations; not the bare word) and invented numbers -> CHAT-15, CHAT-16, CHAT-39 to CHAT-44, CHAT-51
     text in tool results treated as data -> CHAT-18
     paused for today, provider unavailable, limits, bot check (as the page shows them) -> CHAT-19 to CHAT-24
     the server refuses before any AI call: no bot check, over a limit, over the cap -> CHAT-45 to CHAT-49
@@ -80,14 +87,14 @@ Feature: Ask about this area (the pilot's area chat panel)
   Scenario: CHAT-06 on a phone the panel is a bottom sheet over the area result
     Given the user has checked a complete postcode on a 390 px wide screen
     When the user opens "Ask about this area"
-    Then the panel opens as a bottom sheet that can be closed, and the area result is still there behind it
+    Then the panel opens as a bottom sheet that can be closed, and the area result is still there behind it; if a topic sheet was open, the chat replaces it and Back returns to the topic (one sheet at a time, FE-26)
 
   # fixture needed: #216
   @ui
   Scenario: CHAT-07 every claim in an answer shows its source, date and label
     Given the user has opened "Ask about this area" for a sample postcode
     When the stand-in reply answers a question about a recorded topic
-    Then each claim in the answer shows its source, its data date and its label (Live, Cached or Fallback from decision 0029, or Old when stale; Unavailable is CHAT-09)
+    Then each claim in the answer shows its source, its data date and its label (Cached or Fallback from decision 0029, or Old when stale; Unavailable is CHAT-09). "Live" is not offered in the pilot: the tools read only our stored copies (corrected 14 Nov 2026, C4)
 
   # fixture needed: #216
   @ui
@@ -110,17 +117,28 @@ Feature: Ask about this area (the pilot's area chat panel)
     When the user opens "Ask about this area" before typing anything
     Then the suggested questions are the questions built from that postcode's gaps, with no AI call made for them
 
-  # CHAT-11 to CHAT-14 and CHAT-17 check the rules the server gives the model; AI-03 checks the model follows them.
+  # CHAT-12 to CHAT-14 and CHAT-17 check the rules the server gives the model for questions the fixed-reply router
+  # (CHAT-11, CHAT-50) does not catch; AI-03 checks the model follows them.
+  # Changed 14 Nov 2026 (M1, register line AI-11): "Is this area safe?" is the commonest question, so it gets
+  # a useful answer, not an error. The reply is fixed and reviewed by us, not written by the model, so it
+  # costs nothing and cannot go wrong. Questions in the forbidden classes (safe, score, advice, best) are
+  # routed to it before any model call.
   @ui
-  Scenario: CHAT-11 the model is told never to call an area safe or unsafe
-    Given the user has opened "Ask about this area"
+  Scenario: CHAT-11 "Is this area safe?" gets a fixed, reviewed reply and no model call
+    Given the user has opened "Ask about this area" for a sample postcode
     When the user asks "Is this area safe?"
-    Then the instructions the server sent to the fake AI provider say never to call an area safe or unsafe, and to offer the sourced crime and flood facts instead
+    Then the panel shows our fixed reply: one sentence on why we don't judge an area, then the recorded crime counts and flood facts with their sources, dates and labels, then two questions to ask; and the fake AI provider received no request
+
+  @ui
+  Scenario: CHAT-50 the other forbidden question classes get the same kind of fixed reply
+    Given the user has opened "Ask about this area" for a sample postcode
+    When the user asks for a score out of ten, for the best area, or "Should I buy here?"
+    Then each is answered with a fixed, reviewed reply that says why we don't score, rank or advise, offers the sourced facts and two questions to ask, and the fake AI provider received no request
 
   @ui
   Scenario: CHAT-12 the model is told never to score or rank an area
     Given the user has opened "Ask about this area"
-    When the user asks for a score out of ten for the area
+    When the user asks for a score in words that the fixed-reply router does not catch
     Then the instructions the server sent to the fake AI provider say never to give a score, rating or ranking
 
   @ui
@@ -132,19 +150,29 @@ Feature: Ask about this area (the pilot's area chat panel)
   @ui
   Scenario: CHAT-14 the model is told never to give personal advice
     Given the user has opened "Ask about this area"
-    When the user asks "Should I buy here?"
+    When the user asks for a recommendation in words that the fixed-reply router does not catch
     Then the instructions the server sent to the fake AI provider say never to recommend, and to offer the sourced facts and the questions to ask
 
   @ui
-  Scenario: CHAT-15 a reply that calls the area safe is stopped before it is shown
+  Scenario: CHAT-15 a reply that claims the area is safe is stopped before it is shown
     Given the user has opened "Ask about this area"
-    When the stand-in reply contains the word "safe" about the area
+    When the stand-in reply claims the area is safe, for example "this area is safe"
     Then the output guard blocks that reply, the visitor never sees it, and the panel shows "Couldn't answer that one · Try asking another way"
 
+  # CHAT-51 (M1): the guard blocks claims, not the bare word.
+  @ui
+  Scenario: CHAT-51 the word "safe" in source wording or a place name is not blocked
+    Given the user has opened "Ask about this area"
+    When the stand-in reply says "Not a safety rating" (the tools' own wording) or names a place such as "Safestore", and makes no claim about the area
+    Then the output guard lets that reply through
+
+  # M2 (14 Nov 2026): "a number that is not in the tool results" means digits or number words that state a
+  # fact. Allowed: the radius in use, counts and totals the tools return, and dates in the results. A
+  # measured ceiling on wrongly blocked answers belongs to the evaluation set (AI-03).
   @ui
   Scenario: CHAT-16 a reply with a number that is not in the tool results is rejected
     Given the user has opened "Ask about this area"
-    When the stand-in reply contains a number that none of the tool results it was given contains
+    When the stand-in reply states a fact with a number that none of the tool results it was given contains, other than the radius in use, a count or total a tool returned, or a date in the results
     Then that reply is not shown, and the panel shows "Couldn't answer that one · Try asking another way"
 
   @ui
@@ -278,10 +306,10 @@ Feature: Ask about this area (the pilot's area chat panel)
     Then the request the server sent to the fake AI provider sets the answer's maximum length to the token limit per answer
 
   @ui
-  Scenario: CHAT-38 on desktop the panel is a side panel beside the area result
+  Scenario: CHAT-38 on desktop the panel is a drawer over the right column, beside the topic list
     Given the user has checked a complete postcode on a 1280 px wide screen
     When the user opens "Ask about this area"
-    Then the panel opens as a closable side panel, and the area result stays visible beside it
+    Then the panel opens as a closable drawer over the right column (the map, or the open topic's panel), the topic list stays visible on the left, and closing the drawer returns the right column to what was there (one thing at a time, FE-26)
 
   @ui
   Scenario: CHAT-39 a reply that calls the area good is stopped before it is shown

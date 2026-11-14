@@ -157,7 +157,7 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
   Scenario: CARD-14 a result with no places shows no card
     Given a nearby places result with no place within 5 km
     When the answer is shown
-    Then no card is drawn, and the text says "No places found within 5 km" (TOOLS-06), never an empty card
+    Then no card is drawn, and the text says "No places found within" and the 5 km cap in the country's display unit (FE-27; TOOLS-06), never an empty card
 
   # fixture needed: #216
   @ui @mcp
@@ -205,10 +205,12 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
     Then a larger view opens with every place at the same true distance and bearing as on the compact card (the drawing is larger, the distances are not), and the same places in the list
 
   @ui
+  # Layering (FE-26): the expanded card is the one allowed layer above the chat drawer or sheet, because it
+  # is the chat's own answer; closing it returns to the chat.
   Scenario: CARD-22 in our chat the expanded view is a dialog on desktop and full screen on a phone
     Given an answer about nearby places in our chat
     When the user chooses "Expand" on a 1280 px wide screen, and "Open map" on a 390 px wide screen
-    Then it opens as a dialog over the chat on the wide screen, and full screen on the phone, each with a "Close" button
+    Then it opens as a dialog over the chat drawer on the wide screen, and full screen on the phone, each with a "Close" button
 
   @ui
   Scenario: CARD-23 the expanded view works with the keyboard and returns focus
