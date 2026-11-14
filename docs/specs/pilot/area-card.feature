@@ -78,10 +78,11 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
 
   # fixture needed: #216
   @ui @mcp
+  # Changed 14 Nov 2026 (FE-33, DA-12): the source shows as icon, name and link, with no date.
   Scenario: CARD-03 tapping a pin shows its name, distance and source
     Given the card is drawn for a sample postcode
     When the user taps a pin
-    Then the pin's place name, straight-line distance and source with its date are shown beside it
+    Then the pin's place name, straight-line distance and source (its icon and name, linking to the official page) are shown beside it, with no date or status word
 
   # fixture needed: #216
   @ui @mcp
@@ -106,10 +107,11 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
 
   # fixture needed: #216
   @ui @mcp
-  Scenario: CARD-07 the card shows its sources and dates
+  # Changed 14 Nov 2026 (FE-33, DA-12): the card names its sources by icon and name with a link; dates are on About the data.
+  Scenario: CARD-07 the card shows its sources
     Given the card is drawn for a sample postcode
     When the card is shown
-    Then it names each source it draws from, with its data date
+    Then it names each source it draws from by icon and name, each linking to the official page, with no data date or status word
 
   # fixture needed: #216
   @ui @mcp
@@ -220,10 +222,11 @@ Feature: Area card (the isometric scene of the nearest places, in our chat and i
 
   # fixture needed: #216
   @ui @mcp
+  # Changed 14 Nov 2026 (FE-33, DA-12): the source shows as icon, name and link, with no date.
   Scenario: CARD-24 choosing a row in the expanded list selects its pin
     Given the expanded view is open for a sample postcode, in our chat or in a host that granted full screen
     When the user chooses a place in the list
-    Then that place's pin is selected on the map, and its name, distance and source with its date are shown, the same as a tap
+    Then that place's pin is selected on the map, and its name, distance and source (icon and name, linking to the official page, no date) are shown, the same as a tap
 
   @mcp
   Scenario: CARD-25 the widget asks for full screen and follows the mode the host returns

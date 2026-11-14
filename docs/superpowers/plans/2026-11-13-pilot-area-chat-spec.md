@@ -1,5 +1,8 @@
 # Pilot area chat panel specification — Implementation Plan
 
+> **Dated plan (13 Nov 2026).** Some rules it describes changed on 14 Nov 2026 (FE-33 stamps, FE-34 limits, DA-12 flood time, FE-27 units). The current rules are in the specifications under `docs/specs/` and the register in `docs/decisions/README.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Specify the pilot's "Ask about this area" chat panel (#223) as an executable Gherkin feature, with its canvas board, register line and site-plan entry.

@@ -91,10 +91,11 @@ Feature: Ask about this area (the pilot's area chat panel)
 
   # fixture needed: #216
   @ui
-  Scenario: CHAT-07 every claim in an answer shows its source, date and label
+  # Changed 14 Nov 2026 (FE-33, DA-12): the visible citation is the source's icon, name and link; the tool result behind the answer keeps the date and the decision 0029 label, so the reply can say when a fact dates from if asked (TOOLS-08).
+  Scenario: CHAT-07 every claim in an answer shows its source
     Given the user has opened "Ask about this area" for a sample postcode
     When the stand-in reply answers a question about a recorded topic
-    Then each claim in the answer shows its source, its data date and its label (Cached or Fallback from decision 0029, or Old when stale; Unavailable is CHAT-09). "Live" is not offered in the pilot: the tools read only our stored copies (corrected 14 Nov 2026, C4)
+    Then each claim in the answer shows its source as the source's icon and name, linking to the official page, with no status word and no date on the citation; the reply can still say when a fact dates from, because the tool result it used carries the data date and the label (Cached or Fallback from decision 0029, or Old when stale; Unavailable is CHAT-09). "Live" is not offered in the pilot: the tools read only our stored copies (corrected 14 Nov 2026, C4)
 
   # fixture needed: #216
   @ui
@@ -275,10 +276,11 @@ Feature: Ask about this area (the pilot's area chat panel)
 
   # fixture needed: #216
   @ui
+  # Changed 14 Nov 2026 (FE-33, DA-12): the card's sources show as icon, name and link; dates are on About the data.
   Scenario: CHAT-33 the area card carries its sources and shows no risk shading
     Given an answer shows the area card for a sample postcode
     When the card is drawn
-    Then the card shows its sources and data dates, and has no flood or crime shading
+    Then the card shows its sources by icon and name with links, with no data date or status word, and has no flood or crime shading
 
   # Server checks (see the header): logs, server storage, refusals and limits enforced by the server.
   @ui

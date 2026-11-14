@@ -61,10 +61,11 @@ Feature: Landing
     Then the hero map is a static image, and the live map library is not loaded
 
   @ui
+  # Changed 14 Nov 2026 (FE-34): the "can't tell you" line is gone from the cards; limits live in About the data.
   Scenario: LAND-08 the source wall names each source and links About the data
     Given the user is not signed in
     When the user opens the landing page
-    Then each "Data from" card shows a source's name, what it covers and what it can't tell you, with no logo, and links to About the data
+    Then each "Data from" card shows a source's name and what it covers, with no logo and no "can't tell you" line, and links to About the data, where the source's limits are
 
   @ui
   Scenario: LAND-09 the example result is labelled as a sample

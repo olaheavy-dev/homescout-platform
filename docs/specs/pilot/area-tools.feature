@@ -27,6 +27,9 @@ Feature: Area tools for ChatGPT and Claude (the pilot's public MCP server)
       13 Nov 2026, though decision 0037 cites the MCP Apps launch post and OpenAI's guide saying ChatGPT
       supports the open ui:// standard, so ChatGPT widgets are "to confirm when tested". Text results
       work in every host.
+  Kept 14 Nov 2026 (FE-33, DA-12): the tools' outputs are data, not the page. Every scenario here keeps each
+    value's source, data date and label, even though the page shows only the source's icon, name and link
+    and puts dates and statuses on About the data, so the chat and MCP hosts can say when a fact dates from.
   Labels: every value carries Cached or Fallback (decision 0029), or Unavailable when its source failed,
     and "Old" when its stored copy is past its refresh date. The tools never read a live source, so no
     value is labelled Live.

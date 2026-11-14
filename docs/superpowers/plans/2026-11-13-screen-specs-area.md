@@ -1,5 +1,8 @@
 # Screen specifications, part 1: the area screens — Implementation Plan
 
+> **Dated plan (13 Nov 2026).** Some rules it describes changed on 14 Nov 2026 (FE-33 stamps, FE-34 limits, DA-12 flood time, FE-27 units). The current rules are in the specifications under `docs/specs/` and the register in `docs/decisions/README.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Write the screen specifications for Landing, Nearby and Check an area (#68, pull request 1 of 3), with three new data steps so their data scenarios run in `make check`.
@@ -79,7 +82,7 @@ Scenarios (one outcome each):
   - NEAR-10 Wales shows one "Not yet covered" card, not empty topics.
   - NEAR-11 on a phone every topic has a list, and the map is an optional view (list alternative to the map).
   - NEAR-12 crime appears in the list as counts, never on the map.
-  - NEAR-13 each topic's "What this doesn't tell you" is visible on a phone, never collapsed.
+  - NEAR-13 each topic's "What this doesn't tell you" is visible on a phone, never collapsed. (Superseded 14 Nov 2026 by FE-34: limits sit inside "How we got this".)
   - NEAR-14 the commute row shows the estimate next to the household's limit, with no verdict.
 - [ ] Required-states block maps: source failed → NEAR-01, 07; not covered location → NEAR-04, 10; Wales → NEAR-04, 10; stale → NEAR-03, 09; missing never zero → NEAR-02, 05, 08; mobile list alternative → NEAR-11.
 - [ ] `make check` green; commit `docs: Nearby screen specification (#68)`.
