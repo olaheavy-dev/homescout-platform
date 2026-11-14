@@ -1,9 +1,12 @@
 # Canvas pass B: redraw the pilot's home-context boards
 
 **Date:** 14 Nov 2026  
-**Status:** Next (not started). The founder asked for it to be written down before stopping: "make sure to document B, we will stop after A has a merge request opened" (typed, 14 Nov 2026).  
+**Status:** Waiting for #216 (not started). The founder asked for it to be written down before stopping: "make sure to document B, we will stop after A has a merge request opened" (typed, 14 Nov 2026).  
 **Where:** the design canvas (https://claude.ai/artifact/MpvQNDVYCePp4iWM3j3Jx4), "Pilot · public area check" page. Canvas work, so it needs no code; the repository only records decisions and the status.  
-**Inputs:** [pilot design review](../../reviews/2026-11-14-pilot-design-review.md) (the "ten Nearby, Schools and Map boards" row under "Wrong now (P1), fixed first", and founder decision 2), [look-and-feel review](../../reviews/2026-11-14-pilot-look-and-feel-review.md), register lines FE-20 and FE-26 to FE-33, DA-12, DA-13.
+**Inputs:** [pilot design review](../../reviews/2026-11-14-pilot-design-review.md) (the "ten Nearby, Schools and Map boards" row under "Wrong now (P1), fixed first", and founder decision 2), [look-and-feel review](../../reviews/2026-11-14-pilot-look-and-feel-review.md), register lines FE-20 and FE-26 to FE-33, DA-12 to DA-14, and the postcode-level sample data from #216.
+
+## Before starting: the postcode sample data (#216)
+Pass B cannot start until #216 has merged. Every distance on these boards is measured from the postcode centre (AREA-13), but `packages/fixtures/data/area.json` holds only distances from a saved home (records keyed by `homeId`). Using those figures would label a home's distances as postcode distances (rules 1 and 2). Codex raised this as a P1 on #245; the founder chose "#216 first, with levels (Recommended)" (14 Nov 2026, prompt window). #216 adds a postcode-level sample fixture in which every fact also records the area it covers (DA-14).
 
 ## Why
 Ten boards on the pilot page still show the later home workspace: a saved home ("Flat 2, 14 Mill Court", "This home"), a signed-in menu (My move, Homes, Compare), a demo step strip and a commute row. The pilot has no accounts (decision 0046), and the boards are the reference the build follows. The founder chose "Redraw, move originals (Recommended)" (14 Nov 2026, prompt window).
@@ -32,7 +35,8 @@ That is five boards in two themes, ten in all.
    - One-line limits on flood, crime, sold prices and schools (FE-28).
    - Sold prices show street and property type only (DA-13).
    - Flood wording from AREA-21.
-   - Every name and distance comes from `packages/fixtures/data/area.json`; no typed figure (rules 1, 2 and 7).
+   - Every name and distance comes from the postcode-level sample fixture added by #216, never from the home records in `area.json`; no typed figure (rules 1, 2 and 7).
+   - Every fact names the area it covers (DA-14), for example "from the postcode centre", "within 1 mile", "within 500 m" (sold prices, with the radius stated), "this postcode", "this neighbourhood" or the council's name.
 7. **Check:** render every redrawn board at 390 px and 1280 px, light and dark. Check contrast on the gloss surfaces (WCAG AA), compare each board with its pass A neighbours for consistency, and update the page's "still to design" note.
 8. **Sync the repository design files** in a small pull request: `.design/prototype/tokens.css` and `DESIGN_BRIEF.md` take the version 92 values for soft gloss (FE-29), forest night (FE-31) and the source stamp (FE-33), so the build reads the same system as the canvas.
 9. **Publish once** to the same canvas URL, with a label. Tell the founder the version number and what changed, then ask the founder to review.
@@ -41,7 +45,7 @@ That is five boards in two themes, ten in all.
 - No board on the pilot page shows a saved home, an account menu, a commute or a demo strip.
 - The originals sit on "Home workspace (later)", labelled.
 - Schools opens as a sheet or panel, never a page.
-- Every figure traces to the fixture and every fact carries a source stamp.
+- Every figure traces to the postcode-level fixture from #216, every fact carries a source stamp and names the area it covers (DA-14).
 - Light and dark boards match the pass A system, with no local style overrides.
 
 ## After pass B

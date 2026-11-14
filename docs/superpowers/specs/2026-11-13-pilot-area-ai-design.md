@@ -115,6 +115,7 @@ Founder, 13 Nov 2026: typed "I like the show wider should we default 5km for all
 
 - Nothing is shown as "none": beyond the limit the page says "No pharmacy found within" and the limit in the country's display unit (FE-27; the cap is stored as 5 km), never "none" or zero (rule 7).
 - The landing hero's "+N more nearby" counts places within 5 km; the home workspace's Nearby follows the same distances.
+- Every fact names the area it covers, at the level its source publishes it (DA-14, 14 Nov 2026): "from the postcode centre", "within 1 mile", "this postcode", "this neighbourhood" (an LSOA) or the council.
 - Every distance is labelled "straight-line from the postcode centre", in the country's unit (miles in England, FE-27). Where wave 2's walking time exists it is shown beside it, labelled "walk from the postcode centre"; where no route is found the page says so and keeps the straight-line distance, never zero (rule 7). Walking times are a calculated output (rule 2), from the same tested module as the distances.
 - The chosen widths live in the link's `#` part, like the postcode; the chat and the MCP tools take a radius up to the same 5 km cap and state it in every answer.
 - The map fits itself to the places shown; the list holds everything. The 400 m ring on the landing hero is an illustration, not this rule.
