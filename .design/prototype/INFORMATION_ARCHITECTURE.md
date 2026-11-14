@@ -253,7 +253,7 @@ In the private prototype the landing can also link the two example homes; the pu
 | The visitor's request to us failed | "Couldn't load this" | With "Try again" (C3) |
 | Nothing found in a radius | "No <place> found within <radius>" | Never "none" or zero |
 | Flood warnings | "Warnings in force when we last checked, at <time>" | Official link first; "Old" over 1 hour, "Unavailable" over 1 day (DA-12) |
-| Distances (England) | Miles to one decimal, for example "0.3 miles"; crime "within 1 mile" | Stored in metres; display follows the country (FE-27) |
+| Distances (England) | Under 1 mile: metres to the nearest 10 m ("120 m", "1,450 m"); from 1 mile: miles to one decimal ("1.3 miles"); crime "within 1 mile" | Stored in metres; display follows the country (FE-27) |
 | Wales, Scotland, Northern Ireland | "Not yet covered" | Per topic once #158 lands |
 | Postcode not found | "We couldn't find that postcode" | Nothing else shown |
 | Question states | To ask · Sent · Partially answered · Reply needs checking · Answered | Fixture statuses |

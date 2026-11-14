@@ -178,7 +178,7 @@ None are P0 or P1: this review is about look and feel. Two visible defects are P
 | D5 | Sources | "Source stamp (Recommended)" | FE-33 |
 
 ## Founder review of pass A, 14 Nov 2026
-The founder reviewed canvas pass A on 14 Nov 2026 (prompt windows unless marked typed). The canvas now carries the review's edits (canvas version CANVAS_VERSION).
+The founder reviewed canvas pass A on 14 Nov 2026 (prompt windows unless marked typed). The canvas now carries the review's edits (canvas version 95).
 
 | # | Item | Answer | Recorded |
 |---|---|---|---|
@@ -189,7 +189,7 @@ The founder reviewed canvas pass A on 14 Nov 2026 (prompt windows unless marked 
 | 5 | Source stamp | "Short stamp that is the link (Recommended)": the stamp is the link to the official source page; source, status and date stay visible | FE-33 |
 | 6 | One marker style | "Keep as is" | |
 | 7 | Three weights, seven sizes | "Keep as is" | |
-| 8 | Miles | "Keep, incl. "under 0.1" (Recommended)": distances below 0.1 miles read "under 0.1 miles", never "0.0 miles"; the Craft sheet's "Bus stop 0.1 miles" for 120 m was a defect, fixed on the canvas | FE-27 |
+| 8 | Miles | First "Keep, incl. "under 0.1" (Recommended)"; then, when the agent corrected itself (it had not said the proposal applied only below 0.05 miles, and had treated the 120 m bus stop's "0.1 miles" as a defect), the founder typed "i think we sjoul do meters so we are accurate" [sic], asked "should we use  metres for anything less than 1 mile?" [sic], and chose "Metres under 1 mile (Recommended)": under 1 mile in metres to the nearest 10 m, from 1 mile in miles to one decimal (FE-27 amended) |
 | 9 | Error fixes | "Yes, all fine" | |
 | 10 | Quick wins | "Yes, all fine" | |
 | 11 | Craft sheet sections 8 and 9 as the single reference | "Keep as the reference (Recommended)" | |

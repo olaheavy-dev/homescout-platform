@@ -26,7 +26,7 @@ Feature: Check an area
     the visitor's own request to us failed, a different state with Try again -> AREA-19
     flood warnings: when we last checked, official link first, Old after 1 hour, Unavailable after 1 day -> AREA-21, AREA-22, AREA-23
     the printout: the sample postcode says "Sample data", any other postcode its made-at time -> AREA-12, AREA-20
-    distances in miles to one decimal in England, stored in metres -> AREA-24
+    distances in England: metres under 1 mile, miles from 1 mile, stored in metres -> AREA-24
     an address in Wales, Scotland or Northern Ireland, "not yet covered" -> AREA-01, AREA-02, AREA-08
     narrow and mobile layouts with a list alternative to the map -> covered by NEAR-11 (same topic details; a sheet on a phone, FE-20)
   Free and paid: the area check is free and needs no account. Saving a home needs an account that
@@ -139,10 +139,12 @@ Feature: Check an area
   # unit comes from the country entry in the data contract. Crime stays police.uk's own "within 1 mile".
   # fixture needed: #216
   @ui
-  Scenario: AREA-24 in England distances show in miles to one decimal
+  Scenario: AREA-24 in England distances show in metres under 1 mile and in miles from 1 mile
     Given the user has checked a sample postcode in England
     When the results are shown
-    Then each distance reads like "0.3 miles", crime reads "within 1 mile", the stored values are in metres, and no row mixes miles with kilometres
+    Then a distance under 1 mile reads in metres rounded to the nearest 10 m, like "120 m" or "1,450 m"
+    And a distance of 1 mile or more reads in miles to one decimal, like "1.3 miles"
+    And crime reads "within 1 mile", the stored values are in metres, and no distance is shown in kilometres
 
   # fixture needed: #216 (no flood source-failed record exists yet)
   @ui
