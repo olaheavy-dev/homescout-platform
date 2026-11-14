@@ -76,6 +76,14 @@ Repository settings changed with the founder's approval: Python added to CodeQL'
 ## Next, in order
 **Design goal (founder, 13 Nov 2026, typed):** "our minimum now is to be way better than [the competitor]", for the pilot only: "we said we would only design what we need for the pilot at the moment" (typed); recorded as the design quality bar in doc 04, stage 5b. The whole pilot design is reviewed screen by screen, and the first step turns `docs/reviews/2026-11-13-competitor-report-comparison.md` into a competitor benchmark checklist (the private evidence: `~/Documents/Competitor research 2026-11-13/START-HERE.md`, on the founder's machine) that every canvas board and specification must pass before the founder reviews it: truthful figures (no verdicts or scores, missing never zero, the area each figure covers, "how we got this"), clearer on a phone (short topic list, detail in a sheet, no sideways scrolling, text size and theme), quicker to act on (At a glance first, then questions and checks), about the home (energy certificate by number now; real monthly cost and tracked questions later), and free public facts with no account.
 
+**First thing next session (founder, 14 Nov 2026, typed: "the first thing next session is to list all that was chnaged then i can reveiew one by one" [sic]):** before any new work, list every change made on 14 Nov 2026, so the founder can review each one in turn:
+- canvas pass A (version 92, compared with version 90), board by board and on Brand and style;
+- #243's specification fixes and new scenarios;
+- the register lines FE-26 to FE-33, AI-11, AI-12, DA-12, DA-13 and SE-04, and decision 0053;
+- #245's documents.
+
+Take the founder's answer on each item, record it, and only then start pass B.
+
 On 13 Nov 2026 the founder put the pilot first (decisions 0051 and 0052); the design canvas has a "Pilot · public area check" page for reviewing it.
 1. **The pilot's design, in the order from the pilot design review** (`docs/reviews/2026-11-14-pilot-design-review.md`; founder, 14 Nov 2026):
    - (a) **Done:** canvas pass A (version 92).
