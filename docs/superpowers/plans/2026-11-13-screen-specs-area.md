@@ -1,5 +1,8 @@
 # Screen specifications, part 1: the area screens — Implementation Plan
 
+> **Dated plan (13 Nov 2026).** Some rules it describes changed on 14 Nov 2026 (FE-33 stamps, FE-34 limits, DA-12 flood time, FE-27 units). The current rules are in the specifications under `docs/specs/` and the register in `docs/decisions/README.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Write the screen specifications for Landing, Nearby and Check an area (#68, pull request 1 of 3), with three new data steps so their data scenarios run in `make check`.
